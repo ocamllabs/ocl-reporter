@@ -1,0 +1,26 @@
+OASISFormat: 0.3
+Name:        ocl-reporter
+Version:     1.0.0
+Authors:     Anil Madhavapeddy, Leo White, Amir Chaudhry
+License:     ISC
+Synopsis:    OCaml Labs report generator
+Plugins:     META (0.3), DevFiles (0.3)
+BuildTools:  ocamlbuild
+PostConfCommand: ./init_config.sh
+
+Executable "ocl-reporter"
+  Path:               lib
+  MainIs:             www.ml
+  Custom:             true
+  CompiledObject:     native
+  Install:            true
+  BuildDepends:       github, lwt.syntax, core, cow, cow.syntax, sexplib.syntax, threads
+
+Executable "ocl-github-query"
+  Path:               lib
+  MainIs:             github_query.ml
+  Custom:             true
+  CompiledObject:     native
+  Install:            true
+  BuildDepends:       github, lwt.syntax, core, cow, cow.syntax, sexplib.syntax, threads
+
