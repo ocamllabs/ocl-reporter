@@ -1,0 +1,8 @@
+opam-version: "1"
+maintainer: "anil@recoil.org"
+build: [
+  ["ocaml" "setup.ml" "-configure" "--prefix" "%{prefix}%"]
+  ["ocaml" "setup.ml" "-build"]
+  ["ocaml" "setup.ml" "-install"]
+]
+depends: [ "github" "lwt" "core" "cow" ]
