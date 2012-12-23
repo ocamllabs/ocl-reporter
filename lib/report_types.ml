@@ -47,6 +47,7 @@ module Reference = struct
    | `Video of string
    | `Slideshare of string
    | `Mantis of int
+   | `Paper of string * string * string (* URL, authors , descr *)
   ]
   and t = {
     name: string;

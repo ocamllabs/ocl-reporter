@@ -182,6 +182,9 @@ let ref_to_html r =
   |Some (`Webpage url) -> link url r.name
   |Some (`Video url) -> link ~cl:"icon-video" url r.name
   |Some (`Slideshare url) -> link url r.name
+  |Some (`Paper (url,authors,descr)) ->
+    let href = link ~cl:"icon-pdf" url r.name in
+    <:html<$href$, <i>$str:authors$</i>, $str:descr$>>
   |Some (`Mantis id) ->
     let url = sprintf "http://caml.inria.fr/mantis/view.php?id=%d" id in 
     link url r.name

@@ -37,6 +37,7 @@ let ref_to_md r =
     | `Video url -> url
     | `Slideshare url -> url
     | `Mantis id -> sprintf "http://caml.inria.fr/mantis/view.php?id=%d" id
+    | `Paper (url,_,_) -> url
   in
   let main = 
     match r.link with
