@@ -1,5 +1,5 @@
 (* OASIS_START *)
-(* DO NOT EDIT (digest: 4030f7533fa799be69370248bd1b4875) *)
+(* DO NOT EDIT (digest: 723911aeac7d73f981dd9508b29ea274) *)
 module OASISGettext = struct
 # 21 "/Users/avsm/src/git/avsm/oasis/src/oasis/OASISGettext.ml"
 
@@ -283,6 +283,7 @@ module MyOCamlbuildFindlib = struct
           
           (* When one link an OCaml library/binary/package, one should use -linkpkg *)
           flag ["ocaml"; "link"; "program"] & A"-linkpkg";
+          flag ["ocaml"; "link"; "output_obj"] & A"-linkpkg";
           
           (* For each ocamlfind package one inject the -package option when
            * compiling, computing dependencies, generating documentation and
@@ -463,6 +464,24 @@ module MyOCamlbuildBase = struct
               )
               t.lib_c;
 
+            (* Add output_obj rules mapped to .nobj.o *)
+            let native_output_obj x =
+              OC.link_gen "cmx" "cmxa" !Options.ext_lib [!Options.ext_obj; "cmi"] 
+                OC.ocamlopt_link_prog
+                (fun tags -> tags++"ocaml"++"link"++"native"++"output_obj") x
+            in
+            rule "ocaml: cmx* and o* -> .nobj.o" ~prod:"%.nobj.o" ~deps:["%.cmx"; "%.o"]
+              (native_output_obj "%.cmx" "%.nobj.o");
+
+            (* Add output_obj rules mapped to .bobj.o *)
+            let bytecode_output_obj x =
+              OC.link_gen "cmo" "cma" !Options.ext_lib [!Options.ext_obj; "cmi"] 
+                OC.ocamlc_link_prog
+                (fun tags -> tags++"ocaml"++"link"++"byte"++"output_obj") x
+            in
+            rule "ocaml: cmo* -> .nobj.o" ~prod:"%.bobj.o" ~deps:["%.cmo"]
+              (bytecode_output_obj "%.cmo" "%.bobj.o");
+
               (* Add flags *)
               List.iter
               (fun (tags, cond_specs) ->
@@ -484,7 +503,7 @@ module MyOCamlbuildBase = struct
 end
 
 
-# 487 "myocamlbuild.ml"
+# 506 "myocamlbuild.ml"
 open Ocamlbuild_plugin;;
 let package_default =
   {MyOCamlbuildBase.lib_ocaml = []; lib_c = []; flags = []; includes = []; }
@@ -492,6 +511,6 @@ let package_default =
 
 let dispatch_default = MyOCamlbuildBase.dispatch_default package_default;;
 
-# 496 "myocamlbuild.ml"
+# 515 "myocamlbuild.ml"
 (* OASIS_STOP *)
 Ocamlbuild_plugin.dispatch dispatch_default;;

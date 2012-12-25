@@ -4,4 +4,3 @@ setup.log
 .*.swp
 *.native
 *.byte
-lib/config.ml

@@ -1,5 +1,5 @@
 # OASIS_START
-# DO NOT EDIT (digest: 8cb8f487bb4624a95f0d878c6ad94899)
+# DO NOT EDIT (digest: afe1ee3922d2c4fa1a859d4e330c36ca)
 # Ignore VCS directories, you can use the same kind of rule outside 
 # OASIS_START/STOP if you want to exclude directories that contains 
 # useless stuff for the build process
@@ -14,7 +14,6 @@
 "_darcs": -traverse
 "_darcs": not_hygienic
 # Executable ocl-reporter
-"lib/www.native": pkg_github
 "lib/www.native": pkg_lwt.syntax
 "lib/www.native": pkg_core
 "lib/www.native": pkg_cow
@@ -23,14 +22,14 @@
 "lib/www.native": pkg_threads
 "lib/www.native": custom
 # Executable ocl-github-query
-"lib/github_query.native": pkg_github
+"lib/github_query.native": pkg_github.unix
 "lib/github_query.native": pkg_lwt.syntax
 "lib/github_query.native": pkg_core
 "lib/github_query.native": pkg_cow
 "lib/github_query.native": pkg_cow.syntax
 "lib/github_query.native": pkg_sexplib.syntax
 "lib/github_query.native": pkg_threads
-<lib/*.ml{,i}>: pkg_github
+<lib/*.ml{,i}>: pkg_github.unix
 <lib/*.ml{,i}>: pkg_lwt.syntax
 <lib/*.ml{,i}>: pkg_core
 <lib/*.ml{,i}>: pkg_cow

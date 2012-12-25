@@ -6,7 +6,6 @@ License:     ISC
 Synopsis:    OCaml Labs report generator
 Plugins:     META (0.3), DevFiles (0.3)
 BuildTools:  ocamlbuild
-PostConfCommand: ./init_config.sh
 
 Executable "ocl-reporter"
   Path:               lib
@@ -14,7 +13,7 @@ Executable "ocl-reporter"
   Custom:             true
   CompiledObject:     native
   Install:            true
-  BuildDepends:       github, lwt.syntax, core, cow, cow.syntax, sexplib.syntax, threads
+  BuildDepends:       lwt.syntax, core, cow, cow.syntax, sexplib.syntax, threads
 
 Executable "ocl-github-query"
   Path:               lib
@@ -22,5 +21,5 @@ Executable "ocl-github-query"
   Custom:             true
   CompiledObject:     native
   Install:            true
-  BuildDepends:       github, lwt.syntax, core, cow, cow.syntax, sexplib.syntax, threads
+  BuildDepends:       github.unix ( >= 0.4.0) , lwt.syntax, core, cow, cow.syntax, sexplib.syntax, threads
 
