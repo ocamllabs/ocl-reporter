@@ -169,11 +169,11 @@ let one_person p =
   one_page ~title:p.name ~body
 
 (* Convert a reference into a standalone HTML chunk *)
-let ref_to_html r =
+let ref_to_html ?(icons=false) r =
   let open Elements.Reference in
   match r.link with
   |None -> <:html< $str:r.name$ >>
-  |Some (`Pdf url) -> link ~cl:"icon-pdf" url r.name
+  |Some (`Pdf url) -> let cl = if icons then Some "icon-pdf" else None in link ?cl url r.name
   |Some (`Blog url) -> link url r.name 
   |Some (`Github (user,repo)) -> link (sprintf "http://github.com/%s/%s" user repo) r.name 
   |Some (`Github_tag (user,repo,tag)) ->
@@ -198,12 +198,12 @@ let update_to_short_html outputfn u =
     |`Published _,`Paper _ -> "pdf", <:html<Published >>
     |`Published _,`Blog_post -> "rss", <:html<Blogged >>
     |`Published _,`Article _ -> "rss", <:html<Article >>
-    |`Draft _,`Paper _ -> "pdf", <:html<Draft >>
-    |`Draft _,`Blog_post -> "rss", <:html<Draft >>
-    |`Draft _,`Article _ -> "rss", <:html<Draft >>
+    |`Draft _,`Paper _ -> "pdf", <:html<Draft on >>
+    |`Draft _,`Blog_post -> "rss", <:html<Draft on >>
+    |`Draft _,`Article _ -> "rss", <:html<Draft on >>
     |`Accepted _,`Paper _ -> "pdf", <:html<Paper accepted >>
-    |`Event _,`Talk _ -> "video", <:html<Talk on >>
-    |`Event _,`Asset -> "media", <:html<Update >>
+    |`Event _,`Talk _ -> "video", <:html<Talked on >>
+    |`Event _,`Asset -> "media", <:html<Updated >>
     |`Event _,`Event _ -> "community", <:html<Working on >>
     |`Event _,`Code -> "media", <:html<Hacking on >>
     |`Event _,`Paper _ -> "video", <:html<Presented on >>
@@ -273,7 +273,8 @@ let one_project proj =
   let related = match proj.Project.related with
     |[] -> <:html< >> 
     |related ->
-       let l = List.map (fun r -> <:html<<li>$ref_to_html r$</li>&>>) related in
+       let ref_to_html_icons r = ref_to_html ~icons:true r in
+       let l = List.map (fun r -> <:html<<li>$ref_to_html_icons r$</li>&>>) related in
        <:html<<h4 id="Related Work">Related Work</h4><ul>$list:l$</ul>&>>
   in
   <:html<
@@ -389,7 +390,7 @@ let output_uconfig ?(subdirs=[]) files =
   Unix.mkdir_p dir;
   let fname = Filename.concat dir "uconfig.txt" in
   let buf = List.map files ~f:(fun x -> x^".html") |! String.concat ~sep:"," in
-  Out_channel.write_all fname buf
+  Out_channel.write_all fname ("navstop=1,\n"^buf)
 
 let _ =
   let open Elements in

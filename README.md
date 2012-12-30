@@ -9,8 +9,8 @@ The data sources can be found at <http://github.com/ocamllabs/updates>.
 
 It installs two binaries:
 
-* `ocl-reporter` reads s-expressions from a `contents/` directory and
-  outputs the result to a `html` directory.
+* `ocl-reporter` reads s-expressions from the current directory and
+  outputs the result to a directory specified as the first argument.
 
 * `ocl-github-query` uses the Github API to query project tags and
   changelogs, and output them as progress updates too. This saves us
