@@ -195,20 +195,20 @@ let update_to_short_html outputfn u =
   let o = Update.output_of_update u in
   let icon, blurb = 
     match u.Update.ty, o.Output.ty with 
-    |`Published _,`Paper _ -> "pdf", <:html<Published paper on >>
-    |`Published _,`Blog_post -> "rss", <:html<Blog post on >>
-    |`Published _,`Article _ -> "rss", <:html<Article available on >>
-    |`Draft _,`Paper _ -> "pdf", <:html<Draft version of paper on >>
-    |`Draft _,`Blog_post -> "rss", <:html<Draft blog post on >>
-    |`Draft _,`Article _ -> "rss", <:html<Draft article post on >>
-    |`Accepted _,`Paper _ -> "pdf", <:html<Paper passed peer-review on >>
-    |`Event _,`Talk _ -> "video", <:html<Delivered talk on >>
-    |`Event _,`Asset -> "media", <:html<Update on >>
+    |`Published _,`Paper _ -> "pdf", <:html<Published >>
+    |`Published _,`Blog_post -> "rss", <:html<Blogged >>
+    |`Published _,`Article _ -> "rss", <:html<Article >>
+    |`Draft _,`Paper _ -> "pdf", <:html<Draft >>
+    |`Draft _,`Blog_post -> "rss", <:html<Draft >>
+    |`Draft _,`Article _ -> "rss", <:html<Draft >>
+    |`Accepted _,`Paper _ -> "pdf", <:html<Paper accepted >>
+    |`Event _,`Talk _ -> "video", <:html<Talk on >>
+    |`Event _,`Asset -> "media", <:html<Update >>
     |`Event _,`Event _ -> "community", <:html<Working on >>
     |`Event _,`Code -> "media", <:html<Hacking on >>
-    |`Event _,`Paper _ -> "video", <:html<Presented work on >>
-    |`Press _,`Article _ -> "community", <:html<Press article on >>
-    |`Release (_,r), _ -> "follow", <:html<Released version $ref_to_html r$ of >> 
+    |`Event _,`Paper _ -> "video", <:html<Presented on >>
+    |`Press _,`Article _ -> "community", <:html<Press on >>
+    |`Release (_,r), _ -> "follow", <:html<Released $ref_to_html r$ of >> 
     |_ -> failwith ("internal error: unexpected combination of update/output in " ^ o.Output.id)
   in let icon = "icon-"^icon in
   <:html< <li><a class="$str:icon$"></a><i>$str:human_readable_date u.Update.date$</i>: 
@@ -261,7 +261,7 @@ let one_project proj =
     let r = List.map (update_to_short_html URL.Cur.output) (Update.get_recent proj.Project.id) in
     match List.length r with
     |0 -> <:html< >>
-    |_ -> <:html< <h2 id="Recent Updates">Recent Updates</h2><ul class="compact">$list:r$</ul> >>
+    |_ -> <:html< <h4 id="Recent Updates">Recent Updates</h4><ul class="compact">$list:r$</ul> >>
   in
   let team = List.map (fun mem ->
       let p = Person.get mem.Project.person in
@@ -274,7 +274,7 @@ let one_project proj =
     |[] -> <:html< >> 
     |related ->
        let l = List.map (fun r -> <:html<<li>$ref_to_html r$</li>&>>) related in
-       <:html<<h2 id="Related Work">Related Work</h2><ul>$list:l$</ul>&>>
+       <:html<<h4 id="Related Work">Related Work</h4><ul>$list:l$</ul>&>>
   in
   <:html<
       <title>$str:proj.Project.name$</title>
@@ -284,7 +284,7 @@ let one_project proj =
       <div class="ocl">
         <h1 id="$str:proj.Project.name$">$str:proj.Project.name$</h1>
         $Scanner.md_file_to_html ["projects";proj.Project.id] "intro"$
-        <h2 id="Team">Team</h2>
+        <h4 id="Team">Team</h4>
         <ul class="compact">$list:team$</ul>
         $related$
         $recent$
@@ -393,7 +393,8 @@ let output_uconfig ?(subdirs=[]) files =
 
 let _ =
   let open Elements in
-  let root = "html" in
+  let root = try Sys.argv.(1) with _ ->
+    (Printf.eprintf "Usage: %s <output-dir>\n%!" Sys.argv.(0); exit 1) in
   output ~subdirs:[root;"people"] "index" people;
   output_uconfig ~subdirs:[root;"people"] 
     (List.map Person.all ~f:(fun p ->
