@@ -18,8 +18,8 @@
 open Core.Std
 
 let scan_dirs dir =
-  Sys.ls_dir ("content/"^dir) |!
-  List.map ~f:(fun fname -> Filename.realpath ("content/"^dir^"/"^fname)) |!
+  Sys.ls_dir (dir) |!
+  List.map ~f:(fun fname -> Filename.realpath (dir^"/"^fname)) |!
   List.filter ~f:(fun fname ->
     match Sys.is_directory fname with
     |`Yes -> true
@@ -44,12 +44,12 @@ let loads dir name conv =
   )
 
 let scan ~f dir =
-  Sys.ls_dir ("content/"^dir) |!
+  Sys.ls_dir (dir) |!
   List.filter ~f:(fun fname -> Filename.check_suffix fname ".scm") |!
-  List.map ~f:(fun fname -> load ("content/"^dir) fname f)
+  List.map ~f:(fun fname -> load (dir) fname f)
 
 let md_file_to_html subdirs file =
-  let fname = Printf.sprintf "content/%s/%s.md" (String.concat ~sep:"/" subdirs) file in
+  let fname = Printf.sprintf "%s/%s.md" (String.concat ~sep:"/" subdirs) file in
   match Sys.file_exists fname with
   |`Yes ->
     Cow.Xml.of_string (
