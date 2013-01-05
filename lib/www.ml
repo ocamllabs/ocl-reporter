@@ -204,7 +204,7 @@ let update_to_short_html outputfn u =
     |`Accepted _,`Paper _ -> "pdf", <:html<Paper accepted >>
     |`Event _,`Talk _ -> "video", <:html<Talked on >>
     |`Event _,`Asset -> "media", <:html<Updated >>
-    |`Event _,`Event _ -> "community", <:html<Working on >>
+    |`Event _,`Event _ -> "community", <:html<&>>
     |`Event _,`Code -> "media", <:html<Hacking on >>
     |`Event _,`Paper _ -> "video", <:html<Presented on >>
     |`Press _,`Article _ -> "community", <:html<Press on >>
