@@ -12,6 +12,7 @@ module Person = struct
     | `Google
     | `NYU
     | `UMONS
+    | `Nokia
   ] with sexp
 
   let to_string (x:affiliation) =
@@ -25,6 +26,7 @@ module Person = struct
     | `Horizon -> "Horizon"
     | `NYU -> "New York University"
     | `UMONS -> "Universite de Mons, Belgium"
+    | `Nokia -> "Nokia"
 
   type t = {
     id: string;
