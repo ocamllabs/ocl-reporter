@@ -1,0 +1,25 @@
+Name:        ocl-reporter
+Version:     1.0.0
+Authors:     Anil Madhavapeddy, Leo White, Amir Chaudhry
+License:     ISC
+Synopsis:    OCaml Labs report generator
+obuild-ver:  1
+
+Executable "ocl-reporter"
+  Path:               lib
+  MainIs:             www.ml
+  pp:                 camlp4o
+  BuildDepends:       lwt.syntax, core, cow, cow.syntax, sexplib.syntax, threads
+
+Executable "ocl-github-query"
+  Path:               lib
+  MainIs:             github_query.ml
+  pp:                 camlp4o
+  BuildDepends:       github.unix ( >= 0.4.0) , lwt.syntax, core, cow, cow.syntax, sexplib.syntax, threads
+
+Executable "ocl-github-check"
+  Path:               lib
+  MainIs:             github_check.ml
+  pp :                 camlp4o
+  BuildDepends:       github.unix ( >= 0.4.0) , lwt.syntax, core, cow, cow.syntax, sexplib.syntax, threads
+
