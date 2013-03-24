@@ -121,8 +121,8 @@ let _ =
     ) in
     let outputs = List.map ~f:(fun (o,_) -> o) results in
     let updates = List.concat (List.map ~f:(fun (_,u) -> u) results) in
-    let out = sprintf "content/projects/%s/outputs-github.scm" project in
+    let out = sprintf "./projects/%s/outputs-github.scm" project in
     Sexp.save_sexps_hum out (List.map ~f:Output.sexp_of_t outputs);
-    let out = sprintf "content/projects/%s/updates-github.scm" project in
+    let out = sprintf "./projects/%s/updates-github.scm" project in
     Sexp.save_sexps_hum out (List.map ~f:Update.sexp_of_t updates);
   ) repos
