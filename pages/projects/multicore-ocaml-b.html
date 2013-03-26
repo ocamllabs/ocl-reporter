@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+      <title>Multicore OCaml</title>
+      
+  <style>
+  blockquote {
+    margin-left: 10px;
+    padding-left: 20px;
+    width: 80%;
+    color: #330000;
+  } 
+  div.changelog { width:80%; font-size:90%; }
+  blockquote p { margin-left: 0;  }
+  div.ocl p { width: 75%; min-width: 400px; }
+  div.ocl a { color: #330099; } 
+  .ocl-output {
+   width: 75%;
+   padding:.4em 0;
+   margin:0 0 1em 0;
+   border-bottom: 1px solid #cccccc;
+  }
+  .ocl-cogs span { padding-right:30px; background-size:20px; background: url(../cogs.png) no-repeat right center; }
+  .ocl-print span { padding-right:30px; background-size:20px; background: url(../print.png) no-repeat right center; }
+  .ocl-cloud span { padding-right:30px; background-size:20px; background: url(../cloud.png) no-repeat right center; }
+  .ocl-group span { padding-right:30px; background-size:20px; background: url(../group.png) no-repeat right center; }
+  .ocl-bullhorn span { padding-right:30px; background-size:20px; background: url(../bullhorn.png) no-repeat right center; }
+  .ocl-asset span { padding-right:30px; background-size:20px; background: url(../wrench.png) no-repeat right center; }
+  </style>
+
+      <body>
+      <div class="ucampas-toc right"/>
+      <div class="ocl">
+        <h1 id="Multicore OCaml">Multicore OCaml</h1>
+        <p>Building an efficient multi-core garbage collector remains a challenging research issue. We will begin by investigating techniques that do not involve fine-grained locking, as this has been shown to be error-prone, difficult to maintain, and impacts sequential performance. Instead, we prefer to isolate threads to individual cores, with region-based heaps that can be garbage collected separately. This technique has been successfully demonstrated in MultiMLton, system and runtime, and we will implement it in OCaml and its large body of third-party code.</p>
+
+        <h4 id="Team">Team</h4>
+        <ul class="compact">  
+        <li><a href="../people/lwhite.html">Leo White</a>, project lead (2012-)</li>
+        
+        <li><a href="../people/avsm.html">Anil Madhavapeddy</a>, project owner (2012-)</li>
+        
+        <li><a href="../people/sdolan.html">Stephen Dolan</a>, PhD Student (2012-)</li>
+        
+        <li><a href="../people/rproust.html">Raphael Proust</a>, PhD Student (2012-)</li>
+        
+        <li><a href="../people/amycroft.html">Alan Mycroft</a>, professorial input (2012-)</li>
+      </ul>
+        <h4 id="Related Work">Related Work</h4><ul><li><a class="icon-pdf" href="http://multimlton.cs.purdue.edu/mML/Publications_files/ParasitesTechReport.pdf">Featherweight Threads for Communication</a>, <i>KC Sivaramakrishnan, Lukasz Ziarek, Suresh Jagannathan</i>, Purdue Technical Report, TR-11-018, 2011</li><li><a class="icon-pdf" href="http://multimlton.cs.purdue.edu/mML/Publications_files/MultiMLton_On_Intel_SCC.pdf">A Coherent and Managed Runtime for ML on the SCC</a>, <i>KC Sivaramakrishnan, Lukasz Ziarek, Suresh Jagannathan</i>, Many-core Applications Research Community Symposium, 2012</li></ul>
+         
+         
+        
+         
+        
+         
+        
+      </div>
+      </body>
+  

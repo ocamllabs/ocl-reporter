@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+      <title>OPAM Builder</title>
+      
+  <style>
+  blockquote {
+    margin-left: 10px;
+    padding-left: 20px;
+    width: 80%;
+    color: #330000;
+  } 
+  div.changelog { width:80%; font-size:90%; }
+  blockquote p { margin-left: 0;  }
+  div.ocl p { width: 75%; min-width: 400px; }
+  div.ocl a { color: #330099; } 
+  .ocl-output {
+   width: 75%;
+   padding:.4em 0;
+   margin:0 0 1em 0;
+   border-bottom: 1px solid #cccccc;
+  }
+  .ocl-cogs span { padding-right:30px; background-size:20px; background: url(../cogs.png) no-repeat right center; }
+  .ocl-print span { padding-right:30px; background-size:20px; background: url(../print.png) no-repeat right center; }
+  .ocl-cloud span { padding-right:30px; background-size:20px; background: url(../cloud.png) no-repeat right center; }
+  .ocl-group span { padding-right:30px; background-size:20px; background: url(../group.png) no-repeat right center; }
+  .ocl-bullhorn span { padding-right:30px; background-size:20px; background: url(../bullhorn.png) no-repeat right center; }
+  .ocl-asset span { padding-right:30px; background-size:20px; background: url(../wrench.png) no-repeat right center; }
+  </style>
+
+      <body>
+      <div class="ucampas-toc right"/>
+      <div class="ocl">
+        <h1 id="OPAM Builder">OPAM Builder</h1>
+        <p>The continuous build project is geared towards creating a pool of physical machines used to continuously test packages that are packaged via OPAM.</p>
+<p>This also includes creating the appropriate tools and libraries to enable management and development of machine infrastructure, for example an OCaml library to interface with Github (available through OPAM).</p>
+<p><em>Current status</em>: wiring up machines and planning the service. Please use the <a href="http://lists.ocaml.org/listinfo/infrastructure">infrastructure@lists.ocaml.org</a> mailing list to discuss this effort.</p>
+<h3 id="machines-for-the-build-pool">Machines for the build pool</h3>
+<p>We've been assembling a small collection of conventional high-powered machines that can build the whole package set quite quickly, and also more unusual CPU architectures and operating systems that will help developers that don't have access to them. So far we have:</p>
+<ul>
+<li>12-core AMD64/Linux Debian 64-bit</li>
+<li>12-core AMD64/Linux Debian 32-bit</li>
+<li><a href="http://raspbian.org">Raspbian</a> ARMv6/Linux 32-bit (Raspberry Pi 512MB)</li>
+<li>Debian ARMv6/Linux 32-bit (Dreamplug)</li>
+<li>FreeBSD/sparc64 (thanks to <a href="http://pointless.net">Jasper Wallace</a> for the donation)</li>
+<li>OpenBSD/macppc (G4 Powerbook) (thanks to <a href="http://dave.recoil.org">Dave Scott</a> for the donation)</li>
+<li>MacOS X Mountain Lion</li>
+<li>iMac G5/Debian 64-bit</li>
+<li>Windows 7 64-bit</li>
+</ul>
+<p>Clearly the ARM devices will need either some parallelisation or some extreme overclocking to build the whole package set!</p>
+
+        <h4 id="Team">Team</h4>
+        <ul class="compact">  
+        <li><a href="../people/tgazagnaire.html">Thomas Gazagnaire</a>, lead developer (2012-)</li>
+        
+        <li><a href="../people/avsm.html">Anil Madhavapeddy</a>, QA monkey (2012-)</li>
+      </ul>
+         
+         
+         
+        
+         
+        
+         
+        
+      </div>
+      </body>
+  

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+      <title>Highly Capable OCaml &amp; CHERI</title>
+      
+  <style>
+  blockquote {
+    margin-left: 10px;
+    padding-left: 20px;
+    width: 80%;
+    color: #330000;
+  } 
+  div.changelog { width:80%; font-size:90%; }
+  blockquote p { margin-left: 0;  }
+  div.ocl p { width: 75%; min-width: 400px; }
+  div.ocl a { color: #330099; } 
+  .ocl-output {
+   width: 75%;
+   padding:.4em 0;
+   margin:0 0 1em 0;
+   border-bottom: 1px solid #cccccc;
+  }
+  .ocl-cogs span { padding-right:30px; background-size:20px; background: url(../cogs.png) no-repeat right center; }
+  .ocl-print span { padding-right:30px; background-size:20px; background: url(../print.png) no-repeat right center; }
+  .ocl-cloud span { padding-right:30px; background-size:20px; background: url(../cloud.png) no-repeat right center; }
+  .ocl-group span { padding-right:30px; background-size:20px; background: url(../group.png) no-repeat right center; }
+  .ocl-bullhorn span { padding-right:30px; background-size:20px; background: url(../bullhorn.png) no-repeat right center; }
+  .ocl-asset span { padding-right:30px; background-size:20px; background: url(../wrench.png) no-repeat right center; }
+  </style>
+
+      <body>
+      <div class="ucampas-toc right"/>
+      <div class="ocl">
+        <h1 id="Highly Capable OCaml &amp; CHERI">Highly Capable OCaml &amp; CHERI</h1>
+        <p><a href="http://www.cl.cam.ac.uk/research/security/ctsrd/cheri.html">CHERI</a> is a hardware-software interface research project seeking to revise ISA design in order to better support software compartmentalisation. CHERI transposes the <a href="http://www.cl.cam.ac.uk/research/security/capsicum/">Capsicum</a> hybrid capability model into the CPU architecture space, allowing fine-grained compartmentalisation within process address spaces. The CHERI instruction set has been implemented as an FPGA-based MIPS64 soft-core CPU, and we will port the OCaml native code compiler to target this new backend.</p>
+<p>This project increases the security of OCaml code output at several levels:</p>
+<ul>
+<li>The runtime (written in C) can be compartmentalised in a fine-grained way, protecting against low-level bugs. For example, the garbage collector could be modified to only have access to the header tags, and no read access to the actual application data. A garbage collector error could thus prevent application progress, but not compromise sensitive application data.</li>
+<li>The foreign-function interface could be prevented from modifying the OCaml heap, despite running in the same address space.</li>
+<li><a href="http://www.normalesup.org/~simonet/soft/flowcaml/">FlowCaml</a> added information-flow capabilities to OCaml, to allow them to automatically check that they obey some confidentiality or integrity policy. This could be extended to use CHERI instructions for further dynamic enforcement and taint tracking of data values.</li>
+</ul>
+<p>More information about CHERI can be found on the <a href="http://www.cl.cam.ac.uk/research/security/ctsrd/cheri.html">CHERI website</a></p>
+<p>Current status: <em>Still planning, looking for an owner</em></p>
+
+        <h4 id="Team">Team</h4>
+        <ul class="compact">  
+        <li><a href="../people/rwatson.html">Robert Watson</a>, Primary contact (2012-)</li>
+      </ul>
+         
+         
+         
+        
+         
+        
+         
+        
+      </div>
+      </body>
+  

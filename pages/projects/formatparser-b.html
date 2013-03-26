@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+      <title>Format Parser</title>
+      
+  <style>
+  blockquote {
+    margin-left: 10px;
+    padding-left: 20px;
+    width: 80%;
+    color: #330000;
+  } 
+  div.changelog { width:80%; font-size:90%; }
+  blockquote p { margin-left: 0;  }
+  div.ocl p { width: 75%; min-width: 400px; }
+  div.ocl a { color: #330099; } 
+  .ocl-output {
+   width: 75%;
+   padding:.4em 0;
+   margin:0 0 1em 0;
+   border-bottom: 1px solid #cccccc;
+  }
+  .ocl-cogs span { padding-right:30px; background-size:20px; background: url(../cogs.png) no-repeat right center; }
+  .ocl-print span { padding-right:30px; background-size:20px; background: url(../print.png) no-repeat right center; }
+  .ocl-cloud span { padding-right:30px; background-size:20px; background: url(../cloud.png) no-repeat right center; }
+  .ocl-group span { padding-right:30px; background-size:20px; background: url(../group.png) no-repeat right center; }
+  .ocl-bullhorn span { padding-right:30px; background-size:20px; background: url(../bullhorn.png) no-repeat right center; }
+  .ocl-asset span { padding-right:30px; background-size:20px; background: url(../wrench.png) no-repeat right center; }
+  </style>
+
+      <body>
+      <div class="ucampas-toc right"/>
+      <div class="ocl">
+        <h1 id="Format Parser">Format Parser</h1>
+        <p>Code to parse and generate data in binary formats, as found for example in packets of network protocols or files of object code, can be quite tedious and error prone to write. The details to get right involve matching bits in the data format with data-types in the target language, and matching the flat bytes in the data with the memory model used by the language. Handling endianess incorrectly, for example, is a frequent source of bugs.</p>
+<p>One increasingly common approach is to use a domain-specific language to describe the format of interest, and to generate the code parsing and generating data in that format (e.g. MPL). FP is an attempt at a principled approach to constructing such a DSL for binary data formats, with a view to generating code in OCaml and possibly other languages. A FP specification for a data format can be checked for validity, and this notion of validity has been formalized in the Ott tool. The eventual goal is formalize the entire code-generation pipeline, and so that target language model parsed from the binary data correctly matches the input binary data, and binary data generated from a language model matches the specification.</p>
+<p>The work-in-progress repository is available at <a href="http://github.com/pmundkur/fp">http://github.com/pmundkur/fp</a>. It contains an <a href="http://www.cl.cam.ac.uk/~pes20/ott/">OTT</a> specification of the DSL, but does not yet have a code generator.</p>
+
+        <h4 id="Team">Team</h4>
+        <ul class="compact">  
+        <li><a href="../people/pmundkur.html">Prashanth Mundkur</a>, project owner (2012-)</li>
+        
+        <li><a href="../people/avsm.html">Anil Madhavapeddy</a> (2012-)</li>
+      </ul>
+        <h4 id="Related Work">Related Work</h4><ul><li><a class="icon-pdf" href="http://www.cl.cam.ac.uk/techreports/UCAM-CL-TR-775.html">Creating High-Performance, Statically Type-Safe Network Applications</a>, <i>Anil Madhavapeddy</i>, PhD Thesis</li><li><a class="icon-pdf" href="http://www.padsproj.org/papers/mandelbaum_thesis.pdf">The Theory and Practice of Data Description</a>, <i>Yitzhak Mandelbaum</i>, PhD Thesis</li><li><a class="icon-pdf" href="http://web.cecs.pdx.edu/~mpj/pubs/bitdata.html">High-level Views on Low-level Representations</a>, <i>Iavor S. Diatchki, Mark P. Jones, and Rebekah Leslie</i>, in proceedings of ICFP 2005</li><li><a class="icon-pdf" href="http://www.cl.cam.ac.uk/~pes20/ott/ott-jfp.pdf">Ott: Effective Tool Support for the Working Semanticist</a>, <i>Peter Sewell, Francesco Zappa Nardelli, Scott Owens, Gilles Peskine, Thomas Ridge, Susmit Sarkar, Rok Strniša</i>, in Journal of Functional Programming 20(1):71-122, 2010</li></ul>
+         
+         
+        
+         
+        
+         
+        
+      </div>
+      </body>
+  

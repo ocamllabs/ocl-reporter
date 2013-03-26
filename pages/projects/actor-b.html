@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+      <title>Concurrency and parallelism</title>
+      
+  <style>
+  blockquote {
+    margin-left: 10px;
+    padding-left: 20px;
+    width: 80%;
+    color: #330000;
+  } 
+  div.changelog { width:80%; font-size:90%; }
+  blockquote p { margin-left: 0;  }
+  div.ocl p { width: 75%; min-width: 400px; }
+  div.ocl a { color: #330099; } 
+  .ocl-output {
+   width: 75%;
+   padding:.4em 0;
+   margin:0 0 1em 0;
+   border-bottom: 1px solid #cccccc;
+  }
+  .ocl-cogs span { padding-right:30px; background-size:20px; background: url(../cogs.png) no-repeat right center; }
+  .ocl-print span { padding-right:30px; background-size:20px; background: url(../print.png) no-repeat right center; }
+  .ocl-cloud span { padding-right:30px; background-size:20px; background: url(../cloud.png) no-repeat right center; }
+  .ocl-group span { padding-right:30px; background-size:20px; background: url(../group.png) no-repeat right center; }
+  .ocl-bullhorn span { padding-right:30px; background-size:20px; background: url(../bullhorn.png) no-repeat right center; }
+  .ocl-asset span { padding-right:30px; background-size:20px; background: url(../wrench.png) no-repeat right center; }
+  </style>
+
+      <body>
+      <div class="ucampas-toc right"/>
+      <div class="ocl">
+        <h1 id="Concurrency and parallelism">Concurrency and parallelism</h1>
+        <p>We will investigate modern concurrency and parallelism primitives to allow effective use of emerging parallel architectures. The JoCaml extension is a good step in this direction, and we plan to optimise its implementation further to make use of faster transports where possible (such as shared memory for local communication). In doing so, we will add analyses that make the compiler more aware of the program's communication pattern. These open up further possibilities such as reducing the total number of messages sent, and targeting data parallel hardware such as GPGPUs.</p>
+<p>Erlang has demonstrated that isolated shared-state and message passing can be used to construct very scalable and reliable distributed systems. However, the language has several drawbacks, including a weak type system and slow single-core performance. We will develop an actor system for OCaml which provides all the components required to deploy an ErlangOTP-like system, but with the statically-type-checked advantages of OCaml. These components include a distributed database (based on <a href="http://arakoon.org">Arakoon</a>, a pure OCaml key/value store), a hierarchical name service, and web-based debugging infrastructure.</p>
+<p>Current status: <em>still in planning, looking for an owner</em></p>
+
+        <h4 id="Team">Team</h4>
+        <ul class="compact">  
+        <li><a href="../people/avsm.html">Anil Madhavapeddy</a>, Primary contact (2012-)</li>
+      </ul>
+        <h4 id="Related Work">Related Work</h4><ul><li><a class="icon-pdf" href="http://www.cl.cam.ac.uk/~dgm36/publications/2011-murray2011ciel.pdf">CIEL: a universal execution engine for distributed data-flow computing</a>, <i>Derek G. Murray, Malte Schwarzkopf, Christopher Smowton, Steven Smith, Anil Madhavapeddy and Steven Hand</i>, USENIX NSDI 2011</li><li><a class="icon-pdf" href="http://research.microsoft.com/apps/pubs/default.aspx?id=170528">Uniqueness and Reference Immutability for Safe Parallelism</a>, <i>Colin S. Gordon, Matthew J. Parkinson, Jared Parsons, Aleks Bromfield, and Joe Duffy</i>, OOPSLA Research Track 2012</li></ul>
+         
+         
+        
+         
+        
+         
+        
+      </div>
+      </body>
+  
