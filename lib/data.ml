@@ -12,6 +12,33 @@ module People = struct
     homepage=Some "http://avsm.recoil.org";
     mugshot=(Some "avsm.jpg");
   }
+  let mycroft = {
+    id="mycroft";
+    name="Alan Mycroft";
+    affiliation=`CL;
+    role="PI";
+    bio=None;
+    homepage=Some "http://www.cl.cam.ac.uk/~am21";
+    mugshot=(Some "mycroft.jpg");
+  }
+  let iml = {
+    id="iml";
+    name="Ian Leslie";
+    affiliation=`CL;
+    role="PI";
+    bio=None;
+    homepage=Some "http://www.cl.cam.ac.uk/~iml1]";
+    mugshot=(Some "iml.jpg");
+  }
+  let crowcroft = {
+    id="crowcroft";
+    name="Jon Crowcroft";
+    affiliation=`CL;
+    role="PI";
+    bio=None;
+    homepage=Some "http://www.cl.cam.ac.uk/~jac22";
+    mugshot=(Some "crowcroft.gif");
+  }
   let amir = {
     id="amirmc";
     name="Amir Chaudhry";
