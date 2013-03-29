@@ -217,6 +217,27 @@ module People = struct
     mugshot=Some "lars.jpg";
   }
   (* 
+    Jane Street people
+  *)
+  let yaron = {
+    id="yaron";
+    name="Yaron Minsky";
+    affiliation=`JSC;
+    role="Head of Quantitative Research and Technology";
+    bio=None;
+    homepage=Some "http://wiki.xen.org/wiki/User:Lars.kurth";
+    mugshot=Some "lars.jpg";
+  }
+  let shinwell = {
+    id="shinwell";
+    name="Mark Shinwell";
+    affiliation=`JSC;
+    role="Quantitative Researcher";
+    bio=None;
+    homepage=Some "http://www.three-tuns.net/mark";
+    mugshot=None;
+  }
+  (* 
     OCamlPro people
   *)
   let tg = {
