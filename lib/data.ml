@@ -120,6 +120,15 @@ module People = struct
     homepage=Some "http://etc-hosts.blogspot.co.uk";
     mugshot=Some "heidi.jpg";
   }
+  let raphael = {
+    id="raphael";
+    name="Raphael Proust";
+    affiliation=`CL;
+    role="PhD Student";
+    bio=None;
+    homepage=None;
+    mugshot=None;
+  }
 
 end
 
