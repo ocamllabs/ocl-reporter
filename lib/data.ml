@@ -389,12 +389,12 @@ module Projects = struct
           status=`Doing;
           refs= [ Reference.github "lpw25" "opam-doc" ]
         };
-        { task_name="Ocamelot";
+        { task_name="OCamlot";
           start=Date.of_string "2013-01-16";
           finish=None;
           owner=People.yallop;
           status=`Planning;
-          refs= [ Reference.github "ocamllabs" "ocamelot" ]
+          refs= [ Reference.github "ocamllabs" "ocamlot" ]
         };
         { task_name="Platform Preview";
           start=Date.of_string "2013-03-01";
