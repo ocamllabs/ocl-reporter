@@ -12,7 +12,7 @@ module People = struct
     affiliation=`CL;
     role="PI";
     bio=None;
-    homepage=Some "http://avsm.recoil.org";
+    homepage=Some "http://anil.recoil.org";
     mugshot=(Some "avsm.jpg");
   }
   let mycroft = {
@@ -48,7 +48,7 @@ module People = struct
     affiliation=`CL;
     role="Program Manager";
     bio=None;
-    homepage=None;
+    homepage=Some "http://amirchaudhry.com";
     mugshot=(Some "amir.jpg");
   }
   let lpw25 = {
