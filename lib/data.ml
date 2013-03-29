@@ -129,6 +129,15 @@ module People = struct
     homepage=None;
     mugshot=None;
   }
+  let smh = {
+    id="smh";
+    name="Steven Hand";
+    affiliation=`CL;
+    role="Reader";
+    bio=None;
+    homepage=Some "http://www.cl.cam.ac.uk/~smh22";
+    mugshot=Some "smh.jpg";
+  }
 
 end
 
