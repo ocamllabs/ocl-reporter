@@ -4,7 +4,7 @@ open Data
 
 open Core.Std
 
-(* Hack to let Cow syntax extension work with Core.Std open *)
+(* XXX Hack to let Cow syntax extension work with Core.Std open *)
 module List = struct
   include List
   let flatten = concat

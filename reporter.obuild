@@ -7,19 +7,7 @@ obuild-ver:  1
 
 Executable ocl-reporter-new
   Path:               lib
-  MainIs:             gantt.ml
+  MainIs:             main.ml
   pp:                 camlp4o
   BuildDepends:       lwt.syntax, core, cow, cow.syntax, sexplib.syntax, threads, uri
-
-Executable ocl-github-query
-  Path:               lib
-  MainIs:             github_query.ml
-  pp:                 camlp4o
-  BuildDepends:       github.unix ( >= 0.4.0) , lwt.syntax, core, cow, cow.syntax, sexplib.syntax, threads
-
-Executable ocl-github-check
-  Path:               lib
-  MainIs:             github_check.ml
-  pp :                camlp4o
-  BuildDepends:       github.unix ( >= 0.4.0) , lwt.syntax, core, cow, cow.syntax, sexplib.syntax, threads
 

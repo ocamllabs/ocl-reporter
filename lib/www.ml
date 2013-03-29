@@ -15,6 +15,13 @@
  *)
 
 open Printf
+open Core.Std
+
+(* XXX Hack to let Cow syntax extension work with Core.Std open *)
+module List = struct
+  include List
+  let flatten = concat
+end
 
 (* Helper function to generate link tags *)
 let link ?cl href text =
@@ -25,33 +32,7 @@ let link ?cl href text =
 (* Convert a Date to a human-readable string.
  * TODO is there a nicer Core function for this? *)
 let human_readable_date d =
-  Core.Std.(sprintf "%d %s %d" d.Date.d (Month.to_string d.Date.m) d.Date.y)
-
-(* Generate IDs for endpoints *)
-module ID = struct
-  let output p = sprintf "output-%s" p.Elements.Output.id
-end
-
-(* Generate URLs. This is a quick hack to adjust URLs on the basis of where
- * they are used. I'm sure something better will come along... *)
-module URL = struct
-  open Elements
-  module Top = struct
-    let person p = Person.(link (sprintf "people/%s.html" p.id) p.name)
-    let project p = Project.(link (sprintf "projects/%s.html" p.id) p.name)
-    let output o = link (sprintf "projects/%s.html#output-%s" (Project.get_project_for_output o.Output.id).Project.id o.Output.id)
-  end
-  module Cur = struct
-    let person p = Person.(link (sprintf "%s.html" p.id) p.name)
-    let project p = Project.(link (sprintf "%s.html" p.id) p.name)
-    let output o = link (sprintf "%s.html#output-%s" (Project.get_project_for_output o.Output.id).Project.id o.Output.id)
-  end
-  module Sub1 = struct
-    let person p = Person.(link (sprintf "../people/%s.html" p.id) p.name)
-    let project p = Project.(link (sprintf "../projects/%s.html" p.id) p.name)
-    let output o = link (sprintf "../projects/%s.html#output-%s" (Project.get_project_for_output o.Output.id).Project.id o.Output.id)
-  end
-end
+  sprintf "%d %s %d" d.Date.d (Month.to_string d.Date.m) d.Date.y
 
 (* CSS style we include for each page.
  * Note that this style is specialised to the CUCL web page style *)
@@ -89,9 +70,9 @@ let one_page ~title ~body =
 
 (* Generate the overall people web pages *)
 let people =
-  let open Elements in
-  (* Output a short list of projects this person works on.
-   * TODO figure out how to get rid of that space before the comma. *)
+  let open Types.Person in
+  (* Output a short list of projects this person works on. *)
+(*
   let projects_to_html (ty,projects) =
     let to_html p = URL.Sub1.project p in
     let rec aux = function
@@ -99,39 +80,38 @@ let people =
       |[hd] -> to_html hd
       |hd::tl -> <:html<$to_html hd$, $aux tl$>>
     in
-    <:html<<br/><i>$str:Project.string_of_project_type ty$:</i> $aux projects$>>
+    <:html<<br/><i>$str: ty$:</i> $aux projects$>>
   in
   (* Output a listitem for a person. Break out projects by type. *)
   let person_to_html p =
-    let open Person in
     let role = match p.role with |None -> "" |Some r -> ", " ^ r in
     let link = <:html<<b>$URL.Cur.person p$</b>$str:role$>> in
     let projects = List.map projects_to_html (Project.for_person p.Person.id) in
     <:html<<li>$link$$list:projects$</li>&>>
   in
-  (* CL is special as it comes first, then external folk *)
-  let of_cucl_org = List.map person_to_html Person.of_cucl in
-  let of_other_orgs = List.map (fun (org, people) -> 
-    <:html< 
-      <h3>$str:Elements.Person.to_string org$</h3>
-      <ul>$list:List.map person_to_html people$</ul>
-    >>) Person.of_other in
+*)
+  let of_cucl_org =
+    List.filter_map Data.People.all ~f:(fun p ->
+      match p.affiliation with
+      |`CL -> Some <:html<<ul>$str:p.name$</ul>&>>
+      |_ -> None)
+  in  
   (* Aggregate all the organisation info now *)
   let orgs = <:html<
     <h2>University of Cambridge Computer Laboratory</h2>
     <ul>$list:of_cucl_org$</ul>
     <h2>External Collaborators</h2>
-    $list:of_other_orgs$
+    $list:[]$
     >> in
   (* And output the full people web page *)
   one_page ~title:"People" ~body:
   <:html<
   <h1 id="Members">Project Members</h1>
-  <p>OCaml Labs is situated at the University of Cambridge Computer Laboratory, and collaborates with a wide variety of industrial partners, primarily <a href="#janestreet">Jane Street</a>, <a href="#horizon">Horizon</a> and <a href="#citrix">Citrix</a>.  We also work closely with <a href="#ocamlpro">OCamlPro</a> on community software projects, and maintain the <a href="http://ocaml.org">ocaml.org</a> machine infrastructure.</p>
+  <p>OCaml Labs is situated at the University of Cambridge Computer Laboratory, and collaborates with a wide variety of industrial partners, primarily <a href="#janestreet">Jane Street</a>, <a href="#horizon">Horizon</a> and <a href="#citrix">Citrix</a>.  We also work closely with <a href="#ocamlpro">OCamlPro</a> on community software projects, and maintain the <a href="http://ocaml.org">ocaml.org</a> infrastructure.</p>
    $orgs$
   <h2>Funding</h2>
   <a name="funding"></a>
-  <p>OCaml Labs is primarily funded by <a href="http://janestreet.com">Jane Street</a> with a platform grant for the first three years.  It is also supported by <a href="http://www.xen.org/products/cloudxen.html">Citrix Systems R&amp;D</a>.  There are also several research grants associated with OCamlLabs:</p><ul>
+  <p>OCaml Labs is primarily funded by <a href="http://janestreet.com">Jane Street</a> with a platform grant.  It is also supported by <a href="http://www.xen.org/products/cloudxen.html">Citrix Systems R&amp;D</a>.  There are also several research grants associated with OCamlLabs:</p><ul>
  <li>RCUK <a href="http://www.horizon.ac.uk">Horizon Digital Economy Research</a> Hub grant, <a class="icon-external" href="http://gow.epsrc.ac.uk/NGBOViewGrant.aspx?GrantRef=EP/G065802/1">EP/G065802/1</a>.</li>
  <li>EU FP7 <a href="http://trilogy2.eu">Trilogy2</a> project.</li>
   </ul>
@@ -139,6 +119,11 @@ let people =
   <p><img class="left" src="../images/janest.jpg" /><img width="150px" src="../images/citrix.gif"/></p>
 >>
 
+open Core.Std
+let _ =
+  let data = Cow.Html.to_string people in
+  Out_channel.write_all "pages/people/index-b.html" ~data
+(*
 (* Generate a profile page per-person *)
 let one_person p =
   let open Elements in
@@ -411,3 +396,4 @@ let _ =
       file
    ));
   output ~subdirs:[root;"activity"] "index" activity
+*)
