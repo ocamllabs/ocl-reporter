@@ -336,6 +336,15 @@ module People = struct
     homepage=Some "https://github.com/pmundkur";
     mugshot=Some "prashanth.jpg";
   }
+  let jhickey = {
+    id="jhickey";
+    name="Jason Hickey";
+    affiliation=`Google;
+    role="Software Engineer";
+    bio=None;
+    homepage=Some "http://main.metaprl.org/jyh";
+    mugshot=Some "jhickey.jpg";
+  }
 
 end
 
