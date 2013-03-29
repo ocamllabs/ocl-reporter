@@ -156,6 +156,24 @@ module People = struct
     homepage=Some "https://github.com/vstakhov";
     mugshot=Some "vsevelod.jpg";
   }
+  let griffin = {
+    id="griffin";
+    name="Tim Griffin";
+    affiliation=`CL;
+    role="Reader";
+    bio=None;
+    homepage=Some "http://www.cl.cam.ac.uk/~tgg22";
+    mugshot=Some "griffin.jpg";
+  }
+  let stephand = {
+    id="stephand";
+    name="Stephen Dolan";
+    affiliation=`CL;
+    role="PhD Student";
+    bio=None;
+    homepage=Some "https://github.com/stedolan";
+    mugshot=None;
+  }
 
 end
 
