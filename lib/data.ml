@@ -3,6 +3,9 @@ open Types
 
 module People = struct
   open Person
+  (* 
+    Computer Lab people
+  *)
   let avsm = {
     id="avsm";
     name="Anil Madhavapeddy";
@@ -48,24 +51,6 @@ module People = struct
     homepage=None;
     mugshot=(Some "amir.jpg");
   }
-  let djs = {
-    id="djs";
-    name="Dave Scott";
-    affiliation=`Citrix;
-    role="Xen Architect";
-    bio=None;
-    homepage=Some "http://dave.recoil.org";
-    mugshot=None;
-  }
-  let tg = {
-    id="tg";
-    name="Thomas Gazagnaire";
-    affiliation=`OCP;
-    role="CTO";
-    bio=None;
-    homepage=Some "http://thomas.gazagnaire.org";
-    mugshot=(Some "tg.png");
-  }
   let lpw25 = {
     id="lpw25";
     name="Leo White";
@@ -74,15 +59,6 @@ module People = struct
     bio=None;
     homepage=Some "http://lpw25.net";
     mugshot=Some "default.gif";
-  }
-  let vb = {
-    id="vb";
-    name="Vincent Bernardoff";
-    affiliation=`Citrix;
-    role="Research Intern";
-    bio=None;
-    homepage=Some "https://Reference.github.com/vbmithr";
-    mugshot=None;
   }
   let yallop = {
     id="yallop";
@@ -192,15 +168,6 @@ module People = struct
     homepage=Some "http://www.cl.cam.ac.uk/~arb33";
     mugshot=Some "alib.jpg";
   }
-  let gabor = {
-    id="gabor";
-    name="Gabor Pali";
-    affiliation=`CL;
-    role="";
-    bio=None;
-    homepage=Some "http://people.freebsd.org/~pgj";
-    mugshot=Some "gabor.jpg";
-  }
   let bogdan = {
     id="bogdan";
     name="Bogdan-Alexandru Matican";
@@ -209,6 +176,69 @@ module People = struct
     bio=None;
     homepage=None;
     mugshot=None;
+  }
+  (* 
+    Citrix people
+  *)
+  let djs = {
+    id="djs";
+    name="Dave Scott";
+    affiliation=`Citrix;
+    role="Xen Architect";
+    bio=None;
+    homepage=Some "http://dave.recoil.org";
+    mugshot=Some "djs.jpg";
+  }
+  let vb = {
+    id="vb";
+    name="Vincent Bernardoff";
+    affiliation=`Citrix;
+    role="Research Intern";
+    bio=None;
+    homepage=Some "https://Reference.github.com/vbmithr";
+    mugshot=None;
+  }
+  let jludlam = {
+    id="jludlam";
+    name="Jonathan Ludlum";
+    affiliation=`Citrix;
+    role="Software Engineer";
+    bio=None;
+    homepage=Some "http://jon.recoil.org";
+    mugshot=Some "jludlam.jpg";
+  }
+  let lars = {
+    id="lars";
+    name="Lars Kurth";
+    affiliation=`Citrix;
+    role="Community Manager";
+    bio=None;
+    homepage=Some "http://wiki.xen.org/wiki/User:Lars.kurth";
+    mugshot=Some "lars.jpg";
+  }
+  (* 
+    OCamlPro people
+  *)
+  let tg = {
+    id="tg";
+    name="Thomas Gazagnaire";
+    affiliation=`OCP;
+    role="CTO";
+    bio=None;
+    homepage=Some "http://thomas.gazagnaire.org";
+    mugshot=(Some "tg.png");
+  }
+  (* 
+    Misc people
+  *)
+  let gabor = {
+    id="gabor";
+    name="Gabor Pali";
+    affiliation=`CL;
+    role="";
+    bio=None;
+    homepage=Some "http://people.freebsd.org/~pgj";
+    mugshot=Some "gabor.jpg";
   }
 
 end
