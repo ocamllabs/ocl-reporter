@@ -8,7 +8,7 @@ clean:
 	rm -rf dist test.html
 
 run: build
-	./dist/build/ocl-reporter-new/ocl-reporter-new > pages/gantt-b.html
+	./dist/build/ocl-reporter-new/ocl-reporter-new > pages/projects/index-b.html
 
 www:
-	cd pages && env PATH=../ucampas:$PATH ucampas -i -r1 gantt # index people projects activity
+	cd pages && env PATH=../ucampas:$PATH ucampas -i -r1  # index people projects activity

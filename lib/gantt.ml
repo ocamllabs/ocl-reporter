@@ -68,7 +68,7 @@ let draw_task task =
   let left = padding ~cl:"blank" start_date task_start <:html<&>> in
   let mugshot =
     let open Types.Person in
-    let url = sprintf "mugshots/%s"
+    let url = sprintf "../mugshots/%s"
       (match task.owner.mugshot with
        |None -> "unknown.jpg"
        |Some u -> u)
