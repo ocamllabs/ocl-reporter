@@ -147,6 +147,15 @@ module People = struct
     homepage=Some "http://www.cl.cam.ac.uk/~cr409/";
     mugshot=Some "haris.jpg";
   }
+  let vsevolod = {
+    id="vsevolod";
+    name="Vsevolod Stakhov";
+    affiliation=`CL;
+    role="PhD Student";
+    bio=None;
+    homepage=Some "https://github.com/vstakhov";
+    mugshot=Some "vsevelod.jpg";
+  }
 
 end
 
