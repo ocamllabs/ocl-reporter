@@ -58,7 +58,7 @@ module People = struct
     role="Research Associate";
     bio=None;
     homepage=Some "http://lpw25.net";
-    mugshot=Some "default.gif";
+    mugshot=Some "lpw25.jpg";
   }
   let yallop = {
     id="yallop";
