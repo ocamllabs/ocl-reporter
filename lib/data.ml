@@ -183,6 +183,15 @@ module People = struct
     homepage=Some "http://www.cl.cam.ac.uk/~rnw24/";
     mugshot=Some "rwatson.jpg";
   }
+  let alib = {
+    id="alib";
+    name="Alistair Beresford";
+    affiliation=`CL;
+    role="foo";
+    bio=None;
+    homepage=Some "http://www.cl.cam.ac.uk/~arb33";
+    mugshot=Some "alib.jpg";
+  }
 
 end
 
