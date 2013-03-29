@@ -187,10 +187,19 @@ module People = struct
     id="alib";
     name="Alistair Beresford";
     affiliation=`CL;
-    role="foo";
+    role="Lecturer";
     bio=None;
     homepage=Some "http://www.cl.cam.ac.uk/~arb33";
     mugshot=Some "alib.jpg";
+  }
+  let gabor = {
+    id="gabor";
+    name="Gabor Pali";
+    affiliation=`CL;
+    role="";
+    bio=None;
+    homepage=Some "http://people.freebsd.org/~pgj";
+    mugshot=Some "gabor.jpg";
   }
 
 end
