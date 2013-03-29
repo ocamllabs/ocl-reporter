@@ -174,6 +174,15 @@ module People = struct
     homepage=Some "https://github.com/stedolan";
     mugshot=None;
   }
+  let rwatson = {
+    id="rwatson";
+    name="Robert Watson";
+    affiliation=`CL;
+    role="Senior Research Associate";
+    bio=None;
+    homepage=Some "http://www.cl.cam.ac.uk/~rnw24/";
+    mugshot=Some "rwatson.jpg";
+  }
 
 end
 
