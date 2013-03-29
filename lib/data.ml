@@ -201,6 +201,15 @@ module People = struct
     homepage=Some "http://people.freebsd.org/~pgj";
     mugshot=Some "gabor.jpg";
   }
+  let bogdan = {
+    id="bogdan";
+    name="Bogdan-Alexandru Matican";
+    affiliation=`CL;
+    role="ACS Student";
+    bio=None;
+    homepage=None;
+    mugshot=None;
+  }
 
 end
 
