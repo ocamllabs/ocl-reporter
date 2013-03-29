@@ -92,7 +92,8 @@ let draw_task task =
   <:html< <tr> $left$ $content$ $right$ $infinity$ </tr> >>
 
 let tasks proj = List.map ~f:draw_task proj
-let projects =
+let projects = 
+  let open Types.Project in
   List.map Projects.all
     ~f:(fun proj ->
       let proj_descr = Markdown.from_file_to_html (proj.project_id^"/descr") in
