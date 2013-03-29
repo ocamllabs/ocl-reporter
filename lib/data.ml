@@ -141,7 +141,7 @@ module People = struct
     homepage=Some "http://www.cl.cam.ac.uk/~tgg22";
     mugshot=Some "griffin.jpg";
   }
-  let stephand = {
+  let stephend = {
     id="stephand";
     name="Stephen Dolan";
     affiliation=`CL;
@@ -346,6 +346,13 @@ module People = struct
     mugshot=Some "jhickey.jpg";
   }
 
+  let all = [
+    avsm; mycroft; iml; crowcroft; amir; lpw25; yallop;
+    stedolan; balrajsingh; heidi; raphael; smh; haris;
+    vsevolod; griffin; stephend; rwatson; alib; bogdan;
+    djs; vb; jludlam; lars; yaron; shinwell; tg; fabrice;
+    pierre; mac; mort; bishneet; ashish; christophe; gabor;
+    prashanth; jhickey ]
 end
 
 module Projects = struct
