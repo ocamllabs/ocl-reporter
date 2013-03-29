@@ -93,10 +93,9 @@ module Projects = struct
   module Platform = struct
 
     let rec project =
-      { project_id="ocaml-platform"; 
+      { project_id="platform"; 
         project_name="OCaml Platform"; 
         project_owner=People.amir;
-        project_descr="a tested collection of libraries, tools and infrastructure to facilitate more effective OCaml";
         team=People.([ avsm ]);
         tasks;
       }
@@ -149,10 +148,9 @@ module Projects = struct
   module Compiler = struct
 
     let rec project = {
-      project_id="compiler_internals";
-      project_name="Compiler Types" ;
+      project_id="compiler";
+      project_name="The OCaml Compiler" ;
       project_owner = People.lpw25; 
-      project_descr="enhancing the OCaml compiler type system and runtime";
       team = People.([ yallop ]);
       tasks;
     }
@@ -202,9 +200,8 @@ module Projects = struct
 
     let rec project = {
       project_id="outreach";
-      project_name="Outreach" ;
+      project_name="Community Outreach" ;
       project_owner = People.amir; 
-      project_descr = "education material and online presence";
       team = People.([ avsm ]);
       tasks;
     }
@@ -249,7 +246,6 @@ module Projects = struct
     let rec project = { 
       project_id="mirage";
       project_name="Mirage OS"; 
-      project_descr="a type-safe library operating system";
       team; project_owner; tasks 
     } and tasks =
       [

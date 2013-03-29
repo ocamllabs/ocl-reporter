@@ -5,12 +5,6 @@ License:     ISC
 Synopsis:    OCaml Labs report generator
 obuild-ver:  1
 
-Executable ocl-reporter
-  Path:               lib
-  MainIs:             www.ml
-  pp:                 camlp4o
-  BuildDepends:       lwt.syntax, core, cow, cow.syntax, sexplib.syntax, threads
-
 Executable ocl-reporter-new
   Path:               lib
   MainIs:             gantt.ml

@@ -5,144 +5,122 @@
         <head>
           <title>Projects</title>
           <style type="text/css">
-            table.projects { 
+            table { 
               table-layout: fixed;
               border-spacing: 0px 2px;
             }
             .blank { background-color: #fefefe; }
-            .planning { background-color: #ccaaaa; }
+            .planning { background-color: #aaaacc; }
             .doing { background-color: #eeeeaa; }
             .complete { background-color: #aaccaa; }
             img.mugshot { float:left; padding-right: 5px; }
             tr.dates {
                font-size: 0.75em;
-               font-color: #dddddd;
-            }
-            tr.project { 
                background-color: #dfdfdf;
                color: #111111;
-               font-size: 1.4em;
-               font-family: sans-serif;
             }
           </style>
         </head>
          
         <body>
-           <table class="projects" width="95%" border="0">
-             
-      <tr class="project">
-        <td class="project" colspan="17">
-        <b>OCaml Platform</b> - a tested collection of libraries, tools and infrastructure to facilitate more effective OCaml
-        </td>
-      </tr>
+          <div class="ucampas-toc right"/>
+          
+      <h1 id="platform">OCaml Platform</h1>
+      <p>The OCaml Platform combines the core OCaml compiler with a coherent set of libraries, tools and documentation. The requirements and direction of the Platform are initially being guided by large users of OCaml such as <a href="http://ocaml.janestreet.com">Jane Street</a>, <a href="http://www.xen.org/files/XenCloud/ocamldoc/">Citrix</a> and <a href="http://www.lexifi.com/product/technology/ocaml">Lexifi</a>.</p>
+<p>The reason for initially taking direction from industrial users is because these companies have a great deal of experience of using the language at scale (e.g millions of lines of code, thousands of modules and complicated testing requirements). We take a pragmatic view that examining and solving the problems such users have will ultimately result in a large and positive impact on the wider community, through significantly improved tooling, libraries and documentation.</p>
+
+      <table class="projects" width="95%">
       <tr class="dates"><td>Sep '12</td><td>Oct '12</td><td>Nov '12</td><td>Dec '12</td><td>Jan '13</td><td>Feb '13</td><td>Mar '13</td><td>Apr '13</td><td>May '13</td><td>Jun '13</td><td>Jul '13</td><td>Aug '13</td><td>Sep '13</td><td>Oct '13</td><td>Nov '13</td><td>Dec '13</td><td>∞</td></tr>
        <tr>  <td class="complete" colspan="7">
-    <img class="mugshot" alt="Thomas Gazagnaire" src="mugshots/tg.png" height="30px"/>
+    <a href="http://thomas.gazagnaire.org"><img class="mugshot" alt="Thomas Gazagnaire" src="mugshots/tg.png" height="30px"/></a>
     OPAM 1.0 ('if it builds, ship it')<br/>
-    <a href="http://github.com/OCamlPro/opam">Code</a>
     </td> <td class="blank" colspan="9"/> <td/> </tr>  <tr> <td class="blank" colspan="6"/> <td class="doing" colspan="3">
-    <img class="mugshot" alt="Thomas Gazagnaire" src="mugshots/tg.png" height="30px"/>
+    <a href="http://thomas.gazagnaire.org"><img class="mugshot" alt="Thomas Gazagnaire" src="mugshots/tg.png" height="30px"/></a>
     OPAM 1.1 ('the testing release')<br/>
-    <a href="http://github.com/OCamlPro/opam">Code</a>
     </td> <td class="blank" colspan="7"/> <td/> </tr>  <tr> <td class="blank" colspan="9"/> <td class="planning" colspan="3">
-    <img class="mugshot" alt="Thomas Gazagnaire" src="mugshots/tg.png" height="30px"/>
+    <a href="http://thomas.gazagnaire.org"><img class="mugshot" alt="Thomas Gazagnaire" src="mugshots/tg.png" height="30px"/></a>
     OPAM 1.2 ('the Platform release')<br/>
-    <a href="http://github.com/OCamlPro/opam">Code</a>
     </td> <td class="blank" colspan="4"/> <td/> </tr>  <tr> <td class="blank" colspan="5"/> <td class="doing" colspan="11">
-    <img class="mugshot" alt="Leo White" src="mugshots/default.gif" height="30px"/>
+    <a href="http://lpw25.net"><img class="mugshot" alt="Leo White" src="mugshots/default.gif" height="30px"/></a>
     OPAM Doc<br/>
-    <a href="http://github.com/lpw25/opam-doc">Code</a>
     </td>  <td class="doing"><i>plan?</i></td> </tr>  <tr> <td class="blank" colspan="5"/> <td class="planning" colspan="11">
     <img class="mugshot" alt="Jeremy Yallop" src="mugshots/unknown.jpg" height="30px"/>
     Ocamelot<br/>
-    <a href="http://github.com/ocamllabs/ocamelot">Code</a>
     </td>  <td class="planning"><i>plan?</i></td> </tr>  <tr> <td class="blank" colspan="7"/> <td class="planning" colspan="3">
     <img class="mugshot" alt="Amir Chaudhry" src="mugshots/amir.jpg" height="30px"/>
     Platform Preview<br/>
-    
     </td> <td class="blank" colspan="6"/> <td/> </tr> 
       <tr><td colspan="17"> </td></tr>
+      </table>
     
-      <tr class="project">
-        <td class="project" colspan="17">
-        <b>Mirage OS</b> - a type-safe library operating system
-        </td>
-      </tr>
+      <h1 id="mirage">Mirage OS</h1>
+      <p>The cloud has so far mostly been used to consolidate existing operating systems and manage them more conveniently. The interface between guest kernels, applications and VMs are all managed very differently, leading to serious inefficiencies, unreliability and insecurity. <a href="http://www.openmirage.org">Mirage OS</a> revisits the library OS concept (built here as <a href="http://www.cl.cam.ac.uk/research/srg/netos/old-projects/nemesis/documentation.html">Nemesis</a> in the late '90s), and narrows the gap between safe, high-level programming, and low-level systems construction.</p>
+<p>Applications are written in high-level OCaml and compiled directly into microkernels that run on the Xen hypervisor. By treating the hypervisor as a stable hardware platform, we can focus on high-performance protocol implementations without worrying about having to support the thousands of device drivers found in a traditional OS. Although Mirage initially targets the Xen hypervisor, other backends, such as a FreeBSD kernel module and Javascript, also exist.</p>
+<p>Mirage includes clean-slate functional implementations of protocols ranging from TCP/IP, DNS, SSH, Openflow (switch/controller), HTTP, XMPP and Xen inter-VM transports. Some of the new applications we're building using Mirage include the next-generation <a href="http://www.xen.org/products/cloudxen.html">Xen Cloud Platform</a> (a widely deployed open-source Xen distribution), dubbed <a href="http://xen.org/xensummit/xs12na_talks/T2.html">Project Windsor</a>.</p>
+
+      <table class="projects" width="95%">
       <tr class="dates"><td>Sep '12</td><td>Oct '12</td><td>Nov '12</td><td>Dec '12</td><td>Jan '13</td><td>Feb '13</td><td>Mar '13</td><td>Apr '13</td><td>May '13</td><td>Jun '13</td><td>Jul '13</td><td>Aug '13</td><td>Sep '13</td><td>Oct '13</td><td>Nov '13</td><td>Dec '13</td><td>∞</td></tr>
        <tr> <td class="blank" colspan="4"/> <td class="doing" colspan="4">
     <img class="mugshot" alt="Amir Chaudhry" src="mugshots/amir.jpg" height="30px"/>
     Xen.org incubation<br/>
-    <a href="http://wiki.xen.org/wiki/Mirage_Incubation_Project_Proposal">Proposal</a>
     </td> <td class="blank" colspan="8"/> <td/> </tr>  <tr> <td class="blank" colspan="6"/> <td class="doing" colspan="3">
-    <img class="mugshot" alt="Vincent Bernardoff" src="mugshots/unknown.jpg" height="30px"/>
+    <a href="https://Reference.github.com/vbmithr"><img class="mugshot" alt="Vincent Bernardoff" src="mugshots/unknown.jpg" height="30px"/></a>
     Mirari<br/>
-    <a href="http://github.com/mirage/mirari">Code</a>
     </td> <td class="blank" colspan="7"/> <td/> </tr>  <tr> <td class="blank" colspan="6"/> <td class="planning" colspan="5">
-    <img class="mugshot" alt="Dave Scott" src="mugshots/unknown.jpg" height="30px"/>
+    <a href="http://dave.recoil.org"><img class="mugshot" alt="Dave Scott" src="mugshots/unknown.jpg" height="30px"/></a>
     Mirage Developer Preview<br/>
-    <a href="http://github.com/mirage/mirage-platform">Code</a>
     </td> <td class="blank" colspan="5"/> <td/> </tr>  <tr> <td class="blank" colspan="8"/> <td class="planning" colspan="6">
     <img class="mugshot" alt="Balraj Singh" src="mugshots/unknown.jpg" height="30px"/>
     Formalisms for packet processing<br/>
-    
     </td> <td class="blank" colspan="2"/> <td/> </tr> 
       <tr><td colspan="17"> </td></tr>
+      </table>
     
-      <tr class="project">
-        <td class="project" colspan="17">
-        <b>Compiler Types</b> - enhancing the OCaml compiler type system and runtime
-        </td>
-      </tr>
+      <h1 id="compiler">The OCaml Compiler</h1>
+      <p>We are working on the OCaml compiler and runtime. This consists of a variety of day-to-day tasks such as submitting bug fixes, and also longer-term improvements to the type system and runtime libraries (see below).</p>
+
+      <table class="projects" width="95%">
       <tr class="dates"><td>Sep '12</td><td>Oct '12</td><td>Nov '12</td><td>Dec '12</td><td>Jan '13</td><td>Feb '13</td><td>Mar '13</td><td>Apr '13</td><td>May '13</td><td>Jun '13</td><td>Jul '13</td><td>Aug '13</td><td>Sep '13</td><td>Oct '13</td><td>Nov '13</td><td>Dec '13</td><td>∞</td></tr>
        <tr> <td class="blank" colspan="2"/> <td class="complete" colspan="3">
-    <img class="mugshot" alt="Leo White" src="mugshots/default.gif" height="30px"/>
+    <a href="http://lpw25.net"><img class="mugshot" alt="Leo White" src="mugshots/default.gif" height="30px"/></a>
     Open types<br/>
-    <a href="http://github.com/lpw25/ocaml-open">Code</a>
     </td> <td class="blank" colspan="11"/> <td/> </tr>  <tr> <td class="blank" colspan="1"/> <td class="complete" colspan="3">
-    <img class="mugshot" alt="Leo White" src="mugshots/default.gif" height="30px"/>
+    <a href="http://lpw25.net"><img class="mugshot" alt="Leo White" src="mugshots/default.gif" height="30px"/></a>
     Record disambiguation<br/>
-    <a href="http://caml.inria.fr/mantis/view.php?id=5759">Mantis</a>
     </td> <td class="blank" colspan="12"/> <td/> </tr>  <tr> <td class="blank" colspan="4"/> <td class="doing" colspan="3">
-    <img class="mugshot" alt="Leo White" src="mugshots/default.gif" height="30px"/>
+    <a href="http://lpw25.net"><img class="mugshot" alt="Leo White" src="mugshots/default.gif" height="30px"/></a>
     Camlp4 redesign<br/>
-    <a href="http://www.lpw25.net/2013/02/05/camlp4-alternative-part-2.html">Blog</a>
     </td> <td class="blank" colspan="9"/> <td/> </tr>  <tr> <td class="blank" colspan="6"/> <td class="planning" colspan="10">
-    <img class="mugshot" alt="Leo White" src="mugshots/default.gif" height="30px"/>
+    <a href="http://lpw25.net"><img class="mugshot" alt="Leo White" src="mugshots/default.gif" height="30px"/></a>
     Namespaces<br/>
-    <a href="http://www.lpw25.net/2013/03/10/ocaml-namespaces.html">Blog</a>
     </td>  <td class="planning"><i>plan?</i></td> </tr>  <tr> <td class="blank" colspan="7"/> <td class="planning" colspan="9">
     <img class="mugshot" alt="Stephen Dolan" src="mugshots/unknown.jpg" height="30px"/>
     Multicore<br/>
-    
     </td>  <td class="planning"><i>plan?</i></td> </tr> 
       <tr><td colspan="17"> </td></tr>
+      </table>
     
-      <tr class="project">
-        <td class="project" colspan="17">
-        <b>Outreach</b> - education material and online presence
-        </td>
-      </tr>
+      <h1 id="outreach">Community Outreach</h1>
+      <p>Growing a language community is more than just technology; we also need a better online presence, documentation and educational material.</p>
+
+      <table class="projects" width="95%">
       <tr class="dates"><td>Sep '12</td><td>Oct '12</td><td>Nov '12</td><td>Dec '12</td><td>Jan '13</td><td>Feb '13</td><td>Mar '13</td><td>Apr '13</td><td>May '13</td><td>Jun '13</td><td>Jul '13</td><td>Aug '13</td><td>Sep '13</td><td>Oct '13</td><td>Nov '13</td><td>Dec '13</td><td>∞</td></tr>
        <tr>  <td class="complete" colspan="5">
-    <img class="mugshot" alt="Anil Madhavapeddy" src="mugshots/avsm.jpg" height="30px"/>
+    <a href="http://avsm.recoil.org"><img class="mugshot" alt="Anil Madhavapeddy" src="mugshots/avsm.jpg" height="30px"/></a>
     Book review site<br/>
-    <a href="http://realworldocaml.org">Homepage</a>
     </td> <td class="blank" colspan="11"/> <td/> </tr>  <tr>  <td class="complete" colspan="6">
-    <img class="mugshot" alt="Anil Madhavapeddy" src="mugshots/avsm.jpg" height="30px"/>
+    <a href="http://avsm.recoil.org"><img class="mugshot" alt="Anil Madhavapeddy" src="mugshots/avsm.jpg" height="30px"/></a>
     OCaml.org infrastructure<br/>
-    <a href="">Wiki</a>
     </td> <td class="blank" colspan="10"/> <td/> </tr>  <tr>  <td class="doing" colspan="12">
-    <img class="mugshot" alt="Anil Madhavapeddy" src="mugshots/avsm.jpg" height="30px"/>
+    <a href="http://avsm.recoil.org"><img class="mugshot" alt="Anil Madhavapeddy" src="mugshots/avsm.jpg" height="30px"/></a>
     Real World OCaml<br/>
-    <a href="http://realworldocaml.org">Homepage</a>
     </td> <td class="blank" colspan="4"/> <td/> </tr>  <tr> <td class="blank" colspan="5"/> <td class="doing" colspan="4">
     <img class="mugshot" alt="Amir Chaudhry" src="mugshots/amir.jpg" height="30px"/>
     OCaml.org redesign<br/>
-    
     </td> <td class="blank" colspan="7"/> <td/> </tr> 
       <tr><td colspan="17"> </td></tr>
+      </table>
     
-           </table>
         </body>
      </html>
   

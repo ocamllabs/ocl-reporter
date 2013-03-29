@@ -28,6 +28,8 @@ type t = [
 
 type ts = t list
 
+type file = string
+
 let rec to_string = function
   | `H1 x -> "# " ^ x
   | `H2 x -> "## " ^ x
@@ -40,5 +42,16 @@ let rec to_string = function
 let ts_to_string ts =
   String.concat ~sep:"\n\n" (List.map ~f:to_string ts)
 
-let from_file subdirs name =
-  `F (Printf.sprintf "content/%s/%s" (String.concat ~sep:"/" subdirs) name)
+let from_file filename =
+  `F (Printf.sprintf "content/%s" filename)
+
+let from_file_to_html file =
+  let fname = Printf.sprintf "content/%s.md" file in
+  match Sys.file_exists fname with
+  |`Yes ->
+    Cow.Xml.of_string (
+      In_channel.input_all (
+        Unix.open_process_in ("pandoc -f markdown -t html " ^ fname)
+      )
+    )
+  |`No |`Unknown -> eprintf "skipping %s\n" fname; Cow.Xml.of_string " "

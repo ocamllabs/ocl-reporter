@@ -45,6 +45,12 @@ let render_link link =
   |_ ->
     <:html<$str:link.name$>>
 
+(* Wrap an href around tag if present *)
+let wrap_url targ content =
+  match targ with
+  |None -> content
+  |Some u -> <:html<<a href=$str:u$>$content$</a>&>>
+
 let draw_task task =
   let open Types.Project in
   (* Clamp task start to first date *)
@@ -61,18 +67,19 @@ let draw_task task =
   in
   let left = padding ~cl:"blank" start_date task_start <:html<&>> in
   let mugshot =
+    let open Types.Person in
     let url = sprintf "mugshots/%s"
-      (match task.owner.Types.Person.mugshot with
+      (match task.owner.mugshot with
        |None -> "unknown.jpg"
        |Some u -> u)
     in
-    let alt = task.owner.Types.Person.name in
+    let alt = task.owner.name in
+    wrap_url task.owner.homepage
     <:html<<img class="mugshot" alt=$str:alt$ src=$str:url$ height="30px" />&>>
   in
   let body = <:html<
     $mugshot$
     $str:task.task_name$<br />
-    $list:List.map ~f:render_link task.refs$
     >> in
   let content = padding ~cl:(status_to_string task.status) task_start task_end body in
   let right = padding ~cl:"blank" task_end last_date <:html<&>> in
@@ -88,15 +95,15 @@ let tasks proj = List.map ~f:draw_task proj
 let projects =
   List.map Projects.all
     ~f:(fun proj ->
+      let proj_descr = Markdown.from_file_to_html (proj.project_id^"/descr") in
       <:html<
-      <tr class="project">
-        <td class="project" colspan=$str:string_of_int total_colspan$>
-        <b>$str:proj.project_name$</b> - $str:proj.project_descr$
-        </td>
-      </tr>
+      <h1 id=$str:proj.project_id$>$str:proj.project_name$</h1>
+      $proj_descr$
+      <table class="projects" width="95%">
       <tr class="dates">$list:cells$</tr>
       $list:tasks proj.tasks$
       <tr><td colspan=$str:string_of_int total_colspan$>&nbsp;</td></tr>
+      </table>
     >>)
 
 let output_body =
@@ -105,32 +112,26 @@ let output_body =
         <head>
           <title>Projects</title>
           <style type="text/css">
-            table.projects { 
+            table { 
               table-layout: fixed;
               border-spacing: 0px 2px;
             }
             .blank { background-color: #fefefe; }
-            .planning { background-color: #ccaaaa; }
+            .planning { background-color: #aaaacc; }
             .doing { background-color: #eeeeaa; }
             .complete { background-color: #aaccaa; }
             img.mugshot { float:left; padding-right: 5px; }
             tr.dates {
                font-size: 0.75em;
-               font-color: #dddddd;
-            }
-            tr.project { 
                background-color: #dfdfdf;
                color: #111111;
-               font-size: 1.4em;
-               font-family: sans-serif;
             }
           </style>
         </head>
          
         <body>
-           <table class="projects" width="95%" border="0">
-             $list:projects$
-           </table>
+          <div class="ucampas-toc right"/>
+          $list:projects$
         </body>
      </html>
   >>

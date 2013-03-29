@@ -25,7 +25,9 @@ type t = [
 ]
 
 type ts = t list
+type file = string
 
 val to_string : t -> string
 val ts_to_string : t list -> string
-val from_file: string list -> string -> t
+val from_file: string -> t
+val from_file_to_html: string -> Cow.Html.t

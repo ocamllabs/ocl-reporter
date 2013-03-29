@@ -99,7 +99,6 @@ module Project = struct
     project_id: string;
     project_name: string;
     project_owner: Person.t;
-    project_descr: string;
     team: Person.t list;
     tasks: task list;
   }
