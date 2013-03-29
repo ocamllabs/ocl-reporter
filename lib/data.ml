@@ -298,8 +298,26 @@ module People = struct
     mugshot=None;
   }
   (* 
-    Misc people
+    Other people
   *)
+  let ashish = {
+    id="ashish";
+    name="Ashish Agarwal";
+    affiliation=`NYU;
+    role="Research Scientist";
+    bio=None;
+    homepage=Some "http://ashishagarwal.org";
+    mugshot=Some "ashish.png";
+  }
+  let christophe = {
+    id="christophe";
+    name="Christophe Troestler";
+    affiliation=`NYU;
+    role="Research Scientist";
+    bio=None;
+    homepage=Some "http://math.umons.ac.be/an/fr";
+    mugshot=Some "christophe.png";
+  }
   let gabor = {
     id="gabor";
     name="Gabor Pali";
