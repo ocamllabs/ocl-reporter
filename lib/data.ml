@@ -309,6 +309,15 @@ module People = struct
     homepage=Some "http://people.freebsd.org/~pgj";
     mugshot=Some "gabor.jpg";
   }
+  let prashanth = {
+    id="prashanth";
+    name="Prashanth Mundkur";
+    affiliation=`Nokia;
+    role="Research Staff";
+    bio=None;
+    homepage=Some "https://github.com/pmundkur";
+    mugshot=Some "prashanth.jpg";
+  }
 
 end
 
