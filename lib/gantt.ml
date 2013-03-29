@@ -137,5 +137,6 @@ let output_body =
      </html>
   >>
 
-let _ =
-  print_endline (Cow.Html.to_string output_body)
+let output =
+  let data = Cow.Html.to_string output_body in
+  Out_channel.write_all "pages/projects/index-b.html" ~data 
