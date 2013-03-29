@@ -111,6 +111,15 @@ module People = struct
     homepage=None;
     mugshot=None;
   }
+  let heidi = {
+    id="heidi";
+    name="Heidi Howard";
+    affiliation=`CL;
+    role="Research Assistant";
+    bio=None;
+    homepage=Some "http://etc-hosts.blogspot.co.uk";
+    mugshot=Some "heidi.jpg";
+  }
 
 end
 
