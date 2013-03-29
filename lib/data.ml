@@ -138,6 +138,15 @@ module People = struct
     homepage=Some "http://www.cl.cam.ac.uk/~smh22";
     mugshot=Some "smh.jpg";
   }
+  let haris = {
+    id="haris";
+    name="Haris Rotsos";
+    affiliation=`CL;
+    role="PhD Student";
+    bio=None;
+    homepage=Some "http://www.cl.cam.ac.uk/~cr409/";
+    mugshot=Some "haris.jpg";
+  }
 
 end
 
