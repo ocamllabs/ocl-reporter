@@ -228,6 +228,24 @@ module People = struct
     homepage=Some "http://thomas.gazagnaire.org";
     mugshot=(Some "tg.png");
   }
+  let fabrice = {
+    id="fabrice";
+    name="Fabrice Le Fessant";
+    affiliation=`OCP;
+    role="CEO";
+    bio=None;
+    homepage=Some "http://www.lefessant.net";
+    mugshot=(Some "fabrice.png");
+  }
+  let pierre = {
+    id="pierre";
+    name="Pierre Chambart";
+    affiliation=`OCP;
+    role="";
+    bio=None;
+    homepage=Some "http://www.lsv.ens-cachan.fr/~chambart";
+    mugshot=(Some "pierre.png");
+  }
   (* 
     Misc people
   *)
