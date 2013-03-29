@@ -268,6 +268,36 @@ module People = struct
     mugshot=(Some "pierre.png");
   }
   (* 
+    Horizon people
+  *)
+  let mac = {
+    id="mac";
+    name="Derek McAuley";
+    affiliation=`Horizon;
+    role="Professor of Digital Economy";
+    bio=None;
+    homepage=Some "http://www.cs.nott.ac.uk/~drm";
+    mugshot=Some "mac.jpg";
+  }
+  let mort = {
+    id="mort";
+    name="Richard Mortier";
+    affiliation=`Horizon;
+    role="Lecturer";
+    bio=None;
+    homepage=Some "http://www.cs.nott.ac.uk/~rmm";
+    mugshot=Some "mort.png";
+  }
+  let bishneet = {
+    id="bishneet";
+    name="Bishneet Kaur";
+    affiliation=`Horizon;
+    role="Intern";
+    bio=None;
+    homepage=None;
+    mugshot=None;
+  }
+  (* 
     Misc people
   *)
   let gabor = {
