@@ -48,7 +48,7 @@ module People = struct
     affiliation=`CL;
     role="Program Manager";
     bio=None;
-    homepage=None;
+    homepage=Some "http://amirchaudhry.com";
     mugshot=(Some "amir.jpg");
   }
   let lpw25 = {
