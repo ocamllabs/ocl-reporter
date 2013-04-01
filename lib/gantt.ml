@@ -71,7 +71,7 @@ let draw_task task =
     let url = sprintf "../mugshots/%s"
       (match task.owner.mugshot with
        |None -> "unknown.jpg"
-       |Some u -> u)
+|Some u -> u)
     in
     let alt = task.owner.name in
     wrap_url task.owner.homepage
@@ -92,12 +92,34 @@ let draw_task task =
   <:html< <tr> $left$ $content$ $right$ $infinity$ </tr> >>
 
 let tasks proj = List.map ~f:draw_task proj
-let projects = 
+
+let css = <:html<
+  <style type="text/css">
+    table { 
+      table-layout: fixed;
+      border-spacing: 0px 2px;
+    }
+    .blank { background-color: #fefefe; }
+    .planning { background-color: #aaaacc; }
+    .doing { background-color: #eeeeaa; }
+    .complete { background-color: #aaccaa; }
+    img.mugshot { float:left; padding-right: 5px; }
+    tr.dates {
+      font-size: 0.75em;
+      background-color: #dfdfdf;
+      color: #111111;
+    }
+</style>
+>>
+
+(* Output the main projects page HTML *)
+let to_long_html projects = 
   let open Types.Project in
-  List.map Projects.all
+  List.map projects
     ~f:(fun proj ->
       let proj_descr = Markdown.from_file_to_html (proj.project_id^"/descr") in
       <:html<
+      $css$
       <h1 id=$str:proj.project_id$>$str:proj.project_name$</h1>
       $proj_descr$
       <table class="projects" width="95%">
@@ -107,36 +129,23 @@ let projects =
       </table>
     >>)
 
-let output_body =
-  <:html<
-     <html>
-        <head>
-          <title>Projects</title>
-          <style type="text/css">
-            table { 
-              table-layout: fixed;
-              border-spacing: 0px 2px;
-            }
-            .blank { background-color: #fefefe; }
-            .planning { background-color: #aaaacc; }
-            .doing { background-color: #eeeeaa; }
-            .complete { background-color: #aaccaa; }
-            img.mugshot { float:left; padding-right: 5px; }
-            tr.dates {
-               font-size: 0.75em;
-               background-color: #dfdfdf;
-               color: #111111;
-            }
-          </style>
-        </head>
-         
-        <body>
-          <div class="ucampas-toc right"/>
-          $list:projects$
-        </body>
-     </html>
-  >>
-
-let output =
-  let data = Cow.Html.to_string output_body in
-  Out_channel.write_all "pages/projects/index-b.html" ~data 
+(* Output the shortened version without descriptions, for the person page *)
+let to_short_html person =
+  let open Types.Project in
+  (* Find projects for this person *)
+  let projects = List.filter Data.Projects.all 
+      ~f:(fun proj -> List.mem (people_in_project proj) person) in
+  (* Just list all the tasks in a project for now *)
+  (* let task_list = List.filter proj.tasks ~f:(fun t -> t.owner = person) in *)
+  List.map projects ~f:(fun proj ->
+    let task_list = proj.tasks in
+    <:html<
+      $css$
+      <h3 id=$str:proj.project_id$>$str:proj.project_name$</h3>
+      <table class="projects" width="95%">
+        <tr class="dates">$list:cells$</tr>
+        $list:tasks task_list$
+        <tr><td colspan=$str:string_of_int total_colspan$>&nbsp;</td></tr>
+      </table>
+    >>
+  )

@@ -135,4 +135,10 @@ module Project = struct
     status: status;
     refs: Reference.t list;
   }
+
+  let people_in_project p = 
+    p.project_owner :: p.team
+
+  let tasks_for_person proj person =
+    List.filter proj.tasks (fun t -> t.owner = person)
 end

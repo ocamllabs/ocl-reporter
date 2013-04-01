@@ -37,8 +37,7 @@ let human_readable_date d =
 (* CSS style we include for each page.
  * Note that this style is specialised to the CUCL web page style *)
 let style =
-<:html<
-  <style>
+(*
   blockquote {
     margin-left: 10px;
     padding-left: 20px;
@@ -55,14 +54,17 @@ let style =
    margin:0 0 1em 0;
    border-bottom: 1px solid #cccccc;
   }
-  .ocl-cogs span { padding-right:30px; background-size:20px; background: url(../cogs.png) no-repeat right center; }
-  .ocl-print span { padding-right:30px; background-size:20px; background: url(../print.png) no-repeat right center; }
-  .ocl-cloud span { padding-right:30px; background-size:20px; background: url(../cloud.png) no-repeat right center; }
-  .ocl-group span { padding-right:30px; background-size:20px; background: url(../group.png) no-repeat right center; }
-  .ocl-bullhorn span { padding-right:30px; background-size:20px; background: url(../bullhorn.png) no-repeat right center; }
-  .ocl-asset span { padding-right:30px; background-size:20px; background: url(../wrench.png) no-repeat right center; }
-  </style>
->>
+*)
+  <:html<
+    <style>
+    .ocl-cogs span { padding-right:30px; background-size:20px; background: url(../cogs.png) no-repeat right center; }
+    .ocl-print span { padding-right:30px; background-size:20px; background: url(../print.png) no-repeat right center; }
+    .ocl-cloud span { padding-right:30px; background-size:20px; background: url(../cloud.png) no-repeat right center; }
+    .ocl-group span { padding-right:30px; background-size:20px; background: url(../group.png) no-repeat right center; }
+    .ocl-bullhorn span { padding-right:30px; background-size:20px; background: url(../bullhorn.png) no-repeat right center; }
+    .ocl-asset span { padding-right:30px; background-size:20px; background: url(../wrench.png) no-repeat right center; }
+    </style>
+  >>
 
 (* Output a single page as a HTML.t and the standard boilerplate HTML *)
 let one_page ~title ~body =
@@ -106,86 +108,75 @@ let people =
   <p><img class="left" src="../images/janest.jpg" /><img width="150px" src="../images/citrix.gif"/></p>
 >>
 
-open Core.Std
-let _ =
-  let data = Cow.Html.to_string people in
-  Out_channel.write_all "pages/people/index-b.html" ~data
-(*
 (* Generate a profile page per-person *)
 let one_person p =
-  let open Elements in
-  let open Person in
-  let role = match p.role with |None -> "" |Some r -> ", " ^ r in
+  let open Types.Person in
   let homepage = match p.homepage with
    |None -> <:html< >>
-   |Some h -> <:html< <p>$link h h$</p> >> in
-  (* Generate a definition list of projects for this person, categorised by
-   * the type of project *)
-  let projects_to_html (ty,ps) =
-    let ents = List.map (fun p ->
-      <:html<<dd>$URL.Sub1.project p$</dd>&>>) ps in
+   |Some h -> link h h in
+  let mugshot = sprintf "../mugshots/%s" (Option.value ~default:"unknown.jpg" p.mugshot) in
+  let project_html =
+    (* Find the projects for this person *)
+    let h = Gantt.to_short_html p in
     <:html<
-      <dt>$str:Project.string_of_project_type ty$</dt>
-      $list:ents$>> in
-  let projects = List.map projects_to_html (Project.for_person p.id) in
+      <h2>Projects</h2>$list:h$
+    >>
+  in
   let body = <:html<
     <h1>$str:p.name$</h1>
-    <p><b>$str:to_string p.affiliation$</b>$str:role$</p>
-    $homepage$
-    <div class="menu-wrapper">
-    <dl class="menu">
-    $list:projects$
-    </dl>
-    </div>
+    <p>
+      <img class="inline" style="float:left; padding-right: 30px;" height="60px" src=$str:mugshot$ />
+      <b>$str:to_string p.affiliation$</b><br />
+      $str:p.role$<br />
+      $homepage$
+    </p>
+    $project_html$
   >> in
   one_page ~title:p.name ~body
 
-(* Convert a reference into a standalone HTML chunk *)
-let ref_to_html ?(icons=false) r =
-  let open Elements.Reference in
-  match r.link with
-  |None -> <:html< $str:r.name$ >>
-  |Some (`Pdf url) -> let cl = if icons then Some "icon-pdf" else None in link ?cl url r.name
-  |Some (`Blog url) -> link url r.name 
-  |Some (`Github (user,repo)) -> link (sprintf "http://github.com/%s/%s" user repo) r.name 
-  |Some (`Github_tag (user,repo,tag)) ->
-    let url = sprintf "https://github.com/%s/%s/archive/%s.tar.gz" user repo tag in
-    link url r.name
-  |Some (`Webpage url) -> link url r.name
-  |Some (`Video url) -> link ~cl:"icon-video" url r.name
-  |Some (`Slideshare url) -> link url r.name
-  |Some (`Paper (url,authors,descr)) ->
-    let href = link ~cl:"icon-pdf" url r.name in
-    <:html<$href$, <i>$str:authors$</i>, $str:descr$>>
-  |Some (`Mantis id) ->
-    let url = sprintf "http://caml.inria.fr/mantis/view.php?id=%d" id in 
-    link url r.name
+let projects =
+  let body = <:html<
+    <div class="ucampas-toc right"/>
+    $list:Gantt.to_long_html Data.Projects.all$ >> in
+  one_page ~title:"Projects" ~body
 
-(* Short update, suitable for activity streams *)
-let update_to_short_html outputfn u =
-  let open Elements in
-  let o = Update.output_of_update u in
-  let icon, blurb = 
-    match u.Update.ty, o.Output.ty with 
-    |`Published _,`Paper _ -> "pdf", <:html<Published >>
-    |`Published _,`Blog_post -> "rss", <:html<Blogged >>
-    |`Published _,`Article _ -> "rss", <:html<Article >>
-    |`Draft _,`Paper _ -> "pdf", <:html<Draft on >>
-    |`Draft _,`Blog_post -> "rss", <:html<Draft on >>
-    |`Draft _,`Article _ -> "rss", <:html<Draft on >>
-    |`Accepted _,`Paper _ -> "pdf", <:html<Paper accepted >>
-    |`Event _,`Talk _ -> "video", <:html<Talked on >>
-    |`Event _,`Asset -> "media", <:html<Updated >>
-    |`Event _,`Event _ -> "community", <:html<&>>
-    |`Event _,`Code -> "media", <:html<Hacking on >>
-    |`Event _,`Paper _ -> "video", <:html<Presented on >>
-    |`Press _,`Article _ -> "community", <:html<Press on >>
-    |`Release (_,r), _ -> "follow", <:html<Released $ref_to_html r$ of >> 
-    |_ -> failwith ("internal error: unexpected combination of update/output in " ^ o.Output.id)
-  in let icon = "icon-"^icon in
-  <:html< <li><a class="$str:icon$"></a><i>$str:human_readable_date u.Update.date$</i>: 
-    $blurb$ $ref_to_html o.Output.ref$ <i>$outputfn o "(more)"$</i></li> >>
+let one_project proj =
+  let open Types in
+  let open Project in
+  let body = <:html<
+    <h1>$str:proj.project_name$</h1>
+    <div class="ucampas-toc right"/>
+    $list:Gantt.to_long_html [proj]$
+  >> in
+  one_page ~title:proj.project_name ~body
+       
+let write_html file html =
+  let data = Cow.Html.to_string html in
+  let fname = sprintf "pages/%s-b.html" file in
+  eprintf "writing : %s\n" fname;
+  Out_channel.write_all fname ~data
 
+(* The uconfig files are used by ucampas to generate the various
+ * menus, so dynamically generate them from our generated pages. *)
+let write_uconfig dir files =
+  let dir = "pages/" ^ dir in
+  Unix.mkdir_p dir;
+  let fname = Filename.concat dir "uconfig.txt" in
+  let buf = List.map files ~f:(fun x -> x^".html") |! String.concat ~sep:"," in
+  Out_channel.write_all fname ("navstop=1,\n"^buf)
+
+let _ =
+  write_uconfig "people" (List.map Data.People.all ~f:(fun p -> p.Types.Person.id));
+  write_html "people/index" people;
+  List.iter Data.People.all ~f:(fun p ->
+    write_html ("people/"^p.Types.Person.id) (one_person p));
+  write_uconfig "tasks" (List.map Data.Projects.all ~f:(fun p -> p.Types.Project.project_id));
+  write_html "tasks/index" projects;
+  List.iter Data.Projects.all ~f:(fun p ->
+    write_html ("tasks/"^p.Types.Project.project_id) (one_project p));
+  ()
+
+(*
 (* Generate a single project page *)
 let one_project proj =
   let open Elements in
@@ -354,15 +345,6 @@ let output ?(subdirs=[]) name page =
   let buf = Cow.Html.to_string page in
   eprintf "Writing: %s (%d bytes)\n" fname (String.length buf);
   Out_channel.write_all fname buf
-
-(* The uconfig files are used by ucampas to generate the various
- * menus, so dynamically generate them from our generated pages. *)
-let output_uconfig ?(subdirs=[]) files =
-  let dir = String.concat ~sep:"/" subdirs in
-  Unix.mkdir_p dir;
-  let fname = Filename.concat dir "uconfig.txt" in
-  let buf = List.map files ~f:(fun x -> x^".html") |! String.concat ~sep:"," in
-  Out_channel.write_all fname ("navstop=1,\n"^buf)
 
 let _ =
   let open Elements in
