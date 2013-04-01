@@ -1,2 +1,0 @@
-navstop=1,
-infrastructure.html,homeflow.html,record-disambiguation.html,signpost.html,opam.html,linearml.html,open-types.html,sdn.html,rpi.html,polyversal-tcp.html,irminsule.html,rwo.html,mirage.html,actor.html,benchmark-suite.html,cheri.html,emcc.html,formatparser.html,gdbdwarf.html,illuminate.html,metarouting.html,multicore-ocaml.html,nigori.html,ocamldoc.html,opambuilder.html
