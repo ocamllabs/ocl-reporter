@@ -72,36 +72,23 @@ let one_page ~title ~body =
 let people =
   let open Types.Person in
   (* Output a short list of projects this person works on. *)
-(*
-  let projects_to_html (ty,projects) =
-    let to_html p = URL.Sub1.project p in
-    let rec aux = function
-      |[] -> <:html<&>>
-      |[hd] -> to_html hd
-      |hd::tl -> <:html<$to_html hd$, $aux tl$>>
-    in
-    <:html<<br/><i>$str: ty$:</i> $aux projects$>>
-  in
-  (* Output a listitem for a person. Break out projects by type. *)
   let person_to_html p =
-    let role = match p.role with |None -> "" |Some r -> ", " ^ r in
-    let link = <:html<<b>$URL.Cur.person p$</b>$str:role$>> in
-    let projects = List.map projects_to_html (Project.for_person p.Person.id) in
-    <:html<<li>$link$$list:projects$</li>&>>
+    <:html< <li><b>$str:p.name$</b></li> >>
   in
-*)
-  let of_cucl_org =
-    List.filter_map Data.People.all ~f:(fun p ->
-      match p.affiliation with
-      |`CL -> Some <:html<<ul>$str:p.name$</ul>&>>
-      |_ -> None)
-  in  
+  let ext_people =
+    List.map Data.People.of_other ~f:(fun (org,people) ->
+      <:html<
+       <li>
+         <h4>$str:to_string org$</h4>
+         <ul>$list:List.map ~f:person_to_html people$</ul>
+       </li>&>>)
+  in
   (* Aggregate all the organisation info now *)
   let orgs = <:html<
-    <h2>University of Cambridge Computer Laboratory</h2>
-    <ul>$list:of_cucl_org$</ul>
-    <h2>External Collaborators</h2>
-    $list:[]$
+    <h3>University of Cambridge Computer Laboratory</h3>
+    <ul>$list:List.map ~f:person_to_html Data.People.of_cucl$</ul>
+    <h3>External Collaborators</h3>
+    <ul>$list:ext_people$</ul>
     >> in
   (* And output the full people web page *)
   one_page ~title:"People" ~body:

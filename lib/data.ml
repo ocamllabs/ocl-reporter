@@ -312,8 +312,8 @@ module People = struct
   let christophe = {
     id="christophe";
     name="Christophe Troestler";
-    affiliation=`NYU;
-    role="Research Scientist";
+    affiliation=`UMONS;
+    role="";
     bio=None;
     homepage=Some "http://math.umons.ac.be/an/fr";
     mugshot=Some "christophe.png";
@@ -330,8 +330,8 @@ module People = struct
   let prashanth = {
     id="prashanth";
     name="Prashanth Mundkur";
-    affiliation=`Nokia;
-    role="Research Staff";
+    affiliation=`SRI;
+    role="Senior Research Scientist";
     bio=None;
     homepage=Some "https://github.com/pmundkur";
     mugshot=Some "prashanth.jpg";
@@ -353,6 +353,17 @@ module People = struct
     djs; vb; jludlam; lars; yaron; shinwell; tg; fabrice;
     pierre; mac; mort; bishneet; ashish; christophe; gabor;
     prashanth; jhickey ]
+
+  (* Split out the CUCL from the org list *)
+  let of_cucl, of_other =
+    let l = by_affiliation all in
+    let cucl = List.Assoc.find_exn l `CL |> List.rev in
+    let other =
+      List.Assoc.remove l `CL
+      |> List.sort ~cmp:(fun a b -> cmp (fst a) (fst b))
+      |> List.map ~f:(fun (a,b) -> (a, List.rev b))
+    in
+    cucl, other
 end
 
 module Projects = struct

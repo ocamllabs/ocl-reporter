@@ -11,7 +11,7 @@ module Person = struct
     | `Google
     | `NYU
     | `UMONS
-    | `Nokia
+    | `SRI
   ]
 
   let to_string (x:affiliation) =
@@ -25,7 +25,21 @@ module Person = struct
     | `Horizon -> "Horizon"
     | `NYU -> "New York University"
     | `UMONS -> "Universite de Mons, Belgium"
-    | `Nokia -> "Nokia"
+    | `SRI -> "SRI International"
+
+  let cmp (a:affiliation) (b:affiliation) =
+    let order = function
+    |`CL -> 0
+    |`Citrix -> 1
+    |`OCP -> 2
+    |`JSC -> 3
+    |`Horizon -> 4
+    |`SRI -> 5
+    |`OnApp -> 6
+    |`NYU -> 7
+    |`UMONS -> 8
+    |`Google -> 9
+    in compare (order a) (order b)
 
   type t = {
     id: string;
@@ -36,6 +50,17 @@ module Person = struct
     bio: string option;
     mugshot: string option;
   }
+
+  (* Group people by affiliation *)
+  let by_affiliation =
+    List.fold_left ~init:[] ~f:(fun a b ->
+      match List.Assoc.find a b.affiliation with
+      |None -> List.Assoc.add a b.affiliation [b]
+      |Some v ->
+        (* TODO is there a List.Assoc.replace? *)
+        let l = List.Assoc.remove a b.affiliation in
+        List.Assoc.add l b.affiliation (b::v)
+    )
 end
 
 module Reference = struct
