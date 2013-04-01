@@ -136,6 +136,11 @@ module Project = struct
     refs: Reference.t list;
   }
 
+  let mk_task ~name ~start ?finish ~owner ?(team=[]) ~status ?(refs=[]) ?descr () =
+    let start = Date.of_string start in
+    let finish = Option.map finish ~f:Date.of_string in 
+    { task_name=name; start; finish; owner; status; refs }
+
   let people_in_project p = 
     p.project_owner :: p.team
 
