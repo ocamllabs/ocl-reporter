@@ -143,10 +143,23 @@ let projects =
 let one_project proj =
   let open Types in
   let open Project in
+  let tasks =
+    List.map ~f:(fun t ->
+      let descr = match t.task_descr with
+        |None -> <:html< >>
+        |Some descr -> Markdown.from_file_to_html (sprintf "content/%s/%s" proj.project_id descr)
+      in
+      <:html<
+        <b>$str:t.task_name$</b><br />
+        $descr$
+      >>
+  ) proj.tasks in
   let body = <:html<
     <h1>$str:proj.project_name$</h1>
     <div class="ucampas-toc right"/>
     $list:Gantt.to_long_html [proj]$
+    <h2>Tasks</h2>
+    $list:tasks$
   >> in
   one_page ~title:proj.project_name ~body
        

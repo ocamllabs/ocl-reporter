@@ -129,6 +129,7 @@ module Project = struct
   }
   and task = {
     task_name: string;
+    task_descr: string option;
     start: Date.t;
     finish: Date.t option; (* A task with no end date ends up in the "infinity planning column" *)
     owner: Person.t;
@@ -138,8 +139,8 @@ module Project = struct
 
   let mk_task ~name ~start ?finish ~owner ?(team=[]) ~status ?(refs=[]) ?descr () =
     let start = Date.of_string start in
-    let finish = Option.map finish ~f:Date.of_string in 
-    { task_name=name; start; finish; owner; status; refs }
+    let finish = Option.map finish ~f:Date.of_string in
+    { task_name=name; task_descr=descr; start; finish; owner; status; refs }
 
   let people_in_project p = 
     p.project_owner :: p.team
