@@ -108,13 +108,17 @@ let people =
   <p><img class="left" src="../images/janest.jpg" /><img width="150px" src="../images/citrix.gif"/></p>
 >>
 
+let mugshot p = sprintf "../mugshots/%s" (Option.value ~default:"unknown.jpg" p.Types.Person.mugshot)
+let mugshot_img ?(size=60) p =
+  let size = sprintf "%dpx" size in
+  <:html<<img class="inline" style="padding-right: 30px;" height=$str:size$ src=$str:mugshot p$ />&>>
+
 (* Generate a profile page per-person *)
 let one_person p =
   let open Types.Person in
   let homepage = match p.homepage with
    |None -> <:html< >>
    |Some h -> link h h in
-  let mugshot = sprintf "../mugshots/%s" (Option.value ~default:"unknown.jpg" p.mugshot) in
   let project_html =
     (* Find the projects for this person *)
     let h = Gantt.to_short_html p in
@@ -125,7 +129,7 @@ let one_person p =
   let body = <:html<
     <h1>$str:p.name$</h1>
     <p>
-      <img class="inline" style="float:left; padding-right: 30px;" height="60px" src=$str:mugshot$ />
+      $mugshot_img p$
       <b>$str:to_string p.affiliation$</b><br />
       $str:p.role$<br />
       $homepage$
@@ -145,21 +149,42 @@ let one_project proj =
   let open Project in
   let tasks =
     List.map ~f:(fun t ->
-      let descr = match t.task_descr with
-        |None -> <:html< >>
-        |Some descr -> Markdown.from_file_to_html (sprintf "content/%s/%s" proj.project_id descr)
+      let descr =
+        match t.task_descr with
+        |None -> []
+        |Some descr ->
+          Markdown.from_file_to_html (sprintf "%s/%s" proj.project_id descr)
       in
+      let status =
+        let mode =
+           match t.status with
+           |`Planning -> <:html<<span class="planning">Planning</span>&>>
+           |`Doing -> <:html<<span class="doing">In Progress</span>&>>
+           |`Complete -> <:html<<span class="complete">Complete</span>&>>
+        in
+        let start = <:html<$str:human_readable_date t.start$>> in
+        let finish =
+          match t.finish with
+          |None -> <:html<&>>
+          |Some d -> <:html< $str:human_readable_date d$>>
+        in
+        <:html< $mode$ ($start$ -$finish$) >>
+      in
+      let mugshots = mugshot_img ~size:30 t.owner in
       <:html<
-        <b>$str:t.task_name$</b><br />
+        <h3 id=$str:t.task_name$>$str:t.task_name$</h3>
+        <p>
+         $mugshots$
+         $status$
+        </p>
         $descr$
       >>
   ) proj.tasks in
   let body = <:html<
-    <h1>$str:proj.project_name$</h1>
     <div class="ucampas-toc right"/>
     $list:Gantt.to_long_html [proj]$
-    <h2>Tasks</h2>
     $list:tasks$
+    <h2 id="Team">Team</h2>
   >> in
   one_page ~title:proj.project_name ~body
        

@@ -383,7 +383,7 @@ module Projects = struct
         ~start:"2012-03-15" ~finish:"2013-03-14"
         ~owner:People.tg
         ~status:`Complete
-        ~descr:"opam-1.0"
+        ~descr:"opam10"
         ~refs:[ Reference.github "OCamlPro" "opam" ] () ;
       mk_task ~name:"OPAM 1.1 ('the testing release')"
         ~start:"2013-02-17" ~finish:"2013-05-01"

@@ -45,7 +45,7 @@ let ts_to_string ts =
 let from_file filename =
   `F (Printf.sprintf "content/%s" filename)
 
-let from_file_to_html file =
+let from_file_to_html_exn file =
   let fname = Printf.sprintf "content/%s.md" file in
   match Sys.file_exists fname with
   |`Yes ->
@@ -55,3 +55,11 @@ let from_file_to_html file =
       )
     )
   |`No |`Unknown -> eprintf "skipping %s\n" fname; Cow.Xml.of_string " "
+
+let from_file_to_html file =
+  try
+    from_file_to_html_exn file
+  with exn ->
+    eprintf "warning: skipped %s\n" file;
+    []
+ 
