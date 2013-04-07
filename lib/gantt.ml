@@ -114,18 +114,22 @@ let css = <:html<
 >>
 
 (* Output the main projects page HTML *)
-let to_long_html projects = 
+let to_long_html ?(moreinfo=false) projects = 
   let open Types.Project in
+  let more proj =
+      let proj_href = proj.project_id^".html" in
+        if moreinfo then
+    <:html<<p><i><a href=$str:proj_href$>(more information)</a></i></p>&>>
+     else [] in
   List.map projects
     ~f:(fun proj ->
       let proj_descr = Markdown.from_file_to_html (proj.project_id^"/descr") in
-      let proj_href = proj.project_id^".html" in
       let ts = tasks ~hrefbase:(proj.project_id^".html") proj.tasks in
       <:html<
       $css$
       <h1 id=$str:proj.project_id$>$str:proj.project_name$</h1>
       $proj_descr$
-      <p><i><a href=$str:proj_href$>(more information)</a></i></p>
+      $more proj$
       <table class="projects" width="95%">
       <tr class="dates">$list:cells$</tr>
       $list:ts$
@@ -139,8 +143,6 @@ let to_short_html person =
   (* Find projects for this person *)
   let projects = List.filter Data.Projects.all 
       ~f:(fun proj -> List.mem (people_in_project proj) person) in
-  (* Just list all the tasks in a project for now *)
-  (* let task_list = List.filter proj.tasks ~f:(fun t -> t.owner = person) in *)
   List.map projects ~f:(fun proj ->
     let task_list = proj.tasks in
     <:html<

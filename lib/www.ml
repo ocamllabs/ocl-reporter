@@ -138,7 +138,7 @@ let one_person p =
 let projects =
   let body = <:html<
     <div class="ucampas-toc right"/>
-    $list:Gantt.to_long_html Data.Projects.all$ >> in
+    $list:Gantt.to_long_html ~moreinfo:true Data.Projects.all$ >> in
   one_page ~title:"Projects" ~body
 
 let one_project proj =
