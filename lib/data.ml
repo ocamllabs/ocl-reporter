@@ -371,6 +371,10 @@ module Projects = struct
 
   module Platform = struct
 
+   let opam_refs = [ 
+     Reference.github "OCamlPro" "opam";
+     Reference.webpage "http://ocamlpro.opam.com" 
+   ]
     let rec project =
       { project_id="platform"; 
         project_name="OCaml Platform"; 
@@ -384,23 +388,25 @@ module Projects = struct
         ~owner:People.tg
         ~status:`Complete
         ~descr:"opam10"
-        ~refs:[ Reference.github "OCamlPro" "opam" ] () ;
+        ~refs:opam_refs () ;
       mk_task ~name:"OPAM 1.1 ('the testing release')"
         ~start:"2013-02-17" ~finish:"2013-05-01"
         ~owner:People.tg
         ~status:`Doing
-        ~refs:[ Reference.github "OCamlPro" "opam" ] () ;
+        ~descr:"opam11"
+        ~refs:opam_refs ();
       mk_task ~name:"OPAM 1.2 ('the Platform release')"
         ~start:"2013-05-01" ~finish:"2013-08-01"
         ~owner:People.tg
         ~status:`Planning
-        ~refs:[ Reference.github "OCamlPro" "opam" ] () ;
+        ~descr:"opam12"
+        ~refs:opam_refs ();
       mk_task ~name:"OPAM Doc"
         ~start:"2013-01-16"
         ~owner:People.lpw25
         ~status:`Doing
         ~refs:[ Reference.github "lpw25" "opam-doc" ] () ;
-      mk_task ~name:"OCamlot"
+      mk_task ~name:"OCamleot"
         ~start:"2013-01-16"
         ~owner:People.yallop
         ~status:`Planning

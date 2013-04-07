@@ -51,7 +51,7 @@ let wrap_url targ content =
   |None -> content
   |Some u -> <:html<<a href=$str:u$>$content$</a>&>>
 
-let draw_task task =
+let draw_task ?(hrefbase="") task =
   let open Types.Project in
   (* Clamp task start to first date *)
   let task_start = Date.max task.start start_date in
@@ -71,15 +71,16 @@ let draw_task task =
     let url = sprintf "../mugshots/%s"
       (match task.owner.mugshot with
        |None -> "unknown.jpg"
-|Some u -> u)
+       |Some u -> u)
     in
     let alt = task.owner.name in
     wrap_url task.owner.homepage
     <:html<<img class="mugshot" alt=$str:alt$ src=$str:url$ height="30px" />&>>
   in
+  let task_href = hrefbase ^ "#" ^ task.task_name in
   let body = <:html<
     $mugshot$
-    $str:task.task_name$<br />
+    <a href=$str:task_href$>$str:task.task_name$</a><br />
     >> in
   let content = padding ~cl:(status_to_string task.status) task_start task_end body in
   let right = padding ~cl:"blank" task_end last_date <:html<&>> in
@@ -91,7 +92,7 @@ let draw_task task =
   in
   <:html< <tr> $left$ $content$ $right$ $infinity$ </tr> >>
 
-let tasks proj = List.map ~f:draw_task proj
+let tasks ?(hrefbase="") proj = List.map ~f:(draw_task ~hrefbase) proj
 
 let css = <:html<
   <style type="text/css">
@@ -100,9 +101,9 @@ let css = <:html<
       border-spacing: 0px 2px;
     }
     .blank { background-color: #fefefe; }
-    .planning { background-color: #aaaacc; }
-    .doing { background-color: #eeeeaa; }
-    .complete { background-color: #aaccaa; }
+    .planning { background-color: #bbccee; }
+    .doing { background-color: #eeeebb; }
+    .complete { background-color: #bbddbb; }
     img.mugshot { float:left; padding-right: 5px; }
     tr.dates {
       font-size: 0.75em;
@@ -118,13 +119,16 @@ let to_long_html projects =
   List.map projects
     ~f:(fun proj ->
       let proj_descr = Markdown.from_file_to_html (proj.project_id^"/descr") in
+      let proj_href = proj.project_id^".html" in
+      let ts = tasks ~hrefbase:(proj.project_id^".html") proj.tasks in
       <:html<
       $css$
       <h1 id=$str:proj.project_id$>$str:proj.project_name$</h1>
       $proj_descr$
+      <p><i><a href=$str:proj_href$>(more information)</a></i></p>
       <table class="projects" width="95%">
       <tr class="dates">$list:cells$</tr>
-      $list:tasks proj.tasks$
+      $list:ts$
       <tr><td colspan=$str:string_of_int total_colspan$>&nbsp;</td></tr>
       </table>
     >>)

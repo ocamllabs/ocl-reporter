@@ -29,6 +29,21 @@ let link ?cl href text =
   |None -> <:html<<a href="$str:href$">$str:text$</a>&>>
   |Some cl -> <:html<<a class="$str:cl$" href="$str:href$">$str:text$</a>&>>
 
+let ref_to_html rf =
+  let open Types.Reference in
+  let l = <:html<$str:rf.name$>> in
+  match rf.link with
+  |`Pdf r -> <:html<<a class="icon-pdf" href=$str:r$>$l$</a>&>>
+  |`Blog r |`Webpage r|`Video r|`Slideshare r -> <:html<<a href=$str:r$>$l$</a>&>>
+  |`Github (u,p) -> let r = sprintf "https://github.com/%s/%s" u p in <:html<<a href=$str:r$>$l$</a>&>>
+  |`Github_tag (u,p,t) -> let r = sprintf "https://github.com/%s/%s/archives/%s.tar.gz" u p t in <:html<<a href=$str:r$>$l$</a>&>>
+  |`Mantis id -> let r = sprintf "http://caml.inria.fr/mantis/view.php?id=%d" id in <:html<<a href=$str:r$>$l$</a>&>>
+  |`Paper _ -> failwith "no paper output yet"
+
+let refs_to_html rs =
+  let x = List.map ~f:(fun x -> <:html<$ref_to_html x$ &nbsp; >>) rs in
+  <:html<$list:x$>>
+ 
 (* Convert a Date to a human-readable string.
  * TODO is there a nicer Core function for this? *)
 let human_readable_date d =
@@ -37,24 +52,6 @@ let human_readable_date d =
 (* CSS style we include for each page.
  * Note that this style is specialised to the CUCL web page style *)
 let style =
-(*
-  blockquote {
-    margin-left: 10px;
-    padding-left: 20px;
-    width: 80%;
-    color: #330000;
-  } 
-  div.changelog { width:80%; font-size:90%; }
-  blockquote p { margin-left: 0;  }
-  div.ocl p { width: 75%; min-width: 400px; }
-  div.ocl a { color: #330099; } 
-  .ocl-output {
-   width: 75%;
-   padding:.4em 0;
-   margin:0 0 1em 0;
-   border-bottom: 1px solid #cccccc;
-  }
-*)
   <:html<
     <style>
     .ocl-cogs span { padding-right:30px; background-size:20px; background: url(../cogs.png) no-repeat right center; }
@@ -111,7 +108,7 @@ let people =
 let mugshot p = sprintf "../mugshots/%s" (Option.value ~default:"unknown.jpg" p.Types.Person.mugshot)
 let mugshot_img ?(size=60) p =
   let size = sprintf "%dpx" size in
-  <:html<<img class="inline" style="padding-right: 30px;" height=$str:size$ src=$str:mugshot p$ />&>>
+  <:html<<img class="inline" style="float:left; padding-right: 30px;" height=$str:size$ src=$str:mugshot p$ />&>>
 
 (* Generate a profile page per-person *)
 let one_person p =
@@ -170,14 +167,12 @@ let one_project proj =
         in
         <:html< $mode$ ($start$ -$finish$) >>
       in
-      let mugshots = mugshot_img ~size:30 t.owner in
+      let mugshots = mugshot_img ~size:40 t.owner in
       <:html<
-        <h3 id=$str:t.task_name$>$str:t.task_name$</h3>
-        <p>
-         $mugshots$
-         $status$
-        </p>
-        $descr$
+         <h3 id=$str:t.task_name$>$str:t.task_name$</h3>
+         <p>$mugshots$ $status$<br />Links: $refs_to_html t.refs$</p>
+         $descr$
+         <hr />
       >>
   ) proj.tasks in
   let body = <:html<

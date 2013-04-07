@@ -81,10 +81,10 @@ module Reference = struct
     link: link;
   }
 
-  let github ?(name="") owner repo =
+  let github ?(name="Github") owner repo =
     { name; link=(`Github (owner,repo)) }
 
-  let webpage ?(name="") url =
+  let webpage ?(name="Homepage") url =
     { name; link=(`Webpage url) }
 end
 
