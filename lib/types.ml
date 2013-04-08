@@ -75,7 +75,7 @@ module Reference = struct
    | `Video of string
    | `Slideshare of string
    | `Mantis of int
-   | `Paper of string * string * string (* URL, authors , descr *)
+   | `Paper of string * string * string * string * string (* URL, title, authors , conference, conf url *)
   ]
   and t = {
     name: string;
@@ -93,6 +93,9 @@ module Reference = struct
 
   let pdf ?(name="PDF") url =
     { name; link=(`Pdf url) }
+
+  let paper ?(name="Paper") ~title ~authors ~conf ~conf_url url = 
+    { name=name; link=(`Paper (url, title, authors, conf, conf_url)) }
 end
 
 module Output = struct

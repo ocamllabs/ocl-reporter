@@ -502,6 +502,18 @@ module Projects = struct
       project_name="Mirage OS"; 
       team; project_owner; tasks 
     } and tasks = [
+      mk_task ~name:"Unikernel Mirage prototype"
+        ~start:"2012-08-01" ~finish:"2013-03-02"
+        ~owner:People.avsm
+        ~status:`Complete
+        ~refs:[ 
+           Reference.paper
+             ~name:"ASPLOS paper"
+             ~title:"Unikernels: Library Operating Systems for the Cloud"
+             ~authors:"Anil Madhavapeddy, Richard Mortier, Charalampos Rotsos, David Scott, Balraj Singh, Thomas Gazagnaire, Steven Smith, Steven Hand and Jon Crowcroft"
+             ~conf:"ASPLOS 2013" ~conf_url:"http://asplos13.rice.edu"
+             "http://anil.recoil.org/papers/2013-asplos-mirage.pdf"
+         ] ();    
       mk_task ~name:"Xen.org incubation"
         ~start:"2012-12-01" ~finish:"2013-04-01"
         ~owner:People.amir

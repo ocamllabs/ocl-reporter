@@ -40,7 +40,7 @@ let ref_to_html rf =
   |`Github_issues (u,p) -> let r = sprintf "https://github.com/%s/%s/issues" u p in <:html<<a class="icon-wrench" href=$str:r$>$l$</a>&>>
   |`Github_tag (u,p,t) -> let r = sprintf "https://github.com/%s/%s/archives/%s.tar.gz" u p t in <:html<<a class="icon-github" href=$str:r$>$l$</a>&>>
   |`Mantis id -> let r = sprintf "http://caml.inria.fr/mantis/view.php?id=%d" id in <:html<<a href=$str:r$>$l$</a>&>>
-  |`Paper _ -> failwith "no paper output yet"
+  |`Paper (r,_,_,_,_) -> <:html<<a class="icon-pdf" href=$str:r$>$l$</a>&>>
 
 let refs_to_html rs =
   let x = List.map ~f:(fun x -> <:html<$ref_to_html x$ &nbsp; >>) rs in
@@ -116,7 +116,7 @@ let people =
     <div style="overflow:auto">$list:List.map ~f:person_to_html Data.People.of_cucl$</div>
     <h3>External Collaborators</h3>
     $list:ext_people$
-    >> in
+  >> in
   (* And output the full people web page *)
   one_page ~title:"People" ~body:
   <:html<
