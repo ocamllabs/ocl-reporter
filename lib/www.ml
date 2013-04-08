@@ -113,8 +113,11 @@ let people =
   (* Aggregate all the organisation info now *)
   let orgs = <:html<
     <h3>University of Cambridge Computer Laboratory</h3>
+    <p><b>Core Members</b></p>
     <div style="overflow:auto">$list:List.map ~f:person_to_html Data.People.of_cucl$</div>
-    <h3>External Collaborators</h3>
+    <p><b>Internal Collaborators</b></p>
+    <div style="overflow:auto">$list:List.map ~f:person_to_html Data.People.of_cuclx$</div>
+    <h3>External Partners</h3>
     $list:ext_people$
   >> in
   (* And output the full people web page *)

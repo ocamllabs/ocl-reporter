@@ -117,7 +117,7 @@ module People = struct
   let smh = {
     id="smh";
     name="Steven Hand";
-    affiliation=`CL;
+    affiliation=`CLx;
     role="Reader";
     bio=None;
     homepage=Some "http://www.cl.cam.ac.uk/~smh22";
@@ -126,7 +126,7 @@ module People = struct
   let haris = {
     id="haris";
     name="Haris Rotsos";
-    affiliation=`CL;
+    affiliation=`CLx;
     role="PhD Student";
     bio=None;
     homepage=Some "http://www.cl.cam.ac.uk/~cr409/";
@@ -150,10 +150,19 @@ module People = struct
     homepage=Some "https://github.com/stedolan";
     mugshot=None;
   }
+  let griffin = {
+    id="griffin";
+    name="Timothy G. Griffin";
+    affiliation=`CLx;
+    role="Reader";
+    bio=None;
+    homepage=Some "http://www.cl.cam.ac.uk/~tgg22/";
+    mugshot=Some "griffin.jpg";
+  }
   let rwatson = {
     id="rwatson";
     name="Robert Watson";
-    affiliation=`CL;
+    affiliation=`CLx;
     role="Senior RA";
     bio=None;
     homepage=Some "http://www.cl.cam.ac.uk/~rnw24/";
@@ -162,7 +171,7 @@ module People = struct
   let alib = {
     id="alib";
     name="Alastair Beresford";
-    affiliation=`CL;
+    affiliation=`CLx;
     role="Lecturer";
     bio=None;
     homepage=Some "http://www.cl.cam.ac.uk/~arb33";
@@ -321,12 +330,13 @@ module People = struct
   let gabor = {
     id="gabor";
     name="Gabor Pali";
-    affiliation=`CL;
-    role="";
+    affiliation=`CLx;
+    role="Summer visitor (2012)";
     bio=None;
     homepage=Some "http://people.freebsd.org/~pgj";
     mugshot=Some "gabor.jpg";
   }
+(*
   let prashanth = {
     id="prashanth";
     name="Prashanth Mundkur";
@@ -336,6 +346,7 @@ module People = struct
     homepage=Some "https://github.com/pmundkur";
     mugshot=Some "prashanth.jpg";
   }
+*)
   let jhickey = {
     id="jhickey";
     name="Jason Hickey";
@@ -348,22 +359,24 @@ module People = struct
 
   let all = [
     avsm; mycroft; iml; crowcroft; amir; lpw25; yallop; pwang;
-    stedolan; balrajsingh; heidi; raphael; smh; haris;
+    stedolan; balrajsingh; heidi; raphael; smh; haris; griffin;
     vsevolod; stephend; rwatson; alib; bogdan;
     djs; vb; jludlam; lars; yaron; shinwell; tg; fabrice;
     pierre; mac; mort; ashish; christophe; gabor;
-    prashanth; jhickey ]
+    (* prashanth; *) jhickey ]
 
   (* Split out the CUCL from the org list *)
-  let of_cucl, of_other =
+  let of_cucl, of_cuclx, of_other =
     let l = by_affiliation all in
     let cucl = List.Assoc.find_exn l `CL |> List.rev in
+    let cuclx = List.Assoc.find_exn l `CLx |> List.rev in
     let other =
       List.Assoc.remove l `CL
+      |> fun l -> List.Assoc.remove l `CLx
       |> List.sort ~cmp:(fun a b -> cmp (fst a) (fst b))
       |> List.map ~f:(fun (a,b) -> (a, List.rev b))
     in
-    cucl, other
+    cucl, cuclx, other
 end
 
 open Project

@@ -5,6 +5,7 @@ module Person = struct
     | `Citrix
     | `OnApp
     | `CL
+    | `CLx (* For CL affiliates not directly funded by OCL or affiliated with OCL PIs *)
     | `OCP
     | `JSC
     | `Horizon
@@ -20,6 +21,7 @@ module Person = struct
     | `Google -> "Google"
     | `OnApp -> "OnApp"
     | `CL -> "Cambridge Computer Laboratory"
+    | `CLx -> "Cambridge Computer Laboratory"
     | `JSC -> "Jane Street Capital"
     | `OCP -> "OCamlPro"
     | `Horizon -> "Horizon"
@@ -30,15 +32,16 @@ module Person = struct
   let cmp (a:affiliation) (b:affiliation) =
     let order = function
     |`CL -> 0
-    |`Citrix -> 1
-    |`OCP -> 2
-    |`JSC -> 3
-    |`Horizon -> 4
-    |`SRI -> 5
-    |`OnApp -> 6
-    |`NYU -> 7
-    |`UMONS -> 8
-    |`Google -> 9
+    |`CLx -> 1
+    |`Citrix -> 2
+    |`OCP -> 3
+    |`JSC -> 4
+    |`Horizon -> 5
+    |`SRI -> 6
+    |`OnApp -> 7
+    |`NYU -> 8
+    |`UMONS -> 9
+    |`Google -> 10
     in compare (order a) (order b)
 
   type t = {
