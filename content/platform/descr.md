@@ -13,4 +13,16 @@ such users have will ultimately result in a large and positive impact on the
 wider community, through significantly improved tooling, libraries and
 documentation.
 
+The current thrust of work is to improve the tooling around packaging, build
+and test infrastructure.  Once complete, this will enable us to effectively
+run over hundreds of community packages and determine selection criteria
+for the Platform.  A key aspect of this selection will be which libraries
+are already popular and in use, and also how actively maintained and portable
+they are across different operating systems.
+
+The tasks below reflect this by:
+
+* The OPAM package manager acts as the package management front end.
+* The OPAM Doc tool replaces the venerable `ocamldoc` tool with modern, cross-referenced HTML output across several libraries.
+* The OCamelot testing infrastructure runs continuous integration of OPAM stable and candidate packages across a variety of operating systems and CPU architectures.
 
