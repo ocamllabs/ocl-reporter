@@ -306,15 +306,6 @@ module People = struct
     homepage=Some "http://www.cs.nott.ac.uk/~rmm";
     mugshot=Some "mort.png";
   }
-  let bishneet = {
-    id="bishneet";
-    name="Bishneet Kaur";
-    affiliation=`Horizon;
-    role="Intern";
-    bio=None;
-    homepage=None;
-    mugshot=None;
-  }
   (* 
     Other people
   *)
@@ -365,11 +356,11 @@ module People = struct
   }
 
   let all = [
-    avsm; mycroft; iml; crowcroft; amir; lpw25; yallop;
+    avsm; mycroft; iml; crowcroft; amir; lpw25; yallop; pwang;
     stedolan; balrajsingh; heidi; raphael; smh; haris;
     vsevolod; griffin; stephend; rwatson; alib; bogdan;
     djs; vb; jludlam; lars; yaron; shinwell; tg; fabrice;
-    pierre; mac; mort; bishneet; ashish; christophe; gabor;
+    pierre; mac; mort; ashish; christophe; gabor;
     prashanth; jhickey ]
 
   (* Split out the CUCL from the org list *)

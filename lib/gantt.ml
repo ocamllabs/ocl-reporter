@@ -26,7 +26,7 @@ let cells =
     let s = sprintf "%s '%d" (Month.to_string d.Date.m) (d.Date.y-2000) in
     <:html<<td>$str:s$</td>&>>)
   @ [ <:html<<td>&infin;</td>&>> ]
-  
+
 let months_between d1 d2 =
   let round d = Date.create_exn ~y:d.Date.y ~m:d.Date.m ~d:1 in
   Date.dates_between d1 d2 
@@ -69,19 +69,19 @@ let draw_task ?(hrefbase="") task =
   let mugshot =
     let open Types.Person in
     let url = sprintf "../mugshots/%s"
-      (match task.owner.mugshot with
-       |None -> "unknown.jpg"
-       |Some u -> u)
+        (match task.owner.mugshot with
+         |None -> "unknown.jpg"
+         |Some u -> u)
     in
     let alt = task.owner.name in
     wrap_url task.owner.homepage
-    <:html<<img class="mugshot" alt=$str:alt$ src=$str:url$ height="30px" />&>>
+      <:html<<img class="mugshot" alt=$str:alt$ src=$str:url$ height="30px" />&>>
   in
   let task_href = hrefbase ^ "#" ^ task.task_name in
   let body = <:html<
-    $mugshot$
-    <a href=$str:task_href$>$str:task.task_name$</a><br />
-    >> in
+               $mugshot$
+               <a href=$str:task_href$>$str:task.task_name$</a><br />
+             >> in
   let content = padding ~cl:(status_to_string task.status) task_start task_end body in
   let right = padding ~cl:"blank" task_end last_date <:html<&>> in
   let infinity =
@@ -95,47 +95,66 @@ let draw_task ?(hrefbase="") task =
 let tasks ?(hrefbase="") proj = List.map ~f:(draw_task ~hrefbase) proj
 
 let css = <:html<
-  <style type="text/css">
-    table { 
-      table-layout: fixed;
-      border-spacing: 0px 2px;
-    }
-    .blank { background-color: #fefefe; }
-    .planning { background-color: #bbccee; }
-    .doing { background-color: #eeeebb; }
-    .complete { background-color: #bbddbb; }
-    img.mugshot { float:left; padding-right: 5px; }
-    tr.dates {
-      font-size: 0.75em;
-      background-color: #dfdfdf;
-      color: #111111;
-    }
-</style>
->>
+            <style type="text/css">
+            table { 
+            table-layout: fixed;
+            border-spacing: 0px 2px;
+            }
+            .blank { background-color: #fefefe; }
+            .planning { background-color: #bbccee; }
+            .doing { background-color: #eeeebb; }
+            .complete { background-color: #bbddbb; }
+            img.mugshot { float:left; padding-right: 5px; }
+            tr.dates {
+            font-size: 0.75em;
+            background-color: #dfdfdf;
+            color: #111111;
+            }
+            </style>
+          >>
 
 (* Output the main projects page HTML *)
-let to_long_html ?(moreinfo=false) projects = 
+let to_project_html ?(moreinfo=true) projects = 
   let open Types.Project in
   let more proj =
-      let proj_href = proj.project_id^".html" in
-        if moreinfo then
-    <:html<<p><i><a href=$str:proj_href$>(more information)</a></i></p>&>>
-     else [] in
+    let proj_href = proj.project_id^".html" in
+    if moreinfo then
+      <:html<<p><i><a href=$str:proj_href$>(more information)</a></i></p>&>>
+    else [] in
   List.map projects
     ~f:(fun proj ->
       let proj_descr = Markdown.from_file_to_html (proj.project_id^"/descr") in
       let ts = tasks ~hrefbase:(proj.project_id^".html") proj.tasks in
       <:html<
-      $css$
-      <h1 id=$str:proj.project_id$>$str:proj.project_name$</h1>
-      $proj_descr$
-      $more proj$
-      <table class="projects" width="95%">
-      <tr class="dates">$list:cells$</tr>
-      $list:ts$
-      <tr><td colspan=$str:string_of_int total_colspan$>&nbsp;</td></tr>
-      </table>
-    >>)
+        $css$
+        <h1 id=$str:proj.project_id$>$str:proj.project_name$</h1>
+        $proj_descr$
+        $more proj$
+        <table class="projects" width="95%">
+        <tr class="dates">$list:cells$</tr>
+        $list:ts$
+        <tr><td colspan=$str:string_of_int total_colspan$>&nbsp;</td></tr>
+        </table>
+      >>)
+
+let to_one_project_html teamlist proj =
+  let open Types.Project in
+  let proj_descr = Markdown.from_file_to_html (proj.project_id^"/descr") in
+  let ts = tasks proj.tasks in
+  <:html<
+    $css$
+    <h1 id=$str:proj.project_id$>$str:proj.project_name$</h1>
+    $proj_descr$
+    <h2 id="Team">Team</h2>
+    $teamlist$
+    <h2 id="Tasks">Tasks</h2>
+    <table class="projects" width="95%">
+    <tr class="dates">$list:cells$</tr>
+    $list:ts$
+    <tr><td colspan=$str:string_of_int total_colspan$>&nbsp;</td></tr>
+    </table>
+  >>
+
 
 (* Output the shortened version without descriptions, for the person page *)
 let to_short_html person =
@@ -145,9 +164,11 @@ let to_short_html person =
       ~f:(fun proj -> List.mem (people_in_project proj) person) in
   List.map projects ~f:(fun proj ->
     let task_list = proj.tasks in
+    let phref = sprintf "../tasks/%s.html" proj.project_id in
     <:html<
       $css$
-      <h3 id=$str:proj.project_id$>$str:proj.project_name$</h3>
+      <h2 id=$str:proj.project_id$>$str:proj.project_name$</h2>
+      <p><i><a href=$str:phref$>(more info)</a></i></p>
       <table class="projects" width="95%">
         <tr class="dates">$list:cells$</tr>
         $list:tasks task_list$

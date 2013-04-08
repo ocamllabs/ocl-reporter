@@ -124,7 +124,8 @@ let mugshot p = sprintf "../mugshots/%s" (Option.value ~default:"unknown.jpg" p.
 let mugshot_img ?(float=true) ?(size=60) p =
   let size = sprintf "%dpx" size in
   let style = if float then "float:left; padding-right: 30px" else "" in
-  <:html<<img class="inline" style=$str:style$ height=$str:size$ src=$str:mugshot p$ />&>>
+  let phref = sprintf "../people/%s.html" p.Types.Person.id in
+  <:html<<a href=$str:phref$><img class="inline" style=$str:style$ height=$str:size$ src=$str:mugshot p$ /></a>&>>
 
 (* Generate a profile page per-person *)
 let one_person p =
@@ -132,13 +133,6 @@ let one_person p =
   let homepage = match p.homepage with
    |None -> <:html< >>
    |Some h -> link h h in
-  let project_html =
-    (* Find the projects for this person *)
-    let h = Gantt.to_short_html p in
-    <:html<
-      <h2>Projects</h2>$list:h$
-    >>
-  in
   let body = <:html<
     <h1>$str:p.name$</h1>
     <p>
@@ -147,14 +141,14 @@ let one_person p =
       $str:p.role$<br />
       $homepage$
     </p>
-    $project_html$
+    $list:Gantt.to_short_html p$
   >> in
   one_page ~title:p.name ~body
 
 let projects =
   let body = <:html<
     <div class="ucampas-toc right"/>
-    $list:Gantt.to_long_html ~moreinfo:true Data.Projects.all$ >> in
+    $list:Gantt.to_project_html ~moreinfo:true Data.Projects.all$ >> in
   one_page ~title:"Projects" ~body
 
 let one_project proj =
@@ -193,11 +187,10 @@ let one_project proj =
   ) proj.tasks in
   let leader = mugshot_img ~size:50 ~float:false proj.project_owner in
   let team = List.map ~f:(mugshot_img ~float:false ~size:50) proj.team in
-  let teamlist = <:html< <p>$leader$ $list:team$</p> >> in
+  let teamlist = <:html<<p>$leader$ $list:team$</p>&>> in
   let body = <:html<
     <div class="ucampas-toc right"/>
-    $list:Gantt.to_long_html [proj]$
-    $teamlist$
+    $Gantt.to_one_project_html teamlist proj$
     $list:tasks$
   >> in
   one_page ~title:proj.project_name ~body
