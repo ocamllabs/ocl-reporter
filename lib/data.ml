@@ -416,7 +416,11 @@ module Projects = struct
         ~start:"2013-01-16"
         ~owner:People.lpw25
         ~status:`Doing
-        ~refs:[ Reference.github "lpw25" "opam-doc" ] () ;
+        ~descr:"opam-doc"
+        ~refs:[ 
+           Reference.github ~name:"opam-doc" "lpw25" "opam-doc" ;
+           Reference.github ~name:"bin-doc" "lpw25" "bin-doc" ;
+         ] () ;
       mk_task ~name:"OCamelot"
         ~start:"2013-01-16"
         ~owner:People.sheets

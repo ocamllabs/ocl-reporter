@@ -1,6 +1,10 @@
-Improving the documentation generation of OCaml tools. The aim is to support the OCaml platform with fully cross-referenced documentation from source code, including the ability to include interactive tutorials using the
+The OCaml toolchain has shipped with the `ocamldoc` tool for a long time.  `ocamldoc` runs over a single OCaml library and generates cross-referenced documentation.  It also supports a variety of outputs, such as Latex, HTML, PDF and even manpages.  However, it is starting to show its age for large, complex codebases such as [Core](http://github.com/janestreet/core), and so we are developing a more scalable alternative for the Platform effort.
+
+OPAM-doc consists of two separate commands:
+
+* [bin-doc](http://github.com/lpw25/bin-doc) is a replacement for the OCamldoc lexer (which extracts documentation from [source code comments](http://caml.inria.fr/pub/docs/manual-ocaml-4.00/manual029.html). It uses the OCaml-4.00+ facility for generating `.cmt` files that contain the typed AST, and generates `.cmd` files which contain the documentation information.  By using a separate file from the AST, we leave open the possibility of having multiple language translations in the future.  These `.cmd` and `.cmdi` files can be combined with the `.cmt` files to generate complete documentation directly from the output of the compiler.  This command is intended to be temporary, and can be integrated into the upstream in the future.
+
+* [opam-doc](http://github.com/lpw25/opam-doc) takes a set of `cmt` and `cmd` files and outputs a single JSON representation of all the files.  This JSON can then be post-processed (or directly rendered in Javascript) to create a single documentation repository that reliably renders cross-references across entire libraries.  Thus, the entire Platform can have one documentation source rather than having to search across packages.
+
+The ultimate aim is to support the OCaml platform with interactive tutorials using the
 [js_of_ocaml](http://ocsigen.org/js_of_ocaml) compiler.
-
-By extracting inline documentation from source code and storing it in a binary format (similar to the new .cmt files) we hope to make it easier for tools to access the documentation associated with a module. In particular we hope to produce fully cross-reference documentation across the whole OCaml platform.
-
-We also aim to improve the support for different translations of documentation via localisation files.
