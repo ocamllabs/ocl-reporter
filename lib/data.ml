@@ -3,9 +3,9 @@ open Types
 
 include Data_people
 
-open Project
 module Projects = struct
 
+  open Project
   module Platform = struct
 
    let opam_refs = [ 
