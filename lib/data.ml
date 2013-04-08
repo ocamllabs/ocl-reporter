@@ -52,6 +52,7 @@ module Projects = struct
         ~start:"2013-01-16"
         ~owner:People.sheets
         ~status:`Planning
+        ~descr:"ocamlot"
         ~refs:[ Reference.github "ocamllabs" "ocamlot" ] () ;
       mk_task ~name:"Platform Preview"
         ~start:"2013-03-01" ~finish:"2013-06-01"
