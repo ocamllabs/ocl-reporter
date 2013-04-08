@@ -1,4 +1,5 @@
 (* When you add a paper, don't forget to append it to the `all` variable at the bottom! *)
+open Core.Std
 open Types.Paper
 
 let asplos_2013 =
@@ -33,3 +34,7 @@ let all = [
   hotcloud_2010;
   conext_pvtcp
 ]
+
+let all_by_date =
+  let cmp a b = Date.compare b.date a.date in
+  List.sort ~cmp all

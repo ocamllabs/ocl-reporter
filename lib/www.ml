@@ -203,6 +203,28 @@ let one_project proj =
     $list:tasks$
   >> in
   one_page ~title:proj.project_name ~body
+
+let outputs =
+  let open Types.Paper in
+  let pubs = List.map Data_papers.all_by_date
+    ~f:(fun p ->
+      <:html<
+       <p>
+       <a name=$str:p.id$></a>
+       <b>$str:p.title$</b>
+       <a class="icon-pdf" href=$str:p.url$>Download</a>
+       <br />
+       $str:p.authors$
+       <br />
+       in <a href=$str:p.conf_url$>$str:p.conf$</a>, $str:Date.to_string p.date$
+       </p>
+      >>)
+  in
+  let body = <:html<
+     <h2 id="Publications">Publications</h2>
+     $list:pubs$
+    >> in
+  one_page ~title:"Outputs" ~body
        
 let write_html file html =
   let data = Cow.Html.to_string html in
@@ -228,6 +250,8 @@ let _ =
   write_html "tasks/index" projects;
   List.iter Data.Projects.all ~f:(fun p ->
     write_html ("tasks/"^p.Types.Project.project_id) (one_project p));
+  write_uconfig "outputs" [];
+  write_html "outputs/index" outputs;
   ()
 
 (*
