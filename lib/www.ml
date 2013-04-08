@@ -121,9 +121,10 @@ let people =
 >>
 
 let mugshot p = sprintf "../mugshots/%s" (Option.value ~default:"unknown.jpg" p.Types.Person.mugshot)
-let mugshot_img ?(size=60) p =
+let mugshot_img ?(float=true) ?(size=60) p =
   let size = sprintf "%dpx" size in
-  <:html<<img class="inline" style="float:left; padding-right: 30px;" height=$str:size$ src=$str:mugshot p$ />&>>
+  let style = if float then "float:left; padding-right: 30px" else "" in
+  <:html<<img class="inline" style=$str:style$ height=$str:size$ src=$str:mugshot p$ />&>>
 
 (* Generate a profile page per-person *)
 let one_person p =
@@ -190,11 +191,14 @@ let one_project proj =
          $descr$</div>
       >>
   ) proj.tasks in
+  let leader = mugshot_img ~size:50 ~float:false proj.project_owner in
+  let team = List.map ~f:(mugshot_img ~float:false ~size:50) proj.team in
+  let teamlist = <:html< <p>$leader$ $list:team$</p> >> in
   let body = <:html<
     <div class="ucampas-toc right"/>
     $list:Gantt.to_long_html [proj]$
+    $teamlist$
     $list:tasks$
-    <h2 id="Team">Team</h2>
   >> in
   one_page ~title:proj.project_name ~body
        
