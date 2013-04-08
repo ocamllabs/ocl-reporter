@@ -2,12 +2,25 @@
 
 <title>Projects</title>
     <style>
-    .ocl-cogs span { padding-right:30px; background-size:20px; background: url(../cogs.png) no-repeat right center; }
-    .ocl-print span { padding-right:30px; background-size:20px; background: url(../print.png) no-repeat right center; }
-    .ocl-cloud span { padding-right:30px; background-size:20px; background: url(../cloud.png) no-repeat right center; }
-    .ocl-group span { padding-right:30px; background-size:20px; background: url(../group.png) no-repeat right center; }
-    .ocl-bullhorn span { padding-right:30px; background-size:20px; background: url(../bullhorn.png) no-repeat right center; }
-    .ocl-asset span { padding-right:30px; background-size:20px; background: url(../wrench.png) no-repeat right center; }
+    a.icon-github {
+	background: url(../github.png) no-repeat 0 0;
+	padding: 0 0 2px 2em;
+    }
+    a.icon-cloud {
+	background: url(../cloud.png) no-repeat 0 0;
+        background-size: 17px;
+	padding: 0 0 2px 2em;
+    }
+    a.icon-bullhorn {
+	background: url(../bullhorn.png) no-repeat 0 0;
+        background-size: 17px;
+	padding: 0 0 2px 2em;
+    }
+    a.icon-wrench {
+	background: url(../wrench.png) no-repeat 0 0;
+        background-size: 17px;
+	padding: 0 0 2px 2em;
+    }
     </style>
   <body>
     <div class="ucampas-toc right"/>
@@ -33,6 +46,13 @@
       <h1 id="platform">OCaml Platform</h1>
       <p>The OCaml Platform combines the core OCaml compiler with a coherent set of libraries, tools and documentation. The requirements and direction of the Platform are initially being guided by large users of OCaml such as <a href="http://ocaml.janestreet.com">Jane Street</a>, <a href="http://www.xen.org/files/XenCloud/ocamldoc/">Citrix</a> and <a href="http://www.lexifi.com/product/technology/ocaml">Lexifi</a>.</p>
 <p>The reason for initially taking direction from industrial users is because these companies have a great deal of experience of using the language at scale (e.g millions of lines of code, thousands of modules and complicated testing requirements). We take a pragmatic view that examining and solving the problems such users have will ultimately result in a large and positive impact on the wider community, through significantly improved tooling, libraries and documentation.</p>
+<p>The current thrust of work is to improve the tooling around packaging, build and test infrastructure. Once complete, this will enable us to effectively run over hundreds of community packages and determine selection criteria for the Platform. A key aspect of this selection will be which libraries are already popular and in use, and also how actively maintained and portable they are across different operating systems.</p>
+<p>The tasks below reflect this by:</p>
+<ul>
+<li>The OPAM package manager acts as the package management front end.</li>
+<li>The OPAM Doc tool replaces the venerable <code>ocamldoc</code> tool with modern, cross-referenced HTML output across several libraries.</li>
+<li>The OCamelot testing infrastructure runs continuous integration of OPAM stable and candidate packages across a variety of operating systems and CPU architectures.</li>
+</ul>
 
       <p><i><a href="platform.html">(more information)</a></i></p>
       <table class="projects" width="95%">
@@ -50,8 +70,8 @@
     <a href="http://lpw25.net"><img class="mugshot" alt="Leo White" src="../mugshots/lpw25.jpg" height="30px"/></a>
     <a href="platform.html#OPAM Doc">OPAM Doc</a><br/>
     </td>  <td class="doing"><i>plan?</i></td> </tr>  <tr> <td class="blank" colspan="5"/> <td class="planning" colspan="11">
-    <img class="mugshot" alt="Jeremy Yallop" src="../mugshots/unknown.jpg" height="30px"/>
-    <a href="platform.html#OCamleot">OCamleot</a><br/>
+    <img class="mugshot" alt="David Sheets" src="../mugshots/sheets.png" height="30px"/>
+    <a href="platform.html#OCamelot">OCamelot</a><br/>
     </td>  <td class="planning"><i>plan?</i></td> </tr>  <tr> <td class="blank" colspan="7"/> <td class="planning" colspan="3">
     <a href="http://amirchaudhry.com"><img class="mugshot" alt="Amir Chaudhry" src="../mugshots/amir.jpg" height="30px"/></a>
     <a href="platform.html#Platform Preview">Platform Preview</a><br/>
@@ -89,7 +109,7 @@
     <a href="http://amirchaudhry.com"><img class="mugshot" alt="Amir Chaudhry" src="../mugshots/amir.jpg" height="30px"/></a>
     <a href="mirage.html#Xen.org incubation">Xen.org incubation</a><br/>
     </td> <td class="blank" colspan="8"/> <td/> </tr>  <tr> <td class="blank" colspan="6"/> <td class="doing" colspan="3">
-    <a href="https://Reference.github.com/vbmithr"><img class="mugshot" alt="Vincent Bernardoff" src="../mugshots/unknown.jpg" height="30px"/></a>
+    <a href="https://github.com/vbmithr"><img class="mugshot" alt="Vincent Bernardoff" src="../mugshots/unknown.jpg" height="30px"/></a>
     <a href="mirage.html#Mirari">Mirari</a><br/>
     </td> <td class="blank" colspan="7"/> <td/> </tr>  <tr> <td class="blank" colspan="6"/> <td class="planning" colspan="5">
     <a href="http://dave.recoil.org"><img class="mugshot" alt="Dave Scott" src="../mugshots/djs.jpg" height="30px"/></a>
