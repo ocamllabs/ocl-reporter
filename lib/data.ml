@@ -21,19 +21,19 @@ module Projects = struct
         tasks;
       }
     and tasks = [ 
-      mk_task ~name:"OPAM 1.0 ('if it builds, ship it')"
+      mk_task ~name:"OPAM 1.0 (if it builds, ship it)"
         ~start:"2012-03-15" ~finish:"2013-03-14"
         ~owner:People.tg
         ~status:`Complete
         ~descr:"opam10"
         ~refs:opam_refs () ;
-      mk_task ~name:"OPAM 1.1 ('the testing release')"
+      mk_task ~name:"OPAM 1.1 (the CI and Test release)"
         ~start:"2013-02-17" ~finish:"2013-05-01"
         ~owner:People.tg
         ~status:`Doing
         ~descr:"opam11"
         ~refs: opam_refs () ;
-      mk_task ~name:"OPAM 1.2 ('the Platform release')"
+      mk_task ~name:"OPAM 1.2 (the Platform release)"
         ~start:"2013-05-01" ~finish:"2013-08-01"
         ~owner:People.tg
         ~status:`Planning
