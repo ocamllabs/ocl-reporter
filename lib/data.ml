@@ -1,10 +1,9 @@
 open Core.Std
 open Types
-
 include Data_people
+include Data_papers
 
 module Projects = struct
-
   open Project
   module Platform = struct
 
@@ -144,19 +143,9 @@ module Projects = struct
         ~owner:People.avsm
         ~status:`Complete
         ~descr:"asplos2013"
-        ~refs:[ 
-           Reference.paper
-             ~name:"ASPLOS 2013"
-             ~title:"Unikernels: Library Operating Systems for the Cloud"
-             ~authors:"Anil Madhavapeddy, Richard Mortier, Charalampos Rotsos, David Scott, Balraj Singh, Thomas Gazagnaire, Steven Smith, Steven Hand and Jon Crowcroft"
-             ~conf:"ASPLOS 2013" ~conf_url:"http://asplos13.rice.edu"
-             "http://anil.recoil.org/papers/2013-asplos-mirage.pdf";
-           Reference.paper
-             ~name:"HotCloud 2010"
-             ~title:"Turning down the LAMP: Software Specialisation for the Cloud"
-             ~authors:"Anil Madhavapeddy, Richard Mortier, Ripduman Sohan, Thomas Gazagnaire, Steven Hand, Tim Deegan, Derek McAuley and Jon Crowcroft"
-             ~conf:"HotCloud 2011" ~conf_url:"http://static.usenix.org/events/hotcloud10/index.html"
-             "http://anil.recoil.org/papers/2010-hotcloud-lamp.pdf"
+        ~refs:[
+           Reference.paper ~name:"ASPLOS 2013" asplos_2013;
+           Reference.paper ~name:"HotCloud 2010" hotcloud_2010;
          ] ();    
       mk_task ~name:"Xen.org incubation"
         ~start:"2012-12-01" ~finish:"2013-04-01"

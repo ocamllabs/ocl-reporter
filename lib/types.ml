@@ -69,6 +69,22 @@ module Person = struct
     )
 end
 
+module Paper = struct
+  type t = {
+    id: string;
+    title: string;
+    url: string;
+    authors: string;
+    date: Date.t;
+    conf: string;
+    conf_url: string;
+  }
+
+  let mk ~id ~title ~url ~authors ~date ~conf ~conf_url =
+    let date = Date.of_string date in
+    { id; title; url; authors; date; conf; conf_url }
+end
+
 module Reference = struct
 
   type link = [
@@ -81,7 +97,7 @@ module Reference = struct
    | `Video of string
    | `Slideshare of string
    | `Mantis of int
-   | `Paper of string * string * string * string * string (* URL, title, authors , conference, conf url *)
+   | `Paper of Paper.t
   ]
   and t = {
     name: string;
@@ -100,8 +116,8 @@ module Reference = struct
   let pdf ?(name="PDF") url =
     { name; link=(`Pdf url) }
 
-  let paper ?(name="Paper") ~title ~authors ~conf ~conf_url url = 
-    { name=name; link=(`Paper (url, title, authors, conf, conf_url)) }
+  let paper ?(name="Paper") paper =
+    { name=name; link=(`Paper paper) }
 end
 
 module Output = struct
