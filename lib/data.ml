@@ -69,6 +69,15 @@ module People = struct
     homepage=None;
     mugshot=None;
   }
+  let pwang = {
+    id="pwang";
+    name="Phillipe Wang";
+    affiliation=`CL;
+    role="Research Associate";
+    bio=None;
+    homepage=Some "http://philippewang.info";
+    mugshot=Some "pwang.jpg";
+  }
   let stedolan = {
     id="stedolan";
     name="Stephen Dolan";
@@ -390,7 +399,7 @@ module Projects = struct
       { project_id="platform"; 
         project_name="OCaml Platform"; 
         project_owner=People.amir;
-        team=People.([ avsm ]);
+        team=People.([ avsm; tg; lpw25; sheets; yallop; pwang ]);
         tasks;
       }
     and tasks = [ 
