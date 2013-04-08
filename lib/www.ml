@@ -34,9 +34,11 @@ let ref_to_html rf =
   let l = <:html<$str:rf.name$>> in
   match rf.link with
   |`Pdf r -> <:html<<a class="icon-pdf" href=$str:r$>$l$</a>&>>
-  |`Blog r |`Webpage r|`Video r|`Slideshare r -> <:html<<a href=$str:r$>$l$</a>&>>
-  |`Github (u,p) -> let r = sprintf "https://github.com/%s/%s" u p in <:html<<a href=$str:r$>$l$</a>&>>
-  |`Github_tag (u,p,t) -> let r = sprintf "https://github.com/%s/%s/archives/%s.tar.gz" u p t in <:html<<a href=$str:r$>$l$</a>&>>
+  |`Blog r |`Webpage r -> <:html<<a class="icon-cloud" href=$str:r$>$l$</a>&>>
+  |`Video r|`Slideshare r -> <:html<<a class="icon-bullhorn" href=$str:r$>$l$</a>&>>
+  |`Github (u,p) -> let r = sprintf "https://github.com/%s/%s" u p in <:html<<a class="icon-github" href=$str:r$>$l$</a>&>>
+  |`Github_issues (u,p) -> let r = sprintf "https://github.com/%s/%s/issues" u p in <:html<<a class="icon-wrench" href=$str:r$>$l$</a>&>>
+  |`Github_tag (u,p,t) -> let r = sprintf "https://github.com/%s/%s/archives/%s.tar.gz" u p t in <:html<<a class="icon-github" href=$str:r$>$l$</a>&>>
   |`Mantis id -> let r = sprintf "http://caml.inria.fr/mantis/view.php?id=%d" id in <:html<<a href=$str:r$>$l$</a>&>>
   |`Paper _ -> failwith "no paper output yet"
 
@@ -54,12 +56,25 @@ let human_readable_date d =
 let style =
   <:html<
     <style>
-    .ocl-cogs span { padding-right:30px; background-size:20px; background: url(../cogs.png) no-repeat right center; }
-    .ocl-print span { padding-right:30px; background-size:20px; background: url(../print.png) no-repeat right center; }
-    .ocl-cloud span { padding-right:30px; background-size:20px; background: url(../cloud.png) no-repeat right center; }
-    .ocl-group span { padding-right:30px; background-size:20px; background: url(../group.png) no-repeat right center; }
-    .ocl-bullhorn span { padding-right:30px; background-size:20px; background: url(../bullhorn.png) no-repeat right center; }
-    .ocl-asset span { padding-right:30px; background-size:20px; background: url(../wrench.png) no-repeat right center; }
+    a.icon-github {
+	background: url(../github.png) no-repeat 0 0;
+	padding: 0 0 2px 2em;
+    }
+    a.icon-cloud {
+	background: url(../cloud.png) no-repeat 0 0;
+        background-size: 17px;
+	padding: 0 0 2px 2em;
+    }
+    a.icon-bullhorn {
+	background: url(../bullhorn.png) no-repeat 0 0;
+        background-size: 17px;
+	padding: 0 0 2px 2em;
+    }
+    a.icon-wrench {
+	background: url(../wrench.png) no-repeat 0 0;
+        background-size: 17px;
+	padding: 0 0 2px 2em;
+    }
     </style>
   >>
 
@@ -169,10 +184,10 @@ let one_project proj =
       in
       let mugshots = mugshot_img ~size:40 t.owner in
       <:html<
-         <h3 id=$str:t.task_name$>$str:t.task_name$</h3>
-         <p>$mugshots$ $status$<br />Links: $refs_to_html t.refs$</p>
-         $descr$
-         <hr />
+         <div style="width:75%">
+         <h3 style="border-bottom: thin solid #999999;" id=$str:t.task_name$>$str:t.task_name$</h3>
+         <p>$mugshots$ $status$<br />$refs_to_html t.refs$</p>
+         $descr$</div>
       >>
   ) proj.tasks in
   let body = <:html<

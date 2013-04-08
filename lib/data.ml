@@ -177,6 +177,15 @@ module People = struct
     homepage=None;
     mugshot=None;
   }
+  let sheets = {
+    id="sheets";
+    name="David Sheets";
+    affiliation=`CL;
+    role="Research Assistant";
+    bio=None;
+    homepage=None;
+    mugshot=(Some "sheets.png");
+  }
   (* 
     Citrix people
   *)
@@ -195,7 +204,7 @@ module People = struct
     affiliation=`Citrix;
     role="Research Intern";
     bio=None;
-    homepage=Some "https://Reference.github.com/vbmithr";
+    homepage=Some "https://github.com/vbmithr";
     mugshot=None;
   }
   let jludlam = {
@@ -373,7 +382,9 @@ module Projects = struct
 
    let opam_refs = [ 
      Reference.github "OCamlPro" "opam";
-     Reference.webpage "http://ocamlpro.opam.com" 
+     Reference.webpage "http://ocamlpro.opam.com";
+     Reference.pdf ~name:"Developer Manual" "https://github.com/OCamlPro/opam/blob/master/doc/dev-manual/dev-manual.pdf?raw=true";
+     Reference.github_issues "OCamlPro" "opam";
    ]
     let rec project =
       { project_id="platform"; 
@@ -394,7 +405,7 @@ module Projects = struct
         ~owner:People.tg
         ~status:`Doing
         ~descr:"opam11"
-        ~refs:opam_refs ();
+        ~refs: opam_refs () ;
       mk_task ~name:"OPAM 1.2 ('the Platform release')"
         ~start:"2013-05-01" ~finish:"2013-08-01"
         ~owner:People.tg
@@ -406,9 +417,9 @@ module Projects = struct
         ~owner:People.lpw25
         ~status:`Doing
         ~refs:[ Reference.github "lpw25" "opam-doc" ] () ;
-      mk_task ~name:"OCamleot"
+      mk_task ~name:"OCamelot"
         ~start:"2013-01-16"
-        ~owner:People.yallop
+        ~owner:People.sheets
         ~status:`Planning
         ~refs:[ Reference.github "ocamllabs" "ocamlot" ] () ;
       mk_task ~name:"Platform Preview"

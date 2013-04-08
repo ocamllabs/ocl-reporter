@@ -69,6 +69,7 @@ module Reference = struct
    | `Pdf of string
    | `Blog of string
    | `Github of string * string (* user, repo *)
+   | `Github_issues of string * string (* user, repo *)
    | `Github_tag of string * string * string (* user, repo, tag *)
    | `Webpage of string
    | `Video of string
@@ -84,8 +85,14 @@ module Reference = struct
   let github ?(name="Github") owner repo =
     { name; link=(`Github (owner,repo)) }
 
+  let github_issues ?(name="Issues") owner repo =
+    { name; link=(`Github_issues (owner,repo)) }
+
   let webpage ?(name="Homepage") url =
     { name; link=(`Webpage url) }
+
+  let pdf ?(name="PDF") url =
+    { name; link=(`Pdf url) }
 end
 
 module Output = struct
