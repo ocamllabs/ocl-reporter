@@ -49,7 +49,14 @@ let refs_to_html rs =
 (* Convert a Date to a human-readable string.
  * TODO is there a nicer Core function for this? *)
 let human_readable_date d =
-  sprintf "%d %s %d" d.Date.d (Month.to_string d.Date.m) d.Date.y
+  sprintf "%s %d" (Month.to_string d.Date.m) d.Date.y
+
+let mugshot p = sprintf "../mugshots/%s" (Option.value ~default:"unknown.jpg" p.Types.Person.mugshot)
+let mugshot_img ?(float=true) ?(size=60) p =
+  let size = sprintf "%dpx" size in
+  let style = if float then "float:left; padding-right: 30px" else "" in
+  let phref = sprintf "../people/%s.html" p.Types.Person.id in
+  <:html<<a href=$str:phref$><img class="inline" style=$str:style$ height=$str:size$ src=$str:mugshot p$ /></a>&>>
 
 (* CSS style we include for each page.
  * Note that this style is specialised to the CUCL web page style *)
@@ -87,22 +94,28 @@ let people =
   let open Types.Person in
   (* Output a short list of projects this person works on. *)
   let person_to_html p =
-    <:html< <li><b>$str:p.name$</b></li> >>
+    let m = mugshot_img ~size:80 p in
+    let phref = sprintf "%s.html" p.id in
+    <:html< 
+      <table style="float:left">
+        <tr><td>$m$</td></tr>
+        <tr><td width="130px"><a href=$str:phref$>$str:p.name$</a><br /><span style="font-size:90%">$str:p.role$</span></td></tr>
+      </table>
+    >>
   in
   let ext_people =
     List.map Data.People.of_other ~f:(fun (org,people) ->
       <:html<
-       <li>
-         <h4>$str:to_string org$</h4>
-         <ul>$list:List.map ~f:person_to_html people$</ul>
-       </li>&>>)
+        <p><b>$str:to_string org$</b></p>
+        <div style="overflow:auto">$list:List.map ~f:person_to_html people$</div>
+      >>)
   in
   (* Aggregate all the organisation info now *)
   let orgs = <:html<
     <h3>University of Cambridge Computer Laboratory</h3>
-    <ul>$list:List.map ~f:person_to_html Data.People.of_cucl$</ul>
+    <div style="overflow:auto">$list:List.map ~f:person_to_html Data.People.of_cucl$</div>
     <h3>External Collaborators</h3>
-    <ul>$list:ext_people$</ul>
+    $list:ext_people$
     >> in
   (* And output the full people web page *)
   one_page ~title:"People" ~body:
@@ -119,13 +132,6 @@ let people =
 
   <p><img class="left" src="../images/janest.jpg" /><img width="150px" src="../images/citrix.gif"/></p>
 >>
-
-let mugshot p = sprintf "../mugshots/%s" (Option.value ~default:"unknown.jpg" p.Types.Person.mugshot)
-let mugshot_img ?(float=true) ?(size=60) p =
-  let size = sprintf "%dpx" size in
-  let style = if float then "float:left; padding-right: 30px" else "" in
-  let phref = sprintf "../people/%s.html" p.Types.Person.id in
-  <:html<<a href=$str:phref$><img class="inline" style=$str:style$ height=$str:size$ src=$str:mugshot p$ /></a>&>>
 
 (* Generate a profile page per-person *)
 let one_person p =

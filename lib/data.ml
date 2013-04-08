@@ -10,7 +10,7 @@ module People = struct
     id="avsm";
     name="Anil Madhavapeddy";
     affiliation=`CL;
-    role="PI";
+    role="Principle Investigator";
     bio=None;
     homepage=Some "http://anil.recoil.org";
     mugshot=(Some "avsm.jpg");
@@ -19,7 +19,7 @@ module People = struct
     id="mycroft";
     name="Alan Mycroft";
     affiliation=`CL;
-    role="PI";
+    role="Principle Investigator";
     bio=None;
     homepage=Some "http://www.cl.cam.ac.uk/~am21";
     mugshot=(Some "mycroft.jpg");
@@ -28,7 +28,7 @@ module People = struct
     id="iml";
     name="Ian Leslie";
     affiliation=`CL;
-    role="PI";
+    role="Principle Investigator";
     bio=None;
     homepage=Some "http://www.cl.cam.ac.uk/~iml1]";
     mugshot=(Some "iml.jpg");
@@ -37,7 +37,7 @@ module People = struct
     id="crowcroft";
     name="Jon Crowcroft";
     affiliation=`CL;
-    role="PI";
+    role="Principle Investigator";
     bio=None;
     homepage=Some "http://www.cl.cam.ac.uk/~jac22";
     mugshot=(Some "crowcroft.gif");
@@ -64,7 +64,7 @@ module People = struct
     id="yallop";
     name="Jeremy Yallop";
     affiliation=`CL;
-    role="Senior Research Associate";
+    role="Senior RA";
     bio=None;
     homepage=None;
     mugshot=None;
@@ -141,15 +141,6 @@ module People = struct
     homepage=Some "https://github.com/vstakhov";
     mugshot=Some "vsevelod.jpg";
   }
-  let griffin = {
-    id="griffin";
-    name="Tim Griffin";
-    affiliation=`CL;
-    role="Reader";
-    bio=None;
-    homepage=Some "http://www.cl.cam.ac.uk/~tgg22";
-    mugshot=Some "griffin.jpg";
-  }
   let stephend = {
     id="stephand";
     name="Stephen Dolan";
@@ -163,14 +154,14 @@ module People = struct
     id="rwatson";
     name="Robert Watson";
     affiliation=`CL;
-    role="Senior Research Associate";
+    role="Senior RA";
     bio=None;
     homepage=Some "http://www.cl.cam.ac.uk/~rnw24/";
     mugshot=Some "rwatson.jpg";
   }
   let alib = {
     id="alib";
-    name="Alistair Beresford";
+    name="Alastair Beresford";
     affiliation=`CL;
     role="Lecturer";
     bio=None;
@@ -181,7 +172,7 @@ module People = struct
     id="bogdan";
     name="Bogdan-Alexandru Matican";
     affiliation=`CL;
-    role="ACS Student";
+    role="ACS Student (2013)";
     bio=None;
     homepage=None;
     mugshot=None;
@@ -244,7 +235,7 @@ module People = struct
     role="Head of Quantitative Research and Technology";
     bio=None;
     homepage=Some "http://wiki.xen.org/wiki/User:Lars.kurth";
-    mugshot=Some "lars.jpg";
+    mugshot=Some "yaron.jpg";
   }
   let shinwell = {
     id="shinwell";
@@ -274,7 +265,7 @@ module People = struct
     role="CEO";
     bio=None;
     homepage=Some "http://www.lefessant.net";
-    mugshot=(Some "fabrice.png");
+    mugshot=(Some "fabrice.jpg");
   }
   let pierre = {
     id="pierre";
@@ -283,7 +274,7 @@ module People = struct
     role="";
     bio=None;
     homepage=Some "http://www.lsv.ens-cachan.fr/~chambart";
-    mugshot=(Some "pierre.png");
+    mugshot=(Some "pierre.jpg");
   }
   (* 
     Horizon people
@@ -358,7 +349,7 @@ module People = struct
   let all = [
     avsm; mycroft; iml; crowcroft; amir; lpw25; yallop; pwang;
     stedolan; balrajsingh; heidi; raphael; smh; haris;
-    vsevolod; griffin; stephend; rwatson; alib; bogdan;
+    vsevolod; stephend; rwatson; alib; bogdan;
     djs; vb; jludlam; lars; yaron; shinwell; tg; fabrice;
     pierre; mac; mort; ashish; christophe; gabor;
     prashanth; jhickey ]
