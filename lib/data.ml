@@ -48,7 +48,7 @@ module Projects = struct
            Reference.github ~name:"opam-doc" "lpw25" "opam-doc" ;
            Reference.github ~name:"bin-doc" "lpw25" "bin-doc" ;
          ] () ;
-      mk_task ~name:"OCamelot"
+      mk_task ~name:"OCamlot"
         ~start:"2013-01-16"
         ~owner:People.sheets
         ~status:`Planning
