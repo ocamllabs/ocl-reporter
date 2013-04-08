@@ -57,6 +57,12 @@ module Projects = struct
         ~start:"2013-03-01" ~finish:"2013-06-01"
         ~owner:People.amir
         ~status:`Planning () ;
+      mk_task ~name:"Irminsule"
+        ~start:"2013-03-01"
+        ~owner:People.tg
+        ~status:`Doing
+        ~descr:"irminsule"
+        ~refs:[ Reference.github "ocamllabs" "irminsule" ] () ;
     ]
   end
 
