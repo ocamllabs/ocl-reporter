@@ -267,15 +267,6 @@ module People = struct
     homepage=Some "http://thomas.gazagnaire.org";
     mugshot=(Some "tg.png");
   }
-  let fabrice = {
-    id="fabrice";
-    name="Fabrice Le Fessant";
-    affiliation=`OCP;
-    role="CEO";
-    bio=None;
-    homepage=Some "http://www.lefessant.net";
-    mugshot=(Some "fabrice.jpg");
-  }
   let pierre = {
     id="pierre";
     name="Pierre Chambart";
@@ -285,6 +276,26 @@ module People = struct
     homepage=Some "http://www.lsv.ens-cachan.fr/~chambart";
     mugshot=(Some "pierre.jpg");
   }
+  (* INRIA *)
+  let fabrice = {
+    id="fabrice";
+    name="Fabrice Le Fessant";
+    affiliation=`INRIA;
+    role="Scientist";
+    bio=None;
+    homepage=Some "http://www.lefessant.net";
+    mugshot=(Some "fabrice.jpg");
+  }
+  let xleroy = {
+    id="xleroy";
+    name="Xavier Leroy";
+    affiliation=`INRIA;
+    role="Galium team leader";
+    bio=None;
+    homepage=Some "http://pauillac.inria.fr/~xleroy/";
+    mugshot=(Some "xleroy.jpg");
+  }
+
   (* 
     Horizon people
   *)
@@ -361,7 +372,7 @@ module People = struct
     avsm; mycroft; iml; crowcroft; amir; lpw25; yallop; pwang;
     stedolan; balrajsingh; heidi; raphael; smh; haris; griffin;
     vsevolod; stephend; rwatson; alib; bogdan;
-    djs; vb; jludlam; lars; yaron; shinwell; tg; fabrice;
+    djs; vb; jludlam; lars; yaron; shinwell; tg; fabrice; xleroy;
     pierre; mac; mort; ashish; christophe; gabor;
     (* prashanth; *) jhickey ]
 
@@ -519,13 +530,20 @@ module Projects = struct
         ~start:"2012-08-01" ~finish:"2013-03-02"
         ~owner:People.avsm
         ~status:`Complete
+        ~descr:"asplos2013"
         ~refs:[ 
            Reference.paper
-             ~name:"ASPLOS paper"
+             ~name:"ASPLOS 2013"
              ~title:"Unikernels: Library Operating Systems for the Cloud"
              ~authors:"Anil Madhavapeddy, Richard Mortier, Charalampos Rotsos, David Scott, Balraj Singh, Thomas Gazagnaire, Steven Smith, Steven Hand and Jon Crowcroft"
              ~conf:"ASPLOS 2013" ~conf_url:"http://asplos13.rice.edu"
-             "http://anil.recoil.org/papers/2013-asplos-mirage.pdf"
+             "http://anil.recoil.org/papers/2013-asplos-mirage.pdf";
+           Reference.paper
+             ~name:"HotCloud 2010"
+             ~title:"Turning down the LAMP: Software Specialisation for the Cloud"
+             ~authors:"Anil Madhavapeddy, Richard Mortier, Ripduman Sohan, Thomas Gazagnaire, Steven Hand, Tim Deegan, Derek McAuley and Jon Crowcroft"
+             ~conf:"HotCloud 2011" ~conf_url:"http://static.usenix.org/events/hotcloud10/index.html"
+             "http://anil.recoil.org/papers/2010-hotcloud-lamp.pdf"
          ] ();    
       mk_task ~name:"Xen.org incubation"
         ~start:"2012-12-01" ~finish:"2013-04-01"

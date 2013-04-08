@@ -7,6 +7,7 @@ module Person = struct
     | `CL
     | `CLx (* For CL affiliates not directly funded by OCL or affiliated with OCL PIs *)
     | `OCP
+    | `INRIA
     | `JSC
     | `Horizon
     | `Google
@@ -24,6 +25,7 @@ module Person = struct
     | `CLx -> "Cambridge Computer Laboratory"
     | `JSC -> "Jane Street Capital"
     | `OCP -> "OCamlPro"
+    | `INRIA -> "INRIA"
     | `Horizon -> "Horizon"
     | `NYU -> "New York University"
     | `UMONS -> "Universite de Mons, Belgium"
@@ -35,6 +37,7 @@ module Person = struct
     |`CLx -> 1
     |`Citrix -> 2
     |`OCP -> 3
+    |`INRIA -> 3
     |`JSC -> 4
     |`Horizon -> 5
     |`SRI -> 6

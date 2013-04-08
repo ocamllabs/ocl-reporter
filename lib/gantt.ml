@@ -68,11 +68,7 @@ let draw_task ?(hrefbase="") task =
   let left = padding ~cl:"blank" start_date task_start <:html<&>> in
   let mugshot =
     let open Types.Person in
-    let url = sprintf "../mugshots/%s"
-        (match task.owner.mugshot with
-         |None -> "unknown.jpg"
-         |Some u -> u)
-    in
+    let url = sprintf "../mugshots/%s" (Option.value ~default:"unknown.jpg" task.owner.mugshot) in
     let alt = task.owner.name in
     wrap_url task.owner.homepage
       <:html<<img class="mugshot" alt=$str:alt$ src=$str:url$ height="30px" />&>>
