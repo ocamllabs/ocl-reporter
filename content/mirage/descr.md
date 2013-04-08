@@ -7,12 +7,13 @@ OS](http://www.openmirage.org) revisits the library OS concept (built here as
 in the late '90s), and narrows the gap between safe, high-level programming,
 and low-level systems construction.
 
-Applications are written in high-level OCaml and compiled directly into microkernels that run on the Xen
-hypervisor. By treating the hypervisor as a stable hardware platform, we can
-focus on high-performance protocol implementations without worrying about
-having to support the thousands of device drivers found in a traditional OS.
-Although Mirage initially targets the Xen hypervisor, other backends, such
-as a FreeBSD kernel module and Javascript, also exist.
+Applications are written in high-level OCaml and compiled directly into
+microkernels that run on the Xen hypervisor. By treating the hypervisor as a
+stable hardware platform, we can focus on high-performance protocol
+implementations without worrying about having to support the thousands of
+device drivers found in a traditional OS.  Although Mirage initially targets
+the Xen hypervisor, other backends, such as a FreeBSD kernel module and
+Javascript, also exist.
 
 Mirage includes clean-slate functional implementations of protocols ranging
 from TCP/IP, DNS, SSH, Openflow (switch/controller), HTTP, XMPP and Xen
