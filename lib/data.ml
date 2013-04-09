@@ -32,6 +32,7 @@ module Projects = struct
         ~owner:People.tg
         ~status:`Doing
         ~descr:"opam11"
+        ~related:[("OPAM 1.2", "platform", "OPAM 1.2 (the Platform release)")]
         ~refs: opam_refs () ;
       mk_task ~name:"OPAM 1.2 (the Platform release)"
         ~start:"2013-05-01" ~finish:"2013-08-01"

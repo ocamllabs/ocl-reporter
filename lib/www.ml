@@ -187,11 +187,24 @@ let one_project proj =
         <:html< $mode$ ($start$ -$finish$) >>
       in
       let mugshots = mugshot_img ~size:40 t.owner in
+      let related = 
+        let links = List.map 
+          ~f:(fun (desc, pid, tname) ->
+            let url = pid ^ ".html#" ^ tname in  
+              <:html<<li><a href=$str:url$>$str:desc$</a></li>&>>) 
+          t.related 
+        in
+        if links = [] then Cow.Html.nil
+        else
+          <:html<<h4><em>Related work</em></h4>
+          <ul>$list:links$</ul>&>>
+      in
       <:html<
          <div style="width:75%">
          <h3 style="border-bottom: thin solid #999999;" id=$str:t.task_name$>$str:t.task_name$</h3>
          <p>$mugshots$ $status$<br />$refs_to_html t.refs$</p>
-         $descr$</div>
+         $descr$
+         $related$<br /></div>
       >>
   ) proj.tasks in
   let leader = mugshot_img ~size:50 ~float:false proj.project_owner in
