@@ -6,3 +6,6 @@ Current status: Creating a spec to define the overall components required.
 
 [OPAM]: http://opam.ocamlpro.com
 [Machine Pool]: #Machine%20Pool
+
+#### *Related work*
+* [Machine Pool](##Machine%20Pool)
