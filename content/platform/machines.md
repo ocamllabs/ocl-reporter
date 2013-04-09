@@ -1,6 +1,6 @@
 In order to create a robust and stable Continuous Integration system, we need a pool of machines that reflect the diverse environments where OCaml code is deployed.
 
-To this end We've been assembling a small collection of conventional high-powered machines that can build the whole OPAM package set quite quickly, and also more unusual CPU architectures and operating systems that will help developers that don't have access to them. So far we have:
+To this end, we've been assembling a small collection of conventional high-powered machines that can build the whole OPAM package set quite quickly, and also more unusual CPU architectures and operating systems that will help developers that don't have access to them. So far we have:
 
 * 12-core AMD64/Linux Debian 64-bit
 * 12-core AMD64/Linux Debian 32-bit
