@@ -26,19 +26,22 @@ module Projects = struct
         ~owner:People.tg
         ~status:`Complete
         ~descr:"opam10"
+        ~related:[("OPAM 1.1", "platform", "OPAM 1.1 (the CI and Test release)")]
         ~refs:opam_refs () ;
       mk_task ~name:"OPAM 1.1 (the CI and Test release)"
         ~start:"2013-02-17" ~finish:"2013-05-01"
         ~owner:People.tg
         ~status:`Doing
         ~descr:"opam11"
-        ~related:[("OPAM 1.2", "platform", "OPAM 1.2 (the Platform release)")]
+        ~related:[("OPAM 1.2", "platform", "OPAM 1.2 (the Platform release)");
+                   ("OCamlot", "platform", "OCamlot")]
         ~refs: opam_refs () ;
       mk_task ~name:"OPAM 1.2 (the Platform release)"
         ~start:"2013-05-01" ~finish:"2013-08-01"
         ~owner:People.tg
         ~status:`Planning
         ~descr:"opam12"
+        ~related:[("Platform Preview", "platform", "Platform Preview")]
         ~refs:opam_refs ();
       mk_task ~name:"OPAM Doc"
         ~start:"2013-01-16"
@@ -54,12 +57,15 @@ module Projects = struct
         ~owner:People.sheets
         ~status:`Planning
         ~descr:"ocamlot"
+        ~related:[("OPAM 1.1","platform","OPAM 1.1 (the CI and Test release)");
+                  ("Machine Pool", "platform", "Machine Pool")]
         ~refs:[ Reference.github "ocamllabs" "ocamlot" ] () ;
       mk_task ~name:"Machine Pool"
         ~start:"2013-01-16"
         ~owner:People.avsm
         ~status:`Doing ()
-        ~descr:"machine-pool";
+        ~descr:"machine-pool"
+        ~related:[("OCamlot", "platform", "OCamlot")];
       mk_task ~name:"Irminsule"
         ~start:"2013-03-01"
         ~owner:People.tg

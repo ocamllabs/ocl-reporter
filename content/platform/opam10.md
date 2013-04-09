@@ -19,6 +19,3 @@ do much in the way of advanced manipulation of the packages.
 OPAM 1.0 has been a great success.  Since its release, there have been hundreds
 of external contributions from the community, and over 500 packages are now
 contained within the [main package repository](http://github.com/OCamlPro/opam-repository)!
-
-#### *Related work*
-* [OPAM 1.1](#OPAM%201.1%20(the%20CI%20and%20Test%20release))

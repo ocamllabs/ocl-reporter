@@ -5,6 +5,3 @@ OPAM 1.2 will be the release that forms part of the OCaml Platform.  We're still
 * The existing support for switching between compiler versions is very powerful, and we plan to support "collections" of stable libraries that are tested more extensively than others. This will evolve into support for switching into a stable release of the Platform, to ensure that your code will interoperate with other users of the same Platform version.  
 
 This is all still being planned, so be sure to share your thoughts on the [Platform mailing list](http://lists.ocaml.org/listinfo/platform).
-
-#### *Related work*
-* [Platform Preview](#Platform%20Preview)

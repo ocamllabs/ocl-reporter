@@ -13,6 +13,3 @@ To this end, we've been assembling a small collection of conventional high-power
 * Windows 7 64-bit
 
 Clearly the ARM devices will need either some parallelisation or some extreme overclocking to build the whole package set!
-
-#### *Related work*
-* [OCamlot](#OCamlot)
