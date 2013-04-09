@@ -24,5 +24,5 @@ The tasks below reflect this by:
 
 * The OPAM package manager acts as the package management front end.
 * The OPAM Doc tool replaces the venerable `ocamldoc` tool with modern, cross-referenced HTML output across several libraries.
-* The OCamelot testing infrastructure runs continuous integration of OPAM stable and candidate packages across a variety of operating systems and CPU architectures.
+* The OCamlot testing infrastructure runs continuous integration of OPAM stable and candidate packages across a variety of operating systems and CPU architectures.
 
