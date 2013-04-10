@@ -61,7 +61,8 @@ module Projects = struct
                   ("Machine Pool", "platform", "Machine Pool")]
         ~refs:[ Reference.github "ocamllabs" "ocamlot" ] () ;
       mk_task ~name:"Machine Pool"
-        ~start:"2013-01-16"
+        ~start:"2012-11-16"
+        ~finish:"2013-06-01"
         ~owner:People.avsm
         ~status:`Doing ()
         ~descr:"machine-pool"
@@ -98,7 +99,7 @@ module Projects = struct
         ~owner:People.tg
         ~status:`Doing
         ~descr:"irminsule"
-        ~refs:[ Reference.github "ocamllabs" "irminsule" ] () ;
+        ~refs:[ Reference.github "samoht" "cagit" ] () ;
     ]
   end
 
