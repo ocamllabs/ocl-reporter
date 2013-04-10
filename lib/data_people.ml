@@ -379,10 +379,10 @@ module People = struct
 
   let all = [
     avsm; mycroft; iml; crowcroft; amir; lpw25; yallop; pwang;
-    stedolan; balrajsingh; heidi; raphael; smh; haris; griffin;
-    vsevolod; stephend; rwatson; alib; bogdan;
-    djs; vb; jludlam; lars; yaron; shinwell; tg; fabrice; xleroy;
-    pierre; mac; mort; ashish; christophe; gabor;
+    stedolan; balrajsingh; heidi; raphael; smh; haris;  vsevolod;
+    stephend; griffin; rwatson; alib; bogdan; sheets; gparisis;
+    djs; vb; jludlam; lars; yaron; shinwell; tg; pierre; fabrice;
+    xleroy; mac; mort; ashish; christophe; gabor;
     (* prashanth; *) jhickey ]
 
   (* Split out the CUCL from the org list *)
