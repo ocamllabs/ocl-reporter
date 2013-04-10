@@ -11,4 +11,4 @@ run: build
 	./dist/build/ocl-reporter-new/ocl-reporter-new 
 
 www:
-	cd pages && env PATH=../ucampas:$PATH ucampas -i -r1 index people tasks outputs
+	cd pages && env PATH=../ucampas:$PATH ucampas -i -r1 index people tasks outputs news
