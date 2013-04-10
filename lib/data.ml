@@ -138,6 +138,11 @@ module Projects = struct
         ~start:"2013-03-01"
         ~owner:People.stedolan
         ~status:`Planning () ;
+      mk_task ~name:"Compile-time meta programming"
+        ~start:"2013-04-01"
+        ~owner:People.yallop
+        ~status:`Planning ()
+        ~descr:"meta-programming";
     ]
   end
 
