@@ -174,7 +174,7 @@ module Projects = struct
 
   module Mirage = struct
     let project_owner = People.avsm
-    let team = People.([ amir; djs ])
+    let team = People.([ tg; amir; djs; crowcroft; mort; balrajsingh; raphael; smh; haris; rwatson; vb; jludlam; lars; mac; gabor ])
 
     let rec project = { 
       project_id="mirage";
@@ -208,7 +208,11 @@ module Projects = struct
       mk_task ~name:"Formalisms for packet processing"
         ~start:"2013-04-01" ~finish:"2013-10-01"
         ~owner:People.balrajsingh
-        ~status:`Planning ()
+        ~status:`Planning ();
+      mk_task ~name:"kFreeBSD"
+        ~start:"2013-06-01" ~finish:"2013-09-01"
+        ~owner:People.gabor
+        ~status:`Doing ();
     ] 
   end
 
