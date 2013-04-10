@@ -60,7 +60,14 @@
             </style>
           
     <h1 id="t2">Trilogy 2</h1>
-     
+    <p><a href="http://trilogy2.eu">Trilogy2</a> aims to develop a new Internet architecture based on the concept of the <em>liquid network</em>. A liquid system should ideally allow resources including bandwidth, storage and processing to be used by any application, whether they are contributed by network operators, data centre operators or end systems. Resources form a shared pool and applications can scale up and down in multiple dimensions (storage, processing, bandwidth and energy usage) as needed, in a continuous effort to enhance the users&#8217; experience as measured in terms of key metrics such as delay and battery life.</p>
+<p>The Cambridge participation is primarily centered around three efforts:</p>
+<ul><li>The <a href="http://openmirage.org">Mirage</a> library operating system that provides the policy-free mechanism to implement the liquid OS.</li>
+<li>A highly adaptive PVTCP transport protocol that takes advantage of heterogenous network connections.</li>
+<li>The Irminsule storage substrate that cleanly separates block storage form</li>
+</ul>
+<p>Trilogy 2 is a 3-year EU <a href="http://en.wikipedia.org/wiki/Framework_Programmes_for_Research_and_Technological_Development">STREP</a> project that addresses the "<a href="http://cordis.europa.eu/fp7/ict/programme/challenge1_en.html">Pervasive and Trusted Network and Service Infrastructures: Future Networks</a>" challenge. The tasks below and include our collaborators at <a href="http://onapp.com">OnApp</a>.</p>
+
     <h2 id="Team">Team</h2>
     <p><a href="../people/avsm.html"><img class="inline" height="50px" src="../mugshots/avsm.jpg" style="" /></a> <a href="../people/vsevolod.html"><img class="inline" height="50px" src="../mugshots/vsevelod.jpg" style="" /></a><a href="../people/gparisis.html"><img class="inline" height="50px" src="../mugshots/gparisis.jpg" style="" /></a><a href="../people/amirmc.html"><img class="inline" height="50px" src="../mugshots/amir.jpg" style="" /></a><a href="../people/crowcroft.html"><img class="inline" height="50px" src="../mugshots/crowcroft.gif" style="" /></a><a href="../people/tg.html"><img class="inline" height="50px" src="../mugshots/tg.png" style="" /></a></p>
     <h2 id="Tasks">Tasks</h2>
@@ -74,12 +81,21 @@
     
          <div style="width:75%">         <h3 id="Polyversal TCP prototype" style="border-bottom: thin solid #999999;">Polyversal TCP prototype</h3>
          <p><a href="../people/vsevolod.html"><img class="inline" height="40px" src="../mugshots/vsevelod.jpg" style="float:left; padding-right: 30px" /></a>  <span class="doing">In Progress</span> (Oct 2012 - Sep 2013) <br /><a class="icon-github" href="https://github.com/ocamllabs/pvtcp">Github</a> &#160; <a class="icon-pdf" href="../outputs/index.html#conext-2012-pvtcp">Position paper</a> &#160; </p>
-          
+         <p>Over the last decade TCP has become the de facto "narrow waist" of the Internet; a one-size-fit-all transport that is poorly suited to the needs of modern applications. As middle-boxes have become ubiquitous, it has become nigh impossible for alternative transports to exist, and so application developers have come to view opening a TCP socket as the only reliable way to connect to a server. Some recent proposals circumvent this problem by camouflaging new transports so that they appear like TCP to middleboxes.</p>
+<p>Polyversal TCP aims to unify many different strands of TCP to make it suitable to work as an extensible one-size-fits-all transport that can take advantage of heterogenous interconnects such as shared memory or virtual machine channels. This will in turn greatly simplify the construction of complex distributed systems being built elsewhere in OCaml Labs.</p>
+
          <br /></div>
       
          <div style="width:75%">         <h3 id="Irminsule" style="border-bottom: thin solid #999999;">Irminsule</h3>
-         <p><a href="../people/tg.html"><img class="inline" height="40px" src="../mugshots/tg.png" style="float:left; padding-right: 30px" /></a>  <span class="doing">In Progress</span> (Mar 2013 -) <br /><a class="icon-github" href="https://github.com/ocamllabs/irminsule">Github</a> &#160; </p>
-          
+         <p><a href="../people/tg.html"><img class="inline" height="40px" src="../mugshots/tg.png" style="float:left; padding-right: 30px" /></a>  <span class="doing">In Progress</span> (Mar 2013 -) <br /><a class="icon-github" href="https://github.com/samoht/cagit">Github</a> &#160; </p>
+         <p>Irminsule is a distributed filesystem and block store that follows the same design principles as <a href="http://git-scm.com">Git</a>. The design consists of three main components:</p>
+<ul><li>a low-level immutable and consistent key/value data-store</li>
+<li>a DAG persisted in that datastore; and</li>
+<li>a tag store which associate names to keys of the low-level data-store.</li>
+</ul>
+<p>Irminsule is written in pure OCaml, and can thus be compiled to a variety of backends (including Javascript, and <a href="http://openmirage.org">Mirage</a> microkernels). Unlike the git frontend, applications can directly iterate over the object graph.</p>
+<p>The immutability of the low-level block store makes it significantly easier to apply replication and network coding techniques to improve resilience via replication, and to optimise scheduling across many hosts using MPTCP-style congestion control.</p>
+
          <br /></div>
       
   </div></div>
