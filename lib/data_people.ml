@@ -252,7 +252,7 @@ module People = struct
     affiliation=`JSC;
     role="Head of Quantitative Research and Technology";
     bio=None;
-    homepage=Some "http://wiki.xen.org/wiki/User:Lars.kurth";
+    homepage=None;
     mugshot=Some "yaron.jpg";
   }
   let shinwell = {
