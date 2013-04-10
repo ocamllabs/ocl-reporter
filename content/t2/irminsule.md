@@ -1,5 +1,17 @@
-Irminsule is a Distributed Idempotent Provenance-aware database (DIPA). Planning to use this with XCP and Xen Cloud.
+Irminsule is a distributed filesystem and block store that follows the same
+design principles as [Git](http://git-scm.com).  The design consists of three
+main components:
 
-Discussions and design work of the consistency model have taken place. Dave, Anil and Raphael are working on understanding the best way to name end- points and bind to them. Reading Plan9 again, but coming to the conclusion that it should be possible to merge the XAPI (high-level) database with low- level Xenstore. Raphael suggests that if the leaves of the db are Mirage nodes, that the unikernel state could also be stored as part of the tree.
+* a low-level immutable and consistent key/value data-store
+* a DAG persisted in that datastore; and
+* a tag store which associate names to keys of the low-level data-store.
 
-Refactoring xenstore to not depend on Xen so much. The Xenstore database is purely functional already, and Dave and Anil have been refactoring it into a standalone library that separates the protocol from the database functionality. This should make it easier to re-use the database (perhaps as a functor) for other persistent storage tasks.
+Irminsule is written in pure OCaml, and can thus be compiled to a variety of
+backends (including Javascript, and [Mirage](http://openmirage.org)
+microkernels). Unlike the git frontend, applications can directly iterate over
+the object graph.
+
+The immutability of the low-level block store makes it significantly easier to
+apply replication and network coding techniques to improve resilience via
+replication, and to optimise scheduling across many hosts using MPTCP-style
+congestion control.
