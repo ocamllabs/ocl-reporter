@@ -2,6 +2,7 @@ open Core.Std
 open Types
 include Data_people
 include Data_papers
+include Data_news
 
 module Projects = struct
   open Project
@@ -109,7 +110,7 @@ module Projects = struct
       project_id="compiler";
       project_name="The OCaml Compiler" ;
       project_owner = People.lpw25; 
-      team = People.([ yallop ]);
+      team = People.([ yallop; stedolan; avsm ]);
       tasks;
     }
     and tasks = [

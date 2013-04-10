@@ -225,6 +225,7 @@ let outputs =
        <p>
        <a name=$str:p.id$></a>
        <b>$str:p.title$</b>
+       <br />
        <a class="icon-pdf" href=$str:p.url$>Download</a>
        <br />
        $str:p.authors$
@@ -234,11 +235,26 @@ let outputs =
       >>)
   in
   let body = <:html<
-     <h2 id="Publications">Publications</h2>
+     <h1 id="Publications">Publications</h1>
      $list:pubs$
     >> in
   one_page ~title:"Outputs" ~body
-       
+
+let news =
+  let monthly = List.map Data_news.monthlies ~f:(fun m ->
+     let hd = human_readable_date (Date.of_string m) in
+     let body = Markdown.from_file_to_html (sprintf "news/%s" m) in
+     <:html<
+       <h2 id=$str:hd$>$str:hd$</h2>
+       <div style="width:75%">$body$</div>
+     >>) in
+  let body = <:html<
+    <div class="ucampas-toc right"/>
+    <h1>Monthly News</h1>
+    $list:monthly$
+  >> in
+  one_page ~title:"News" ~body
+
 let write_html file html =
   let data = Cow.Html.to_string html in
   let fname = sprintf "pages/%s-b.html" file in
@@ -265,6 +281,8 @@ let _ =
     write_html ("tasks/"^p.Types.Project.project_id) (one_project p));
   write_uconfig "outputs" [];
   write_html "outputs/index" outputs;
+  write_uconfig "news" [];
+  write_html "news/index" news;
   ()
 
 (*
