@@ -66,16 +66,39 @@ module Projects = struct
         ~status:`Doing ()
         ~descr:"machine-pool"
         ~related:[("OCamlot", "platform", "OCamlot")];
-      mk_task ~name:"Irminsule"
+
+      mk_task ~name:"Platform Preview"
+        ~start:"2013-03-01" ~finish:"2013-06-01"
+        ~owner:People.amir
+        ~status:`Planning () ;
+    ]
+  end
+
+  module T2 = struct
+    let rec project =
+      { project_id="t2"; 
+        project_name="Trilogy 2"; 
+        project_owner=People.avsm;
+        team=People.([ vsevolod; gparisis; amir; crowcroft; tg ]);
+        tasks;
+      }
+    and tasks = [ 
+       mk_task ~name:"Polyversal TCP prototype"
+        ~start:"2012-10-01"
+        ~finish:"2013-09-01"
+        ~owner:People.vsevolod
+        ~status:`Doing
+        ~descr:"pvtcp"
+        ~refs: [
+           Reference.github "ocamllabs" "pvtcp";
+           Reference.paper ~name:"Position paper" conext_pvtcp;
+         ] ();
+       mk_task ~name:"Irminsule"
         ~start:"2013-03-01"
         ~owner:People.tg
         ~status:`Doing
         ~descr:"irminsule"
         ~refs:[ Reference.github "ocamllabs" "irminsule" ] () ;
-      mk_task ~name:"Platform Preview"
-        ~start:"2013-03-01" ~finish:"2013-06-01"
-        ~owner:People.amir
-        ~status:`Planning () ;
     ]
   end
 
@@ -189,6 +212,6 @@ module Projects = struct
   end
 
   let all = [ Platform.project; Mirage.project;
-              Compiler.project; Outreach.project ]
+              Compiler.project; T2.project; Outreach.project ]
 end
 

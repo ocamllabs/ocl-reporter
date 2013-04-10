@@ -1,2 +1,2 @@
 navstop=1,
-platform.html,mirage.html,compiler.html,outreach.html
+platform.html,mirage.html,compiler.html,t2.html,outreach.html

@@ -195,6 +195,15 @@ module People = struct
     homepage=None;
     mugshot=(Some "sheets.png");
   }
+  let gparisis = {
+    id="gparisis";
+    name="George Parisis";
+    affiliation=`CL;
+    role="Research Associate";
+    bio=None;
+    homepage=Some "http://www.cl.cam.ac.uk/~gp349/";
+    mugshot=Some "gparisis.jpg";
+  }  
   (* 
     Citrix people
   *)
