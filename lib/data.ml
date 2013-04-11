@@ -165,6 +165,8 @@ module Projects = struct
         ~start:"2011-06-01" ~finish:"2013-01-01"
         ~owner:People.avsm
         ~status:`Complete
+        ~descr:"rwo-review-site"
+        ~related:[("Real World OCaml", "outreach", "Real World OCaml")]
         ~refs:[ Reference.webpage ~name:"Homepage" "http://realworldocaml.org" ] ();
       mk_task ~name:"OCaml.org infrastructure"
         ~start:"2011-08-01" ~finish:"2013-02-01"
