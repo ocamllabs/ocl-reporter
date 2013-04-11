@@ -118,6 +118,7 @@ module Projects = struct
         ~start:"2012-10-01" ~finish:"2013-01-09"
         ~owner:People.lpw25
         ~status:`Complete
+        ~descr:"open-types"
         ~refs:[ Reference.github "lpw25" "ocaml-open" ] ();
       mk_task ~name:"Record disambiguation"
         ~start:"2012-09-03" ~finish:"2012-12-02"
