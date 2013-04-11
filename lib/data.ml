@@ -177,7 +177,9 @@ module Projects = struct
         ~start:"2011-05-01" ~finish:"2013-08-01"
         ~owner:People.avsm
         ~status:`Doing
-        ~refs:[ Reference.webpage ~name:"Homepage" "http://realworldocaml.org" ] ();
+        ~descr:"rwo-book"
+        ~refs:[ Reference.webpage ~name:"Homepage" "http://realworldocaml.org";
+                Reference.webpage ~name: "Twitter" "http://twitter.com/RealWorldOCaml"] ();
       mk_task ~name:"OCaml.org redesign"
         ~start:"2013-01-01" ~finish:"2013-05-01"
         ~owner:People.amir
