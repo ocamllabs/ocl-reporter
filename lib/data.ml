@@ -170,6 +170,8 @@ module Projects = struct
         ~start:"2011-08-01" ~finish:"2013-02-01"
         ~owner:People.avsm
         ~status:`Complete
+        ~descr:"ocaml-org-infra"
+        ~related:[("OCamlot", "platform", "OCamlot")]
         ~refs:[ Reference.webpage ~name:"Wiki" "" ] () ;
       mk_task ~name:"Real World OCaml"
         ~start:"2011-05-01" ~finish:"2013-08-01"
