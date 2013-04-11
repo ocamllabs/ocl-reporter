@@ -212,6 +212,7 @@ module Projects = struct
         ~start:"2013-02-26" ~finish:"2013-07-26"
         ~owner:People.djs
         ~status:`Planning
+        ~descr:"dev-preview"
         ~refs: [ Reference.github "mirage" "mirage-platform" ] () ;
       mk_task ~name:"Formalisms for packet processing"
         ~start:"2013-04-01" ~finish:"2013-10-01"
