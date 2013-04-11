@@ -137,6 +137,7 @@ module Projects = struct
         ~start:"2013-02-01"
         ~owner:People.lpw25
         ~status:`Planning
+        ~descr:"namespaces"
         ~refs:[ Reference.webpage ~name:"Blog" "http://www.lpw25.net/2013/03/10/ocaml-namespaces.html" ] () ;
       mk_task ~name:"Multicore"
         ~start:"2013-03-01"
@@ -237,7 +238,8 @@ module Projects = struct
       mk_task ~name:"kFreeBSD"
         ~start:"2013-06-01" ~finish:"2013-09-01"
         ~owner:People.gabor
-        ~status:`Doing ();
+        ~status:`Doing ()
+        ~descr:"kfreebsd";
     ] 
   end
 
