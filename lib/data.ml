@@ -123,6 +123,7 @@ module Projects = struct
         ~start:"2012-09-03" ~finish:"2012-12-02"
         ~owner:People.lpw25
         ~status:`Complete
+        ~descr:"record-disambiguation"
         ~refs:[ Reference.webpage ~name:"Mantis" "http://caml.inria.fr/mantis/view.php?id=5759" ] () ;
       mk_task ~name:"Camlp4 redesign"
         ~start:"2012-12-01" ~finish:"2013-03-01"
