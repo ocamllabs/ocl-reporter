@@ -161,6 +161,13 @@ module Projects = struct
       tasks;
     }
     and tasks = [
+      mk_task ~name:"Real World OCaml"
+        ~start:"2011-05-01" ~finish:"2013-08-01"
+        ~owner:People.avsm
+        ~status:`Doing
+        ~descr:"rwo-book"
+        ~refs:[ Reference.webpage ~name:"Homepage" "http://realworldocaml.org";
+                Reference.webpage ~name: "Twitter" "http://twitter.com/RealWorldOCaml"] ();
       mk_task ~name:"Book review site"
         ~start:"2011-06-01" ~finish:"2013-01-01"
         ~owner:People.avsm
@@ -175,13 +182,6 @@ module Projects = struct
         ~descr:"ocaml-org-infra"
         ~related:[("OCamlot", "platform", "OCamlot")]
         ~refs:[ Reference.webpage ~name:"Wiki" "" ] () ;
-      mk_task ~name:"Real World OCaml"
-        ~start:"2011-05-01" ~finish:"2013-08-01"
-        ~owner:People.avsm
-        ~status:`Doing
-        ~descr:"rwo-book"
-        ~refs:[ Reference.webpage ~name:"Homepage" "http://realworldocaml.org";
-                Reference.webpage ~name: "Twitter" "http://twitter.com/RealWorldOCaml"] ();
       mk_task ~name:"OCaml.org redesign"
         ~start:"2013-01-01" ~finish:"2013-05-01"
         ~owner:People.amir
