@@ -126,11 +126,13 @@ module Projects = struct
         ~status:`Complete
         ~descr:"record-disambiguation"
         ~refs:[ Reference.webpage ~name:"Mantis" "http://caml.inria.fr/mantis/view.php?id=5759" ] () ;
-      mk_task ~name:"Camlp4 redesign"
+      mk_task ~name:"Syntax extensions"
         ~start:"2012-12-01" ~finish:"2013-03-01"
         ~owner:People.lpw25
         ~status:`Doing
-        ~refs:[ Reference.webpage ~name:"Blog" "http://www.lpw25.net/2013/02/05/camlp4-alternative-part-2.html"] () ;
+        ~descr:"syntax-extensions"
+        ~refs:[ Reference.webpage ~name:"Working group" "http://lists.ocaml.org/listinfo/wg-camlp4";
+                Reference.webpage ~name:"Blog" "http://www.lpw25.net/2013/02/05/camlp4-alternative-part-2.html"] () ;
       mk_task ~name:"Namespaces"
         ~start:"2013-02-01"
         ~owner:People.lpw25
