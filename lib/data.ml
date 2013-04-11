@@ -217,7 +217,8 @@ module Projects = struct
       mk_task ~name:"Formalisms for packet processing"
         ~start:"2013-04-01" ~finish:"2013-10-01"
         ~owner:People.balrajsingh
-        ~status:`Planning ();
+        ~status:`Planning ()
+        ~descr:"packet-proc";
       mk_task ~name:"kFreeBSD"
         ~start:"2013-06-01" ~finish:"2013-09-01"
         ~owner:People.gabor
