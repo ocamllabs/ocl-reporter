@@ -181,7 +181,11 @@ module Projects = struct
       mk_task ~name:"OCaml.org redesign"
         ~start:"2013-01-01" ~finish:"2013-05-01"
         ~owner:People.amir
-        ~status:`Doing ();
+        ~status:`Doing
+        ~descr:"ocaml-org-design"
+        ~refs:[ Reference.webpage ~name:"OCaml.org" "http://ocaml.org";
+                Reference.webpage ~name:"Wiki" "https://github.com/ocaml/ocaml.org/wiki";
+                Reference.webpage ~name:"Blog" "http://amirchaudhry.com/wireframe-demos-for-ocamlorg" ] () ;
     ]
   end
 
