@@ -139,6 +139,7 @@ module Projects = struct
       mk_task ~name:"Multicore"
         ~start:"2013-03-01"
         ~owner:People.stedolan
+        ~descr:"multicore"
         ~status:`Planning () ;
       mk_task ~name:"Compile-time meta programming"
         ~start:"2013-04-01"
