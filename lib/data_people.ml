@@ -30,7 +30,7 @@ module People = struct
     affiliation=`CL;
     role="Principal Investigator";
     bio=None;
-    homepage=Some "http://www.cl.cam.ac.uk/~iml1]";
+    homepage=Some "http://www.cl.cam.ac.uk/~iml1";
     mugshot=(Some "iml.jpg");
   }
   let crowcroft = {
@@ -71,11 +71,11 @@ module People = struct
   }
   let pwang = {
     id="pwang";
-    name="Phillipe Wang";
+    name="Philippe Wang";
     affiliation=`CL;
     role="Research Associate";
     bio=None;
-    homepage=Some "http://philippewang.info";
+    homepage=Some "http://www.cl.cam.ac.uk/~pw374";
     mugshot=Some "pwang.jpg";
   }
   let stedolan = {
