@@ -197,9 +197,10 @@ module Projects = struct
            Reference.paper ~name:"HotCloud 2010" hotcloud_2010;
          ] ();    
       mk_task ~name:"Xen.org incubation"
-        ~start:"2012-12-01" ~finish:"2013-04-01"
+        ~start:"2012-12-01" ~finish:"2013-05-01"
         ~owner:People.amir
         ~status:`Doing
+        ~descr:"xen-org"
         ~refs:[ Reference.webpage ~name:"Proposal" "http://wiki.xen.org/wiki/Mirage_Incubation_Project_Proposal" ] ();
       mk_task ~name:"Mirari"
         ~start:"2013-02-02" ~finish:"2013-05-01"
