@@ -30,7 +30,7 @@ module People = struct
     affiliation=`CL;
     role="Principal Investigator";
     bio=None;
-    homepage=Some "http://www.cl.cam.ac.uk/~iml1]";
+    homepage=Some "http://www.cl.cam.ac.uk/~iml1";
     mugshot=(Some "iml.jpg");
   }
   let crowcroft = {
