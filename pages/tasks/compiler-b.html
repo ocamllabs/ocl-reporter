@@ -59,7 +59,7 @@
                <a href="#Record disambiguation">Record disambiguation</a><br/>
              </td> <td class="blank" colspan="12"/> <td/> </tr>  <tr> <td class="blank" colspan="4"/> <td class="doing" colspan="3">
                <a href="http://lpw25.net"><img class="mugshot" alt="Leo White" src="../mugshots/lpw25.jpg" height="30px"/></a>
-               <a href="#Camlp4 redesign">Camlp4 redesign</a><br/>
+               <a href="#Syntax extensions">Syntax extensions</a><br/>
              </td> <td class="blank" colspan="9"/> <td/> </tr>  <tr> <td class="blank" colspan="6"/> <td class="planning" colspan="10">
                <a href="http://lpw25.net"><img class="mugshot" alt="Leo White" src="../mugshots/lpw25.jpg" height="30px"/></a>
                <a href="#Namespaces">Namespaces</a><br/>
@@ -77,19 +77,40 @@
          <div style="width:75%">
          <h3 style="border-bottom: thin solid #999999;" id="Open types">Open types</h3>
          <p><a href="../people/lpw25.html"><img class="inline" style="float:left; padding-right: 30px" height="40px" src="../mugshots/lpw25.jpg"/></a>  <span class="complete">Complete</span> (Oct 2012 - Jan 2013) <br/><a class="icon-github" href="https://github.com/lpw25/ocaml-open">Github</a>   </p>
-         
+         <p>Add open extensible types to OCaml. One open type already exists within OCaml: the exn type used for exceptions. This project extends this mechanism to allow the programmer to create their own open types. This has previously been proposed for functional languages a number of times, for instance as part of a solution to the expression problem (Loh et al. <a href="http://people.cs.uu.nl/andres/OpenDatatypes.pdf">&quot;Open Data Types and Open Functions&quot;</a>). Unlike &quot;exn&quot;, these extensible types can have type parameters, allowing for extensible GADTs.</p>
+<p>For example:</p>
+<pre class="sourceCode ocaml"><code class="sourceCode ocaml"><span class="kw">type</span> foo = ..
+
+<span class="kw">type</span> foo += <span class="dt">A</span>
+
+<span class="kw">type</span> foo += <span class="dt">B</span> <span class="kw">of</span> <span class="dt">int</span>
+
+<span class="kw">let</span> is_a x =
+  <span class="kw">match</span> x <span class="kw">with</span>
+    <span class="dt">A</span> -&gt; <span class="kw">true</span>
+  | _ -&gt; <span class="kw">false</span></code></pre>
+
          <br/></div>
       
          <div style="width:75%">
          <h3 style="border-bottom: thin solid #999999;" id="Record disambiguation">Record disambiguation</h3>
          <p><a href="../people/lpw25.html"><img class="inline" style="float:left; padding-right: 30px" height="40px" src="../mugshots/lpw25.jpg"/></a>  <span class="complete">Complete</span> (Sep 2012 - Dec 2012) <br/><a class="icon-cloud" href="http://caml.inria.fr/mantis/view.php?id=5759">Mantis</a>   </p>
-         
+         <p>Type-based record disambiguation: <a href="http://www.lpw25.net">Leo</a> has been helping with the record-disambiguation branch of OCaml by Jacques Garrigue. This branch uses type-information to disambiguate between record labels and variant constructors with the same names. For discussions of the semantics of this feature see <a href="http://gallium.inria.fr/~scherer/gagallium/resolving-field-names/">Gabriel</a>'s or <a href="http://www.lexifi.com/blog/type-based-selection-label-and-constructors">Alain</a>'s blog posts.</p>
+<p>Leo successfully:</p>
+<ul>
+<li>Rewrote record-disambiguation branch to use an alternative semantics</li>
+<li>Improved the error messages for record disambiguation</li>
+<li>Had the branch <a href="https://github.com/ocaml/ocaml/commit/c8273a179cb0bc835924eeca522922a1769d9d54">merged into OCaml trunk</a></li>
+</ul>
+
          <br/></div>
       
          <div style="width:75%">
-         <h3 style="border-bottom: thin solid #999999;" id="Camlp4 redesign">Camlp4 redesign</h3>
-         <p><a href="../people/lpw25.html"><img class="inline" style="float:left; padding-right: 30px" height="40px" src="../mugshots/lpw25.jpg"/></a>  <span class="doing">In Progress</span> (Dec 2012 - Mar 2013) <br/><a class="icon-cloud" href="http://www.lpw25.net/2013/02/05/camlp4-alternative-part-2.html">Blog</a>   </p>
-         
+         <h3 style="border-bottom: thin solid #999999;" id="Syntax extensions">Syntax extensions</h3>
+         <p><a href="../people/lpw25.html"><img class="inline" style="float:left; padding-right: 30px" height="40px" src="../mugshots/lpw25.jpg"/></a>  <span class="doing">In Progress</span> (Dec 2012 - Mar 2013) <br/><a class="icon-cloud" href="http://lists.ocaml.org/listinfo/wg-camlp4">Working group</a>   <a class="icon-cloud" href="http://www.lpw25.net/2013/02/05/camlp4-alternative-part-2.html">Blog</a>   </p>
+         <p>Since its creation camlp4 has proven to be a very useful tool. People have used it to experiment with new features for OCaml and to provide interesting meta-programming facilities. However, there is general agreement that camlp4 is too powerful and complex for the applications that it is most commonly used for, and there is a growing movement to provide a simpler alternative.</p>
+<p>A working group was formed (wg-camlp4@lists.ocaml.org) regarding the future of syntax extensions in OCaml. The aim of the working group is to formulate a solid transition plan to create a 'basic OCaml ecosystem' that does not require camlp4. Alain Frisch's introductory email has more detail and can be <a href="http://lists.ocaml.org/pipermail/wg-camlp4/2013-January/000000.html">found in the archive</a>.</p>
+
          <br/></div>
       
          <div style="width:75%">
@@ -101,7 +122,8 @@
          <div style="width:75%">
          <h3 style="border-bottom: thin solid #999999;" id="Multicore">Multicore</h3>
          <p><a href="../people/stedolan.html"><img class="inline" style="float:left; padding-right: 30px" height="40px" src="../mugshots/unknown.jpg"/></a>  <span class="planning">Planning</span> (Mar 2013 -) <br/></p>
-         
+         <p>Building an efficient multi-core garbage collector remains a challenging research issue. We will begin by investigating techniques that do not involve fine-grained locking, as this has been shown to be error-prone, difficult to maintain, and impacts sequential performance. Instead, we prefer to isolate threads to individual cores, with region-based heaps that can be garbage collected separately. This technique has been successfully demonstrated in MultiMLton, system and runtime, and we will implement it in OCaml and its large body of third-party code.</p>
+
          <br/></div>
       
          <div style="width:75%">
