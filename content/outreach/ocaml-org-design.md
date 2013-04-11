@@ -1,4 +1,8 @@
-[ocaml.org](http://ocaml.org) is the public facing website for OCaml. A professional agency will be creating a new design for OCaml.org, with flexible templates that can be used across other OCaml related sites as people wish. This will include branding work for the OCaml language itself.
+[ocaml.org](http://ocaml.org) is the public facing website for OCaml.
+A professional agency will be creating a new design for OCaml.org,
+with flexible templates that can be used across other OCaml related
+sites as people wish. This will include branding work for the OCaml
+language itself.
 
 So far we have:
 
