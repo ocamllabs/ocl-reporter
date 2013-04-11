@@ -206,6 +206,7 @@ module Projects = struct
         ~start:"2013-02-02" ~finish:"2013-05-01"
         ~owner:People.vb
         ~status:`Doing
+        ~descr:"mirari"
         ~refs:[ Reference.github "mirage" "mirari" ] () ;
       mk_task ~name:"Mirage Developer Preview"
         ~start:"2013-02-26" ~finish:"2013-07-26"
