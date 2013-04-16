@@ -245,12 +245,12 @@ let news =
      let hd = human_readable_date (Date.of_string m) in
      let body = Markdown.from_file_to_html (sprintf "news/%s" m) in
      <:html<
-       <h2 id=$str:hd$>$str:hd$</h2>
-       <div style="width:75%">$body$</div>
+       <div style="width:75%">
+       <h2 style="border-bottom: 1px solid #cccccc" id=$str:hd$>$str:hd$</h2>
+        $body$</div>
      >>) in
   let body = <:html<
     <div class="ucampas-toc right"/>
-    <h1>Monthly News</h1>
     $list:monthly$
   >> in
   one_page ~title:"News" ~body
