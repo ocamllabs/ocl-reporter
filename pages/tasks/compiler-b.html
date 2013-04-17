@@ -44,10 +44,7 @@
             </style>
           
     <h1 id="compiler">The OCaml Compiler</h1>
-    <div class="width:75%"><p>Debuggers such as the GNU debugger <a href="http://www.gnu.org/software/gdb/">gdb</a> are valuable tools when tracking down problems in low-level or parallel applications. The programmer experience when using such a debugger to examine natively-compiled OCaml programs currently lacks lustre. Recent versions of the compiler can emit a limited amount of debugging information which enables the recovery of correct stack traces in the debugger. However names of functions still appear in mangled form, it is not possible to reference local variables by name, and traversal of OCaml values is troublesome. This is unfortunately by no means an exhaustive list of deficiencies.</p>
-<p>This project aims to equip the native-code OCaml compiler and the GNU debugger with the necessary infrastructure to improve debugging of OCaml programs. The compiler will be enhanced to emit the standard DWARF debugging information format in order to describe the naming and placement of data together with relevant type information. At the same time the debugger will gain functionality to understand the OCaml-specific parts of this information including the ability to demangle OCaml names. It is planned to implement much of the DWARF output stage in the compiler and the debugger-side support in libraries such that they might be re-used in other projects.</p>
-<p>It is hoped that, as support for native-code debugging of OCaml programs in the traditional manner evolves, it will become more easily possible to build more advanced debugging tools. These might exploit the scripting capabilities of gdb, for example, and target environments such as large-scale concurrent systems.</p>
-<p>This work is ongoing in the <a href="https://github.com/ocaml/ocaml/tree/dwarf">dwarf</a> branch of the OCaml repository.</p>
+    <div class="width:75%"><p>We are working on maintaining and extending the core OCaml compiler toolchain and runtime. This consists of a variety of day-to-day tasks such as submitting bug fixes, and also longer-term improvements to the type system and runtime libraries (see below).</p>
 </div>
     <h2 id="Team">Team</h2>
     <p><a href="../people/avsm.html"><img class="inline" style="" height="50px" src="../mugshots/avsm.jpg"/></a><a href="../people/lpw25.html"><img class="inline" style="" height="50px" src="../mugshots/lpw25.jpg"/></a><a href="../people/shinwell.html"><img class="inline" style="" height="50px" src="../mugshots/unknown.jpg"/></a><a href="../people/stedolan.html"><img class="inline" style="" height="50px" src="../mugshots/unknown.jpg"/></a><a href="../people/xclerc.html"><img class="inline" style="" height="50px" src="../mugshots/unknown.jpg"/></a><a href="../people/yallop.html"><img class="inline" style="" height="50px" src="../mugshots/unknown.jpg"/></a></p>
@@ -103,7 +100,7 @@
       
          <div style="width:75%">
          <h3 style="border-bottom: thin solid #999999;" id="Record disambiguation">Record disambiguation</h3>
-         <p><a href="../people/lpw25.html"><img class="inline" style="float:left; padding-right: 30px" height="40px" src="../mugshots/lpw25.jpg"/></a>  <span class="complete">Complete</span> by <a href="../people/lpw25.html">Leo White</a> (Sep 2012 - Dec 2012) <br/><a class="icon-cloud" href="http://caml.inria.fr/mantis/view.php?id=5759">Mantis</a>   </p>
+         <p><a href="../people/lpw25.html"><img class="inline" style="float:left; padding-right: 30px" height="40px" src="../mugshots/lpw25.jpg"/></a>  <span class="complete">Complete</span> by <a href="../people/lpw25.html">Leo White</a> (Sep 2012 - Dec 2012) <br/><a class="icon-cloud" href="http://caml.inria.fr/mantis/view.php?id=5759">Mantis</a>   <a href="http://caml.inria.fr/mantis/view.php?id=5584">Bug report</a>   </p>
          <p>Type-based record disambiguation: <a href="http://www.lpw25.net">Leo</a> has been helping with the record-disambiguation branch of OCaml by Jacques Garrigue. This branch uses type-information to disambiguate between record labels and variant constructors with the same names. For discussions of the semantics of this feature see <a href="http://gallium.inria.fr/~scherer/gagallium/resolving-field-names/">Gabriel</a>'s or <a href="http://www.lexifi.com/blog/type-based-selection-label-and-constructors">Alain</a>'s blog posts.</p>
 <p>Leo successfully:</p>
 <ul>
@@ -124,14 +121,14 @@
       
          <div style="width:75%">
          <h3 style="border-bottom: thin solid #999999;" id="Namespaces">Namespaces</h3>
-         <p><a href="../people/lpw25.html"><img class="inline" style="float:left; padding-right: 30px" height="40px" src="../mugshots/lpw25.jpg"/></a>  <span class="planning">Planning</span> by <a href="../people/lpw25.html">Leo White</a> (Feb 2013 -) <br/><a class="icon-cloud" href="http://www.lpw25.net/2013/03/10/ocaml-namespaces.html">Blog</a>   </p>
+         <p><a href="../people/lpw25.html"><img class="inline" style="float:left; padding-right: 30px" height="40px" src="../mugshots/lpw25.jpg"/></a>  <span class="planning">Planning</span> by <a href="../people/lpw25.html">Leo White</a> (Feb 2013 -) <br/><a class="icon-cloud" href="http://www.lpw25.net/2013/03/10/ocaml-namespaces.html">Blog</a>   <a class="icon-cloud" href="http://lists.ocaml.org/pipermail/platform/2013-February/000050.html">Epic Mail Thread</a>   </p>
          
 
          <br/></div>
       
          <div style="width:75%">
          <h3 style="border-bottom: thin solid #999999;" id="Multicore">Multicore</h3>
-         <p><a href="../people/stedolan.html"><img class="inline" style="float:left; padding-right: 30px" height="40px" src="../mugshots/unknown.jpg"/></a>  <span class="planning">Planning</span> by <a href="../people/stedolan.html">Stephen Dolan</a> (Mar 2013 -) <br/></p>
+         <p><a href="../people/stedolan.html"><img class="inline" style="float:left; padding-right: 30px" height="40px" src="../mugshots/unknown.jpg"/></a>  <span class="planning">Planning</span> by <a href="../people/stedolan.html">Stephen Dolan</a> (Mar 2013 -) <br/><a class="icon-github" href="https://github.com/stedolan/ocaml">Github</a>   </p>
          <p>Building an efficient multi-core garbage collector remains a challenging research issue. We will begin by investigating techniques that do not involve fine-grained locking, as this has been shown to be error-prone, difficult to maintain, and impacts sequential performance. Instead, we prefer to isolate threads to individual cores, with region-based heaps that can be garbage collected separately. This technique has been successfully demonstrated in MultiMLton, system and runtime, and we will implement it in OCaml and its large body of third-party code.</p>
 
          <br/></div>

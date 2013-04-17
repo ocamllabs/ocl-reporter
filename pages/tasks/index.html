@@ -63,7 +63,7 @@
             </style>
           
         <div style="width:75%">        
-       <h2 id="platform" style="border-bottom: 1px solid #cccccc; font-weight: bold">         <a href="platform.html">OCaml Platform</a>
+       <h2 id="platform" style="border-bottom: 1px solid #cccccc; font-weight: bold">         <a href="platform.html">OCaml Platform &#187;</a>
        </h2> 
         <p>The OCaml Platform combines the core OCaml compiler with a coherent set of libraries, tools and documentation. The requirements and direction of the Platform are initially being guided by large users of OCaml such as <a href="http://ocaml.janestreet.com">Jane Street</a>, <a href="http://www.xen.org/files/XenCloud/ocamldoc/">Citrix</a> and <a href="http://www.lexifi.com/product/technology/ocaml">Lexifi</a>.</p>
 <p>The reason for initially taking direction from industrial users is because these companies have a great deal of experience of using the language at scale (e.g millions of lines of code, thousands of modules and complicated testing requirements). We take a pragmatic view that examining and solving the problems such users have will ultimately result in a large and positive impact on the wider community, through significantly improved tooling, libraries and documentation.</p>
@@ -104,7 +104,7 @@
             </style>
           
         <div style="width:75%">        
-       <h2 id="mirage" style="border-bottom: 1px solid #cccccc; font-weight: bold">         <a href="mirage.html">Mirage OS</a>
+       <h2 id="mirage" style="border-bottom: 1px solid #cccccc; font-weight: bold">         <a href="mirage.html">Mirage OS &#187;</a>
        </h2> 
         <p>The cloud has so far mostly been used to consolidate existing operating systems and manage them more conveniently. The interface between guest kernels, applications and VMs are all managed very differently, leading to serious inefficiencies, unreliability and insecurity. <a href="http://www.openmirage.org">Mirage OS</a> revisits the library OS concept (built here as <a href="http://www.cl.cam.ac.uk/research/srg/netos/old-projects/nemesis/documentation.html">Nemesis</a> in the late '90s), and narrows the gap between safe, high-level programming, and low-level systems construction.</p>
 <p>Applications are written in high-level OCaml and compiled directly into microkernels that run on the Xen hypervisor. By treating the hypervisor as a stable hardware platform, we can focus on high-performance protocol implementations without worrying about having to support the thousands of device drivers found in a traditional OS. Although Mirage initially targets the Xen hypervisor, other backends, such as a FreeBSD kernel module and Javascript, also exist.</p>
@@ -139,7 +139,7 @@
             </style>
           
         <div style="width:75%">        
-       <h2 id="illuminate" style="border-bottom: 1px solid #cccccc; font-weight: bold">         <a href="illuminate.html">Illuminate</a>
+       <h2 id="illuminate" style="border-bottom: 1px solid #cccccc; font-weight: bold">         <a href="illuminate.html">Illuminate &#187;</a>
        </h2> 
         <p>Embedded computer systems that are low-power, physically mobile, and contain actuators and sensors to interface and influence the "real world" are increasingly common. We're building the core technology to make these sensors fundamentally more secure, reliable and easier to program. This consists of three main bits of technology:</p>
 <ul><li>The Mirage OS (described separately) to build specialised, type-safe embedded images.</li>
@@ -178,12 +178,9 @@
             </style>
           
         <div style="width:75%">        
-       <h2 id="compiler" style="border-bottom: 1px solid #cccccc; font-weight: bold">         <a href="compiler.html">The OCaml Compiler</a>
+       <h2 id="compiler" style="border-bottom: 1px solid #cccccc; font-weight: bold">         <a href="compiler.html">The OCaml Compiler &#187;</a>
        </h2> 
-        <p>Debuggers such as the GNU debugger <a href="http://www.gnu.org/software/gdb/">gdb</a> are valuable tools when tracking down problems in low-level or parallel applications. The programmer experience when using such a debugger to examine natively-compiled OCaml programs currently lacks lustre. Recent versions of the compiler can emit a limited amount of debugging information which enables the recovery of correct stack traces in the debugger. However names of functions still appear in mangled form, it is not possible to reference local variables by name, and traversal of OCaml values is troublesome. This is unfortunately by no means an exhaustive list of deficiencies.</p>
-<p>This project aims to equip the native-code OCaml compiler and the GNU debugger with the necessary infrastructure to improve debugging of OCaml programs. The compiler will be enhanced to emit the standard DWARF debugging information format in order to describe the naming and placement of data together with relevant type information. At the same time the debugger will gain functionality to understand the OCaml-specific parts of this information including the ability to demangle OCaml names. It is planned to implement much of the DWARF output stage in the compiler and the debugger-side support in libraries such that they might be re-used in other projects.</p>
-<p>It is hoped that, as support for native-code debugging of OCaml programs in the traditional manner evolves, it will become more easily possible to build more advanced debugging tools. These might exploit the scripting capabilities of gdb, for example, and target environments such as large-scale concurrent systems.</p>
-<p>This work is ongoing in the <a href="https://github.com/ocaml/ocaml/tree/dwarf">dwarf</a> branch of the OCaml repository.</p>
+        <p>We are working on maintaining and extending the core OCaml compiler toolchain and runtime. This consists of a variety of day-to-day tasks such as submitting bug fixes, and also longer-term improvements to the type system and runtime libraries (see below).</p>
 
         </div>
         <table class="projects" width="85%">        <tbody><tr class="dates"><td>Sep '12</td><td>Oct '12</td><td>Nov '12</td><td>Dec '12</td><td>Jan '13</td><td>Feb '13</td><td>Mar '13</td><td>Apr '13</td><td>May '13</td><td>Jun '13</td><td>Jul '13</td><td>Aug '13</td><td>Sep '13</td><td>Oct '13</td><td>Nov '13</td><td>Dec '13</td><td>&#8734;</td></tr>
@@ -215,9 +212,9 @@
             </style>
           
         <div style="width:75%">        
-       <h2 id="t2" style="border-bottom: 1px solid #cccccc; font-weight: bold">         <a href="t2.html">Trilogy 2</a>
+       <h2 id="t2" style="border-bottom: 1px solid #cccccc; font-weight: bold">         <a href="t2.html">Trilogy 2 &#187;</a>
        </h2> 
-        <p><a href="http://trilogy2.eu">Trilogy2</a> aims to develop a new Internet architecture based on the concept of the <em>liquid network</em>. A liquid system should ideally allow resources including bandwidth, storage and processing to be used by any application, whether they are contributed by network operators, data centre operators or end systems. Resources form a shared pool and applications can scale up and down in multiple dimensions (storage, processing, bandwidth and energy usage) as needed, in a continuous effort to enhance the users&#8217; experience as measured in terms of key metrics such as delay and battery life.</p>
+        <p><a href="http://trilogy2.eu"><img class="right" src="../images/t2.png" /></a><a href="http://trilogy2.eu">Trilogy2</a> aims to develop a new Internet architecture based on the concept of the <em>liquid network</em>. A liquid system should ideally allow resources including bandwidth, storage and processing to be used by any application, whether they are contributed by network operators, data centre operators or end systems. Resources form a shared pool and applications can scale up and down in multiple dimensions (storage, processing, bandwidth and energy usage) as needed, in a continuous effort to enhance the users&#8217; experience as measured in terms of key metrics such as delay and battery life.</p>
 <p>The Cambridge participation is primarily centered around three efforts:</p>
 <ul><li>The <a href="http://openmirage.org">Mirage</a> library operating system that provides the policy-free mechanism to implement the liquid OS.</li>
 <li>A highly adaptive PVTCP transport protocol that takes advantage of heterogenous network connections.</li>
@@ -251,9 +248,10 @@
             </style>
           
         <div style="width:75%">        
-       <h2 id="outreach" style="border-bottom: 1px solid #cccccc; font-weight: bold">         <a href="outreach.html">Community Outreach</a>
+       <h2 id="outreach" style="border-bottom: 1px solid #cccccc; font-weight: bold">         <a href="outreach.html">Community Outreach &#187;</a>
        </h2> 
-        <p>Growing a language community is more than just technology; we also need a better online presence, documentation and educational material.</p>
+        <p><a href="http://realworldocaml.org"><img class="right" src="../images/oreilly-cover.gif" width="70px" /></a>Growing a language community is more than just technology; we also need a better online presence, documentation and educational material. We're working on an O'Reilly book about practical OCaml programming, as well as a comprehensive revamp of the website to include features such as the interactive <a href="http://try.ocamlpro.com">TryOCaml</a> Javascript toplevel.</p>
+<p>Much of this work is done in collaboration with members of the wider OCaml community such as <a href="../people/ashish.html">Ashish Agarwal</a> and <a href="../people/christophe.html">Christophe Troestler</a>, and not just from the Cambridge group.</p>
 
         </div>
         <table class="projects" width="85%">        <tbody><tr class="dates"><td>Sep '12</td><td>Oct '12</td><td>Nov '12</td><td>Dec '12</td><td>Jan '13</td><td>Feb '13</td><td>Mar '13</td><td>Apr '13</td><td>May '13</td><td>Jun '13</td><td>Jul '13</td><td>Aug '13</td><td>Sep '13</td><td>Oct '13</td><td>Nov '13</td><td>Dec '13</td><td>&#8734;</td></tr>
