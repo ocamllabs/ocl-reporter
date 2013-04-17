@@ -78,19 +78,19 @@
     
          <div style="width:75%">
          <h3 style="border-bottom: thin solid #999999;" id="Signpost prototype">Signpost prototype</h3>
-         <p><a href="../people/heidi.html"><img class="inline" style="float:left; padding-right: 30px" height="40px" src="../mugshots/heidi.jpg"/></a>  <span class="doing">In Progress</span> by <a href="../people/heidi">Heidi Howard</a> (Aug 2012 - Jun 2013) <br/></p>
+         <p><a href="../people/heidi.html"><img class="inline" style="float:left; padding-right: 30px" height="40px" src="../mugshots/heidi.jpg"/></a>  <span class="doing">In Progress</span> by <a href="../people/heidi.html">Heidi Howard</a> (Aug 2012 - Jun 2013) <br/></p>
           
          <br/></div>
       
          <div style="width:75%">
          <h3 style="border-bottom: thin solid #999999;" id="Real-time templating">Real-time templating</h3>
-         <p><a href="../people/pwang.html"><img class="inline" style="float:left; padding-right: 30px" height="40px" src="../mugshots/pwang.jpg"/></a>  <span class="planning">Planning</span> by <a href="../people/pwang">Philippe Wang</a> (Mar 2013 - Aug 2013) <br/></p>
+         <p><a href="../people/pwang.html"><img class="inline" style="float:left; padding-right: 30px" height="40px" src="../mugshots/pwang.jpg"/></a>  <span class="planning">Planning</span> by <a href="../people/pwang.html">Philippe Wang</a> (Mar 2013 - Aug 2013) <br/></p>
           
          <br/></div>
       
          <div style="width:75%">
          <h3 style="border-bottom: thin solid #999999;" id="Declarative graphing library">Declarative graphing library</h3>
-         <p><a href="../people/dbunzli.html"><img class="inline" style="float:left; padding-right: 30px" height="40px" src="../mugshots/unknown.jpg"/></a>  <span class="doing">In Progress</span> by <a href="../people/dbunzli">Daniel Bunzli</a> (Apr 2013 - Jul 2013) <br/><a class="icon-github" href="https://github.com/dbuenzli/gg">Gg code</a>   <a class="icon-github" href="https://github.com/dbuenzli/vg">Vg code</a>   </p>
+         <p><a href="../people/dbunzli.html"><img class="inline" style="float:left; padding-right: 30px" height="40px" src="../mugshots/unknown.jpg"/></a>  <span class="doing">In Progress</span> by <a href="../people/dbunzli.html">Daniel Bunzli</a> (Apr 2013 - Jul 2013) <br/><a class="icon-github" href="https://github.com/dbuenzli/gg">Gg code</a>   <a class="icon-github" href="https://github.com/dbuenzli/vg">Vg code</a>   </p>
          <p><code>Vg</code> is a declarative library for describing vector scenes in OCaml. It's a baseline library that is intended to be compiled to diverse backends such as HTML5 Canvas or WebGL to render graphics. This project aims to build a &quot;Tufte principled&quot; 2D visualization library with some simple graphing widgets for data visualisation. In the longer term, the intention is to build a declarative UI framework also.</p>
 
          <h4><em>Related work</em></h4>
@@ -98,7 +98,7 @@
       
          <div style="width:75%">
          <h3 style="border-bottom: thin solid #999999;" id="Raspberry OCaml">Raspberry OCaml</h3>
-         <p><a href="../people/avsm.html"><img class="inline" style="float:left; padding-right: 30px" height="40px" src="../mugshots/avsm.jpg"/></a>  <span class="complete">Complete</span> by <a href="../people/avsm">Anil Madhavapeddy</a> (Nov 2012 - Feb 2013) <br/><a href="http://caml.inria.fr/mantis/view.php?id=5798">Bug report</a>   <a class="icon-cloud" href="https://ocaml.janestreet.com/?q=node/110">Jane Street blog</a>   </p>
+         <p><a href="../people/avsm.html"><img class="inline" style="float:left; padding-right: 30px" height="40px" src="../mugshots/avsm.jpg"/></a>  <span class="complete">Complete</span> by <a href="../people/avsm.html">Anil Madhavapeddy</a> (Nov 2012 - Feb 2013) <br/><a href="http://caml.inria.fr/mantis/view.php?id=5798">Bug report</a>   <a class="icon-cloud" href="https://ocaml.janestreet.com/?q=node/110">Jane Street blog</a>   </p>
          <p>The <a href="http://www.cl.cam.ac.uk/~rdm34/raspi/">Raspberry Pi</a> has an ARMv6 processor, and there are two main distributions available. Debian wheezy is compiled with <i>soft float</i> (which emulates floating point) and is fairly compatible with most software. The <a href="http://raspbian.org">Raspbian</a> distribution is recompiled to take advantage of <i>hard float</i>, which is faster but requires a new set of binary packages.</p>
 <p><em>Soft-float Debian</em>: If you use soft-float Debian, there is a nice guide available on the <a href="https://ocaml.janestreet.com/?q=node/110">Jane Street OCaml blog</a> blog on how to bootstrap the native code OCaml compiler on it. The standard binary packages included with Debian will also work fine.</p>
 <p><em>Hard-float Raspbian</em>: Once you have Raspbian installed, the byte-code <code>ocamlc</code> compiler will work, but the <code>ocamlopt</code> native code compiler doesnt work out of the box. This is due to differences in the ARMv6 and ARMv7 instruction setsa .The Raspbian distribution uses a calling convention called <code>VFPE2</code> to handle floating point, and OCaml doesn't recognise it by default.</p>
