@@ -216,6 +216,7 @@ module Projects = struct
       project_name="Illuminate";
       team; project_owner; tasks;
     } and tasks = [
+
       mk_task ~name:"Signpost prototype"
         ~start:"2012-08-01" ~finish:"2013-06-01"
         ~owner:People.heidi
@@ -223,14 +224,27 @@ module Projects = struct
         ~descr:"signpostv1"
         ~refs:[
          ] ();
-      mk_task ~name:"Real-time graphing and datavis"
+
+      mk_task ~name:"Real-time templating"
        ~start:"2013-03-01" ~finish:"2013-08-01"
        ~owner:People.pwang
        ~status:`Planning
-       ~descr:"graphing"
+       ~descr:"templates"
        ~refs: [
        ] ();
-       mk_task ~name:"Raspberry OCaml"
+
+      mk_task ~name:"Declarative graphing library"
+       ~start:"2013-04-14" ~finish:"2013-07-14"
+       ~owner:People.dbunzli
+       ~status:`Doing
+       ~descr:"vg"
+       ~related:[("Real-time templating", "illuminate", "Real-time templating")]
+       ~refs: [
+         Reference.github ~name:"Gg code" "dbuenzli" "gg";
+         Reference.github ~name:"Vg code" "dbuenzli" "vg";
+       ] ();
+
+      mk_task ~name:"Raspberry OCaml"
        ~start:"2012-11-01" ~finish:"2013-02-01"
        ~owner:People.avsm
        ~status:`Complete
@@ -240,6 +254,7 @@ module Projects = struct
          Reference.blog ~name:"Jane Street blog" "https://ocaml.janestreet.com/?q=node/110";
        ]  ();
     ]
+
   end
 
   module Mirage = struct
