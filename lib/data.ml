@@ -148,8 +148,20 @@ module Projects = struct
       mk_task ~name:"Compile-time meta programming"
         ~start:"2013-04-01"
         ~owner:People.yallop
-        ~status:`Planning ()
-        ~descr:"meta-programming";
+        ~status:`Planning
+        ~descr:"meta-programming" ();
+      mk_task ~name:"Emission of DWARF debugging information"
+        ~start:"2013-01-01" ~finish:"2013-06-01"
+        ~owner:People.shinwell
+        ~status:`Doing
+        ~descr:"dwarf" 
+        ~refs: [ Reference.github ~name:"4.00.1-allocation-profiling" "mshinwell" "ocaml" ] ();
+      mk_task ~name:"OCaml Java 2.0"
+        ~start:"2013-04-01" ~finish:"2013-08-01"
+        ~owner:People.xclerc
+        ~status:`Doing
+        ~descr:"ocamljava2" 
+        ~refs: [ Reference.webpage "http://ocamljava.x9c.fr/preview/" ] ();
     ]
   end
 
@@ -223,7 +235,10 @@ module Projects = struct
        ~owner:People.avsm
        ~status:`Complete
        ~descr:"raspberryocaml"
-       ~refs: [ Reference.mantis 5798 ]  ();
+       ~refs: [ 
+         Reference.mantis 5798;
+         Reference.blog ~name:"Jane Street blog" "https://ocaml.janestreet.com/?q=node/110";
+       ]  ();
     ]
   end
 

@@ -104,6 +104,9 @@ module Reference = struct
     link: link;
   }
 
+  let blog ?(name="Blog Post") url =
+    { name; link=(`Blog url) }
+
   let mantis ?(name="Bug report") num =
     { name; link=(`Mantis num) }
 
