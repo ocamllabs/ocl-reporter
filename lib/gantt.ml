@@ -118,7 +118,7 @@ let to_project_html ?(moreinfo=true) projects =
     if moreinfo then
       <:html<
        <h2 style=$str:style$ id=$str:proj.project_id$>
-         <a href=$str:proj_href$>$str:proj.project_name$</a>
+         <a href=$str:proj_href$>$str:proj.project_name$ &raquo;</a>
        </h2> >>
       else
         <:html<

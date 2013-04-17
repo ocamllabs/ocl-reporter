@@ -129,7 +129,10 @@ module Projects = struct
         ~owner:People.lpw25
         ~status:`Complete
         ~descr:"record-disambiguation"
-        ~refs:[ Reference.webpage ~name:"Mantis" "http://caml.inria.fr/mantis/view.php?id=5759" ] () ;
+        ~refs:[
+          Reference.webpage ~name:"Mantis" "http://caml.inria.fr/mantis/view.php?id=5759" ;
+          Reference.mantis 5584;
+        ] () ;
       mk_task ~name:"Syntax extensions"
         ~start:"2012-12-01" ~finish:"2013-03-01"
         ~owner:People.lpw25
@@ -142,12 +145,16 @@ module Projects = struct
         ~owner:People.lpw25
         ~status:`Planning
         ~descr:"namespaces"
-        ~refs:[ Reference.webpage ~name:"Blog" "http://www.lpw25.net/2013/03/10/ocaml-namespaces.html" ] () ;
+        ~refs:[
+          Reference.webpage ~name:"Blog" "http://www.lpw25.net/2013/03/10/ocaml-namespaces.html" ;
+          Reference.webpage ~name:"Epic Mail Thread" "http://lists.ocaml.org/pipermail/platform/2013-February/000050.html"
+       ] () ;
       mk_task ~name:"Multicore"
         ~start:"2013-03-01"
         ~owner:People.stedolan
         ~descr:"multicore"
-        ~status:`Planning () ;
+        ~status:`Planning
+        ~refs: [ Reference.github "stedolan" "ocaml" ] ();
       mk_task ~name:"Compile-time meta programming"
         ~start:"2013-04-01"
         ~owner:People.yallop
