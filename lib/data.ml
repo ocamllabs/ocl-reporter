@@ -262,7 +262,10 @@ module Projects = struct
         ~owner:People.djs
         ~status:`Planning
         ~descr:"dev-preview"
-        ~refs: [ Reference.github "mirage" "mirage-platform" ] () ;
+        ~refs: [
+           Reference.github "mirage" "mirage-platform";
+           Reference.webpage ~name:"Meeting Minutes" "http://openmirage.org/wiki/weekly-2013-04-16";
+        ] () ;
       mk_task ~name:"Formalisms for packet processing"
         ~start:"2013-04-01" ~finish:"2013-10-01"
         ~owner:People.balrajsingh
