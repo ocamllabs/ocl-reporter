@@ -141,15 +141,6 @@ module People = struct
     homepage=Some "https://github.com/vstakhov";
     mugshot=Some "vsevelod.jpg";
   }
-  let stephend = {
-    id="stephand";
-    name="Stephen Dolan";
-    affiliation=`CL;
-    role="PhD Student";
-    bio=None;
-    homepage=Some "https://github.com/stedolan";
-    mugshot=None;
-  }
   let griffin = {
     id="griffin";
     name="Timothy G. Griffin";
@@ -180,7 +171,7 @@ module People = struct
   let bogdan = {
     id="bogdan";
     name="Bogdan-Alexandru Matican";
-    affiliation=`CL;
+    affiliation=`CLx;
     role="ACS Student (2013)";
     bio=None;
     homepage=None;
@@ -400,7 +391,7 @@ module People = struct
   let all = [
     avsm; mycroft; iml; crowcroft; amir; lpw25; yallop; pwang;
     stedolan; balrajsingh; heidi; raphael; smh; haris;  vsevolod;
-    stephend; griffin; rwatson; alib; bogdan; sheets; gparisis;
+    griffin; rwatson; alib; bogdan; sheets; gparisis;
     djs; vb; jludlam; lars; yaron; shinwell; tg; pierre; fabrice;
     xleroy; mac; mort; ashish; christophe; gabor;
     (* prashanth; *) jhickey; xclerc; dbunzli ]

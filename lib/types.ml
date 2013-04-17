@@ -162,6 +162,7 @@ module Project = struct
     project_id: string;
     project_name: string;
     project_owner: Person.t;
+    project_elevator: string;
     team: Person.t list;
     tasks: task list;
   }

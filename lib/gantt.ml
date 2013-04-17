@@ -114,19 +114,27 @@ let to_project_html ?(moreinfo=true) projects =
   let open Types.Project in
   let more proj =
     let proj_href = proj.project_id^".html" in
+    let style = "border-bottom: 1px solid #cccccc; font-weight: bold" in
     if moreinfo then
-      <:html<<p><i><a href=$str:proj_href$>(more information)</a></i></p>&>>
-    else [] in
+      <:html<
+       <h2 style=$str:style$ id=$str:proj.project_id$>
+         <a href=$str:proj_href$>$str:proj.project_name$</a>
+       </h2> >>
+      else
+        <:html<
+         <h2 style=$str:style$ id=$str:proj.project_id$>$str:proj.project_name$</h2> >>
+  in
   List.map projects
     ~f:(fun proj ->
       let proj_descr = Markdown.from_file_to_html (proj.project_id^"/descr") in
       let ts = tasks ~hrefbase:(proj.project_id^".html") proj.tasks in
       <:html<
         $css$
-        <h1 id=$str:proj.project_id$>$str:proj.project_name$</h1>
-        $proj_descr$
+        <div style="width:75%">
         $more proj$
-        <table class="projects" width="95%">
+        $proj_descr$
+        </div>
+        <table class="projects" width="85%">
         <tr class="dates">$list:cells$</tr>
         $list:ts$
         <tr><td colspan=$str:string_of_int total_colspan$>&nbsp;</td></tr>
@@ -140,7 +148,7 @@ let to_one_project_html teamlist proj =
   <:html<
     $css$
     <h1 id=$str:proj.project_id$>$str:proj.project_name$</h1>
-    $proj_descr$
+    <div class="width:75%">$proj_descr$</div>
     <h2 id="Team">Team</h2>
     $teamlist$
     <h2 id="Tasks">Tasks</h2>
@@ -150,7 +158,6 @@ let to_one_project_html teamlist proj =
     <tr><td colspan=$str:string_of_int total_colspan$>&nbsp;</td></tr>
     </table>
   >>
-
 
 (* Output the shortened version without descriptions, for the person page *)
 let to_short_html person =
@@ -163,12 +170,16 @@ let to_short_html person =
     let phref = sprintf "../tasks/%s.html" proj.project_id in
     <:html<
       $css$
-      <h2 id=$str:proj.project_id$>$str:proj.project_name$</h2>
-      <p><i><a href=$str:phref$>(more info)</a></i></p>
+      <div style="width:75%">
+      <h3 style="font-weight: bold" id=$str:proj.project_id$><a href=$str:phref$>$str:proj.project_name$</a></h3>
+      <p>$str:proj.project_elevator$</p>
+      </div>
+      <div style="width:90%">
       <table class="projects" width="95%">
         <tr class="dates">$list:cells$</tr>
         $list:tasks task_list$
         <tr><td colspan=$str:string_of_int total_colspan$>&nbsp;</td></tr>
       </table>
+      </div>
     >>
   )

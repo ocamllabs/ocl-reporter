@@ -19,6 +19,7 @@ module Projects = struct
       { project_id="platform"; 
         project_name="OCaml Platform"; 
         project_owner=People.amir;
+        project_elevator="A rigorously designed, tested and documented base of OCaml libraries and tools.";
         team=People.([ avsm; tg; lpw25; sheets; yallop; pwang ]);
         tasks;
       }
@@ -82,6 +83,7 @@ module Projects = struct
       { project_id="t2"; 
         project_name="Trilogy 2"; 
         project_owner=People.avsm;
+        project_elevator="Building a resilient liquid OS, with multipath and adaptive scheduling.";
         team=People.([ vsevolod; gparisis; amir; crowcroft; tg ]);
         tasks;
       }
@@ -111,6 +113,7 @@ module Projects = struct
       project_id="compiler";
       project_name="The OCaml Compiler" ;
       project_owner = People.lpw25; 
+      project_elevator="Maintaining, extending and documenting the core OCaml compiler toolchain";
       team = People.([ yallop; stedolan; avsm ]);
       tasks;
     }
@@ -171,6 +174,7 @@ module Projects = struct
       project_id="outreach";
       project_name="Community Outreach" ;
       project_owner = People.amir; 
+      project_elevator="Building an effective online presence for the worldwide OCaml community";
       team = People.([ avsm ]);
       tasks;
     }
@@ -214,6 +218,7 @@ module Projects = struct
     let rec project = {
       project_id="illuminate";
       project_name="Illuminate";
+      project_elevator="Connecting cyber-physical devices with rigorous programming, coordination and persistence.";
       team; project_owner; tasks;
     } and tasks = [
 
@@ -264,6 +269,7 @@ module Projects = struct
     let rec project = { 
       project_id="mirage";
       project_name="Mirage OS"; 
+      project_elevator="A high-performance, type-safe library OS written in OCaml.";
       team; project_owner; tasks 
     } and tasks = [
       mk_task ~name:"Unikernel Mirage prototype"
