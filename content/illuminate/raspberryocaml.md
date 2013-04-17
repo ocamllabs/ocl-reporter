@@ -17,7 +17,7 @@ deb http://www.cl.cam.ac.uk/~lpw25/ocaml-rpi/ wheezy main
 deb-src http://www.cl.cam.ac.uk/~lpw25/ocaml-rpi/ wheezy main
 ```
 
-Alternatively, you can also use [OPAM](opam.html) to compile a custom compiler (see the Jane Street blog post above for instructions on how to install OPAM):
+Alternatively, you can also use [OPAM](http://opam.ocamlpro.com) to compile a custom compiler (see the Jane Street blog post above for instructions on how to install OPAM):
 
 ```
 $ opam switch 4.00.1+raspberrypi
