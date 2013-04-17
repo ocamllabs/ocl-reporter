@@ -201,7 +201,7 @@ let one_project proj =
           |None -> <:html<&>>
           |Some d -> <:html< $str:human_readable_date d$>>
         in
-        let phref = sprintf "../people/%s" t.owner.Person.id in
+        let phref = sprintf "../people/%s.html" t.owner.Person.id in
         let pname = t.owner.Person.name in
         let n = <:html<<a href=$str:phref$>$str:pname$</a>&>> in
         <:html< $mode$ by $n$ ($start$ -$finish$) >>
