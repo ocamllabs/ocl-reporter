@@ -6,6 +6,7 @@ include Data_news
 
 module Projects = struct
   open Project
+
   module Platform = struct
 
    let opam_refs = [ 
@@ -194,6 +195,32 @@ module Projects = struct
     ]
   end
 
+  module Illuminate = struct
+    let project_owner = People.avsm
+    let team = People.([ amir; pwang; sheets; iml; crowcroft ])
+
+    let rec project = {
+      project_id="illuminate";
+      project_name="Illuminate";
+      team; project_owner; tasks;
+    } and tasks = [
+      mk_task ~name:"Signpost prototype"
+        ~start:"2012-08-01" ~finish:"2013-06-01"
+        ~owner:People.heidi
+        ~status:`Doing
+        ~descr:"signpostv1"
+        ~refs:[
+         ] ();
+      mk_task ~name:"Real-time graphing and datavis"
+       ~start:"2013-04-01" ~finish:"2013-07-01"
+       ~owner:People.pwang
+       ~status:`Planning
+       ~descr:"graphing"
+       ~refs: [
+       ] ();
+    ]
+  end
+
   module Mirage = struct
     let project_owner = People.avsm
     let team = People.([ tg; amir; djs; crowcroft; mort; balrajsingh; raphael; smh; haris; rwatson; vb; jludlam; lars; mac; gabor ])
@@ -243,7 +270,7 @@ module Projects = struct
     ] 
   end
 
-  let all = [ Platform.project; Mirage.project;
+  let all = [ Platform.project; Mirage.project; Illuminate.project;
               Compiler.project; T2.project; Outreach.project ]
 end
 
