@@ -167,8 +167,11 @@
                <a href="illuminate.html#Signpost prototype">Signpost prototype</a><br/>
              </td> <td class="blank" colspan="6"/> <td/> </tr>  <tr> <td class="blank" colspan="7"/> <td class="planning" colspan="5">
                <a href="http://www.cl.cam.ac.uk/~pw374"><img class="mugshot" alt="Philippe Wang" src="../mugshots/pwang.jpg" height="30px"/></a>
-               <a href="illuminate.html#Real-time graphing and datavis">Real-time graphing and datavis</a><br/>
-             </td> <td class="blank" colspan="4"/> <td/> </tr>  <tr> <td class="blank" colspan="3"/> <td class="complete" colspan="3">
+               <a href="illuminate.html#Real-time templating">Real-time templating</a><br/>
+             </td> <td class="blank" colspan="4"/> <td/> </tr>  <tr> <td class="blank" colspan="8"/> <td class="doing" colspan="3">
+               <a href="http://erratique.ch/contact.en"><img class="mugshot" alt="Daniel Bunzli" src="../mugshots/unknown.jpg" height="30px"/></a>
+               <a href="illuminate.html#Declarative graphing library">Declarative graphing library</a><br/>
+             </td> <td class="blank" colspan="5"/> <td/> </tr>  <tr> <td class="blank" colspan="3"/> <td class="complete" colspan="3">
                <a href="http://anil.recoil.org"><img class="mugshot" alt="Anil Madhavapeddy" src="../mugshots/avsm.jpg" height="30px"/></a>
                <a href="illuminate.html#Raspberry OCaml">Raspberry OCaml</a><br/>
              </td> <td class="blank" colspan="10"/> <td/> </tr> 
@@ -194,7 +197,10 @@
             </style>
           
         <h1 id="compiler">The OCaml Compiler</h1>
-        <p>We are working on the OCaml compiler and runtime. This consists of a variety of day-to-day tasks such as submitting bug fixes, and also longer-term improvements to the type system and runtime libraries (see below).</p>
+        <p>Debuggers such as the GNU debugger <a href="http://www.gnu.org/software/gdb/">gdb</a> are valuable tools when tracking down problems in low-level or parallel applications. The programmer experience when using such a debugger to examine natively-compiled OCaml programs currently lacks lustre. Recent versions of the compiler can emit a limited amount of debugging information which enables the recovery of correct stack traces in the debugger. However names of functions still appear in mangled form, it is not possible to reference local variables by name, and traversal of OCaml values is troublesome. This is unfortunately by no means an exhaustive list of deficiencies.</p>
+<p>This project aims to equip the native-code OCaml compiler and the GNU debugger with the necessary infrastructure to improve debugging of OCaml programs. The compiler will be enhanced to emit the standard DWARF debugging information format in order to describe the naming and placement of data together with relevant type information. At the same time the debugger will gain functionality to understand the OCaml-specific parts of this information including the ability to demangle OCaml names. It is planned to implement much of the DWARF output stage in the compiler and the debugger-side support in libraries such that they might be re-used in other projects.</p>
+<p>It is hoped that, as support for native-code debugging of OCaml programs in the traditional manner evolves, it will become more easily possible to build more advanced debugging tools. These might exploit the scripting capabilities of gdb, for example, and target environments such as large-scale concurrent systems.</p>
+<p>This work is ongoing in the <a href="https://github.com/ocaml/ocaml/tree/dwarf">dwarf</a> branch of the OCaml repository.</p>
 
         <p><i><a href="compiler.html">(more information)</a></i></p>
         <table class="projects" width="95%">
@@ -217,7 +223,13 @@
              </td>  <td class="planning"><i>plan?</i></td> </tr>  <tr> <td class="blank" colspan="8"/> <td class="planning" colspan="8">
                <img class="mugshot" alt="Jeremy Yallop" src="../mugshots/unknown.jpg" height="30px"/>
                <a href="compiler.html#Compile-time meta programming">Compile-time meta programming</a><br/>
-             </td>  <td class="planning"><i>plan?</i></td> </tr> 
+             </td>  <td class="planning"><i>plan?</i></td> </tr>  <tr> <td class="blank" colspan="5"/> <td class="doing" colspan="5">
+               <a href="http://www.three-tuns.net/mark"><img class="mugshot" alt="Mark Shinwell" src="../mugshots/unknown.jpg" height="30px"/></a>
+               <a href="compiler.html#Emission of DWARF debugging information">Emission of DWARF debugging information</a><br/>
+             </td> <td class="blank" colspan="6"/> <td/> </tr>  <tr> <td class="blank" colspan="8"/> <td class="doing" colspan="4">
+               <a href="http://www.x9c.fr"><img class="mugshot" alt="Xavier Clerc" src="../mugshots/unknown.jpg" height="30px"/></a>
+               <a href="compiler.html#OCaml Java 2.0">OCaml Java 2.0</a><br/>
+             </td> <td class="blank" colspan="4"/> <td/> </tr> 
         <tr><td colspan="17"> </td></tr>
         </table>
       
