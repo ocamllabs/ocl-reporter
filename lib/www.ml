@@ -207,9 +207,8 @@ let one_project proj =
          $related$<br /></div>
       >>
   ) proj.tasks in
-  let leader = mugshot_img ~size:50 ~float:false proj.project_owner in
-  let team = List.map ~f:(mugshot_img ~float:false ~size:50) proj.team in
-  let teamlist = <:html<<p>$leader$ $list:team$</p>&>> in
+  let team = List.map ~f:(mugshot_img ~float:false ~size:50) (people_in_project proj) in
+  let teamlist = <:html<<p>$list:team$</p>&>> in
   let body = <:html<
     <div class="ucampas-toc right"/>
     $Gantt.to_one_project_html teamlist proj$

@@ -182,7 +182,8 @@ module Project = struct
     { task_name=name; task_descr=descr; start; finish; owner; status; refs; related }
 
   let people_in_project p = 
-    p.project_owner :: p.team
+    let rest = List.fold_left ~init:[] ~f:(fun a t -> t.owner :: a) p.tasks in
+    List.dedup (p.project_owner :: p.team @ rest)
 
   let tasks_for_person proj person =
     List.filter proj.tasks (fun t -> t.owner = person)
