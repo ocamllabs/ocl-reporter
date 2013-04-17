@@ -104,6 +104,9 @@ module Reference = struct
     link: link;
   }
 
+  let mantis ?(name="Bug report") num =
+    { name; link=(`Mantis num) }
+
   let github ?(name="Github") owner repo =
     { name; link=(`Github (owner,repo)) }
 

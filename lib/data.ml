@@ -212,12 +212,18 @@ module Projects = struct
         ~refs:[
          ] ();
       mk_task ~name:"Real-time graphing and datavis"
-       ~start:"2013-04-01" ~finish:"2013-07-01"
+       ~start:"2013-03-01" ~finish:"2013-08-01"
        ~owner:People.pwang
        ~status:`Planning
        ~descr:"graphing"
        ~refs: [
        ] ();
+       mk_task ~name:"Raspberry OCaml"
+       ~start:"2012-11-01" ~finish:"2013-02-01"
+       ~owner:People.avsm
+       ~status:`Complete
+       ~descr:"raspberryocaml"
+       ~refs: [ Reference.mantis 5798 ]  ();
     ]
   end
 
