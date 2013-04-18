@@ -74,7 +74,11 @@ module Projects = struct
       mk_task ~name:"Platform Preview"
         ~start:"2013-03-01" ~finish:"2013-06-01"
         ~owner:People.amir
-        ~status:`Planning () ;
+        ~status:`Planning ()
+        ~descr:"platform-prev"
+        ~related:[("OPAM 1.2", "platform", "OPAM 1.2 (the Platform release)");
+                  ("OCamlot", "platform", "OCamlot")]
+        ~refs:[ Reference.webpage ~name:"Platform mailing list" "http://lists.ocaml.org/listinfo/platform" ];
     ]
   end
 
