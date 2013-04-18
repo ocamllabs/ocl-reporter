@@ -142,6 +142,11 @@ let one_person p =
   let homepage = match p.homepage with
    |None -> <:html< >>
    |Some h -> link h h in
+  let first_name =
+    match String.split_on_chars ~on:[' '] p.name with
+    |hd::_ -> hd
+    |_ -> p.name
+  in
   let body = <:html<
     <h1>$str:p.name$</h1>
     <p>
@@ -150,13 +155,25 @@ let one_person p =
       $str:p.role$<br />
       $homepage$
     </p>
+    <h2>Projects</h2>
+    <div style="width:75%">
+    <p>These are the projects that $str:first_name$ is working on. The project list includes other people's tasks on the same project too, as it's helpful to see interdependencies this way. Click on the project headings to see more information about it.</p>
+    </div>
     $list:Gantt.to_short_html p$
   >> in
   one_page ~title:p.name ~body
 
 let projects =
+  let sproj =
+    let open Data.Projects in
+    let open Types.Project in
+    List.map all ~f:(fun p -> <:html<<li><a href=$str:"#"^p.project_id$><b>$str:p.project_name$</b></a>: $str:p.project_elevator$</li> >>)
+  in
   let body = <:html<
-    <div class="ucampas-toc right"/>
+    <div style="width:75%">
+    <p>The OCaml Labs are organised around focussed projects summarised below.  Click on the heading for more information, and <a href="../contact.html">get in touch</a> with the project owner if you'd like to know more.  The projects are:</p>
+    <ul>$list:sproj$</ul>
+    </div>
     $list:Gantt.to_project_html ~moreinfo:true Data.Projects.all$ >> in
   one_page ~title:"Projects" ~body
 
@@ -184,7 +201,10 @@ let one_project proj =
           |None -> <:html<&>>
           |Some d -> <:html< $str:human_readable_date d$>>
         in
-        <:html< $mode$ ($start$ -$finish$) >>
+        let phref = sprintf "../people/%s.html" t.owner.Person.id in
+        let pname = t.owner.Person.name in
+        let n = <:html<<a href=$str:phref$>$str:pname$</a>&>> in
+        <:html< $mode$ by $n$ ($start$ -$finish$) >>
       in
       let mugshots = mugshot_img ~size:40 t.owner in
       let related = 
@@ -236,6 +256,8 @@ let outputs =
   let body = <:html<
      <h1 id="Publications">Publications</h1>
      $list:pubs$
+     <h1 id="Software">Software</h1>
+     <p>TODO</p>
     >> in
   one_page ~title:"Outputs" ~body
 

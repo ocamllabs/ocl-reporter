@@ -44,7 +44,7 @@
             </style>
           
     <h1 id="platform">OCaml Platform</h1>
-    <p>The OCaml Platform combines the core OCaml compiler with a coherent set of libraries, tools and documentation. The requirements and direction of the Platform are initially being guided by large users of OCaml such as <a href="http://ocaml.janestreet.com">Jane Street</a>, <a href="http://www.xen.org/files/XenCloud/ocamldoc/">Citrix</a> and <a href="http://www.lexifi.com/product/technology/ocaml">Lexifi</a>.</p>
+    <div class="width:75%"><p>The OCaml Platform combines the core OCaml compiler with a coherent set of libraries, tools and documentation. The requirements and direction of the Platform are initially being guided by large users of OCaml such as <a href="http://ocaml.janestreet.com">Jane Street</a>, <a href="http://www.xen.org/files/XenCloud/ocamldoc/">Citrix</a> and <a href="http://www.lexifi.com/product/technology/ocaml">Lexifi</a>.</p>
 <p>The reason for initially taking direction from industrial users is because these companies have a great deal of experience of using the language at scale (e.g millions of lines of code, thousands of modules and complicated testing requirements). We take a pragmatic view that examining and solving the problems such users have will ultimately result in a large and positive impact on the wider community, through significantly improved tooling, libraries and documentation.</p>
 <p>The current thrust of work is to improve the tooling around packaging, build and test infrastructure. Once complete, this will enable us to effectively run over hundreds of community packages and determine selection criteria for the Platform. A key aspect of this selection will be which libraries are already popular and in use, and also how actively maintained and portable they are across different operating systems.</p>
 <p>The tasks below reflect this by:</p>
@@ -53,9 +53,9 @@
 <li>The OPAM Doc tool replaces the venerable <code>ocamldoc</code> tool with modern, cross-referenced HTML output across several libraries.</li>
 <li>The OCamlot testing infrastructure runs continuous integration of OPAM stable and candidate packages across a variety of operating systems and CPU architectures.</li>
 </ul>
-
+</div>
     <h2 id="Team">Team</h2>
-    <p><a href="../people/amirmc.html"><img class="inline" style="" height="50px" src="../mugshots/amir.jpg"/></a> <a href="../people/avsm.html"><img class="inline" style="" height="50px" src="../mugshots/avsm.jpg"/></a><a href="../people/tg.html"><img class="inline" style="" height="50px" src="../mugshots/tg.png"/></a><a href="../people/lpw25.html"><img class="inline" style="" height="50px" src="../mugshots/lpw25.jpg"/></a><a href="../people/sheets.html"><img class="inline" style="" height="50px" src="../mugshots/sheets.png"/></a><a href="../people/yallop.html"><img class="inline" style="" height="50px" src="../mugshots/unknown.jpg"/></a><a href="../people/pwang.html"><img class="inline" style="" height="50px" src="../mugshots/pwang.jpg"/></a></p>
+    <p><a href="../people/amirmc.html"><img class="inline" style="" height="50px" src="../mugshots/amir.jpg"/></a><a href="../people/avsm.html"><img class="inline" style="" height="50px" src="../mugshots/avsm.jpg"/></a><a href="../people/lpw25.html"><img class="inline" style="" height="50px" src="../mugshots/lpw25.jpg"/></a><a href="../people/pwang.html"><img class="inline" style="" height="50px" src="../mugshots/pwang.jpg"/></a><a href="../people/sheets.html"><img class="inline" style="" height="50px" src="../mugshots/sheets.png"/></a><a href="../people/tg.html"><img class="inline" style="" height="50px" src="../mugshots/tg.png"/></a><a href="../people/yallop.html"><img class="inline" style="" height="50px" src="../mugshots/unknown.jpg"/></a></p>
     <h2 id="Tasks">Tasks</h2>
     <table class="projects" width="95%">
     <tr class="dates"><td>Sep '12</td><td>Oct '12</td><td>Nov '12</td><td>Dec '12</td><td>Jan '13</td><td>Feb '13</td><td>Mar '13</td><td>Apr '13</td><td>May '13</td><td>Jun '13</td><td>Jul '13</td><td>Aug '13</td><td>Sep '13</td><td>Oct '13</td><td>Nov '13</td><td>Dec '13</td><td>∞</td></tr>
@@ -87,7 +87,7 @@
     
          <div style="width:75%">
          <h3 style="border-bottom: thin solid #999999;" id="OPAM 1.0 (if it builds, ship it)">OPAM 1.0 (if it builds, ship it)</h3>
-         <p><a href="../people/tg.html"><img class="inline" style="float:left; padding-right: 30px" height="40px" src="../mugshots/tg.png"/></a>  <span class="complete">Complete</span> (Mar 2012 - Mar 2013) <br/><a class="icon-github" href="https://github.com/OCamlPro/opam">Github</a>   <a class="icon-cloud" href="http://ocamlpro.opam.com">Homepage</a>   <a class="icon-pdf" href="https://github.com/OCamlPro/opam/blob/master/doc/dev-manual/dev-manual.pdf?raw=true">Developer Manual</a>   <a class="icon-wrench" href="https://github.com/OCamlPro/opam/issues">Issues</a>   </p>
+         <p><a href="../people/tg.html"><img class="inline" style="float:left; padding-right: 30px" height="40px" src="../mugshots/tg.png"/></a>  <span class="complete">Complete</span> by <a href="../people/tg.html">Thomas Gazagnaire</a> (Mar 2012 - Mar 2013) <br/><a class="icon-github" href="https://github.com/OCamlPro/opam">Github</a>   <a class="icon-cloud" href="http://ocamlpro.opam.com">Homepage</a>   <a class="icon-pdf" href="https://github.com/OCamlPro/opam/blob/master/doc/dev-manual/dev-manual.pdf?raw=true">Developer Manual</a>   <a class="icon-wrench" href="https://github.com/OCamlPro/opam/issues">Issues</a>   </p>
          <p>OPAM 1.0 is a source-based package manager for OCaml. It supports multiple simultaneous compiler installations, flexible package constraints, and a Git-friendly development workflow.</p>
 <p>The goal of the first version of OPAM was to get something released that would provide basic package management facilities to the community, but also be designed with distributed open-source design in mind. To that end, OPAM 1.0 supports a <a href="http://opam.ocamlpro.com/doc/Advanced_Usage.html#h2-Handlingofrepositories">remotes</a> mechanism which lets you combine local development trees with other people's remote Git or Darcs repositories. Whenever <code>opam update</code> is run, all the remotes are refreshed and merged, letting you subscribe to other people's compilers and package trees.</p>
 <p>This first version is build-system agnostic in the interests of compatibility with the large existing body of third party external source code, and so can't do much in the way of advanced manipulation of the packages.</p>
@@ -98,7 +98,7 @@
       
          <div style="width:75%">
          <h3 style="border-bottom: thin solid #999999;" id="OPAM 1.1 (the CI and Test release)">OPAM 1.1 (the CI and Test release)</h3>
-         <p><a href="../people/tg.html"><img class="inline" style="float:left; padding-right: 30px" height="40px" src="../mugshots/tg.png"/></a>  <span class="doing">In Progress</span> (Feb 2013 - May 2013) <br/><a class="icon-github" href="https://github.com/OCamlPro/opam">Github</a>   <a class="icon-cloud" href="http://ocamlpro.opam.com">Homepage</a>   <a class="icon-pdf" href="https://github.com/OCamlPro/opam/blob/master/doc/dev-manual/dev-manual.pdf?raw=true">Developer Manual</a>   <a class="icon-wrench" href="https://github.com/OCamlPro/opam/issues">Issues</a>   </p>
+         <p><a href="../people/tg.html"><img class="inline" style="float:left; padding-right: 30px" height="40px" src="../mugshots/tg.png"/></a>  <span class="doing">In Progress</span> by <a href="../people/tg.html">Thomas Gazagnaire</a> (Feb 2013 - May 2013) <br/><a class="icon-github" href="https://github.com/OCamlPro/opam">Github</a>   <a class="icon-cloud" href="http://ocamlpro.opam.com">Homepage</a>   <a class="icon-pdf" href="https://github.com/OCamlPro/opam/blob/master/doc/dev-manual/dev-manual.pdf?raw=true">Developer Manual</a>   <a class="icon-wrench" href="https://github.com/OCamlPro/opam/issues">Issues</a>   </p>
          <p>Since the release of OPAM 1.0, we've steadily been fixing bugs that have been reported from the wider userbase. The release has actually been remarkably stable, and most of the issues are around the constraint solver (which tackles an NP-complete problem with cunning heuristics). There's also been quite a bit of work on improving portability and integration with the operating system via more interactive initialisation.</p>
 <p>The big purpose behind the next release, though, is to improve support for large-scale continuous integration and testing of the packages contained within the repository. <a href="http://ocaml.janestreet.com">Jane Street</a>, for example, is now issuing <a href="https://github.com/OCamlPro/opam-repository/pull/506">weekly releases</a> of their Core standard library suite. Testing these manually across Linux, FreeBSD, MacOS X and several CPU architectures (x86, x86_64, ARM, Macppc) is both tedious and error-prone, and so we'd like to automate the process.</p>
 <p>OPAM doesn't need many changes to support this testing, but there is more package metadata being added to facilitate the process, and tools such as <a href="http://opam.ocamlpro.com/pkg/oasis2opam.0.2.4.html">oasis2opam</a> help automate this by looking inside the packages themselves. The whole of OPAM is exported as a <a href="http://opam.ocamlpro.com/pkg/opam-lib.1.0.0.html">library</a> so that third-party packages can interface with the OPAM repository without changing OPAM itself. And this is exactly what the &quot;OCamelot&quot; task below does...</p>
@@ -108,7 +108,7 @@
       
          <div style="width:75%">
          <h3 style="border-bottom: thin solid #999999;" id="OPAM 1.2 (the Platform release)">OPAM 1.2 (the Platform release)</h3>
-         <p><a href="../people/tg.html"><img class="inline" style="float:left; padding-right: 30px" height="40px" src="../mugshots/tg.png"/></a>  <span class="planning">Planning</span> (May 2013 - Aug 2013) <br/><a class="icon-github" href="https://github.com/OCamlPro/opam">Github</a>   <a class="icon-cloud" href="http://ocamlpro.opam.com">Homepage</a>   <a class="icon-pdf" href="https://github.com/OCamlPro/opam/blob/master/doc/dev-manual/dev-manual.pdf?raw=true">Developer Manual</a>   <a class="icon-wrench" href="https://github.com/OCamlPro/opam/issues">Issues</a>   </p>
+         <p><a href="../people/tg.html"><img class="inline" style="float:left; padding-right: 30px" height="40px" src="../mugshots/tg.png"/></a>  <span class="planning">Planning</span> by <a href="../people/tg.html">Thomas Gazagnaire</a> (May 2013 - Aug 2013) <br/><a class="icon-github" href="https://github.com/OCamlPro/opam">Github</a>   <a class="icon-cloud" href="http://ocamlpro.opam.com">Homepage</a>   <a class="icon-pdf" href="https://github.com/OCamlPro/opam/blob/master/doc/dev-manual/dev-manual.pdf?raw=true">Developer Manual</a>   <a class="icon-wrench" href="https://github.com/OCamlPro/opam/issues">Issues</a>   </p>
          <p>OPAM 1.2 will be the release that forms part of the OCaml Platform. We're still planning this feature-set in more detail, but here are some thoughts:</p>
 <ul>
 <li><p>OPAM could become a compiler front-end by linking to the <code>compiler-libs</code> that are installed by the OCaml compiler. This lets OPAM automatically satisfy dependencies for packages and generate the boilerplate for testing and benchmarking code.</p></li>
@@ -121,7 +121,7 @@
       
          <div style="width:75%">
          <h3 style="border-bottom: thin solid #999999;" id="OPAM Doc">OPAM Doc</h3>
-         <p><a href="../people/lpw25.html"><img class="inline" style="float:left; padding-right: 30px" height="40px" src="../mugshots/lpw25.jpg"/></a>  <span class="doing">In Progress</span> (Jan 2013 -) <br/><a class="icon-github" href="https://github.com/lpw25/opam-doc">opam-doc</a>   <a class="icon-github" href="https://github.com/lpw25/bin-doc">bin-doc</a>   </p>
+         <p><a href="../people/lpw25.html"><img class="inline" style="float:left; padding-right: 30px" height="40px" src="../mugshots/lpw25.jpg"/></a>  <span class="doing">In Progress</span> by <a href="../people/lpw25.html">Leo White</a> (Jan 2013 -) <br/><a class="icon-github" href="https://github.com/lpw25/opam-doc">opam-doc</a>   <a class="icon-github" href="https://github.com/lpw25/bin-doc">bin-doc</a>   </p>
          <p>The OCaml toolchain has shipped with the <code>ocamldoc</code> tool for a long time. <code>ocamldoc</code> runs over a single OCaml library and generates cross-referenced documentation. It also supports a variety of outputs, such as Latex, HTML, PDF and even manpages. However, it is starting to show its age for large, complex codebases such as <a href="http://github.com/janestreet/core">Core</a>, and so we are developing a more scalable alternative for the Platform effort.</p>
 <p>OPAM-doc consists of two separate commands:</p>
 <ul>
@@ -134,7 +134,7 @@
       
          <div style="width:75%">
          <h3 style="border-bottom: thin solid #999999;" id="OCamlot">OCamlot</h3>
-         <p><a href="../people/sheets.html"><img class="inline" style="float:left; padding-right: 30px" height="40px" src="../mugshots/sheets.png"/></a>  <span class="planning">Planning</span> (Jan 2013 -) <br/><a class="icon-github" href="https://github.com/ocamllabs/ocamlot">Github</a>   </p>
+         <p><a href="../people/sheets.html"><img class="inline" style="float:left; padding-right: 30px" height="40px" src="../mugshots/sheets.png"/></a>  <span class="planning">Planning</span> by <a href="../people/sheets.html">David Sheets</a> (Jan 2013 -) <br/><a class="icon-github" href="https://github.com/ocamllabs/ocamlot">Github</a>   </p>
          <p>OCamlot (OCaml Online Testing), is a Continuous Integration and Testing system for packages provided via <a href="http://opam.ocamlpro.com">OPAM</a>. It comprises all the appropriate tools and libraries to enable management and development of the machine infrastructure, for example an OCaml library to interface with Github (available through OPAM). If you submit a package via OPAM, you will be rewarded with regular regression tests across many diverse operating systems and platforms. Ultimately, we would also like to integrate benchmarking into this system but that will be incorporated in later versions.</p>
 <p>The resourcing and commissioning of the Machine Pool itself is dealt with separately to the software that will enable it.</p>
 <p>Current status: Creating a spec to define the overall components required.</p>
@@ -144,7 +144,7 @@
       
          <div style="width:75%">
          <h3 style="border-bottom: thin solid #999999;" id="Machine Pool">Machine Pool</h3>
-         <p><a href="../people/avsm.html"><img class="inline" style="float:left; padding-right: 30px" height="40px" src="../mugshots/avsm.jpg"/></a>  <span class="doing">In Progress</span> (Nov 2012 - Jun 2013) <br/></p>
+         <p><a href="../people/avsm.html"><img class="inline" style="float:left; padding-right: 30px" height="40px" src="../mugshots/avsm.jpg"/></a>  <span class="doing">In Progress</span> by <a href="../people/avsm.html">Anil Madhavapeddy</a> (Nov 2012 - Jun 2013) <br/></p>
          <p>In order to create a robust and stable Continuous Integration system, we need a pool of machines that reflect the diverse environments where OCaml code is deployed.</p>
 <p>To this end, we've been assembling a small collection of conventional high-powered machines that can build the whole OPAM package set quite quickly, and also more unusual CPU architectures and operating systems that will help developers that don't have access to them. So far we have:</p>
 <ul>
@@ -165,7 +165,7 @@
       
          <div style="width:75%">
          <h3 style="border-bottom: thin solid #999999;" id="Platform Preview">Platform Preview</h3>
-         <p><a href="../people/amirmc.html"><img class="inline" style="float:left; padding-right: 30px" height="40px" src="../mugshots/amir.jpg"/></a>  <span class="planning">Planning</span> (Mar 2013 - Jun 2013) <br/></p>
+         <p><a href="../people/amirmc.html"><img class="inline" style="float:left; padding-right: 30px" height="40px" src="../mugshots/amir.jpg"/></a>  <span class="planning">Planning</span> by <a href="../people/amirmc.html">Amir Chaudhry</a> (Mar 2013 - Jun 2013) <br/></p>
          
          <br/></div>
       

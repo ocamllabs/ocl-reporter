@@ -17,4 +17,4 @@ check:
 	echo If you get an error with this, do brew install linklint
 	rm -rf lint
 	mkdir -p lint
-	linklint -doc lint -root pages /@
+	linklint -net -doc lint -root pages /@
