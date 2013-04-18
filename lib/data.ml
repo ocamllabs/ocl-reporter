@@ -120,7 +120,8 @@ module Projects = struct
         ~owner:People.lpw25
         ~status:`Complete
         ~descr:"open-types"
-        ~refs:[ Reference.github "lpw25" "ocaml-open" ] ();
+        ~refs:[ Reference.github "lpw25" "ocaml-open";
+                Reference.webpage ~name:"Website" "http://sites.google.com/site/ocamlopen/" ] ();
       mk_task ~name:"Record disambiguation"
         ~start:"2012-09-03" ~finish:"2012-12-02"
         ~owner:People.lpw25
@@ -133,7 +134,7 @@ module Projects = struct
         ~status:`Doing
         ~descr:"syntax-extensions"
         ~refs:[ Reference.webpage ~name:"Working group" "http://lists.ocaml.org/listinfo/wg-camlp4";
-                Reference.webpage ~name:"Blog" "http://www.lpw25.net/2013/02/05/camlp4-alternative-part-2.html"] () ;
+                Reference.webpage ~name:"Blog" "http://www.lpw25.net/2013/02/05/camlp4-alternative-part-1.html"] () ;
       mk_task ~name:"Namespaces"
         ~start:"2013-02-01"
         ~owner:People.lpw25
