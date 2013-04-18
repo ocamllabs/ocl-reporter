@@ -139,12 +139,12 @@ module Projects = struct
           Reference.mantis 5584;
         ] () ;
       mk_task ~name:"Syntax extensions"
-        ~start:"2012-12-01" ~finish:"2013-03-01"
+        ~start:"2012-12-01" ~finish:"2013-06-01"
         ~owner:People.lpw25
         ~status:`Doing
         ~descr:"syntax-extensions"
         ~refs:[ Reference.webpage ~name:"Working group" "http://lists.ocaml.org/listinfo/wg-camlp4";
-                Reference.webpage ~name:"Blog" "http://www.lpw25.net/2013/02/05/camlp4-alternative-part-1.html"] () ;
+                Reference.webpage ~name:"Blog" "http://www.lpw25.net/2013/01/23/camlp4-alternative-part-1.html"] () ;
       mk_task ~name:"Namespaces"
         ~start:"2013-02-01"
         ~owner:People.lpw25
