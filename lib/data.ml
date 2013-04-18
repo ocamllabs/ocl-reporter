@@ -312,13 +312,20 @@ module Projects = struct
       mk_task ~name:"Formalisms for packet processing"
         ~start:"2013-04-01" ~finish:"2013-10-01"
         ~owner:People.balrajsingh
-        ~status:`Planning ()
-        ~descr:"packet-proc";
+        ~status:`Planning
+        ~descr:"packet-proc" ();
       mk_task ~name:"kFreeBSD"
         ~start:"2013-06-01" ~finish:"2013-09-01"
         ~owner:People.gabor
-        ~status:`Doing ()
-        ~descr:"kfreebsd";
+        ~status:`Doing
+        ~descr:"kfreebsd" ();
+      mk_task ~name:"Nigori"
+        ~start:"2012-10-01" ~finish:"2013-06-01"
+        ~owner:People.bogdan
+        ~status:`Doing ~descr:"nigori" 
+        ~refs: [
+          Reference.pdf ~name:"Original Nigori paper" "http://www.links.org/files/nigori-overview.pdf";
+        ] ();
     ] 
   end
 
