@@ -74,7 +74,11 @@ module Projects = struct
       mk_task ~name:"Platform Preview"
         ~start:"2013-03-01" ~finish:"2013-06-01"
         ~owner:People.amir
-        ~status:`Planning () ;
+        ~status:`Planning ()
+        ~descr:"platform-prev"
+        ~related:[("OPAM 1.2", "platform", "OPAM 1.2 (the Platform release)");
+                  ("OCamlot", "platform", "OCamlot")]
+        ~refs:[ Reference.webpage ~name:"Platform mailing list" "http://lists.ocaml.org/listinfo/platform" ];
     ]
   end
 
@@ -123,7 +127,8 @@ module Projects = struct
         ~owner:People.lpw25
         ~status:`Complete
         ~descr:"open-types"
-        ~refs:[ Reference.github "lpw25" "ocaml-open" ] ();
+        ~refs:[ Reference.github "lpw25" "ocaml-open";
+                Reference.webpage ~name:"Website" "http://sites.google.com/site/ocamlopen/" ] ();
       mk_task ~name:"Record disambiguation"
         ~start:"2012-09-03" ~finish:"2012-12-02"
         ~owner:People.lpw25
@@ -134,12 +139,12 @@ module Projects = struct
           Reference.mantis 5584;
         ] () ;
       mk_task ~name:"Syntax extensions"
-        ~start:"2012-12-01" ~finish:"2013-03-01"
+        ~start:"2012-12-01" ~finish:"2013-06-01"
         ~owner:People.lpw25
         ~status:`Doing
         ~descr:"syntax-extensions"
         ~refs:[ Reference.webpage ~name:"Working group" "http://lists.ocaml.org/listinfo/wg-camlp4";
-                Reference.webpage ~name:"Blog" "http://www.lpw25.net/2013/02/05/camlp4-alternative-part-2.html"] () ;
+                Reference.webpage ~name:"Blog" "http://www.lpw25.net/2013/01/23/camlp4-alternative-part-1.html"] () ;
       mk_task ~name:"Namespaces"
         ~start:"2013-02-01"
         ~owner:People.lpw25
