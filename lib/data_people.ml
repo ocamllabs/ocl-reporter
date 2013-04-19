@@ -67,7 +67,7 @@ module People = struct
     role="Senior RA";
     bio=None;
     homepage=None;
-    mugshot=None;
+    mugshot=Some "yallop.jpeg";
   }
   let pwang = {
     id="pwang";
