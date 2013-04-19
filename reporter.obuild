@@ -9,5 +9,5 @@ Executable ocl-reporter-new
   Path:               lib
   MainIs:             main.ml
   pp:                 camlp4o
-  BuildDepends:       lwt.syntax, core, cow, cow.syntax, sexplib.syntax, threads, uri
+  BuildDepends:       core, cow, cow.syntax, sexplib.syntax, threads, uri
 
