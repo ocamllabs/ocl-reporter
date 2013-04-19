@@ -6,6 +6,7 @@ include Data_news
 
 module Projects = struct
   open Project
+
   module Platform = struct
 
    let opam_refs = [ 
@@ -18,6 +19,7 @@ module Projects = struct
       { project_id="platform"; 
         project_name="OCaml Platform"; 
         project_owner=People.amir;
+        project_elevator="A rigorously designed, tested and documented base of OCaml libraries and tools.";
         team=People.([ avsm; tg; lpw25; sheets; yallop; pwang ]);
         tasks;
       }
@@ -72,7 +74,11 @@ module Projects = struct
       mk_task ~name:"Platform Preview"
         ~start:"2013-03-01" ~finish:"2013-06-01"
         ~owner:People.amir
-        ~status:`Planning () ;
+        ~status:`Planning ()
+        ~descr:"platform-prev"
+        ~related:[("OPAM 1.2", "platform", "OPAM 1.2 (the Platform release)");
+                  ("OCamlot", "platform", "OCamlot")]
+        ~refs:[ Reference.webpage ~name:"Platform mailing list" "http://lists.ocaml.org/listinfo/platform" ];
     ]
   end
 
@@ -81,6 +87,7 @@ module Projects = struct
       { project_id="t2"; 
         project_name="Trilogy 2"; 
         project_owner=People.avsm;
+        project_elevator="Building a resilient liquid OS, with multipath and adaptive scheduling.";
         team=People.([ vsevolod; gparisis; amir; crowcroft; tg ]);
         tasks;
       }
@@ -110,6 +117,7 @@ module Projects = struct
       project_id="compiler";
       project_name="The OCaml Compiler" ;
       project_owner = People.lpw25; 
+      project_elevator="Maintaining, extending and documenting the core OCaml compiler toolchain";
       team = People.([ yallop; stedolan; avsm ]);
       tasks;
     }
@@ -119,36 +127,56 @@ module Projects = struct
         ~owner:People.lpw25
         ~status:`Complete
         ~descr:"open-types"
-        ~refs:[ Reference.github "lpw25" "ocaml-open" ] ();
+        ~refs:[ Reference.github "lpw25" "ocaml-open";
+                Reference.webpage ~name:"Website" "http://sites.google.com/site/ocamlopen/" ] ();
       mk_task ~name:"Record disambiguation"
         ~start:"2012-09-03" ~finish:"2012-12-02"
         ~owner:People.lpw25
         ~status:`Complete
         ~descr:"record-disambiguation"
-        ~refs:[ Reference.webpage ~name:"Mantis" "http://caml.inria.fr/mantis/view.php?id=5759" ] () ;
+        ~refs:[
+          Reference.webpage ~name:"Mantis" "http://caml.inria.fr/mantis/view.php?id=5759" ;
+          Reference.mantis 5584;
+        ] () ;
       mk_task ~name:"Syntax extensions"
-        ~start:"2012-12-01" ~finish:"2013-03-01"
+        ~start:"2012-12-01" ~finish:"2013-06-01"
         ~owner:People.lpw25
         ~status:`Doing
         ~descr:"syntax-extensions"
         ~refs:[ Reference.webpage ~name:"Working group" "http://lists.ocaml.org/listinfo/wg-camlp4";
-                Reference.webpage ~name:"Blog" "http://www.lpw25.net/2013/02/05/camlp4-alternative-part-2.html"] () ;
+                Reference.webpage ~name:"Blog" "http://www.lpw25.net/2013/01/23/camlp4-alternative-part-1.html"] () ;
       mk_task ~name:"Namespaces"
         ~start:"2013-02-01"
         ~owner:People.lpw25
         ~status:`Planning
         ~descr:"namespaces"
-        ~refs:[ Reference.webpage ~name:"Blog" "http://www.lpw25.net/2013/03/10/ocaml-namespaces.html" ] () ;
+        ~refs:[
+          Reference.webpage ~name:"Blog" "http://www.lpw25.net/2013/03/10/ocaml-namespaces.html" ;
+          Reference.webpage ~name:"Epic Mail Thread" "http://lists.ocaml.org/pipermail/platform/2013-February/000050.html"
+       ] () ;
       mk_task ~name:"Multicore"
         ~start:"2013-03-01"
         ~owner:People.stedolan
         ~descr:"multicore"
-        ~status:`Planning () ;
+        ~status:`Planning
+        ~refs: [ Reference.github "stedolan" "ocaml" ] ();
       mk_task ~name:"Compile-time meta programming"
         ~start:"2013-04-01"
         ~owner:People.yallop
-        ~status:`Planning ()
-        ~descr:"meta-programming";
+        ~status:`Planning
+        ~descr:"meta-programming" ();
+      mk_task ~name:"Emission of DWARF debugging information"
+        ~start:"2013-01-01" ~finish:"2013-06-01"
+        ~owner:People.shinwell
+        ~status:`Doing
+        ~descr:"dwarf" 
+        ~refs: [ Reference.github ~name:"4.00.1-allocation-profiling" "mshinwell" "ocaml" ] ();
+      mk_task ~name:"OCaml Java 2.0"
+        ~start:"2013-04-01" ~finish:"2013-08-01"
+        ~owner:People.xclerc
+        ~status:`Doing
+        ~descr:"ocamljava2" 
+        ~refs: [ Reference.webpage "http://ocamljava.x9c.fr/preview/" ] ();
     ]
   end
 
@@ -158,6 +186,7 @@ module Projects = struct
       project_id="outreach";
       project_name="Community Outreach" ;
       project_owner = People.amir; 
+      project_elevator="Building an effective online presence for the worldwide OCaml community";
       team = People.([ avsm ]);
       tasks;
     }
@@ -194,6 +223,57 @@ module Projects = struct
     ]
   end
 
+  module Illuminate = struct
+    let project_owner = People.avsm
+    let team = People.([ amir; pwang; sheets; iml; crowcroft ])
+
+    let rec project = {
+      project_id="illuminate";
+      project_name="Illuminate";
+      project_elevator="Connecting cyber-physical devices with rigorous programming, coordination and persistence.";
+      team; project_owner; tasks;
+    } and tasks = [
+
+      mk_task ~name:"Signpost prototype"
+        ~start:"2012-08-01" ~finish:"2013-06-01"
+        ~owner:People.heidi
+        ~status:`Doing
+        ~descr:"signpostv1"
+        ~refs:[
+         ] ();
+
+      mk_task ~name:"Real-time templating"
+       ~start:"2013-03-01" ~finish:"2013-08-01"
+       ~owner:People.pwang
+       ~status:`Planning
+       ~descr:"templates"
+       ~refs: [
+       ] ();
+
+      mk_task ~name:"Declarative graphing library"
+       ~start:"2013-04-14" ~finish:"2013-07-14"
+       ~owner:People.dbunzli
+       ~status:`Doing
+       ~descr:"vg"
+       ~related:[("Real-time templating", "illuminate", "Real-time templating")]
+       ~refs: [
+         Reference.github ~name:"Gg code" "dbuenzli" "gg";
+         Reference.github ~name:"Vg code" "dbuenzli" "vg";
+       ] ();
+
+      mk_task ~name:"Raspberry OCaml"
+       ~start:"2012-11-01" ~finish:"2013-02-01"
+       ~owner:People.avsm
+       ~status:`Complete
+       ~descr:"raspberryocaml"
+       ~refs: [ 
+         Reference.mantis 5798;
+         Reference.blog ~name:"Jane Street blog" "https://ocaml.janestreet.com/?q=node/110";
+       ]  ();
+    ]
+
+  end
+
   module Mirage = struct
     let project_owner = People.avsm
     let team = People.([ tg; amir; djs; crowcroft; mort; balrajsingh; raphael; smh; haris; rwatson; vb; jludlam; lars; mac; gabor ])
@@ -201,6 +281,7 @@ module Projects = struct
     let rec project = { 
       project_id="mirage";
       project_name="Mirage OS"; 
+      project_elevator="A high-performance, type-safe library OS written in OCaml.";
       team; project_owner; tasks 
     } and tasks = [
       mk_task ~name:"Unikernel Mirage prototype"
@@ -229,21 +310,31 @@ module Projects = struct
         ~owner:People.djs
         ~status:`Planning
         ~descr:"dev-preview"
-        ~refs: [ Reference.github "mirage" "mirage-platform" ] () ;
+        ~refs: [
+           Reference.github "mirage" "mirage-platform";
+           Reference.webpage ~name:"Meeting Minutes" "http://openmirage.org/wiki/weekly-2013-04-16";
+        ] () ;
       mk_task ~name:"Formalisms for packet processing"
         ~start:"2013-04-01" ~finish:"2013-10-01"
         ~owner:People.balrajsingh
-        ~status:`Planning ()
-        ~descr:"packet-proc";
+        ~status:`Planning
+        ~descr:"packet-proc" ();
       mk_task ~name:"kFreeBSD"
         ~start:"2013-06-01" ~finish:"2013-09-01"
         ~owner:People.gabor
-        ~status:`Doing ()
-        ~descr:"kfreebsd";
+        ~status:`Doing
+        ~descr:"kfreebsd" ();
+      mk_task ~name:"Nigori"
+        ~start:"2012-10-01" ~finish:"2013-06-01"
+        ~owner:People.bogdan
+        ~status:`Doing ~descr:"nigori" 
+        ~refs: [
+          Reference.pdf ~name:"Original Nigori paper" "http://www.links.org/files/nigori-overview.pdf";
+        ] ();
     ] 
   end
 
-  let all = [ Platform.project; Mirage.project;
+  let all = [ Platform.project; Mirage.project; Illuminate.project;
               Compiler.project; T2.project; Outreach.project ]
 end
 

@@ -23,7 +23,10 @@
     }
     </style>
   <body>
-    <div class="ucampas-toc right"/>
+    <div style="width:75%">
+    <p>The OCaml Labs are organised around focussed projects summarised below.  Click on the heading for more information, and <a href="../contact.html">get in touch</a> with the project owner if you'd like to know more.  The projects are:</p>
+    <ul><li><a href="#platform"><b>OCaml Platform</b></a>: A rigorously designed, tested and documented base of OCaml libraries and tools.</li> <li><a href="#mirage"><b>Mirage OS</b></a>: A high-performance, type-safe library OS written in OCaml.</li> <li><a href="#illuminate"><b>Illuminate</b></a>: Connecting cyber-physical devices with rigorous programming, coordination and persistence.</li> <li><a href="#compiler"><b>The OCaml Compiler</b></a>: Maintaining, extending and documenting the core OCaml compiler toolchain</li> <li><a href="#t2"><b>Trilogy 2</b></a>: Building a resilient liquid OS, with multipath and adaptive scheduling.</li> <li><a href="#outreach"><b>Community Outreach</b></a>: Building an effective online presence for the worldwide OCaml community</li> </ul>
+    </div>
     
         
             <style type="text/css">
@@ -43,7 +46,11 @@
             }
             </style>
           
-        <h1 id="platform">OCaml Platform</h1>
+        <div style="width:75%">
+        
+       <h2 style="border-bottom: 1px solid #cccccc; font-weight: bold" id="platform">
+         <a href="platform.html">OCaml Platform »</a>
+       </h2> 
         <p>The OCaml Platform combines the core OCaml compiler with a coherent set of libraries, tools and documentation. The requirements and direction of the Platform are initially being guided by large users of OCaml such as <a href="http://ocaml.janestreet.com">Jane Street</a>, <a href="http://www.xen.org/files/XenCloud/ocamldoc/">Citrix</a> and <a href="http://www.lexifi.com/product/technology/ocaml">Lexifi</a>.</p>
 <p>The reason for initially taking direction from industrial users is because these companies have a great deal of experience of using the language at scale (e.g millions of lines of code, thousands of modules and complicated testing requirements). We take a pragmatic view that examining and solving the problems such users have will ultimately result in a large and positive impact on the wider community, through significantly improved tooling, libraries and documentation.</p>
 <p>The current thrust of work is to improve the tooling around packaging, build and test infrastructure. Once complete, this will enable us to effectively run over hundreds of community packages and determine selection criteria for the Platform. A key aspect of this selection will be which libraries are already popular and in use, and also how actively maintained and portable they are across different operating systems.</p>
@@ -54,8 +61,8 @@
 <li>The OCamlot testing infrastructure runs continuous integration of OPAM stable and candidate packages across a variety of operating systems and CPU architectures.</li>
 </ul>
 
-        <p><i><a href="platform.html">(more information)</a></i></p>
-        <table class="projects" width="95%">
+        </div>
+        <table class="projects" width="85%">
         <tr class="dates"><td>Sep '12</td><td>Oct '12</td><td>Nov '12</td><td>Dec '12</td><td>Jan '13</td><td>Feb '13</td><td>Mar '13</td><td>Apr '13</td><td>May '13</td><td>Jun '13</td><td>Jul '13</td><td>Aug '13</td><td>Sep '13</td><td>Oct '13</td><td>Nov '13</td><td>Dec '13</td><td>∞</td></tr>
          <tr>  <td class="complete" colspan="7">
                <a href="http://thomas.gazagnaire.org"><img class="mugshot" alt="Thomas Gazagnaire" src="../mugshots/tg.png" height="30px"/></a>
@@ -100,13 +107,17 @@
             }
             </style>
           
-        <h1 id="mirage">Mirage OS</h1>
+        <div style="width:75%">
+        
+       <h2 style="border-bottom: 1px solid #cccccc; font-weight: bold" id="mirage">
+         <a href="mirage.html">Mirage OS »</a>
+       </h2> 
         <p>The cloud has so far mostly been used to consolidate existing operating systems and manage them more conveniently. The interface between guest kernels, applications and VMs are all managed very differently, leading to serious inefficiencies, unreliability and insecurity. <a href="http://www.openmirage.org">Mirage OS</a> revisits the library OS concept (built here as <a href="http://www.cl.cam.ac.uk/research/srg/netos/old-projects/nemesis/documentation.html">Nemesis</a> in the late '90s), and narrows the gap between safe, high-level programming, and low-level systems construction.</p>
 <p>Applications are written in high-level OCaml and compiled directly into microkernels that run on the Xen hypervisor. By treating the hypervisor as a stable hardware platform, we can focus on high-performance protocol implementations without worrying about having to support the thousands of device drivers found in a traditional OS. Although Mirage initially targets the Xen hypervisor, other backends, such as a FreeBSD kernel module and Javascript, also exist.</p>
 <p>Mirage includes clean-slate functional implementations of protocols ranging from TCP/IP, DNS, SSH, Openflow (switch/controller), HTTP, XMPP and Xen inter-VM transports. Some of the new applications we're building using Mirage include the next-generation <a href="http://www.xen.org/products/cloudxen.html">Xen Cloud Platform</a> (a widely deployed open-source Xen distribution), dubbed <a href="http://xen.org/xensummit/xs12na_talks/T2.html">Project Windsor</a>.</p>
 
-        <p><i><a href="mirage.html">(more information)</a></i></p>
-        <table class="projects" width="95%">
+        </div>
+        <table class="projects" width="85%">
         <tr class="dates"><td>Sep '12</td><td>Oct '12</td><td>Nov '12</td><td>Dec '12</td><td>Jan '13</td><td>Feb '13</td><td>Mar '13</td><td>Apr '13</td><td>May '13</td><td>Jun '13</td><td>Jul '13</td><td>Aug '13</td><td>Sep '13</td><td>Oct '13</td><td>Nov '13</td><td>Dec '13</td><td>∞</td></tr>
          <tr>  <td class="complete" colspan="7">
                <a href="http://anil.recoil.org"><img class="mugshot" alt="Anil Madhavapeddy" src="../mugshots/avsm.jpg" height="30px"/></a>
@@ -126,7 +137,10 @@
              </td> <td class="blank" colspan="2"/> <td/> </tr>  <tr> <td class="blank" colspan="10"/> <td class="doing" colspan="3">
                <a href="http://people.freebsd.org/~pgj"><img class="mugshot" alt="Gabor Pali" src="../mugshots/gabor.jpg" height="30px"/></a>
                <a href="mirage.html#kFreeBSD">kFreeBSD</a><br/>
-             </td> <td class="blank" colspan="3"/> <td/> </tr> 
+             </td> <td class="blank" colspan="3"/> <td/> </tr>  <tr> <td class="blank" colspan="2"/> <td class="doing" colspan="8">
+               <img class="mugshot" alt="Bogdan-Alexandru Matican" src="../mugshots/unknown.jpg" height="30px"/>
+               <a href="mirage.html#Nigori">Nigori</a><br/>
+             </td> <td class="blank" colspan="6"/> <td/> </tr> 
         <tr><td colspan="17"> </td></tr>
         </table>
       
@@ -148,11 +162,67 @@
             }
             </style>
           
-        <h1 id="compiler">The OCaml Compiler</h1>
-        <p>We are working on the OCaml compiler and runtime. This consists of a variety of day-to-day tasks such as submitting bug fixes, and also longer-term improvements to the type system and runtime libraries (see below).</p>
+        <div style="width:75%">
+        
+       <h2 style="border-bottom: 1px solid #cccccc; font-weight: bold" id="illuminate">
+         <a href="illuminate.html">Illuminate »</a>
+       </h2> 
+        <p>Embedded computer systems that are low-power, physically mobile, and contain actuators and sensors to interface and influence the &quot;real world&quot; are increasingly common. We're building the core technology to make these sensors fundamentally more secure, reliable and easier to program. This consists of three main bits of technology:</p>
+<ul>
+<li>The Mirage OS (described separately) to build specialised, type-safe embedded images.</li>
+<li>The Signposts coordination system for embedded devices to find each other securely across a complex edge network.</li>
+<li>The Irminsule (described in T2) persistent storage system to provide a flexible coordination workflow across such sensors.</li>
+</ul>
+<p>A key first use case for here is revolutionising lighting systems. Over the next decade or so, lighting systems in buildings all over the world will shift to using more energy efficient LEDs in place of traditional tungsten bulbs or fluorescent tubes. As well as the important reduction in energy usage, this transition opens up unprecedented opportunities for both lighting circuit design and embedded systems.</p>
+<p>Due to the nature of LEDs, it's feasible to consider deploying ubiquitous sensor networks alongside the LED lighting in a building. Since issues of power and communication are straightforward to tackle, such a network would allow completely new types of applications and services to be developed. In addition, there would also be a dramatic impact on the relationship between people and the building.</p>
+<p>We're creating this platform to allow others to build technology and services based on such distributed networks. Such a platform tackles the questions surrounding security, reliability, and accountability while working with industry to enable new services.</p>
 
-        <p><i><a href="compiler.html">(more information)</a></i></p>
-        <table class="projects" width="95%">
+        </div>
+        <table class="projects" width="85%">
+        <tr class="dates"><td>Sep '12</td><td>Oct '12</td><td>Nov '12</td><td>Dec '12</td><td>Jan '13</td><td>Feb '13</td><td>Mar '13</td><td>Apr '13</td><td>May '13</td><td>Jun '13</td><td>Jul '13</td><td>Aug '13</td><td>Sep '13</td><td>Oct '13</td><td>Nov '13</td><td>Dec '13</td><td>∞</td></tr>
+         <tr>  <td class="doing" colspan="10">
+               <a href="http://etc-hosts.blogspot.co.uk"><img class="mugshot" alt="Heidi Howard" src="../mugshots/heidi.jpg" height="30px"/></a>
+               <a href="illuminate.html#Signpost prototype">Signpost prototype</a><br/>
+             </td> <td class="blank" colspan="6"/> <td/> </tr>  <tr> <td class="blank" colspan="7"/> <td class="planning" colspan="5">
+               <a href="http://www.cl.cam.ac.uk/~pw374"><img class="mugshot" alt="Philippe Wang" src="../mugshots/pwang.jpg" height="30px"/></a>
+               <a href="illuminate.html#Real-time templating">Real-time templating</a><br/>
+             </td> <td class="blank" colspan="4"/> <td/> </tr>  <tr> <td class="blank" colspan="8"/> <td class="doing" colspan="3">
+               <a href="http://erratique.ch/contact.en"><img class="mugshot" alt="Daniel Bunzli" src="../mugshots/unknown.jpg" height="30px"/></a>
+               <a href="illuminate.html#Declarative graphing library">Declarative graphing library</a><br/>
+             </td> <td class="blank" colspan="5"/> <td/> </tr>  <tr> <td class="blank" colspan="3"/> <td class="complete" colspan="3">
+               <a href="http://anil.recoil.org"><img class="mugshot" alt="Anil Madhavapeddy" src="../mugshots/avsm.jpg" height="30px"/></a>
+               <a href="illuminate.html#Raspberry OCaml">Raspberry OCaml</a><br/>
+             </td> <td class="blank" colspan="10"/> <td/> </tr> 
+        <tr><td colspan="17"> </td></tr>
+        </table>
+      
+        
+            <style type="text/css">
+            table { 
+            table-layout: fixed;
+            border-spacing: 0px 2px;
+            }
+            .blank { background-color: #fefefe; }
+            .planning { background-color: #bbccee; }
+            .doing { background-color: #eeeebb; }
+            .complete { background-color: #bbddbb; }
+            img.mugshot { float:left; padding-right: 5px; }
+            tr.dates {
+            font-size: 0.75em;
+            background-color: #dfdfdf;
+            color: #111111;
+            }
+            </style>
+          
+        <div style="width:75%">
+        
+       <h2 style="border-bottom: 1px solid #cccccc; font-weight: bold" id="compiler">
+         <a href="compiler.html">The OCaml Compiler »</a>
+       </h2> 
+        <p>We are working on maintaining and extending the core OCaml compiler toolchain and runtime. This consists of a variety of day-to-day tasks such as submitting bug fixes, and also longer-term improvements to the type system and runtime libraries (see below).</p>
+
+        </div>
+        <table class="projects" width="85%">
         <tr class="dates"><td>Sep '12</td><td>Oct '12</td><td>Nov '12</td><td>Dec '12</td><td>Jan '13</td><td>Feb '13</td><td>Mar '13</td><td>Apr '13</td><td>May '13</td><td>Jun '13</td><td>Jul '13</td><td>Aug '13</td><td>Sep '13</td><td>Oct '13</td><td>Nov '13</td><td>Dec '13</td><td>∞</td></tr>
          <tr> <td class="blank" colspan="2"/> <td class="complete" colspan="3">
                <a href="http://lpw25.net"><img class="mugshot" alt="Leo White" src="../mugshots/lpw25.jpg" height="30px"/></a>
@@ -160,10 +230,10 @@
              </td> <td class="blank" colspan="11"/> <td/> </tr>  <tr> <td class="blank" colspan="1"/> <td class="complete" colspan="3">
                <a href="http://lpw25.net"><img class="mugshot" alt="Leo White" src="../mugshots/lpw25.jpg" height="30px"/></a>
                <a href="compiler.html#Record disambiguation">Record disambiguation</a><br/>
-             </td> <td class="blank" colspan="12"/> <td/> </tr>  <tr> <td class="blank" colspan="4"/> <td class="doing" colspan="3">
+             </td> <td class="blank" colspan="12"/> <td/> </tr>  <tr> <td class="blank" colspan="4"/> <td class="doing" colspan="6">
                <a href="http://lpw25.net"><img class="mugshot" alt="Leo White" src="../mugshots/lpw25.jpg" height="30px"/></a>
                <a href="compiler.html#Syntax extensions">Syntax extensions</a><br/>
-             </td> <td class="blank" colspan="9"/> <td/> </tr>  <tr> <td class="blank" colspan="6"/> <td class="planning" colspan="10">
+             </td> <td class="blank" colspan="6"/> <td/> </tr>  <tr> <td class="blank" colspan="6"/> <td class="planning" colspan="10">
                <a href="http://lpw25.net"><img class="mugshot" alt="Leo White" src="../mugshots/lpw25.jpg" height="30px"/></a>
                <a href="compiler.html#Namespaces">Namespaces</a><br/>
              </td>  <td class="planning"><i>plan?</i></td> </tr>  <tr> <td class="blank" colspan="7"/> <td class="planning" colspan="9">
@@ -172,7 +242,13 @@
              </td>  <td class="planning"><i>plan?</i></td> </tr>  <tr> <td class="blank" colspan="8"/> <td class="planning" colspan="8">
                <img class="mugshot" alt="Jeremy Yallop" src="../mugshots/unknown.jpg" height="30px"/>
                <a href="compiler.html#Compile-time meta programming">Compile-time meta programming</a><br/>
-             </td>  <td class="planning"><i>plan?</i></td> </tr> 
+             </td>  <td class="planning"><i>plan?</i></td> </tr>  <tr> <td class="blank" colspan="5"/> <td class="doing" colspan="5">
+               <a href="http://www.three-tuns.net/mark"><img class="mugshot" alt="Mark Shinwell" src="../mugshots/unknown.jpg" height="30px"/></a>
+               <a href="compiler.html#Emission of DWARF debugging information">Emission of DWARF debugging information</a><br/>
+             </td> <td class="blank" colspan="6"/> <td/> </tr>  <tr> <td class="blank" colspan="8"/> <td class="doing" colspan="4">
+               <a href="http://www.x9c.fr"><img class="mugshot" alt="Xavier Clerc" src="../mugshots/unknown.jpg" height="30px"/></a>
+               <a href="compiler.html#OCaml Java 2.0">OCaml Java 2.0</a><br/>
+             </td> <td class="blank" colspan="4"/> <td/> </tr> 
         <tr><td colspan="17"> </td></tr>
         </table>
       
@@ -194,8 +270,12 @@
             }
             </style>
           
-        <h1 id="t2">Trilogy 2</h1>
-        <p><a href="http://trilogy2.eu">Trilogy2</a> aims to develop a new Internet architecture based on the concept of the <em>liquid network</em>. A liquid system should ideally allow resources including bandwidth, storage and processing to be used by any application, whether they are contributed by network operators, data centre operators or end systems. Resources form a shared pool and applications can scale up and down in multiple dimensions (storage, processing, bandwidth and energy usage) as needed, in a continuous effort to enhance the users’ experience as measured in terms of key metrics such as delay and battery life.</p>
+        <div style="width:75%">
+        
+       <h2 style="border-bottom: 1px solid #cccccc; font-weight: bold" id="t2">
+         <a href="t2.html">Trilogy 2 »</a>
+       </h2> 
+        <p><a href="http://trilogy2.eu"><img class="left" src="../images/t2.png"/></a><a href="http://trilogy2.eu">Trilogy2</a> aims to develop a new Internet architecture based on the concept of the <em>liquid network</em>. A liquid system should ideally allow resources including bandwidth, storage and processing to be used by any application, whether they are contributed by network operators, data centre operators or end systems. Resources form a shared pool and applications can scale up and down in multiple dimensions (storage, processing, bandwidth and energy usage) as needed, in a continuous effort to enhance the users’ experience as measured in terms of key metrics such as delay and battery life.</p>
 <p>The Cambridge participation is primarily centered around three efforts:</p>
 <ul>
 <li>The <a href="http://openmirage.org">Mirage</a> library operating system that provides the policy-free mechanism to implement the liquid OS.</li>
@@ -204,8 +284,8 @@
 </ul>
 <p>Trilogy 2 is a 3-year EU <a href="http://en.wikipedia.org/wiki/Framework_Programmes_for_Research_and_Technological_Development">STREP</a> project that addresses the &quot;<a href="http://cordis.europa.eu/fp7/ict/programme/challenge1_en.html">Pervasive and Trusted Network and Service Infrastructures: Future Networks</a>&quot; challenge. The tasks below and include our collaborators at <a href="http://onapp.com">OnApp</a>.</p>
 
-        <p><i><a href="t2.html">(more information)</a></i></p>
-        <table class="projects" width="95%">
+        </div>
+        <table class="projects" width="85%">
         <tr class="dates"><td>Sep '12</td><td>Oct '12</td><td>Nov '12</td><td>Dec '12</td><td>Jan '13</td><td>Feb '13</td><td>Mar '13</td><td>Apr '13</td><td>May '13</td><td>Jun '13</td><td>Jul '13</td><td>Aug '13</td><td>Sep '13</td><td>Oct '13</td><td>Nov '13</td><td>Dec '13</td><td>∞</td></tr>
          <tr> <td class="blank" colspan="2"/> <td class="doing" colspan="11">
                <a href="https://github.com/vstakhov"><img class="mugshot" alt="Vsevolod Stakhov" src="../mugshots/vsevelod.jpg" height="30px"/></a>
@@ -235,11 +315,16 @@
             }
             </style>
           
-        <h1 id="outreach">Community Outreach</h1>
-        <p>Growing a language community is more than just technology; we also need a better online presence, documentation and educational material.</p>
+        <div style="width:75%">
+        
+       <h2 style="border-bottom: 1px solid #cccccc; font-weight: bold" id="outreach">
+         <a href="outreach.html">Community Outreach »</a>
+       </h2> 
+        <p><a href="http://realworldocaml.org"><img class="left" src="../images/oreilly-cover.gif" width="70px"/></a>Growing a language community is more than just technology; we also need a better online presence, documentation and educational material. We're working on an O'Reilly book about practical OCaml programming, as well as a comprehensive revamp of the website to include features such as the interactive <a href="http://try.ocamlpro.com">TryOCaml</a> Javascript toplevel.</p>
+<p>Much of this work is done in collaboration with members of the wider OCaml community such as <a href="../people/ashish.html">Ashish Agarwal</a> and <a href="../people/christophe.html">Christophe Troestler</a>, and not just from the Cambridge group.</p>
 
-        <p><i><a href="outreach.html">(more information)</a></i></p>
-        <table class="projects" width="95%">
+        </div>
+        <table class="projects" width="85%">
         <tr class="dates"><td>Sep '12</td><td>Oct '12</td><td>Nov '12</td><td>Dec '12</td><td>Jan '13</td><td>Feb '13</td><td>Mar '13</td><td>Apr '13</td><td>May '13</td><td>Jun '13</td><td>Jul '13</td><td>Aug '13</td><td>Sep '13</td><td>Oct '13</td><td>Nov '13</td><td>Dec '13</td><td>∞</td></tr>
          <tr>  <td class="doing" colspan="12">
                <a href="http://anil.recoil.org"><img class="mugshot" alt="Anil Madhavapeddy" src="../mugshots/avsm.jpg" height="30px"/></a>

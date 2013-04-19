@@ -7,9 +7,8 @@ more interactive initialisation.
 
 The big purpose behind the next release, though, is to improve support for
 large-scale continuous integration and testing of the packages contained within
-the repository.  [Jane Street](http://ocaml.janestreet.com], for example, is
-now issuing [weekly
-releases](https://github.com/OCamlPro/opam-repository/pull/506) of their Core
+the repository.  [Jane Street](http://ocaml.janestreet.com), for example, is
+now issuing [weekly releases](https://github.com/OCamlPro/opam-repository/pull/506) of their Core
 standard library suite.  Testing these manually across Linux, FreeBSD, MacOS X
 and several CPU architectures (x86, x86_64, ARM, Macppc) is both tedious and
 error-prone, and so we'd like to automate the process.

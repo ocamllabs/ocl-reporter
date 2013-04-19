@@ -29,11 +29,21 @@ let conext_pvtcp =
      ~conf:"ACM CoNEXT 2012 Student Workshop"
      ~conf_url:"http://conferences.sigcomm.org/co-next/2012/"
 
+let sas_2013 =
+  mk ~id:"sas-2013"
+     ~title:"Concise analysis using implication algebras for task-local memory optimization"
+     ~url:"http://www.cl.cam.ac.uk/~lpw25/papers/sas2013.pdf"
+     ~authors:"Leo White and Alan Mycroft"
+     ~date:"2013-04-06"
+     ~conf:"Static Analysis Symposium 2013"
+     ~conf_url:"http://research.microsoft.com/en-us/events/sas2013/"
+
 
 let all = [
   asplos_2013;
   hotcloud_2010;
-  conext_pvtcp
+  conext_pvtcp;
+  sas_2013
 ]
 
 let all_by_date =

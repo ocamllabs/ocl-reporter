@@ -12,3 +12,9 @@ run: build
 
 www:
 	cd pages && env PATH=../ucampas:$PATH ucampas -i -r1 index people tasks outputs news
+
+check:
+	echo If you get an error with this, do brew install linklint
+	rm -rf lint
+	mkdir -p lint
+	linklint -net -doc lint -root pages /@

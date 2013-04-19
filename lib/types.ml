@@ -104,6 +104,12 @@ module Reference = struct
     link: link;
   }
 
+  let blog ?(name="Blog Post") url =
+    { name; link=(`Blog url) }
+
+  let mantis ?(name="Bug report") num =
+    { name; link=(`Mantis num) }
+
   let github ?(name="Github") owner repo =
     { name; link=(`Github (owner,repo)) }
 
@@ -156,6 +162,7 @@ module Project = struct
     project_id: string;
     project_name: string;
     project_owner: Person.t;
+    project_elevator: string;
     team: Person.t list;
     tasks: task list;
   }
@@ -176,7 +183,8 @@ module Project = struct
     { task_name=name; task_descr=descr; start; finish; owner; status; refs; related }
 
   let people_in_project p = 
-    p.project_owner :: p.team
+    let rest = List.fold_left ~init:[] ~f:(fun a t -> t.owner :: a) p.tasks in
+    List.dedup (p.project_owner :: p.team @ rest)
 
   let tasks_for_person proj person =
     List.filter proj.tasks (fun t -> t.owner = person)
