@@ -380,11 +380,11 @@ module People = struct
 
   let dbunzli = {
     id="dbunzli";
-    name="Daniel Bunzli";
+    name="Daniel Bünzli";
     affiliation=`Citrix;
     role="Software Engineer";
     bio=None;
-    homepage=Some "http://erratique.ch/contact.en";
+    homepage=Some "http://erratique.ch";
     mugshot=None;
   }
 
