@@ -1,4 +1,4 @@
-The OCaml Platform combines the core OCaml compiler with a coherent set of
+<a href="http://ocaml.org"><img class="left" src="../images/ocaml-colour.png" width="70px" /></a>The OCaml Platform combines the core OCaml compiler with a coherent set of
 libraries, tools and documentation.  The requirements and direction of the
 Platform are initially being guided by large users of OCaml such as [Jane
 Street](http://ocaml.janestreet.com),
