@@ -1,8 +1,9 @@
-Embedded computer systems that are low-power,  physically mobile, and contain
-actuators and sensors to interface and influence the "real world" are increasingly
-common.  We're building the core technology to make these sensors fundamentally
-more secure, reliable and easier to program.  This consists of three main bits
-of technology:
+<a href="http://#"><img class="left" src="../images/illuminate.gif" width="70px" /></a>Embedded computer systems that are low-power, physically mobile, 
+and which contain actuators and sensors to interface and influence the "real 
+world" are becoming increasingly common.  
+Many people are referring to this collectively as the "Internet of Things".
+We're building the core technology to make these distributed devices fundamentally more secure, reliable and easier to program.
+This consists of three main bits of technology:
 
 * The Mirage OS (described separately) to build specialised, type-safe embedded images.
 * The Signposts coordination system for embedded devices to find each other securely across a complex edge network.
