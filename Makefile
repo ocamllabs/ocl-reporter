@@ -20,5 +20,5 @@ check:
 	linklint -net -doc lint -root pages /@
 
 cron:
-	git pull -u
-	cd pages && rsync --delete -avz . /anfs/www/html/projects/ocamllabs/
+	@git pull -u >/dev/null
+	@cd pages && rsync --delete -aqz . /anfs/www/html/projects/ocamllabs/
