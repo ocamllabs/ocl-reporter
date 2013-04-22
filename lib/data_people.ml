@@ -385,7 +385,7 @@ module People = struct
     role="Software Engineer";
     bio=None;
     homepage=Some "http://erratique.ch";
-    mugshot=None;
+    mugshot=Some "dbuenzli.jpg";
   }
 
   let all = [
