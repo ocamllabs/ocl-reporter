@@ -18,3 +18,6 @@ check:
 	rm -rf lint
 	mkdir -p lint
 	linklint -net -doc lint -root pages /@
+
+cron:
+	cd pages && rsync --delete -avz . /anfs/www/html/projects/ocamllabs/
