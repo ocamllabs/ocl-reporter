@@ -1,4 +1,4 @@
-The cloud has so far mostly been used to consolidate existing operating systems
+<a href="http://openmirage.org"><img class="left" src="../images/mirage.jpg" width="70px" /></a>The cloud has so far mostly been used to consolidate existing operating systems
 and manage them more conveniently. The interface between guest kernels,
 applications and VMs are all managed very differently, leading to serious
 inefficiencies, unreliability and insecurity.  [Mirage

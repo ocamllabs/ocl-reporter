@@ -1,4 +1,4 @@
-<a href="http://trilogy2.eu"><img class="left" src="../images/t2.png" /></a>[Trilogy2](http://trilogy2.eu) aims to develop a new Internet architecture based on the concept of
+<a href="http://trilogy2.org"><img class="left" src="../images/t2.png" /></a>[Trilogy2](http://trilogy2.eu) aims to develop a new Internet architecture based on the concept of
 the _liquid network_. A liquid system should ideally allow resources including
 bandwidth, storage and processing to be used by any application, whether they
 are contributed by network operators, data centre operators or end systems.
