@@ -298,7 +298,8 @@ module Projects = struct
         ~owner:People.amir
         ~status:`Doing
         ~descr:"xen-org"
-        ~refs:[ Reference.webpage ~name:"Proposal" "http://wiki.xen.org/wiki/Mirage_Incubation_Project_Proposal" ] ();
+        ~refs:[ Reference.webpage ~name:"Proposal" "http://wiki.xen.org/wiki/Mirage_Incubation_Project_Proposal";
+                Reference.webpage ~name:"Xen.org Mirage Page" "http://www.xenproject.org/developers/teams/mirage-os.html" ] ();
       mk_task ~name:"Mirari"
         ~start:"2013-02-02" ~finish:"2013-05-01"
         ~owner:People.vb
