@@ -12,4 +12,8 @@ To date we have:
 
 The next stage is to continue working with
 [Lars](http://wiki.xen.org/wiki/User:Lars.kurth) on the new xen.org
-properties and public announcements.
+properties and public announcements. 
+
+In addition, Xen.org has become a Linux Foundation Collaborative Project and
+MirageOS was prominently mentioned in the
+[press release](http://www.linuxfoundation.org/news-media/announcements/2013/04/xen-become-linux-foundation-collaborative-project)!
