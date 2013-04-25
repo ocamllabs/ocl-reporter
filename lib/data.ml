@@ -205,6 +205,13 @@ module Projects = struct
         ~descr:"rwo-review-site"
         ~related:[("Real World OCaml", "outreach", "Real World OCaml")]
         ~refs:[ Reference.webpage ~name:"Homepage" "http://realworldocaml.org" ] ();
+      mk_task ~name:"Meta preprocessor"
+        ~start:"2013-04-01" ~finish:"2013-08-01"
+        ~owner:People.pwang
+        ~status:`Planning
+        ~descr:"mpp"
+        ~related:[("Real World OCaml", "outreach", "Book review site")]
+        ~refs:[ Reference.github ~name:"mpp code" "pw374" "MPP-language-blender" ] ();
       mk_task ~name:"OCaml.org infrastructure"
         ~start:"2011-08-01" ~finish:"2013-02-01"
         ~owner:People.avsm
@@ -247,8 +254,8 @@ module Projects = struct
        ~owner:People.pwang
        ~status:`Planning
        ~descr:"templates"
-       ~refs: [
-       ] ();
+       ~related:[("Meta preprocessor", "outreach", "Meta preprocessor")]
+       ~refs: [       ] ();
 
       mk_task ~name:"Declarative graphing library"
        ~start:"2013-04-14" ~finish:"2013-07-14"
