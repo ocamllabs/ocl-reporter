@@ -177,7 +177,7 @@ let to_short_html person =
       <div style="width:90%">
       <table class="projects" width="95%">
         <tr class="dates">$list:cells$</tr>
-        $list:tasks task_list$
+        $list:tasks ~hrefbase:("../tasks/"^proj.project_id^".html") task_list$
         <tr><td colspan=$str:string_of_int total_colspan$>&nbsp;</td></tr>
       </table>
       </div>
