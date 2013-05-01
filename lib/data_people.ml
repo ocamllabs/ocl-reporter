@@ -195,6 +195,15 @@ module People = struct
     homepage=Some "http://www.cl.cam.ac.uk/~gp349/";
     mugshot=Some "gparisis.jpg";
   }  
+  let euan = {
+    id="euan";
+    name="Euan Harris";
+    affiliation=`CL;
+    role="Visitor";
+    bio=None;
+    homepage=None;
+    mugshot=None;
+  }  
   (* 
     Citrix people
   *)
@@ -391,7 +400,7 @@ module People = struct
   let all = [
     avsm; mycroft; iml; crowcroft; amir; lpw25; yallop; pwang;
     stedolan; balrajsingh; heidi; raphael; smh; haris;  vsevolod;
-    griffin; rwatson; alib; bogdan; sheets; gparisis;
+    griffin; rwatson; alib; bogdan; sheets; gparisis; euan;
     djs; vb; jludlam; lars; yaron; shinwell; tg; pierre; fabrice;
     xleroy; mac; mort; ashish; christophe; gabor;
     (* prashanth; *) jhickey; xclerc; dbunzli ]
