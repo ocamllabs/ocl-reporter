@@ -313,6 +313,12 @@ module Projects = struct
         ~status:`Doing
         ~descr:"mirari"
         ~refs:[ Reference.github "mirage" "mirari" ] () ;
+      mk_task ~name:"Thespian"
+        ~start:"2013-04-15" ~finish:"2013-07-01"
+        ~owner:People.euan
+        ~status:`Doing
+        ~descr:"thespian"
+        ~refs:[  ] () ;
       mk_task ~name:"Mirage Developer Preview"
         ~start:"2013-02-26" ~finish:"2013-07-26"
         ~owner:People.djs
