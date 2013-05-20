@@ -223,7 +223,7 @@ module People = struct
     role="Research Intern";
     bio=None;
     homepage=Some "https://github.com/vbmithr";
-    mugshot=None;
+    mugshot=Some "vb.jpg";
   }
   let jludlam = {
     id="jludlam";
@@ -384,7 +384,7 @@ module People = struct
     role="Researcher";
     bio=None;
     homepage=Some "http://www.x9c.fr";
-    mugshot=None;
+    mugshot=Some "xavierclerc.jpg";
   }
 
   let dbunzli = {
