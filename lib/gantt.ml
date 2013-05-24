@@ -4,12 +4,6 @@ open Data
 
 open Core.Std
 
-(* XXX Hack to let Cow syntax extension work with Core.Std open *)
-module List = struct
-  include List
-  let flatten = concat
-end
-
 let years = [2012;2013]
 let start_date = Date.create_exn ~y:2012 ~m:Month.Aug ~d:1
 let dates = 
