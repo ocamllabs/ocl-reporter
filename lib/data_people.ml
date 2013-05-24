@@ -397,13 +397,23 @@ module People = struct
     mugshot=Some "dbuenzli.jpg";
   }
 
+   let vbotbol = {
+    id="vbotbol";
+    name="Vincent Botbol";
+    affiliation=`UPMC;
+    role="Masters Student";
+    bio=None;
+    homepage=Some "https://github.com/vincent- botbol";
+    mugshot=None;
+  }
+
   let all = [
     avsm; mycroft; iml; crowcroft; amir; lpw25; yallop; pwang;
     stedolan; balrajsingh; heidi; raphael; smh; haris;  vsevolod;
     griffin; rwatson; alib; bogdan; sheets; gparisis; euan;
     djs; vb; jludlam; lars; yaron; shinwell; tg; pierre; fabrice;
     xleroy; mac; mort; ashish; christophe; gabor;
-    (* prashanth; *) jhickey; xclerc; dbunzli ]
+    (* prashanth; *) jhickey; xclerc; dbunzli; vbotbol ]
 
   (* Split out the CUCL from the org list *)
   let of_cucl, of_cuclx, of_other =
