@@ -20,7 +20,7 @@ module Projects = struct
         project_name="OCaml Platform"; 
         project_owner=People.amir;
         project_elevator="A rigorously designed, tested and documented base of OCaml libraries and tools.";
-        team=People.([ avsm; tg; lpw25; sheets; yallop; pwang ]);
+        team=People.([ avsm; tg; lpw25; sheets; yallop; pwang; vbotbol ]);
         tasks;
       }
     and tasks = [ 
@@ -48,7 +48,7 @@ module Projects = struct
         ~refs:opam_refs ();
       mk_task ~name:"OPAM Doc"
         ~start:"2013-01-16"
-        ~owner:People.lpw25
+        ~owner:People.vbotbol
         ~status:`Doing
         ~descr:"opam-doc"
         ~refs:[ 

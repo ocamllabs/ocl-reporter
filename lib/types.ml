@@ -13,6 +13,7 @@ module Person = struct
     | `Google
     | `NYU
     | `UMONS
+    | `UPMC
     | `SRI
   ]
 
@@ -30,6 +31,7 @@ module Person = struct
     | `NYU -> "New York University"
     | `UMONS -> "Universite de Mons, Belgium"
     | `SRI -> "SRI International"
+    | `UPMC -> "Université  Pierre et Marie Curie, Paris"
 
   let cmp (a:affiliation) (b:affiliation) =
     let order = function
@@ -44,6 +46,7 @@ module Person = struct
     |`OnApp -> 7
     |`NYU -> 8
     |`UMONS -> 9
+    |`UPMC -> 9
     |`Google -> 10
     in compare (order a) (order b)
 
