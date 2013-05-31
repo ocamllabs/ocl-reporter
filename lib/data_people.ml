@@ -404,7 +404,7 @@ module People = struct
     role="Masters Student";
     bio=None;
     homepage=Some "https://github.com/vincent- botbol";
-    mugshot=None;
+    mugshot=Some "botbol.png";
   }
 
   let all = [
