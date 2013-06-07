@@ -26,3 +26,4 @@ The tasks below reflect this by:
 * The OPAM Doc tool replaces the venerable `ocamldoc` tool with modern, cross-referenced HTML output across several libraries.
 * The OCamlot testing infrastructure runs continuous integration of OPAM stable and candidate packages across a variety of operating systems and CPU architectures.
 
+The mailing list for discussion about this is [platform@lists.ocaml.org](http://lists.ocaml.org/listinfo/platform) ([archive](http://lists.ocaml.org/pipermail/platform/)).
