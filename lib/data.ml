@@ -272,8 +272,8 @@ module Projects = struct
        ~descr:"vg"
        ~related:[("Real-time templating", "illuminate", "Real-time templating")]
        ~refs: [
-         Reference.github ~name:"Gg code" "dbuenzli" "gg";
-         Reference.github ~name:"Vg code" "dbuenzli" "vg";
+         Reference.webpage ~name:"Gg library" "http://erratique.ch/software/gg";
+         Reference.webpage ~name:"Vg library" "http://erratique.ch/software/vg";
        ] ();
 
       mk_task ~name:"Raspberry OCaml"
