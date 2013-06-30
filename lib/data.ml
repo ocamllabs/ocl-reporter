@@ -56,7 +56,7 @@ module Projects = struct
            Reference.github ~name:"bin-doc" "lpw25" "bin-doc" ;
          ] () ;
       mk_task ~name:"OCamlot 0.2.0"
-        ~start:"2013-04-04" ~finish:"2013-06-30"
+        ~start:"2013-03-31" ~finish:"2013-06-30"
         ~owner:People.sheets
         ~status:`Complete
         ~descr:"ocamlot.0.2"
@@ -64,7 +64,7 @@ module Projects = struct
                   ("Machine Pool", "platform", "Machine Pool")]
         ~refs:[ Reference.github "ocamllabs" "ocamlot" ] () ;
       mk_task ~name:"OCamlot 0.3.0"
-        ~start:"2013-07-01"
+        ~start:"2013-06-30"
         ~owner:People.sheets
         ~status:`Planning
         ~descr:"ocamlot.0.3"
