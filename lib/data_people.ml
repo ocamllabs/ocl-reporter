@@ -183,7 +183,7 @@ module People = struct
     affiliation=`CL;
     role="Research Assistant";
     bio=None;
-    homepage=None;
+    homepage=Some "https://github.com/dsheets";
     mugshot=(Some "sheets.png");
   }
   let gparisis = {
