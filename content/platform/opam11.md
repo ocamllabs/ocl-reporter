@@ -19,4 +19,4 @@ package metadata being added to facilitate the process, and tools such as
 this by looking inside the packages themselves.  The whole of OPAM is exported
 as a [library](http://opam.ocamlpro.com/pkg/opam-lib.1.0.0.html) so that third-party
 packages can interface with the OPAM repository without changing OPAM itself.
-And this is exactly what the "OCamelot" task below does...
+This is exactly what the [OCamlot](#OCamlot 0.2.0) project does.
