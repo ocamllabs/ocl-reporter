@@ -55,14 +55,22 @@ module Projects = struct
            Reference.github ~name:"opam-doc" "lpw25" "opam-doc" ;
            Reference.github ~name:"bin-doc" "lpw25" "bin-doc" ;
          ] () ;
-      mk_task ~name:"OCamlot"
-        ~start:"2013-01-16"
+      mk_task ~name:"OCamlot 0.2.0"
+        ~start:"2013-04-04" ~finish:"2013-06-30"
         ~owner:People.sheets
-        ~status:`Planning
-        ~descr:"ocamlot"
-        ~related:[("OPAM 1.1","platform","OPAM 1.1 (the CI and Test release)");
+        ~status:`Complete
+        ~descr:"ocamlot.0.2"
+        ~related:[("OPAM 1.0","platform","OPAM 1.0 (if it builds, ship it)");
                   ("Machine Pool", "platform", "Machine Pool")]
         ~refs:[ Reference.github "ocamllabs" "ocamlot" ] () ;
+      mk_task ~name:"OCamlot 0.3.0"
+        ~start:"2013-07-01"
+        ~owner:People.sheets
+        ~status:`Planning
+        ~descr:"ocamlot.0.3"
+        ~related:["OPAM 1.1","platform","OPAM 1.1 (the CI and Test release)";
+                  "Machine Pool", "platform", "Machine Pool"]
+        ~refs:[ Reference.github "ocamllabs" "ocamlot" ] ();
       mk_task ~name:"Machine Pool"
         ~start:"2012-11-16"
         ~finish:"2013-06-01"
