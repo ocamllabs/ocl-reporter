@@ -1,7 +1,18 @@
-OCamlot (OCaml Online Testing), is a Continuous Integration and Testing system for packages provided via [OPAM][].  It comprises all the appropriate tools and libraries to enable management and development of the machine infrastructure, for example an OCaml library to interface with Github (available through OPAM).  If you submit a package via OPAM, you will be rewarded with regular regression tests across many diverse operating systems and platforms. Ultimately, we would also like to integrate benchmarking into this system but that will be incorporated in later versions.
+OCamlot (OCaml Online Testing), is a Continuous Integration and Testing
+system for packages provided via [OPAM][].  It comprises all the
+appropriate tools and libraries to enable management and development of
+the machine infrastructure, for example an OCaml library to [interface
+with Github](https://github.com/avsm/ocaml-github) ([available through
+OPAM](http://opam.ocamlpro.com/pkg/github.0.6.1.html)).  If you submit a
+package via OPAM, you will be rewarded with regular regression tests
+across many diverse operating systems and build tool
+environments. Ultimately, we would also like to integrate benchmarking,
+constraint exploration, experimental design, complete isolation, and
+domain testing into this system.
 
-The resourcing and commissioning of the Machine Pool itself is dealt with separately to the software that will enable it.
+The resourcing and commissioning of the Machine Pool itself is dealt
+with separately to the software that will enable it.
 
-Current status: Creating a spec to define the overall components required.
+Current status: Minimal [version 0.2.0 released]()
 
 [OPAM]: http://opam.ocamlpro.com
