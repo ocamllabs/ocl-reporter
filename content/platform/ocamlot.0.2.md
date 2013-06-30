@@ -11,7 +11,7 @@ constraint exploration, experimental design, complete isolation, and
 domain testing into this system.
 
 The resourcing and commissioning of the Machine Pool itself is dealt
-with separately to the software that will enable it.
+with [separately](#Machine Pool) from this software which utilises it.
 
 Current status: Minimal [version 0.2.0 released]()
 
