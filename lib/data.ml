@@ -75,26 +75,26 @@ module Projects = struct
         ~start:"2012-11-16"
         ~finish:"2013-06-01"
         ~owner:People.avsm
-        ~status:`Doing ()
+        ~status:`Doing
         ~descr:"machine-pool"
-        ~related:[("OCamlot", "platform", "OCamlot")];
-
+        ~related:[("OCamlot", "platform", "OCamlot")] ();
       mk_task ~name:"Platform Preview"
         ~start:"2013-03-01" ~finish:"2013-07-01"
         ~owner:People.amir
-        ~status:`Planning ()
+        ~status:`Planning
         ~descr:"platform-prev"
         ~related:[("OPAM 1.2", "platform", "OPAM 1.2 (the Platform release)");
                   ("OCamlot", "platform", "OCamlot")]
-        ~refs:[ Reference.webpage ~name:"Platform mailing list" "http://lists.ocaml.org/listinfo/platform" ];
-
+        ~refs:[ Reference.webpage ~name:"Platform mailing list" "http://lists.ocaml.org/listinfo/platform" ]
+        ();
       mk_task ~name:"Foreign Function Interface"
         ~start:"2013-03-01" ~finish:"2013-06-01"
         ~owner:People.yallop
-        ~status:`Complete ()
+        ~status:`Complete
         ~descr:"ctypes"
         ~refs:[ Reference.github "ocamllabs" "ctypes";
-                Reference.webpage ~name:"Documentation" "https://github.com/ocamllabs/ocaml-ctypes/wiki" ];
+                Reference.webpage ~name:"Documentation" "https://github.com/ocamllabs/ocaml-ctypes/wiki" ]
+        ();
     ]
   end
 
