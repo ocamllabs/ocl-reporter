@@ -15,6 +15,14 @@ module Projects = struct
      Reference.pdf ~name:"Developer Manual" "https://github.com/OCamlPro/opam/blob/master/doc/dev-manual/dev-manual.pdf?raw=true";
      Reference.github_issues "OCamlPro" "opam";
    ]
+
+   let ocamlot_refs = [
+     Reference.webpage "https://ocaml-www3.ocamllabs.cl.cam.ac.uk/";
+     Reference.github ~name:"ocamlot-state" "ocamlot" "ocamlot-state";
+     Reference.github ~name:"ocamlot" "ocamllabs" "ocamlot";
+     Reference.github_issues "ocamllabs" "ocamlot";
+   ]
+
     let rec project =
       { project_id="platform"; 
         project_name="OCaml Platform"; 
@@ -46,6 +54,7 @@ module Projects = struct
         ~descr:"opam12"
         ~related:[("Platform Preview", "platform", "Platform Preview")]
         ~refs:opam_refs ();
+
       mk_task ~name:"OPAM Doc"
         ~start:"2013-01-16"
         ~owner:People.vbotbol
@@ -55,38 +64,50 @@ module Projects = struct
            Reference.github ~name:"opam-doc" "lpw25" "opam-doc" ;
            Reference.github ~name:"bin-doc" "lpw25" "bin-doc" ;
          ] () ;
-      mk_task ~name:"OCamlot"
-        ~start:"2013-01-16"
+
+      mk_task ~name:"OCamlot 0.2.0"
+        ~start:"2013-03-31" ~finish:"2013-06-30"
         ~owner:People.sheets
-        ~status:`Planning
-        ~descr:"ocamlot"
-        ~related:[("OPAM 1.1","platform","OPAM 1.1 (the CI and Test release)");
+        ~status:`Complete
+        ~descr:"ocamlot.0.2"
+        ~related:[("OPAM 1.0","platform","OPAM 1.0 (if it builds, ship it)");
                   ("Machine Pool", "platform", "Machine Pool")]
-        ~refs:[ Reference.github "ocamllabs" "ocamlot" ] () ;
+        ~refs: ocamlot_refs () ;
+      mk_task ~name:"OCamlot 0.3.0"
+        ~start:"2013-06-30" ~finish:"2013-09-15"
+        ~owner:People.sheets
+        ~status:`Doing
+        ~descr:"ocamlot.0.3"
+        ~related:["OPAM 1.1","platform","OPAM 1.1 (the CI and Test release)";
+                  "Machine Pool", "platform", "Machine Pool"]
+        ~refs: ocamlot_refs () ;
+
       mk_task ~name:"Machine Pool"
         ~start:"2012-11-16"
         ~finish:"2013-06-01"
         ~owner:People.avsm
-        ~status:`Doing ()
+        ~status:`Doing
         ~descr:"machine-pool"
-        ~related:[("OCamlot", "platform", "OCamlot")];
+        ~related:[("OCamlot", "platform", "OCamlot")] ();
 
       mk_task ~name:"Platform Preview"
         ~start:"2013-03-01" ~finish:"2013-07-01"
         ~owner:People.amir
-        ~status:`Planning ()
+        ~status:`Planning
         ~descr:"platform-prev"
         ~related:[("OPAM 1.2", "platform", "OPAM 1.2 (the Platform release)");
                   ("OCamlot", "platform", "OCamlot")]
-        ~refs:[ Reference.webpage ~name:"Platform mailing list" "http://lists.ocaml.org/listinfo/platform" ];
+        ~refs:[ Reference.webpage ~name:"Platform mailing list" "http://lists.ocaml.org/listinfo/platform" ]
+        ();
 
       mk_task ~name:"Foreign Function Interface"
         ~start:"2013-03-01" ~finish:"2013-06-01"
         ~owner:People.yallop
-        ~status:`Complete ()
+        ~status:`Complete
         ~descr:"ctypes"
         ~refs:[ Reference.github "ocamllabs" "ctypes";
-                Reference.webpage ~name:"Documentation" "https://github.com/ocamllabs/ocaml-ctypes/wiki" ];
+                Reference.webpage ~name:"Documentation" "https://github.com/ocamllabs/ocaml-ctypes/wiki" ]
+        ();
     ]
   end
 

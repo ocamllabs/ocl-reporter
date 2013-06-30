@@ -183,7 +183,7 @@ module People = struct
     affiliation=`CL;
     role="Research Assistant";
     bio=None;
-    homepage=None;
+    homepage=Some "https://github.com/dsheets";
     mugshot=(Some "sheets.png");
   }
   let gparisis = {
@@ -403,7 +403,7 @@ module People = struct
     affiliation=`UPMC;
     role="Masters Student";
     bio=None;
-    homepage=Some "https://github.com/vincent- botbol";
+    homepage=Some "https://github.com/vincent-botbol";
     mugshot=Some "botbol.png";
   }
 
