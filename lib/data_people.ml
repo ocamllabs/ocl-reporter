@@ -403,7 +403,7 @@ module People = struct
     affiliation=`UPMC;
     role="Masters Student";
     bio=None;
-    homepage=Some "https://github.com/vincent- botbol";
+    homepage=Some "https://github.com/vincent-botbol";
     mugshot=Some "botbol.png";
   }
 
