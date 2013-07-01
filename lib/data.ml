@@ -40,7 +40,7 @@ module Projects = struct
         ~related:[("OPAM 1.1", "platform", "OPAM 1.1 (the CI and Test release)")]
         ~refs:opam_refs () ;
       mk_task ~name:"OPAM 1.1 (the CI and Test release)"
-        ~start:"2013-02-17" ~finish:"2013-05-01"
+        ~start:"2013-02-17" ~finish:"2013-06-18"
         ~owner:People.tg
         ~status:`Doing
         ~descr:"opam11"
@@ -48,7 +48,7 @@ module Projects = struct
                    ("OCamlot", "platform", "OCamlot")]
         ~refs: opam_refs () ;
       mk_task ~name:"OPAM 1.2 (the Platform release)"
-        ~start:"2013-05-01" ~finish:"2013-08-01"
+        ~start:"2013-06-01" ~finish:"2013-09-01"
         ~owner:People.tg
         ~status:`Planning
         ~descr:"opam12"
@@ -56,7 +56,7 @@ module Projects = struct
         ~refs:opam_refs ();
 
       mk_task ~name:"OPAM Doc"
-        ~start:"2013-01-16"
+        ~start:"2013-01-16" ~finish:"2013-08-01"
         ~owner:People.vbotbol
         ~status:`Doing
         ~descr:"opam-doc"
@@ -332,22 +332,16 @@ module Projects = struct
       mk_task ~name:"Xen.org incubation"
         ~start:"2012-12-01" ~finish:"2013-05-01"
         ~owner:People.amir
-        ~status:`Doing
+        ~status:`Complete
         ~descr:"xen-org"
         ~refs:[ Reference.webpage ~name:"Proposal" "http://wiki.xen.org/wiki/Mirage_Incubation_Project_Proposal";
                 Reference.webpage ~name:"Xen.org Mirage Page" "http://www.xenproject.org/developers/teams/mirage-os.html" ] ();
       mk_task ~name:"Mirari"
-        ~start:"2013-02-02" ~finish:"2013-05-01"
+        ~start:"2013-02-02" ~finish:"2013-06-01"
         ~owner:People.vb
         ~status:`Doing
         ~descr:"mirari"
         ~refs:[ Reference.github "mirage" "mirari" ] () ;
-      mk_task ~name:"Thespian"
-        ~start:"2013-04-15" ~finish:"2013-07-01"
-        ~owner:People.euan
-        ~status:`Doing
-        ~descr:"thespian"
-        ~refs:[  ] () ;
       mk_task ~name:"Mirage Developer Preview"
         ~start:"2013-02-26" ~finish:"2013-07-26"
         ~owner:People.djs
@@ -370,7 +364,7 @@ module Projects = struct
       mk_task ~name:"Nigori"
         ~start:"2012-10-01" ~finish:"2013-06-01"
         ~owner:People.bogdan
-        ~status:`Doing ~descr:"nigori" 
+        ~status:`Complete ~descr:"nigori" 
         ~refs: [
           Reference.pdf ~name:"Original Nigori paper" "http://www.links.org/files/nigori-overview.pdf";
         ] ();

@@ -1,14 +1,11 @@
 build: dist/setup
-	obuild build
-
-dist/setup: reporter.obuild
-	obuild configure
+	ocamlbuild -j 4 -use-ocamlfind -package core,cow,cow.syntax,sexplib.syntax,uri -tag thread -syntax camlp4o lib/www.native
 
 clean:
 	rm -rf dist test.html
 
 run: build
-	./dist/build/ocl-reporter-new/ocl-reporter-new 
+	./_build/lib/www.native
 
 www:
 	cd pages && env PATH=../ucampas:$$PATH ucampas -i -r1 index people tasks outputs news
