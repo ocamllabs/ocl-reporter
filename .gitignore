@@ -34,3 +34,11 @@ lint/
     # Ruby
 .rbenv-version
 .rvmrc
+
+
+#################################################
+#               Planet files                    #
+#################################################
+planet/cache/
+planet/*/*.tmplc
+pages/planet/
