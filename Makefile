@@ -7,7 +7,7 @@ clean:
 run: build
 	./_build/lib/www.native
 
-www: planet-pages
+www:
 	cd pages && env PATH=../ucampas:$$PATH ucampas -i -r1 index people tasks outputs news
 
 check:
@@ -20,5 +20,6 @@ cron:
 	@git pull -u >/dev/null
 	@cd pages && rsync --delete -aqz . /anfs/www/html/projects/ocamllabs/
 
+PLANET?=~/inst/planet-2.0/planet.py
 planet-pages:
-	cd planet && planet ocamllabs-planet.ini
+	cd planet && rm -rf cache && $(PLANET) ocamllabs-planet.ini
