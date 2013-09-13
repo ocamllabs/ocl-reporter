@@ -42,14 +42,16 @@ div.toc {
 
 <div id="container">
 
-<div class="right toc">
-  <p>Contents</p>
-  <p>
-       <TMPL_LOOP Items>
-       <a href="????"><TMPL_VAR title></a><br/>
-       </TMPL_LOOP>
-   </p>
- </div>
+<h4>Recent Posts</h4>
+<table width="90%">
+  <TMPL_LOOP Items>
+  <tr>
+    <td><i><TMPL_VAR date></i></td>
+    <td><a href="#<TMPL_VAR id>"><TMPL_VAR title></a></td>
+    <td><TMPL_VAR author_name ESCAPE="html"></td>
+  </tr>
+  </TMPL_LOOP>
+</table>
 
 
 <TMPL_VAR admin>
@@ -71,12 +73,13 @@ div.toc {
 
 <!-- <h3><a href="<TMPL_VAR channel_link ESCAPE="HTML">" title="<TMPL_VAR channel_title_plain ESCAPE="HTML">"><TMPL_VAR channel_name></a></h3> -->
 <TMPL_IF channel_face>
-<img class="face" src="images/<TMPL_VAR channel_face ESCAPE="HTML">" width="<TMPL_VAR channel_facewidth ESCAPE="HTML">" height="<TMPL_VAR channel_faceheight ESCAPE="HTML">" alt="">
+<img style="float:right; padding-left: 20px;" class="face" src="images/<TMPL_VAR channel_face ESCAPE="HTML">" width="<TMPL_VAR channel_facewidth ESCAPE="HTML">" height="<TMPL_VAR channel_faceheight ESCAPE="HTML">" alt="">
 </TMPL_IF>
 </TMPL_IF>
 
 
 <div class="entrygroup" id="<TMPL_VAR id>"<TMPL_IF channel_language> lang="<TMPL_VAR channel_language>"</TMPL_IF>>
+<a name="<TMPL_VAR id>"> </a>
 <TMPL_IF title>
 <h2<TMPL_IF title_language> lang="<TMPL_VAR title_language>"</TMPL_IF> class="posttitle"><a href="<TMPL_VAR link ESCAPE="HTML">"><TMPL_VAR title></a>
 (<a href="<TMPL_VAR channel_link ESCAPE="HTML">" title="<TMPL_VAR channel_title_plain ESCAPE="HTML">"><TMPL_VAR channel_name></a>)
