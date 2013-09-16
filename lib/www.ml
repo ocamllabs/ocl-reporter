@@ -234,6 +234,7 @@ let outputs =
   let open Types.Paper in
   let pubs = List.map Data_papers.all_by_date
     ~f:(fun p ->
+      let hrdate = sprintf "%s %d" (Month.to_string p.date.m) p.date.y in
       <:html<
        <p>
        <a name=$str:p.id$></a>
@@ -243,7 +244,7 @@ let outputs =
        <br />
        $str:p.authors$
        <br />
-       in <a href=$str:p.conf_url$>$str:p.conf$</a>, $str:Date.to_string p.date$
+       in <a href=$str:p.conf_url$>$str:p.conf$</a>, $str:hrdate$
        </p>
       >>)
   in
