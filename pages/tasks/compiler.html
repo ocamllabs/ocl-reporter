@@ -59,8 +59,13 @@
             </style>
           
     <h1 id="compiler">The OCaml Compiler</h1>
-    <div class="width:75%"><p><a href="http://ocaml.org"><img class="left" src="../images/ocaml-grey.png" width="70px" /></a>We are working on maintaining and extending the core OCaml compiler toolchain and runtime. This consists of a variety of day-to-day tasks such as submitting bug fixes, and also longer-term improvements to the type system and runtime libraries (see below).</p>
-<p>We are actively engaging with the wider OCaml community to ensure that any improvements and modifications we propose are thoroughly discussed, well-formulated and maintainable.</p>
+    <div class="width:75%"><p><a href="http://ocaml.org"><img class="left" src="../images/ocaml-grey.png" width="70px" /></a>We are working on maintaining and extending the core OCaml compiler toolchain
+and runtime. This consists of a variety of day-to-day tasks such as submitting
+bug fixes, and also longer-term improvements to the type system and runtime
+libraries (see below).</p>
+<p>We are actively engaging with the wider OCaml community to ensure that any 
+improvements and modifications we propose are thoroughly discussed, 
+well-formulated and maintainable.</p>
 </div>
     <h2 id="Team">Team</h2>
     <p><a href="../people/avsm.html"><img class="inline" height="50px" src="../mugshots/avsm.jpg" style="" /></a><a href="../people/lpw25.html"><img class="inline" height="50px" src="../mugshots/lpw25.jpg" style="" /></a><a href="../people/shinwell.html"><img class="inline" height="50px" src="../mugshots/unknown.jpg" style="" /></a><a href="../people/stedolan.html"><img class="inline" height="50px" src="../mugshots/unknown.jpg" style="" /></a><a href="../people/xclerc.html"><img class="inline" height="50px" src="../mugshots/xavierclerc.jpg" style="" /></a><a href="../people/yallop.html"><img class="inline" height="50px" src="../mugshots/yallop.jpeg" style="" /></a></p>
@@ -79,72 +84,158 @@
     
          <div style="width:75%">         <h3 id="Open types" style="border-bottom: thin solid #999999;">Open types</h3>
          <p><a href="../people/lpw25.html"><img class="inline" height="40px" src="../mugshots/lpw25.jpg" style="float:left; padding-right: 30px" /></a>  <span class="complete">Complete</span> by <a href="../people/lpw25.html">Leo White</a> (Oct 2012 - Jan 2013) <br /><a class="icon-github" href="https://github.com/lpw25/ocaml-open">Github</a> &#160; <a class="icon-cloud" href="http://sites.google.com/site/ocamlopen/">Website</a> &#160; </p>
-         <p>Add open extensible types to OCaml. One open type already exists within OCaml: the exn type used for exceptions. This project extends this mechanism to allow the programmer to create their own open types. This has previously been proposed for functional languages a number of times, for instance as part of a solution to the expression problem (Loh et al. <a href="http://people.cs.uu.nl/andres/OpenDatatypes.pdf">"Open Data Types and Open Functions"</a>). Unlike "exn", these extensible types can have type parameters, allowing for extensible GADTs.</p>
+         <p>Add open extensible types to OCaml. One open type already exists
+within OCaml: the exn type used for exceptions. This project extends
+this mechanism to allow the programmer to create their own open types.
+This has previously been proposed for functional languages a number of
+times, for instance as part of a solution to the expression problem
+(Loh et al. <a href="http://people.cs.uu.nl/andres/OpenDatatypes.pdf">"Open Data Types and Open Functions"</a>).
+Unlike "exn", these extensible types can have type parameters, allowing
+for extensible GADTs.</p>
 <p>For example:</p>
-<pre class="sourceCode ocaml"><code class="sourceCode ocaml"><span class="kw">type</span> foo = ..
+<pre><code class="ocaml">type foo = ..
 
-<span class="kw">type</span> foo += <span class="dt">A</span>
+type foo += A
 
-<span class="kw">type</span> foo += <span class="dt">B</span> <span class="kw">of</span> <span class="dt">int</span>
+type foo += B of int
 
-<span class="kw">let</span> is_a x =
-  <span class="kw">match</span> x <span class="kw">with</span>
-    <span class="dt">A</span> -&gt; <span class="kw">true</span>
-  | _ -&gt; <span class="kw">false</span></code></pre>
+let is_a x =
+  match x with
+    A -&gt; true
+  | _ -&gt; false
+</code></pre>
 
          <br /></div>
       
          <div style="width:75%">         <h3 id="Record disambiguation" style="border-bottom: thin solid #999999;">Record disambiguation</h3>
          <p><a href="../people/lpw25.html"><img class="inline" height="40px" src="../mugshots/lpw25.jpg" style="float:left; padding-right: 30px" /></a>  <span class="complete">Complete</span> by <a href="../people/lpw25.html">Leo White</a> (Sep 2012 - Dec 2012) <br /><a class="icon-cloud" href="http://caml.inria.fr/mantis/view.php?id=5759">Mantis</a> &#160; <a href="http://caml.inria.fr/mantis/view.php?id=5584">Bug report</a> &#160; </p>
-         <p>Type-based record disambiguation: <a href="http://www.lpw25.net">Leo</a> helped with the record-disambiguation branch of OCaml by Jacques Garrigue. This branch uses type-information to disambiguate between record labels and variant constructors with the same names. For discussions of the semantics of this feature see <a href="http://gallium.inria.fr/~scherer/gagallium/resolving-field-names/">Gabriel</a>'s or <a href="http://www.lexifi.com/blog/type-based-selection-label-and-constructors">Alain</a>'s blog posts. Leo rewrote the record-disambiguation branch to use an alternative semantics and improved the error messages. The branch has since been <a href="https://github.com/ocaml/ocaml/commit/c8273a179cb0bc835924eeca522922a1769d9d54">merged into OCaml trunk</a></p>
+         <p>Type-based record disambiguation: <a href="http://www.lpw25.net">Leo</a> helped with the
+record-disambiguation branch of OCaml by Jacques Garrigue. This branch uses
+type-information to disambiguate between record labels and variant constructors
+with the same names. For discussions of the semantics of this feature see
+<a href="http://gallium.inria.fr/~scherer/gagallium/resolving-field-names/">Gabriel</a>'s
+or
+<a href="http://www.lexifi.com/blog/type-based-selection-label-and-constructors">Alain</a>'s
+blog posts. Leo rewrote the record-disambiguation branch to use an alternative
+semantics and improved the error messages. The branch has since been <a href="https://github.com/ocaml/ocaml/commit/c8273a179cb0bc835924eeca522922a1769d9d54">merged
+into OCaml
+trunk</a></p>
 
          <br /></div>
       
          <div style="width:75%">         <h3 id="Syntax extensions" style="border-bottom: thin solid #999999;">Syntax extensions</h3>
          <p><a href="../people/lpw25.html"><img class="inline" height="40px" src="../mugshots/lpw25.jpg" style="float:left; padding-right: 30px" /></a>  <span class="doing">In Progress</span> by <a href="../people/lpw25.html">Leo White</a> (Dec 2012 - Jun 2013) <br /><a class="icon-cloud" href="http://lists.ocaml.org/listinfo/wg-camlp4">Working group</a> &#160; <a class="icon-cloud" href="http://www.lpw25.net/2013/01/23/camlp4-alternative-part-1.html">Blog</a> &#160; </p>
-         <p>Since its creation camlp4 has proven to be a very useful tool. People have used it to experiment with new features for OCaml and to provide interesting meta-programming facilities. However, there is general agreement that camlp4 is too powerful and complex for the applications that it is most commonly used for, and there is a growing movement to provide a simpler alternative.</p>
-<p>A working group was formed (wg-camlp4@lists.ocaml.org) regarding the future of syntax extensions in OCaml. The aim of the working group is to formulate a solid transition plan to create a 'basic OCaml ecosystem' that does not require camlp4. Alain Frisch's introductory email has more detail and can be <a href="http://lists.ocaml.org/pipermail/wg-camlp4/2013-January/000000.html">found in the archive</a>.</p>
+         <p>Since its creation camlp4 has proven to be a very useful tool. People
+have used it to experiment with new features for OCaml and to provide
+interesting meta-programming facilities. However, there is general
+agreement that camlp4 is too powerful and complex for the applications
+that it is most commonly used for, and there is a growing movement to
+provide a simpler alternative.</p>
+<p>A working group was formed (wg-camlp4@lists.ocaml.org) regarding the
+future of syntax extensions in OCaml. The aim of the working group is
+to formulate a solid transition plan to create a 'basic OCaml
+ecosystem' that does not require camlp4. Alain Frisch's introductory
+email has more detail and can be
+<a href="http://lists.ocaml.org/pipermail/wg-camlp4/2013-January/000000.html">found in the archive</a>.</p>
 
          <br /></div>
       
          <div style="width:75%">         <h3 id="Namespaces" style="border-bottom: thin solid #999999;">Namespaces</h3>
          <p><a href="../people/lpw25.html"><img class="inline" height="40px" src="../mugshots/lpw25.jpg" style="float:left; padding-right: 30px" /></a>  <span class="planning">Planning</span> by <a href="../people/lpw25.html">Leo White</a> (Feb 2013 -) <br /><a class="icon-cloud" href="http://www.lpw25.net/2013/03/10/ocaml-namespaces.html">Blog</a> &#160; <a class="icon-cloud" href="http://lists.ocaml.org/pipermail/platform/2013-February/000050.html">Epic Mail Thread</a> &#160; </p>
-         <p>Namespaces provide a means for grouping the components of a library together.</p>
-<p>Up to now this has been achieved using the OCaml module system. Since the components of an OCaml library are modules, a module can be created that contains all the components of the library as sub-modules. However, there are some critical problems with creating a single module containing the whole library:</p>
-<ul><li><p>The module is a single unit that has to be linked or not as a whole. This means that any program using part of the library must include the entire library.</p></li>
-<li><p>The module is a choke-point in the dependency graph. If a file depends on one thing in the library then it needs to be recompiled if anything in the library changes.</p></li>
-<li><p>Opening a very large module is slow and can seriously affect build performance.</p></li>
+         <p>Namespaces provide a means for grouping the components of a library
+together.</p>
+<p>Up to now this has been achieved using the OCaml module system. Since
+the components of an OCaml library are modules, a module can be created that
+contains all the components of the library as sub-modules. However, there are
+some critical problems with creating a single module containing the whole
+library:</p>
+<ul> <li>The module is a single unit that has to be linked or not as a whole. This
+ means that any program using part of the library must include the entire
+ library.</li>
 </ul>
-<p>These problems are caused by the runtime semantics of modules. Namespaces have no runtime sematics and could provide a solution to these problems.</p>
+
+<ul> <li>The module is a choke-point in the dependency graph. If a file depends
+ on one thing in the library then it needs to be recompiled if anything
+ in the library changes.</li>
+</ul>
+
+<ul> <li>Opening a very large module is slow and can seriously affect build
+ performance.</li>
+</ul>
+
+<p>These problems are caused by the runtime semantics of modules. Namespaces have
+no runtime sematics and could provide a solution to these problems.</p>
 
          <br /></div>
       
          <div style="width:75%">         <h3 id="Multicore" style="border-bottom: thin solid #999999;">Multicore</h3>
          <p><a href="../people/stedolan.html"><img class="inline" height="40px" src="../mugshots/unknown.jpg" style="float:left; padding-right: 30px" /></a>  <span class="planning">Planning</span> by <a href="../people/stedolan.html">Stephen Dolan</a> (Mar 2013 -) <br /><a class="icon-github" href="https://github.com/stedolan/ocaml">Github</a> &#160; </p>
-         <p>Building an efficient multi-core garbage collector remains a challenging research issue. We will begin by investigating techniques that do not involve fine-grained locking, as this has been shown to be error-prone, difficult to maintain, and impacts sequential performance. Instead, we prefer to isolate threads to individual cores, with region-based heaps that can be garbage collected separately. This technique has been successfully demonstrated in MultiMLton, system and runtime, and we will implement it in OCaml and its large body of third-party code.</p>
+         <p>Building an efficient multi-core garbage collector remains a
+challenging research issue. We will begin by investigating techniques
+that do not involve fine-grained locking, as this has been shown to be
+error-prone, difficult to maintain, and impacts sequential
+performance. Instead, we prefer to isolate threads to individual
+cores, with region-based heaps that can be garbage collected
+separately. This technique has been successfully demonstrated in
+MultiMLton, system and runtime, and we will implement it in OCaml and
+its large body of third-party code.</p>
 
          <br /></div>
       
          <div style="width:75%">         <h3 id="Compile-time meta programming" style="border-bottom: thin solid #999999;">Compile-time meta programming</h3>
          <p><a href="../people/yallop.html"><img class="inline" height="40px" src="../mugshots/yallop.jpeg" style="float:left; padding-right: 30px" /></a>  <span class="planning">Planning</span> by <a href="../people/yallop.html">Jeremy Yallop</a> (Apr 2013 -) <br /></p>
-         <p>There are currently two ways of generating OCaml code from within OCaml programs: camlp4 (and its successor, ppx), which produces untyped syntax, and MetaOCaml, which produces typed code.</p>
-<p>Our research into static metaprogramming aims to combine the advantages of the two approaches. The resulting system will allow users to write code generators that enjoy the guarantees provided by MetaOCaml, but that run entirely during compilation, like camlp4 extensions. Typeful generation of code based on statically-available information has applications in a number of areas, including deriving-style generic programming extensions, HTML templates, foreign function interface generation and embedded DSLs.</p>
+         <p>There are currently two ways of generating OCaml code from within
+OCaml programs: camlp4 (and its successor, ppx), which produces
+untyped syntax, and MetaOCaml, which produces typed code.</p>
+<p>Our research into static metaprogramming aims to combine the
+advantages of the two approaches.  The resulting system will allow
+users to write code generators that enjoy the guarantees provided by
+MetaOCaml, but that run entirely during compilation, like camlp4
+extensions.  Typeful generation of code based on statically-available
+information has applications in a number of areas, including
+deriving-style generic programming extensions, HTML templates, foreign
+function interface generation and embedded DSLs.</p>
 
          <br /></div>
       
          <div style="width:75%">         <h3 id="Emission of DWARF debugging information" style="border-bottom: thin solid #999999;">Emission of DWARF debugging information</h3>
          <p><a href="../people/shinwell.html"><img class="inline" height="40px" src="../mugshots/unknown.jpg" style="float:left; padding-right: 30px" /></a>  <span class="doing">In Progress</span> by <a href="../people/shinwell.html">Mark Shinwell</a> (Jan 2013 - Jun 2013) <br /><a class="icon-github" href="https://github.com/mshinwell/ocaml">4.00.1-allocation-profiling</a> &#160; </p>
-         <p>Debuggers such as the GNU debugger <a href="http://www.gnu.org/software/gdb/">gdb</a> are valuable tools when tracking down problems in low-level or parallel applications. The programmer experience when using such a debugger to examine natively-compiled OCaml programs currently lacks lustre. Recent versions of the compiler can emit a limited amount of debugging information which enables the recovery of correct stack traces in the debugger. However names of functions still appear in mangled form, it is not possible to reference local variables by name, and traversal of OCaml values is troublesome. This is unfortunately by no means an exhaustive list of deficiencies.</p>
-<p>This project aims to equip the native-code OCaml compiler and the GNU debugger with the necessary infrastructure to improve debugging of OCaml programs. The compiler will be enhanced to emit the standard DWARF debugging information format in order to describe the naming and placement of data together with relevant type information. At the same time the debugger will gain functionality to understand the OCaml-specific parts of this information including the ability to demangle OCaml names. It is planned to implement much of the DWARF output stage in the compiler and the debugger-side support in libraries such that they might be re-used in other projects.</p>
-<p>It is hoped that, as support for native-code debugging of OCaml programs in the traditional manner evolves, it will become more easily possible to build more advanced debugging tools. These might exploit the scripting capabilities of gdb, for example, and target environments such as large-scale concurrent systems.</p>
-<p>This work is ongoing in the <a href="https://github.com/ocaml/ocaml/tree/dwarf">dwarf</a> branch of the OCaml repository.</p>
+         <p>Debuggers such as the GNU debugger <a href="http://www.gnu.org/software/gdb/">gdb</a> are
+valuable tools when tracking down problems in low-level or parallel
+applications.  The programmer experience when using such a debugger to examine
+natively-compiled OCaml programs currently lacks lustre.  Recent versions of
+the compiler can emit a limited amount of debugging information which enables
+the recovery of correct stack traces in the debugger.  However names of
+functions still appear in mangled form, it is not possible to reference local
+variables by name, and traversal of OCaml values is troublesome.  This is
+unfortunately by no means an exhaustive list of deficiencies.</p>
+<p>This project aims to equip the native-code OCaml compiler and the GNU debugger
+with the necessary infrastructure to improve debugging of OCaml programs.  The
+compiler will be enhanced to emit the standard DWARF debugging information
+format in order to describe the naming and placement of data together with
+relevant type information.  At the same time the debugger will gain
+functionality to understand the OCaml-specific parts of this information
+including the ability to demangle OCaml names.  It is planned to implement much
+of the DWARF output stage in the compiler and the debugger-side support in
+libraries such that they might be re-used in other projects.</p>
+<p>It is hoped that, as support for native-code debugging of OCaml programs in the
+traditional manner evolves, it will become more easily possible to build more
+advanced debugging tools.  These might exploit the scripting capabilities of
+gdb, for example, and target environments such as large-scale concurrent
+systems.</p>
+<p>This work is ongoing in the <a href="https://github.com/ocaml/ocaml/tree/dwarf">dwarf</a>
+branch of the OCaml repository.</p>
 
          <br /></div>
       
          <div style="width:75%">         <h3 id="OCaml Java 2.0" style="border-bottom: thin solid #999999;">OCaml Java 2.0</h3>
          <p><a href="../people/xclerc.html"><img class="inline" height="40px" src="../mugshots/xavierclerc.jpg" style="float:left; padding-right: 30px" /></a>  <span class="doing">In Progress</span> by <a href="../people/xclerc.html">Xavier Clerc</a> (Apr 2013 - Aug 2013) <br /><a class="icon-cloud" href="http://ocamljava.x9c.fr/preview/">Homepage</a> &#160; </p>
-         <p>OCaml Java is a compiler from OCaml source code to Java bytecode, that can run on any modern Java runtime. This is an interesting way to explore the multicore runtime performance of OCaml with a highly concurrent collector, as is present in the latest JVMs.</p>
-<p>The goal of this work is to stabilise and release the <a href="http://ocamljava.x9c.fr/preview/">preview of 2.0</a>, which greatly improves CPU utilisation and memory footprint.</p>
+         <p>OCaml Java is a compiler from OCaml source code to Java bytecode, that can run
+on any modern Java runtime. This is an interesting way to explore the multicore
+runtime performance of OCaml with a highly concurrent collector, as is present
+in the latest JVMs.</p>
+<p>The goal of this work is to stabilise and release the <a href="http://ocamljava.x9c.fr/preview/">preview of 2.0</a>,
+which greatly improves CPU utilisation and memory footprint.</p>
 
          <br /></div>
       

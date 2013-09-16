@@ -1,5 +1,4 @@
-
-<title>Projects</title>
+<head><title>Projects</title>
     <style>
     a.icon-github {
 	background: url(../github.png) no-repeat 0 0;
@@ -21,7 +20,7 @@
 	padding: 0 0 2px 2em;
     }
     </style>
-  <body>
+  </head><body>
     <div style="width:75%">
     <p>The OCaml Labs are organised around focussed projects summarised below.  Click on the heading for more information, and <a href="../contact.html">get in touch</a> with the project owner if you'd like to know more.  The projects are:</p>
     <ul><li><a href="#platform"><b>OCaml Platform</b></a>: A rigorously designed, tested and documented base of OCaml libraries and tools.</li> <li><a href="#mirage"><b>Mirage OS</b></a>: A high-performance, type-safe library OS written in OCaml.</li> <li><a href="#illuminate"><b>Illuminate</b></a>: Connecting cyber-physical devices with rigorous programming, coordination and persistence.</li> <li><a href="#compiler"><b>The OCaml Compiler</b></a>: Maintaining, extending and documenting the core OCaml compiler toolchain</li> <li><a href="#t2"><b>Trilogy 2</b></a>: Building a resilient liquid OS, with multipath and adaptive scheduling.</li> <li><a href="#outreach"><b>Community Outreach</b></a>: Building an effective online presence for the worldwide OCaml community</li> </ul>
@@ -50,15 +49,34 @@
        <h2 style="border-bottom: 1px solid #cccccc; font-weight: bold" id="platform">
          <a href="platform.html">OCaml Platform »</a>
        </h2> 
-        <p><a href="http://ocaml.org"><img class="left" src="../images/ocaml-colour.png" width="70px"/></a>The OCaml Platform combines the core OCaml compiler with a coherent set of libraries, tools and documentation. The requirements and direction of the Platform are initially being guided by large users of OCaml such as <a href="http://ocaml.janestreet.com">Jane Street</a>, <a href="http://www.xen.org/files/XenCloud/ocamldoc/">Citrix</a> and <a href="http://www.lexifi.com/product/technology/ocaml">Lexifi</a>.</p>
-<p>The reason for initially taking direction from industrial users is because these companies have a great deal of experience of using the language at scale (e.g millions of lines of code, thousands of modules and complicated testing requirements). We take a pragmatic view that examining and solving the problems such users have will ultimately result in a large and positive impact on the wider community, through significantly improved tooling, libraries and documentation.</p>
-<p>The current thrust of work is to improve the tooling around packaging, build and test infrastructure. Once complete, this will enable us to effectively run over hundreds of community packages and determine selection criteria for the Platform. A key aspect of this selection will be which libraries are already popular and in use, and also how actively maintained and portable they are across different operating systems.</p>
+        <p><a href="http://ocaml.org"><img class="left" src="../images/ocaml-colour.png" width="70px"/></a>The OCaml Platform combines the core OCaml compiler with a coherent set of
+libraries, tools and documentation.  The requirements and direction of the
+Platform are initially being guided by large users of OCaml such as <a href="http://ocaml.janestreet.com">Jane
+Street</a>,
+<a href="http://www.xen.org/files/XenCloud/ocamldoc/">Citrix</a> and
+<a href="http://www.lexifi.com/product/technology/ocaml">Lexifi</a>.</p>
+<p>The reason for initially taking direction from industrial users is because
+these companies have a great deal of experience of using the language at scale
+(e.g millions of lines of code, thousands of modules and complicated testing
+requirements). We take a pragmatic view that examining and solving the problems
+such users have will ultimately result in a large and positive impact on the
+wider community, through significantly improved tooling, libraries and
+documentation.</p>
+<p>The current thrust of work is to improve the tooling around packaging, build
+and test infrastructure.  Once complete, this will enable us to effectively
+run over hundreds of community packages and determine selection criteria
+for the Platform.  A key aspect of this selection will be which libraries
+are already popular and in use, and also how actively maintained and portable
+they are across different operating systems.</p>
 <p>The tasks below reflect this by:</p>
 <ul>
-<li>The OPAM package manager acts as the package management front end.</li>
-<li>The OPAM Doc tool replaces the venerable <code>ocamldoc</code> tool with modern, cross-referenced HTML output across several libraries.</li>
-<li>The OCamlot testing infrastructure runs continuous integration of OPAM stable and candidate packages across a variety of operating systems and CPU architectures.</li>
+ <li>The OPAM package manager acts as the package management front end.
+ </li>
+ <li>The OPAM Doc tool replaces the venerable <code>ocamldoc</code> tool with modern, cross-referenced HTML output across several libraries.
+ </li>
+ <li>The OCamlot testing infrastructure runs continuous integration of OPAM stable and candidate packages across a variety of operating systems and CPU architectures.</li>
 </ul>
+
 <p>The mailing list for discussion about this is <a href="http://lists.ocaml.org/listinfo/platform">platform@lists.ocaml.org</a> (<a href="http://lists.ocaml.org/pipermail/platform/">archive</a>).</p>
 
         </div>
@@ -118,9 +136,28 @@
        <h2 style="border-bottom: 1px solid #cccccc; font-weight: bold" id="mirage">
          <a href="mirage.html">Mirage OS »</a>
        </h2> 
-        <p><a href="http://openmirage.org"><img class="left" src="../images/mirage.jpg" width="70px"/></a>The cloud has so far mostly been used to consolidate existing operating systems and manage them more conveniently. The interface between guest kernels, applications and VMs are all managed very differently, leading to serious inefficiencies, unreliability and insecurity. <a href="http://www.openmirage.org">Mirage OS</a> revisits the library OS concept (built here as <a href="http://www.cl.cam.ac.uk/research/srg/netos/old-projects/nemesis/documentation.html">Nemesis</a> in the late '90s), and narrows the gap between safe, high-level programming, and low-level systems construction.</p>
-<p>Applications are written in high-level OCaml and compiled directly into microkernels that run on the Xen hypervisor. By treating the hypervisor as a stable hardware platform, we can focus on high-performance protocol implementations without worrying about having to support the thousands of device drivers found in a traditional OS. Although Mirage initially targets the Xen hypervisor, other backends, such as a FreeBSD kernel module and Javascript, also exist.</p>
-<p>Mirage includes clean-slate functional implementations of protocols ranging from TCP/IP, DNS, SSH, Openflow (switch/controller), HTTP, XMPP and Xen inter-VM transports. Some of the new applications we're building using Mirage include the next-generation <a href="http://www.xen.org/products/cloudxen.html">Xen Cloud Platform</a> (a widely deployed open-source Xen distribution), dubbed <a href="http://xen.org/xensummit/xs12na_talks/T2.html">Project Windsor</a>.</p>
+        <p><a href="http://openmirage.org"><img class="left" src="../images/mirage.jpg" width="70px"/></a>The cloud has so far mostly been used to consolidate existing operating systems
+and manage them more conveniently. The interface between guest kernels,
+applications and VMs are all managed very differently, leading to serious
+inefficiencies, unreliability and insecurity.  <a href="http://www.openmirage.org">Mirage
+OS</a> revisits the library OS concept (built here as
+<a href="http://www.cl.cam.ac.uk/research/srg/netos/old-projects/nemesis/documentation.html">Nemesis</a>
+in the late '90s), and narrows the gap between safe, high-level programming,
+and low-level systems construction.</p>
+<p>Applications are written in high-level OCaml and compiled directly into
+microkernels that run on the Xen hypervisor. By treating the hypervisor as a
+stable hardware platform, we can focus on high-performance protocol
+implementations without worrying about having to support the thousands of
+device drivers found in a traditional OS.  Although Mirage initially targets
+the Xen hypervisor, other backends, such as a FreeBSD kernel module and
+Javascript, also exist.</p>
+<p>Mirage includes clean-slate functional implementations of protocols ranging
+from TCP/IP, DNS, SSH, Openflow (switch/controller), HTTP, XMPP and Xen
+inter-VM transports. Some of the new applications we're building using Mirage
+include the next-generation <a href="http://www.xen.org/products/cloudxen.html">Xen Cloud
+Platform</a> (a widely deployed
+open-source Xen distribution), dubbed <a href="http://xen.org/xensummit/xs12na_talks/T2.html">Project
+Windsor</a>.</p>
 
         </div>
         <table class="projects" width="85%">
@@ -173,15 +210,37 @@
        <h2 style="border-bottom: 1px solid #cccccc; font-weight: bold" id="illuminate">
          <a href="illuminate.html">Illuminate »</a>
        </h2> 
-        <p><a href="http://#"><img class="left" src="../images/illuminate.gif" width="70px"/></a>Embedded computer systems that are low-power, physically mobile, and which contain actuators and sensors to interface and influence the &quot;real world&quot; are becoming increasingly common.<br/>Many people are referring to this collectively as the &quot;Internet of Things&quot;. We're building the core technology to make these distributed devices fundamentally more secure, reliable and easier to program. This consists of three main bits of technology:</p>
+        <p><a href="http://#"><img class="left" src="../images/illuminate.gif" width="70px"/></a>Embedded computer systems that are low-power, physically mobile, 
+and which contain actuators and sensors to interface and influence the &quot;real 
+world&quot; are becoming increasingly common.<br/>
+
+Many people are referring to this collectively as the &quot;Internet of Things&quot;.
+We're building the core technology to make these distributed devices fundamentally more secure, reliable and easier to program.
+This consists of three main bits of technology:</p>
 <ul>
-<li>The Mirage OS (described separately) to build specialised, type-safe embedded images.</li>
-<li>The Signposts coordination system for embedded devices to find each other securely across a complex edge network.</li>
-<li>The Irminsule (described in T2) persistent storage system to provide a flexible coordination workflow across such sensors.</li>
+ <li>The Mirage OS (described separately) to build specialised, type-safe embedded images.
+ </li>
+ <li>The Signposts coordination system for embedded devices to find each other securely across a complex edge network.
+ </li>
+ <li>The Irminsule (described in T2) persistent storage system to provide a flexible coordination workflow across such sensors.</li>
 </ul>
-<p>A key first use case for here is revolutionising lighting systems. Over the next decade or so, lighting systems in buildings all over the world will shift to using more energy efficient LEDs in place of traditional tungsten bulbs or fluorescent tubes. As well as the important reduction in energy usage, this transition opens up unprecedented opportunities for both lighting circuit design and embedded systems.</p>
-<p>Due to the nature of LEDs, it's feasible to consider deploying ubiquitous sensor networks alongside the LED lighting in a building. Since issues of power and communication are straightforward to tackle, such a network would allow completely new types of applications and services to be developed. In addition, there would also be a dramatic impact on the relationship between people and the building.</p>
-<p>We're creating this platform to allow others to build technology and services based on such distributed networks. Such a platform tackles the questions surrounding security, reliability, and accountability while working with industry to enable new services.</p>
+
+<p>A key first use case for here is revolutionising lighting systems.  Over the
+next decade or so, lighting systems in buildings all over the world will shift
+to using more energy efficient LEDs in place of traditional tungsten bulbs or
+fluorescent tubes. As well as the important reduction in energy usage, this
+transition opens up unprecedented opportunities for both lighting circuit
+design and embedded systems.</p>
+<p>Due to the nature of LEDs, it's feasible to consider deploying ubiquitous
+sensor networks alongside the LED lighting in a building. Since issues of power
+and communication are straightforward to tackle, such a network would allow
+completely new types of applications and services to be developed. In addition,
+there would also be a dramatic impact on the relationship between people and
+the building.</p>
+<p>We're creating this platform to allow others to build technology and services
+based on such distributed networks. Such a platform tackles the questions
+surrounding security, reliability, and accountability while working with
+industry to enable new services.</p>
 
         </div>
         <table class="projects" width="85%">
@@ -225,8 +284,13 @@
        <h2 style="border-bottom: 1px solid #cccccc; font-weight: bold" id="compiler">
          <a href="compiler.html">The OCaml Compiler »</a>
        </h2> 
-        <p><a href="http://ocaml.org"><img class="left" src="../images/ocaml-grey.png" width="70px"/></a>We are working on maintaining and extending the core OCaml compiler toolchain and runtime. This consists of a variety of day-to-day tasks such as submitting bug fixes, and also longer-term improvements to the type system and runtime libraries (see below).</p>
-<p>We are actively engaging with the wider OCaml community to ensure that any improvements and modifications we propose are thoroughly discussed, well-formulated and maintainable.</p>
+        <p><a href="http://ocaml.org"><img class="left" src="../images/ocaml-grey.png" width="70px"/></a>We are working on maintaining and extending the core OCaml compiler toolchain
+and runtime. This consists of a variety of day-to-day tasks such as submitting
+bug fixes, and also longer-term improvements to the type system and runtime
+libraries (see below).</p>
+<p>We are actively engaging with the wider OCaml community to ensure that any 
+improvements and modifications we propose are thoroughly discussed, 
+well-formulated and maintainable.</p>
 
         </div>
         <table class="projects" width="85%">
@@ -282,14 +346,26 @@
        <h2 style="border-bottom: 1px solid #cccccc; font-weight: bold" id="t2">
          <a href="t2.html">Trilogy 2 »</a>
        </h2> 
-        <p><a href="http://trilogy2.org"><img class="left" src="../images/t2.png"/></a><a href="http://trilogy2.eu">Trilogy2</a> aims to develop a new Internet architecture based on the concept of the <em>liquid network</em>. A liquid system should ideally allow resources including bandwidth, storage and processing to be used by any application, whether they are contributed by network operators, data centre operators or end systems. Resources form a shared pool and applications can scale up and down in multiple dimensions (storage, processing, bandwidth and energy usage) as needed, in a continuous effort to enhance the users’ experience as measured in terms of key metrics such as delay and battery life.</p>
+        <p><a href="http://trilogy2.org"><img class="left" src="../images/t2.png"/></a><a href="http://trilogy2.eu">Trilogy2</a> aims to develop a new Internet architecture based on the concept of
+the <em>liquid network</em>. A liquid system should ideally allow resources including
+bandwidth, storage and processing to be used by any application, whether they
+are contributed by network operators, data centre operators or end systems.
+Resources form a shared pool and applications can scale up and down in multiple
+dimensions (storage, processing, bandwidth and energy usage) as needed, in a
+continuous effort to enhance the users’ experience as measured in terms of key
+metrics such as delay and battery life.</p>
 <p>The Cambridge participation is primarily centered around three efforts:</p>
 <ul>
-<li>The <a href="http://openmirage.org">Mirage</a> library operating system that provides the policy-free mechanism to implement the liquid OS.</li>
-<li>A highly adaptive PVTCP transport protocol that takes advantage of heterogenous network connections.</li>
-<li>The Irminsule storage substrate that cleanly separates block storage form</li>
+ <li>The <a href="http://openmirage.org">Mirage</a> library operating system that provides the policy-free mechanism to implement the liquid OS.
+ </li>
+ <li>A highly adaptive PVTCP transport protocol that takes advantage of heterogenous network connections.
+ </li>
+ <li>The Irminsule storage substrate that cleanly separates block storage form </li>
 </ul>
-<p>Trilogy 2 is a 3-year EU <a href="http://en.wikipedia.org/wiki/Framework_Programmes_for_Research_and_Technological_Development">STREP</a> project that addresses the &quot;<a href="http://cordis.europa.eu/fp7/ict/programme/challenge1_en.html">Pervasive and Trusted Network and Service Infrastructures: Future Networks</a>&quot; challenge. The tasks below and include our collaborators at <a href="http://onapp.com">OnApp</a>.</p>
+
+<p>Trilogy 2 is a 3-year EU <a href="http://en.wikipedia.org/wiki/Framework_Programmes_for_Research_and_Technological_Development">STREP</a> project that 
+addresses the &quot;<a href="http://cordis.europa.eu/fp7/ict/programme/challenge1_en.html">Pervasive and Trusted Network and Service Infrastructures: Future Networks</a>&quot; challenge. 
+The tasks below and include our collaborators at <a href="http://onapp.com">OnApp</a>.</p>
 
         </div>
         <table class="projects" width="85%">
@@ -327,8 +403,12 @@
        <h2 style="border-bottom: 1px solid #cccccc; font-weight: bold" id="outreach">
          <a href="outreach.html">Community Outreach »</a>
        </h2> 
-        <p><a href="http://realworldocaml.org"><img class="left" src="../images/oreilly-cover.gif" width="70px"/></a>Growing a language community is more than just technology; we also need a better online presence, documentation and educational material. We're working on an O'Reilly book about practical OCaml programming, as well as a comprehensive revamp of the website to include features such as the interactive <a href="http://try.ocamlpro.com">TryOCaml</a> Javascript toplevel.</p>
-<p>Much of this work is done in collaboration with members of the wider OCaml community such as <a href="../people/ashish.html">Ashish Agarwal</a> and <a href="../people/christophe.html">Christophe Troestler</a>, and not just from the Cambridge group.</p>
+        <p><a href="http://realworldocaml.org"><img class="left" src="../images/oreilly-cover.gif" width="70px"/></a>Growing a language community is more than just technology; we also need a
+better online presence, documentation and educational material. We're working
+on an O'Reilly book about practical OCaml programming, as well as a comprehensive
+revamp of the website to include features such as the interactive <a href="http://try.ocamlpro.com">TryOCaml</a> Javascript toplevel.</p>
+<p>Much of this work is done in collaboration with members
+of the wider OCaml community such as <a href="../people/ashish.html">Ashish Agarwal</a> and <a href="../people/christophe.html">Christophe Troestler</a>, and not just from the Cambridge group.</p>
 
         </div>
         <table class="projects" width="85%">
