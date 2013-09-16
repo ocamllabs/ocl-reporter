@@ -2,6 +2,15 @@
 open Core.Std
 open Types.Paper
 
+let usenix_foci_2013 =
+  mk ~id:"foci-2013-signposts"
+     ~title:"Lost In the Edge: Finding Your Way With Signposts"
+     ~url:"http://anil.recoil.org/papers/2013-foci-signposts.pdf"
+     ~authors:"Charalampos Rotsos, Heidi Howard, David Sheets, Richard Mortier, Anil Madhavapeddy, Amir Chaudhry and Jon Crowcroft"
+     ~date:"2013-08-01"
+     ~conf:"USENIX FOCI 2013"
+     ~conf_url:"https://www.usenix.org/conference/foci13"
+
 let asplos_2013 =
   mk ~id:"asplos-2013-unikernels"
      ~title:"Unikernels: Library Operating Systems for the Cloud"
@@ -38,8 +47,8 @@ let sas_2013 =
      ~conf:"Static Analysis Symposium 2013"
      ~conf_url:"http://research.microsoft.com/en-us/events/sas2013/"
 
-
 let all = [
+  usenix_foci_2013;
   asplos_2013;
   hotcloud_2010;
   conext_pvtcp;
