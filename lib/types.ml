@@ -15,6 +15,7 @@ module Person = struct
     | `UMONS
     | `UPMC
     | `SRI
+    | `Past
   ]
 
   let to_string (x:affiliation) =
@@ -32,6 +33,7 @@ module Person = struct
     | `UMONS -> "Universite de Mons, Belgium"
     | `SRI -> "SRI International"
     | `UPMC -> "Université  Pierre et Marie Curie, Paris"
+    | `Past -> "Former Members"
 
   let cmp (a:affiliation) (b:affiliation) =
     let order = function
@@ -48,6 +50,7 @@ module Person = struct
     |`UMONS -> 9
     |`UPMC -> 9
     |`Google -> 10
+    |`Past -> 11
     in compare (order a) (order b)
 
   type t = {
