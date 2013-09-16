@@ -1,8 +1,8 @@
-build: dist/setup
-	ocamlbuild -j 4 -use-ocamlfind -package core,cow,cow.syntax,sexplib.syntax,uri -tag thread -syntax camlp4o lib/www.native
+build: 
+	ocamlbuild -j 4 -use-ocamlfind -package omd,core,cow,cow.syntax,sexplib.syntax,uri -tag thread -syntax camlp4o lib/www.native
 
 clean:
-	rm -rf dist test.html
+	rm -rf _build
 
 run: build
 	./_build/lib/www.native
