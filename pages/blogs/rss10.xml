@@ -1,0 +1,1196 @@
+<?xml version="1.0"?>
+<rdf:RDF
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:foaf="http://xmlns.com/foaf/0.1/"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns="http://purl.org/rss/1.0/"
+>
+<channel rdf:about="http://www.cl.cam.ac.uk/projects/ocamllabs/blogs">
+	<title>OCaml Labs updates</title>
+	<link>http://www.cl.cam.ac.uk/projects/ocamllabs/blogs</link>
+	<description>OCaml Labs updates - http://www.cl.cam.ac.uk/projects/ocamllabs/blogs</description>
+
+	<items>
+		<rdf:Seq>
+			<rdf:li rdf:resource="http://anil.recoil.org/2013/09/16/camlpdf-the-end-of-sucky-pdf-tools" />
+			<rdf:li rdf:resource="http://pw374.github.io/posts/2013-09-05-21-31-26-about-omd.html" />
+			<rdf:li rdf:resource="http://hh360.user.srcf.net/blog/?p=153" />
+			<rdf:li rdf:resource="http://anil.recoil.org/2013/09/09/ocamlot-autotriaging" />
+			<rdf:li rdf:resource="urn:uuid:0f9d7209-2382-5f9c-9874-00401db52a24" />
+			<rdf:li rdf:resource="http://hh360.user.srcf.net/blog/?p=25" />
+			<rdf:li rdf:resource="http://openmirage.org/blog/introducing-vchan" />
+			<rdf:li rdf:resource="http://hh360.user.srcf.net/blog/?p=86" />
+			<rdf:li rdf:resource="http://openmirage.org/blog/oscon13-trip-report" />
+			<rdf:li rdf:resource="http://anil.recoil.org/2013/08/06/real-world-ocaml-beta2" />
+			<rdf:li rdf:resource="http://hh360.user.srcf.net/blog/?p=99" />
+			<rdf:li rdf:resource="http://openmirage.org/blog/xen-block-devices-with-mirage" />
+			<rdf:li rdf:resource="http://hh360.user.srcf.net/blog/?p=64" />
+			<rdf:li rdf:resource="urn:uuid:5222d531-d414-5ae8-a340-2eb88ed31fc0" />
+			<rdf:li rdf:resource="http://hh360.user.srcf.net/blog/?p=90" />
+			<rdf:li rdf:resource="http://anil.recoil.org/2013/06/17/real-world-ocaml-beta-available" />
+			<rdf:li rdf:resource="http://www.cl.cam.ac.uk/projects/ocamllabs/news/2013-06-01" />
+			<rdf:li rdf:resource="http://openmirage.org/blog/the-road-to-a-dev-release" />
+			<rdf:li rdf:resource="http://www.cl.cam.ac.uk/projects/ocamllabs/news/2013-05-01" />
+			<rdf:li rdf:resource="http://www.cl.cam.ac.uk/projects/ocamllabs/news/2013-04-01" />
+		</rdf:Seq>
+	</items>
+</channel>
+
+<item rdf:about="http://anil.recoil.org/2013/09/16/camlpdf-the-end-of-sucky-pdf-tools">
+	<title>Anil Madhavapeddy: Camlpdf, the first good command-line PDF tool I've found</title>
+	<link>http://anil.recoil.org/2013/09/16/camlpdf-the-end-of-sucky-pdf-tools.html</link>
+	<content:encoded>&lt;p&gt;The fine folks at O&amp;#8217;Reilly have been proof-reading the &lt;a href=&quot;https://realworldocaml.org&quot;&gt;Real World OCaml&lt;/a&gt; book that I&amp;#8217;ve been working on. My heart leapt with joy when the copyeditor commented that she thought it was very well written, but my joy was short-lived when it turns out that all her comments were safely ensconced as PDF comments. A few hundreds comments that required a response from us, too.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;&amp;#8220;No problem! MacOS X Preview can handle these!&amp;#8221;&lt;/em&gt; was of course my first response, but it turns out it&amp;#8217;s totally broken with PDF notes. The first note that you select will appear as the content of all the other subsequent notes. Yaron Minsky then experimented with Adobe Acrobat, which I&amp;#8217;ve sworn never to install again after an unfortunate incident involving the uninstaller a couple of years ago. That turned out to be incredibly slow. I tried a few open-source tools such as &lt;a href=&quot;http://en.wikipedia.org/wiki/Skim_(software&quot;&gt;Skim&lt;/a&gt; which, while otherwise an excellent bit of software, couldn&amp;#8217;t render these particular annotations.&lt;/p&gt;
+&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;
+&lt;a href=&quot;http://anil.recoil.org/images/anil-jumping-acropolis.jpg&quot;&gt;&lt;img width=&quot;207&quot; src=&quot;http://anil.recoil.org/images/anil-jumping-acropolis-thumb.jpg&quot; /&gt;&lt;/a&gt;
+&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td width=&quot;210&quot;&gt;&lt;i&gt;&lt;small&gt;I &lt;a href=&quot;http://www.theguardian.com/media/mind-your-language/2012/jan/29/literally-a-much-misused-word&quot;&gt;literally&lt;/a&gt; jumped off my seat upon discovering cpdf.&lt;/small&gt;&lt;/i&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+&lt;p&gt;Meanwhile, John Whitington just announced the release of the &lt;a href=&quot;http://coherentpdf.com/blog/?p=68&quot;&gt;Coherent PDF&lt;/a&gt; command-line tools. Since these are all written in OCaml (and have been developed over quite a few years now), he also sent in an OPAM &lt;a href=&quot;https://github.com/OCamlPro/opam-repository/pull/977&quot;&gt;pull request&lt;/a&gt; to add it to the database. And most conveniently, this ended up solving my little PDF conundrum in less than an hour of hacking, and has almost cured me of my lifelong fear of dealing with anything in a PDF-like format. Here&amp;#8217;s what I did:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;I installed the tools via &lt;code&gt;opam install cpdf&lt;/code&gt;. This installed the library but not the binary (&lt;a href=&quot;https://github.com/OCamlPro/opam-repository/pull/1100&quot;&gt;swiftly fixed&lt;/a&gt;).&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;Reading the license told me that it&amp;#8217;s for non-commercial use only, so I bought a license from the &lt;a href=&quot;http://coherentpdf.com&quot;&gt;Coherent PDF&lt;/a&gt; website (a bargain price, given how much it does!).&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;I ran &lt;code&gt;cpdf -list-annotations&lt;/code&gt; over the PDF, and it dumped out all the comments as a text file to stdout. This wasn&amp;#8217;t quite enough for me, since I needed to match the annotation to a page number. But since John has released it as open-source, I forked the repository and patched the support directly into the command-line tools, and sent a &lt;a href=&quot;https://github.com/johnwhitington/cpdf-source/pull/2&quot;&gt;pull request&lt;/a&gt; back over to John. Since it&amp;#8217;s under a non-standard license, I decided to place my patch in the public domain to make it easier for him to accept it if he chooses.&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;My co-authors can just run &lt;code&gt;opam pin cpdf git://github.com/avsm/cpdf-source#annotation-page-numbers&lt;/code&gt; to pin their local copy of CPDF to my forked branch in their own OPAM installations, and easily use my copy until John gets a chance to integrate my changes properly upstream.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Total time including this blog post: 40 minutes. Now, onto fixing the author responses comments for Real World OCaml now. I&amp;#8217;m so happy to have &lt;code&gt;cpdf&lt;/code&gt; as a simple, hackable PDF utility, as it does things like page combining and rotations that have always been a little flaky in other tools for me. It&amp;#8217;s the &lt;a href=&quot;http://johnmacfarlane.net/pandoc/&quot;&gt;Pandoc&lt;/a&gt; of PDFs!&lt;/p&gt;</content:encoded>
+	<dc:date>2013-09-15T23:00:00+00:00</dc:date>
+</item>
+<item rdf:about="http://pw374.github.io/posts/2013-09-05-21-31-26-about-omd.html">
+	<title>Philippe Wang: OMD: a Markdown parser in OCaml</title>
+	<link>http://pw374.github.io/posts/2013-09-05-21-31-26-about-omd.html</link>
+	<content:encoded>&lt;h3 id=&quot;Motivations&quot;&gt; Motivations&lt;/h3&gt;
+&lt;p&gt;There  are  so many  existing  implementations  of  Markdown, why  yet
+another one?   Well, after asking  the OCaml community  about existing
+ways to parse and manipulate  Markdown documents, it seemed that there
+were no stand-alone complete Markdown parser written in OCaml, meaning
+that they  were incomplete (i.e., not fully  compatible with Markdown)
+or  interfaces  to  some  Markdown  parsers  implemented  using  other
+languages than OCaml.&lt;/p&gt;
+&lt;p&gt;Since in OCaml  Labs we're working a lot with  Github, and Github uses
+Markdown a  lot (Github  web pages hosting,  Github issues,  etc.) and
+other  sites are also  using Markdown  as well,  and Markdown  is very
+popular and  easy to  learn, and  flexible in the  sense that  you can
+always  fall back  to HTML  when you  want to  express  something that
+doesn't have  a special syntax in  Markdown, blah blah blah,  it was -
+somehow - time to have  a Markdown parser implemented using OCaml. And
+preferably  OCaml alone,  meaning that  one that  has  OCaml installed
+should be able  to use it easily without having to  deal with too many
+dependencies. Well, there it is: OMD!&lt;/p&gt;
+&lt;h3 id=&quot;IssueswereessentiallywithMarkdownitself&quot;&gt; Issues... were essentially with Markdown itself&lt;/h3&gt;
+&lt;p&gt;Every computer  scientist knows how to  write a parser  for a language
+that is as simple as Markdown. Well, no, not every computer scientist,
+sadly, but at least every programmer should. Ok, sadly it isn't really
+the case either. Anyways.&lt;/p&gt;
+&lt;p&gt;Markdown is a rather simple language,  if you look at the specs. Well,
+that depends on what you actuall call &amp;quot;specs&amp;quot;, of course. According to
+&lt;a href=&quot;http://en.wikipedia.org/wiki/Markdow&quot;&gt;Wikipedia&lt;/a&gt;,     Markdown    was
+invented by &lt;a href=&quot;http://daringfireball.net&quot;&gt;John Gruber&lt;/a&gt;, and Aaron Swartz
+helped  him. Then the  original document  that describes  the Markdown
+language          is          available         online          there:
+&lt;a href=&quot;http://daringfireball.net/projects/markdown/syntax&quot;&gt;http://daringfireball.net/projects/markdown/syntax&lt;/a&gt;.  And you can see
+that         searching        for         &lt;a href=&quot;https://www.google.com/#q=Markdown+syntax&quot;&gt;&amp;quot;Markdown+syntax&amp;quot;        on
+Google&lt;/a&gt; makes that page the
+top result (and here again, I'm kind  of helping it be and stay on the
+top...).&lt;/p&gt;
+&lt;p&gt;Actually, Markdown is not that  simple to parse.  Why? Because so many
+things are  just left to the  imagination of the  people who implement
+parsers  for  this  language,   because  programmes  can't  decide  by
+themselves  what's right  to do.   It's  really the  author(s) of  the
+programme that  decides what the  programme does. And in  Markdown, so
+many  things  are ambiguous  and  Gruber's  document doesn't  actually
+describe a  grammar at all.  It just tells  you how to write  this and
+that, but if you write it slightly differently, it doesn't tell you
+what the outcome would be. 
+&lt;em&gt;&lt;strong&gt;In other words, there are no errors in Markdown.&lt;/strong&gt;&lt;/em&gt;
+Every text file is a valid Markdown file, it might just be converted 
+to some HTML you wouldn't expect. For instance, you may write a link 
+using this  syntax:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[blah blah blah](the-url-which-can-be-absolute-or-relative)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;and it gets converted to&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;a href=&amp;quot;the-url-which-can-be-absolute-or-relative&amp;quot;&amp;gt;blah blah blah&amp;lt;/a&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+But if you forget the closing parenthesis, then it becomes this instead&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;p&amp;gt;[blah blah blah](the-url-which-can-be-absolute-or-relative&amp;lt;/p&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+precisely because nothing is wrong in Markdown.&lt;/p&gt;
+&lt;p&gt;And what if there are parentheses in your URL? What if they are unbalanced?&lt;/p&gt;
+&lt;h4 id=&quot;FlagrantAmbiguity&quot;&gt; Flagrant Ambiguity&lt;/h4&gt;
+&lt;p&gt;The following is some text that has to mean something in Markdown...&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;* Alice is falling in love with Bob.
+    * Bob is secretly in love with Alice, but he's seeing Eve.
+  * Eve is in-between, she loves both Alice and Bob, she can't help it.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;So, Pandoc, which a tool that converts a document in language A to a
+document in language B, where A and B can be the same or different
+languages amongst LaTeX, HTML, Markdown and (many) others, considers
+that Eve is on the same level as Bob. So its HTML output is&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;ul&amp;gt;
+&amp;lt;li&amp;gt;Alice is falling in love with Bob.
+&amp;lt;ul&amp;gt;
+&amp;lt;li&amp;gt;Bob is secretly in love with Alice, but he's seeing Eve.&amp;lt;/li&amp;gt;
+&amp;lt;/ul&amp;gt;&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;Eve is in-between, she loves both Alice and Bob, she can't help it.&amp;lt;/li&amp;gt;
+&amp;lt;/ul&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;But if instead you add Dylan as in&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;* Alice is falling in love with Bob.
+   * Dylan, a new character, is being conceived here.
+    * Bob is secretly in love with Alice, but he's seeing Eve.
+  * Eve is in-between, she loves both Alice and Bob, she can't help it.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;then &lt;em&gt;of course&lt;/em&gt; Eve is not on the same level as Bob anymore and goes
+with Dylan and Alice, Bob is on his own.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;ul&amp;gt;
+&amp;lt;li&amp;gt;Alice is falling in love with Bob.&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;Dylan, a new character, is being conceived here.
+&amp;lt;ul&amp;gt;
+&amp;lt;li&amp;gt;Bob is secretly in love with Alice, but he's seeing Eve.&amp;lt;/li&amp;gt;
+&amp;lt;/ul&amp;gt;&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;Eve is in-between, she loves both Alice and Bob, she can't help it.&amp;lt;/li&amp;gt;
+&amp;lt;/ul&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This doesn't make much sense...&lt;/p&gt;
+&lt;p&gt;And Github's embedded Markdown  to HTML converter chooses some similar
+broken semantics. If one writes bullets on different levels, it shouldn't
+be meaningless.&lt;/p&gt;
+&lt;p&gt;Also, on Github, if you write&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;* 1
+  * 2
+    * 3
+      * 4
+        * 5
+          * 6
+            * 7
+              * 8
+                * 9
+                  * 10
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Then 2 and 3 are on the same level, as for 4 and 5, 6 and 7, and 8 and 9.
+1 and 10 are on their own. And if you extract 2 and 3, meaning&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  * 2
+    * 3
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+then 2 and 3 are not on the same level anymore! 
+See for yourself:&lt;/p&gt;
+&lt;ul&gt;
+ &lt;li&gt;raw version: &lt;a href=&quot;https://raw.github.com/pw374/sandbox/master/mad-lists.md&quot;&gt;https://raw.github.com/pw374/sandbox/master/mad-lists.md&lt;/a&gt;
+ &lt;/li&gt;
+ &lt;li&gt;rendered-by-Github version: &lt;a href=&quot;https://github.com/pw374/sandbox/blob/master/mad-lists.md&quot;&gt;https://github.com/pw374/sandbox/blob/master/mad-lists.md&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;With OMD, hopefully, there is a deterministic meaning for each level of indentation. The list where there were Alice, Bob and Eve is converted to this to the least insane semantics I could think of.&lt;/p&gt;
+&lt;p&gt;The idea  is that, since Eve  is neither on  the same level as  Bob or
+Alice, Eve should be in a new list (because, obviously, she's the only
+one on that  level anyway). So she  is in a new list.  And since she's
+not on a deeper level than Bob, she shouldn't be on a sub-list of his.
+But  she is  on a  deeper level  than Alice,  so she  has to  be  on a
+sub-list of hers. So, here is the HTML that OMD produces:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;ul&amp;gt;
+ &amp;lt;li&amp;gt;Alice is falling in love with Bob.
+  &amp;lt;ul&amp;gt;
+   &amp;lt;li&amp;gt;Bob is secretly in love with Alice, but he&amp;amp;apos;s seeing Eve.
+   &amp;lt;/li&amp;gt;
+  &amp;lt;/ul&amp;gt;
+  &amp;lt;ul&amp;gt;
+   &amp;lt;li&amp;gt;Eve is in-between, she loves both Alice and Bob, she can&amp;amp;apos;t help it.
+   &amp;lt;/li&amp;gt;
+  &amp;lt;/ul&amp;gt;
+ &amp;lt;/li&amp;gt;
+&amp;lt;/ul&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Oh,  you might  have  noticed  that OMD  converts  quotes to  &lt;code&gt;&amp;amp;apos;&lt;/code&gt;
+because otherwise I  would need to differentiate when  they have to be
+converted from when it's optional.&lt;/p&gt;
+&lt;h3 id=&quot;Implementation&quot;&gt; Implementation&lt;/h3&gt;
+&lt;p&gt;Pandoc's documentation says&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;
+In contrast to most existing tools for converting markdown to HTML,
+which use regex substitutions, Pandoc has a modular design: it
+consists of a set of readers, which parse text in a given format and
+produce a native representation of the document, and a set of writers,
+which convert this native representation into a target format.
+Thus, adding an input or output format requires only adding a reader
+or writer.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Come on,  most tools are using regular  expressions substitutions?!  I
+can only imagine the nightmare that  it must be to implement and debug
+such an implementation  -- no wait, I can't because  I just don't want
+to imagine such a nightmare.&lt;/p&gt;
+&lt;p&gt;I used functions and function calls, a lot of them are tail recursive,
+not  all of  them but  then it  means  I don't  need them  to be  tail
+recursive, and  those functions  basically take a  list of  tokens and
+return a  new list  with possibly fewer  tokens and the  expression to
+which the missing ones were converted into.&lt;/p&gt;
+&lt;p&gt;So far, in version 0.4 (which is  not released yet at the time I write
+this), there's a little less than  8k lines of pure OCaml code.  (Note
+that I didn't write &amp;quot;pure functional&amp;quot;, I wrote &amp;quot;pure OCaml&amp;quot;.)&lt;/p&gt;
+&lt;p&gt;OMD is an  open-source free and libre software  library that any OCaml
+developer can use  (hopefully quite easily since it  doesn't depend on
+anything else  that the standard  OCaml compiler and library).  And of
+course, it's also  a tool for any one who write  Markdown and wants it
+to be  converted (quickly)  to HTML.  OMD, so far,  is about  10 times
+faster than  Pandoc, and  I didn't  even make any  efforts to  make it
+fast.&lt;/p&gt;
+&lt;h4 id=&quot;Compatibility&quot;&gt; Compatibility&lt;/h4&gt;
+&lt;p&gt;OMD has been developed using OCaml 4.0.1, &lt;a href=&quot;https://github.com/pw374/omd/issues/19&quot;&gt;Christophe Troestler made
+me make it compatible with OCaml
+3.12.1&lt;/a&gt;.  Then I guess it
+might work with older version of OCaml but it's not certain (mainly
+because OCaml's standard library has slightly changed, as I think I
+don't use any language features that were introduced in 3.12 or 4.0).&lt;/p&gt;
+&lt;p&gt;By  the way,  thank  you  Christophe for  your  support, interest  and
+contributions to OMD :-)&lt;/p&gt;
+&lt;h3 id=&quot;FutureofOMD&quot;&gt; Future of OMD&lt;/h3&gt;
+&lt;p&gt;OMD  already is  in OPAM.   A  very stable  version of  OMD should  be
+released soon.   As a  tool, it takes  Markdown as input  and produces
+HTML as output.   A Markdown backend has been  freshly implemented, so
+you can output  Markdown as well, which is  quite useful for debugging
+or if you  want to know how many iterations you  need before you reach
+the fix  point. You  can also  output &amp;quot;text&amp;quot;, in  the sense  that it's
+basically the HTML  without the HTML tags, so  it's very non-formatted
+text.  There  also are  options to output  HTML table of  contents and
+parametrise their depths.&lt;/p&gt;
+&lt;h3 id=&quot;OMDandOCamlorg&quot;&gt; OMD and OCaml.org&lt;/h3&gt;
+&lt;p&gt;We    are    at   OCaml    Labs    making    a    new   website    for
+&lt;a href=&quot;http://ocaml.org&quot;&gt;ocaml.org&lt;/a&gt;.   The  design   is  being  provided  by
+&lt;a href=&quot;http://www.onespacemedia.com&quot;&gt;onespacemedia&lt;/a&gt;.    At   the  time   I'm
+writing  these  lines, I'm  using  the  HTML/CSS/JS  for the  upcoming
+OCaml.org to style my new Github-hosted website, so I can play with it
+&lt;em&gt;more&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Most pages will be written in Markdown instead of HTML, so that people
+of the OCaml community may contribute to it in a more convenient way.&lt;/p&gt;
+&lt;p&gt;And of course, that means that OMD will be used for OCaml.org.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;started on 2013-09-05 22:31:26+01:00, (re)generated on 2013-09-12 16:36:22+01:00
+&lt;/em&gt;&lt;/p&gt;</content:encoded>
+	<dc:date>2013-09-12T15:36:22+00:00</dc:date>
+	<dc:creator>Philippe Wang</dc:creator>
+</item>
+<item rdf:about="http://hh360.user.srcf.net/blog/?p=153">
+	<title>Heidi Howard: OCaml Development in Vim</title>
+	<link>http://hh360.user.srcf.net/blog/2013/09/ocaml-development-in-vim/</link>
+	<content:encoded>&lt;p&gt;This is a quick run-through of how I set up my development environment in vim:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Install pathogen.vim&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;wp_syntax&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre class=&quot;bash&quot;&gt;&lt;span&gt;mkdir&lt;/span&gt; &lt;span&gt;-p&lt;/span&gt; ~&lt;span&gt;/&lt;/span&gt;.vim&lt;span&gt;/&lt;/span&gt;autoload ~&lt;span&gt;/&lt;/span&gt;.vim&lt;span&gt;/&lt;/span&gt;bundle; \
+curl &lt;span&gt;-Sso&lt;/span&gt; ~&lt;span&gt;/&lt;/span&gt;.vim&lt;span&gt;/&lt;/span&gt;autoload&lt;span&gt;/&lt;/span&gt;pathogen.vim \
+    https:&lt;span&gt;//&lt;/span&gt;raw.github.com&lt;span&gt;/&lt;/span&gt;tpope&lt;span&gt;/&lt;/span&gt;vim-pathogen&lt;span&gt;/&lt;/span&gt;master&lt;span&gt;/&lt;/span&gt;autoload&lt;span&gt;/&lt;/span&gt;pathogen.vim&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+
+&lt;p&gt;Add the following to ~/.vimrc:&lt;/p&gt;
+
+&lt;div class=&quot;wp_syntax&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre class=&quot;vim&quot;&gt;&lt;span&gt;execute&lt;/span&gt; pathogen#infect&lt;span&gt;&amp;#40;&lt;/span&gt;&lt;span&gt;&amp;#41;&lt;/span&gt;
+&lt;span&gt;syntax&lt;/span&gt; &lt;span&gt;on&lt;/span&gt;
+&lt;span&gt;filetype&lt;/span&gt; &lt;span&gt;plugin&lt;/span&gt; &lt;span&gt;indent&lt;/span&gt; &lt;span&gt;on&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Install Syntastic &lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;wp_syntax&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre class=&quot;bash&quot;&gt;&lt;span&gt;cd&lt;/span&gt; ~&lt;span&gt;/&lt;/span&gt;.vim&lt;span&gt;/&lt;/span&gt;bundle
+&lt;span&gt;git clone&lt;/span&gt; https:&lt;span&gt;//&lt;/span&gt;github.com&lt;span&gt;/&lt;/span&gt;scrooloose&lt;span&gt;/&lt;/span&gt;syntastic.git&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+
+&lt;p&gt;Then quit vim and used :Helptags to check installs so fat have worked.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Install Merlin&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;wp_syntax&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre class=&quot;bash&quot;&gt;opam switch 4.01.0dev+trunk
+opam update
+opam upgrade
+opam &lt;span&gt;install&lt;/span&gt; merlin&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+
+&lt;p&gt;Add the following to ~/.vimrc&lt;/p&gt;
+
+&lt;div class=&quot;wp_syntax&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre class=&quot;vim&quot;&gt;&lt;span&gt;:&lt;/span&gt;&lt;span&gt;set&lt;/span&gt; &lt;span&gt;rtp&lt;/span&gt;&lt;span&gt;+&lt;/span&gt;=&lt;span&gt;~/.&lt;/span&gt;opam&lt;span&gt;/&lt;/span&gt;4&lt;span&gt;.&lt;/span&gt;01&lt;span&gt;.&lt;/span&gt;0dev&lt;span&gt;+&lt;/span&gt;trunk&lt;span&gt;/&lt;/span&gt;share&lt;span&gt;/&lt;/span&gt;ocamlmerlin&lt;span&gt;/&lt;/span&gt;vim
+&lt;span&gt;:&lt;/span&gt;&lt;span&gt;set&lt;/span&gt; &lt;span&gt;rtp&lt;/span&gt;&lt;span&gt;+&lt;/span&gt;=&lt;span&gt;~/.&lt;/span&gt;opam&lt;span&gt;/&lt;/span&gt;4&lt;span&gt;.&lt;/span&gt;01&lt;span&gt;.&lt;/span&gt;0dev&lt;span&gt;+&lt;/span&gt;trunk&lt;span&gt;/&lt;/span&gt;share&lt;span&gt;/&lt;/span&gt;ocamlmerlin&lt;span&gt;/&lt;/span&gt;vimbufsync
+&lt;span&gt;let&lt;/span&gt; g&lt;span&gt;:&lt;/span&gt;syntastic_ocaml_checkers=&lt;span&gt;&amp;#91;&lt;/span&gt;&lt;span&gt;'merlin'&lt;/span&gt;&lt;span&gt;&amp;#93;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+
+&lt;p&gt;:SyntasticInfo will return a list of syntax checkers available to Syntastic, check that this now includes merlin&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Install OCP Indent&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;wp_syntax&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre class=&quot;bash&quot;&gt;opam &lt;span&gt;install&lt;/span&gt; ocp-indent&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+
+&lt;p&gt;Add the following to ~/.vimrc&lt;/p&gt;
+
+&lt;div class=&quot;wp_syntax&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre class=&quot;vim&quot;&gt;&lt;span&gt;autocmd&lt;/span&gt; &lt;span&gt;FileType&lt;/span&gt; ocaml source &lt;span&gt;/&lt;/span&gt;home&lt;span&gt;/&lt;/span&gt;heidi&lt;span&gt;-&lt;/span&gt;ann&lt;span&gt;/.&lt;/span&gt;opam&lt;span&gt;/&lt;/span&gt;4&lt;span&gt;.&lt;/span&gt;01&lt;span&gt;.&lt;/span&gt;0dev&lt;span&gt;+&lt;/span&gt;trunk&lt;span&gt;/&lt;/span&gt;share&lt;span&gt;/&lt;/span&gt;typerex&lt;span&gt;/&lt;/span&gt;ocp&lt;span&gt;-&lt;/span&gt;&lt;span&gt;indent&lt;/span&gt;&lt;span&gt;/&lt;/span&gt;ocp&lt;span&gt;-&lt;/span&gt;&lt;span&gt;indent&lt;/span&gt;&lt;span&gt;.&lt;/span&gt;vim&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;</content:encoded>
+	<dc:date>2013-09-09T07:51:03+00:00</dc:date>
+</item>
+<item rdf:about="http://anil.recoil.org/2013/09/09/ocamlot-autotriaging">
+	<title>Anil Madhavapeddy: OCamlot--exploring the edges of OPAM packages</title>
+	<link>http://anil.recoil.org/2013/09/09/ocamlot-autotriaging.html</link>
+	<content:encoded>&lt;p&gt;The new release of OCaml (4.01.0) was just &lt;a href=&quot;https://sympa.inria.fr/sympa/arc/caml-list/2013-09/msg00173.html&quot;&gt;announced&lt;/a&gt;! The runup to a major release like this is normally a frantic time to test that your favourite applications don&amp;#8217;t break unexpectedly due to some incompatible language feature. This release cycle has a little different though, as we&amp;#8217;ve been working hard on using the &lt;a href=&quot;http://opam.ocamlpro.com&quot;&gt;OPAM&lt;/a&gt; package database to build an online regression testing infrastructure to mechanize much of this process.&lt;/p&gt;
+
+&lt;p&gt;I wanted to share some of what OCamlot does today, some of the results from about 3 months worth of runs that may help OCaml package maintainers, and finally where we&amp;#8217;re going with future developments. This work has been done in collaboration with &lt;a href=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/people/sheets.html&quot;&gt;David Sheets&lt;/a&gt; (who built the OCamlot daemon) and the OPAM team ably led by &lt;a href=&quot;http://gazagnaire.org&quot;&gt;Thomas Gazagnaire&lt;/a&gt; at &lt;a href=&quot;http://ocamlpro.com&quot;&gt;OCamlPro&lt;/a&gt;. We&amp;#8217;ve also had a lot of help from &lt;a href=&quot;https://github.com/diml&quot;&gt;Jeremie Dimino&lt;/a&gt; and &lt;a href=&quot;https://github.com/ysulsky&quot;&gt;Yury Sulsky&lt;/a&gt; from Jane Street and &lt;a href=&quot;http://dave.recoil.org&quot;&gt;Dave Scott&lt;/a&gt; and &lt;a href=&quot;http://jon.recoil.org&quot;&gt;Jon Ludlam&lt;/a&gt; from Citrix acting as guinea pigs for their respective regular releases of the &lt;a href=&quot;https://github.com/janestreet&quot;&gt;Core&lt;/a&gt; and &lt;a href=&quot;https://github.com/xapi-project&quot;&gt;Xen/XAPI&lt;/a&gt; releases to OPAM.&lt;/p&gt;
+
+&lt;h2 id=&quot;towards_a_truely_portable_ocaml&quot;&gt;Towards a truely portable OCaml&lt;/h2&gt;
+
+&lt;p&gt;The upstream OCaml toolchain is built on very UNIX-like principles, with a number of command-line tools that form a build pipeline. This process usually ends with linking the intermediate object files with a &lt;a href=&quot;https://github.com/ocaml/ocaml/tree/trunk/byterun&quot;&gt;runtime library&lt;/a&gt; that provides the garbage collector and other intrinsic OS functions.&lt;/p&gt;
+
+&lt;p&gt;Given these raw compiler tools, it&amp;#8217;s very easy to compile OCaml into all sorts of weird and wonderful architectures. We&amp;#8217;ve seen it run on &lt;a href=&quot;http://www.algo-prog.info/ocaml_for_pic/web/index.php&quot;&gt;8-bit PICs&lt;/a&gt;, several efficient Javascript backends (originally &lt;a href=&quot;http://jaked.github.io/ocamljs/&quot;&gt;ocamljs&lt;/a&gt; and more recently &lt;a href=&quot;http://ocsigen.org/js_of_ocaml&quot;&gt;js_of_ocaml&lt;/a&gt;), and of course my own &lt;a href=&quot;http://openmirage.org&quot;&gt;Mirage&lt;/a&gt; Xen unikernel.&lt;/p&gt;
+
+&lt;p&gt;While the compiler tools themselves are quite portable and work on almost any UNIX-like system, the build system scaffolding around third-party packages is less portable. Some features such as C bindings often contribute to build breakage on some less-used operating systems such as FreeBSD or OpenBSD, as they usually require probing for header file locations or adding custom &lt;code&gt;CFLAGS&lt;/code&gt; before building.&lt;/p&gt;
+&lt;table width=&quot;90%&quot; align=&quot;center&quot;&gt;
+&lt;tr&gt;
+&lt;td width=&quot;30%&quot; class=&quot;bimg&quot;&gt;&lt;a href=&quot;http://anil.recoil.org/images/dreamplug-nest-1.jpg&quot;&gt;&lt;img width=&quot;200&quot; border=&quot;0&quot; src=&quot;http://anil.recoil.org/images/dreamplug-nest-1-thumb.jpg&quot; /&gt;&lt;/a&gt;&lt;br /&gt;Every Internet of Things starts with a tangled pile of ARM Dreamplugs.&lt;/td&gt;
+&lt;td width=&quot;30%&quot; class=&quot;bimg&quot;&gt;&lt;a href=&quot;http://anil.recoil.org/images/sparc-macppc-openbsd-1.jpg&quot;&gt;&lt;img width=&quot;200&quot; border=&quot;0&quot; src=&quot;http://anil.recoil.org/images/sparc-macppc-openbsd-1-thumb.jpg&quot; /&gt;&lt;/a&gt;&lt;br /&gt;And in our server room, venerable Sparc and PowerPC G4 OpenBSD boxen still live.&lt;/td&gt;
+&lt;td width=&quot;30%&quot; class=&quot;bimg&quot;&gt;&lt;a href=&quot;http://anil.recoil.org/images/macppc-desktop-1.jpg&quot;&gt;&lt;img width=&quot;200&quot; border=&quot;0&quot; src=&quot;http://anil.recoil.org/images/macppc-desktop-1-thumb.jpg&quot; /&gt;&lt;/a&gt;&lt;br /&gt;Finding older machines is getting tough, but here's &lt;a href=&quot;http://dave.recoil.org&quot;&gt;Dave's&lt;/a&gt; old iMac G5 running Linux.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;p&gt;Most OCaml developers use x86-based machines and so foreign architectures also get less day-to-day testing (OCaml has superb support for fast native code compilation on ARM, PowerPC, Sparc32, and we&amp;#8217;re working on MIPS64 here as part of the &lt;a href=&quot;http://www.cl.cam.ac.uk/research/security/ctsrd/cheri.html&quot;&gt;CHERI&lt;/a&gt; project).&lt;/p&gt;
+
+&lt;p&gt;We want to make sure that OCaml and its package ecosystem works just as well in the embedded ecosystem as well as it does on vanilla x86 Linux. This includes running on my Linux iMac G5, my &lt;a href=&quot;https://wiki.freebsd.org/FreeBSD/arm/Raspberry%20Pi&quot;&gt;FreeBSD Raspberry Pi&lt;/a&gt;, my &lt;a href=&quot;http://www.openbsd.org/beagle.html&quot;&gt;OpenBSD Pandaboard&lt;/a&gt;, or even on a bytecode-only architecture like an &lt;a href=&quot;http://www.openbsd.org/sparc64.html&quot;&gt;OpenBSD/Sparc64&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;In the longer term, this paves the way to reliable cross-compiled packages for Windows, &lt;a href=&quot;https://github.com/vouillon/ocaml-android&quot;&gt;Android&lt;/a&gt; and &lt;a href=&quot;http://psellos.com/ocaml/compile-to-iphone.html&quot;&gt;iPhone&lt;/a&gt; (all of which have OCaml ports, but aren&amp;#8217;t heavily tested with the full package database). The only practical way to get started on this is by building an automated test infrastructure for OCaml that explores the feature matrix (which eerily for me, happened in the early days of Xen too, via &lt;a href=&quot;http://blogs.citrix.com/2013/08/30/xenserver-automated-testing-and-lab-orchestration-introducing-xenrt/&quot;&gt;XenRT&lt;/a&gt; to stabilize the hypervisor).&lt;/p&gt;
+
+&lt;h3 id=&quot;why_not_jenkins_or_travis&quot;&gt;Why not Jenkins or Travis?&lt;/h3&gt;
+
+&lt;p&gt;When we first started hacking on the OPAM testing infrastructure earlier this year, I maintained a local &lt;a href=&quot;http://jenkins-ci.org&quot;&gt;Jenkins&lt;/a&gt; installation that monitored the repository. While Jenkins is a superb tool for many continuous integration tasks, it fell over badly when trying to use it on the non-x86 and non-Linux (or Windows) operating systems. Jenkins requires a full Java runtime stack to be available on each of the client machines, which was taking up more time to get up and running than a simple OCaml-based client and server that could compile to both portable bytecode or fast native code.&lt;/p&gt;
+
+&lt;p&gt;The other difficulty with OPAM is selecting which packages actually need to be tested, as it has a constraint-based package solver that supports expressive forwards and backwards version restrictions. While basic tests of the latest packages worked with Jenkins, we needed to increasingly customize it to automate interfacing directly with the OPAM libraries and calculating test schedules based on incoming change requests.&lt;/p&gt;
+
+&lt;p&gt;Another factor that ruled out depending on hosted services such as &lt;a href=&quot;https://travis-ci.org&quot;&gt;Travis&lt;/a&gt; is that they tend to support x86-only architectures, whereas we really want to test the full spectrum of CPU variants supported by OCaml. This doesn&amp;#8217;t mean that there&amp;#8217;s no place for Travis of course, and in fact Mike Lin has already &lt;a href=&quot;http://blog.mlin.net/2013/02/testing-ocaml-projects-on-travis-ci.html&quot;&gt;made this work&lt;/a&gt; with OPAM.&lt;/p&gt;
+
+&lt;p&gt;For our full testing needs though, &lt;a href=&quot;https://github.com/ocamllabs/ocamlot&quot;&gt;OCamlot&lt;/a&gt; was born: an OCaml client and server system which coordinates different versions of the compiler, architectures and OPAM versions and records the results for triage and fixing issues.&lt;/p&gt;
+
+&lt;h3 id=&quot;running_ocamlot&quot;&gt;Running OCamlot&lt;/h3&gt;
+
+&lt;p&gt;The latest alpha release of OCamlot is pretty straightforward to run locally, if you are so inclined. First start a server process:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ git clone git://github.com/ocamllabs/ocamlot
+$ cd ocamlot
+$ ./install_deps.sh
+$ oasis setup
+# (edit lib/config.ml if you need to change ports)
+$ make
+$ ./_build/lib/ocamlot_cmd.native --help
+$ ./_build/lib/ocamlot_cmd.native serve&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The server listens on localhost only by default, and normally an SSL-to-TCP proxy is deployed to listen for external connections (I use &lt;a href=&quot;https://github.com/bumptech/stud&quot;&gt;stud&lt;/a&gt;, which is fast and easy to configure).&lt;/p&gt;
+
+&lt;p&gt;The OCamlot clients require a local compilation of OCaml, and they autodetect their local CPU architecture and operating system. I&amp;#8217;ve put a &lt;a href=&quot;https://gist.github.com/avsm/6393649&quot;&gt;gist script&lt;/a&gt; together that automates this on most Linux and BSD variants. Just customize the top variables (set &lt;code&gt;MAKE&lt;/code&gt; to &lt;code&gt;gmake&lt;/code&gt; under BSD) and set the hostname to your server process.&lt;/p&gt;
+
+&lt;h3 id=&quot;the_results_repository_and_autotriage&quot;&gt;The results repository and auto-triage&lt;/h3&gt;
+
+&lt;p&gt;Once the client is running, the server dispatches tasks from its test matrix, which is calculated from the OPAM package repository. The server maintains a &lt;a href=&quot;https://github.com/ocamlot/ocamlot-state&quot;&gt;results repository&lt;/a&gt;, which is a Git filesystem database that records the build results and logs via an s-expression per task. It also uses &lt;a href=&quot;https://github.com/mirage/ocaml-cohttp&quot;&gt;Cohttp&lt;/a&gt; to serve up the results for a web browser.&lt;/p&gt;
+
+&lt;p&gt;It&amp;#8217;s very convenient using Git repositories like this since we can use GitHub (or any other Git host) to coordinate and record results, and restart the server without needing any local state. So convenient, in fact, that Thomas and I have been working on a more formal engine for this called &lt;a href=&quot;https://github.com/samoht/irminsule&quot;&gt;Irminsule&lt;/a&gt; (more on that in a later post, though).&lt;/p&gt;
+
+&lt;p&gt;It&amp;#8217;s almost unheard of to have a full OCamlot run go by without some errors, and so David put together the &lt;code&gt;ocamlot triage&lt;/code&gt; command. This takes the state repository and runs a set of regular expressions over it to classify them into common errors. The full file is &lt;a href=&quot;https://github.com/ocamllabs/ocamlot/blob/master/lib/result.ml&quot;&gt;here&lt;/a&gt;, but an excerpt should give you an idea of what we look for:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;ocaml&quot;&gt;	&lt;span class=&quot;c&quot;&gt;(* ordered minor to severe *)&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;analysis&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
+	  &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Solver&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;solver_error&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;option&lt;/span&gt;
+	  &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Dep&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;analysis&lt;/span&gt;
+	  &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Transient&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;transient_error&lt;/span&gt;
+	  &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;system_error&lt;/span&gt;
+	  &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Meta&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;meta_error&lt;/span&gt;
+	  &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Ext_dep&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ext_dep_error&lt;/span&gt;
+	  &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Build&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;build_error&lt;/span&gt;
+	  &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Multiple&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;analysis&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;list&lt;/span&gt;
+	    &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sexp&lt;/span&gt;
+	
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;The errors are ordered by severity to aid in color highlighting. They start with OPAM solver failures and dependency failures (e.g. due to trying to build a package that requires a specific OCaml version that isn&amp;#8217;t available), and move onto missing package dependencies or system libraris.&lt;/p&gt;
+
+&lt;h2 id=&quot;testing_the_run_up_to_ocaml_401&quot;&gt;Testing the run up to OCaml 4.01&lt;/h2&gt;
+
+&lt;p&gt;Of course, running all these tests is useless without taking action on the results. I&amp;#8217;ve been keeping track of them in &lt;a href=&quot;https://github.com/OCamlPro/opam-repository/issues/1029&quot;&gt;issue #1029&lt;/a&gt;. The nice thing about GitHub issues is that when this bug is referenced in commits (even in other repositories) a cross-reference shows up on that webpage and lets everything be tracked nicely.&lt;/p&gt;
+
+&lt;p&gt;So what were the most common failures in the runup to 4.01, and what should you avoid when writing your own code?&lt;/p&gt;
+
+&lt;h3 id=&quot;different_standard_library_module_signatures&quot;&gt;Different standard library module signatures&lt;/h3&gt;
+
+&lt;p&gt;There have been a few changes to some of the functor signatures in the standard library, such as adding a &lt;code&gt;find&lt;/code&gt; function to Set (&lt;a href=&quot;http://caml.inria.fr/mantis/view.php?id=5864&quot;&gt;mantis #5864&lt;/a&gt;). A third-party library that tries to match the functor signature will fail to compile with a type error, such as this one below for &lt;a href=&quot;http://anil.recoil.org/feeds/atom-ocaml.xml&quot;&gt;zipperposition.0.2&lt;/a&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Error: The implementation src/ptset.ml
+       does not match the interface src/ptset.cmi:
+       ...
+       In module Big:
+       The field `find' is required but not provided&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The relevant code in &lt;code&gt;zipperposition&lt;/code&gt; makes it clear what the problem is:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;ocaml&quot;&gt;	&lt;span class=&quot;c&quot;&gt;(* Big-endian Patricia trees *)&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Big&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;sig&lt;/span&gt;
+	  &lt;span class=&quot;k&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;Set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;S&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;elt&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;
+	  &lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;intersect&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;bool&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+	
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;This particular bug was &lt;a href=&quot;https://github.com/c-cube/zipperposition/issues/1&quot;&gt;reported upstream&lt;/a&gt;, and the fix requires implementing the &lt;code&gt;find&lt;/code&gt; function for the Patricia-tree-based &lt;code&gt;Set&lt;/code&gt;. Since the OPAM package will always be broken on OCaml 4.01, it was marked with a &lt;a href=&quot;https://github.com/ocamlpro/opam-repository/commit/e45530205987f67d4316a958446d3dcc954b19ec&quot;&gt;compiler version constraint&lt;/a&gt; to prevent it being selected for installation under that compiler. When a new version with the fix is uploaded to OPAM, it will always be selected in preference to this broken one.&lt;/p&gt;
+
+&lt;p&gt;One other 4.01 change that temporarily broke most of the bigger networking libraries such as &lt;a href=&quot;https://github.com/janestreet/core&quot;&gt;Core&lt;/a&gt;, &lt;a href=&quot;https://ocsigen.org/lwt&quot;&gt;Lwt&lt;/a&gt; and &lt;a href=&quot;http://batteries.forge.ocamlcore.org&quot;&gt;Batteries&lt;/a&gt; was the addition of the &lt;a href=&quot;http://caml.inria.fr/mantis/view.php?id=5568&quot;&gt;close-on-exec&lt;/a&gt; flag to the &lt;code&gt;Unix&lt;/code&gt; module. This change only affects upstream packages that redefine the UNIX module for their own purposes (such as adding an asynchronous I/O monad as Lwt does), hence it affects the standard library replacement packages.&lt;/p&gt;
+
+&lt;p&gt;The fix here was to locally add patches into the relevant OPAM packages to immediately unbreak things when the fix when into the 4.01 branch of the compiler, and notify upstream maintainers to release new versions of their projects. There&amp;#8217;s a subtle problem here: when a patch such as this goes into an unreleased branch of the compiler (such as &lt;code&gt;4.01.0dev&lt;/code&gt;), it&amp;#8217;s hard to reliably detect if the user has got the very latest version of the compiler or not. If you do have problems like this in the future, try recompiling via &lt;code&gt;opam switch reinstall &amp;lt;version&amp;gt;&lt;/code&gt; to the latest branch.&lt;/p&gt;
+
+&lt;p&gt;It&amp;#8217;s very useful to be able to drop in bleeding-edge compiler tools into the OPAM repository using compiler constraints like this. For an example, see Alain Frisch&amp;#8217;s &lt;a href=&quot;https://github.com/OCamlPro/opam-repository/blob/master/packages/ppx_tools.0.1/opam&quot;&gt;ppx_tools&lt;/a&gt;, that require the very latest 4.02dev trunk release to compile his new extension-points feature.&lt;/p&gt;
+
+&lt;h3 id=&quot;multiple_object_definitions&quot;&gt;Multiple object definitions&lt;/h3&gt;
+
+&lt;p&gt;OCaml 4.01 also restricts multiple method definitions with the same name in the same object. This leaves only inheritance as the way to override method names, but some packages such as OCamlnet and Mlorg had minor uses of the old mechanism.&lt;/p&gt;
+
+&lt;p&gt;You can see this by using &lt;code&gt;opam switch&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ opam switch 4.00.1
+$ eval `opam config env`
+$ ocaml
+# object method x = 1 method x = 2 end;;
+- : &amp;lt; x : int &amp;gt; = &amp;lt;obj&amp;gt;
+$ opam switch 4.01.0
+$ eval `opam config env`
+$ ocaml
+# object method x = 1 method x = 2 end;;
+Error: The method `x' has multiple definitions in this object&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;new_warnings_and_the_dreaded_warningsaserrors&quot;&gt;New warnings, and the dreaded warnings-as-errors&lt;/h3&gt;
+
+&lt;p&gt;After a decade of being deprecated, the &lt;code&gt;(or)&lt;/code&gt; and &lt;code&gt;(&amp;amp;)&lt;/code&gt; operators finally had a warning turned on by default.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ ocaml
+# true or false;;
+Warning 3: deprecated feature: operator (or); you should use (||) instead
+- : bool = true&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This wouldn&amp;#8217;t normally be so bad, except that a surprising number of released packages also turn warnings into fatal errors (by using the &lt;code&gt;-w @&lt;/code&gt; flags explained in the &lt;a href=&quot;http://caml.inria.fr/pub/docs/manual-ocaml/comp.html&quot;&gt;manual&lt;/a&gt;). Warnings-as-errors is extremely useful when &lt;em&gt;developing&lt;/em&gt; code but is rather harmful in released code, since a future compiler can choose to emit new warnings that aren&amp;#8217;t necessarily fatal bugs.&lt;/p&gt;
+
+&lt;p&gt;Packages that failed like this include ocamlgraph, spotlib, quickcheck, OPA, Lablgtk-extras and many more. Please do make an effort to not leave this option turned on in your packages, or else it makes life more difficult for testing your code on bleeding edge versions of the compiler in the future.&lt;/p&gt;
+
+&lt;p&gt;It&amp;#8217;s worth noting here that OCaml 4.01 has introduced a fair number of new and very useful warnings across a number of areas, mainly to do with detecting unexpected ambiguation or shadowing of values. I&amp;#8217;ll cover more on these in a future post about the new 4.01 goodies.&lt;/p&gt;
+
+&lt;h3 id=&quot;external_system_dependencies&quot;&gt;External system dependencies&lt;/h3&gt;
+
+&lt;p&gt;While there any many packages in OPAM that are pure OCaml, there are also a substantial number that require other system tools to be installed. The Lablgtk GUI library obviously requires the C &lt;code&gt;gtk&lt;/code&gt; library to be installed.&lt;/p&gt;
+
+&lt;p&gt;Determining if these libraries are installed on a particular OS is well beyond the scope of OPAM, as there are almost as many package managers as there are operating systems. However, it&amp;#8217;s important for automated testing and user-friendly error messages to have some notion of detecting if the environment is ready for the OCaml package or not.&lt;/p&gt;
+
+&lt;p&gt;We&amp;#8217;re solving this by using a &lt;code&gt;depexts&lt;/code&gt; field in OPAM that consists of a set of tags that identify OS-specific packages that need to be present. A separate script can query these tags from OPAM and do the OS-specific tests or installation.&lt;/p&gt;
+
+&lt;p&gt;For example, here&amp;#8217;s the &lt;code&gt;sqlite3-ocaml&lt;/code&gt; OPAM description:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;opam-version: &amp;quot;1&amp;quot;
+maintainer: &amp;quot;markus.mottl@gmail.com&amp;quot;
+build: [
+  [&amp;quot;ocaml&amp;quot; &amp;quot;setup.ml&amp;quot; &amp;quot;-configure&amp;quot;]
+  [&amp;quot;ocaml&amp;quot; &amp;quot;setup.ml&amp;quot; &amp;quot;-build&amp;quot;]
+  [&amp;quot;ocaml&amp;quot; &amp;quot;setup.ml&amp;quot; &amp;quot;-install&amp;quot;]
+]
+remove: [ [&amp;quot;ocamlfind&amp;quot; &amp;quot;remove&amp;quot; &amp;quot;sqlite3&amp;quot;] ]
+depends: [&amp;quot;ocamlfind&amp;quot;]
+depexts: [
+  [ [&amp;quot;debian&amp;quot;  ] [ &amp;quot;libsqlite3-dev&amp;quot;]    ]
+  [ [&amp;quot;freebsd&amp;quot; ] [ &amp;quot;database/sqlite3&amp;quot;]  ]
+  [ [&amp;quot;openbsd&amp;quot; ] [ &amp;quot;database/sqlite3&amp;quot;]  ]
+]&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The &lt;code&gt;depexts&lt;/code&gt; field here lists APT package for Debian, and the ports tree locations for FreeBSD and OpenBSD. It could also list more specialised tags for particular versions of an OS. You can query this from OPAM as follows:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ opam install -e debian sqlite3-ocaml
+libsqlite3-dev
+$ opam install -e openbsd sqlite3-ocaml
+database/sqlite3&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;OCamlot therefore needs to query the &lt;code&gt;depexts&lt;/code&gt; field from the package and run the right &lt;code&gt;apt&lt;/code&gt; or &lt;code&gt;pkg_add&lt;/code&gt; commands. I&amp;#8217;ll write about this in more detail when it&amp;#8217;s fully baked, as we&amp;#8217;ve modified the semantics of the tag querying between OPAM 1.0 and OPAM 1.1 to make it easier to use in OCamlot.&lt;/p&gt;
+
+&lt;h3 id=&quot;portable_shell_scripts&quot;&gt;Portable shell scripts&lt;/h3&gt;
+
+&lt;p&gt;Once we&amp;#8217;ve gotten past the hurdle of the compiler version causing failures, there is the small matter of testing non-Linux operating systems, as well as non-x86 CPU architectures. The &lt;a href=&quot;https://github.com/OCamlPro/opam-repository/issues/1029&quot;&gt;#1029 overview&lt;/a&gt; lists many of these failures under the Portability section.&lt;/p&gt;
+&lt;a href=&quot;http://www.openbsd.org&quot;&gt;&lt;img src=&quot;http://anil.recoil.org/images/ppuf200X181.gif&quot; /&gt;&lt;/a&gt;
+&lt;p&gt;Damien Doligez made some excellent points about how to write &lt;a href=&quot;http://gallium.inria.fr/blog/portable-conditionals-in-makefiles/&quot;&gt;portable Makefiles&lt;/a&gt; that works across both GNU and BSD makes. This is why the carefully crafted OCaml Makefiles do not require GNU make to be installed when compiling on FreeBSD or OpenBSD (MacOS X gave up the fight a long time ago and installs GNU make as its default &lt;code&gt;make&lt;/code&gt; command).&lt;/p&gt;
+
+&lt;p&gt;OPAM tries to help out BSD by providing a &lt;code&gt;make&lt;/code&gt; macro in &lt;code&gt;opam&lt;/code&gt; files that is substituted with either &lt;code&gt;&amp;quot;make&amp;quot;&lt;/code&gt; (by default) or &lt;code&gt;&amp;quot;gmake&amp;quot;&lt;/code&gt; (for BSD). While this works for for the toplevel invocation of the Makefile, it fails if the Makefile recursively invokes further targets without using the &lt;code&gt;$(MAKE)&lt;/code&gt; variable instead of directly calling the command. Patching these sorts of things is easy but tedious: see the &lt;a href=&quot;https://github.com/OCamlPro/opam-repository/blob/master/packages/facile.1.1/files/bsdmake.patch&quot;&gt;patchfile&lt;/a&gt; for the Facile constraint programming library for an example.&lt;/p&gt;
+
+&lt;p&gt;The real problem here, of course, is that package maintainers cannot be reasonably expected to test their code on systems that they don&amp;#8217;t normally use&amp;#8211;if we demanded perfect portability to be present in the main OPAM repository, we would&amp;#8217;t get any submissions!&lt;/p&gt;
+
+&lt;p&gt;OCamlot automates this nicely though, by finding lots of portability bugs automatically, and maintainers are by-and-large very responsive when we report the problem upstream.&lt;/p&gt;
+
+&lt;h2 id=&quot;the_emerging_distributed_workflow&quot;&gt;The emerging distributed workflow&lt;/h2&gt;
+
+&lt;p&gt;The big drawback to OCamlot in its current form is the amount of triage effort it puts on the OPAM maintainers. The package database has now exceeded 500 packages in just a short few months, and has over 1500 unique versions that all need build testing and more accurate constraints. The wider community has been &lt;em&gt;really&lt;/em&gt; keen to participate in helping with triage (just look at all the other people that leapt in on &lt;a href=&quot;https://github.com/OCamlPro/opam-repository/issues/1029&quot;&gt;bug #1029&lt;/a&gt;), so its our immediate priority to make OCamlot more transparent for people that want to use it to improve their own packages, and in the future also use it to test various hypotheses about all the available open-source OCaml code (see Jacques&amp;#8217; experiment with &lt;a href=&quot;http://gallium.inria.fr/blog/monomorphic_let/&quot;&gt;monomorphic let&lt;/a&gt; as an example of something that can benefit from wider automated compilation).&lt;/p&gt;
+
+&lt;p&gt;I&amp;#8217;ll talk more about how we&amp;#8217;re solving this in my upcoming &lt;a href=&quot;http://ocaml.org/meetings/ocaml/2013/&quot;&gt;OCaml 2013 Workshop&lt;/a&gt; talk about the Platform. I don&amp;#8217;t want spoil it too much, but it involves a lovely distributed Git workflow, an enhanced &lt;a href=&quot;https://github.com/OCamlPro/opam2web&quot;&gt;opam2web&lt;/a&gt;, and a brand new metadata overlay system for OPAM that lets us enhance the package database with extra information such as statistics, portability and test results, but without polluting the main Git repository with all this extra non-essential data.&lt;/p&gt;
+
+&lt;p&gt;If you&amp;#8217;re really curious to know right now, then you can see the outline of the new system at Amir&amp;#8217;s &lt;a href=&quot;http://amirchaudhry.com/wireframe-demos-for-ocamlorg/&quot;&gt;new ocaml.org wireframes&lt;/a&gt; blog post, where Part III contains the continuous integration workflow. A lot of infrastructure work has gone into building all of this over the summer, and now it&amp;#8217;s all starting to be deployed in a very satisfying way&amp;#8230;&lt;/p&gt;</content:encoded>
+	<dc:date>2013-09-08T23:00:00+00:00</dc:date>
+</item>
+<item rdf:about="urn:uuid:0f9d7209-2382-5f9c-9874-00401db52a24">
+	<title>Daniel Buenzli: Uutf 0.9.3 and Xmlm 1.2.0</title>
+	<link>http://erratique.ch/software</link>
+	<content:encoded>&lt;p&gt;Release of Uutf 0.9.3 and Xmlm 1.2.0. Consult the individual release notes for details.&lt;/p&gt;</content:encoded>
+	<dc:date>2013-09-06T16:55:54+00:00</dc:date>
+</item>
+<item rdf:about="http://hh360.user.srcf.net/blog/?p=25">
+	<title>Heidi Howard: ICFP, CUFP &amp; OCaml2013</title>
+	<link>http://hh360.user.srcf.net/blog/2013/08/icfp-cufp-ocaml2013/</link>
+	<content:encoded>&lt;p&gt;I&amp;#8217;m busy planning my first trip across the Atlantic to attend ICFP, CUFP and OCaml 2013. Today, I&amp;#8217;ve been given the duty of &amp;#8220;live blogging&amp;#8221; the event, over at the &lt;a title=&quot;syslog&quot; href=&quot;http://www.syslog.cl.cam.ac.uk/&quot;&gt;syslog&lt;/a&gt;, the Cambridge Systems Research Group blog.&lt;/p&gt;
+&lt;p&gt;My other job for the event is to improve the documentation for &lt;a href=&quot;http://janestreet.github.io/guide-async.html&quot;&gt;Janestreet&amp;#8217;s Async&lt;/a&gt; library. if anyone else is keen, I would love to organise a doc-a-thon to populate the .mli files&lt;/p&gt;</content:encoded>
+	<dc:date>2013-08-28T20:05:23+00:00</dc:date>
+</item>
+<item rdf:about="http://openmirage.org/blog/introducing-vchan">
+	<title>MirageOS: Introducing vchan</title>
+	<link>http://openmirage.org/blog/introducing-vchan</link>
+	<content:encoded>&lt;div&gt;
+      &lt;p&gt;&lt;b&gt;In Theory&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Unless you are familiar with Xen's source code, there is little chance that you've ever heard of the &lt;b&gt;vchan&lt;/b&gt; library or protocol. Documentation about it is very scarce: a description can be found on vchan's &lt;a href=&quot;http://xenbits.xen.org/gitweb/?p=xen.git;a=blob;f=xen/include/public/io/libxenvchan.h;hb=HEAD&quot;&gt;public header file&lt;/a&gt;, that I quote here for convenience:&lt;/p&gt;&lt;blockquote&gt; &lt;p&gt;Originally borrowed from the &lt;a href=&quot;http://www.qubes-os.org&quot;&gt;Qubes OS Project&lt;/a&gt;, this code (i.e. libvchan) has been substantially rewritten [...] This is a library for inter-domain communication.  A standard Xen ring buffer is used, with a datagram-based interface built on top.  The grant reference and event channels are shared in XenStore under a user-specified path.&lt;/p&gt; &lt;/blockquote&gt;&lt;p&gt;This protocol uses shared memory for inter-domain communication, i.e. between two VMs residing in the same Xen host, and uses Xen's mechanisms -- more specifically, &lt;a href=&quot;http://www.informit.com/articles/article.aspx?p=1160234&amp;seqNum=3&quot;&gt;ring buffers&lt;/a&gt; and &lt;a href=&quot;http://xenbits.xen.org/gitweb/?p=xen.git;a=blob;f=tools/libxc/xenctrl.h;h=f2cebafc9ddd4815ffc73fcf9e0d292b1d4c91ff;hb=HEAD#l934&quot;&gt;event channels&lt;/a&gt; -- in order to achieve its aims. &lt;b&gt;Datagram-based interface&lt;/b&gt; simply means that the &lt;a href=&quot;http://xenbits.xen.org/gitweb/?p=xen.git;a=blob;f=tools/libvchan/libxenvchan.h;h=6365d36a06f8c8f56454724cefc4c2f1d39beba2;hb=HEAD&quot;&gt;interface&lt;/a&gt; resembles UDP, although there is support for stream based communication (like TCP) as well.&lt;/p&gt;&lt;p&gt;Over the last two months or so, I worked on a &lt;a href=&quot;http://github.com/mirage/ocaml-vchan&quot;&gt;pure OCaml implementation&lt;/a&gt; of this library, meaning that Mirage-based unikernels can now take full advantage of &lt;b&gt;vchan&lt;/b&gt; to communicate with neighboring VMs! If your endpoint -- a Linux VM or another unikernel -- is on the same host, it is much faster and more efficient to use vchan rather than the network stack (although unfortunately, it is currently incompatible with existing programs written against the &lt;code&gt;socket&lt;/code&gt; library under UNIX or the &lt;code&gt;Flow&lt;/code&gt; module of Mirage, although this will improve). It also provides a higher level of security compared to network sockets as messages will never leave the host's shared memory.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Building the vchan echo domain&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Provided that you have a Xen-enabled machine, do the following from dom0:&lt;/p&gt;&lt;div class=&quot;ocaml&quot;&gt;&lt;pre&gt;&lt;code&gt;opam install mirari mirage-xen mirage vchan
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This will install the library and its dependencies. &lt;code&gt;mirari&lt;/code&gt; is necessary to build the &lt;b&gt;echo unikernel&lt;/b&gt;:&lt;/p&gt;&lt;div class=&quot;ocaml&quot;&gt;&lt;pre&gt;&lt;code&gt;git clone git&lt;span class=&quot;keyword2&quot;&gt;:&lt;/span&gt;//github.com/mirage/ocaml-vchan
+cd test
+mirari configure --xen --no-install
+mirari build --xen
+sudo mirari run --xen
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This will boot a &lt;code&gt;vchan echo domain&lt;/code&gt; for dom0, with connection parameters stored in xenstore at &lt;code&gt;/local/domain/&amp;lt;domid&amp;gt;/data/vchan&lt;/code&gt;, where &lt;code&gt;&amp;lt;domid&amp;gt;&lt;/code&gt; is the domain id of the vchan echo domain. The echo domain is simply an unikernel hosting a vchan server accepting connections from dom0, and echo'ing everything that is sent to it.&lt;/p&gt;&lt;p&gt;The command &lt;code&gt;xl list&lt;/code&gt; will give you the domain id of the echo server.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Building the vchan CLI from Xen's sources&lt;/b&gt;&lt;/p&gt;&lt;p&gt;You can try it using a vchan client that can be found in Xen's sources at &lt;code&gt;tools/libvchan&lt;/code&gt;: Just type &lt;code&gt;make&lt;/code&gt; in this directory. It will compile the executable &lt;code&gt;vchan-node2&lt;/code&gt; that you can use to connect to our freshly created echo domain:&lt;/p&gt;&lt;div class=&quot;ocaml&quot;&gt;&lt;pre&gt;&lt;code&gt;./vchan-node2 client &lt;span class=&quot;keyword2&quot;&gt;&amp;lt;&lt;/span&gt;domid&lt;span class=&quot;keyword2&quot;&gt;&amp;gt;&lt;/span&gt;/local/domain/&lt;span class=&quot;keyword2&quot;&gt;&amp;lt;&lt;/span&gt;domid&lt;span class=&quot;keyword2&quot;&gt;&amp;gt;&lt;/span&gt;/data/vchan
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If everything goes well, what you type in there will be echoed.&lt;/p&gt;&lt;p&gt;You can obtain the full API documentation for &lt;b&gt;ocaml-vchan&lt;/b&gt; by doing a &lt;code&gt;cd ocaml-vchan &amp;amp;&amp;amp; make doc&lt;/code&gt;. If you are doing network programming under UNIX, vchan's interface will not surprise you. If you are already using vchan for a C project, you will see that the OCaml API is nearly identical to what you are used to.&lt;/p&gt;&lt;p&gt;Please let us know if you use or plan to use this library in any way! If you need tremedous speed or more security, this might fit your needs.&lt;/p&gt; 
+   &lt;/div&gt;</content:encoded>
+	<dc:date>2013-08-23T17:43:00+00:00</dc:date>
+	<dc:creator>Vincent Bernardoff</dc:creator>
+</item>
+<item rdf:about="http://hh360.user.srcf.net/blog/?p=86">
+	<title>Heidi Howard: Real World OCaml beta3 release</title>
+	<link>http://hh360.user.srcf.net/blog/2013/08/real-world-ocaml-beta3-release/</link>
+	<content:encoded>&lt;p&gt;Beta3 of RWO is now available: &lt;a href=&quot;https://realworldocaml.org/&quot;&gt;https://realworldocaml.org/&lt;/a&gt; and anil (one of the co-authors) comments on the release &lt;a href=&quot;http://anil.recoil.org/2013/08/06/real-world-ocaml-beta2.html&quot;&gt;http://anil.recoil.org/2013/08/06/real-world-ocaml-beta2.html&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&quot;wp-caption aligncenter&quot;&gt;&lt;img alt=&quot;&quot; src=&quot;https://realworldocaml.org/media/img/oreilly-cover.gif&quot; width=&quot;180&quot; height=&quot;236&quot; /&gt;&lt;p class=&quot;wp-caption-text&quot;&gt;Cover of RWO&lt;/p&gt;&lt;/div&gt;</content:encoded>
+	<dc:date>2013-08-19T10:39:34+00:00</dc:date>
+</item>
+<item rdf:about="http://openmirage.org/blog/oscon13-trip-report">
+	<title>MirageOS: Mirage travels to OSCON'13: a trip report</title>
+	<link>http://openmirage.org/blog/oscon13-trip-report</link>
+	<content:encoded>&lt;div&gt;
+      &lt;p&gt;Now that Mirage OS is rapidly converging on a &lt;a href=&quot;http://github.com/avsm/mirage/issues/102&quot;&gt;Developer Preview Release 1&lt;/a&gt;, we took it for a first public outing at &lt;a href=&quot;http://www.oscon.com/oscon2013/&quot;&gt;OSCON'13&lt;/a&gt;, the O'Reilly Open Source Conference. OSCON is in its 15th year now, and is a meeting place for developers, business people and investors. It was a great opportunity to show MirageOS off to some of the movers and shakers in the OSS world.&lt;/p&gt;&lt;p&gt;Partly because MirageOS is about synthesising extremely specialised guest kernels from high-level code, and partly because both Anil and I are constitutionally incapable of taking the easy way out, we self-hosted the slide deck on Mirage: after some last-minute hacking -- on content not Mirage I should add! -- we built a self-contained microkernel of the talk.&lt;/p&gt;&lt;p&gt;This was what you might call a &quot;full stack&quot; presentation: the custom microkernel (flawlessly!) ran a type-safe &lt;a href=&quot;https://github.com/mirage/mirage-platform/blob/master/xen/lib/netif.ml&quot;&gt;network device driver&lt;/a&gt;, OCaml &lt;a href=&quot;http://github.com/mirage/mirage-net&quot;&gt;TCP/IP stack&lt;/a&gt; supporting an OCaml &lt;a href=&quot;http://github.com/mirage/ocaml-cohttp&quot;&gt;HTTP&lt;/a&gt; framework that served slides rendered using &lt;a href=&quot;http://lab.hakim.se/reveal-js/&quot;&gt;reveal.js&lt;/a&gt;. The slide deck, including the turbo-boosted &lt;a href=&quot;http://www.youtube.com/watch?v=2Mx8Bd5JYyo&quot;&gt;screencast&lt;/a&gt; of the slide deck compilation, is hosted as another MirageOS virtual machine at &lt;a href=&quot;http://decks.openmirage.org/&quot;&gt;decks.openmirage.org&lt;/a&gt;. We hope to add more slide decks there soon, including resurrecting the tutorial! The source code for all this is in the &lt;a href=&quot;http://github.com/mirage/mirage-decks&quot;&gt;mirage-decks&lt;/a&gt; GitHub repo.&lt;/p&gt;&lt;h3&gt;&lt;a name=&quot;h3-TheTalk&quot; class=&quot;anchor-toc&quot;&gt; The Talk&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;The talk went down pretty well -- given we were in a graveyard slot on Friday after many people had left, attendance was fairly high (around 30-40), and the &lt;a href=&quot;http://www.oscon.com/oscon2013/public/schedule/detail/28956&quot;&gt;feedback scores&lt;/a&gt; have been positive (averaging 4.7/5) with comments including &quot;excellent content and well done&quot; and &quot;one of the most excited projects I heard about&quot; (though we are suspicious that just refers to Anil's usual high-energy presentation style...).&lt;/p&gt;&lt;p&gt; &lt;/p&gt;&lt;p&gt;Probably the most interesting chat after the talk was with the Rust authors at Mozilla (&lt;a href=&quot;http://twitter.com/pcwalton&quot;&gt;@pcwalton&lt;/a&gt; and &lt;a href=&quot;https://github.com/brson&quot;&gt;@brson&lt;/a&gt;) about combining the Mirage &lt;a href=&quot;http://anil.recoil.org/papers/2013-asplos-mirage.pdf&quot;&gt;unikernel&lt;/a&gt; techniques with the &lt;a href=&quot;http://www.rust-lang.org&quot;&gt;Rust&lt;/a&gt; runtime. But perhaps the most surprising feedback was when Anil and I were stopped in the street while walking back from some well-earned sushi, by a cyclist who loudly declared that he'd really enjoyed the talk and thought it was a really exciting project -- never done something that achieved public acclaim from the streets before :)&lt;/p&gt;&lt;h3&gt;&lt;a name=&quot;h3-BookSigningandXen.org&quot; class=&quot;anchor-toc&quot;&gt; Book Signing and Xen.org&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Anil also took some time to sit in a book signing for his forthcoming &lt;a href=&quot;http://realworldocaml.org&quot;&gt;Real World OCaml&lt;/a&gt; O'Reilly book.  This is really important to making OCaml easier to learn, especially given that all the Mirage libraries are using it.  Most of the dev team (and especially thanks to &lt;a href=&quot;https://twitter.com/heidiann360&quot;&gt;Heidi Howard&lt;/a&gt; who bravely worked through really early alpha revisions) have been giving us feedback as the book is written, using the online commenting system.&lt;/p&gt;&lt;p&gt;The Xen.org booth was also huge, and we spent quite a while plotting the forthcoming Mirage/Xen/ARM backend. We're pretty much just waiting for the &lt;a href=&quot;http://cubieboard.org&quot;&gt;Cubieboard2&lt;/a&gt; kernel patches to be upstreamed (keep an eye &lt;a href=&quot;http://linux-sunxi.org/Main_Page&quot;&gt;here&lt;/a&gt;) so that we can boot Xen/ARM VMs on tiny ARM devices.  There's a full report about this on the &lt;a href=&quot;http://blog.xen.org/index.php/2013/07/31/the-xen-project-at-oscon/&quot;&gt;xen.org&lt;/a&gt; blog post about OSCon.&lt;/p&gt;&lt;h3&gt;&lt;a name=&quot;h3-GaloisandHalVM&quot; class=&quot;anchor-toc&quot;&gt; Galois and HalVM&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;We also stopped by the &lt;a href=&quot;http://corp.galois.com&quot;&gt;Galois&lt;/a&gt; to chat with &lt;a href=&quot;https://twitter.com/acwpdx&quot;&gt;Adam Wick&lt;/a&gt;, who is the leader of the &lt;a href=&quot;http://corp.galois.com/halvm&quot;&gt;HalVM&lt;/a&gt; project at Galois. This is a similar project to Mirage, but, since it's written in Haskell, has more of a focus on elegant compositional semantics rather than the more brutal performance and predictability that Mirage currently has at its lower levels.&lt;/p&gt;&lt;p&gt;The future of all this ultimately lies in making it easier for these multi-lingual unikernels to be managed and for all of them to communicate more easily, so we chatted about code sharing and common protocols (such as &lt;a href=&quot;https://github.com/vbmithr/ocaml-vchan&quot;&gt;vchan&lt;/a&gt;) to help interoperability. Expect to see more of this once our respective implementations get more stable.&lt;/p&gt;&lt;p&gt;All-in-all OSCON'13 was a fun event and definitely one that we look forward returning to with a more mature version of MirageOS, to build on the momentum begun this year!  Portland was an amazing host city too, but what happens in Portland, stays in Portland...&lt;/p&gt; 
+   &lt;/div&gt;</content:encoded>
+	<dc:date>2013-08-08T16:00:00+00:00</dc:date>
+	<dc:creator>Richard Mortier</dc:creator>
+</item>
+<item rdf:about="http://anil.recoil.org/2013/08/06/real-world-ocaml-beta2">
+	<title>Anil Madhavapeddy: Final Real World OCaml beta; the good, the bad and the ugly</title>
+	<link>http://anil.recoil.org/2013/08/06/real-world-ocaml-beta2.html</link>
+	<content:encoded>&lt;p&gt;The second and final public beta of Real World OCaml is now available: &lt;a href=&quot;https://realworldocaml.org&quot;&gt;https://realworldocaml.org&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Release notes:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Over 2,000 comments from proofreaders have been resolved. We realize that reading early content is hard work, and hugely appreciate the spirited feedback! The book is now a week away from being handed over to the O&amp;#8217;Reilly production team for copyediting, so the window for changes are limited after that. Comments reset between milestones and so beta2 is a clean slate; we&amp;#8217;re still working through some remaining older issues.&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;The chapters on first-class modules, parsing with Menhir, and objects and classes have been significantly revised from beta1. Our thanks to Leo White for contributing significantly to the latter two chapters.&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;All the code snippets and terminal outputs are now mechanically generated. The source code is as close to public domain as practical, at: &lt;a href=&quot;https://github.com/realworldocaml/examples&quot;&gt;https://github.com/realworldocaml/examples&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;The final version will have the installation chapter moved to be online only, and we intend to publish updates there to elaborate on installation and packaging mechanisms.&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;Exercises will be available after we go into production, and also only be available online. We really like the collaborative spirit of the commenting system, and will likely extend this to collecting exercises from our readers on an ongoing basis.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;There&amp;#8217;s been quite a bit of feedback and conversation about the book, so this also seemed like a good point to checkpoint the process somewhat.&lt;/p&gt;
+
+&lt;h2 id=&quot;crowd_sourcing_community_feedback&quot;&gt;Crowd sourcing community feedback&lt;/h2&gt;
+&lt;a href=&quot;http://realworldocaml.org&quot;&gt;&lt;img align=&quot;right&quot; src=&quot;http://anil.recoil.org/images/oreilly-cover.gif&quot; /&gt;&lt;/a&gt;
+&lt;p&gt;&lt;em&gt;Good&lt;/em&gt;: The decision to crowdsource feedback has been exhausting but very worthwhile, with over 2,200 &lt;a href=&quot;http://github.com/ocamllabs/rwo-comments&quot;&gt;comments&lt;/a&gt; posted (and over 2,000 resolved by us too!). O&amp;#8217;Reilly has a similar platform called &lt;a href=&quot;http://atlas.labs.oreilly.com&quot;&gt;Atlas&lt;/a&gt; that wasn&amp;#8217;t quite ready when we started our book, but I&amp;#8217;d highly encourage new authors to go down this route and not stick with a traditional editorial scheme.&lt;/p&gt;
+
+&lt;p&gt;It&amp;#8217;s simply not possible for a small group of technical reviewers to notice as many errors as the wider community has. Having said this, it&amp;#8217;s interesting how much more focussed and critical the comments of our editor &lt;a href=&quot;http://radar.oreilly.com/andyo&quot;&gt;Andy Oram&lt;/a&gt; were when compared to most of the wider community feedback, so the commenting system is definitely a complement and not a replacement to the editorial process.&lt;/p&gt;
+
+&lt;h3 id=&quot;the_github_requirement&quot;&gt;The GitHub requirement&lt;/h3&gt;
+
+&lt;p&gt;&lt;em&gt;Bad&lt;/em&gt;: After the first beta, we got criticized on a &lt;a href=&quot;https://news.ycombinator.com/item?id=5893168&quot;&gt;Hacker News&lt;/a&gt; thread for passing around Github oAuth tokens without SSL. This was entirely my fault, and I corrected the site to be pure-SSL within 24 hours.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Ugly&lt;/em&gt;: In my defence though, I &lt;em&gt;dont want&lt;/em&gt; the authority that all the reviewers have granted to me for their Github accounts! We need just two things to enable commenting: an identity service to cut down on spam comments, and the ability to create issues in a &lt;a href=&quot;http://github.com/ocamllabs/rwo-comments&quot;&gt;public repository&lt;/a&gt;. Unfortunately, Github&amp;#8217;s &lt;a href=&quot;http://developer.github.com/v3/oauth/#scopes&quot;&gt;scope&lt;/a&gt; API requires you to also grant us access to commit to public code repositories. Add on the fact that around 6,000 people have clicked through the oAuth API to review RWO, and you start to see just how much code we potentially have access to. I did try to reduce the damage by not actually storing the oAuth tokens on the server-side. Instead, we store it in the client using a secure cookie, so you can easily reset your browser to log out.&lt;/p&gt;
+
+&lt;p&gt;It&amp;#8217;s not just about authentication either: another reader &lt;a href=&quot;http://www.reddit.com/r/ocaml/comments/1gil84/public_beta_of_real_world_ocaml/cal811r&quot;&gt;points out&lt;/a&gt; that if they use GitHub during work hours, they have no real way of separating the news streams that result.&lt;/p&gt;
+
+&lt;p&gt;Much of the frustration here is that there&amp;#8217;s nothing I can do to fix this except wait for GitHub to hopefully improve their service. I very much hope that GitHub is listening to this and has internal plans to overhaul their privilege management APIs.&lt;/p&gt;
+
+&lt;h3 id=&quot;infrastructurefree_hosting&quot;&gt;Infrastructure-free hosting&lt;/h3&gt;
+
+&lt;p&gt;&lt;em&gt;Good&lt;/em&gt; and &lt;em&gt;Bad&lt;/em&gt;: One of my goals with the commenting infrastructure was to try and eliminate all server-side code, so that we could simply publish the book onto Github Pages and use JavaScript for the comment creation and listing.&lt;/p&gt;
+
+&lt;p&gt;This &lt;em&gt;almost&lt;/em&gt; worked out. We still need a tiny HTTP proxy for comment creation, as we add contextual information such as a milestone to every new comment to make it easier to index. Setting a milestone requires privileged access to the repository and so our server-side proxy creates the issue using the user-supplied oAuth token (so that it originates from the commenter), and then updates it (via the &lt;a href=&quot;http://github.com/bactrian&quot;&gt;bactrian&lt;/a&gt; account) to add the milestone add insert a little contextual comment pointing back to the book paragraph where the comment originated from.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Good&lt;/em&gt;: The other criticism from the &lt;a href=&quot;http://www.reddit.com/r/programming/comments/1gipea/first_public_beta_of_real_world_ocaml_book/cakmeuz&quot;&gt;online feedback&lt;/a&gt; was the &lt;em&gt;requirement&lt;/em&gt; to have a Github login to read the book at all. This is a restriction that we intend to lift for the final release (which will be freely available online under a &lt;a href=&quot;http://creativecommons.org/licenses/by-nc-nd/3.0/us/&quot;&gt;CC-BY-NC-ND&lt;/a&gt; license), but I think it&amp;#8217;s absolutely the right decision to gateway early adopters to get useful feedback. Even if we lost 90% of our potential reviewers through the Github auth wall, I don&amp;#8217;t think we could have coped with another 10,000 comments in any case.&lt;/p&gt;
+
+&lt;p&gt;On the positive side, we didn&amp;#8217;t have a single spam comment or other abuses of the commenting system at all.&lt;/p&gt;
+
+&lt;p&gt;I&amp;#8217;ve had quite a few queries been open-sourcing the &lt;a href=&quot;http://github.com/realworldocaml/scripts&quot;&gt;scripts&lt;/a&gt; that drive the server-side commenting, and this on my TODO list for after the final book has gone to production.&lt;/p&gt;
+
+&lt;h2 id=&quot;autogenerating_the_examples&quot;&gt;Auto-generating the examples&lt;/h2&gt;
+
+&lt;p&gt;&lt;em&gt;Bad&lt;/em&gt;: We tried for far too long during the book writing to stumble through with manual installation instructions and hand-copied code snippets and outputs. Some of our alpha reviewers pointed out &lt;a href=&quot;https://github.com/ocamllabs/rwo-comments/issues/236&quot;&gt;vociferously&lt;/a&gt; that spending time on installation and dealing with code typos was not a good use of their time.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Good&lt;/em&gt;: &lt;a href=&quot;http://bolinfest.com&quot;&gt;Michael Bolin&lt;/a&gt; was entirely correct in his criticism (and incidentally, one of our most superstar reviewers). The latest beta has an entirely mechanically generated toolchain that lets us regenerate the entire book output from a cold start by cloning the &lt;a href=&quot;https://github.com/realworldocaml/examples&quot;&gt;examples&lt;/a&gt; repository. In retrospect, I should have written this infrastructure a year ago, and I&amp;#8217;d recommend any new books of this sort focus hard on automation from the early days.&lt;/p&gt;
+
+&lt;p&gt;Luckily, my automation &lt;a href=&quot;https://github.com/realworldocaml/scripts&quot;&gt;scripts&lt;/a&gt; could crib heavily from existing open-source OCaml projects that had portions of what we needed, such as &lt;a href=&quot;https://github.com/diml/utop&quot;&gt;uTop&lt;/a&gt; and &lt;a href=&quot;https://github.com/ocaml/ocaml.org&quot;&gt;ocaml.org&lt;/a&gt; (and my thanks to &lt;a href=&quot;https://github.com/diml&quot;&gt;Jeremie Dimino&lt;/a&gt; and &lt;a href=&quot;https://github.com/Chris00&quot;&gt;Christophe Troestler&lt;/a&gt; for their help here).&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Awesome&lt;/em&gt;: We&amp;#8217;re hacking on a little surprise for the final online version of the book, based on this build infrastructure. Stay &lt;a href=&quot;http://try.ocamlpro.com&quot;&gt;tuned&lt;/a&gt;!&lt;/p&gt;</content:encoded>
+	<dc:date>2013-08-05T23:00:00+00:00</dc:date>
+</item>
+<item rdf:about="http://hh360.user.srcf.net/blog/?p=99">
+	<title>Heidi Howard: OCaml Lecture Notes</title>
+	<link>http://hh360.user.srcf.net/blog/2013/08/abstractions-and-types-for-concurrent-programming/</link>
+	<content:encoded>&lt;p&gt;I just wanted to share these sildes from Yaron Minsky guest lecture at Princeton on &amp;#8220;Abstractions and Types for Concurrent Programming&amp;#8221;: [&lt;a href=&quot;http://www.cs.princeton.edu/~dpw/courses/cos326-12/lec/asynch-and-rpc.pdf&quot;&gt;pdf&lt;/a&gt;]  to the &lt;a href=&quot;http://www.cs.princeton.edu/~dpw/courses/cos326-12/&quot;&gt;COS 326&lt;/a&gt; class and the notes from Cornell&amp;#8217;s OCaml course called &amp;#8220;&lt;a href=&quot;http://www.cs.cornell.edu/Courses/cs3110/2011sp/lecturenotes.asp&quot;&gt;Data Structures and Functional Programming&lt;/a&gt;&amp;#8220;, edit the URL to see notes from different years&lt;/p&gt;</content:encoded>
+	<dc:date>2013-08-01T14:40:42+00:00</dc:date>
+</item>
+<item rdf:about="http://openmirage.org/blog/xen-block-devices-with-mirage">
+	<title>MirageOS: Creating Xen block devices with Mirage</title>
+	<link>http://openmirage.org/blog/xen-block-devices-with-mirage</link>
+	<content:encoded>&lt;div&gt;
+      &lt;p&gt;&lt;a href=&quot;http://www.openmirage.org/&quot;&gt;Mirage&lt;/a&gt; is a &lt;a href=&quot;http://anil.recoil.org/papers/2013-asplos-mirage.pdf&quot;&gt;unikernel&lt;/a&gt; or &quot;library operating system&quot; that allows us to build applications which can be compiled to very diverse environments: the same code can be linked to run as a regular Unix app, relinked to run as a &lt;a href=&quot;https://github.com/pgj/mirage-kfreebsd&quot;&gt;FreeBSD kernel module&lt;/a&gt;, and even linked into a self-contained kernel which can run on the &lt;a href=&quot;http://www.xenproject.org/&quot;&gt;Xen hypervisor&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;Mirage has access to an extensive suite of pure OCaml &lt;a href=&quot;https://github.com/mirage&quot;&gt;libraries&lt;/a&gt;, covering everything from Xen &lt;a href=&quot;https://github.com/mirage/ocaml-xen-block-driver&quot;&gt;block&lt;/a&gt; and &lt;a href=&quot;https://github.com/mirage/mirage-platform/blob/master/xen/lib/netif.ml&quot;&gt;network&lt;/a&gt; virtual device drivers, a &lt;a href=&quot;https://github.com/mirage/mirage-net&quot;&gt;TCP/IP stack&lt;/a&gt;, OpenFlow learning switches and controllers, to SSH and &lt;a href=&quot;https://github.com/mirage/ocaml-cohttp&quot;&gt;HTTP&lt;/a&gt; server implementations.&lt;/p&gt;&lt;p&gt;I normally use Mirage to deploy applications as kernels on top of a &lt;a href=&quot;http://www.xenserver.org/&quot;&gt;XenServer&lt;/a&gt; hypervisor. I start by first using the Mirage libraries within a normal Unix userspace application -- where I have access to excellent debugging tools -- and then finally link my app as a high-performance Xen kernel for production.&lt;/p&gt;&lt;p&gt;However Mirage is great for more than simply building Xen kernels. In this post I'll describe how I've been using Mirage to create experimental virtual disk devices for existing Xen VMs (which may themselves be Linux, *BSD, Windows or even Mirage kernels). The Mirage libraries let me easily experiment with different backend file formats and protocols, all while writing only type-safe OCaml code thats runs in userspace in a normal Linux domain 0.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Disk devices under Xen&lt;/b&gt;&lt;/p&gt;&lt;p&gt;The protocols used by Xen disk and network devices are designed to permit fast and efficient software implementations, avoiding the inefficiencies inherent in emulating physical hardware in software. The protocols are based on two primitives:&lt;/p&gt;&lt;ul&gt; &lt;li&gt; &lt;p&gt;&lt;b&gt;shared memory pages&lt;/b&gt;: used for sharing both data and metadata&lt;/p&gt; &lt;/li&gt;&lt;li&gt; &lt;p&gt;&lt;b&gt;event channels&lt;/b&gt;: similar to interrupts, these allow one side to signal the other&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;&lt;p&gt;In the disk block protocol, the protocol starts with the client (&quot;frontend&quot; in Xen jargon) sharing a page with the server (&quot;backend&quot;). This single page will contain the request/response metadata, arranged as a circular buffer or &quot;ring&quot;. The client (&quot;frontend&quot;) can then start sharing pages containing disk blocks with the backend and pushing request structures to the ring, updating shared pointers as it goes. The client will give the server end a kick via an event channel signal and then both ends start running simultaneously. There are no locks in the protocol so updates to the shared metadata must be handled carefully, using write memory barriers to ensure consistency.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Xen disk devices in Mirage&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Like everything else in Mirage, Xen disk devices are implemented as libraries. The ocamlfind library called &quot;xenctrl&quot; provides support for manipulating blocks of raw memory pages, &quot;granting&quot; access to them to other domains and signalling event channels. There are two implementations of &quot;xenctrl&quot;: &lt;a href=&quot;https://github.com/mirage/mirage-platform/tree/master/xen/lib&quot;&gt;one that invokes Xen &quot;hypercalls&quot; directly&lt;/a&gt; and one which uses the &lt;a href=&quot;https://github.com/xapi-project/ocaml-xen-lowlevel-libs&quot;&gt;Xen userspace library libxc&lt;/a&gt;. Both implementations satisfy a common signature, so it's easy to write code which will work in both userspace and kernelspace.&lt;/p&gt;&lt;p&gt;The ocamlfind library &lt;a href=&quot;https://github.com/mirage/shared-memory-ring&quot;&gt;shared-memory-ring&lt;/a&gt; provides functions to create and manipulate request/response rings in shared memory as used by the disk and network protocols. This library is a mix of 99.9% OCaml and 0.1% asm, where the asm is only needed to invoke memory barrier operations to ensure that metadata writes issued by one CPU core appear in the same order when viewed from another CPU core.&lt;/p&gt;&lt;p&gt;Finally the ocamlfind library &lt;a href=&quot;https://github.com/mirage/ocaml-xen-block-driver&quot;&gt;xenblock&lt;/a&gt; provides functions to hotplug and hotunplug disk devices, together with an implementation of the disk block protocol itself.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Making custom virtual disk servers with Mirage&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Let's experiment with making our own virtual disk server based on the Mirage example program, &lt;a href=&quot;https://github.com/mirage/xen-disk&quot;&gt;xen-disk&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;First, install &lt;a href=&quot;http://www.xen.org/&quot;&gt;Xen&lt;/a&gt;, &lt;a href=&quot;http://www.ocaml.org/&quot;&gt;OCaml&lt;/a&gt; and &lt;a href=&quot;http://opam.ocamlpro.com/&quot;&gt;OPAM&lt;/a&gt;. Second initialise your system:&lt;/p&gt;&lt;div class=&quot;ocaml&quot;&gt;&lt;pre&gt;&lt;code&gt;opam init
+eval `opam config env`
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;At the time of writing, not all the libraries were released as upstream OPAM packages, so it was necessary to add some extra repositories. This should not be necessary after the Mirage developer preview at &lt;a href=&quot;http://www.oscon.com/oscon2013/public/schedule/detail/28956&quot;&gt;OSCON 2013&lt;/a&gt;.&lt;/p&gt;&lt;div class=&quot;ocaml&quot;&gt;&lt;pre&gt;&lt;code&gt;opam remote add mirage-dev git&lt;span class=&quot;keyword2&quot;&gt;:&lt;/span&gt;//github.com/mirage/opam-repo-dev
+opam remote add xapi-dev git&lt;span class=&quot;keyword2&quot;&gt;:&lt;/span&gt;//github.com/xapi-project/opam-repo-dev
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Install the unmodified &lt;code&gt;xen-disk&lt;/code&gt; package, this will ensure all the build dependencies are installed:&lt;/p&gt;&lt;div class=&quot;ocaml&quot;&gt;&lt;pre&gt;&lt;code&gt;opam install xen-disk
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;When this completes it will have installed a command-line tool called &lt;code&gt;xen-disk&lt;/code&gt;. If you start a VM using your Xen toolstack of choice (&quot;xl create ...&quot; or &quot;xe vm-install ...&quot; or &quot;virsh create ...&quot;) then you should be able to run:&lt;/p&gt;&lt;div class=&quot;ocaml&quot;&gt;&lt;pre&gt;&lt;code&gt;xen-disk connect &lt;span class=&quot;keyword2&quot;&gt;&amp;lt;&lt;/span&gt;vmname&lt;span class=&quot;keyword2&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;which will hotplug a fresh block device into the VM &quot;&amp;lt;vmname&amp;gt;&quot; using the &quot;discard&quot; backend, which returns &quot;success&quot; to all read and write requests, but actually throws all data away. Obviously this backend should only be used for basic testing!&lt;/p&gt;&lt;p&gt;Assuming that worked ok, clone and build the source for &lt;code&gt;xen-disk&lt;/code&gt; yourself:&lt;/p&gt;&lt;div class=&quot;ocaml&quot;&gt;&lt;pre&gt;&lt;code&gt;git clone git&lt;span class=&quot;keyword2&quot;&gt;:&lt;/span&gt;//github.com/mirage/xen-disk
+cd xen-disk
+make
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;b&gt;Making a custom virtual disk implementation&lt;/b&gt;&lt;/p&gt;&lt;p&gt;The &lt;code&gt;xen-disk&lt;/code&gt; program has a set of simple built-in virtual disk implementations. Each one satisifies a simple signature, contained in &lt;a href=&quot;https://github.com/mirage/xen-disk/blob/master/src/storage.mli&quot;&gt;src/storage.mli&lt;/a&gt;:&lt;/p&gt;&lt;div class=&quot;ocaml&quot;&gt;&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;keyword4&quot;&gt;type&lt;/span&gt; configuration &lt;span class=&quot;keyword2&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;keyword2&quot;&gt;{&lt;/span&gt;
+  filename&lt;span class=&quot;keyword2&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;keyword3&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;keyword2&quot;&gt;;&lt;/span&gt;      &lt;span class=&quot;comments&quot;&gt;(** path where the data will be stored *)&lt;/span&gt;
+  format&lt;span class=&quot;keyword2&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;keyword3&quot;&gt;string&lt;/span&gt; option&lt;span class=&quot;keyword2&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;comments&quot;&gt;(** format of physical data *)&lt;/span&gt;
+&lt;span class=&quot;keyword2&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;comments&quot;&gt;(** Information needed to &quot;open&quot; a disk *)&lt;/span&gt;
+
+&lt;span class=&quot;keyword4&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;keyword4&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;keyword6&quot;&gt;S &lt;/span&gt;&lt;span class=&quot;keyword2&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;keyword4&quot;&gt;sig&lt;/span&gt;
+  &lt;span class=&quot;comments&quot;&gt;(** A concrete mechanism to access and update a virtual disk. *)&lt;/span&gt;
+
+  &lt;span class=&quot;keyword4&quot;&gt;type&lt;/span&gt; t
+  &lt;span class=&quot;comments&quot;&gt;(** An open virtual disk *)&lt;/span&gt;
+
+  &lt;span class=&quot;keyword4&quot;&gt;val&lt;/span&gt; open_disk&lt;span class=&quot;keyword2&quot;&gt;:&lt;/span&gt; configuration -&lt;span class=&quot;keyword2&quot;&gt;&amp;gt;&lt;/span&gt; t option &lt;span class=&quot;keyword5&quot;&gt;Lwt.&lt;/span&gt;t
+  &lt;span class=&quot;comments&quot;&gt;(** Given a configuration, attempt to open a virtual disk *)&lt;/span&gt;
+
+  &lt;span class=&quot;keyword4&quot;&gt;val&lt;/span&gt; size&lt;span class=&quot;keyword2&quot;&gt;:&lt;/span&gt; t -&lt;span class=&quot;keyword2&quot;&gt;&amp;gt;&lt;/span&gt; int64
+  &lt;span class=&quot;comments&quot;&gt;(** [size t] is the size of the virtual disk in bytes. The actual
+      number of bytes stored on media may be different. *)&lt;/span&gt;
+
+  &lt;span class=&quot;keyword4&quot;&gt;val&lt;/span&gt; read&lt;span class=&quot;keyword2&quot;&gt;:&lt;/span&gt; t -&lt;span class=&quot;keyword2&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;keyword5&quot;&gt;Cstruct.&lt;/span&gt;t -&lt;span class=&quot;keyword2&quot;&gt;&amp;gt;&lt;/span&gt; int64 -&lt;span class=&quot;keyword2&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;keyword3&quot;&gt;int&lt;/span&gt; -&lt;span class=&quot;keyword2&quot;&gt;&amp;gt;&lt;/span&gt; unit &lt;span class=&quot;keyword5&quot;&gt;Lwt.&lt;/span&gt;t
+  &lt;span class=&quot;comments&quot;&gt;(** [read t buf offset_sectors len_sectors] copies [len_sectors]
+      sectors beginning at sector [offset_sectors] from [t] into [buf] *)&lt;/span&gt;
+
+  &lt;span class=&quot;keyword4&quot;&gt;val&lt;/span&gt; write&lt;span class=&quot;keyword2&quot;&gt;:&lt;/span&gt; t -&lt;span class=&quot;keyword2&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;keyword5&quot;&gt;Cstruct.&lt;/span&gt;t -&lt;span class=&quot;keyword2&quot;&gt;&amp;gt;&lt;/span&gt; int64 -&lt;span class=&quot;keyword2&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;keyword3&quot;&gt;int&lt;/span&gt; -&lt;span class=&quot;keyword2&quot;&gt;&amp;gt;&lt;/span&gt; unit &lt;span class=&quot;keyword5&quot;&gt;Lwt.&lt;/span&gt;t
+  &lt;span class=&quot;comments&quot;&gt;(** [write t buf offset_sectors len_sectors] copies [len_sectors]
+      sectors from [buf] into [t] beginning at sector [offset_sectors]. *)&lt;/span&gt;
+&lt;span class=&quot;keyword4&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Let's make a virtual disk implementation which uses an existing disk image file as a &quot;gold image&quot;, but uses copy-on-write so that no writes persist. This is a common configuration in Virtual Desktop Infrastructure deployments and is generally handy when you want to test a change quickly, and revert it cleanly afterwards.&lt;/p&gt;&lt;p&gt;A useful Unix technique for file I/O is to &quot;memory map&quot; an existing file: this associates the file contents with a range of virtual memory addresses so that reading and writing within this address range will actually read or write the file contents. The &quot;mmap&quot; C function has a number of flags, which can be used to request &quot;copy on write&quot; behaviour. Reading the &lt;a href=&quot;http://caml.inria.fr/pub/docs/manual-ocaml/libref/Bigarray.Genarray.html&quot;&gt;OCaml manual Bigarray.map_file&lt;/a&gt; it says:&lt;/p&gt;&lt;blockquote&gt; &lt;p&gt;If shared is true, all modifications performed on the array are reflected in the file. This requires that fd be opened with write permissions. If shared is false, modifications performed on the array are done in memory only, using copy-on-write of the modified pages; the underlying file is not affected.&lt;/p&gt; &lt;/blockquote&gt;&lt;p&gt;So we should be able to make a virtual disk implementation which memory maps the image file and achieves copy-on-write by setting &quot;shared&quot; to false. For extra safety we can also open the file read-only.&lt;/p&gt;&lt;p&gt;Luckily there is already an &lt;a href=&quot;https://github.com/mirage/xen-disk/blob/master/src/backend.ml#L63&quot;&gt;&quot;mmap&quot; implementation&lt;/a&gt; in &lt;code&gt;xen-disk&lt;/code&gt;; all we need to do is tweak it slightly. Note that the &lt;code&gt;xen-disk&lt;/code&gt; program uses a co-operative threading library called &lt;a href=&quot;http://ocsigen.org/lwt/&quot;&gt;lwt&lt;/a&gt; which replaces functions from the OCaml standard library which might block with non-blocking variants. In particular &lt;code&gt;lwt&lt;/code&gt; uses &lt;code&gt;Lwt_bytes.map_file&lt;/code&gt; as a wrapper for the &lt;code&gt;Bigarray.Array1.map_file&lt;/code&gt; function. In the &quot;open-disk&quot; function we simply need to set &quot;shared&quot; to &quot;false&quot; to achieve the behaviour we want i.e.&lt;/p&gt;&lt;div class=&quot;ocaml&quot;&gt;&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;keyword4&quot;&gt;let&lt;/span&gt; open_disk configuration &lt;span class=&quot;keyword2&quot;&gt;=&lt;/span&gt;
+  &lt;span class=&quot;keyword4&quot;&gt;let&lt;/span&gt; fd &lt;span class=&quot;keyword2&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;keyword5&quot;&gt;Unix.&lt;/span&gt;openfile configuration.filename &lt;span class=&quot;keyword2&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;keyword5&quot;&gt;Unix.O_RDONLY &lt;/span&gt;&lt;span class=&quot;keyword2&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;keyword8&quot;&gt;0&lt;/span&gt;o0 &lt;span class=&quot;keyword4&quot;&gt;in&lt;/span&gt;
+  &lt;span class=&quot;keyword4&quot;&gt;let&lt;/span&gt; stats &lt;span class=&quot;keyword2&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;keyword5&quot;&gt;Unix.&lt;/span&gt;&lt;span class=&quot;keyword5&quot;&gt;LargeFile.&lt;/span&gt;fstat fd &lt;span class=&quot;keyword4&quot;&gt;in&lt;/span&gt;
+  &lt;span class=&quot;keyword4&quot;&gt;let&lt;/span&gt; mmap &lt;span class=&quot;keyword2&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;keyword5&quot;&gt;Lwt_bytes.&lt;/span&gt;map_file ~fd ~shared&lt;span class=&quot;keyword2&quot;&gt;:&lt;/span&gt;false &lt;span class=&quot;keyword2&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;keyword2&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;keyword4&quot;&gt;in&lt;/span&gt;
+  &lt;span class=&quot;keyword5&quot;&gt;Unix.&lt;/span&gt;close fd&lt;span class=&quot;keyword2&quot;&gt;;&lt;/span&gt;
+  return &lt;span class=&quot;keyword2&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;keyword6&quot;&gt;Some &lt;/span&gt;&lt;span class=&quot;keyword2&quot;&gt;(&lt;/span&gt;stats.&lt;span class=&quot;keyword5&quot;&gt;Unix.&lt;/span&gt;&lt;span class=&quot;keyword5&quot;&gt;LargeFile.&lt;/span&gt;st_size, &lt;span class=&quot;keyword5&quot;&gt;Cstruct.&lt;/span&gt;of_bigarray mmap&lt;span class=&quot;keyword2&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;keyword2&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The read and write functions can be left as they are:&lt;/p&gt;&lt;div class=&quot;ocaml&quot;&gt;&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;keyword4&quot;&gt;let&lt;/span&gt; read &lt;span class=&quot;keyword2&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;keyword8&quot;&gt;_&lt;/span&gt;, mmap&lt;span class=&quot;keyword2&quot;&gt;)&lt;/span&gt; buf offset_sectors len_sectors &lt;span class=&quot;keyword2&quot;&gt;=&lt;/span&gt;
+  &lt;span class=&quot;keyword4&quot;&gt;let&lt;/span&gt; offset_sectors &lt;span class=&quot;keyword2&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;keyword5&quot;&gt;Int64.&lt;/span&gt;to_int offset_sectors &lt;span class=&quot;keyword4&quot;&gt;in&lt;/span&gt;
+  &lt;span class=&quot;keyword4&quot;&gt;let&lt;/span&gt; len_bytes &lt;span class=&quot;keyword2&quot;&gt;=&lt;/span&gt; len_sectors &lt;span class=&quot;keyword2&quot;&gt;*&lt;/span&gt; sector_size &lt;span class=&quot;keyword4&quot;&gt;in&lt;/span&gt;
+  &lt;span class=&quot;keyword4&quot;&gt;let&lt;/span&gt; offset_bytes &lt;span class=&quot;keyword2&quot;&gt;=&lt;/span&gt; offset_sectors &lt;span class=&quot;keyword2&quot;&gt;*&lt;/span&gt; sector_size &lt;span class=&quot;keyword4&quot;&gt;in&lt;/span&gt;
+  &lt;span class=&quot;keyword5&quot;&gt;Cstruct.&lt;/span&gt;blit mmap offset_bytes buf &lt;span class=&quot;keyword8&quot;&gt;0&lt;/span&gt; len_bytes&lt;span class=&quot;keyword2&quot;&gt;;&lt;/span&gt;
+  return &lt;span class=&quot;keyword2&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;keyword2&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;keyword4&quot;&gt;let&lt;/span&gt; write &lt;span class=&quot;keyword2&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;keyword8&quot;&gt;_&lt;/span&gt;, mmap&lt;span class=&quot;keyword2&quot;&gt;)&lt;/span&gt; buf offset_sectors len_sectors &lt;span class=&quot;keyword2&quot;&gt;=&lt;/span&gt;
+  &lt;span class=&quot;keyword4&quot;&gt;let&lt;/span&gt; offset_sectors &lt;span class=&quot;keyword2&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;keyword5&quot;&gt;Int64.&lt;/span&gt;to_int offset_sectors &lt;span class=&quot;keyword4&quot;&gt;in&lt;/span&gt;
+  &lt;span class=&quot;keyword4&quot;&gt;let&lt;/span&gt; offset_bytes &lt;span class=&quot;keyword2&quot;&gt;=&lt;/span&gt; offset_sectors &lt;span class=&quot;keyword2&quot;&gt;*&lt;/span&gt; sector_size &lt;span class=&quot;keyword4&quot;&gt;in&lt;/span&gt;
+  &lt;span class=&quot;keyword4&quot;&gt;let&lt;/span&gt; len_bytes &lt;span class=&quot;keyword2&quot;&gt;=&lt;/span&gt; len_sectors &lt;span class=&quot;keyword2&quot;&gt;*&lt;/span&gt; sector_size &lt;span class=&quot;keyword4&quot;&gt;in&lt;/span&gt;
+  &lt;span class=&quot;keyword5&quot;&gt;Cstruct.&lt;/span&gt;blit buf &lt;span class=&quot;keyword8&quot;&gt;0&lt;/span&gt; mmap offset_bytes len_bytes&lt;span class=&quot;keyword2&quot;&gt;;&lt;/span&gt;
+  return &lt;span class=&quot;keyword2&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;keyword2&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Now if we rebuild and run something like:&lt;/p&gt;&lt;div class=&quot;ocaml&quot;&gt;&lt;pre&gt;&lt;code&gt;dd &lt;span class=&quot;keyword1&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;keyword2&quot;&gt;=&lt;/span&gt;/dev/zero &lt;span class=&quot;keyword2&quot;&gt;of&lt;/span&gt;&lt;span class=&quot;keyword2&quot;&gt;=&lt;/span&gt;disk.raw bs&lt;span class=&quot;keyword2&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;keyword8&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;keyword6&quot;&gt;M &lt;/span&gt;seek&lt;span class=&quot;keyword2&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;keyword8&quot;&gt;1024&lt;/span&gt; count&lt;span class=&quot;keyword2&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;keyword8&quot;&gt;1&lt;/span&gt;
+losetup /dev/loop0 disk.raw
+mkfs.ext3 /dev/loop0
+losetup -d /dev/loop0
+
+dist/build/xen-disk/xen-disk connect &lt;span class=&quot;keyword2&quot;&gt;&amp;lt;&lt;/span&gt;myvm&lt;span class=&quot;keyword2&quot;&gt;&amp;gt;&lt;/span&gt; --path disk.raw
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Inside the VM we should be able to do some basic speed testing:&lt;/p&gt;&lt;div class=&quot;ocaml&quot;&gt;&lt;pre&gt;&lt;code&gt;# dd &lt;span class=&quot;keyword1&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;keyword2&quot;&gt;=&lt;/span&gt;/dev/xvdb &lt;span class=&quot;keyword2&quot;&gt;of&lt;/span&gt;&lt;span class=&quot;keyword2&quot;&gt;=&lt;/span&gt;/dev/null bs&lt;span class=&quot;keyword2&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;keyword8&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;keyword6&quot;&gt;M &lt;/span&gt;iflag&lt;span class=&quot;keyword2&quot;&gt;=&lt;/span&gt;direct count&lt;span class=&quot;keyword2&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;keyword8&quot;&gt;100&lt;/span&gt;
+&lt;span class=&quot;keyword8&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;keyword2&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;keyword8&quot;&gt;0&lt;/span&gt; records &lt;span class=&quot;keyword4&quot;&gt;in&lt;/span&gt;
+&lt;span class=&quot;keyword8&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;keyword2&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;keyword8&quot;&gt;0&lt;/span&gt; records out
+&lt;span class=&quot;keyword8&quot;&gt;104857600&lt;/span&gt; bytes &lt;span class=&quot;keyword2&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;keyword8&quot;&gt;105&lt;/span&gt; MB&lt;span class=&quot;keyword2&quot;&gt;)&lt;/span&gt; copied, &lt;span class=&quot;keyword8&quot;&gt;0&lt;/span&gt;.&lt;span class=&quot;keyword8&quot;&gt;125296&lt;/span&gt; s, &lt;span class=&quot;keyword8&quot;&gt;837&lt;/span&gt; MB/s
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Plus we should be able to mount the filesystem inside the VM, make changes and then disconnect (send SIGINT to xen-disk by hitting Control+C on your terminal) without disturbing the underlying disk contents.&lt;/p&gt;&lt;p&gt;&lt;b&gt;So what else can we do?&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Thanks to Mirage it's now really easy to experiment with custom storage types for your existing VMs. If you have a cunning scheme where you want to hash block contents, and use the hashes as keys in some distributed datastructure -- go ahead, it's all easy to do. If you have ideas for improving the low-level block access protocol then Mirage makes those experiments very easy too.&lt;/p&gt;&lt;p&gt;If you come up with a cool example with Mirage, then send us a &lt;a href=&quot;https://github.com/mirage&quot;&gt;pull request&lt;/a&gt; or send us an email to the &lt;a href=&quot;http://www.openmirage.org/about/&quot;&gt;Mirage mailing list&lt;/a&gt; -- we'd love to hear about it!&lt;/p&gt; 
+   &lt;/div&gt;</content:encoded>
+	<dc:date>2013-07-18T11:20:00+00:00</dc:date>
+	<dc:creator>Dave Scott</dc:creator>
+</item>
+<item rdf:about="http://hh360.user.srcf.net/blog/?p=64">
+	<title>Heidi Howard: Profiling OCaml – Getting Started Guide</title>
+	<link>http://hh360.user.srcf.net/blog/2013/07/profiling-ocaml-getting-started-guide/</link>
+	<content:encoded>&lt;p&gt;&amp;#8220;Perf&amp;#8221; is a common command line linux tool used for code profiling, (&lt;a href=&quot;https://perf.wiki.kernel.org/index.php/Tutorial&quot;&gt;perf wiki&lt;/a&gt;). A alpha version of a OCaml native code compiler that output code, that can be analysis by perf is now avalaible in OPAM&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Installation&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Installing the perf compatible OCaml compiler is straight forward with OPAM, though quite time-consuming due to the need to re-install many packages&lt;/p&gt;
+
+&lt;div class=&quot;wp_syntax&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre class=&quot;bash&quot;&gt;$ opam remote add perf git:&lt;span&gt;//&lt;/span&gt;github.com&lt;span&gt;/&lt;/span&gt;mshinwell&lt;span&gt;/&lt;/span&gt;opam-repo-dev
+$ opam switch &lt;span&gt;4.01&lt;/span&gt;-perf-annotate
+$ &lt;span&gt;eval&lt;/span&gt; &lt;span&gt;`&lt;/span&gt;opam config &lt;span&gt;env&lt;/span&gt;&lt;span&gt;`&lt;/span&gt;
+$ opam &lt;span&gt;install&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+
+&lt;p&gt;Installing perf was also straight forward, in fact I already had it via the linux-tools package in apt-get for Ubuntu.&lt;/p&gt;
+
+&lt;div class=&quot;wp_syntax&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre class=&quot;bash&quot;&gt;&lt;span&gt;sudo&lt;/span&gt; &lt;span&gt;apt-get install&lt;/span&gt; linux-tools&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Usage&lt;/strong&gt;&lt;br /&gt;
+Compiling with the new perf-compatable Ocaml compiler was beautifully simple, running make within an existing project working first time without any further changes necessary.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Basics&lt;/strong&gt;&lt;br /&gt;
+Basic reporting is collected and viewed using:&lt;/p&gt;
+
+&lt;div class=&quot;wp_syntax&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre class=&quot;bash&quot;&gt;&lt;span&gt;sudo&lt;/span&gt; perf record .&lt;span&gt;/&lt;/span&gt;myprogram.native &lt;span&gt;-o&lt;/span&gt; myreport.data
+&lt;span&gt;sudo&lt;/span&gt; perf report &lt;span&gt;-i&lt;/span&gt; myreport.data
+&lt;span&gt;sudo&lt;/span&gt; perf script &lt;span&gt;-i&lt;/span&gt; myreport.data&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+
+&lt;p&gt;Similarly basic stats can be collected using:&lt;/p&gt;
+
+&lt;div class=&quot;wp_syntax&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre class=&quot;bash&quot;&gt;&lt;span&gt;sudo&lt;/span&gt; perf &lt;span&gt;stat&lt;/span&gt; .&lt;span&gt;/&lt;/span&gt;myprogram.native &lt;span&gt;-o&lt;/span&gt; myreport.data
+&lt;span&gt;sudo&lt;/span&gt; &lt;span&gt;cat&lt;/span&gt; myreport.data&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+
+&lt;p&gt;When finished you can switch back to your normal compiler version, i.e.&lt;/p&gt;
+
+&lt;div class=&quot;wp_syntax&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre class=&quot;bash&quot;&gt;$ opam switch 4.00.1
+$ &lt;span&gt;eval&lt;/span&gt; &lt;span&gt;`&lt;/span&gt;opam config &lt;span&gt;env&lt;/span&gt;&lt;span&gt;`&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;</content:encoded>
+	<dc:date>2013-07-10T07:10:37+00:00</dc:date>
+</item>
+<item rdf:about="urn:uuid:5222d531-d414-5ae8-a340-2eb88ed31fc0">
+	<title>Daniel Buenzli: On the book « OCaml from the very beginning »</title>
+	<link>http://www.amazon.co.uk/review/R28WYJ13WA94YL/ref=cm_cr_rdp_perm?ie=UTF8&amp;ASIN=0957671105&amp;linkCode=&amp;nodeID=&amp;tag=</link>
+	<content:encoded>&lt;p&gt;Cambridge overflows with OCaml programmers. I got to meet John Whitington of &lt;a href=&quot;http://www.coherentpdf.com/ocaml-libraries.html&quot;&gt;camlpdf&lt;/a&gt; fame. He kindly offered me a copy of his book « &lt;a href=&quot;http://ocaml-book.com&quot;&gt;OCaml from the very beginning&lt;/a&gt;. » I read it and made a small review &lt;a href=&quot;http://www.amazon.co.uk/review/R28WYJ13WA94YL/ref=cm_cr_rdp_perm?ie=UTF8&amp;ASIN=0957671105&amp;linkCode=&amp;nodeID=&amp;tag=&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;</content:encoded>
+	<dc:date>2013-07-04T22:43:32+00:00</dc:date>
+</item>
+<item rdf:about="http://hh360.user.srcf.net/blog/?p=90">
+	<title>Heidi Howard: Learning Async</title>
+	<link>http://hh360.user.srcf.net/blog/2013/07/learning-async/</link>
+	<content:encoded>&lt;p&gt;If your taking your first steps in Janestreet&amp;#8217;s Async library, here&amp;#8217;s some sources of help &amp;amp; support:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;My top 5 sources of Async Documentation&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Official Janestreet Docs for Async/Core: &lt;a href=&quot;https://ocaml.janestreet.com/ocaml-core/latest/doc/&quot;&gt;https://ocaml.janestreet.com/ocaml-core/latest/doc/&lt;/a&gt; These are generated from the .mli&amp;#8217;s in the Async source and you will quickly find places where ocamldoc has failed to cope with Core/Async complex module structure. In this case, I recommend the source code: &lt;a href=&quot;https://github.com/janestreet/async&quot;&gt;https://github.com/janestreet/async&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Dummy&amp;#8217;s guide to Async, a useful intro to bind, upon and map (the 3 fundemental functions): &lt;a href=&quot;http://janestreet.github.io/guide-async.html&quot;&gt;http://janestreet.github.io/guide-async.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Real World OCaml chapter on Async, covers Deferred basics, Ivars, Reader/Writer, TCP server, running the scheduler, Command, Pipes, Monitors, Delays, Choose and System Threads: &lt;a href=&quot;https://realworldocaml.org/beta3/en/html/concurrent-programming-with-async.html&quot;&gt;https://realworldocaml.org/beta3/en/html/concurrent-programming-with-async.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Yaron Minsky (one of co-authors of RWO) provides a nice little example of Async&amp;#8217;s RPC libraries: &lt;a href=&quot;https://bitbucket.org/yminsky/core-hello-world&quot;&gt;https://bitbucket.org/yminsky/core-hello-world&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;My favourite project for example Async and Lwt code is cohttp: &lt;a href=&quot;https://github.com/mirage/ocaml-cohttp&quot;&gt;https://github.com/mirage/ocaml-cohttp&lt;/a&gt;, otherwise there&amp;#8217;s OPAM&amp;#8217;s list of Async dependent project, useful for finding more example code: &lt;a href=&quot;http://opam.ocamlpro.com/pkg/async.109.38.00.html&quot;&gt;http://opam.ocamlpro.com/pkg/async.109.38.00.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Community&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Google group for Janestreet&amp;#8217;s Core &amp;amp; Async, the JS team are really helpful &lt;img src=&quot;http://hh360.user.srcf.net/blog/wp-includes/images/smilies/icon_smile.gif&quot; alt=&quot;:)&quot; class=&quot;wp-smiley&quot; /&gt;  : &lt;a href=&quot;https://groups.google.com/forum/#!forum/ocaml-core&quot;&gt;https://groups.google.com/forum/#!forum/ocaml-core&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Async issue tracker on Github is quiet but still a good point to start a conversation: &lt;a href=&quot;https://github.com/janestreet/async/issues?state=open&quot;&gt;https://github.com/janestreet/async/issues?state=open&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Installation&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;I recommend the installation chapter of Real World Ocaml: &lt;a href=&quot;https://realworldocaml.org/beta3/en/html/installation.html&quot;&gt;https://realworldocaml.org/beta3/en/html/installation.html&lt;/a&gt; and install instructions for OPAM: &lt;a href=&quot;http://opam.ocamlpro.com/doc/Quick_Install.html&quot;&gt;http://opam.ocamlpro.com/doc/Quick_Install.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Janestreet provide some installation hints, though this is covered for comprehensively in RWO (linked above): &lt;a href=&quot;http://janestreet.github.io/installation.html&quot;&gt;http://janestreet.github.io/installation.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Very light background reading: &lt;a href=&quot;https://ocaml.janestreet.com/?q=node/100&quot;&gt;https://ocaml.janestreet.com/?q=node/100&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;</content:encoded>
+	<dc:date>2013-07-03T12:00:38+00:00</dc:date>
+</item>
+<item rdf:about="http://anil.recoil.org/2013/06/17/real-world-ocaml-beta-available">
+	<title>Anil Madhavapeddy: Phew, Real World OCaml beta now available.</title>
+	<link>http://anil.recoil.org/2013/06/17/real-world-ocaml-beta-available.html</link>
+	<content:encoded>&lt;p&gt;When I finished writing my PhD, I swore (as most recent graduates do) to never write a thesis again. Instead, life would be a series of pleasantly short papers, interspersed with the occasional journal article, and lots of not-writing-huge-book-activity in general.&lt;/p&gt;
+&lt;a href=&quot;http://realworldocaml.org&quot;&gt;&lt;img align=&quot;right&quot; src=&quot;http://anil.recoil.org/images/oreilly-cover.gif&quot; /&gt;&lt;/a&gt;
+&lt;p&gt;Then &lt;a href=&quot;http://cufp.org/conference/2011&quot;&gt;CUFP 2011&lt;/a&gt; happened, and I find myself in a bar in Tokyo with &lt;a href=&quot;https://twitter.com/yminsky&quot;&gt;Yaron Minsky&lt;/a&gt; and &lt;a href=&quot;http://monkey.org/~marius&quot;&gt;Marius Eriksen&lt;/a&gt;, and a dangerous bet ensued. A few short weeks after that, and Yaron and I are chatting with &lt;a href=&quot;https://plus.google.com/111219778721183890368&quot;&gt;Jason Hickey&lt;/a&gt; in California about writing a book about the language we love. I&amp;#8217;m still telling myself that this will never actually happen, but then everyone&amp;#8217;s favourite Californirishman &lt;a href=&quot;http://www.serpentine.com/blog/&quot;&gt;Bryan O&amp;#8217;Sullivan&lt;/a&gt; puts us in touch with O&amp;#8217;Reilly, who published his excellent &lt;a href=&quot;http://realworldhaskell.org&quot;&gt;Haskell&lt;/a&gt; tome.&lt;/p&gt;
+
+&lt;p&gt;O&amp;#8217;Reilly arranged everything incredibly fast, with our editor &lt;a href=&quot;http://radar.oreilly.com/andyo&quot;&gt;Andy Oram&lt;/a&gt; driving us through the process. We decided early on that we wanted to write a book that had opinions based our personal experience: about how OCaml code should be written, about the standard library involved, and generally making functional programming more accessible. Along the way, we&amp;#8217;ve been working incredibly hard on the underlying software platform too, with &lt;a href=&quot;http://ocaml.janestreet.com&quot;&gt;Jane Street&lt;/a&gt;, &lt;a href=&quot;http://ocamlpro.com&quot;&gt;OCamlPro&lt;/a&gt; and my own group &lt;a href=&quot;http://ocaml.io&quot;&gt;OCaml Labs&lt;/a&gt; working together on all the pieces. There&amp;#8217;s still a lot of work left to do, of course, but we&amp;#8217;re right on track to get all this released very soon now.&lt;/p&gt;
+
+&lt;p&gt;So, without further ado, I was very pleased to send this e-mail this morning. (and once again reaffirm my committment to never writing another book ever again. Until next time!)&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Yaron Minsky, Jason Hickey and I are pleased to announce the beta release of our forthcoming O&amp;#8217;Reilly book, called &amp;#8220;Real World OCaml&amp;#8221;, available online at &lt;a href=&quot;http://realworldocaml.org&quot;&gt;http://realworldocaml.org&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;The book is split into three parts: language concepts, tools and techniques, and understanding the runtime. As promised last year, we are making a public beta available for community review and to help us hunt down inaccuracies and find areas that need more clarification.&lt;/p&gt;
+
+&lt;p&gt;We&amp;#8217;ve had the book in closed alpha for six months or so and have developed a feedback system that uses Github to record your comments. This lets us follow up to each review with clarifications and keep track of our progress in fixing issues. During alpha, we&amp;#8217;ve received over 1400 comments in this fashion (and addressed the vast majority of them!). However, since we anticipate more comments coming in from a public beta, we would request that you read the FAQ to avoid drowning us in repeat comments: &lt;a href=&quot;http://www.realworldocaml.org/#faq&quot;&gt;http://www.realworldocaml.org/#faq&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;(TL;DR followup another comment on Github directly if you can instead of creating a new issue via the web interface)&lt;/p&gt;
+
+&lt;p&gt;This release is available in HTML format online at: &lt;a href=&quot;http://realworldocaml.org&quot;&gt;http://www.realworldocaml.org&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;O&amp;#8217;Reilly is currently preparing a Rough Cuts release that will make the beta available as PDF and in popular eBook formats. We anticipate that this will be available later this week, and I&amp;#8217;ll send a followup when that happens.&lt;/p&gt;
+
+&lt;p&gt;Finally, we would especially like to thank our alpha reviewers. Their &lt;a href=&quot;https://github.com/ocamllabs/rwo-comments/issues&quot;&gt;feedback&lt;/a&gt; has been invaluable to the beta release. The book also includes substantial contributions to individual chapters from Jeremy Yallop (FFI), Stephen Weeks (GC) and Leo White (objects).&lt;/p&gt;
+
+&lt;p&gt;If you have any comments that you&amp;#8217;d like to send directly by e-mail, please contact us at &lt;a href=&quot;mailto:rwo-authors@recoil.org&quot;&gt;rwo-authors@recoil.org&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Release notes for beta1:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The first-class modules chapter is incomplete, pending some portability improvements to the ocaml-plugins Core library.&lt;/li&gt;
+
+&lt;li&gt;The binary serialization chapter is also incomplete, but has just enough to teach you about the Async RPC library.&lt;/li&gt;
+
+&lt;li&gt;The installation chapter will be revised in anticipation of the OCaml 4.1 release, and is currently quite source-based.&lt;/li&gt;
+
+&lt;li&gt;The packaging and build systems chapter hasn&amp;#8217;t been started yet. We&amp;#8217;re still deciding whether or not to make this an online pointer rather than a print chapter, since it&amp;#8217;s likely to change quite fast.&lt;/li&gt;
+
+&lt;li&gt;We are preparing exercises per chapter that are not included in this particular beta release, but will be available online as soon as possible.&lt;/li&gt;
+
+&lt;li&gt;The code examples will all be clonable as a separate repository in beta2.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;best, Yaron, Jason and Anil&lt;/p&gt;
+&lt;/blockquote&gt;</content:encoded>
+	<dc:date>2013-06-16T23:00:00+00:00</dc:date>
+</item>
+<item rdf:about="http://www.cl.cam.ac.uk/projects/ocamllabs/news/2013-06-01">
+	<title>Monthly News: Jun 2013 news update</title>
+	<link>http://www.cl.cam.ac.uk/projects/ocamllabs/news/index.html#Jun%202013</link>
+	<content:encoded>&lt;div&gt;
+      &lt;p&gt;&lt;a href=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/images/rwo-celebration.jpg&quot;&gt;&lt;img src=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/images/rwo-celebration-thumb.jpg&quot; class=&quot;left&quot; /&gt;&lt;/a&gt;
+The rain continues to plummet down relentlessly as &quot;summer&quot; starts in OCaml
+Labs. The most exciting news has been the public release of the &lt;a href=&quot;https://realworldocaml.org&quot;&gt;Real World
+OCaml&lt;/a&gt;, which hit the front page of the usual news
+aggregators and generated huge interest!  This (reminiscent of the Xen 1.0
+release) promptly took down servers for a couple of hours, but we managed to
+minimise downtime in time for the Californians waking up.&lt;/p&gt;
+&lt;p&gt;O'Reilly has also started selling PDF copies of the book under their &lt;a href=&quot;http://shop.oreilly.com/product/0636920024743.do&quot;&gt;Rough
+Cuts&lt;/a&gt; program.  This gives you
+a copy of the final book when it's released too.  Commenting is still open
+on the &lt;a href=&quot;http://realworldocaml.org&quot;&gt;online version&lt;/a&gt;, so please do feel free to
+participate there if you have time.&lt;/p&gt;
+&lt;h3 id=&quot;SystemsProjects&quot;&gt; Systems Projects&lt;/h3&gt;
+&lt;p&gt;&lt;b&gt;Mirage&lt;/b&gt;: Anil and Dave did the last of the sweeping build changes to make
+Mirage friendlier to use for beginners.  Previously, we required a custom OPAM
+switch to build kernels, but now we use &lt;a href=&quot;http://www.openmirage.org/wiki/weekly-2013-06-11&quot;&gt;virtual
+packages&lt;/a&gt; to separate the
+choice of compiler and packages.  This of course breaks all our documentation,
+but we're going to do a big sweep in July before
+&lt;a href=&quot;http://www.oscon.com/oscon2013/public/schedule/speaker/109140&quot;&gt;OSCON&lt;/a&gt; with the
+new scheme.  Vincent has also been burning through the core platform libraries,
+cleaning them up and adding documentation strings.  He is also building a
+shared memory &lt;a href=&quot;http://github.com/vbmithr/ocaml-vchan&quot;&gt;vchan&lt;/a&gt; driver that will
+make parallel-Mirage unikernels very easy to coordinate on the same host.&lt;/p&gt;
+&lt;p&gt;The huge news from our friends at Citrix is the open-sourcing of
+&lt;a href=&quot;http://www.xenserver.org&quot;&gt;XenServer&lt;/a&gt;, which is the popular Citrix product that
+embeds the &lt;a href=&quot;https://github.com/xapi-project&quot;&gt;OCaml XAPI&lt;/a&gt; cloud management
+stack.  There are almost 100 major components
+&lt;a href=&quot;http://github.com/xenserver&quot;&gt;released&lt;/a&gt; as part of this, several of which can
+be directly reused with Mirage.  Mirage was always an ambitious project, but
+it's all coming together now thanks to bold moves such as this from Citrix!&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Signpost:&lt;/b&gt; We woke up to the excellent but slightly scary news that
+our &lt;a href=&quot;https://www.usenix.org/conference/foci13&quot;&gt;USENIX FOCI&lt;/a&gt; paper was accepted.
+This now means that we get to present it in August at USENIX Security, but
+the team is now racing to pull together the prototypes into a complete system
+before the conference.  Nothing like a deadline to focus the mind!  We're
+also working on the camera-ready version of the paper, which we will share
+here when it's ready.&lt;/p&gt;
+&lt;h3 id=&quot;PlatformProjects&quot;&gt; Platform Projects&lt;/h3&gt;
+&lt;p&gt;&lt;b&gt;OCamlot:&lt;/b&gt; David Sheets did an astounding job at pulling together a
+working continuous build system in a very short amount of time, and promptly
+managed to melt some of the older &lt;a href=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/tasks/platform.html#Machine%20Pool&quot;&gt;non-x86
+machines&lt;/a&gt; in Anil's office.  Once Anil
+sadly replaced them, the builder churned through a matrix of different compiler
+versions (4.0,4.1dev,4.2dev), architectures (x86, x86_64, ARM, PowerPC), and
+operating systems (Debian, Ubuntu, FreeBSD, OpenBSD to start with).  There's
+a &lt;a href=&quot;https://ocaml-www3.ocamllabs.cl.cam.ac.uk/github/OCamlPro/opam-repository&quot;&gt;development URL&lt;/a&gt;, but
+the next step is to retire this and move it to a proper home at &lt;a href=&quot;http://ocaml.org&quot;&gt;ocaml.org&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Having continuous build for OPAM is really, really useful though, as it lets us
+vet pull requests on several architectures before merging them. It also let
+Anil repair OCaml on &lt;a href=&quot;https://github.com/avsm/ocaml/commit/c1da5f35cda0ee85e576197b88f503333ed9e9a1&quot;&gt;OpenBSD/macppc&lt;/a&gt;
+too, which is possibly the most obscure fix he's done in a while.&lt;/p&gt;
+&lt;p&gt;The next steps with OCamlot are to take a shot at porting the core to
+&lt;a href=&quot;http://github.com/janestreet/jenga&quot;&gt;Jenga&lt;/a&gt;, which is Jane Street's next-generation
+distributed build system.  This should let us improve the fault-tolerance and
+logging aspects of it before putting it properly into production later in the summer.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Ctypes:&lt;/b&gt; The May &lt;a href=&quot;http://github.com/ocamllabs/ocaml-ctypes&quot;&gt;release&lt;/a&gt;
+brought with it a good chunk of feedback, so Jeremy spent time incorporating
+that and contributing to the Real World OCaml ctypes chapter.  He also added
+support for garbage-collecting closures passed to C, and also very cool support
+for &lt;a href=&quot;https://github.com/ocamllabs/ocaml-ctypes/pull/27&quot;&gt;printing C types and values&lt;/a&gt;.
+Our friends at Citrix have started looking at ctypes, and Rob Hoes has already
+used it to write &lt;a href=&quot;https://github.com/robhoes/ocaml-libnl&quot;&gt;bindings&lt;/a&gt; to the
+Netlink Protocol Library Suite.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/images/daniel-presentation-vg.jpg&quot;&gt;&lt;img src=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/images/daniel-presentation-vg-thumb.jpg&quot; class=&quot;right&quot; /&gt;&lt;/a&gt;
+&lt;b&gt;OPAM-doc&lt;/b&gt;: Vincent Botbol got the documentation generator stable enough
+to pass the Core library through.  This is particularly challenging since Core
+exercises pretty much every trick in the book when it comes to the use of the
+module system.  However, Vincent successfully demonstrated the workflow of
+OPAM-doc at the end-of-month meeting, and is aiming to have a public release
+via OPAM in July (hopefully in time for the next beta release of Real World OCaml,
+which uses Core heavily).&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Visualisation libraries:&lt;/b&gt; &lt;a href=&quot;http://erratique.ch/contact.en&quot;&gt;Daniel Bünzli&lt;/a&gt; has
+been spending a few months based in Citrix, working on a foundational new
+declarative drawing library written in pure OCaml.  The &lt;a href=&quot;http://erratique.ch/software/vg&quot;&gt;Vg&lt;/a&gt; is already quite functional despite
+still being in beta, and features a &lt;a href=&quot;http://erratique.ch/software/vg/demos/rhtmlc.html#arrowhead&quot;&gt;Javascript backend&lt;/a&gt;
+that renders to both SVG and Canvas in HTML5.  That's not all though!  He's
+also developing the &lt;a href=&quot;http://erratique.ch/software/vz&quot;&gt;Vz&lt;/a&gt; visualization library
+that uses Vg to assemble more complex scenes and graphs.  Daniel's going to
+join us in OCaml Labs for the remainder of the summer, so we're looking
+forward to developing this more and using it on our various Platform projects
+such as OCamlot.&lt;/p&gt;
+&lt;h3 id=&quot;Outreach&quot;&gt; Outreach&lt;/h3&gt;
+&lt;p&gt;&lt;b&gt;Real World OCaml:&lt;/b&gt; As mentioned earlier, the beta release of RWO went
+splendidly, with a pleasing vibe that the book is what people expected.  There
+were some interesting criticisms of the choice of Github authentication, but
+we've had over 6000 registered commentators despite this (and of course, we
+have plans &lt;a href=&quot;http://nymote.org&quot;&gt;brewing&lt;/a&gt; to tackle the identity problem).&lt;/p&gt;
+&lt;p&gt;No beta release is perfect, of course, and our now-public commenting system has
+resulted in &lt;a href=&quot;https://github.com/ocamllabs/rwo-comments/issues&quot;&gt;over 1500&lt;/a&gt;
+issues being raised.  Well, that's all of Yaron, Anil and Jason's free time
+gone for some time!&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/images/amir-shisha.jpg&quot;&gt;&lt;img src=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/images/amir-shisha-thumb.jpg&quot; class=&quot;right&quot; /&gt;&lt;/a&gt;
+&lt;b&gt;OCaml.org&lt;/b&gt;: We're in the process of looking at the site as a whole and
+designing the workflow we'd like to have for growing and maintaining it.  Some
+discussions have taken place about using Markdown in place of the current HTML
+snippets, which would make it easier for external contributors to get involved.
+In the meantime, Amir has converted the current site to Markdown format to see
+how this process would work in practice.  You can see his experimenting and
+scripts in the &lt;a href=&quot;https://github.com/ocamllabs/ocaml.org-temp&quot;&gt;temporary repo&lt;/a&gt; in
+the &lt;code&gt;markdown-site/&lt;/code&gt; folder.
+Philippe also showed off &lt;a href=&quot;https://github.com/pw374/MPP-language-blender&quot;&gt;MPP&lt;/a&gt;
+at the internal meetings, and is stabilising it for a public release this
+summer (once it has been integrated into the ocaml.org workflow).&lt;/p&gt;
+&lt;p&gt;This month also had a number of programming language gurus show up at the Lab
+for the &lt;em&gt;Algebraic Effects and Handlers&lt;/em&gt; workshop organised by &lt;a href=&quot;http://www.cl.cam.ac.uk/~ss368/&quot;&gt;Sam
+Staton&lt;/a&gt;.  Most of the group attended this, as
+we're all interested in how to encode effects for several of our projects (most
+notably &lt;a href=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/tasks/t2.html#Irminsule&quot;&gt;Irminsule&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;We also enjoyed a visit by &lt;a href=&quot;https://github.com/bvaugon&quot;&gt;Benoît Vaugon&lt;/a&gt;, who gave a talk on his
+&lt;a href=&quot;http://oud.ocaml.org/2012/slides/oud2012-paper10-slides.pdf&quot;&gt;OCamlCC&lt;/a&gt;
+OCaml-to-C compiler, and also participated in a talk on
+&lt;a href=&quot;http://www.algo-prog.info/ocaml_for_pic/web/index.php?id=ocapic&quot;&gt;OCAPIC&lt;/a&gt;. He
+also chatted with us about his alternative &lt;a href=&quot;http://caml.inria.fr/mantis/view.php?id=6017&quot;&gt;GADT-based implementation of
+Printf&lt;/a&gt;, which promises to both
+speed up and simplify the printer support in OCaml (and also relieve Mirage of
+another dependency on &lt;code&gt;libc&lt;/code&gt;).&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;i&gt;Link roundup:&lt;/i&gt;&lt;/p&gt;
+&lt;ul&gt;
+ &lt;li&gt;&lt;a href=&quot;http://blog.xen.org/index.php/2013/06/25/xenserver-org-and-the-xen-project/&quot; class=&quot;icon-community&quot;&gt;XenServer open-sourced!&lt;/a&gt; &lt;em&gt;(Jun 25th)&lt;/em&gt;
+ &lt;/li&gt;
+ &lt;li&gt;&lt;a href=&quot;http://realworldocaml.org&quot; class=&quot;icon-quick-links&quot;&gt;Real World OCaml public beta now available.&lt;/a&gt; &lt;em&gt;(Jun 17th)&lt;/em&gt;
+ &lt;/li&gt;
+&lt;/ul&gt;
+
+   &lt;/div&gt;</content:encoded>
+	<dc:date>2013-06-01T12:00:00+00:00</dc:date>
+	<dc:creator>Anil Madhavapeddy</dc:creator>
+</item>
+<item rdf:about="http://openmirage.org/blog/the-road-to-a-dev-release">
+	<title>MirageOS: The road to a developer preview at OSCON 2013</title>
+	<link>http://openmirage.org/blog/the-road-to-a-dev-release</link>
+	<content:encoded>&lt;div&gt;
+      &lt;p&gt;There's been a crazy stream of activity since the start of the year, but the most important news is that we have a release target for an integrated developer preview of the Mirage stack: a talk at &lt;a href=&quot;http://www.oscon.com/oscon2013/public/schedule/detail/28956&quot;&gt;O'Reilly OSCon&lt;/a&gt; in July!  Do turn up there and find &lt;a href=&quot;http://dave.recoil.org&quot;&gt;Dave Scott&lt;/a&gt; and &lt;a href=&quot;http://anil.recoil.org&quot;&gt;Anil Madhavapeddy&lt;/a&gt; showing off interactive demonstrations.&lt;/p&gt;&lt;p&gt;Meanwhile, another significant announcement has been that Xen is &lt;a href=&quot;http://www.linuxfoundation.org/news-media/announcements/2013/04/xen-become-linux-foundation-collaborative-project&quot;&gt;joining the Linux Foundation&lt;/a&gt; as a collaborative project.  This is great news for Mirage: as a library operating system, we can operate just as easily under other hypervisors, and even on bare-metal devices such as the &lt;a href=&quot;http://raspberrypi.org&quot;&gt;Raspberry Pi&lt;/a&gt;.  We're very much looking forward to getting the Xen-based developer release done, and interacting with the wider Linux community (and FreeBSD, for that matter, thanks to Gabor Pali's &lt;a href=&quot;https://github.com/pgj/mirage-kfreebsd&quot;&gt;kFreeBSD&lt;/a&gt; backend).&lt;/p&gt;&lt;p&gt;Here's some other significant news from the past few months:&lt;/p&gt;&lt;ul&gt; &lt;li&gt; &lt;p&gt;&lt;a href=&quot;http://www.ocamlpro.com/blog/2013/03/14/opam-1.0.0.html&quot;&gt;OPAM 1.0 was released&lt;/a&gt;, giving Mirage a solid package manager for handling the many libraries required to glue an application together.  &lt;a href=&quot;https://github.com/vbmithr&quot;&gt;Vincent Bernardoff&lt;/a&gt; joined the team at Citrix and has been building a Mirage build-frontend called &lt;a href=&quot;https://github.com/mirage/mirari&quot;&gt;Mirari&lt;/a&gt; to hide much of the system complexity from a user who isn't too familiar with either Xen or OCaml.&lt;/p&gt; &lt;/li&gt;&lt;li&gt; &lt;p&gt;A new group called the &lt;a href=&quot;http://ocaml.io&quot;&gt;OCaml Labs&lt;/a&gt; has started up in the &lt;a href=&quot;http://www.cl.cam.ac.uk&quot;&gt;Cambridge Computer Laboratory&lt;/a&gt;, and is working on improving the OCaml toolchain and platform.  This gives Mirage a big boost, as we can re-use several of the documentation, build and test improvements in our own releases.  You can read up on the group's activities via the &lt;a href=&quot;http://ocaml.io/news&quot;&gt;monthly updates&lt;/a&gt;, or browse through the various &lt;a href=&quot;http://ocaml.io/tasks&quot;&gt;projects&lt;/a&gt;.  One of the more important projects is the &lt;a href=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/tasks/platform.html#OCamlot&quot;&gt;OCamlot&lt;/a&gt; continuous build infrastructure, which will also be testing Mirage kernels as one of the supported backends.&lt;/p&gt; &lt;/li&gt;&lt;li&gt; &lt;p&gt;As we head into release mode, we've started &lt;a href=&quot;http://openmirage.org/wiki/tag/overview/meetings&quot;&gt;weekly meetings&lt;/a&gt; to coordinate all the activities.  We're keeping notes as we go along, so you should be able to skim the notes and &lt;a href=&quot;https://lists.cam.ac.uk/pipermail/cl-mirage/&quot;&gt;mailing list archives&lt;/a&gt; to get a feel for the overall activities.  Anil is maintaining a &lt;a href=&quot;http://openmirage.org/wiki/dev-preview-checklist&quot;&gt;release checklist&lt;/a&gt; for the summer developer preview.&lt;/p&gt; &lt;/li&gt;&lt;li&gt; &lt;p&gt;Anil (along with Yaron Minsky and Jason Hickey) is finishing up an O'Reilly book on &lt;a href=&quot;http://realworldocaml.org&quot;&gt;Real World OCaml&lt;/a&gt;, which will be a useful guide to using OCaml for systems and network programming. If you'd like to review an early copy, please get in touch.  The final book is anticipated to be released towards the end of the year, with a &lt;a href=&quot;http://shop.oreilly.com/category/roughcuts.do&quot;&gt;Rough Cut&lt;/a&gt; at the end of the summer.&lt;/p&gt; &lt;/li&gt;&lt;li&gt; &lt;p&gt;The core system was described in an &lt;a href=&quot;http://anil.recoil.org/papers/2013-asplos-mirage.pdf&quot;&gt;ASPLOS 2013&lt;/a&gt; paper, which should help you understand the background behind library operating systems. Some of the Mirage libraries are also currently being integrated into the next-generation &lt;a href=&quot;http://blogs.citrix.com/2012/05/17/introducing-windsor-a-new-xen-based-virtualization-architecture/&quot;&gt;Windsor&lt;/a&gt; release of the Xen Cloud Platform, which means that several of the libraries will be used in production and hence move beyond research-quality code.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;&lt;p&gt;In the next few months, the installation notes and getting started guides will all be revamped to match the reality of the new tooling, so expect some flux there.   If you want to take an early try of Mirage beforehand, don't forget to hop on the &lt;code&gt;#mirage&lt;/code&gt; IRC channel on Freenode and ping us with questions directly.  We will also be migrating some of the project infrastructure to be fully self-hosted on Mirage and Xen, and placing some of the services onto the new &lt;a href=&quot;http://xenproject.org&quot;&gt;xenproject.org&lt;/a&gt; infrastructure.&lt;/p&gt; 
+   &lt;/div&gt;</content:encoded>
+	<dc:date>2013-05-20T16:20:00+00:00</dc:date>
+	<dc:creator>Anil Madhavapeddy</dc:creator>
+</item>
+<item rdf:about="http://www.cl.cam.ac.uk/projects/ocamllabs/news/2013-05-01">
+	<title>Monthly News: May 2013 news update</title>
+	<link>http://www.cl.cam.ac.uk/projects/ocamllabs/news/index.html#May%202013</link>
+	<content:encoded>&lt;div&gt;
+      &lt;p&gt;&lt;a href=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/images/thomas-nycoug-2013.jpg&quot;&gt;&lt;img src=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/images/thomas-nycoug-2013-thumb.jpg&quot; class=&quot;left&quot; /&gt;&lt;/a&gt;
+May is exam time in Cambridge, and the corridors of the OCaml Labs resounded
+with the wailing of frantic students finishing their dissertations and
+preparing for exams.  We welcomed &lt;a href=&quot;https://github.com/vincent-botbol&quot;&gt;Vincent Botbol&lt;/a&gt; to join us for a summer internship,
+and he started hacking on the new &lt;a href=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/tasks/platform.html#OPAM%20Doc&quot;&gt;opam-doc&lt;/a&gt;
+right away.&lt;/p&gt;
+&lt;p&gt;Anil, Thomas, Leo and Amir also visited &lt;a href=&quot;http://janestreet.com&quot;&gt;Jane
+Street&lt;/a&gt; HQ in New York City, where we had a productive
+couple of days reviewing our projects and getting feedback from them about
+approaches to multicore and type system enhancements. &lt;a href=&quot;http://ashishagarwal.org&quot;&gt;Ashish
+Agarwal&lt;/a&gt; also organised a fun evening with the &lt;a href=&quot;http://www.meetup.com/NYC-OCaml/events/117222022/&quot;&gt;New
+York OCaml Users Group&lt;/a&gt;,
+where Anil and Thomas presented our plans for the nascent OCaml Platform.&lt;/p&gt;
+&lt;h3 id=&quot;SystemsProjects&quot;&gt; Systems Projects&lt;/h3&gt;
+&lt;p&gt;&lt;b&gt;Mirage:&lt;/b&gt; This was a month of consolidation and bugfixing in Mirage.  We've
+been settling into weekly meetings to coordinate the hacking between us and
+Citrix, and the minutes (&lt;a href=&quot;http://www.openmirage.org/wiki/weekly-2013-05-14&quot;&gt;1&lt;/a&gt;
+&lt;a href=&quot;http://www.openmirage.org/wiki/weekly-2013-05-21&quot;&gt;2&lt;/a&gt;
+&lt;a href=&quot;http://www.openmirage.org/wiki/weekly-2013-05-28&quot;&gt;3&lt;/a&gt;) may be useful if you
+want to catch up.  The biggest bugbear is always the build system, and we've
+been exploring the use of &lt;a href=&quot;http://github.com/janestreet/jenga&quot;&gt;Jenga&lt;/a&gt; as the
+eventual async-aware coordination and build system for running Mirage kernels.
+Dave made great progress with a
+&lt;a href=&quot;http://github.com/djs55/message-switch&quot;&gt;message-switch&lt;/a&gt; that coordinates
+multiple kernels, and Balraj fixed several performance regressions in the
+TCP/IP stack by building unit tests that spawn millions of parallel TCP
+connections.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Signpost:&lt;/b&gt; We took a break from building prototypes to submit a paper on the
+basic design to the USENIX Free and Open Communications (&lt;a href=&quot;https://www.usenix.org/conference/foci13&quot;&gt;FOCI
+2013&lt;/a&gt;) workshop.  Haris and Heidi
+blazed a path on writing this paper, and we've got even more ideas rolling
+around about how to use DNSSEC to break the cloud deadlock.  The
+&lt;a href=&quot;http://github.com/mirage/ocaml-dns&quot;&gt;ocaml-dns&lt;/a&gt; continues to grow features too.&lt;/p&gt;
+&lt;h3 id=&quot;PlatformProjects&quot;&gt; Platform Projects&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/images/nycoug-drinkup-2013.jpg&quot;&gt;&lt;img src=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/images/nycoug-drinkup-2013-thumb.jpg&quot; class=&quot;right&quot; /&gt;&lt;/a&gt;
+&lt;b&gt;Ctypes:&lt;/b&gt; Jeremy
+&lt;a href=&quot;https://sympa.inria.fr/sympa/arc/caml-list/2013-06/msg00046.html&quot;&gt;announced&lt;/a&gt;
+the first release of a new foreign-function mechanism for OCaml that doesn't
+require you to write any C stubs at all!  You can browse the &lt;a href=&quot;https://github.com/ocamllabs/ocaml-ctypes&quot;&gt;source
+code&lt;/a&gt; and
+&lt;a href=&quot;https://github.com/ocamllabs/ocaml-ctypes/wiki/ctypes-tutorial&quot;&gt;tutorial&lt;/a&gt;, and
+install it via OPAM.  This is very much the first 0.1 release, and we have
+exciting future developments to turn this into a full-fledged replacement for
+the fast-but-rather-difficult-to-use-right OCaml FFI.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;OPAM-doc:&lt;/b&gt; Vincent Botbol started building on Leo's work on the new
+&lt;a href=&quot;http://github.com/vincent-botbol/opam-doc&quot;&gt;opam-doc&lt;/a&gt; tool. This is intended to
+replace the venerable &lt;code&gt;ocamldoc&lt;/code&gt; with one that uses all the latest features of
+the compiler.  In particular, it can use the new typed AST &lt;code&gt;cmt&lt;/code&gt; output to
+avoid duplicating the compiler functionality, and can also build up a global
+package table to generate complete cross-references across an entire OPAM 
+collection.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;OCamlot:&lt;/b&gt; David has been building up the libraries and tools needed for
+the &lt;a href=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/tasks/platform.html#OCamlot%200.2.0&quot;&gt;continuous build&lt;/a&gt; infrastructure.
+This includes much-improved
+&lt;a href=&quot;http://github.com/avsm/ocaml-github&quot;&gt;ocaml-github&lt;/a&gt;, bindings, which are now
+being used to power the &lt;a href=&quot;https://realworldocaml.org&quot;&gt;Real World OCaml&lt;/a&gt; site as
+well as well as OCamlot.  In addition, he's got an interesting collection of
+regular expressions to automatically triage common failures from OPAM
+(such as missing external dependencies), that should help reduce the manual
+burden of getting thousands of tests results dumped on the small OPAM team.&lt;/p&gt;
+&lt;h3 id=&quot;CompilerProjects&quot;&gt; Compiler Projects&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/images/janestreet-hq-2013.jpg&quot;&gt;&lt;img src=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/images/janestreet-hq-2013-thumb.jpg&quot; class=&quot;left&quot; /&gt;&lt;/a&gt;
+&lt;b&gt;OCaml-Java&lt;/b&gt;: Xavier Clerc has been hacking away at his next-generation
+OCaml-Java backend (using many new features in JDK7). He's released a
+&lt;a href=&quot;http://ocamljava.x9c.fr/preview/concurrency.html&quot;&gt;preview&lt;/a&gt; of the bindings to
+Java concurrency, and is looking for feedback on it.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Performance profiling&lt;/b&gt;: Mark Shinwell has been hacking on improving the
+integration of the runtime with &lt;code&gt;perf&lt;/code&gt;.  This should give us the hooks to
+reliably track where memory was allocated.  His branch isn't going to land in
+OCaml 4.1, but should be available as an OPAM switch for people to easily
+try out when it's more stable.&lt;/p&gt;
+&lt;h3 id=&quot;Outreach&quot;&gt; Outreach&lt;/h3&gt;
+&lt;p&gt;&lt;b&gt;OCaml.org:&lt;/b&gt; Philippe and Amir have been putting their heads together with
+Christophe and Ashish to turn the &lt;a href=&quot;http://ocaml.org&quot;&gt;ocaml.org&lt;/a&gt; build pipeline
+into something a little more structured.  Philippe is building a &lt;a href=&quot;https://github.com/pw374/MPP-language-blender&quot;&gt;template
+processor&lt;/a&gt; for this purpose.
+The OCaml site is a more complicated than the average site due to our desire to
+embed &lt;a href=&quot;http://ocsigen.org/js_of_ocaml&quot;&gt;js_of_ocaml&lt;/a&gt; interactive toplevels
+throughout the tutorials, and also to have active OPAM integration throughout
+the site to make it easier for newcomers to sample the language.&lt;/p&gt;
+&lt;p&gt;The design of a handful of pages are also now available to preview, if you
+don't mind some manual git cloning. The best way to do this is to clone the
+&lt;a href=&quot;https://github.com/ocamllabs/ocaml.org-temp&quot;&gt;temporary repo&lt;/a&gt; onto your local
+machine and look in the &lt;code&gt;new-design/_site&lt;/code&gt; directory.  There are examples of
+the home page, 100 lines of OCaml page and several others.  Since we're just
+getting started with applying these changes the site isn't clicky (yet).  For
+some extra fun, try resizing your browser window and see how the pages reflow
+to suit smaller (mobile) screens!&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/images/nyc-trip-balcony-view-2013.jpg&quot;&gt;&lt;img src=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/images/nyc-trip-balcony-view-2013-thumb.jpg&quot; class=&quot;right&quot; /&gt;&lt;/a&gt;
+&lt;b&gt;Real World OCaml:&lt;/b&gt; Anil, Yaron and Jason continue to work hard on getting
+a release out of the door.  We shipped a final alpha6 this month that is 
+chapter-complete, and have been preparing for a big public June release of
+the book.  Thousands of comments have been received and closed already,
+making this an unusually active (but incredibly useful) ongoing review
+process.  Leo and Jeremy also contributed portions of text for the Objects
+and FFI chapters in alpha6, and join Stephen Weeks as external contributors
+to the book.&lt;/p&gt;
+&lt;p&gt;Meanwhile, Leo himself has recovered from the elation of being granted his PhD,
+to the harsh reality of having to finish corrections.  He has been forced by
+his colleagues to stop hacking on OCaml and submit his final thesis.  Rumours
+are that he will reemerge in June after delivering his &lt;a href=&quot;http://staticanalysis.org/SAS13/papers.html&quot;&gt;SAS
+2013&lt;/a&gt; talk on using an
+implication-algebra generalisation of logic programming to concisely analyse
+OpenMP programs for parallisation opportunities.&lt;/p&gt;
+&lt;p&gt;This month's talk was courtesy of &lt;a href=&quot;http://www.lip6.fr/actualite/personnes-fiche.php?ident=D1161&amp;LANG=en&quot;&gt;Mathias Bourgoin&lt;/a&gt;,
+who visited from France and gave a talk on his PhD work on GPU processing.  His
+tool, &lt;a href=&quot;http://www.algo-prog.info/spoc/web/index.php?id=spoc&quot;&gt;SPOC&lt;/a&gt; has been
+released onto OPAM and is a set of easy-to-use tools for generating CUDA and
+OpenCL code, and also a camlp4 extension to write external kernels directly in
+OCaml.  Thanks for visiting, Mathias!&lt;/p&gt;
+
+   &lt;/div&gt;</content:encoded>
+	<dc:date>2013-05-01T12:00:00+00:00</dc:date>
+	<dc:creator>Anil Madhavapeddy</dc:creator>
+</item>
+<item rdf:about="http://www.cl.cam.ac.uk/projects/ocamllabs/news/2013-04-01">
+	<title>Monthly News: Apr 2013 news update</title>
+	<link>http://www.cl.cam.ac.uk/projects/ocamllabs/news/index.html#Apr%202013</link>
+	<content:encoded>&lt;div&gt;
+      &lt;p&gt;&lt;a href=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/images/leo-oculus.jpg&quot;&gt;&lt;img src=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/images/leo-oculus-thumb.jpg&quot; class=&quot;left&quot; width=&quot;150px&quot; /&gt;&lt;/a&gt;
+It's been a heads-down month of hacking at the Labs for April, as the
+group have settled into their projects and are concentrating on getting code
+out.  We did take the opportunity to redesign the &lt;a href=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/tasks/index.html&quot;&gt;project pages&lt;/a&gt; as the active projects grew.&lt;/p&gt;
+&lt;p&gt;We welcomed &lt;a href=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/people/euan.html&quot;&gt;Euan Harris&lt;/a&gt; as a new visitor, and he has
+begun work on a distributed actor library in the vein of Erlang's
+&lt;a href=&quot;https://github.com/erlang/otp&quot;&gt;OTP&lt;/a&gt;.  The prolific &lt;a href=&quot;http://erratique.ch&quot;&gt;Daniel Bünzli&lt;/a&gt; also joined us for the summer to work on his &lt;a href=&quot;http://erratique.ch/software/vg/&quot;&gt;Vg&lt;/a&gt; visualisation library.  He's based out of the Citrix offices, and is also contributing to the Xen project.&lt;/p&gt;
+&lt;h3 id=&quot;Platformprojects&quot;&gt; Platform projects&lt;/h3&gt;
+&lt;p&gt;&lt;b&gt;OPAM: &lt;/b&gt; The project has entered a bug fixing stage after its release, and
+the package set has steadily grown via external contributors. David Sheets has
+been hacking away on the automated &lt;a href=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/tasks/platform.html#OCamlot&quot;&gt;OCamlot&lt;/a&gt;
+bot, and we released improved &lt;a href=&quot;https://github.com/avsm/ocaml-github&quot;&gt;Github&lt;/a&gt;
+API bindings.  We're aiming to get OCamlot live and running in May, so stay
+tuned!  There is a &lt;a href=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/tasks/platform.html#Machine%20Pool&quot;&gt;steadily growing
+collection&lt;/a&gt; of odd ARM and PowerPC
+devices in Anil's desk that will generally make it easier to test your OCaml
+code in unusual environments.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;OCaml.org redesign:&lt;/b&gt; Progress on the website continues and we're now
+working on the actual HTML/CSS from the earlier
+&lt;a href=&quot;https://github.com/ocaml/ocaml.org/wiki/Site-Redesign&quot;&gt;mockups&lt;/a&gt;.  We'll be
+publishing these in a fork of the website
+&lt;a href=&quot;https://github.com/ocamllabs/ocaml.org&quot;&gt;repository&lt;/a&gt;, so do feel free to create
+issues there with your comments.  Philippe has begun the
+&lt;a href=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/tasks/outreach.html#Meta%20preprocessor&quot;&gt;MPP&lt;/a&gt; templating tool to glue together
+all the website scripts more coherently. Discussions about this take place on
+the &lt;a href=&quot;http://lists.ocaml.org/listinfo/infrastructure&quot;&gt;infrastructure&lt;/a&gt; mailing
+list, which is open to all.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/images/makespace-apr-2013.jpg&quot;&gt;&lt;img src=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/images/makespace-apr-2013-thumb.jpg&quot; class=&quot;left&quot; width=&quot;150px&quot; /&gt;&lt;/a&gt;
+The monthly OCaml get togethers in the &lt;a href=&quot;http://makespace.org&quot;&gt;Cambridge
+Makespace&lt;/a&gt; are also really fun.  This month saw around 30
+people wander through the doors, and work through the latest excerpts of
+&lt;a href=&quot;http://realworldocaml.org&quot;&gt;Real World OCaml&lt;/a&gt;. And around midnight, Jeremy and
+Leo competed to find more and more obscure
+&lt;a href=&quot;http://caml.inria.fr/mantis/view.php?id=5992&quot;&gt;bugs&lt;/a&gt; in the corners of the
+OCaml type system...  You can track the subsequent meetups via the &lt;a href=&quot;http://www.meetup.com/Cambridge-NonDysFunctional-Programmers/events/114286762/&quot;&gt;NonDysFunctional Meetup group&lt;/a&gt;, which includes functional programmers from around the Cambridgeshire area.  Jon and Anil also attended the &lt;a href=&quot;http://developer.yahoo.com/events/hack_europe_london/&quot;&gt;Yahoo Hackday&lt;/a&gt; in London, where Jon met a giant robot and started &lt;a href=&quot;https://github.com/jonludlam/mssl&quot;&gt;SSL bindings&lt;/a&gt;, and Anil experimented with &lt;a href=&quot;http://github.com/avsm/ocaml-js-localstorage&quot;&gt;js_of_ocaml LocalStorage&lt;/a&gt; for Irminsule.&lt;/p&gt;
+&lt;h3 id=&quot;Systemsprojects&quot;&gt; Systems projects&lt;/h3&gt;
+&lt;p&gt;&lt;b&gt;Mirage&lt;/b&gt;: We've finally got a release date for the first preview of
+Mirage, which will be at &lt;a href=&quot;http://www.oscon.com/oscon2013/public/schedule/detail/28956&quot;&gt;O'Reilly OSCON&lt;/a&gt; this July!  Pulling together the release is a big endeavour, and the
+&lt;a href=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/tasks/mirage.html&quot;&gt;team&lt;/a&gt; has started weekly calls to work through the
+project.  The minutes for these are online, so you can
+&lt;a href=&quot;http://www.openmirage.org/wiki/tag/overview/meetings&quot;&gt;browse&lt;/a&gt; them to catch
+up. There's also a slightly scary
+&lt;a href=&quot;http://www.openmirage.org/wiki/dev-preview-checklist&quot;&gt;checklist&lt;/a&gt; of all the
+libraries that need to be released before July, so the team has its work cut
+out for it!  The Xen group also announced that it is joining the Linux Foundation,
+and the &lt;a href=&quot;http://www.linuxfoundation.org/news-media/announcements/2013/04/xen-become-linux-foundation-collaborative-project&quot;&gt;press release&lt;/a&gt; gave Mirage a prominent mention as one of the key recent developments in Xen.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/images/jon-robot-yahoo.jpg&quot;&gt;&lt;img src=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/images/jon-robot-yahoo-thumb.jpg&quot; class=&quot;right&quot; width=&quot;120px&quot; /&gt;&lt;/a&gt;
+&lt;b&gt;Irminsule&lt;/b&gt;: Thomas now has a full implementation of the git file format
+in his &lt;a href=&quot;http://github.com/samoht/cagit&quot;&gt;cagit&lt;/a&gt; repository, and the interfaces
+for Irminsule's branch-consistent model are coming together.  He gave a demo to
+the Mirage team, with &lt;a href=&quot;http://www.openmirage.org/wiki/weekly-2013-04-23&quot;&gt;discussion
+notes&lt;/a&gt; available.&lt;/p&gt;
+&lt;h3 id=&quot;Compilerprojects&quot;&gt; Compiler projects&lt;/h3&gt;
+&lt;p&gt;&lt;b&gt;Multicore and Concurrency&lt;/b&gt;: Stephen Dolan's made great progress on bringing up a multicore
+runtime using &lt;a href=&quot;https://github.com/stedolan/ocaml&quot;&gt;thread-local storage&lt;/a&gt;, which results
+in a surprisingly compact diff to the OCaml runtime.  We're now moving onto the
+higher-level bindings to use the parallel runtimes effectively from within OCaml.
+We also began a &lt;a href=&quot;http://lists.ocaml.org/listinfo/wg-parallel&quot;&gt;wg-parallel&lt;/a&gt; working
+group in order to start figuring out the evolution of the &lt;a href=&quot;http://ocsigen.org/lwt&quot;&gt;Lwt&lt;/a&gt; and 
+&lt;a href=&quot;https://github.com/janestreet/async&quot;&gt;Async&lt;/a&gt; concurrency libraries.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;libffi&lt;/b&gt;: Jeremy got frustrated by the difficulty of writing safe C bindings,
+and started the &lt;a href=&quot;http://github.com/ocamllabs/ocaml-ctypes&quot;&gt;ctypes&lt;/a&gt; library, which
+offers a pure OCaml solution. This even includes managing callbacks across the
+OCaml/C divide, and uses &lt;a href=&quot;https://github.com/atgreen/libffi&quot;&gt;libffi&lt;/a&gt; under the hood
+to remain efficient and platform-independent.  There is the exciting possibility
+about hooking this library with the &lt;a href=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/tasks/compiler.html#Compile-time%20meta%20programming&quot;&gt;compile-time metaprogramming&lt;/a&gt; to eliminate all performance cost, so we're going to spend some time
+on this project to make it a well-documented alternative to the existing C FFI.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/images/mezzo-talk.jpg&quot;&gt;&lt;img src=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/images/mezzo-talk.jpg&quot; class=&quot;right&quot; width=&quot;120px&quot; /&gt;&lt;/a&gt;
+The OCaml Labs talk series continued with a visit from &lt;a href=&quot;http://gallium.inria.fr/~fpottier/&quot;&gt;Francois
+Pottier&lt;/a&gt; ad &lt;a href=&quot;http://www.xulforum.org&quot;&gt;Jonathan
+Protzenko&lt;/a&gt; from the INRIA
+&lt;a href=&quot;http://gallium.inria.fr&quot;&gt;Gallium&lt;/a&gt; research team.  Jonathan presented their
+&lt;a href=&quot;http://gallium.inria.fr/~protzenk/mezzo-lang&quot;&gt;Mezzo&lt;/a&gt; language, which places
+emphasis on aliasing and controlled access to mutation.  This is of particular
+interest to several of our systems projects that do not require the full power of
+OCaml to build low-level systems components, and Raphael, Alan, Leo and Anil
+had productive discussions about how we could try Mezzo out when it's released.&lt;/p&gt;
+&lt;p&gt;&lt;i&gt;Link roundup:&lt;/i&gt;&lt;/p&gt;
+&lt;ul&gt;
+ &lt;li&gt;&lt;a href=&quot;http://www.linuxfoundation.org/news-media/announcements/2013/04/xen-become-linux-foundation-collaborative-project&quot; class=&quot;icon-rss&quot;&gt;Xen and MirageOS to join Linux Foundation&lt;/a&gt; &lt;em&gt;(Apr 14th)&lt;/em&gt;
+ &lt;/li&gt;
+ &lt;li&gt;&lt;a href=&quot;http://www.meetup.com/Cambridge-NonDysFunctional-Programmers/events/114286762/&quot; class=&quot;icon-community&quot;&gt;OCaml Hacking/Meetup Session&lt;/a&gt; &lt;em&gt;(Apr 18th)&lt;/em&gt;
+ &lt;/li&gt;
+ &lt;li&gt;&lt;a href=&quot;http://www.oscon.com/oscon2013/public/schedule/detail/28956&quot; class=&quot;icon-quick-links&quot;&gt;OSCon Mirage talk selected.&lt;/a&gt; &lt;em&gt;(Apr 21st)&lt;/em&gt;
+ &lt;/li&gt;
+&lt;/ul&gt;
+
+   &lt;/div&gt;</content:encoded>
+	<dc:date>2013-04-01T12:00:00+00:00</dc:date>
+	<dc:creator>Anil Madhavapeddy</dc:creator>
+</item>
+
+</rdf:RDF>
