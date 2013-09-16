@@ -80,8 +80,8 @@ let style =
   >>
 
 (* Output a single page as a HTML.t and the standard boilerplate HTML *)
-let one_page ~title ~body =
-  <:html<<title>$str:title$</title>$style$<body>$body$</body>&>>
+let one_page ?(extra_head=[]) ~title ~body () =
+  <:html<<head><title>$str:title$</title>$style$$extra_head$</head><body>$body$</body>&>>
 
 (* Generate the overall people web pages *)
 let people =
@@ -128,7 +128,7 @@ let people =
   </ul>
 
   <p><img class="left" src="../images/janest.jpg" /><img width="150px" src="../images/citrix.gif"/></p>
->>
+>> ()
 
 (* Generate a profile page per-person *)
 let one_person p =
@@ -155,7 +155,7 @@ let one_person p =
     </div>
     $list:Gantt.to_short_html p$
   >> in
-  one_page ~title:p.name ~body
+  one_page ~title:p.name ~body ()
 
 let projects =
   let sproj =
@@ -169,7 +169,7 @@ let projects =
     <ul>$list:sproj$</ul>
     </div>
     $list:Gantt.to_project_html ~moreinfo:true Data.Projects.all$ >> in
-  one_page ~title:"Projects" ~body
+  one_page ~title:"Projects" ~body ()
 
 let one_project proj =
   let open Types in
@@ -228,7 +228,7 @@ let one_project proj =
     $Gantt.to_one_project_html teamlist proj$
     $list:tasks$
   >> in
-  one_page ~title:proj.project_name ~body
+  one_page ~title:proj.project_name ~body ()
 
 let outputs =
   let open Types.Paper in
@@ -253,10 +253,10 @@ let outputs =
      <h1 id="Software">Software</h1>
      <p>TODO</p>
     >> in
-  one_page ~title:"Outputs" ~body
+  one_page ~title:"Outputs" ~body ()
 
 let news =
-  let monthly = List.map Data_news.monthlies ~f:(fun m ->
+  let monthly = List.map Data_news.monthlies ~f:(fun (_,m) ->
      let hd = human_readable_date (Date.of_string m) in
      let body = Markdown.from_file_to_html (sprintf "news/%s" m) in
      <:html<
@@ -266,13 +266,57 @@ let news =
      >>) in
   let body = <:html<
     <div class="ucampas-toc right"/>
-    $list:monthly$
-  >> in
-  one_page ~title:"News" ~body
+    $list:monthly$ >> in
+  let extra_head = <:xml<<link rel="alternate" type="application/atom+xml" href="http://www.cl.cam.ac.uk/projects/ocamllabs/news/atom.xml" title="OCaml Labs news" />&>> in
+  one_page ~extra_head ~title:"News" ~body ()
+
+let news_atom =
+ (* let monthly = List.map Data_news.monthlies ~f:(fun m -> *)
+  let open Cow.Atom in
+  let entries = List.map Data_news.monthlies
+    ~f:(fun (date, file) ->
+       let yr,month,_,_,_ = date in
+       let month_str = Month.to_string (Month.of_int_exn month) in
+       let id = Uri.to_string (Vars.mk_uri (sprintf "news/%s" file)) in
+       let title = sprintf "%s %d news update" month_str yr in
+       let subtitle = None in
+       let author = Some { name="Anil Madhavapeddy"; uri=Some "http://anil.recoil.org";
+         email=Some "anil@recoil.org" } in
+       let rights = Some "(c) Anil Madhavapeddy, all rights reserved" in
+       let updated = date in
+       let links = [ mk_link ~rel:`alternate ~typ:"text/html"
+          (Vars.mk_uri (sprintf "news/index.html#%s %d" month_str yr)) ] in
+       let entry = { id; title; subtitle; author; rights; updated; links } in
+       let content = Markdown.from_file_to_html (sprintf "news/%s" file) in
+       let base = Some (Uri.to_string (Vars.mk_uri (sprintf "news/"))) in
+       { entry; summary=None; content; base }
+    )
+  in
+  let links = [
+    mk_link (Vars.mk_uri "/news/atom.xml");
+    mk_link ~rel:`alternate ~typ:"text/html" (Vars.mk_uri "/news/")
+  ] in
+  let feed_meta = {
+    id=(Uri.to_string (Vars.mk_uri "/news/"));
+    title="OCaml Labs News";
+    subtitle=Some "Real World Functional Programming";
+    author=None;
+    rights=None;
+    updated=(List.hd_exn entries).entry.updated;
+    links
+  } in
+  { feed = feed_meta; entries }
 
 let write_html file html =
   let data = Cow.Html.to_string html in
   let fname = sprintf "pages/%s-b.html" file in
+  eprintf "writing : %s\n" fname;
+  Out_channel.write_all fname ~data
+
+let write_xml file xml =
+  let xml = Cow.Atom.xml_of_feed news_atom in
+  let fname = sprintf "pages/%s.xml" file in
+  let data = Cow.Xml.to_string ~decl:true xml in
   eprintf "writing : %s\n" fname;
   Out_channel.write_all fname ~data
 
@@ -298,5 +342,5 @@ let _ =
   write_html "outputs/index" outputs;
   write_uconfig "news" [];
   write_html "news/index" news;
+  write_xml "news/atom" news_atom;
   ()
-

@@ -51,7 +51,7 @@ let from_file_to_html_exn file =
   |`Yes ->
     Cow.Xml.of_string (
       In_channel.input_all (
-        Unix.open_process_in ("pandoc -f markdown -t html " ^ fname)
+        Unix.open_process_in ("omd " ^ fname)
       )
     )
   |`No |`Unknown -> eprintf "skipping %s\n" fname; Cow.Xml.of_string " "
@@ -62,4 +62,3 @@ let from_file_to_html file =
   with exn ->
     eprintf "warning: skipped %s\n" file;
     []
- 
