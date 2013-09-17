@@ -279,7 +279,7 @@ curl &lt;span&gt;-Sso&lt;/span&gt; ~&lt;span&gt;/&lt;/span&gt;.vim&lt;span&gt;/&
 &lt;div class=&quot;wp_syntax&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre class=&quot;bash&quot;&gt;&lt;span&gt;cd&lt;/span&gt; ~&lt;span&gt;/&lt;/span&gt;.vim&lt;span&gt;/&lt;/span&gt;bundle
 &lt;span&gt;git clone&lt;/span&gt; https:&lt;span&gt;//&lt;/span&gt;github.com&lt;span&gt;/&lt;/span&gt;scrooloose&lt;span&gt;/&lt;/span&gt;syntastic.git&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
 
-&lt;p&gt;Then quit vim and used :Helptags to check installs so fat have worked.&lt;/p&gt;
+&lt;p&gt;Then quit vim and used :Helptags to check installs so far have worked.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Install Merlin&lt;/strong&gt;&lt;/p&gt;
 
 &lt;div class=&quot;wp_syntax&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre class=&quot;bash&quot;&gt;opam switch 4.01.0dev+trunk
@@ -1076,7 +1076,7 @@ OCaml.  Thanks for visiting, Mathias!&lt;/p&gt;
 	<guid isPermaLink="">http://www.cl.cam.ac.uk/projects/ocamllabs/news/2013-04-01</guid>
 	<link>http://www.cl.cam.ac.uk/projects/ocamllabs/news/index.html#Apr%202013</link>
 	<description>&lt;div&gt;
-      &lt;p&gt;&lt;a href=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/images/leo-oculus.jpg&quot;&gt;&lt;img src=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/images/leo-oculus-thumb.jpg&quot; width=&quot;150px&quot; class=&quot;left&quot; /&gt;&lt;/a&gt;
+      &lt;p&gt;&lt;a href=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/images/leo-oculus.jpg&quot;&gt;&lt;img src=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/images/leo-oculus-thumb.jpg&quot; class=&quot;left&quot; width=&quot;150px&quot; /&gt;&lt;/a&gt;
 It's been a heads-down month of hacking at the Labs for April, as the
 group have settled into their projects and are concentrating on getting code
 out.  We did take the opportunity to redesign the &lt;a href=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/tasks/index.html&quot;&gt;project pages&lt;/a&gt; as the active projects grew.&lt;/p&gt;
@@ -1103,7 +1103,7 @@ issues there with your comments.  Philippe has begun the
 all the website scripts more coherently. Discussions about this take place on
 the &lt;a href=&quot;http://lists.ocaml.org/listinfo/infrastructure&quot;&gt;infrastructure&lt;/a&gt; mailing
 list, which is open to all.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/images/makespace-apr-2013.jpg&quot;&gt;&lt;img src=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/images/makespace-apr-2013-thumb.jpg&quot; width=&quot;150px&quot; class=&quot;left&quot; /&gt;&lt;/a&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/images/makespace-apr-2013.jpg&quot;&gt;&lt;img src=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/images/makespace-apr-2013-thumb.jpg&quot; class=&quot;left&quot; width=&quot;150px&quot; /&gt;&lt;/a&gt;
 The monthly OCaml get togethers in the &lt;a href=&quot;http://makespace.org&quot;&gt;Cambridge
 Makespace&lt;/a&gt; are also really fun.  This month saw around 30
 people wander through the doors, and work through the latest excerpts of
@@ -1122,7 +1122,7 @@ up. There's also a slightly scary
 libraries that need to be released before July, so the team has its work cut
 out for it!  The Xen group also announced that it is joining the Linux Foundation,
 and the &lt;a href=&quot;http://www.linuxfoundation.org/news-media/announcements/2013/04/xen-become-linux-foundation-collaborative-project&quot;&gt;press release&lt;/a&gt; gave Mirage a prominent mention as one of the key recent developments in Xen.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/images/jon-robot-yahoo.jpg&quot;&gt;&lt;img src=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/images/jon-robot-yahoo-thumb.jpg&quot; width=&quot;120px&quot; class=&quot;right&quot; /&gt;&lt;/a&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/images/jon-robot-yahoo.jpg&quot;&gt;&lt;img src=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/images/jon-robot-yahoo-thumb.jpg&quot; class=&quot;right&quot; width=&quot;120px&quot; /&gt;&lt;/a&gt;
 &lt;b&gt;Irminsule&lt;/b&gt;: Thomas now has a full implementation of the git file format
 in his &lt;a href=&quot;http://github.com/samoht/cagit&quot;&gt;cagit&lt;/a&gt; repository, and the interfaces
 for Irminsule's branch-consistent model are coming together.  He gave a demo to
@@ -1143,7 +1143,7 @@ OCaml/C divide, and uses &lt;a href=&quot;https://github.com/atgreen/libffi&quot
 to remain efficient and platform-independent.  There is the exciting possibility
 about hooking this library with the &lt;a href=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/tasks/compiler.html#Compile-time%20meta%20programming&quot;&gt;compile-time metaprogramming&lt;/a&gt; to eliminate all performance cost, so we're going to spend some time
 on this project to make it a well-documented alternative to the existing C FFI.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/images/mezzo-talk.jpg&quot;&gt;&lt;img src=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/images/mezzo-talk.jpg&quot; width=&quot;120px&quot; class=&quot;right&quot; /&gt;&lt;/a&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/images/mezzo-talk.jpg&quot;&gt;&lt;img src=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/images/mezzo-talk.jpg&quot; class=&quot;right&quot; width=&quot;120px&quot; /&gt;&lt;/a&gt;
 The OCaml Labs talk series continued with a visit from &lt;a href=&quot;http://gallium.inria.fr/~fpottier/&quot;&gt;Francois
 Pottier&lt;/a&gt; ad &lt;a href=&quot;http://www.xulforum.org&quot;&gt;Jonathan
 Protzenko&lt;/a&gt; from the INRIA
@@ -1908,7 +1908,7 @@ for new releases of their &lt;a href=&quot;http://janestreet.github.io&quot;&gt;
 testing for these releases is currently handled manually and we're really 
 looking forward to having them dealt with automatically!&lt;/p&gt;
 &lt;h3 id=&quot;Systemsprojects&quot;&gt; Systems projects&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/images/asplos-mort.jpg&quot;&gt;&lt;img src=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/images/asplos-mort-thumb.jpg&quot; width=&quot;120px&quot; class=&quot;right&quot; /&gt;&lt;/a&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/images/asplos-mort.jpg&quot;&gt;&lt;img src=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/images/asplos-mort-thumb.jpg&quot; class=&quot;right&quot; width=&quot;120px&quot; /&gt;&lt;/a&gt;
 &lt;b&gt;Mirage&lt;/b&gt;: There is much preparation ongoing for the big 
 &lt;a href=&quot;http://wiki.xen.org/wiki/Mirage_Incubation_Project_Proposal&quot;&gt;xen.org incubation&lt;/a&gt;, 
 which has now been approved by the Xen community board. Vincent's work on 
