@@ -8,7 +8,7 @@ run: build
 	./_build/lib/www.native
 
 www:
-	cd pages && env PATH=../ucampas:$$PATH ucampas -i -r1 index people tasks outputs news
+	cd pages && env PATH=../ucampas:$$PATH ucampas -i -r3 index people tasks papers news
 
 check:
 	echo If you get an error with this, do brew install linklint
