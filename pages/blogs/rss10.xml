@@ -13,6 +13,8 @@
 
 	<items>
 		<rdf:Seq>
+			<rdf:li rdf:resource="http://hh360.user.srcf.net/blog/?p=352" />
+			<rdf:li rdf:resource="http://ocamllabs.github.com/compiler-hacking/2013/09/17/compiler-hacking-july-2013" />
 			<rdf:li rdf:resource="http://anil.recoil.org/2013/09/16/camlpdf-the-end-of-sucky-pdf-tools" />
 			<rdf:li rdf:resource="http://pw374.github.io/posts/2013-09-05-21-31-26-about-omd.html" />
 			<rdf:li rdf:resource="http://hh360.user.srcf.net/blog/?p=153" />
@@ -43,7 +45,6 @@
 			<rdf:li rdf:resource="http://hh360.user.srcf.net/blog/2012/11/ocaml-2-html/" />
 			<rdf:li rdf:resource="http://hh360.user.srcf.net/blog/2012/11/system-programming-in-ocaml-part-1/" />
 			<rdf:li rdf:resource="http://www.cl.cam.ac.uk/projects/ocamllabs/news/2012-11-01" />
-			<rdf:li rdf:resource="http://hh360.user.srcf.net/blog/2012/11/getting-to-grips-with-opam/" />
 			<rdf:li rdf:resource="http://anil.recoil.org/2012/10/19/announcing-ocaml-labs" />
 			<rdf:li rdf:resource="http://openmirage.org/blog/breaking-up-is-easy-with-opam" />
 			<rdf:li rdf:resource="http://openmirage.org/blog/xenstore-stub-domain" />
@@ -52,11 +53,132 @@
 			<rdf:li rdf:resource="http://anil.recoil.org/2012/02/25/dreamplug-debian-and-ocaml" />
 			<rdf:li rdf:resource="http://openmirage.org/blog/an-outing-to-cufp" />
 			<rdf:li rdf:resource="http://anil.recoil.org/2011/08/09/cufp2011-schedule" />
-			<rdf:li rdf:resource="http://anil.recoil.org/2011/06/18/datacaml-with-ciel" />
 		</rdf:Seq>
 	</items>
 </channel>
 
+<item rdf:about="http://hh360.user.srcf.net/blog/?p=352">
+	<title>Heidi Howard: OCaml Monthly Meeting – Live Blog</title>
+	<link>http://hh360.user.srcf.net/blog/2013/09/ocaml-monthly-meeting-live-blog/</link>
+	<content:encoded>&lt;p&gt;Today&amp;#8217;s OCaml Labs Monthly Meeting is all about practise talks for OCaml2013 so in that spirit, I&amp;#8217;ll practising a bit of live-blogging too.&lt;/p&gt;
+&lt;p&gt;13:53 &amp;#8211; Today&amp;#8217;s SRG Meeting is over and its time for some work before the OCaml Labs meeting at 4:00, see you then &amp;#8230;&lt;/p&gt;
+&lt;p&gt;16:02 Techincal difficulties delayed the start&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;&lt;strong&gt;16:02 Intro from Anil&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;introducing Gabriel Scherer who is visiting us this week and going we are going to Maypole after this meeting. We had a cash prise from ASPLOS after winning the HiPEAC paper award and the money will go towards SRG wine for XMAS party. Signpost paper was accepted to FOCI and a HotNet paper on Trevi was also just accepted&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;OCL Website&lt;/strong&gt; &amp;#8211; Too much manual management at the moment, moving to an &lt;a href=&quot;http://planet.ocamlcore.org/&quot;&gt;ocaml planet&lt;/a&gt; feed of blog posts. David has been busy hacking on &lt;a href=&quot;https://github.com/OCamlPro/opam2web&quot;&gt;OPAM2web&lt;/a&gt;, OPAM has 512 packages, Opam2web takes a subset of the OPAM packages and makes the metadata into a minisite, like on OPAM. Doesn&amp;#8217;t require manual updates, like an ATOM feed.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Upcoming events&lt;/strong&gt; &amp;#8211; Tomorrow is the 2nd &lt;a href=&quot;http://www.meetup.com/Makespace/events/138103982/&quot;&gt;compiler hacking event&lt;/a&gt;, at the &lt;a href=&quot;http://makespace.org/&quot;&gt;makespace&lt;/a&gt;. Anil will be talking at QCon on Mirage, Mirage 1.0 release date is October 22nd, so maybe a workshop before. We 3 talks for Ocaml2013 (Platform, OcamlOT and Ctypes) so here we go &amp;#8230;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;&lt;strong&gt;16:09 Anil practice talk on OCaml Platform 1.0&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Languages take many difference approaches to platform, but what does platform even mean? As a late mover in this field, we can learn from other languages. A platforms is NOT a group of temporarily motivated hackers to build a replacement standard library. Its hard to adopt a particular approach without a domain specific purpose, there are too many opinions, we need objective way to determine what belongs in the platform, we need a genie community that is sustainable (even if a large party leaves). A platform is a bundle of tools that interoperate, with quantitative metric to judge success, built in agility and supporting developers thought the whole development life cycle. Industrial partners have a range of needs, as each work in different domains.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Tooling&lt;/strong&gt; &amp;#8211; Overview of 5 areas: OPAM from OCamlPro, IDE Tools, OPAM-DOC, OCaml compiler itself and Ocaml.org.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;OPAM&lt;/strong&gt; &amp;#8211; 1.1 released today (maybe), over 100 contributors to OPAM,  500+ packages, 1500+ unique versions, external dependency solver using CUDF&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;IDE Support&lt;/strong&gt; &amp;#8211; OCaml has many intermediate files. In OCaml 4.0 onwards, we have a binary format of an abstract syntax tree with type annotations called cmt (and cmti for interface files), we can now create external tools to query this like opam-doc. ocp-index and ocp-indent from OCamlPro, and Merlin (I thinks this is EPIC) are also now available&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;opam-doc&lt;/strong&gt; &amp;#8211; Now we have cmt files, we need unified documentation across packages, this is much harder than it sounds as it touches every part of the tool stack. Not all packages can be installed at once due to conflicts. Module inclusion is tough to code in static html. (Need to make a demo) bindoc takes the Typed AST (in cmt) and generates cmd, which include the ocamldoc comments, Opamdoc takes the cmt database for opam and output a single website with your universe of packages.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ocaml.org&lt;/strong&gt; - Demo of ocaml.org at &lt;a href=&quot;http://hh360.user.srcf.net/blog/category/pl/ocaml/feed/ocaml-redesign.github.io/pkg/index.html&quot;&gt;ocaml-redesign.github.io/pkg/index.html&lt;/a&gt;, feedback is welcome says amir&lt;/p&gt;
+&lt;p&gt;Now we have the tools, what metrics can we extract to see how well our tools are doing.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Portability&lt;/strong&gt; &amp;#8211; windows compatibility ?&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Maintainer&lt;/strong&gt; &amp;#8211; is there a place for docs and will people response to issues/comments/emails, where can issues be submitted ?&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Tests&lt;/strong&gt; &amp;#8211; code coverage, multi variant benchmarking in &lt;a href=&quot;https://ocaml.janestreet.com/ocaml-core/latest/doc/core_bench/index.html&quot;&gt;core-bench&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Stability&lt;/strong&gt; &amp;#8211; OPAM support pining, how stable are the interfaces of libraries ?&lt;/p&gt;
+&lt;p&gt;opam tracks compiler constraint, statically analyses the build system from logs (OCamlOT)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Agility&lt;/strong&gt; &amp;#8211; Building a platform is EXHAUSTING. We want to ask &amp;#8220;WANT IF&amp;#8221; questions: &lt;a href=&quot;http://gallium.inria.fr/blog/monomorphic_let/&quot;&gt;what if let was monomophic&lt;/a&gt;? what if we removed &lt;a href=&quot;http://caml.inria.fr/pub/docs/manual-camlp4/manual002.html&quot;&gt;camlp4&lt;/a&gt;? what is the syntax precedence changes ?&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Distrusted workflow&lt;/strong&gt; &amp;#8211; build on git, distributing tasks between 3 actors: Author (library writers), OCamlOL workers and maintainers. As we become more stable we move from staging to stable to inclusion in the platform.&lt;/p&gt;
+&lt;p&gt;We are building a tussle, we want to launch a game in janurary and let people put standard libraries into the ring, running OCamlOT to discover the winner&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;No clear winner&lt;/strong&gt;: Lwt &amp;#8211; portability, Batteries &amp;#8211; free of syntax extensions, core &amp;#8211; comprehensive.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;span&gt;16:36  Discussion over the battle of the standard libraries and talk feedback&lt;/span&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;C: talk is a bit long, not sure what to cut..&lt;/p&gt;
+&lt;p&gt;C: OPAM was dicussed last year at OCaml2013, we want to update everyone and follow on without overlapping too much&lt;/p&gt;
+&lt;p&gt;Q: Haven&amp;#8217;t we already decided on JS&amp;#8217;s core ?&lt;/p&gt;
+&lt;p&gt;A: No, we use all of them, i.e. Mirage used lwt extensively&lt;/p&gt;
+&lt;p&gt;Q: What if we don&amp;#8217;t want any of the new standard libraries ? maybe I just want to use domain specific libraries from OPAM as and when I need them&lt;/p&gt;
+&lt;p&gt;A: We are not forcing the new standard libraries on anyone, but they are useful for beginners, nice to have consistent style, interoperability and few open statements e.g. Open Core.Std&lt;/p&gt;
+&lt;p&gt;Q: What if I have already decided which standard library I want to use ?&lt;/p&gt;
+&lt;p&gt;A: Again we are not forcing standard libraries on anyone, we are just trying to force effort more directly. OCaml tools will always be standard library agnoctic&lt;/p&gt;
+&lt;p&gt;C: the diagram of OCamlOT is confustion&lt;/p&gt;
+&lt;p&gt;C: how to not overlap with david talks&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;&lt;strong&gt;16:41 Davids talk on OCamlOT&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;State for the open source OCaml community&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Outline:&lt;/strong&gt; what is quality software? what is the user experience? what is feedback loop for package authors? How do we represent the thing underneath this all? utopian future ?&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Quality:&lt;/strong&gt; Work on every core (ANIL: We want multi-core &lt;img src=&quot;http://hh360.user.srcf.net/blog/wp-includes/images/smilies/icon_razz.gif&quot; alt=&quot;:P&quot; class=&quot;wp-smiley&quot; /&gt;  ), consistent results: work or die nicely with obvious solution, not more &amp;#8220;What have I forgotten?&amp;#8221; questions, it should just tell you. We need addictive actions (not sure what they are), consistency, quality functions&amp;#8230;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Universal concerns:&lt;/strong&gt; compiler hypothesis &amp;#8220;what if&amp;#8221; questions (anil already said this), build system hypotheses &amp;#8220;what strange assumuptions is the buid system making?&amp;#8221;, package manager hypothesis and environmner hypothesis&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Workflow:&lt;/strong&gt; Make a pull request, curator observes the proposal, predict the future, proposes amendments, feedback loop and finally agreement is reached. Core is release weekly for example, we are trying to work like linux kernal patches&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;New workflow:&lt;/strong&gt; promote health of OCaml community, preaching compatibility, &amp;#8220;observe, orient, decide and act&amp;#8221;, Computer assisted curator will help a human, to run the loop faster, human can pose questions to the computer assisted curator e.g  &amp;#8221;will this run on ARM ?&amp;#8221;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Repository Observation:&lt;/strong&gt; github binding with web hooks but we are not tied to github. We merge into the world and we need dependences from each possible users prospective of the world&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Dependency Orientation:&lt;/strong&gt; capabilities with environmental dependances, packages with constriant-based dependencies, repositories with revision dependencies and artifact dependencies. example of the android repo&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Triage Decisions:&lt;/strong&gt; taking plain text error and parsing them into categories such as unsatisfiability (can&amp;#8217;t have these two packages), dependencies (if my dependency is broken, then I am broken), transient (network down), system, metadata, external dependences (you forgot to write a dependency), build errors and a combo of many of the above.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;State Action:&lt;/strong&gt; commit intention, build, error analysis and buid results&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Internet res:&lt;/strong&gt; The agents negotiates over REST API on HTTPS, independent metadata layers (not sure about this) ,everythings an s-exp, branch consistent store explained, like git or &lt;a href=&quot;https://github.com/samoht/irminsule&quot;&gt;Irminsule&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Current state:&lt;/strong&gt; github web hooks, we are conservative so one byte changes and we rebuild everything, basic triage heuristics completed, no amendment are proposed by the system atm, we don&amp;#8217;t commit the outcome but the evidence, simple reactions to results, a website with green and red boxes in the large table&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;History:&lt;/strong&gt; we have found lots of metadata issues&lt;span&gt;, many packages bugs, some tool bugs like a non relocatable&lt;/span&gt;&lt;span&gt; compiler and &lt;/span&gt;ocamlbuild&lt;span&gt; PATH &lt;/span&gt;ignorer&lt;span&gt;, we currently have 30+ &lt;/span&gt;x84-64&lt;span&gt; 30+&lt;/span&gt;x84-32&lt;span&gt;, 8 ARMs , many &lt;/span&gt;Linux&lt;span&gt; distros&lt;/span&gt;&lt;span&gt; , &lt;/span&gt;dead &lt;a href=&quot;http://www.raspberrypi.org/&quot;&gt;Raspberry Pi&lt;/a&gt;, panicking&lt;span&gt; *nix &lt;/span&gt;filesystems&lt;span&gt; and lots of people have set warning as error&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Future:&lt;/strong&gt; opamfu for DAG analysis, schema migration overhead, lower overhead for administrating exotic workers contributed to OCamlOT, we need to authenticate machines using ocaml-sodium, we need more advanced automation, proposed amendments, lets have a dialogue, better website integration, benchmarking your upgrades (how much improves cost), run experiments on whole OPAM universe with differential analysis and VM-based test system, to specific the worker finely.&lt;/p&gt;
+&lt;p&gt;What I think quantity is, vision of the future, how its represented underneath and what&amp;#8217;s next,&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;&lt;strong&gt;Discussions&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;C: that was 20mins, feedback to David regarding content to be cut,&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;&lt;strong&gt;17:23 Ctypes by Jeremy &lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;This is a update not a practice talk&lt;/p&gt;
+&lt;p&gt;An examples of puts from C, how we can write no C and link in OCaml,&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;NEW things in Ctypes:&lt;/strong&gt;&lt;br /&gt;
+prettyprinting &amp;#8211; for C types and C values, making it much eaiser to examine values for debuygging&lt;/p&gt;
+&lt;p&gt;biarray &amp;#8211; support for lump of C memory&lt;/p&gt;
+&lt;p&gt;More type &amp;#8211; nullable string, complex numbers&lt;/p&gt;
+&lt;p&gt;String conversions &amp;#8211; much faster&lt;/p&gt;
+&lt;p&gt;Memory management issues &amp;#8211; ctypes now gives the programmer more control over lifetime of OCaml passed to C,&lt;/p&gt;
+&lt;p&gt;finaliser &amp;#8211; which you can attach to memory&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Future&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;stub generation &amp;#8211; instead of dynamically binding, it will generate stub code to act to the API&lt;/p&gt;
+&lt;p&gt;capability-style memory safty &amp;#8211; one rogue pointer in a C library, can cause hell, loading each C library in a seperate address space so i library can only kill itself, you can then even run on C library on a foreign host or on a virtual machine&lt;/p&gt;
+&lt;p&gt;static strcut/union layout &amp;#8211; checking layout of structures and unions against the API&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;span&gt;17:40 Amir demo of ocaml-resdesign.githuib.io/docs/opam,&lt;/span&gt;&lt;/strong&gt; (its look great &lt;img src=&quot;http://hh360.user.srcf.net/blog/wp-includes/images/smilies/icon_smile.gif&quot; alt=&quot;:)&quot; class=&quot;wp-smiley&quot; /&gt; )&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://hh360.user.srcf.net/blog/wp-content/uploads/2013/09/ocaml.png&quot;&gt;&lt;img class=&quot;size-medium wp-image-363 aligncenter&quot; alt=&quot;ocaml&quot; src=&quot;http://hh360.user.srcf.net/blog/wp-content/uploads/2013/09/ocaml-253x300.png&quot; width=&quot;253&quot; height=&quot;300&quot; /&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded>
+	<dc:date>2013-09-17T12:54:53+00:00</dc:date>
+</item>
+<item rdf:about="http://ocamllabs.github.com/compiler-hacking/2013/09/17/compiler-hacking-july-2013">
+	<title>Compiler Hacking: Inaugural compiler hackers meeting</title>
+	<link>http://ocamllabs.github.com/compiler-hacking/2013/09/17/compiler-hacking-july-2013.html</link>
+	<content:encoded>&lt;p&gt;&lt;img src=&quot;http://ocamllabs.github.io/compiler-hacking/imgs/2013-09-17.jpg&quot; alt=&quot;Compiler Hacking&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The first OCaml Labs compiler hacking session brought together around twenty people from &lt;a href=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/&quot;&gt;OCaml Labs&lt;/a&gt;, the wider &lt;a href=&quot;http://www.cl.cam.ac.uk&quot;&gt;Computer Lab&lt;/a&gt;, and &lt;a href=&quot;http://www.citrix.com/&quot;&gt;various&lt;/a&gt; &lt;a href=&quot;http://www.arm.com/&quot;&gt;companies&lt;/a&gt; around Cambridge for an enjoyable few hours learning about and improving the OCaml compiler toolchain, fuelled by &lt;a href=&quot;http://www.cherryboxpizza.co.uk&quot;&gt;pizza&lt;/a&gt; and home-made ice cream (thanks, &lt;a href=&quot;http://philippewang.info/CL/&quot;&gt;Philippe&lt;/a&gt;!).&lt;/p&gt;
+
+&lt;p&gt;We benefited from the presence of a few &lt;a href=&quot;http://www.x9c.fr/&quot;&gt;experienced&lt;/a&gt; &lt;a href=&quot;http://danmey.org/&quot;&gt;compiler&lt;/a&gt; &lt;a href=&quot;http://lpw25.net/&quot;&gt;hackers&lt;/a&gt;, but for most of us it was the first attempt to modify the OCaml compiler internals.&lt;/p&gt;
+
+&lt;p&gt;The first surprise of the day was the discovery that work on the &lt;a href=&quot;https://github.com/ocamllabs/compiler-hacking/wiki/Things-to-work-on&quot;&gt;list of projects&lt;/a&gt; was underway before we even arrived!  Keen collaborators from The Internet had apparently spotted our triaged bug reports and &lt;a href=&quot;http://caml.inria.fr/mantis/view.php?id=4323&quot;&gt;submitted&lt;/a&gt; &lt;a href=&quot;http://caml.inria.fr/mantis/view.php?id=4737&quot;&gt;patches&lt;/a&gt; to Mantis.&lt;/p&gt;
+
+&lt;h3&gt;Standard library and runtime&lt;/h3&gt;
+
+&lt;p&gt;There was an exciting moment early on when it emerged that two teams had been working independently on the same issue!  When &lt;a href=&quot;https://github.com/jonludlam&quot;&gt;Jon Ludlam&lt;/a&gt; and &lt;a href=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/people/euan.html&quot;&gt;Euan Harris&lt;/a&gt; submitted a patch to add a &lt;code&gt;get_extension&lt;/code&gt; function to the &lt;a href=&quot;http://caml.inria.fr/pub/docs/manual-ocaml/libref/Filename.html&quot;&gt;&lt;code&gt;Filename&lt;/code&gt;&lt;/a&gt; module they found that they had been pipped to the post by &lt;a href=&quot;https://github.com/mcclurmc/&quot;&gt;Mike McClurg&lt;/a&gt;.  There's still the judging stage to go, though, as the patches wait &lt;a href=&quot;http://caml.inria.fr/mantis/view.php?id=5807&quot;&gt;on Mantis&lt;/a&gt; for official pronouncement from the Inria team. &lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://github.com/vbmithr&quot;&gt;Vincent Bernardoff&lt;/a&gt; also spent some time improving the standard library, &lt;a href=&quot;http://caml.inria.fr/mantis/view.php?id=4919&quot;&gt;fleshing out the interface for translating between OCaml and C error codes&lt;/a&gt;, starting from a patch by Goswin von Brederlow.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/stedolan&quot;&gt;Stephen Dolan&lt;/a&gt; looked at a &lt;a href=&quot;http://caml.inria.fr/mantis/view.php?id=1956&quot;&gt;long-standing issue&lt;/a&gt; with names exported by the OCaml runtime that can clash with other libraries, and submitted a patch which hides the sole remaining offender for the runtime library.  As he noted in the comments, there are still a &lt;a href=&quot;https://gist.github.com/stedolan/6115403&quot;&gt;couple of hundred&lt;/a&gt; global names without the &lt;code&gt;caml_&lt;/code&gt; prefix in the &lt;code&gt;otherlibs&lt;/code&gt; section of the standard library.&lt;/p&gt;
+
+&lt;h3&gt;Tools&lt;/h3&gt;
+
+&lt;p&gt;There was a little flurry of work on new command-line options for the standard toolchain.&lt;/p&gt;
+
+&lt;p&gt;A &lt;a href=&quot;http://caml.inria.fr/mantis/view.php?id=6102&quot;&gt;Mantis issue&lt;/a&gt; submitted by &lt;a href=&quot;http://gallium.inria.fr/%7Escherer/&quot;&gt;Gabriel Scherer&lt;/a&gt; suggests adding options to stop the compiler at certain stages, to better support tools such as &lt;a href=&quot;http://projects.camlcity.org/projects/findlib.html&quot;&gt;OCamlfind&lt;/a&gt; and to make it easier to debug the compiler itself.  The Ludlam / Harris team looked at this, and submitted a patch which provoked further thoughts from Gabriel.&lt;/p&gt;
+
+&lt;p&gt;Vincent looked at extending &lt;a href=&quot;http://caml.inria.fr/pub/docs/manual-ocaml/depend.html&quot;&gt;ocamldep&lt;/a&gt; with support for suffixes other than &lt;code&gt;.ml&lt;/code&gt; and &lt;code&gt;.mli&lt;/code&gt;.  Since &lt;a href=&quot;http://caml.inria.fr/mantis/view.php?id=3725&quot;&gt;the issue&lt;/a&gt; was originally submitted, &lt;code&gt;ocamldep&lt;/code&gt; has acquired &lt;a href=&quot;http://caml.inria.fr/pub/docs/manual-ocaml/depend.html#sec288&quot;&gt;&lt;code&gt;-ml-synonym&lt;/code&gt; and &lt;code&gt;-mli-synonym&lt;/code&gt; options&lt;/a&gt; that serve this purpose, so Vincent looked at supporting other suffixes in the compiler, and submitted a patch as a &lt;a href=&quot;http://caml.inria.fr/mantis/view.php?id=6110&quot;&gt;new issue&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The OCaml top level has a simple feature for setting up the environment —  when it starts up it looks for the file &lt;code&gt;.ocamlinit&lt;/code&gt;, and executes its contents.  It's sometimes useful to skip this stage and run the top level in a vanilla environment, so &lt;a href=&quot;https://github.com/dsheets&quot;&gt;David Sheets&lt;/a&gt; submitted a &lt;a href=&quot;http://caml.inria.fr/mantis/view.php?id=6071&quot;&gt;patch&lt;/a&gt; that adds a &lt;code&gt;-no-init&lt;/code&gt; option, &lt;a href=&quot;https://github.com/ocaml/ocaml/blob/fadcc73c50b89ca80ecc11131c9a23dbd2c1e67a/Changes#L35&quot;&gt;due for inclusion&lt;/a&gt; in the next release.&lt;/p&gt;
+
+&lt;h3&gt;Error-handling/reporting&lt;/h3&gt;
+
+&lt;p&gt;Error handling issues saw a good deal of activity.  &lt;a href=&quot;http://www.cl.cam.ac.uk/%7Erp452/&quot;&gt;Raphaël Proust&lt;/a&gt; submitted a patch to improve the &lt;a href=&quot;http://caml.inria.fr/mantis/view.php?id=6112&quot;&gt;reporting of error-enabled warnings&lt;/a&gt;; David investigated &lt;a href=&quot;http://caml.inria.fr/mantis/view.php?id=3582&quot;&gt;handling out-of-range integer literals&lt;/a&gt; and &lt;a href=&quot;http://caml.inria.fr/mantis/view.php?id=5350&quot;&gt;return-code checking of C functions in the runtime&lt;/a&gt;, leading to some discussions on Mantis.  Stephen submitted a patch to improve the &lt;a href=&quot;http://caml.inria.fr/mantis/view.php?id=6182&quot;&gt;diagnostics for misuses of &lt;code&gt;virtual&lt;/code&gt;&lt;/a&gt;.  &lt;a href=&quot;http://www.cl.cam.ac.uk/%7Egk338/&quot;&gt;Gabriel Kerneis&lt;/a&gt; and Wojciech looked at some &lt;a href=&quot;http://caml.inria.fr/mantis/view.php?id=6109&quot;&gt;typos in ocamlbuild error messages&lt;/a&gt;, and Mike opened an &lt;a href=&quot;http://caml.inria.fr/mantis/view.php?id=6108&quot;&gt;issue to clarify the appropriate use of the &lt;code&gt;compiler-libs&lt;/code&gt; package&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3&gt;Language&lt;/h3&gt;
+
+&lt;p&gt;The &lt;code&gt;open&lt;/code&gt; operation on modules can make it difficult for readers of a program to see where particular names are introduced, so its use is sometimes discouraged.  The basic feature of making names available without a module prefix is rather useful, though, so various new features (including &lt;a href=&quot;http://caml.inria.fr/pub/docs/manual-ocaml-4.00/manual021.html#toc77&quot;&gt;local opens&lt;/a&gt;, &lt;a href=&quot;https://github.com/ocaml/ocaml/commit/f51bc04b55fbe22533f1075193dd3b2e52721f15&quot;&gt;warnings for shadowing&lt;/a&gt;, and &lt;a href=&quot;https://github.com/ocaml/ocaml/commit/a3b1c67fffd7de640ee9a0791f1fd0fad965b867&quot;&gt;explicit shadowing&lt;/a&gt;) have been introduced to tame its power. Stephen looked at adding a further feature, making it possible to open modules under a particular signature, so that &lt;code&gt;open M : S&lt;/code&gt; will introduce only those names in &lt;code&gt;M&lt;/code&gt; that are specified with &lt;code&gt;S&lt;/code&gt;.  There's an &lt;a href=&quot;https://github.com/lpw25/ocaml/tree/signatured-open&quot;&gt;initial prototype&lt;/a&gt; already, and we're looking forward to seeing the final results.&lt;/p&gt;
+
+&lt;p&gt;The second language feature of the evening was support for infix operators (such as the List constructor, &lt;code&gt;::&lt;/code&gt;) for user-defined types, a feature that is definitely not in any way motivated by envy of Haskell.  Mike's &lt;a href=&quot;https://github.com/mcclurmc/ocaml/tree/infix-constructors&quot;&gt;prototype implementation&lt;/a&gt; is available, and there's an &lt;a href=&quot;https://github.com/mcclurmc/ocaml/pull/1&quot;&gt;additional patch&lt;/a&gt; that brings it closer to completion.&lt;/p&gt;
+
+&lt;h3&gt;Next session&lt;/h3&gt;
+
+&lt;p&gt;The next session is planned for 6pm on Wednesday 18th September 2013 at
+&lt;a href=&quot;http://makespace.org/&quot;&gt;Makespace, Cambridge&lt;/a&gt;.  If you're planning to come along it'd be
+helpful if you could add yourself to the &lt;a href=&quot;http://doodle.com/k6y2tiihkrb5vuw4&quot;&gt;Doodle Poll&lt;/a&gt;.  Hope to see
+you there!&lt;/p&gt;</content:encoded>
+	<dc:date>2013-09-17T11:49:04+00:00</dc:date>
+	<dc:creator>OCaml Labs</dc:creator>
+</item>
 <item rdf:about="http://anil.recoil.org/2013/09/16/camlpdf-the-end-of-sucky-pdf-tools">
 	<title>Anil Madhavapeddy: Camlpdf, the first good command-line PDF tool I've found</title>
 	<link>http://anil.recoil.org/2013/09/16/camlpdf-the-end-of-sucky-pdf-tools.html</link>
@@ -1109,7 +1231,7 @@ OCaml.  Thanks for visiting, Mathias!&lt;/p&gt;
 	<title>Monthly News: Apr 2013 news update</title>
 	<link>http://www.cl.cam.ac.uk/projects/ocamllabs/news/index.html#Apr%202013</link>
 	<content:encoded>&lt;div&gt;
-      &lt;p&gt;&lt;a href=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/images/leo-oculus.jpg&quot;&gt;&lt;img src=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/images/leo-oculus-thumb.jpg&quot; class=&quot;left&quot; width=&quot;150px&quot; /&gt;&lt;/a&gt;
+      &lt;p&gt;&lt;a href=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/images/leo-oculus.jpg&quot;&gt;&lt;img src=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/images/leo-oculus-thumb.jpg&quot; width=&quot;150px&quot; class=&quot;left&quot; /&gt;&lt;/a&gt;
 It's been a heads-down month of hacking at the Labs for April, as the
 group have settled into their projects and are concentrating on getting code
 out.  We did take the opportunity to redesign the &lt;a href=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/tasks/index.html&quot;&gt;project pages&lt;/a&gt; as the active projects grew.&lt;/p&gt;
@@ -1136,7 +1258,7 @@ issues there with your comments.  Philippe has begun the
 all the website scripts more coherently. Discussions about this take place on
 the &lt;a href=&quot;http://lists.ocaml.org/listinfo/infrastructure&quot;&gt;infrastructure&lt;/a&gt; mailing
 list, which is open to all.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/images/makespace-apr-2013.jpg&quot;&gt;&lt;img src=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/images/makespace-apr-2013-thumb.jpg&quot; class=&quot;left&quot; width=&quot;150px&quot; /&gt;&lt;/a&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/images/makespace-apr-2013.jpg&quot;&gt;&lt;img src=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/images/makespace-apr-2013-thumb.jpg&quot; width=&quot;150px&quot; class=&quot;left&quot; /&gt;&lt;/a&gt;
 The monthly OCaml get togethers in the &lt;a href=&quot;http://makespace.org&quot;&gt;Cambridge
 Makespace&lt;/a&gt; are also really fun.  This month saw around 30
 people wander through the doors, and work through the latest excerpts of
@@ -1155,7 +1277,7 @@ up. There's also a slightly scary
 libraries that need to be released before July, so the team has its work cut
 out for it!  The Xen group also announced that it is joining the Linux Foundation,
 and the &lt;a href=&quot;http://www.linuxfoundation.org/news-media/announcements/2013/04/xen-become-linux-foundation-collaborative-project&quot;&gt;press release&lt;/a&gt; gave Mirage a prominent mention as one of the key recent developments in Xen.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/images/jon-robot-yahoo.jpg&quot;&gt;&lt;img src=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/images/jon-robot-yahoo-thumb.jpg&quot; class=&quot;right&quot; width=&quot;120px&quot; /&gt;&lt;/a&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/images/jon-robot-yahoo.jpg&quot;&gt;&lt;img src=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/images/jon-robot-yahoo-thumb.jpg&quot; width=&quot;120px&quot; class=&quot;right&quot; /&gt;&lt;/a&gt;
 &lt;b&gt;Irminsule&lt;/b&gt;: Thomas now has a full implementation of the git file format
 in his &lt;a href=&quot;http://github.com/samoht/cagit&quot;&gt;cagit&lt;/a&gt; repository, and the interfaces
 for Irminsule's branch-consistent model are coming together.  He gave a demo to
@@ -1176,7 +1298,7 @@ OCaml/C divide, and uses &lt;a href=&quot;https://github.com/atgreen/libffi&quot
 to remain efficient and platform-independent.  There is the exciting possibility
 about hooking this library with the &lt;a href=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/tasks/compiler.html#Compile-time%20meta%20programming&quot;&gt;compile-time metaprogramming&lt;/a&gt; to eliminate all performance cost, so we're going to spend some time
 on this project to make it a well-documented alternative to the existing C FFI.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/images/mezzo-talk.jpg&quot;&gt;&lt;img src=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/images/mezzo-talk.jpg&quot; class=&quot;right&quot; width=&quot;120px&quot; /&gt;&lt;/a&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/images/mezzo-talk.jpg&quot;&gt;&lt;img src=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/images/mezzo-talk.jpg&quot; width=&quot;120px&quot; class=&quot;right&quot; /&gt;&lt;/a&gt;
 The OCaml Labs talk series continued with a visit from &lt;a href=&quot;http://gallium.inria.fr/~fpottier/&quot;&gt;Francois
 Pottier&lt;/a&gt; ad &lt;a href=&quot;http://www.xulforum.org&quot;&gt;Jonathan
 Protzenko&lt;/a&gt; from the INRIA
@@ -1939,7 +2061,7 @@ for new releases of their &lt;a href=&quot;http://janestreet.github.io&quot;&gt;
 testing for these releases is currently handled manually and we're really 
 looking forward to having them dealt with automatically!&lt;/p&gt;
 &lt;h3 id=&quot;Systemsprojects&quot;&gt; Systems projects&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/images/asplos-mort.jpg&quot;&gt;&lt;img src=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/images/asplos-mort-thumb.jpg&quot; class=&quot;right&quot; width=&quot;120px&quot; /&gt;&lt;/a&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/images/asplos-mort.jpg&quot;&gt;&lt;img src=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/images/asplos-mort-thumb.jpg&quot; width=&quot;120px&quot; class=&quot;right&quot; /&gt;&lt;/a&gt;
 &lt;b&gt;Mirage&lt;/b&gt;: There is much preparation ongoing for the big 
 &lt;a href=&quot;http://wiki.xen.org/wiki/Mirage_Incubation_Project_Proposal&quot;&gt;xen.org incubation&lt;/a&gt;, 
 which has now been approved by the Xen community board. Vincent's work on 
@@ -2705,35 +2827,6 @@ popularity.&lt;/p&gt;
    &lt;/div&gt;</content:encoded>
 	<dc:date>2012-11-01T12:00:00+00:00</dc:date>
 	<dc:creator>Anil Madhavapeddy</dc:creator>
-</item>
-<item rdf:about="http://hh360.user.srcf.net/blog/2012/11/getting-to-grips-with-opam/">
-	<title>Heidi Howard: Getting to grips with OPAM</title>
-	<link>http://hh360.user.srcf.net/blog/2012/11/getting-to-grips-with-opam/</link>
-	<content:encoded>&lt;p&gt;&lt;code&gt;What is OPAM ?&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;OPAM is a OCaml Package Manager. Its basic use is similar to apt-get on linux, both package managers help to automate the process of installing, removing and updating software by tracking the complex web of dependencies that exist between bodies of code.&lt;/code&gt;&lt;br /&gt;
-&lt;code&gt;Why use OPAM ?&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;OPAM gives the user more control of the choice of specific libraries and compiler versions used to run OCaml code. &lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;How to do I run OPAM ?&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;I am only going to run OPAM and not install it (long story). To do this, I executed the following from my root directory &lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;wget http://opam.ocamlpro.com/build/opam64 &lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;chmod +x opam64 &lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;./opam64 init &lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;How can install a package using OPAM ? What is the advantage over using OPAM intend of using the traditional methods ?&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;You can view the list of available packages using ./opam64 list and you can search using ./opam64 search .&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;On of the libraries used by Signposts is lwt. Lwt is a very useful library for anyone who want to do multi-threading in Ocaml. So I try the following query:&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;opam64 search lwt&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;Available packages for system:&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;cohttp   --  HTTP library for Lwt, Async and Mirage&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;lwt   --  A cooperative threads library for OCaml&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;lwt-zmq   --  Lwt-friendly wrapping around ZeroMQ sockets&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;release   --  Release is a multi-process Lwt-enabled daemon framework for OCaml.&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;The second of these results is the package that I want to install so&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;How do I install a package from a Ocaml project on Git ?&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;Firstly find the package that you want to install, for me this is git://github.com/mirage/opam-repo-dev&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;opam remote -add dev git://github.com/mirage/opam-repo-dev&lt;/code&gt;&lt;br /&gt;
-&lt;code&gt;Now in future, when I issue opam upgrade, the latest version of the git repo will be downloaded and any depandencies recompiled &lt;/code&gt;&lt;code&gt;&lt;/code&gt;&lt;br /&gt;
-&lt;code&gt;&lt;/code&gt;&lt;/p&gt;</content:encoded>
-	<dc:date>2012-11-01T11:15:00+00:00</dc:date>
 </item>
 <item rdf:about="http://anil.recoil.org/2012/10/19/announcing-ocaml-labs">
 	<title>Anil Madhavapeddy: Announcing the OCaml Labs project</title>
@@ -3523,146 +3616,6 @@ Wilkie&lt;/a&gt;&lt;/span&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;</content:encoded>
 	<dc:date>2011-08-08T23:00:00+00:00</dc:date>
-</item>
-<item rdf:about="http://anil.recoil.org/2011/06/18/datacaml-with-ciel">
-	<title>Anil Madhavapeddy: DataCaml - a first look at distributed dataflow programming in OCaml</title>
-	<link>http://anil.recoil.org/2011/06/18/datacaml-with-ciel.html</link>
-	<content:encoded>&lt;p&gt;Distributed programming frameworks like &lt;a href=&quot;http://wiki.apache.org/hadoop&quot;&gt;Hadoop&lt;/a&gt; and &lt;a href=&quot;http://research.microsoft.com/en-us/projects/dryad/&quot;&gt;Dryad&lt;/a&gt; are popular for performing computation over large amounts of data. The reason is programmer convenience: they accept a query expressed in a simple form such as &lt;a href=&quot;http://wiki.apache.org/hadoop/HadoopMapReduce&quot;&gt;MapReduce&lt;/a&gt;, and automatically take care of distributing computation to multiple hosts, ensuring the data is available at all nodes that need it, and dealing with host failures and stragglers.&lt;/p&gt;
-
-&lt;p&gt;A major limitation of Hadoop and Dryad is that they are not well-suited to expressing &lt;a href=&quot;http://en.wikipedia.org/wiki/Iterative_method&quot;&gt;iterative algorithms&lt;/a&gt; or &lt;a href=&quot;http://en.wikipedia.org/wiki/Dynamic_programming&quot;&gt;dynamic programming&lt;/a&gt; problems. These are very commonly found patterns in many algorithms, such as &lt;a href=&quot;http://en.wikipedia.org/wiki/K-means_clustering&quot;&gt;k-means clustering&lt;/a&gt;, &lt;a href=&quot;http://en.wikipedia.org/wiki/Binomial_options_pricing_model&quot;&gt;binomial options pricing&lt;/a&gt; or &lt;a href=&quot;http://en.wikipedia.org/wiki/Smith–Waterman_algorithm&quot;&gt;Smith Waterman&lt;/a&gt; for sequence alignment.&lt;/p&gt;
-
-&lt;p&gt;Over in the SRG in Cambridge, &lt;a href=&quot;http://www.cl.cam.ac.uk/research/srg/netos/ciel/who-we-are/&quot;&gt;we&lt;/a&gt; developed a Turing-powerful distributed execution engine called &lt;a href=&quot;http://www.cl.cam.ac.uk/research/srg/netos/ciel/&quot;&gt;CIEL&lt;/a&gt; that addresses this. The &lt;a href=&quot;http://anil.recoil.org/papers/2011-nsdi-ciel.pdf&quot;&gt;NSDI 2011&lt;/a&gt; paper describes the system in detail, but here&amp;#8217;s a shorter introduction.&lt;/p&gt;
-
-&lt;h2 id=&quot;the_ciel_execution_engine&quot;&gt;The CIEL Execution Engine&lt;/h2&gt;
-
-&lt;p&gt;CIEL consists of a master coordination server and workers installed on every host. The engine is job-oriented: a job consists of a graph of tasks which results in a deterministic output. CIEL tasks can run in any language and are started by the worker processes as needed. Data flows around the cluster in the form of &lt;em&gt;references&lt;/em&gt; that are fed to tasks as dependencies. Tasks can publish their outputs either as &lt;em&gt;concrete&lt;/em&gt; references if they can finish the work immediately or as a &lt;em&gt;future&lt;/em&gt; reference. Additionally, tasks can dynamically spawn more tasks and delegate references to them, which makes the system Turing-powerful and suitable for iterative and dynamic programming problems where the task graph cannot be computed statically.&lt;/p&gt;
-
-&lt;p&gt;The first iteration of CIEL used a domain-specific language called &lt;a href=&quot;http://anil.recoil.org/papers/2011-nsdi-ciel.pdf&quot;&gt;Skywriting&lt;/a&gt; to coordinate how tasks should run across a cluster. Skywriting is an interpreted language that is &amp;#8220;native&amp;#8221; to CIEL, and when it needs to block it stores its entire execution state inside CIEL as a continuation. &lt;a href=&quot;http://www.cl.cam.ac.uk/~dgm36/&quot;&gt;Derek Murray&lt;/a&gt; has written a blog post &lt;a href=&quot;http://www.syslog.cl.cam.ac.uk/2011/04/06/ciel/&quot;&gt;explaining this in more detail&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;More recently, we have been working on eliminating the need for Skywriting entirely, by adding direct support for CIEL into languages such as &lt;a href=&quot;http://www.stackless.com/&quot;&gt;Python&lt;/a&gt;, Java, &lt;a href=&quot;http://www.scala-lang.org/&quot;&gt;Scala&lt;/a&gt;, and the main subject of this post &amp;#8211; &lt;a href=&quot;http://caml.inria.fr&quot;&gt;OCaml&lt;/a&gt;. It works via libraries that communicate with CIEL to spawn tasks, publish references, or suspend itself into the cluster to be woken up when a future reference is completed.&lt;/p&gt;
-
-&lt;h2 id=&quot;datacaml_api&quot;&gt;DataCaml API&lt;/h2&gt;
-
-&lt;p&gt;Rather than go into too much detail about the innards of CIEL, this post describes the OCaml API and gives some examples of how to use it. The simplest interface to start with is:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;ocaml&quot;&gt;	  &lt;span class=&quot;k&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ref&lt;/span&gt;
-	  &lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;deref&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ref&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;
-	
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;The type &lt;code&gt;'a ref&lt;/code&gt; represents a CIEL reference. This data might not be immediately present on the current node, and so must be dereferenced using the &lt;code&gt;deref&lt;/code&gt; function.&lt;/p&gt;
-
-&lt;p&gt;If the reference has been completed, then the OCaml value is unmarshalled and returned. If it is not present, then the program needs to wait until the computation involving the reference has completed elsewhere. The future reference might contain a large data structure and be on another host entirely, and so we should serialise the program state and spawn a task that is dependent on the future&amp;#8217;s completion. This way, CIEL can resume execution on whatever node finished that computation, avoiding the need to move data across the network.&lt;/p&gt;
-
-&lt;p&gt;Luckily, we do not need to serialise the entire heap to suspend the program. DataCaml uses the &lt;a href=&quot;http://okmij.org/ftp/continuations/implementations.html&quot;&gt;delimcc&lt;/a&gt; delimited continuations library to walk the stack and save only the subset required to restart this particular task. Delimcc abstracts this in the form a &amp;#8220;restartable exception&amp;#8221; that supplies a closure which can be called later to resume the execution, as if the exception had never happened. Delimcc supports serialising this closure to an output channel, which you can read about in Oleg&amp;#8217;s &lt;a href=&quot;http://okmij.org/ftp/continuations/caml-shift.pdf&quot;&gt;paper&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;So how do we construct references? Lets fill in more of the interface:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;ocaml&quot;&gt;	&lt;span class=&quot;k&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Ciel&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt;
-	  &lt;span class=&quot;k&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ref&lt;/span&gt;
-	  &lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;deref&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ref&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;
-	  &lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spawn&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ref&lt;/span&gt;
-	  &lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;run&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;list&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;unit&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-	
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;The &lt;code&gt;spawn&lt;/code&gt; function accepts a closure and an argument, and returns a future of the result as a reference. The &lt;code&gt;run&lt;/code&gt; function begins the execution of a job, with the first parameter taking some &lt;code&gt;string arguments&lt;/code&gt; and returning an &lt;code&gt;'a&lt;/code&gt; value. We also supply a pretty-printer second argument to convert the &lt;code&gt;'a&lt;/code&gt; into a string for returning as the result of the job (this can actually be any JSON value in CIEL, and just simplified here).&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;ocaml&quot;&gt;	&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spawn&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;fun&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arg1&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt;
-  	&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spawn&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;fun&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;deref&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arg1&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt;
-	&lt;span class=&quot;n&quot;&gt;deref&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r2&lt;/span&gt; 
-	
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;We first spawn a function &lt;code&gt;r1&lt;/code&gt; which simply adds 5 to the job argument. A job in CIEL is &lt;em&gt;lazily scheduled&lt;/em&gt;, so this marshals the function to CIEL, creates a future, and returns immediately. Next, the &lt;code&gt;r2&lt;/code&gt; function spawns a task which also adds 5, but to the dereferenced value of &lt;code&gt;r1&lt;/code&gt;. Again, it is not scheduled yet as the return reference has not been dereferenced.&lt;/p&gt;
-
-&lt;p&gt;Finally, we attempt to dereference &lt;code&gt;r2&lt;/code&gt;, which causes it be scheduled on a worker. While executing, it will try to dereference &lt;code&gt;r1&lt;/code&gt; that will schedule it, and all the tasks will run to completion.&lt;/p&gt;
-
-&lt;p&gt;Programming language boffins will recognise that this interface is very similar to &lt;a href=&quot;http://www.ps.uni-saarland.de/alice/&quot;&gt;AliceML&lt;/a&gt;&amp;#8217;s concept of &lt;a href=&quot;http://www.ps.uni-saarland.de/alice/manual/futures.html&quot;&gt;lazy futures&lt;/a&gt;. The main difference is that it is implemented as a pure OCaml library, and uses a general-purpose distributed engine that can also work with other languages.&lt;/p&gt;
-
-&lt;h2 id=&quot;streaming_references&quot;&gt;Streaming References&lt;/h2&gt;
-
-&lt;p&gt;The references described so far only have two states: they are either concrete or futures. However, there are times when a task can progressively accept input and make forward progress. For these situations, references can also be typed as &lt;em&gt;opaque&lt;/em&gt; references that are accessed via &lt;code&gt;in_channel&lt;/code&gt; and &lt;code&gt;out_channel&lt;/code&gt;, as networks are:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;ocaml&quot;&gt;	&lt;span class=&quot;k&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;opaque_ref&lt;/span&gt;
-
-	&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spawn_ref&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;unit&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;opaque_ref&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;opaque_ref&lt;/span&gt;
-	&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;output&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;?&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stream&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;bool&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;?&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pipe&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;bool&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;out_channel&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;unit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;opaque_ref&lt;/span&gt;
-	&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;input&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;in_channel&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;opaque_ref&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;
-	
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;This interface is a lower-level version of the previous one:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;spawn_ref&lt;/code&gt; creates a lazy future as before, but the type of references here is completely opaque to the program.&lt;/li&gt;
-
-&lt;li&gt;Inside a spawned function, &lt;code&gt;output&lt;/code&gt; is called with a closure that accepts an &lt;code&gt;out_channel&lt;/code&gt;. The &lt;code&gt;stream&lt;/code&gt; argument informs CIEL that a dependent task can consume the output before it is completed, and &lt;code&gt;pipe&lt;/code&gt; forms an even more closely coupled shared-memory connection (requiring the tasks to be scheduled on the same host). Piping is more efficient, but will require more work to recover from a fault, and so using it is left to the programmer to decide.&lt;/li&gt;
-
-&lt;li&gt;The &lt;code&gt;input&lt;/code&gt; function is used by the receiving task to parse the input as a standard &lt;code&gt;in_channel&lt;/code&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;The CIEL engine actually supports multiple concurrent input and output streams to a task, but I&amp;#8217;ve just bound it as a single version for now while the bindings find their feet. Here&amp;#8217;s an example of how streaming references can be used:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;ocaml&quot;&gt;	&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x_ref&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spawn_ref&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;fun&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;
-	  &lt;span class=&quot;n&quot;&gt;output&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;~&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stream&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;fun&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;oc&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;
-	    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-	      &lt;span class=&quot;nn&quot;&gt;Unix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sleep&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-	      &lt;span class=&quot;n&quot;&gt;fprintf&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;oc&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;%d&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;%!&amp;quot;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-	    &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
-	  &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-	&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt;
-	&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y_ref&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spawn_ref&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;fun&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;
-	  &lt;span class=&quot;n&quot;&gt;input&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;fun&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ic&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;
-	    &lt;span class=&quot;n&quot;&gt;output&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;~&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stream&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;fun&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;oc&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;
-	      &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-	        &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;input_line&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ic&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt;
-	        &lt;span class=&quot;n&quot;&gt;fprintf&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;oc&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;LINE=%s&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;%!&amp;quot;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt;
-	      &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
-	    &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-	  &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x_ref&lt;/span&gt;
-	&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt;
-	
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;We first spawn an &lt;code&gt;x_ref&lt;/code&gt; which pretends to do 5 seconds of work by sleeping and outputing a number. This would of course be heavy number crunching in a real program. The &lt;code&gt;y_ref&lt;/code&gt; then inputs this stream, and outputs its own result by prepending a string to each line.&lt;/p&gt;
-
-&lt;h2 id=&quot;try_it_out&quot;&gt;Try it out&lt;/h2&gt;
-
-&lt;p&gt;If you are interested in a more real example, then read through the &lt;a href=&quot;https://github.com/avsm/ciel/blob/master/src/ocaml/binomial.ml&quot;&gt;binomial options&lt;/a&gt; calculator that uses streaming references to parallelise a dynamic programming problem (this would be difficult to express in MapReduce). On my Mac, I can run this by:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;check out CIEL from from Derek&amp;#8217;s &lt;a href=&quot;http://github.com/mrry/ciel&quot;&gt;Git repository&lt;/a&gt;.&lt;/li&gt;
-
-&lt;li&gt;install all the Python libraries required (see the &lt;code&gt;INSTALL&lt;/code&gt; file) and OCaml libraries (&lt;a href=&quot;http://okmij.org/ftp/continuations/implementations.html&quot;&gt;delimcc&lt;/a&gt; and &lt;a href=&quot;http://martin.jambon.free.fr/yojson.html&quot;&gt;Yojson&lt;/a&gt;).&lt;/li&gt;
-
-&lt;li&gt;add &lt;code&gt;&amp;lt;repo&amp;gt;/src/python&lt;/code&gt; to your &lt;code&gt;PYTHONPATH&lt;/code&gt;&lt;/li&gt;
-
-&lt;li&gt;in one terminal: &lt;code&gt;./scripts/run_master.sh&lt;/code&gt;&lt;/li&gt;
-
-&lt;li&gt;in another terminal: &lt;code&gt;./scripts/run_worker.sh -n 5&lt;/code&gt; (this allocates 5 execution slots)&lt;/li&gt;
-
-&lt;li&gt;build the OCaml libraries: &lt;code&gt;cd src/ocaml &amp;amp;&amp;amp; make&lt;/code&gt;&lt;/li&gt;
-
-&lt;li&gt;start the binomial options job: &lt;code&gt;./scripts/sw-start-job -m http://localhost:8000 ./src/package/ocaml_binopt.pack&lt;/code&gt;&lt;/li&gt;
-
-&lt;li&gt;there will be a URL printed which shows the execution progress in real-time&lt;/li&gt;
-
-&lt;li&gt;you should see log activity on the worker(s), and a result reference with the answer (&lt;code&gt;10.x&lt;/code&gt;)&lt;/li&gt;
-
-&lt;li&gt;let us know the happy news if it worked or sad news if something broke&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;discussion&quot;&gt;Discussion&lt;/h2&gt;
-
-&lt;p&gt;The DataCaml bindings outlined here provide an easy way to write distributed, fault-tolerant and cluster-scheduled jobs in OCaml. The current implementation of the engine is aimed at cluster computation, but &lt;a href=&quot;http://www.cl.cam.ac.uk/~ms705&quot;&gt;Malte&lt;/a&gt; has been working on &lt;a href=&quot;http://www.cl.cam.ac.uk/~ms705/pub/papers/2011-ciel-sfma.pdf&quot;&gt;condensing CIEL onto multicore hardware&lt;/a&gt;. Thus, this could be one approach to &amp;#8216;solving the OCaml multicore problem&amp;#8217; for problems that fit nicely into the dataflow paradigm.&lt;/p&gt;
-
-&lt;p&gt;The biggest limitation for using these bindings is that delimited continuation serialisation only works in bytecode. Native code delimcc supports &lt;code&gt;shift/reduce&lt;/code&gt; in the same program, but serialising is problematic since native code continuations contain a C stack, which may have unwrapped integers. One way to work around this is by switching to a monadic approach to dereferencing, but I find delimcc programming more natural (also see &lt;a href=&quot;http://www.openmirage.org/wiki/delimcc-vs-lwt&quot;&gt;this discussion&lt;/a&gt;).&lt;/p&gt;
-
-&lt;p&gt;Another important point is that tasks are lazy and purely functional (remind you of Haskell?). This is essential for reliable fault-tolerance and reproducibility, while allowing individual tasks to run fast, strict and mutable OCaml code. The tasks must remain referentially transparent and idempotent, as CIEL may choose to schedule them multiple times (in the case of faults or straggler correction). Derek has been working on &lt;a href=&quot;http://www.cl.cam.ac.uk/~dgm36/publications/2011-murray2011nondet.pdf&quot;&gt;integrating non-determinism into CIEL&lt;/a&gt;, so this restriction may be relaxed soon.&lt;/p&gt;
-
-&lt;p&gt;Finally, these ideas are not limited to OCaml at all, but also apply to Scala, Java, and Python. We have submitted a draft paper dubbed &lt;em&gt;&amp;#8217;&lt;a href=&quot;http://www.cl.cam.ac.uk/~ms705/pub/papers/2011-ciel-socc-draft.pdf&quot;&gt;A Polyglot Approach to Cloud Programming&lt;/a&gt;&amp;#8217;&lt;/em&gt; with more details and the ubiquitous evaluation versus Hadoop. There is a really interesting line to explore between low-level &lt;a href=&quot;http://en.wikipedia.org/wiki/Message_Passing_Interface&quot;&gt;MPI&lt;/a&gt; coding and high-level MapReduce, and we think CIEL is a useful spot in that design space.&lt;/p&gt;
-
-&lt;p&gt;Incidentally, I was recently hosted by &lt;a href=&quot;http://research.nokia.com/&quot;&gt;Nokia Research&lt;/a&gt; in Palo Alto by my friend &lt;a href=&quot;http://www.linkedin.com/pub/prashanth-mundkur/6/b44/27&quot;&gt;Prashanth Mundkur&lt;/a&gt;, where they work on the Python/Erlang/OCaml &lt;a href=&quot;http://discoproject.org/&quot;&gt;Disco&lt;/a&gt; MapReduce engine. I&amp;#8217;m looking forward to seeing more critical comparisons and discussions of alternatives to Hadoop, from them and others.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Thanks are due to &lt;a href=&quot;http://www.cl.cam.ac.uk/~dgm36/&quot;&gt;Derek&lt;/a&gt;, &lt;a href=&quot;https://twitter.com/#!/chrissmowton&quot;&gt;Chris&lt;/a&gt; and &lt;a href=&quot;http://www.cl.cam.ac.uk/~ms705&quot;&gt;Malte&lt;/a&gt; for answering my incessant CIEL questions while writing this post! Remember that DataCaml is a work in progress and a research prototype, and feedback is most welcome.&lt;/em&gt;&lt;/p&gt;</content:encoded>
-	<dc:date>2011-06-17T23:00:00+00:00</dc:date>
 </item>
 
 </rdf:RDF>

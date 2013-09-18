@@ -33,6 +33,8 @@ div.toc {
     padding: 0px 0px 1ex;
     font-size: 100%;
 }
+div#content-primary p img, div#content-primary img.right { float: none; }
+
 </style>
 </head>
 
@@ -42,6 +44,16 @@ div.toc {
 
 <h4>Recent Posts</h4>
 <table width="90%">
+  <tr>
+    <td><i>Tue, 17 Sep 2013</i></td>
+    <td><a href="#http://hh360.user.srcf.net/blog/?p=352">OCaml Monthly Meeting – Live Blog</a></td>
+    <td>Heidi Howard</td>
+  </tr>
+  <tr>
+    <td><i>Tue, 17 Sep 2013</i></td>
+    <td><a href="#http://ocamllabs.github.com/compiler-hacking/2013/09/17/compiler-hacking-july-2013">Inaugural compiler hackers meeting</a></td>
+    <td>Compiler Hacking</td>
+  </tr>
   <tr>
     <td><i>Sun, 15 Sep 2013</i></td>
     <td><a href="#http://anil.recoil.org/2013/09/16/camlpdf-the-end-of-sucky-pdf-tools">Camlpdf, the first good command-line PDF tool I've found</a></td>
@@ -193,11 +205,6 @@ div.toc {
     <td>Monthly News</td>
   </tr>
   <tr>
-    <td><i>Thu, 01 Nov 2012</i></td>
-    <td><a href="#http://hh360.user.srcf.net/blog/2012/11/getting-to-grips-with-opam/">Getting to grips with OPAM</a></td>
-    <td>Heidi Howard</td>
-  </tr>
-  <tr>
     <td><i>Thu, 18 Oct 2012</i></td>
     <td><a href="#http://anil.recoil.org/2012/10/19/announcing-ocaml-labs">Announcing the OCaml Labs project</a></td>
     <td>Anil Madhavapeddy</td>
@@ -237,11 +244,6 @@ div.toc {
     <td><a href="#http://anil.recoil.org/2011/08/09/cufp2011-schedule">Commercial Users of Functional Programming 2011 Schedule</a></td>
     <td>Anil Madhavapeddy</td>
   </tr>
-  <tr>
-    <td><i>Fri, 17 Jun 2011</i></td>
-    <td><a href="#http://anil.recoil.org/2011/06/18/datacaml-with-ciel">DataCaml - a first look at distributed dataflow programming in OCaml</a></td>
-    <td>Anil Madhavapeddy</td>
-  </tr>
 </table>
 
 
@@ -255,9 +257,187 @@ div.toc {
 
 
 
+<!-- <h3><a href="http://hh360.user.srcf.net/blog" title="/etc/hosts » OCaml">Heidi Howard</a></h3> -->
+<img style="float:right; padding-left: 20px;" class="face" src="images/../../mugshots/heidi.jpg" width="" height="50" alt="">
+
+<div class="entrygroup" id="http://hh360.user.srcf.net/blog/?p=352" lang="en-US">
+<a name="http://hh360.user.srcf.net/blog/?p=352"> </a>
+<h1 class="posttitle"><a href="http://hh360.user.srcf.net/blog/2013/09/ocaml-monthly-meeting-live-blog/">OCaml Monthly Meeting – Live Blog</a>
+(<a href="http://hh360.user.srcf.net/blog" title="/etc/hosts » OCaml">Heidi Howard</a>)
+</h1>
+<hr/>
+<div class="entry">
+  <div class="content">
+<p>Today&#8217;s OCaml Labs Monthly Meeting is all about practise talks for OCaml2013 so in that spirit, I&#8217;ll practising a bit of live-blogging too.</p>
+<p>13:53 &#8211; Today&#8217;s SRG Meeting is over and its time for some work before the OCaml Labs meeting at 4:00, see you then &#8230;</p>
+<p>16:02 Techincal difficulties delayed the start</p>
+<p><span><strong>16:02 Intro from Anil</strong></span></p>
+<p>introducing Gabriel Scherer who is visiting us this week and going we are going to Maypole after this meeting. We had a cash prise from ASPLOS after winning the HiPEAC paper award and the money will go towards SRG wine for XMAS party. Signpost paper was accepted to FOCI and a HotNet paper on Trevi was also just accepted</p>
+<p><strong>OCL Website</strong> &#8211; Too much manual management at the moment, moving to an <a href="http://planet.ocamlcore.org/">ocaml planet</a> feed of blog posts. David has been busy hacking on <a href="https://github.com/OCamlPro/opam2web">OPAM2web</a>, OPAM has 512 packages, Opam2web takes a subset of the OPAM packages and makes the metadata into a minisite, like on OPAM. Doesn&#8217;t require manual updates, like an ATOM feed.</p>
+<p><strong>Upcoming events</strong> &#8211; Tomorrow is the 2nd <a href="http://www.meetup.com/Makespace/events/138103982/">compiler hacking event</a>, at the <a href="http://makespace.org/">makespace</a>. Anil will be talking at QCon on Mirage, Mirage 1.0 release date is October 22nd, so maybe a workshop before. We 3 talks for Ocaml2013 (Platform, OcamlOT and Ctypes) so here we go &#8230;</p>
+<p><span><strong>16:09 Anil practice talk on OCaml Platform 1.0</strong></span></p>
+<p>Languages take many difference approaches to platform, but what does platform even mean? As a late mover in this field, we can learn from other languages. A platforms is NOT a group of temporarily motivated hackers to build a replacement standard library. Its hard to adopt a particular approach without a domain specific purpose, there are too many opinions, we need objective way to determine what belongs in the platform, we need a genie community that is sustainable (even if a large party leaves). A platform is a bundle of tools that interoperate, with quantitative metric to judge success, built in agility and supporting developers thought the whole development life cycle. Industrial partners have a range of needs, as each work in different domains.</p>
+<p><strong>Tooling</strong> &#8211; Overview of 5 areas: OPAM from OCamlPro, IDE Tools, OPAM-DOC, OCaml compiler itself and Ocaml.org.</p>
+<p><strong>OPAM</strong> &#8211; 1.1 released today (maybe), over 100 contributors to OPAM,  500+ packages, 1500+ unique versions, external dependency solver using CUDF</p>
+<p><strong>IDE Support</strong> &#8211; OCaml has many intermediate files. In OCaml 4.0 onwards, we have a binary format of an abstract syntax tree with type annotations called cmt (and cmti for interface files), we can now create external tools to query this like opam-doc. ocp-index and ocp-indent from OCamlPro, and Merlin (I thinks this is EPIC) are also now available</p>
+<p><strong>opam-doc</strong> &#8211; Now we have cmt files, we need unified documentation across packages, this is much harder than it sounds as it touches every part of the tool stack. Not all packages can be installed at once due to conflicts. Module inclusion is tough to code in static html. (Need to make a demo) bindoc takes the Typed AST (in cmt) and generates cmd, which include the ocamldoc comments, Opamdoc takes the cmt database for opam and output a single website with your universe of packages.</p>
+<p><strong>ocaml.org</strong> - Demo of ocaml.org at <a href="http://hh360.user.srcf.net/blog/category/pl/ocaml/feed/ocaml-redesign.github.io/pkg/index.html">ocaml-redesign.github.io/pkg/index.html</a>, feedback is welcome says amir</p>
+<p>Now we have the tools, what metrics can we extract to see how well our tools are doing.</p>
+<p><strong>Portability</strong> &#8211; windows compatibility ?</p>
+<p><strong>Maintainer</strong> &#8211; is there a place for docs and will people response to issues/comments/emails, where can issues be submitted ?</p>
+<p><strong>Tests</strong> &#8211; code coverage, multi variant benchmarking in <a href="https://ocaml.janestreet.com/ocaml-core/latest/doc/core_bench/index.html">core-bench</a></p>
+<p><strong>Stability</strong> &#8211; OPAM support pining, how stable are the interfaces of libraries ?</p>
+<p>opam tracks compiler constraint, statically analyses the build system from logs (OCamlOT)</p>
+<p><strong>Agility</strong> &#8211; Building a platform is EXHAUSTING. We want to ask &#8220;WANT IF&#8221; questions: <a href="http://gallium.inria.fr/blog/monomorphic_let/">what if let was monomophic</a>? what if we removed <a href="http://caml.inria.fr/pub/docs/manual-camlp4/manual002.html">camlp4</a>? what is the syntax precedence changes ?</p>
+<p><strong>Distrusted workflow</strong> &#8211; build on git, distributing tasks between 3 actors: Author (library writers), OCamlOL workers and maintainers. As we become more stable we move from staging to stable to inclusion in the platform.</p>
+<p>We are building a tussle, we want to launch a game in janurary and let people put standard libraries into the ring, running OCamlOT to discover the winner</p>
+<p><strong>No clear winner</strong>: Lwt &#8211; portability, Batteries &#8211; free of syntax extensions, core &#8211; comprehensive.</p>
+<p><strong><span>16:36  Discussion over the battle of the standard libraries and talk feedback</span></strong></p>
+<p>C: talk is a bit long, not sure what to cut..</p>
+<p>C: OPAM was dicussed last year at OCaml2013, we want to update everyone and follow on without overlapping too much</p>
+<p>Q: Haven&#8217;t we already decided on JS&#8217;s core ?</p>
+<p>A: No, we use all of them, i.e. Mirage used lwt extensively</p>
+<p>Q: What if we don&#8217;t want any of the new standard libraries ? maybe I just want to use domain specific libraries from OPAM as and when I need them</p>
+<p>A: We are not forcing the new standard libraries on anyone, but they are useful for beginners, nice to have consistent style, interoperability and few open statements e.g. Open Core.Std</p>
+<p>Q: What if I have already decided which standard library I want to use ?</p>
+<p>A: Again we are not forcing standard libraries on anyone, we are just trying to force effort more directly. OCaml tools will always be standard library agnoctic</p>
+<p>C: the diagram of OCamlOT is confustion</p>
+<p>C: how to not overlap with david talks</p>
+<p><span><strong>16:41 Davids talk on OCamlOT</strong></span></p>
+<p>State for the open source OCaml community</p>
+<p><strong>Outline:</strong> what is quality software? what is the user experience? what is feedback loop for package authors? How do we represent the thing underneath this all? utopian future ?</p>
+<p><strong>Quality:</strong> Work on every core (ANIL: We want multi-core <img src="http://hh360.user.srcf.net/blog/wp-includes/images/smilies/icon_razz.gif" alt=":P" class="wp-smiley" />  ), consistent results: work or die nicely with obvious solution, not more &#8220;What have I forgotten?&#8221; questions, it should just tell you. We need addictive actions (not sure what they are), consistency, quality functions&#8230;</p>
+<p><strong>Universal concerns:</strong> compiler hypothesis &#8220;what if&#8221; questions (anil already said this), build system hypotheses &#8220;what strange assumuptions is the buid system making?&#8221;, package manager hypothesis and environmner hypothesis</p>
+<p><strong>Workflow:</strong> Make a pull request, curator observes the proposal, predict the future, proposes amendments, feedback loop and finally agreement is reached. Core is release weekly for example, we are trying to work like linux kernal patches</p>
+<p><strong>New workflow:</strong> promote health of OCaml community, preaching compatibility, &#8220;observe, orient, decide and act&#8221;, Computer assisted curator will help a human, to run the loop faster, human can pose questions to the computer assisted curator e.g  &#8221;will this run on ARM ?&#8221;</p>
+<p><strong>Repository Observation:</strong> github binding with web hooks but we are not tied to github. We merge into the world and we need dependences from each possible users prospective of the world</p>
+<p><strong>Dependency Orientation:</strong> capabilities with environmental dependances, packages with constriant-based dependencies, repositories with revision dependencies and artifact dependencies. example of the android repo</p>
+<p><strong>Triage Decisions:</strong> taking plain text error and parsing them into categories such as unsatisfiability (can&#8217;t have these two packages), dependencies (if my dependency is broken, then I am broken), transient (network down), system, metadata, external dependences (you forgot to write a dependency), build errors and a combo of many of the above.</p>
+<p><strong>State Action:</strong> commit intention, build, error analysis and buid results</p>
+<p><strong>Internet res:</strong> The agents negotiates over REST API on HTTPS, independent metadata layers (not sure about this) ,everythings an s-exp, branch consistent store explained, like git or <a href="https://github.com/samoht/irminsule">Irminsule</a></p>
+<p><strong>Current state:</strong> github web hooks, we are conservative so one byte changes and we rebuild everything, basic triage heuristics completed, no amendment are proposed by the system atm, we don&#8217;t commit the outcome but the evidence, simple reactions to results, a website with green and red boxes in the large table</p>
+<p><strong>History:</strong> we have found lots of metadata issues<span>, many packages bugs, some tool bugs like a non relocatable</span><span> compiler and </span>ocamlbuild<span> PATH </span>ignorer<span>, we currently have 30+ </span>x84-64<span> 30+</span>x84-32<span>, 8 ARMs , many </span>Linux<span> distros</span><span> , </span>dead <a href="http://www.raspberrypi.org/">Raspberry Pi</a>, panicking<span> *nix </span>filesystems<span> and lots of people have set warning as error</span></p>
+<p><strong>Future:</strong> opamfu for DAG analysis, schema migration overhead, lower overhead for administrating exotic workers contributed to OCamlOT, we need to authenticate machines using ocaml-sodium, we need more advanced automation, proposed amendments, lets have a dialogue, better website integration, benchmarking your upgrades (how much improves cost), run experiments on whole OPAM universe with differential analysis and VM-based test system, to specific the worker finely.</p>
+<p>What I think quantity is, vision of the future, how its represented underneath and what&#8217;s next,</p>
+<p><span><strong>Discussions</strong></span></p>
+<p>C: that was 20mins, feedback to David regarding content to be cut,</p>
+<p><span><strong>17:23 Ctypes by Jeremy </strong></span></p>
+<p>This is a update not a practice talk</p>
+<p>An examples of puts from C, how we can write no C and link in OCaml,</p>
+<p><strong>NEW things in Ctypes:</strong><br />
+prettyprinting &#8211; for C types and C values, making it much eaiser to examine values for debuygging</p>
+<p>biarray &#8211; support for lump of C memory</p>
+<p>More type &#8211; nullable string, complex numbers</p>
+<p>String conversions &#8211; much faster</p>
+<p>Memory management issues &#8211; ctypes now gives the programmer more control over lifetime of OCaml passed to C,</p>
+<p>finaliser &#8211; which you can attach to memory</p>
+<p><strong>Future</strong></p>
+<p>stub generation &#8211; instead of dynamically binding, it will generate stub code to act to the API</p>
+<p>capability-style memory safty &#8211; one rogue pointer in a C library, can cause hell, loading each C library in a seperate address space so i library can only kill itself, you can then even run on C library on a foreign host or on a virtual machine</p>
+<p>static strcut/union layout &#8211; checking layout of structures and unions against the API</p>
+<p><strong><span>17:40 Amir demo of ocaml-resdesign.githuib.io/docs/opam,</span></strong> (its look great <img src="http://hh360.user.srcf.net/blog/wp-includes/images/smilies/icon_smile.gif" alt=":)" class="wp-smiley" /> )</p>
+<p><a href="http://hh360.user.srcf.net/blog/wp-content/uploads/2013/09/ocaml.png"><img class="size-medium wp-image-363 aligncenter" alt="ocaml" src="http://hh360.user.srcf.net/blog/wp-content/uploads/2013/09/ocaml-253x300.png" width="253" height="300" /></a></p>  </div>
+
+
+
+
+
+
+
+<p class="date">
+<a href="http://hh360.user.srcf.net/blog/2013/09/ocaml-monthly-meeting-live-blog/">by Heidi-ann at Tue, 17 Sep 2013</a>
+</p>
+  </div>
+</div>
+
+</div>
+
+<div class="channelgroup">
+
+
+
+
+
+
+
+<!-- <h3><a href="http://ocamllabs.github.com/compiler-hacking/" title="OCaml Labs compiler hacking">Compiler Hacking</a></h3> -->
+<img style="float:right; padding-left: 20px;" class="face" src="images/../../images/hax0ring.jpg" width="70" height="" alt="">
+
+<div class="entrygroup" id="http://ocamllabs.github.com/compiler-hacking/2013/09/17/compiler-hacking-july-2013" lang="en-us">
+<a name="http://ocamllabs.github.com/compiler-hacking/2013/09/17/compiler-hacking-july-2013"> </a>
+<h1 class="posttitle"><a href="http://ocamllabs.github.com/compiler-hacking/2013/09/17/compiler-hacking-july-2013.html">Inaugural compiler hackers meeting</a>
+(<a href="http://ocamllabs.github.com/compiler-hacking/" title="OCaml Labs compiler hacking">Compiler Hacking</a>)
+</h1>
+<hr/>
+<div class="entry">
+  <div class="content">
+<p><img src="http://ocamllabs.github.io/compiler-hacking/imgs/2013-09-17.jpg" alt="Compiler Hacking" /></p>
+
+<p>The first OCaml Labs compiler hacking session brought together around twenty people from <a href="http://www.cl.cam.ac.uk/projects/ocamllabs/">OCaml Labs</a>, the wider <a href="http://www.cl.cam.ac.uk">Computer Lab</a>, and <a href="http://www.citrix.com/">various</a> <a href="http://www.arm.com/">companies</a> around Cambridge for an enjoyable few hours learning about and improving the OCaml compiler toolchain, fuelled by <a href="http://www.cherryboxpizza.co.uk">pizza</a> and home-made ice cream (thanks, <a href="http://philippewang.info/CL/">Philippe</a>!).</p>
+
+<p>We benefited from the presence of a few <a href="http://www.x9c.fr/">experienced</a> <a href="http://danmey.org/">compiler</a> <a href="http://lpw25.net/">hackers</a>, but for most of us it was the first attempt to modify the OCaml compiler internals.</p>
+
+<p>The first surprise of the day was the discovery that work on the <a href="https://github.com/ocamllabs/compiler-hacking/wiki/Things-to-work-on">list of projects</a> was underway before we even arrived!  Keen collaborators from The Internet had apparently spotted our triaged bug reports and <a href="http://caml.inria.fr/mantis/view.php?id=4323">submitted</a> <a href="http://caml.inria.fr/mantis/view.php?id=4737">patches</a> to Mantis.</p>
+
+<h3>Standard library and runtime</h3>
+
+<p>There was an exciting moment early on when it emerged that two teams had been working independently on the same issue!  When <a href="https://github.com/jonludlam">Jon Ludlam</a> and <a href="http://www.cl.cam.ac.uk/projects/ocamllabs/people/euan.html">Euan Harris</a> submitted a patch to add a <code>get_extension</code> function to the <a href="http://caml.inria.fr/pub/docs/manual-ocaml/libref/Filename.html"><code>Filename</code></a> module they found that they had been pipped to the post by <a href="https://github.com/mcclurmc/">Mike McClurg</a>.  There's still the judging stage to go, though, as the patches wait <a href="http://caml.inria.fr/mantis/view.php?id=5807">on Mantis</a> for official pronouncement from the Inria team. </p>
+
+<p><a href="http://github.com/vbmithr">Vincent Bernardoff</a> also spent some time improving the standard library, <a href="http://caml.inria.fr/mantis/view.php?id=4919">fleshing out the interface for translating between OCaml and C error codes</a>, starting from a patch by Goswin von Brederlow.</p>
+
+<p><a href="https://github.com/stedolan">Stephen Dolan</a> looked at a <a href="http://caml.inria.fr/mantis/view.php?id=1956">long-standing issue</a> with names exported by the OCaml runtime that can clash with other libraries, and submitted a patch which hides the sole remaining offender for the runtime library.  As he noted in the comments, there are still a <a href="https://gist.github.com/stedolan/6115403">couple of hundred</a> global names without the <code>caml_</code> prefix in the <code>otherlibs</code> section of the standard library.</p>
+
+<h3>Tools</h3>
+
+<p>There was a little flurry of work on new command-line options for the standard toolchain.</p>
+
+<p>A <a href="http://caml.inria.fr/mantis/view.php?id=6102">Mantis issue</a> submitted by <a href="http://gallium.inria.fr/%7Escherer/">Gabriel Scherer</a> suggests adding options to stop the compiler at certain stages, to better support tools such as <a href="http://projects.camlcity.org/projects/findlib.html">OCamlfind</a> and to make it easier to debug the compiler itself.  The Ludlam / Harris team looked at this, and submitted a patch which provoked further thoughts from Gabriel.</p>
+
+<p>Vincent looked at extending <a href="http://caml.inria.fr/pub/docs/manual-ocaml/depend.html">ocamldep</a> with support for suffixes other than <code>.ml</code> and <code>.mli</code>.  Since <a href="http://caml.inria.fr/mantis/view.php?id=3725">the issue</a> was originally submitted, <code>ocamldep</code> has acquired <a href="http://caml.inria.fr/pub/docs/manual-ocaml/depend.html#sec288"><code>-ml-synonym</code> and <code>-mli-synonym</code> options</a> that serve this purpose, so Vincent looked at supporting other suffixes in the compiler, and submitted a patch as a <a href="http://caml.inria.fr/mantis/view.php?id=6110">new issue</a>.</p>
+
+<p>The OCaml top level has a simple feature for setting up the environment —  when it starts up it looks for the file <code>.ocamlinit</code>, and executes its contents.  It's sometimes useful to skip this stage and run the top level in a vanilla environment, so <a href="https://github.com/dsheets">David Sheets</a> submitted a <a href="http://caml.inria.fr/mantis/view.php?id=6071">patch</a> that adds a <code>-no-init</code> option, <a href="https://github.com/ocaml/ocaml/blob/fadcc73c50b89ca80ecc11131c9a23dbd2c1e67a/Changes#L35">due for inclusion</a> in the next release.</p>
+
+<h3>Error-handling/reporting</h3>
+
+<p>Error handling issues saw a good deal of activity.  <a href="http://www.cl.cam.ac.uk/%7Erp452/">Raphaël Proust</a> submitted a patch to improve the <a href="http://caml.inria.fr/mantis/view.php?id=6112">reporting of error-enabled warnings</a>; David investigated <a href="http://caml.inria.fr/mantis/view.php?id=3582">handling out-of-range integer literals</a> and <a href="http://caml.inria.fr/mantis/view.php?id=5350">return-code checking of C functions in the runtime</a>, leading to some discussions on Mantis.  Stephen submitted a patch to improve the <a href="http://caml.inria.fr/mantis/view.php?id=6182">diagnostics for misuses of <code>virtual</code></a>.  <a href="http://www.cl.cam.ac.uk/%7Egk338/">Gabriel Kerneis</a> and Wojciech looked at some <a href="http://caml.inria.fr/mantis/view.php?id=6109">typos in ocamlbuild error messages</a>, and Mike opened an <a href="http://caml.inria.fr/mantis/view.php?id=6108">issue to clarify the appropriate use of the <code>compiler-libs</code> package</a>.</p>
+
+<h3>Language</h3>
+
+<p>The <code>open</code> operation on modules can make it difficult for readers of a program to see where particular names are introduced, so its use is sometimes discouraged.  The basic feature of making names available without a module prefix is rather useful, though, so various new features (including <a href="http://caml.inria.fr/pub/docs/manual-ocaml-4.00/manual021.html#toc77">local opens</a>, <a href="https://github.com/ocaml/ocaml/commit/f51bc04b55fbe22533f1075193dd3b2e52721f15">warnings for shadowing</a>, and <a href="https://github.com/ocaml/ocaml/commit/a3b1c67fffd7de640ee9a0791f1fd0fad965b867">explicit shadowing</a>) have been introduced to tame its power. Stephen looked at adding a further feature, making it possible to open modules under a particular signature, so that <code>open M : S</code> will introduce only those names in <code>M</code> that are specified with <code>S</code>.  There's an <a href="https://github.com/lpw25/ocaml/tree/signatured-open">initial prototype</a> already, and we're looking forward to seeing the final results.</p>
+
+<p>The second language feature of the evening was support for infix operators (such as the List constructor, <code>::</code>) for user-defined types, a feature that is definitely not in any way motivated by envy of Haskell.  Mike's <a href="https://github.com/mcclurmc/ocaml/tree/infix-constructors">prototype implementation</a> is available, and there's an <a href="https://github.com/mcclurmc/ocaml/pull/1">additional patch</a> that brings it closer to completion.</p>
+
+<h3>Next session</h3>
+
+<p>The next session is planned for 6pm on Wednesday 18th September 2013 at
+<a href="http://makespace.org/">Makespace, Cambridge</a>.  If you're planning to come along it'd be
+helpful if you could add yourself to the <a href="http://doodle.com/k6y2tiihkrb5vuw4">Doodle Poll</a>.  Hope to see
+you there!</p>  </div>
+
+
+
+
+
+
+
+<p class="date">
+<a href="http://ocamllabs.github.com/compiler-hacking/2013/09/17/compiler-hacking-july-2013.html">by cl-ocamllabs@lists.cam.ac.uk (OCaml Labs) at Tue, 17 Sep 2013</a>
+</p>
+  </div>
+</div>
+
+</div>
+
+<div class="channelgroup">
+
+
+
+
+
+
+
 <!-- <h3><a href="http://anil.recoil.org" title="anil.recoil.org">Anil Madhavapeddy</a></h3> -->
 <img style="float:right; padding-left: 20px;" class="face" src="images/../../mugshots/avsm.jpg" width="" height="50" alt="">
-
 
 <div class="entrygroup" id="http://anil.recoil.org/2013/09/16/camlpdf-the-end-of-sucky-pdf-tools">
 <a name="http://anil.recoil.org/2013/09/16/camlpdf-the-end-of-sucky-pdf-tools"> </a>
@@ -266,7 +446,7 @@ div.toc {
 </h1>
 <hr/>
 <div class="entry">
-<div class="content">
+  <div class="content">
 <p>The fine folks at O&#8217;Reilly have been proof-reading the <a href="https://realworldocaml.org">Real World OCaml</a> book that I&#8217;ve been working on. My heart leapt with joy when the copyeditor commented that she thought it was very well written, but my joy was short-lived when it turns out that all her comments were safely ensconced as PDF comments. A few hundreds comments that required a response from us, too.</p>
 
 <p><em>&#8220;No problem! MacOS X Preview can handle these!&#8221;</em> was of course my first response, but it turns out it&#8217;s totally broken with PDF notes. The first note that you select will appear as the content of all the other subsequent notes. Yaron Minsky then experimented with Adobe Acrobat, which I&#8217;ve sworn never to install again after an unfortunate incident involving the uninstaller a couple of years ago. That turned out to be incredibly slow. I tried a few open-source tools such as <a href="http://en.wikipedia.org/wiki/Skim_(software">Skim</a> which, while otherwise an excellent bit of software, couldn&#8217;t render these particular annotations.</p>
@@ -296,7 +476,7 @@ div.toc {
 </li>
 </ul>
 
-<p>Total time including this blog post: 40 minutes. Now, onto fixing the author responses comments for Real World OCaml now. I&#8217;m so happy to have <code>cpdf</code> as a simple, hackable PDF utility, as it does things like page combining and rotations that have always been a little flaky in other tools for me. It&#8217;s the <a href="http://johnmacfarlane.net/pandoc/">Pandoc</a> of PDFs!</p></div>
+<p>Total time including this blog post: 40 minutes. Now, onto fixing the author responses comments for Real World OCaml now. I&#8217;m so happy to have <code>cpdf</code> as a simple, hackable PDF utility, as it does things like page combining and rotations that have always been a little flaky in other tools for me. It&#8217;s the <a href="http://johnmacfarlane.net/pandoc/">Pandoc</a> of PDFs!</p>  </div>
 
 
 
@@ -307,9 +487,10 @@ div.toc {
 <p class="date">
 <a href="http://anil.recoil.org/2013/09/16/camlpdf-the-end-of-sucky-pdf-tools.html">Sun, 15 Sep 2013</a>
 </p>
-</div>
+  </div>
 </div>
 
+</div>
 
 <div class="channelgroup">
 
@@ -322,7 +503,6 @@ div.toc {
 <!-- <h3><a href="http://pw374.github.io/" title="pw374">Philippe Wang</a></h3> -->
 <img style="float:right; padding-left: 20px;" class="face" src="images/../../mugshots/pwang.jpg" width="" height="50" alt="">
 
-
 <div class="entrygroup" id="http://pw374.github.io/posts/2013-09-05-21-31-26-about-omd.html">
 <a name="http://pw374.github.io/posts/2013-09-05-21-31-26-about-omd.html"> </a>
 <h1 class="posttitle"><a href="http://pw374.github.io/posts/2013-09-05-21-31-26-about-omd.html">OMD: a Markdown parser in OCaml</a>
@@ -330,7 +510,7 @@ div.toc {
 </h1>
 <hr/>
 <div class="entry">
-<div class="content">
+  <div class="content">
 <h3 id="Motivations"> Motivations</h3>
 <p>There  are  so many  existing  implementations  of  Markdown, why  yet
 another one?   Well, after asking  the OCaml community  about existing
@@ -538,7 +718,7 @@ OCaml.org to style my new Github-hosted website, so I can play with it
 of the OCaml community may contribute to it in a more convenient way.</p>
 <p>And of course, that means that OMD will be used for OCaml.org.</p>
 <p><em>started on 2013-09-05 22:31:26+01:00, (re)generated on 2013-09-12 16:36:22+01:00
-</em></p></div>
+</em></p>  </div>
 
 
 
@@ -549,9 +729,10 @@ of the OCaml community may contribute to it in a more convenient way.</p>
 <p class="date">
 <a href="http://pw374.github.io/posts/2013-09-05-21-31-26-about-omd.html">by Philippe Wang at Thu, 12 Sep 2013</a>
 </p>
-</div>
+  </div>
 </div>
 
+</div>
 
 <div class="channelgroup">
 
@@ -564,7 +745,6 @@ of the OCaml community may contribute to it in a more convenient way.</p>
 <!-- <h3><a href="http://hh360.user.srcf.net/blog" title="/etc/hosts » OCaml">Heidi Howard</a></h3> -->
 <img style="float:right; padding-left: 20px;" class="face" src="images/../../mugshots/heidi.jpg" width="" height="50" alt="">
 
-
 <div class="entrygroup" id="http://hh360.user.srcf.net/blog/?p=153" lang="en-US">
 <a name="http://hh360.user.srcf.net/blog/?p=153"> </a>
 <h1 class="posttitle"><a href="http://hh360.user.srcf.net/blog/2013/09/ocaml-development-in-vim/">OCaml Development in Vim</a>
@@ -572,7 +752,7 @@ of the OCaml community may contribute to it in a more convenient way.</p>
 </h1>
 <hr/>
 <div class="entry">
-<div class="content">
+  <div class="content">
 <p>This is a quick run-through of how I set up my development environment in vim:</p>
 <p><strong>Install pathogen.vim</strong></p>
 
@@ -612,7 +792,7 @@ opam <span>install</span> merlin</pre></td></tr></table></div>
 
 <p>Add the following to ~/.vimrc</p>
 
-<div class="wp_syntax"><table><tr><td class="code"><pre class="vim"><span>autocmd</span> <span>FileType</span> ocaml source <span>/</span>home<span>/</span>heidi<span>-</span>ann<span>/.</span>opam<span>/</span>4<span>.</span>01<span>.</span>0dev<span>+</span>trunk<span>/</span>share<span>/</span>typerex<span>/</span>ocp<span>-</span><span>indent</span><span>/</span>ocp<span>-</span><span>indent</span><span>.</span>vim</pre></td></tr></table></div></div>
+<div class="wp_syntax"><table><tr><td class="code"><pre class="vim"><span>autocmd</span> <span>FileType</span> ocaml source <span>/</span>home<span>/</span>heidi<span>-</span>ann<span>/.</span>opam<span>/</span>4<span>.</span>01<span>.</span>0dev<span>+</span>trunk<span>/</span>share<span>/</span>typerex<span>/</span>ocp<span>-</span><span>indent</span><span>/</span>ocp<span>-</span><span>indent</span><span>.</span>vim</pre></td></tr></table></div>  </div>
 
 
 
@@ -623,9 +803,10 @@ opam <span>install</span> merlin</pre></td></tr></table></div>
 <p class="date">
 <a href="http://hh360.user.srcf.net/blog/2013/09/ocaml-development-in-vim/">by Heidi-ann at Mon, 09 Sep 2013</a>
 </p>
-</div>
+  </div>
 </div>
 
+</div>
 
 <div class="channelgroup">
 
@@ -638,7 +819,6 @@ opam <span>install</span> merlin</pre></td></tr></table></div>
 <!-- <h3><a href="http://anil.recoil.org" title="anil.recoil.org">Anil Madhavapeddy</a></h3> -->
 <img style="float:right; padding-left: 20px;" class="face" src="images/../../mugshots/avsm.jpg" width="" height="50" alt="">
 
-
 <div class="entrygroup" id="http://anil.recoil.org/2013/09/09/ocamlot-autotriaging">
 <a name="http://anil.recoil.org/2013/09/09/ocamlot-autotriaging"> </a>
 <h1 class="posttitle"><a href="http://anil.recoil.org/2013/09/09/ocamlot-autotriaging.html">OCamlot--exploring the edges of OPAM packages</a>
@@ -646,7 +826,7 @@ opam <span>install</span> merlin</pre></td></tr></table></div>
 </h1>
 <hr/>
 <div class="entry">
-<div class="content">
+  <div class="content">
 <p>The new release of OCaml (4.01.0) was just <a href="https://sympa.inria.fr/sympa/arc/caml-list/2013-09/msg00173.html">announced</a>! The runup to a major release like this is normally a frantic time to test that your favourite applications don&#8217;t break unexpectedly due to some incompatible language feature. This release cycle has a little different though, as we&#8217;ve been working hard on using the <a href="http://opam.ocamlpro.com">OPAM</a> package database to build an online regression testing infrastructure to mechanize much of this process.</p>
 
 <p>I wanted to share some of what OCamlot does today, some of the results from about 3 months worth of runs that may help OCaml package maintainers, and finally where we&#8217;re going with future developments. This work has been done in collaboration with <a href="http://www.cl.cam.ac.uk/projects/ocamllabs/people/sheets.html">David Sheets</a> (who built the OCamlot daemon) and the OPAM team ably led by <a href="http://gazagnaire.org">Thomas Gazagnaire</a> at <a href="http://ocamlpro.com">OCamlPro</a>. We&#8217;ve also had a lot of help from <a href="https://github.com/diml">Jeremie Dimino</a> and <a href="https://github.com/ysulsky">Yury Sulsky</a> from Jane Street and <a href="http://dave.recoil.org">Dave Scott</a> and <a href="http://jon.recoil.org">Jon Ludlam</a> from Citrix acting as guinea pigs for their respective regular releases of the <a href="https://github.com/janestreet">Core</a> and <a href="https://github.com/xapi-project">Xen/XAPI</a> releases to OPAM.</p>
@@ -838,7 +1018,7 @@ database/sqlite3</code></pre>
 
 <p>I&#8217;ll talk more about how we&#8217;re solving this in my upcoming <a href="http://ocaml.org/meetings/ocaml/2013/">OCaml 2013 Workshop</a> talk about the Platform. I don&#8217;t want spoil it too much, but it involves a lovely distributed Git workflow, an enhanced <a href="https://github.com/OCamlPro/opam2web">opam2web</a>, and a brand new metadata overlay system for OPAM that lets us enhance the package database with extra information such as statistics, portability and test results, but without polluting the main Git repository with all this extra non-essential data.</p>
 
-<p>If you&#8217;re really curious to know right now, then you can see the outline of the new system at Amir&#8217;s <a href="http://amirchaudhry.com/wireframe-demos-for-ocamlorg/">new ocaml.org wireframes</a> blog post, where Part III contains the continuous integration workflow. A lot of infrastructure work has gone into building all of this over the summer, and now it&#8217;s all starting to be deployed in a very satisfying way&#8230;</p></div>
+<p>If you&#8217;re really curious to know right now, then you can see the outline of the new system at Amir&#8217;s <a href="http://amirchaudhry.com/wireframe-demos-for-ocamlorg/">new ocaml.org wireframes</a> blog post, where Part III contains the continuous integration workflow. A lot of infrastructure work has gone into building all of this over the summer, and now it&#8217;s all starting to be deployed in a very satisfying way&#8230;</p>  </div>
 
 
 
@@ -849,9 +1029,10 @@ database/sqlite3</code></pre>
 <p class="date">
 <a href="http://anil.recoil.org/2013/09/09/ocamlot-autotriaging.html">Sun, 08 Sep 2013</a>
 </p>
-</div>
+  </div>
 </div>
 
+</div>
 
 <div class="channelgroup">
 
@@ -864,7 +1045,6 @@ database/sqlite3</code></pre>
 <!-- <h3><a href="http://hh360.user.srcf.net/blog" title="/etc/hosts » OCaml">Heidi Howard</a></h3> -->
 <img style="float:right; padding-left: 20px;" class="face" src="images/../../mugshots/heidi.jpg" width="" height="50" alt="">
 
-
 <div class="entrygroup" id="http://hh360.user.srcf.net/blog/?p=25" lang="en-US">
 <a name="http://hh360.user.srcf.net/blog/?p=25"> </a>
 <h1 class="posttitle"><a href="http://hh360.user.srcf.net/blog/2013/08/icfp-cufp-ocaml2013/">ICFP, CUFP &amp; OCaml2013</a>
@@ -872,9 +1052,9 @@ database/sqlite3</code></pre>
 </h1>
 <hr/>
 <div class="entry">
-<div class="content">
+  <div class="content">
 <p>I&#8217;m busy planning my first trip across the Atlantic to attend ICFP, CUFP and OCaml 2013. Today, I&#8217;ve been given the duty of &#8220;live blogging&#8221; the event, over at the <a title="syslog" href="http://www.syslog.cl.cam.ac.uk/">syslog</a>, the Cambridge Systems Research Group blog.</p>
-<p>My other job for the event is to improve the documentation for <a href="http://janestreet.github.io/guide-async.html">Janestreet&#8217;s Async</a> library. if anyone else is keen, I would love to organise a doc-a-thon to populate the .mli files</p></div>
+<p>My other job for the event is to improve the documentation for <a href="http://janestreet.github.io/guide-async.html">Janestreet&#8217;s Async</a> library. if anyone else is keen, I would love to organise a doc-a-thon to populate the .mli files</p>  </div>
 
 
 
@@ -885,9 +1065,10 @@ database/sqlite3</code></pre>
 <p class="date">
 <a href="http://hh360.user.srcf.net/blog/2013/08/icfp-cufp-ocaml2013/">by Heidi-ann at Wed, 28 Aug 2013</a>
 </p>
-</div>
+  </div>
 </div>
 
+</div>
 
 <div class="channelgroup">
 
@@ -899,7 +1080,6 @@ database/sqlite3</code></pre>
 
 <!-- <h3><a href="http://openmirage.org/blog/" title="openmirage blog">MirageOS</a></h3> -->
 
-
 <div class="entrygroup" id="http://openmirage.org/blog/introducing-vchan">
 <a name="http://openmirage.org/blog/introducing-vchan"> </a>
 <h1 class="posttitle"><a href="http://openmirage.org/blog/introducing-vchan">Introducing vchan</a>
@@ -907,7 +1087,7 @@ database/sqlite3</code></pre>
 </h1>
 <hr/>
 <div class="entry">
-<div class="content">
+  <div class="content">
 <div>
       <p><b>In Theory</b></p><p>Unless you are familiar with Xen's source code, there is little chance that you've ever heard of the <b>vchan</b> library or protocol. Documentation about it is very scarce: a description can be found on vchan's <a href="http://xenbits.xen.org/gitweb/?p=xen.git;a=blob;f=xen/include/public/io/libxenvchan.h;hb=HEAD">public header file</a>, that I quote here for convenience:</p><blockquote> <p>Originally borrowed from the <a href="http://www.qubes-os.org">Qubes OS Project</a>, this code (i.e. libvchan) has been substantially rewritten [...] This is a library for inter-domain communication.  A standard Xen ring buffer is used, with a datagram-based interface built on top.  The grant reference and event channels are shared in XenStore under a user-specified path.</p> </blockquote><p>This protocol uses shared memory for inter-domain communication, i.e. between two VMs residing in the same Xen host, and uses Xen's mechanisms -- more specifically, <a href="http://www.informit.com/articles/article.aspx?p=1160234&seqNum=3">ring buffers</a> and <a href="http://xenbits.xen.org/gitweb/?p=xen.git;a=blob;f=tools/libxc/xenctrl.h;h=f2cebafc9ddd4815ffc73fcf9e0d292b1d4c91ff;hb=HEAD#l934">event channels</a> -- in order to achieve its aims. <b>Datagram-based interface</b> simply means that the <a href="http://xenbits.xen.org/gitweb/?p=xen.git;a=blob;f=tools/libvchan/libxenvchan.h;h=6365d36a06f8c8f56454724cefc4c2f1d39beba2;hb=HEAD">interface</a> resembles UDP, although there is support for stream based communication (like TCP) as well.</p><p>Over the last two months or so, I worked on a <a href="http://github.com/mirage/ocaml-vchan">pure OCaml implementation</a> of this library, meaning that Mirage-based unikernels can now take full advantage of <b>vchan</b> to communicate with neighboring VMs! If your endpoint -- a Linux VM or another unikernel -- is on the same host, it is much faster and more efficient to use vchan rather than the network stack (although unfortunately, it is currently incompatible with existing programs written against the <code>socket</code> library under UNIX or the <code>Flow</code> module of Mirage, although this will improve). It also provides a higher level of security compared to network sockets as messages will never leave the host's shared memory.</p><p><b>Building the vchan echo domain</b></p><p>Provided that you have a Xen-enabled machine, do the following from dom0:</p><div class="ocaml"><pre><code>opam install mirari mirage-xen mirage vchan
 </code></pre></div><p>This will install the library and its dependencies. <code>mirari</code> is necessary to build the <b>echo unikernel</b>:</p><div class="ocaml"><pre><code>git clone git<span class="keyword2">:</span>//github.com/mirage/ocaml-vchan
@@ -917,7 +1097,7 @@ mirari build --xen
 sudo mirari run --xen
 </code></pre></div><p>This will boot a <code>vchan echo domain</code> for dom0, with connection parameters stored in xenstore at <code>/local/domain/&lt;domid&gt;/data/vchan</code>, where <code>&lt;domid&gt;</code> is the domain id of the vchan echo domain. The echo domain is simply an unikernel hosting a vchan server accepting connections from dom0, and echo'ing everything that is sent to it.</p><p>The command <code>xl list</code> will give you the domain id of the echo server.</p><p><b>Building the vchan CLI from Xen's sources</b></p><p>You can try it using a vchan client that can be found in Xen's sources at <code>tools/libvchan</code>: Just type <code>make</code> in this directory. It will compile the executable <code>vchan-node2</code> that you can use to connect to our freshly created echo domain:</p><div class="ocaml"><pre><code>./vchan-node2 client <span class="keyword2">&lt;</span>domid<span class="keyword2">&gt;</span>/local/domain/<span class="keyword2">&lt;</span>domid<span class="keyword2">&gt;</span>/data/vchan
 </code></pre></div><p>If everything goes well, what you type in there will be echoed.</p><p>You can obtain the full API documentation for <b>ocaml-vchan</b> by doing a <code>cd ocaml-vchan &amp;&amp; make doc</code>. If you are doing network programming under UNIX, vchan's interface will not surprise you. If you are already using vchan for a C project, you will see that the OCaml API is nearly identical to what you are used to.</p><p>Please let us know if you use or plan to use this library in any way! If you need tremedous speed or more security, this might fit your needs.</p> 
-   </div></div>
+   </div>  </div>
 
 
 
@@ -928,9 +1108,10 @@ sudo mirari run --xen
 <p class="date">
 <a href="http://openmirage.org/blog/introducing-vchan">by Vincent Bernardoff (vb@luminar.eu.org) at Fri, 23 Aug 2013</a>
 </p>
-</div>
+  </div>
 </div>
 
+</div>
 
 <div class="channelgroup">
 
@@ -943,7 +1124,6 @@ sudo mirari run --xen
 <!-- <h3><a href="http://hh360.user.srcf.net/blog" title="/etc/hosts » OCaml">Heidi Howard</a></h3> -->
 <img style="float:right; padding-left: 20px;" class="face" src="images/../../mugshots/heidi.jpg" width="" height="50" alt="">
 
-
 <div class="entrygroup" id="http://hh360.user.srcf.net/blog/?p=86" lang="en-US">
 <a name="http://hh360.user.srcf.net/blog/?p=86"> </a>
 <h1 class="posttitle"><a href="http://hh360.user.srcf.net/blog/2013/08/real-world-ocaml-beta3-release/">Real World OCaml beta3 release</a>
@@ -951,9 +1131,9 @@ sudo mirari run --xen
 </h1>
 <hr/>
 <div class="entry">
-<div class="content">
+  <div class="content">
 <p>Beta3 of RWO is now available: <a href="https://realworldocaml.org/">https://realworldocaml.org/</a> and anil (one of the co-authors) comments on the release <a href="http://anil.recoil.org/2013/08/06/real-world-ocaml-beta2.html">http://anil.recoil.org/2013/08/06/real-world-ocaml-beta2.html</a></p>
-<div class="wp-caption aligncenter"><img alt="" src="https://realworldocaml.org/media/img/oreilly-cover.gif" width="180" height="236" /><p class="wp-caption-text">Cover of RWO</p></div></div>
+<div class="wp-caption aligncenter"><img alt="" src="https://realworldocaml.org/media/img/oreilly-cover.gif" width="180" height="236" /><p class="wp-caption-text">Cover of RWO</p></div>  </div>
 
 
 
@@ -964,9 +1144,10 @@ sudo mirari run --xen
 <p class="date">
 <a href="http://hh360.user.srcf.net/blog/2013/08/real-world-ocaml-beta3-release/">by Heidi-ann at Mon, 19 Aug 2013</a>
 </p>
-</div>
+  </div>
 </div>
 
+</div>
 
 <div class="channelgroup">
 
@@ -978,7 +1159,6 @@ sudo mirari run --xen
 
 <!-- <h3><a href="http://openmirage.org/blog/" title="openmirage blog">MirageOS</a></h3> -->
 
-
 <div class="entrygroup" id="http://openmirage.org/blog/oscon13-trip-report">
 <a name="http://openmirage.org/blog/oscon13-trip-report"> </a>
 <h1 class="posttitle"><a href="http://openmirage.org/blog/oscon13-trip-report">Mirage travels to OSCON'13: a trip report</a>
@@ -986,10 +1166,10 @@ sudo mirari run --xen
 </h1>
 <hr/>
 <div class="entry">
-<div class="content">
+  <div class="content">
 <div>
       <p>Now that Mirage OS is rapidly converging on a <a href="http://github.com/avsm/mirage/issues/102">Developer Preview Release 1</a>, we took it for a first public outing at <a href="http://www.oscon.com/oscon2013/">OSCON'13</a>, the O'Reilly Open Source Conference. OSCON is in its 15th year now, and is a meeting place for developers, business people and investors. It was a great opportunity to show MirageOS off to some of the movers and shakers in the OSS world.</p><p>Partly because MirageOS is about synthesising extremely specialised guest kernels from high-level code, and partly because both Anil and I are constitutionally incapable of taking the easy way out, we self-hosted the slide deck on Mirage: after some last-minute hacking -- on content not Mirage I should add! -- we built a self-contained microkernel of the talk.</p><p>This was what you might call a "full stack" presentation: the custom microkernel (flawlessly!) ran a type-safe <a href="https://github.com/mirage/mirage-platform/blob/master/xen/lib/netif.ml">network device driver</a>, OCaml <a href="http://github.com/mirage/mirage-net">TCP/IP stack</a> supporting an OCaml <a href="http://github.com/mirage/ocaml-cohttp">HTTP</a> framework that served slides rendered using <a href="http://lab.hakim.se/reveal-js/">reveal.js</a>. The slide deck, including the turbo-boosted <a href="http://www.youtube.com/watch?v=2Mx8Bd5JYyo">screencast</a> of the slide deck compilation, is hosted as another MirageOS virtual machine at <a href="http://decks.openmirage.org/">decks.openmirage.org</a>. We hope to add more slide decks there soon, including resurrecting the tutorial! The source code for all this is in the <a href="http://github.com/mirage/mirage-decks">mirage-decks</a> GitHub repo.</p><h3><a name="h3-TheTalk" class="anchor-toc"> The Talk</a></h3><p>The talk went down pretty well -- given we were in a graveyard slot on Friday after many people had left, attendance was fairly high (around 30-40), and the <a href="http://www.oscon.com/oscon2013/public/schedule/detail/28956">feedback scores</a> have been positive (averaging 4.7/5) with comments including "excellent content and well done" and "one of the most excited projects I heard about" (though we are suspicious that just refers to Anil's usual high-energy presentation style...).</p><p> </p><p>Probably the most interesting chat after the talk was with the Rust authors at Mozilla (<a href="http://twitter.com/pcwalton">@pcwalton</a> and <a href="https://github.com/brson">@brson</a>) about combining the Mirage <a href="http://anil.recoil.org/papers/2013-asplos-mirage.pdf">unikernel</a> techniques with the <a href="http://www.rust-lang.org">Rust</a> runtime. But perhaps the most surprising feedback was when Anil and I were stopped in the street while walking back from some well-earned sushi, by a cyclist who loudly declared that he'd really enjoyed the talk and thought it was a really exciting project -- never done something that achieved public acclaim from the streets before :)</p><h3><a name="h3-BookSigningandXen.org" class="anchor-toc"> Book Signing and Xen.org</a></h3><p>Anil also took some time to sit in a book signing for his forthcoming <a href="http://realworldocaml.org">Real World OCaml</a> O'Reilly book.  This is really important to making OCaml easier to learn, especially given that all the Mirage libraries are using it.  Most of the dev team (and especially thanks to <a href="https://twitter.com/heidiann360">Heidi Howard</a> who bravely worked through really early alpha revisions) have been giving us feedback as the book is written, using the online commenting system.</p><p>The Xen.org booth was also huge, and we spent quite a while plotting the forthcoming Mirage/Xen/ARM backend. We're pretty much just waiting for the <a href="http://cubieboard.org">Cubieboard2</a> kernel patches to be upstreamed (keep an eye <a href="http://linux-sunxi.org/Main_Page">here</a>) so that we can boot Xen/ARM VMs on tiny ARM devices.  There's a full report about this on the <a href="http://blog.xen.org/index.php/2013/07/31/the-xen-project-at-oscon/">xen.org</a> blog post about OSCon.</p><h3><a name="h3-GaloisandHalVM" class="anchor-toc"> Galois and HalVM</a></h3><p>We also stopped by the <a href="http://corp.galois.com">Galois</a> to chat with <a href="https://twitter.com/acwpdx">Adam Wick</a>, who is the leader of the <a href="http://corp.galois.com/halvm">HalVM</a> project at Galois. This is a similar project to Mirage, but, since it's written in Haskell, has more of a focus on elegant compositional semantics rather than the more brutal performance and predictability that Mirage currently has at its lower levels.</p><p>The future of all this ultimately lies in making it easier for these multi-lingual unikernels to be managed and for all of them to communicate more easily, so we chatted about code sharing and common protocols (such as <a href="https://github.com/vbmithr/ocaml-vchan">vchan</a>) to help interoperability. Expect to see more of this once our respective implementations get more stable.</p><p>All-in-all OSCON'13 was a fun event and definitely one that we look forward returning to with a more mature version of MirageOS, to build on the momentum begun this year!  Portland was an amazing host city too, but what happens in Portland, stays in Portland...</p> 
-   </div></div>
+   </div>  </div>
 
 
 
@@ -1000,9 +1180,10 @@ sudo mirari run --xen
 <p class="date">
 <a href="http://openmirage.org/blog/oscon13-trip-report">by Richard Mortier (mort@cantab.net) at Thu, 08 Aug 2013</a>
 </p>
-</div>
+  </div>
 </div>
 
+</div>
 
 <div class="channelgroup">
 
@@ -1015,7 +1196,6 @@ sudo mirari run --xen
 <!-- <h3><a href="http://anil.recoil.org" title="anil.recoil.org">Anil Madhavapeddy</a></h3> -->
 <img style="float:right; padding-left: 20px;" class="face" src="images/../../mugshots/avsm.jpg" width="" height="50" alt="">
 
-
 <div class="entrygroup" id="http://anil.recoil.org/2013/08/06/real-world-ocaml-beta2">
 <a name="http://anil.recoil.org/2013/08/06/real-world-ocaml-beta2"> </a>
 <h1 class="posttitle"><a href="http://anil.recoil.org/2013/08/06/real-world-ocaml-beta2.html">Final Real World OCaml beta; the good, the bad and the ugly</a>
@@ -1023,7 +1203,7 @@ sudo mirari run --xen
 </h1>
 <hr/>
 <div class="entry">
-<div class="content">
+  <div class="content">
 <p>The second and final public beta of Real World OCaml is now available: <a href="https://realworldocaml.org">https://realworldocaml.org</a></p>
 
 <p>Release notes:</p>
@@ -1088,7 +1268,7 @@ sudo mirari run --xen
 
 <p>Luckily, my automation <a href="https://github.com/realworldocaml/scripts">scripts</a> could crib heavily from existing open-source OCaml projects that had portions of what we needed, such as <a href="https://github.com/diml/utop">uTop</a> and <a href="https://github.com/ocaml/ocaml.org">ocaml.org</a> (and my thanks to <a href="https://github.com/diml">Jeremie Dimino</a> and <a href="https://github.com/Chris00">Christophe Troestler</a> for their help here).</p>
 
-<p><em>Awesome</em>: We&#8217;re hacking on a little surprise for the final online version of the book, based on this build infrastructure. Stay <a href="http://try.ocamlpro.com">tuned</a>!</p></div>
+<p><em>Awesome</em>: We&#8217;re hacking on a little surprise for the final online version of the book, based on this build infrastructure. Stay <a href="http://try.ocamlpro.com">tuned</a>!</p>  </div>
 
 
 
@@ -1099,9 +1279,10 @@ sudo mirari run --xen
 <p class="date">
 <a href="http://anil.recoil.org/2013/08/06/real-world-ocaml-beta2.html">Mon, 05 Aug 2013</a>
 </p>
-</div>
+  </div>
 </div>
 
+</div>
 
 <div class="channelgroup">
 
@@ -1114,7 +1295,6 @@ sudo mirari run --xen
 <!-- <h3><a href="http://hh360.user.srcf.net/blog" title="/etc/hosts » OCaml">Heidi Howard</a></h3> -->
 <img style="float:right; padding-left: 20px;" class="face" src="images/../../mugshots/heidi.jpg" width="" height="50" alt="">
 
-
 <div class="entrygroup" id="http://hh360.user.srcf.net/blog/?p=99" lang="en-US">
 <a name="http://hh360.user.srcf.net/blog/?p=99"> </a>
 <h1 class="posttitle"><a href="http://hh360.user.srcf.net/blog/2013/08/abstractions-and-types-for-concurrent-programming/">OCaml Lecture Notes</a>
@@ -1122,8 +1302,8 @@ sudo mirari run --xen
 </h1>
 <hr/>
 <div class="entry">
-<div class="content">
-<p>I just wanted to share these sildes from Yaron Minsky guest lecture at Princeton on &#8220;Abstractions and Types for Concurrent Programming&#8221;: [<a href="http://www.cs.princeton.edu/~dpw/courses/cos326-12/lec/asynch-and-rpc.pdf">pdf</a>]  to the <a href="http://www.cs.princeton.edu/~dpw/courses/cos326-12/">COS 326</a> class and the notes from Cornell&#8217;s OCaml course called &#8220;<a href="http://www.cs.cornell.edu/Courses/cs3110/2011sp/lecturenotes.asp">Data Structures and Functional Programming</a>&#8220;, edit the URL to see notes from different years</p></div>
+  <div class="content">
+<p>I just wanted to share these sildes from Yaron Minsky guest lecture at Princeton on &#8220;Abstractions and Types for Concurrent Programming&#8221;: [<a href="http://www.cs.princeton.edu/~dpw/courses/cos326-12/lec/asynch-and-rpc.pdf">pdf</a>]  to the <a href="http://www.cs.princeton.edu/~dpw/courses/cos326-12/">COS 326</a> class and the notes from Cornell&#8217;s OCaml course called &#8220;<a href="http://www.cs.cornell.edu/Courses/cs3110/2011sp/lecturenotes.asp">Data Structures and Functional Programming</a>&#8220;, edit the URL to see notes from different years</p>  </div>
 
 
 
@@ -1134,9 +1314,10 @@ sudo mirari run --xen
 <p class="date">
 <a href="http://hh360.user.srcf.net/blog/2013/08/abstractions-and-types-for-concurrent-programming/">by Heidi-ann at Thu, 01 Aug 2013</a>
 </p>
-</div>
+  </div>
 </div>
 
+</div>
 
 <div class="channelgroup">
 
@@ -1148,7 +1329,6 @@ sudo mirari run --xen
 
 <!-- <h3><a href="http://openmirage.org/blog/" title="openmirage blog">MirageOS</a></h3> -->
 
-
 <div class="entrygroup" id="http://openmirage.org/blog/xen-block-devices-with-mirage">
 <a name="http://openmirage.org/blog/xen-block-devices-with-mirage"> </a>
 <h1 class="posttitle"><a href="http://openmirage.org/blog/xen-block-devices-with-mirage">Creating Xen block devices with Mirage</a>
@@ -1156,7 +1336,7 @@ sudo mirari run --xen
 </h1>
 <hr/>
 <div class="entry">
-<div class="content">
+  <div class="content">
 <div>
       <p><a href="http://www.openmirage.org/">Mirage</a> is a <a href="http://anil.recoil.org/papers/2013-asplos-mirage.pdf">unikernel</a> or "library operating system" that allows us to build applications which can be compiled to very diverse environments: the same code can be linked to run as a regular Unix app, relinked to run as a <a href="https://github.com/pgj/mirage-kfreebsd">FreeBSD kernel module</a>, and even linked into a self-contained kernel which can run on the <a href="http://www.xenproject.org/">Xen hypervisor</a>.</p><p>Mirage has access to an extensive suite of pure OCaml <a href="https://github.com/mirage">libraries</a>, covering everything from Xen <a href="https://github.com/mirage/ocaml-xen-block-driver">block</a> and <a href="https://github.com/mirage/mirage-platform/blob/master/xen/lib/netif.ml">network</a> virtual device drivers, a <a href="https://github.com/mirage/mirage-net">TCP/IP stack</a>, OpenFlow learning switches and controllers, to SSH and <a href="https://github.com/mirage/ocaml-cohttp">HTTP</a> server implementations.</p><p>I normally use Mirage to deploy applications as kernels on top of a <a href="http://www.xenserver.org/">XenServer</a> hypervisor. I start by first using the Mirage libraries within a normal Unix userspace application -- where I have access to excellent debugging tools -- and then finally link my app as a high-performance Xen kernel for production.</p><p>However Mirage is great for more than simply building Xen kernels. In this post I'll describe how I've been using Mirage to create experimental virtual disk devices for existing Xen VMs (which may themselves be Linux, *BSD, Windows or even Mirage kernels). The Mirage libraries let me easily experiment with different backend file formats and protocols, all while writing only type-safe OCaml code thats runs in userspace in a normal Linux domain 0.</p><p><b>Disk devices under Xen</b></p><p>The protocols used by Xen disk and network devices are designed to permit fast and efficient software implementations, avoiding the inefficiencies inherent in emulating physical hardware in software. The protocols are based on two primitives:</p><ul> <li> <p><b>shared memory pages</b>: used for sharing both data and metadata</p> </li><li> <p><b>event channels</b>: similar to interrupts, these allow one side to signal the other</p> </li> </ul><p>In the disk block protocol, the protocol starts with the client ("frontend" in Xen jargon) sharing a page with the server ("backend"). This single page will contain the request/response metadata, arranged as a circular buffer or "ring". The client ("frontend") can then start sharing pages containing disk blocks with the backend and pushing request structures to the ring, updating shared pointers as it goes. The client will give the server end a kick via an event channel signal and then both ends start running simultaneously. There are no locks in the protocol so updates to the shared metadata must be handled carefully, using write memory barriers to ensure consistency.</p><p><b>Xen disk devices in Mirage</b></p><p>Like everything else in Mirage, Xen disk devices are implemented as libraries. The ocamlfind library called "xenctrl" provides support for manipulating blocks of raw memory pages, "granting" access to them to other domains and signalling event channels. There are two implementations of "xenctrl": <a href="https://github.com/mirage/mirage-platform/tree/master/xen/lib">one that invokes Xen "hypercalls" directly</a> and one which uses the <a href="https://github.com/xapi-project/ocaml-xen-lowlevel-libs">Xen userspace library libxc</a>. Both implementations satisfy a common signature, so it's easy to write code which will work in both userspace and kernelspace.</p><p>The ocamlfind library <a href="https://github.com/mirage/shared-memory-ring">shared-memory-ring</a> provides functions to create and manipulate request/response rings in shared memory as used by the disk and network protocols. This library is a mix of 99.9% OCaml and 0.1% asm, where the asm is only needed to invoke memory barrier operations to ensure that metadata writes issued by one CPU core appear in the same order when viewed from another CPU core.</p><p>Finally the ocamlfind library <a href="https://github.com/mirage/ocaml-xen-block-driver">xenblock</a> provides functions to hotplug and hotunplug disk devices, together with an implementation of the disk block protocol itself.</p><p><b>Making custom virtual disk servers with Mirage</b></p><p>Let's experiment with making our own virtual disk server based on the Mirage example program, <a href="https://github.com/mirage/xen-disk">xen-disk</a>.</p><p>First, install <a href="http://www.xen.org/">Xen</a>, <a href="http://www.ocaml.org/">OCaml</a> and <a href="http://opam.ocamlpro.com/">OPAM</a>. Second initialise your system:</p><div class="ocaml"><pre><code>opam init
 eval `opam config env`
@@ -1224,7 +1404,7 @@ dist/build/xen-disk/xen-disk connect <span class="keyword2">&lt;</span>myvm<span
 <span class="keyword8">100</span><span class="keyword2">+</span><span class="keyword8">0</span> records out
 <span class="keyword8">104857600</span> bytes <span class="keyword2">(</span><span class="keyword8">105</span> MB<span class="keyword2">)</span> copied, <span class="keyword8">0</span>.<span class="keyword8">125296</span> s, <span class="keyword8">837</span> MB/s
 </code></pre></div><p>Plus we should be able to mount the filesystem inside the VM, make changes and then disconnect (send SIGINT to xen-disk by hitting Control+C on your terminal) without disturbing the underlying disk contents.</p><p><b>So what else can we do?</b></p><p>Thanks to Mirage it's now really easy to experiment with custom storage types for your existing VMs. If you have a cunning scheme where you want to hash block contents, and use the hashes as keys in some distributed datastructure -- go ahead, it's all easy to do. If you have ideas for improving the low-level block access protocol then Mirage makes those experiments very easy too.</p><p>If you come up with a cool example with Mirage, then send us a <a href="https://github.com/mirage">pull request</a> or send us an email to the <a href="http://www.openmirage.org/about/">Mirage mailing list</a> -- we'd love to hear about it!</p> 
-   </div></div>
+   </div>  </div>
 
 
 
@@ -1235,9 +1415,10 @@ dist/build/xen-disk/xen-disk connect <span class="keyword2">&lt;</span>myvm<span
 <p class="date">
 <a href="http://openmirage.org/blog/xen-block-devices-with-mirage">by Dave Scott (dave@recoil.org) at Thu, 18 Jul 2013</a>
 </p>
-</div>
+  </div>
 </div>
 
+</div>
 
 <div class="channelgroup">
 
@@ -1250,7 +1431,6 @@ dist/build/xen-disk/xen-disk connect <span class="keyword2">&lt;</span>myvm<span
 <!-- <h3><a href="http://hh360.user.srcf.net/blog" title="/etc/hosts » OCaml">Heidi Howard</a></h3> -->
 <img style="float:right; padding-left: 20px;" class="face" src="images/../../mugshots/heidi.jpg" width="" height="50" alt="">
 
-
 <div class="entrygroup" id="http://hh360.user.srcf.net/blog/?p=64" lang="en-US">
 <a name="http://hh360.user.srcf.net/blog/?p=64"> </a>
 <h1 class="posttitle"><a href="http://hh360.user.srcf.net/blog/2013/07/profiling-ocaml-getting-started-guide/">Profiling OCaml – Getting Started Guide</a>
@@ -1258,7 +1438,7 @@ dist/build/xen-disk/xen-disk connect <span class="keyword2">&lt;</span>myvm<span
 </h1>
 <hr/>
 <div class="entry">
-<div class="content">
+  <div class="content">
 <p>&#8220;Perf&#8221; is a common command line linux tool used for code profiling, (<a href="https://perf.wiki.kernel.org/index.php/Tutorial">perf wiki</a>). A alpha version of a OCaml native code compiler that output code, that can be analysis by perf is now avalaible in OPAM</p>
 <p><strong>Installation</strong></p>
 <p>Installing the perf compatible OCaml compiler is straight forward with OPAM, though quite time-consuming due to the need to re-install many packages</p>
@@ -1289,7 +1469,7 @@ Basic reporting is collected and viewed using:</p>
 <p>When finished you can switch back to your normal compiler version, i.e.</p>
 
 <div class="wp_syntax"><table><tr><td class="code"><pre class="bash">$ opam switch 4.00.1
-$ <span>eval</span> <span>`</span>opam config <span>env</span><span>`</span></pre></td></tr></table></div></div>
+$ <span>eval</span> <span>`</span>opam config <span>env</span><span>`</span></pre></td></tr></table></div>  </div>
 
 
 
@@ -1300,9 +1480,10 @@ $ <span>eval</span> <span>`</span>opam config <span>env</span><span>`</span></pr
 <p class="date">
 <a href="http://hh360.user.srcf.net/blog/2013/07/profiling-ocaml-getting-started-guide/">by Heidi-ann at Wed, 10 Jul 2013</a>
 </p>
-</div>
+  </div>
 </div>
 
+</div>
 
 <div class="channelgroup">
 
@@ -1315,7 +1496,6 @@ $ <span>eval</span> <span>`</span>opam config <span>env</span><span>`</span></pr
 <!-- <h3><a href="http://hh360.user.srcf.net/blog" title="/etc/hosts » OCaml">Heidi Howard</a></h3> -->
 <img style="float:right; padding-left: 20px;" class="face" src="images/../../mugshots/heidi.jpg" width="" height="50" alt="">
 
-
 <div class="entrygroup" id="http://hh360.user.srcf.net/blog/?p=90" lang="en-US">
 <a name="http://hh360.user.srcf.net/blog/?p=90"> </a>
 <h1 class="posttitle"><a href="http://hh360.user.srcf.net/blog/2013/07/learning-async/">Learning Async</a>
@@ -1323,7 +1503,7 @@ $ <span>eval</span> <span>`</span>opam config <span>env</span><span>`</span></pr
 </h1>
 <hr/>
 <div class="entry">
-<div class="content">
+  <div class="content">
 <p>If your taking your first steps in Janestreet&#8217;s Async library, here&#8217;s some sources of help &amp; support:</p>
 <p><strong>My top 5 sources of Async Documentation</strong></p>
 <ol>
@@ -1341,7 +1521,7 @@ $ <span>eval</span> <span>`</span>opam config <span>env</span><span>`</span></pr
 <p>Janestreet provide some installation hints, though this is covered for comprehensively in RWO (linked above): <a href="http://janestreet.github.io/installation.html">http://janestreet.github.io/installation.html</a></p>
 <p>Very light background reading: <a href="https://ocaml.janestreet.com/?q=node/100">https://ocaml.janestreet.com/?q=node/100</a></p>
 <p>&nbsp;</p>
-<p>&nbsp;</p></div>
+<p>&nbsp;</p>  </div>
 
 
 
@@ -1352,9 +1532,10 @@ $ <span>eval</span> <span>`</span>opam config <span>env</span><span>`</span></pr
 <p class="date">
 <a href="http://hh360.user.srcf.net/blog/2013/07/learning-async/">by Heidi-ann at Wed, 03 Jul 2013</a>
 </p>
-</div>
+  </div>
 </div>
 
+</div>
 
 <div class="channelgroup">
 
@@ -1367,7 +1548,6 @@ $ <span>eval</span> <span>`</span>opam config <span>env</span><span>`</span></pr
 <!-- <h3><a href="http://anil.recoil.org" title="anil.recoil.org">Anil Madhavapeddy</a></h3> -->
 <img style="float:right; padding-left: 20px;" class="face" src="images/../../mugshots/avsm.jpg" width="" height="50" alt="">
 
-
 <div class="entrygroup" id="http://anil.recoil.org/2013/06/17/real-world-ocaml-beta-available">
 <a name="http://anil.recoil.org/2013/06/17/real-world-ocaml-beta-available"> </a>
 <h1 class="posttitle"><a href="http://anil.recoil.org/2013/06/17/real-world-ocaml-beta-available.html">Phew, Real World OCaml beta now available.</a>
@@ -1375,7 +1555,7 @@ $ <span>eval</span> <span>`</span>opam config <span>env</span><span>`</span></pr
 </h1>
 <hr/>
 <div class="entry">
-<div class="content">
+  <div class="content">
 <p>When I finished writing my PhD, I swore (as most recent graduates do) to never write a thesis again. Instead, life would be a series of pleasantly short papers, interspersed with the occasional journal article, and lots of not-writing-huge-book-activity in general.</p>
 <a href="http://realworldocaml.org"><img align="right" src="http://anil.recoil.org/images/oreilly-cover.gif" /></a>
 <p>Then <a href="http://cufp.org/conference/2011">CUFP 2011</a> happened, and I find myself in a bar in Tokyo with <a href="https://twitter.com/yminsky">Yaron Minsky</a> and <a href="http://monkey.org/~marius">Marius Eriksen</a>, and a dangerous bet ensued. A few short weeks after that, and Yaron and I are chatting with <a href="https://plus.google.com/111219778721183890368">Jason Hickey</a> in California about writing a book about the language we love. I&#8217;m still telling myself that this will never actually happen, but then everyone&#8217;s favourite Californirishman <a href="http://www.serpentine.com/blog/">Bryan O&#8217;Sullivan</a> puts us in touch with O&#8217;Reilly, who published his excellent <a href="http://realworldhaskell.org">Haskell</a> tome.</p>
@@ -1418,7 +1598,7 @@ $ <span>eval</span> <span>`</span>opam config <span>env</span><span>`</span></pr
 </ul>
 
 <p>best, Yaron, Jason and Anil</p>
-</blockquote></div>
+</blockquote>  </div>
 
 
 
@@ -1429,9 +1609,10 @@ $ <span>eval</span> <span>`</span>opam config <span>env</span><span>`</span></pr
 <p class="date">
 <a href="http://anil.recoil.org/2013/06/17/real-world-ocaml-beta-available.html">Sun, 16 Jun 2013</a>
 </p>
-</div>
+  </div>
 </div>
 
+</div>
 
 <div class="channelgroup">
 
@@ -1443,7 +1624,6 @@ $ <span>eval</span> <span>`</span>opam config <span>env</span><span>`</span></pr
 
 <!-- <h3><a href="http://www.cl.cam.ac.uk/projects/ocamllabs//news/" title="OCaml Labs News">Monthly News</a></h3> -->
 
-
 <div class="entrygroup" id="http://www.cl.cam.ac.uk/projects/ocamllabs/news/2013-06-01">
 <a name="http://www.cl.cam.ac.uk/projects/ocamllabs/news/2013-06-01"> </a>
 <h1 class="posttitle"><a href="http://www.cl.cam.ac.uk/projects/ocamllabs/news/index.html#Jun%202013">Jun 2013 news update</a>
@@ -1451,7 +1631,7 @@ $ <span>eval</span> <span>`</span>opam config <span>env</span><span>`</span></pr
 </h1>
 <hr/>
 <div class="entry">
-<div class="content">
+  <div class="content">
 <div>
       <p><a href="http://www.cl.cam.ac.uk/projects/ocamllabs/images/rwo-celebration.jpg"><img src="http://www.cl.cam.ac.uk/projects/ocamllabs/images/rwo-celebration-thumb.jpg" class="left" /></a>
 The rain continues to plummet down relentlessly as "summer" starts in OCaml
@@ -1578,7 +1758,7 @@ another dependency on <code>libc</code>).<br /></p>
  </li>
 </ul>
 
-   </div></div>
+   </div>  </div>
 
 
 
@@ -1589,9 +1769,10 @@ another dependency on <code>libc</code>).<br /></p>
 <p class="date">
 <a href="http://www.cl.cam.ac.uk/projects/ocamllabs/news/index.html#Jun%202013">by Anil Madhavapeddy (anil@recoil.org) at Sat, 01 Jun 2013</a>
 </p>
-</div>
+  </div>
 </div>
 
+</div>
 
 <div class="channelgroup">
 
@@ -1603,7 +1784,6 @@ another dependency on <code>libc</code>).<br /></p>
 
 <!-- <h3><a href="http://openmirage.org/blog/" title="openmirage blog">MirageOS</a></h3> -->
 
-
 <div class="entrygroup" id="http://openmirage.org/blog/the-road-to-a-dev-release">
 <a name="http://openmirage.org/blog/the-road-to-a-dev-release"> </a>
 <h1 class="posttitle"><a href="http://openmirage.org/blog/the-road-to-a-dev-release">The road to a developer preview at OSCON 2013</a>
@@ -1611,10 +1791,10 @@ another dependency on <code>libc</code>).<br /></p>
 </h1>
 <hr/>
 <div class="entry">
-<div class="content">
+  <div class="content">
 <div>
       <p>There's been a crazy stream of activity since the start of the year, but the most important news is that we have a release target for an integrated developer preview of the Mirage stack: a talk at <a href="http://www.oscon.com/oscon2013/public/schedule/detail/28956">O'Reilly OSCon</a> in July!  Do turn up there and find <a href="http://dave.recoil.org">Dave Scott</a> and <a href="http://anil.recoil.org">Anil Madhavapeddy</a> showing off interactive demonstrations.</p><p>Meanwhile, another significant announcement has been that Xen is <a href="http://www.linuxfoundation.org/news-media/announcements/2013/04/xen-become-linux-foundation-collaborative-project">joining the Linux Foundation</a> as a collaborative project.  This is great news for Mirage: as a library operating system, we can operate just as easily under other hypervisors, and even on bare-metal devices such as the <a href="http://raspberrypi.org">Raspberry Pi</a>.  We're very much looking forward to getting the Xen-based developer release done, and interacting with the wider Linux community (and FreeBSD, for that matter, thanks to Gabor Pali's <a href="https://github.com/pgj/mirage-kfreebsd">kFreeBSD</a> backend).</p><p>Here's some other significant news from the past few months:</p><ul> <li> <p><a href="http://www.ocamlpro.com/blog/2013/03/14/opam-1.0.0.html">OPAM 1.0 was released</a>, giving Mirage a solid package manager for handling the many libraries required to glue an application together.  <a href="https://github.com/vbmithr">Vincent Bernardoff</a> joined the team at Citrix and has been building a Mirage build-frontend called <a href="https://github.com/mirage/mirari">Mirari</a> to hide much of the system complexity from a user who isn't too familiar with either Xen or OCaml.</p> </li><li> <p>A new group called the <a href="http://ocaml.io">OCaml Labs</a> has started up in the <a href="http://www.cl.cam.ac.uk">Cambridge Computer Laboratory</a>, and is working on improving the OCaml toolchain and platform.  This gives Mirage a big boost, as we can re-use several of the documentation, build and test improvements in our own releases.  You can read up on the group's activities via the <a href="http://ocaml.io/news">monthly updates</a>, or browse through the various <a href="http://ocaml.io/tasks">projects</a>.  One of the more important projects is the <a href="http://www.cl.cam.ac.uk/projects/ocamllabs/tasks/platform.html#OCamlot">OCamlot</a> continuous build infrastructure, which will also be testing Mirage kernels as one of the supported backends.</p> </li><li> <p>As we head into release mode, we've started <a href="http://openmirage.org/wiki/tag/overview/meetings">weekly meetings</a> to coordinate all the activities.  We're keeping notes as we go along, so you should be able to skim the notes and <a href="https://lists.cam.ac.uk/pipermail/cl-mirage/">mailing list archives</a> to get a feel for the overall activities.  Anil is maintaining a <a href="http://openmirage.org/wiki/dev-preview-checklist">release checklist</a> for the summer developer preview.</p> </li><li> <p>Anil (along with Yaron Minsky and Jason Hickey) is finishing up an O'Reilly book on <a href="http://realworldocaml.org">Real World OCaml</a>, which will be a useful guide to using OCaml for systems and network programming. If you'd like to review an early copy, please get in touch.  The final book is anticipated to be released towards the end of the year, with a <a href="http://shop.oreilly.com/category/roughcuts.do">Rough Cut</a> at the end of the summer.</p> </li><li> <p>The core system was described in an <a href="http://anil.recoil.org/papers/2013-asplos-mirage.pdf">ASPLOS 2013</a> paper, which should help you understand the background behind library operating systems. Some of the Mirage libraries are also currently being integrated into the next-generation <a href="http://blogs.citrix.com/2012/05/17/introducing-windsor-a-new-xen-based-virtualization-architecture/">Windsor</a> release of the Xen Cloud Platform, which means that several of the libraries will be used in production and hence move beyond research-quality code.</p> </li> </ul><p>In the next few months, the installation notes and getting started guides will all be revamped to match the reality of the new tooling, so expect some flux there.   If you want to take an early try of Mirage beforehand, don't forget to hop on the <code>#mirage</code> IRC channel on Freenode and ping us with questions directly.  We will also be migrating some of the project infrastructure to be fully self-hosted on Mirage and Xen, and placing some of the services onto the new <a href="http://xenproject.org">xenproject.org</a> infrastructure.</p> 
-   </div></div>
+   </div>  </div>
 
 
 
@@ -1625,9 +1805,10 @@ another dependency on <code>libc</code>).<br /></p>
 <p class="date">
 <a href="http://openmirage.org/blog/the-road-to-a-dev-release">by Anil Madhavapeddy (anil@recoil.org) at Mon, 20 May 2013</a>
 </p>
-</div>
+  </div>
 </div>
 
+</div>
 
 <div class="channelgroup">
 
@@ -1639,7 +1820,6 @@ another dependency on <code>libc</code>).<br /></p>
 
 <!-- <h3><a href="http://www.cl.cam.ac.uk/projects/ocamllabs//news/" title="OCaml Labs News">Monthly News</a></h3> -->
 
-
 <div class="entrygroup" id="http://www.cl.cam.ac.uk/projects/ocamllabs/news/2013-05-01">
 <a name="http://www.cl.cam.ac.uk/projects/ocamllabs/news/2013-05-01"> </a>
 <h1 class="posttitle"><a href="http://www.cl.cam.ac.uk/projects/ocamllabs/news/index.html#May%202013">May 2013 news update</a>
@@ -1647,7 +1827,7 @@ another dependency on <code>libc</code>).<br /></p>
 </h1>
 <hr/>
 <div class="entry">
-<div class="content">
+  <div class="content">
 <div>
       <p><a href="http://www.cl.cam.ac.uk/projects/ocamllabs/images/thomas-nycoug-2013.jpg"><img src="http://www.cl.cam.ac.uk/projects/ocamllabs/images/thomas-nycoug-2013-thumb.jpg" class="left" /></a>
 May is exam time in Cambridge, and the corridors of the OCaml Labs resounded
@@ -1760,7 +1940,7 @@ released onto OPAM and is a set of easy-to-use tools for generating CUDA and
 OpenCL code, and also a camlp4 extension to write external kernels directly in
 OCaml.  Thanks for visiting, Mathias!</p>
 
-   </div></div>
+   </div>  </div>
 
 
 
@@ -1771,9 +1951,10 @@ OCaml.  Thanks for visiting, Mathias!</p>
 <p class="date">
 <a href="http://www.cl.cam.ac.uk/projects/ocamllabs/news/index.html#May%202013">by Anil Madhavapeddy (anil@recoil.org) at Wed, 01 May 2013</a>
 </p>
-</div>
+  </div>
 </div>
 
+</div>
 
 <div class="channelgroup">
 
@@ -1785,7 +1966,6 @@ OCaml.  Thanks for visiting, Mathias!</p>
 
 <!-- <h3><a href="http://www.cl.cam.ac.uk/projects/ocamllabs//news/" title="OCaml Labs News">Monthly News</a></h3> -->
 
-
 <div class="entrygroup" id="http://www.cl.cam.ac.uk/projects/ocamllabs/news/2013-04-01">
 <a name="http://www.cl.cam.ac.uk/projects/ocamllabs/news/2013-04-01"> </a>
 <h1 class="posttitle"><a href="http://www.cl.cam.ac.uk/projects/ocamllabs/news/index.html#Apr%202013">Apr 2013 news update</a>
@@ -1793,9 +1973,9 @@ OCaml.  Thanks for visiting, Mathias!</p>
 </h1>
 <hr/>
 <div class="entry">
-<div class="content">
+  <div class="content">
 <div>
-      <p><a href="http://www.cl.cam.ac.uk/projects/ocamllabs/images/leo-oculus.jpg"><img src="http://www.cl.cam.ac.uk/projects/ocamllabs/images/leo-oculus-thumb.jpg" class="left" width="150px" /></a>
+      <p><a href="http://www.cl.cam.ac.uk/projects/ocamllabs/images/leo-oculus.jpg"><img src="http://www.cl.cam.ac.uk/projects/ocamllabs/images/leo-oculus-thumb.jpg" width="150px" class="left" /></a>
 It's been a heads-down month of hacking at the Labs for April, as the
 group have settled into their projects and are concentrating on getting code
 out.  We did take the opportunity to redesign the <a href="http://www.cl.cam.ac.uk/projects/ocamllabs/tasks/index.html">project pages</a> as the active projects grew.</p>
@@ -1822,7 +2002,7 @@ issues there with your comments.  Philippe has begun the
 all the website scripts more coherently. Discussions about this take place on
 the <a href="http://lists.ocaml.org/listinfo/infrastructure">infrastructure</a> mailing
 list, which is open to all.</p>
-<p><a href="http://www.cl.cam.ac.uk/projects/ocamllabs/images/makespace-apr-2013.jpg"><img src="http://www.cl.cam.ac.uk/projects/ocamllabs/images/makespace-apr-2013-thumb.jpg" class="left" width="150px" /></a>
+<p><a href="http://www.cl.cam.ac.uk/projects/ocamllabs/images/makespace-apr-2013.jpg"><img src="http://www.cl.cam.ac.uk/projects/ocamllabs/images/makespace-apr-2013-thumb.jpg" width="150px" class="left" /></a>
 The monthly OCaml get togethers in the <a href="http://makespace.org">Cambridge
 Makespace</a> are also really fun.  This month saw around 30
 people wander through the doors, and work through the latest excerpts of
@@ -1841,7 +2021,7 @@ up. There's also a slightly scary
 libraries that need to be released before July, so the team has its work cut
 out for it!  The Xen group also announced that it is joining the Linux Foundation,
 and the <a href="http://www.linuxfoundation.org/news-media/announcements/2013/04/xen-become-linux-foundation-collaborative-project">press release</a> gave Mirage a prominent mention as one of the key recent developments in Xen.</p>
-<p><a href="http://www.cl.cam.ac.uk/projects/ocamllabs/images/jon-robot-yahoo.jpg"><img src="http://www.cl.cam.ac.uk/projects/ocamllabs/images/jon-robot-yahoo-thumb.jpg" class="right" width="120px" /></a>
+<p><a href="http://www.cl.cam.ac.uk/projects/ocamllabs/images/jon-robot-yahoo.jpg"><img src="http://www.cl.cam.ac.uk/projects/ocamllabs/images/jon-robot-yahoo-thumb.jpg" width="120px" class="right" /></a>
 <b>Irminsule</b>: Thomas now has a full implementation of the git file format
 in his <a href="http://github.com/samoht/cagit">cagit</a> repository, and the interfaces
 for Irminsule's branch-consistent model are coming together.  He gave a demo to
@@ -1862,7 +2042,7 @@ OCaml/C divide, and uses <a href="https://github.com/atgreen/libffi">libffi</a> 
 to remain efficient and platform-independent.  There is the exciting possibility
 about hooking this library with the <a href="http://www.cl.cam.ac.uk/projects/ocamllabs/tasks/compiler.html#Compile-time%20meta%20programming">compile-time metaprogramming</a> to eliminate all performance cost, so we're going to spend some time
 on this project to make it a well-documented alternative to the existing C FFI.</p>
-<p><a href="http://www.cl.cam.ac.uk/projects/ocamllabs/images/mezzo-talk.jpg"><img src="http://www.cl.cam.ac.uk/projects/ocamllabs/images/mezzo-talk.jpg" class="right" width="120px" /></a>
+<p><a href="http://www.cl.cam.ac.uk/projects/ocamllabs/images/mezzo-talk.jpg"><img src="http://www.cl.cam.ac.uk/projects/ocamllabs/images/mezzo-talk.jpg" width="120px" class="right" /></a>
 The OCaml Labs talk series continued with a visit from <a href="http://gallium.inria.fr/~fpottier/">Francois
 Pottier</a> ad <a href="http://www.xulforum.org">Jonathan
 Protzenko</a> from the INRIA
@@ -1882,7 +2062,7 @@ had productive discussions about how we could try Mezzo out when it's released.<
  </li>
 </ul>
 
-   </div></div>
+   </div>  </div>
 
 
 
@@ -1893,9 +2073,10 @@ had productive discussions about how we could try Mezzo out when it's released.<
 <p class="date">
 <a href="http://www.cl.cam.ac.uk/projects/ocamllabs/news/index.html#Apr%202013">by Anil Madhavapeddy (anil@recoil.org) at Mon, 01 Apr 2013</a>
 </p>
-</div>
+  </div>
 </div>
 
+</div>
 
 <div class="channelgroup">
 
@@ -1908,7 +2089,6 @@ had productive discussions about how we could try Mezzo out when it's released.<
 <!-- <h3><a href="http://amirchaudhry.com" title="Amir Chaudhry - 'ocaml-labs'">Amir Chaudhry</a></h3> -->
 <img style="float:right; padding-left: 20px;" class="face" src="images/../../mugshots/amir.jpg" width="" height="50" alt="">
 
-
 <div class="entrygroup" id="http://amirchaudhry.com/wireframe-demos-for-ocamlorg">
 <a name="http://amirchaudhry.com/wireframe-demos-for-ocamlorg"> </a>
 <h1 class="posttitle"><a href="http://amirchaudhry.com/wireframe-demos-for-ocamlorg">Wireframe demos for OCaml.org</a>
@@ -1916,7 +2096,7 @@ had productive discussions about how we could try Mezzo out when it's released.<
 </h1>
 <hr/>
 <div class="entry">
-<div class="content">
+  <div class="content">
 <h3 id="making_mockups">Making mockups</h3>
 
 <p>Over the last few months, I&#8217;ve been working on various aspects of the <a href="http://ocaml.org">OCaml.org</a> design project. This covers things like the design, information architecture and how to incorporate new functionality. One of the methods for thinking through these was to put together a bunch of wireframes using <a href="http://www.balsamiq.com">Balsamiq</a> and use these to express (and generate) ideas as well as get feedback quickly.</p>
@@ -1951,7 +2131,7 @@ had productive discussions about how we could try Mezzo out when it's released.<
 <li>
 <p>The designs you see aren&#8217;t necessarily final. Your feedback will help shape our decisions and the best way to provide it is via the <a href="http://lists.ocaml.org/listinfo/infrastructure">infrastructure mailing list</a>.</p>
 </li>
-</ul></div>
+</ul>  </div>
 
 
 
@@ -1962,9 +2142,10 @@ had productive discussions about how we could try Mezzo out when it's released.<
 <p class="date">
 <a href="http://amirchaudhry.com/wireframe-demos-for-ocamlorg">by Amir Chaudhry at Thu, 14 Mar 2013</a>
 </p>
-</div>
+  </div>
 </div>
 
+</div>
 
 <div class="channelgroup">
 
@@ -1977,7 +2158,6 @@ had productive discussions about how we could try Mezzo out when it's released.<
 <!-- <h3><a href="http://lpw25.net/" title="lpw25">Leo White</a></h3> -->
 <img style="float:right; padding-left: 20px;" class="face" src="images/../../mugshots/lpw25.jpg" width="" height="50" alt="">
 
-
 <div class="entrygroup" id="http://lpw25.net/2013/03/10/ocaml-namespaces">
 <a name="http://lpw25.net/2013/03/10/ocaml-namespaces"> </a>
 <h1 class="posttitle"><a href="http://lpw25.net/2013/03/10/ocaml-namespaces.html">Adding namespaces to OCaml</a>
@@ -1985,7 +2165,7 @@ had productive discussions about how we could try Mezzo out when it's released.<
 </h1>
 <hr/>
 <div class="entry">
-<div class="content">
+  <div class="content">
 <div class="well well-small">
   <h4>
 Contents
@@ -2623,7 +2803,7 @@ module by default:</p>
 <p>By adding support for this feature to OCamlFind, libraries could add this
 argument to every program compiled using them. This amounts to having
 automatically opened modules as part of the package system rather than part of
-the namespace system.</p></div>
+the namespace system.</p>  </div>
 
 
 
@@ -2634,9 +2814,10 @@ the namespace system.</p></div>
 <p class="date">
 <a href="http://lpw25.net/2013/03/10/ocaml-namespaces.html">by Leo White at Sun, 10 Mar 2013</a>
 </p>
-</div>
+  </div>
 </div>
 
+</div>
 
 <div class="channelgroup">
 
@@ -2648,7 +2829,6 @@ the namespace system.</p></div>
 
 <!-- <h3><a href="http://www.cl.cam.ac.uk/projects/ocamllabs//news/" title="OCaml Labs News">Monthly News</a></h3> -->
 
-
 <div class="entrygroup" id="http://www.cl.cam.ac.uk/projects/ocamllabs/news/2013-03-01">
 <a name="http://www.cl.cam.ac.uk/projects/ocamllabs/news/2013-03-01"> </a>
 <h1 class="posttitle"><a href="http://www.cl.cam.ac.uk/projects/ocamllabs/news/index.html#Mar%202013">Mar 2013 news update</a>
@@ -2656,7 +2836,7 @@ the namespace system.</p></div>
 </h1>
 <hr/>
 <div class="entry">
-<div class="content">
+  <div class="content">
 <div>
       <p>The OCaml Labs hackers continue to arrive, with <a href="http://www.cl.cam.ac.uk/projects/ocamllabs/people/sheets.html">David
 Sheets</a> arriving from sunny San Francisco, and <a href="http://www.cl.cam.ac.uk/projects/ocamllabs/people/xclerc.html">Xavier Clerc</a> visiting from the less-sunny
@@ -2709,7 +2889,7 @@ for new releases of their <a href="http://janestreet.github.io">libraries</a>.  
 testing for these releases is currently handled manually and we're really 
 looking forward to having them dealt with automatically!</p>
 <h3 id="Systemsprojects"> Systems projects</h3>
-<p><a href="http://www.cl.cam.ac.uk/projects/ocamllabs/images/asplos-mort.jpg"><img src="http://www.cl.cam.ac.uk/projects/ocamllabs/images/asplos-mort-thumb.jpg" class="right" width="120px" /></a>
+<p><a href="http://www.cl.cam.ac.uk/projects/ocamllabs/images/asplos-mort.jpg"><img src="http://www.cl.cam.ac.uk/projects/ocamllabs/images/asplos-mort-thumb.jpg" width="120px" class="right" /></a>
 <b>Mirage</b>: There is much preparation ongoing for the big 
 <a href="http://wiki.xen.org/wiki/Mirage_Incubation_Project_Proposal">xen.org incubation</a>, 
 which has now been approved by the Xen community board. Vincent's work on 
@@ -2764,7 +2944,7 @@ discussions.</p>
  </li>
 </ul>
 
-   </div></div>
+   </div>  </div>
 
 
 
@@ -2775,9 +2955,10 @@ discussions.</p>
 <p class="date">
 <a href="http://www.cl.cam.ac.uk/projects/ocamllabs/news/index.html#Mar%202013">by Anil Madhavapeddy (anil@recoil.org) at Fri, 01 Mar 2013</a>
 </p>
-</div>
+  </div>
 </div>
 
+</div>
 
 <div class="channelgroup">
 
@@ -2790,7 +2971,6 @@ discussions.</p>
 <!-- <h3><a href="http://lpw25.net/" title="lpw25">Leo White</a></h3> -->
 <img style="float:right; padding-left: 20px;" class="face" src="images/../../mugshots/lpw25.jpg" width="" height="50" alt="">
 
-
 <div class="entrygroup" id="http://lpw25.net/2013/02/05/camlp4-alternative-part-2">
 <a name="http://lpw25.net/2013/02/05/camlp4-alternative-part-2"> </a>
 <h1 class="posttitle"><a href="http://lpw25.net/2013/02/05/camlp4-alternative-part-2.html">An alternative to camlp4 - Part 2</a>
@@ -2798,7 +2978,7 @@ discussions.</p>
 </h1>
 <hr/>
 <div class="entry">
-<div class="content">
+  <div class="content">
 <p>In my <a href="http://www.lpw25.net/2013/01/23/camlp4-alternative-part-1.html">previous blog post</a> I
 discussed how we might use AST transformers, attributes and quotations as a
 simpler alternative to camlp4. While AST transformers are much simpler to use
@@ -3005,7 +3185,7 @@ simple AST nodes it is probably fairly robust.</p>
 GADT describing the context that the extension has been used in.</li>
   <li>Provide AST quotations in the standard library (e.g. <code>{:Ast.expr{ x + 3 }}</code>)
 which use the compiler’s own lexer and parser.</li>
-</ol></div>
+</ol>  </div>
 
 
 
@@ -3016,9 +3196,10 @@ which use the compiler’s own lexer and parser.</li>
 <p class="date">
 <a href="http://lpw25.net/2013/02/05/camlp4-alternative-part-2.html">by Leo White at Tue, 05 Feb 2013</a>
 </p>
-</div>
+  </div>
 </div>
 
+</div>
 
 <div class="channelgroup">
 
@@ -3030,7 +3211,6 @@ which use the compiler’s own lexer and parser.</li>
 
 <!-- <h3><a href="http://www.cl.cam.ac.uk/projects/ocamllabs//news/" title="OCaml Labs News">Monthly News</a></h3> -->
 
-
 <div class="entrygroup" id="http://www.cl.cam.ac.uk/projects/ocamllabs/news/2013-02-01">
 <a name="http://www.cl.cam.ac.uk/projects/ocamllabs/news/2013-02-01"> </a>
 <h1 class="posttitle"><a href="http://www.cl.cam.ac.uk/projects/ocamllabs/news/index.html#Feb%202013">Feb 2013 news update</a>
@@ -3038,7 +3218,7 @@ which use the compiler’s own lexer and parser.</li>
 </h1>
 <hr/>
 <div class="entry">
-<div class="content">
+  <div class="content">
 <div>
       <p>Two new people joined the core team at Cambridge: <a href="http://www.cl.cam.ac.uk/projects/ocamllabs/people/yallop.html">Jeremy Yallop</a> and <a href="http://www.cl.cam.ac.uk/projects/ocamllabs/people/pwang.html">Philippe Wang</a>!
 Jeremy has extensive expertise with meta-programming and generic programming,
@@ -3084,7 +3264,7 @@ experience the clickable demo via <a href="http://amirchaudhry.com/wireframe-dem
  </li>
 </ul>
 
-   </div></div>
+   </div>  </div>
 
 
 
@@ -3095,9 +3275,10 @@ experience the clickable demo via <a href="http://amirchaudhry.com/wireframe-dem
 <p class="date">
 <a href="http://www.cl.cam.ac.uk/projects/ocamllabs/news/index.html#Feb%202013">by Anil Madhavapeddy (anil@recoil.org) at Fri, 01 Feb 2013</a>
 </p>
-</div>
+  </div>
 </div>
 
+</div>
 
 <div class="channelgroup">
 
@@ -3110,7 +3291,6 @@ experience the clickable demo via <a href="http://amirchaudhry.com/wireframe-dem
 <!-- <h3><a href="http://lpw25.net/" title="lpw25">Leo White</a></h3> -->
 <img style="float:right; padding-left: 20px;" class="face" src="images/../../mugshots/lpw25.jpg" width="" height="50" alt="">
 
-
 <div class="entrygroup" id="http://lpw25.net/2013/01/23/camlp4-alternative-part-1">
 <a name="http://lpw25.net/2013/01/23/camlp4-alternative-part-1"> </a>
 <h1 class="posttitle"><a href="http://lpw25.net/2013/01/23/camlp4-alternative-part-1.html">An alternative to camlp4 - Part 1</a>
@@ -3118,7 +3298,7 @@ experience the clickable demo via <a href="http://amirchaudhry.com/wireframe-dem
 </h1>
 <hr/>
 <div class="entry">
-<div class="content">
+  <div class="content">
 <p>Since its creation camlp4 has proven to be a very useful tool. People have used
 it to experiment with new features for OCaml and to provide interesting
 meta-programming facilities. However, there is general agreement that camlp4 is
@@ -3272,7 +3452,7 @@ written camlp4 extensions about what kind of extensions they have written, and
 what they think would be necessary to support their extensions without
 camlp4. So please join the
 <a href="http://lists.ocaml.org/listinfo/wg-camlp4">wg-camlp4@lists.ocaml.org</a> list and post
-your thoughts.</p></div>
+your thoughts.</p>  </div>
 
 
 
@@ -3283,9 +3463,10 @@ your thoughts.</p></div>
 <p class="date">
 <a href="http://lpw25.net/2013/01/23/camlp4-alternative-part-1.html">by Leo White at Wed, 23 Jan 2013</a>
 </p>
-</div>
+  </div>
 </div>
 
+</div>
 
 <div class="channelgroup">
 
@@ -3297,7 +3478,6 @@ your thoughts.</p></div>
 
 <!-- <h3><a href="http://www.cl.cam.ac.uk/projects/ocamllabs//news/" title="OCaml Labs News">Monthly News</a></h3> -->
 
-
 <div class="entrygroup" id="http://www.cl.cam.ac.uk/projects/ocamllabs/news/2013-01-01">
 <a name="http://www.cl.cam.ac.uk/projects/ocamllabs/news/2013-01-01"> </a>
 <h1 class="posttitle"><a href="http://www.cl.cam.ac.uk/projects/ocamllabs/news/index.html#Jan%202013">Jan 2013 news update</a>
@@ -3305,7 +3485,7 @@ your thoughts.</p></div>
 </h1>
 <hr/>
 <div class="entry">
-<div class="content">
+  <div class="content">
 <div>
       <p>There's a lot of interest in the work we're doing, and the number of collaborative <a href="http://www.cl.cam.ac.uk/projects/ocamllabs/tasks/index.html">projects</a> is increasing fast. 
 We held the first monthly meeting in the Computer Lab, where <a href="http://www.cl.cam.ac.uk/projects/ocamllabs/people/avsm.html">Anil</a> provided
@@ -3421,7 +3601,7 @@ January.  Congratulations <a href="http://www.cl.cam.ac.uk/projects/ocamllabs/pe
 </ul>
 
 
-   </div></div>
+   </div>  </div>
 
 
 
@@ -3432,9 +3612,10 @@ January.  Congratulations <a href="http://www.cl.cam.ac.uk/projects/ocamllabs/pe
 <p class="date">
 <a href="http://www.cl.cam.ac.uk/projects/ocamllabs/news/index.html#Jan%202013">by Anil Madhavapeddy (anil@recoil.org) at Tue, 01 Jan 2013</a>
 </p>
-</div>
+  </div>
 </div>
 
+</div>
 
 <div class="channelgroup">
 
@@ -3446,7 +3627,6 @@ January.  Congratulations <a href="http://www.cl.cam.ac.uk/projects/ocamllabs/pe
 
 <!-- <h3><a href="http://www.cl.cam.ac.uk/projects/ocamllabs//news/" title="OCaml Labs News">Monthly News</a></h3> -->
 
-
 <div class="entrygroup" id="http://www.cl.cam.ac.uk/projects/ocamllabs/news/2012-12-01">
 <a name="http://www.cl.cam.ac.uk/projects/ocamllabs/news/2012-12-01"> </a>
 <h1 class="posttitle"><a href="http://www.cl.cam.ac.uk/projects/ocamllabs/news/index.html#Dec%202012">Dec 2012 news update</a>
@@ -3454,7 +3634,7 @@ January.  Congratulations <a href="http://www.cl.cam.ac.uk/projects/ocamllabs/pe
 </h1>
 <hr/>
 <div class="entry">
-<div class="content">
+  <div class="content">
 <div>
       <p><a href="http://www.cl.cam.ac.uk/projects/ocamllabs/images/cam-snow.jpg"><img src="http://www.cl.cam.ac.uk/projects/ocamllabs/images/cam-snow-thumb.jpg" class="right" width="130px" /></a>
 OCaml Labs kicked-off with an internal meeting of the Cambridge-based members,
@@ -3487,7 +3667,7 @@ public domain for use by anyone.</p>
 website live, to much electronic <a href="https://twitter.com/jakedonham/status/281170330700095488">applause</a>.
 A great way to end 2012!</p>
 
-   </div></div>
+   </div>  </div>
 
 
 
@@ -3498,9 +3678,10 @@ A great way to end 2012!</p>
 <p class="date">
 <a href="http://www.cl.cam.ac.uk/projects/ocamllabs/news/index.html#Dec%202012">by Anil Madhavapeddy (anil@recoil.org) at Sat, 01 Dec 2012</a>
 </p>
-</div>
+  </div>
 </div>
 
+</div>
 
 <div class="channelgroup">
 
@@ -3513,7 +3694,6 @@ A great way to end 2012!</p>
 <!-- <h3><a href="http://hh360.user.srcf.net/blog" title="/etc/hosts » OCaml">Heidi Howard</a></h3> -->
 <img style="float:right; padding-left: 20px;" class="face" src="images/../../mugshots/heidi.jpg" width="" height="50" alt="">
 
-
 <div class="entrygroup" id="http://hh360.user.srcf.net/blog/2012/11/system-programming-in-ocaml-part-2/" lang="en-US">
 <a name="http://hh360.user.srcf.net/blog/2012/11/system-programming-in-ocaml-part-2/"> </a>
 <h1 class="posttitle"><a href="http://hh360.user.srcf.net/blog/2012/11/system-programming-in-ocaml-part-2/">System programming in OCaml – Part 2</a>
@@ -3521,7 +3701,7 @@ A great way to end 2012!</p>
 </h1>
 <hr/>
 <div class="entry">
-<div class="content">
+  <div class="content">
 <p>Now we are going to take a look at manipulating files in OCaml. We will be focusing on the Unix file system.</p>
 <p>In Unix the term &#8220;file&#8221; refers to a greater range of objects that you might expect. This includes:</p>
 <ul>
@@ -3534,7 +3714,7 @@ A great way to end 2012!</p>
 </ul>
 <p>All files are represented by an i-node, a data structure which holds the meta-data on the file. Directories are files that map filenames to i-nodes. The directories form a tree structure, where all files are directly or indirectly children of the root directory called &#8216;/&#8217;.</p>
 <p>A absolute path name of the file is one that begins at the root. A relative path name is one that begins in the current directory. Every directory has &#8216;.&#8217; and &#8216;..&#8217; which are symbolic links to the current and parent directories.</p>
-<p>OCaml makes use of the <a href="http://caml.inria.fr/pub/docs/manual-ocaml/libref/Filename.html">Filename module</a> to help handle paths in a portable manner</p></div>
+<p>OCaml makes use of the <a href="http://caml.inria.fr/pub/docs/manual-ocaml/libref/Filename.html">Filename module</a> to help handle paths in a portable manner</p>  </div>
 
 
 
@@ -3545,9 +3725,10 @@ A great way to end 2012!</p>
 <p class="date">
 <a href="http://hh360.user.srcf.net/blog/2012/11/system-programming-in-ocaml-part-2/">by Heidi-ann at Thu, 29 Nov 2012</a>
 </p>
-</div>
+  </div>
 </div>
 
+</div>
 
 <div class="channelgroup">
 
@@ -3560,7 +3741,6 @@ A great way to end 2012!</p>
 <!-- <h3><a href="http://hh360.user.srcf.net/blog" title="/etc/hosts » OCaml">Heidi Howard</a></h3> -->
 <img style="float:right; padding-left: 20px;" class="face" src="images/../../mugshots/heidi.jpg" width="" height="50" alt="">
 
-
 <div class="entrygroup" id="http://hh360.user.srcf.net/blog/2012/11/ocaml-2-html/" lang="en-US">
 <a name="http://hh360.user.srcf.net/blog/2012/11/ocaml-2-html/"> </a>
 <h1 class="posttitle"><a href="http://hh360.user.srcf.net/blog/2012/11/ocaml-2-html/">Ocaml 2 HTML</a>
@@ -3568,9 +3748,9 @@ A great way to end 2012!</p>
 </h1>
 <hr/>
 <div class="entry">
-<div class="content">
+  <div class="content">
 <div><a href="http://1.bp.blogspot.com/-r31qRagcDkA/ULZ_402U4NI/AAAAAAAAAMg/yEQ5QdhTGnM/s1600/images.jpeg"><img alt="" src="http://1.bp.blogspot.com/-r31qRagcDkA/ULZ_402U4NI/AAAAAAAAAMg/yEQ5QdhTGnM/s1600/images.jpeg" border="0" /></a></div>
-<p>As I&#8217;m often adding OCaml code to blog posts I really wanted to find an automatic way to add syntax highlighting. The first solution that I have found is <a href="http://caml.inria.fr/cgi-bin/hump.en.cgi?contrib=61">caml2html</a> but I&#8217;m still looking for something better &#8230; suggestions welcome</p></div>
+<p>As I&#8217;m often adding OCaml code to blog posts I really wanted to find an automatic way to add syntax highlighting. The first solution that I have found is <a href="http://caml.inria.fr/cgi-bin/hump.en.cgi?contrib=61">caml2html</a> but I&#8217;m still looking for something better &#8230; suggestions welcome</p>  </div>
 
 
 
@@ -3581,11 +3761,21 @@ A great way to end 2012!</p>
 <p class="date">
 <a href="http://hh360.user.srcf.net/blog/2012/11/ocaml-2-html/">by Heidi-ann at Wed, 28 Nov 2012</a>
 </p>
+  </div>
 </div>
+
 </div>
 
+<div class="channelgroup">
 
 
+
+
+
+
+
+<!-- <h3><a href="http://hh360.user.srcf.net/blog" title="/etc/hosts » OCaml">Heidi Howard</a></h3> -->
+<img style="float:right; padding-left: 20px;" class="face" src="images/../../mugshots/heidi.jpg" width="" height="50" alt="">
 
 <div class="entrygroup" id="http://hh360.user.srcf.net/blog/2012/11/system-programming-in-ocaml-part-1/" lang="en-US">
 <a name="http://hh360.user.srcf.net/blog/2012/11/system-programming-in-ocaml-part-1/"> </a>
@@ -3594,7 +3784,7 @@ A great way to end 2012!</p>
 </h1>
 <hr/>
 <div class="entry">
-<div class="content">
+  <div class="content">
 <p>This series of articles will follow my journey through &#8220;Unix system programming in OCaml&#8221;, available as a pdf <a href="http://ocamlunix.forge.ocamlcore.org/">here</a>. After this series, I hope to move onto a series on Mirage system programming in OCaml and working with Signposts (a framework for managing end-to-end connectivity between devices using DNS infrastructure for signalling)</p>
 <h4>Introducing the Sys and Unix</h4>
 <div><a href="http://3.bp.blogspot.com/-1RDROc_BYpo/ULaAP6BBbLI/AAAAAAAAAMo/UmCCrs1WqOA/s1600/unix_plate.jpg"><img alt="" src="http://3.bp.blogspot.com/-1RDROc_BYpo/ULaAP6BBbLI/AAAAAAAAAMo/UmCCrs1WqOA/s320/unix_plate.jpg" width="320" height="162" border="0" /></a></div>
@@ -3654,7 +3844,7 @@ print_newline);<br />
 done;</i><br />
 <i> done;</i></p>
 <p><i> handle_unix_error prog ();;</i></p>
-<div><a href="http://4.bp.blogspot.com/-kgybOBLFeGU/ULaBNfKRf8I/AAAAAAAAAM4/eVjnpihDSGw/s1600/289-rule-34-no-exceptions.jpg"><img alt="" src="http://4.bp.blogspot.com/-kgybOBLFeGU/ULaBNfKRf8I/AAAAAAAAAM4/eVjnpihDSGw/s640/289-rule-34-no-exceptions.jpg" width="640" height="508" border="0" /></a></div></div>
+<div><a href="http://4.bp.blogspot.com/-kgybOBLFeGU/ULaBNfKRf8I/AAAAAAAAAM4/eVjnpihDSGw/s1600/289-rule-34-no-exceptions.jpg"><img alt="" src="http://4.bp.blogspot.com/-kgybOBLFeGU/ULaBNfKRf8I/AAAAAAAAAM4/eVjnpihDSGw/s640/289-rule-34-no-exceptions.jpg" width="640" height="508" border="0" /></a></div>  </div>
 
 
 
@@ -3665,9 +3855,10 @@ done;</i><br />
 <p class="date">
 <a href="http://hh360.user.srcf.net/blog/2012/11/system-programming-in-ocaml-part-1/">by Heidi-ann at Wed, 28 Nov 2012</a>
 </p>
-</div>
+  </div>
 </div>
 
+</div>
 
 <div class="channelgroup">
 
@@ -3679,7 +3870,6 @@ done;</i><br />
 
 <!-- <h3><a href="http://www.cl.cam.ac.uk/projects/ocamllabs//news/" title="OCaml Labs News">Monthly News</a></h3> -->
 
-
 <div class="entrygroup" id="http://www.cl.cam.ac.uk/projects/ocamllabs/news/2012-11-01">
 <a name="http://www.cl.cam.ac.uk/projects/ocamllabs/news/2012-11-01"> </a>
 <h1 class="posttitle"><a href="http://www.cl.cam.ac.uk/projects/ocamllabs/news/index.html#Nov%202012">Nov 2012 news update</a>
@@ -3687,7 +3877,7 @@ done;</i><br />
 </h1>
 <hr/>
 <div class="entry">
-<div class="content">
+  <div class="content">
 <div>
       <p>OCaml Labs finally opened its doors with announcements from
 <a href="https://ocaml.janestreet.com/?q=node/109">Yaron</a> and
@@ -3713,7 +3903,7 @@ built out and there's already been helpful input via the
 support from Citrix, and <a href="http://www.cl.cam.ac.uk/projects/ocamllabs/news/#opam">OPAM</a> itself continues to mature and grow in
 popularity.</p>
 
-   </div></div>
+   </div>  </div>
 
 
 
@@ -3724,69 +3914,10 @@ popularity.</p>
 <p class="date">
 <a href="http://www.cl.cam.ac.uk/projects/ocamllabs/news/index.html#Nov%202012">by Anil Madhavapeddy (anil@recoil.org) at Thu, 01 Nov 2012</a>
 </p>
-</div>
-</div>
-
-
-
-</div>
-<div class="channelgroup">
-
-
-
-
-
-
-
-<!-- <h3><a href="http://hh360.user.srcf.net/blog" title="/etc/hosts » OCaml">Heidi Howard</a></h3> -->
-<img style="float:right; padding-left: 20px;" class="face" src="images/../../mugshots/heidi.jpg" width="" height="50" alt="">
-
-
-<div class="entrygroup" id="http://hh360.user.srcf.net/blog/2012/11/getting-to-grips-with-opam/" lang="en-US">
-<a name="http://hh360.user.srcf.net/blog/2012/11/getting-to-grips-with-opam/"> </a>
-<h1 class="posttitle"><a href="http://hh360.user.srcf.net/blog/2012/11/getting-to-grips-with-opam/">Getting to grips with OPAM</a>
-(<a href="http://hh360.user.srcf.net/blog" title="/etc/hosts » OCaml">Heidi Howard</a>)
-</h1>
-<hr/>
-<div class="entry">
-<div class="content">
-<p><code>What is OPAM ?</code></p>
-<p><code>OPAM is a OCaml Package Manager. Its basic use is similar to apt-get on linux, both package managers help to automate the process of installing, removing and updating software by tracking the complex web of dependencies that exist between bodies of code.</code><br />
-<code>Why use OPAM ?</code></p>
-<p><code>OPAM gives the user more control of the choice of specific libraries and compiler versions used to run OCaml code. </code></p>
-<p><code>How to do I run OPAM ?</code></p>
-<p><code>I am only going to run OPAM and not install it (long story). To do this, I executed the following from my root directory </code></p>
-<p><code>wget http://opam.ocamlpro.com/build/opam64 </code></p>
-<p><code>chmod +x opam64 </code></p>
-<p><code>./opam64 init </code></p>
-<p><code>How can install a package using OPAM ? What is the advantage over using OPAM intend of using the traditional methods ?</code></p>
-<p><code>You can view the list of available packages using ./opam64 list and you can search using ./opam64 search .</code></p>
-<p><code>On of the libraries used by Signposts is lwt. Lwt is a very useful library for anyone who want to do multi-threading in Ocaml. So I try the following query:</code></p>
-<p><code>opam64 search lwt</code></p>
-<p><code>Available packages for system:</code></p>
-<p><code>cohttp   --  HTTP library for Lwt, Async and Mirage</code></p>
-<p><code>lwt   --  A cooperative threads library for OCaml</code></p>
-<p><code>lwt-zmq   --  Lwt-friendly wrapping around ZeroMQ sockets</code></p>
-<p><code>release   --  Release is a multi-process Lwt-enabled daemon framework for OCaml.</code></p>
-<p><code>The second of these results is the package that I want to install so</code></p>
-<p><code>How do I install a package from a Ocaml project on Git ?</code></p>
-<p><code>Firstly find the package that you want to install, for me this is git://github.com/mirage/opam-repo-dev</code></p>
-<p><code>opam remote -add dev git://github.com/mirage/opam-repo-dev</code><br />
-<code>Now in future, when I issue opam upgrade, the latest version of the git repo will be downloaded and any depandencies recompiled </code><code></code><br />
-<code></code></p></div>
-
-
-
-
-
-
-
-<p class="date">
-<a href="http://hh360.user.srcf.net/blog/2012/11/getting-to-grips-with-opam/">by Heidi-ann at Thu, 01 Nov 2012</a>
-</p>
-</div>
+  </div>
 </div>
 
+</div>
 
 <div class="channelgroup">
 
@@ -3799,7 +3930,6 @@ popularity.</p>
 <!-- <h3><a href="http://anil.recoil.org" title="anil.recoil.org">Anil Madhavapeddy</a></h3> -->
 <img style="float:right; padding-left: 20px;" class="face" src="images/../../mugshots/avsm.jpg" width="" height="50" alt="">
 
-
 <div class="entrygroup" id="http://anil.recoil.org/2012/10/19/announcing-ocaml-labs">
 <a name="http://anil.recoil.org/2012/10/19/announcing-ocaml-labs"> </a>
 <h1 class="posttitle"><a href="http://anil.recoil.org/2012/10/19/announcing-ocaml-labs.html">Announcing the OCaml Labs project</a>
@@ -3807,7 +3937,7 @@ popularity.</p>
 </h1>
 <hr/>
 <div class="entry">
-<div class="content">
+  <div class="content">
 <p>I&#8217;m very excited to announce <em><a href="http://www.cl.cam.ac.uk/projects/ocamllabs">OCaml Labs</a></em>, the latest project to hit the Cambridge Computer Lab. As anyone that hangs out near me probably realises, I very much enjoy functional programming. My weapon of choice tends to be <a href="http://www.ocaml-lang.org">OCaml</a>, as it condenses <a href="http://events.inf.ed.ac.uk/Milner2012/X_Leroy-html5-mp4.html">decades of research</a> into a pragmatic blend of functional, imperative and object-oriented programming styles. What&#8217;s perhaps less well known are the steady <a href="http://www.ocaml-lang.org/companies.html">inroads</a> that OCaml has been making into mission-critical areas of industry. At <a href="http://ocaml.janestreet.com">Jane Street</a>, billions of dollars of transactions are routed through a huge ML code-base that is designed to catch bugs <a href="http://vimeo.com/14313378">at compile-time</a>. At <a href="http://github.com/xen-org/xen-api">Citrix</a>, the Xen management toolstack that powers <a href="http://blogs.citrix.com/2012/10/09/one-in-a-million/">millions</a> of hosts in the cloud is <a href="http://anil.recoil.org/papers/2010-icfp-xen.pdf">largely written in OCaml</a>. Facebook does sophisticated <a href="https://github.com/facebook/pfff/wiki/Main">static analysis</a> using OCaml over their vast PHP codebase to close security holes.</p>
 
 <p>The OCaml community is small but dedicated, but there is always more to do to improve the language and ecosystem. So, thanks to a generous platform grant from <a href="http://ocaml.janestreet.com">Jane Street</a>, we are launching a program to help with the open-source development of OCaml from Cambridge.</p>
@@ -3854,7 +3984,7 @@ popularity.</p>
 
 <p>So, how can you get involved? We are initially advertising three positions for full-time developers and researchers (<a href="http://www.jobs.cam.ac.uk/job/-21662/">junior</a> and <a href="http://www.jobs.cam.ac.uk/job/-21942/">senior</a>) to help us get started with the OCaml Platform and compiler development. These aren&#8217;t conventional pure research jobs, and a successful candidate should enjoy the open-source development cycle (you retain your own copyright for your own projects). The Computer Lab offers a pretty unique environment: a friendly, non-hierarchical group in a beautiful city, and some of the best faculty and students you could hope to hang out with.</p>
 
-<p>And finally, there is a longer lead time on <a href="http://www.cl.cam.ac.uk/admissions/phd/">applying for PhDs</a>, but this is a great time to get involved. When I started at the Lab in 2002, a little project called <a href="http://xen.org">Xen</a> was just kicking off, and many of us had a wild (and oft great) time riding that wave. Get in touch with myself, <a href="http://www.cl.cam.ac.uk/~am21/">Alan</a>, <a href="http://www.cl.cam.ac.uk/~iml1/">Ian</a> or <a href="http://www.cl.cam.ac.uk/~jac22/">Jon</a> soon if you are interested in applying! There&#8217;s some more information available on the <a href="http://www.cl.cam.ac.uk/projects/ocamllabs/collaboration.html">OCaml Labs pages</a> about options.</p></div>
+<p>And finally, there is a longer lead time on <a href="http://www.cl.cam.ac.uk/admissions/phd/">applying for PhDs</a>, but this is a great time to get involved. When I started at the Lab in 2002, a little project called <a href="http://xen.org">Xen</a> was just kicking off, and many of us had a wild (and oft great) time riding that wave. Get in touch with myself, <a href="http://www.cl.cam.ac.uk/~am21/">Alan</a>, <a href="http://www.cl.cam.ac.uk/~iml1/">Ian</a> or <a href="http://www.cl.cam.ac.uk/~jac22/">Jon</a> soon if you are interested in applying! There&#8217;s some more information available on the <a href="http://www.cl.cam.ac.uk/projects/ocamllabs/collaboration.html">OCaml Labs pages</a> about options.</p>  </div>
 
 
 
@@ -3865,9 +3995,10 @@ popularity.</p>
 <p class="date">
 <a href="http://anil.recoil.org/2012/10/19/announcing-ocaml-labs.html">Thu, 18 Oct 2012</a>
 </p>
-</div>
+  </div>
 </div>
 
+</div>
 
 <div class="channelgroup">
 
@@ -3879,7 +4010,6 @@ popularity.</p>
 
 <!-- <h3><a href="http://openmirage.org/blog/" title="openmirage blog">MirageOS</a></h3> -->
 
-
 <div class="entrygroup" id="http://openmirage.org/blog/breaking-up-is-easy-with-opam">
 <a name="http://openmirage.org/blog/breaking-up-is-easy-with-opam"> </a>
 <h1 class="posttitle"><a href="http://openmirage.org/blog/breaking-up-is-easy-with-opam">Breaking up is easy to do (with OPAM)</a>
@@ -3887,10 +4017,10 @@ popularity.</p>
 </h1>
 <hr/>
 <div class="entry">
-<div class="content">
+  <div class="content">
 <div>
       <p>When we first started developing Mirage in 2009, we were rewriting huge chunks of operating system and runtime code in OCaml. This ranged from low-level device drivers to higher-level networking protocols such as TCP/IP or HTTP.  The changes weren't just straight rewrites of C code either, but also involved experimenting with interfaces such as iteratees and <a href="http://openmirage.org/wiki/tutorial-lwt">lightweight threading</a> to take advantage of OCaml's static type system.  To make all of this easy to work with, we decided to lump everything into a <a href="http://github.com/avsm/mirage">single Git repository</a> that would bootstrap the entire system with a single <code>make</code> invocation.</p><p>Nowadays though, Mirage is self-hosting, the interfaces are settling down, the number of libraries are growing every day, and portions of it are being used in <a href="http://openmirage.org/blog/xenstore-stub-domain">the Xen Cloud Platform</a>. So for the first developer release, we wanted to split up the monolithic repository into more manageable chunks, but still make it as easy as possible for the average OCaml developer to try out Mirage.</p><p>Thanks to much hard work from <a href="http://gazagnaire.org">Thomas</a> and his colleagues at <a href="http://ocamlpro.com">OCamlPro</a>, we now have <a href="http://opam.ocamlpro.com">OPAM</a>: a fully-fledged package manager for Mirage!  OPAM is a source-based package manager that supports a growing number of community OCaml libraries.  More importantly for Mirage, it can also switch between multiple compiler installations, and so support cross-compiled runtimes and modified standard libraries.</p><p>OPAM includes compiler variants for Mirage-friendly environments for Xen and the UNIX <code>tuntap</code> backends.  The <a href="http://openmirage.org/wiki/install">installation instructions</a> now give you instructions on how to use OPAM, and the old monolithic repository is considered deprecated.  We're still working on full documentation for the first beta release, but all the repositories are on the <a href="http://github.com/mirage">Mirage organisation</a> on Github, with some of the important ones being:</p><ul> <li> <p><a href="http://github.com/mirage/mirage-platform">mirage-platform</a> has the core runtime for Xen and UNIX, implemented as the <code>OS</code> module.</p> </li><li> <p><a href="http://github.com/mirage/mirage-net">mirage-net</a> has the TCP/IP networking stack.</p> </li><li> <p><a href="http://github.com/mirage/ocaml-cstruct">ocaml-cstruct</a> has the camlp4 extension to manipulate memory like C <code>struct</code>s, but with type-safe accessors in OCaml.</p> </li><li> <p><a href="http://github.com/mirage/ocaml-xenstore">ocaml-xenstore</a> has a portable implementation of the Xenstore protocol to communicate with the Xen management stack from a VM (or even act as a <a href="http://openmirage.org/blog/xenstore-stub-domain">server in a stub domain</a>).</p> </li><li> <p><a href="http://github.com/mirage/ocaml-dns">ocaml-dns</a> is a pure OCaml implementation of the DNS protocol, including a server and stub resolver.</p> </li><li> <p><a href="http://github.com/mirage/ocaml-re">ocaml-re</a> is a pure OCaml version of several regular expression engines, including Perl compatibility.</p> </li><li> <p><a href="http://github.com/mirage/ocaml-uri">ocaml-uri</a> handles parsing the surprisingly complex URI strings.</p> </li><li> <p><a href="http://github.com/mirage/ocaml-cohttp">ocaml-cohttp</a> is a portable HTTP parser, with backends for Mirage, Lwt and Core/Async. This is a good example of how to factor out OS-specific concerns using the OCaml type system (and I plan to blog more about this soon).</p> </li><li> <p><a href="http://github.com/mirage/ocaml-cow">ocaml-cow</a> is a set of syntax extensions for JSON, CSS, XML and XHTML, which are explained <a href="http://openmirage.org/wiki/cow">here</a>, and used by this site.</p> </li><li> <p><a href="http://github.com/mirage/dyntype">ocaml-dyntype</a> uses camlp4 to <a href="http://anil.recoil.org/papers/2011-dynamics-ml.pdf">generate dynamic types</a> and values from OCaml type declarations.</p> </li><li> <p><a href="http://github.com/mirage/orm">ocaml-orm</a> auto-generates SQL scheme from OCaml types via Dyntype, and currently supports SQLite.</p> </li><li> <p><a href="http://github.com/mirage/ocaml-openflow">ocaml-openflow</a> implements an OCaml switch and controller for the Openflow protocol.</p> </li> </ul><p>There are quite a few more that are still being hacked for release by the team, but we're getting there very fast now. We also have the Mirage ports of <a href="http://github.com/avsm/ocaml-ssh">SSH</a> to integrate before the first release this year, and Haris has got some <a href="http://github.com/mirage/ocaml-crypto-keys">interesting DNSSEC</a> code!  If you want to get involved, join the <a href="http://openmirage.org/about">mailing list</a> or IRC channel!</p> 
-   </div></div>
+   </div>  </div>
 
 
 
@@ -3901,9 +4031,10 @@ popularity.</p>
 <p class="date">
 <a href="http://openmirage.org/blog/breaking-up-is-easy-with-opam">by Anil Madhavapeddy (anil@recoil.org) at Wed, 17 Oct 2012</a>
 </p>
-</div>
+  </div>
 </div>
 
+</div>
 
 <div class="channelgroup">
 
@@ -3915,7 +4046,6 @@ popularity.</p>
 
 <!-- <h3><a href="http://openmirage.org/blog/" title="openmirage blog">MirageOS</a></h3> -->
 
-
 <div class="entrygroup" id="http://openmirage.org/blog/xenstore-stub-domain">
 <a name="http://openmirage.org/blog/xenstore-stub-domain"> </a>
 <h1 class="posttitle"><a href="http://openmirage.org/blog/xenstore-stub-domain">Building a "xenstore stub domain" with Mirage</a>
@@ -3923,7 +4053,7 @@ popularity.</p>
 </h1>
 <hr/>
 <div class="entry">
-<div class="content">
+  <div class="content">
 <div>
       <p>On all hosts running <a href="http://www.xen.org/">Xen</a>, there is a critical service called <a href="http://wiki.xen.org/wiki/XenStore">xenstore</a>. Xenstore is used to allow <b>untrusted</b> user VMs to communicate with <b>trusted</b> system VMs, so that</p><ul> <li> <p>virtual disk and network connections can be established</p> </li><li> <p>performance statistics and OS version information can be shared</p> </li><li> <p>VMs can be remotely power-cycled, suspended, resumed, snapshotted and migrated.</p> </li> </ul><p>If the xenstore service fails then at best the host cannot be controlled (i.e. no VM start or shutdown) and at worst VM isolation is compromised since an untrusted VM will be able to gain unauthorised access to disks or networks. This blog post examines how to disaggregate xenstore from the monolithic domain 0, and run it as an independent <a href="http://www.cl.cam.ac.uk/~dgm36/publications/2008-murray2008improving.pdf">stub domain</a>.</p><p>Recently in the Xen community, Daniel De Graaf and Alex Zeffertt have added support for <a href="http://lists.xen.org/archives/html/xen-devel/2012-01/msg02349.html">xenstore stub domains</a> where the xenstore service is run directly as an OS kernel in its own isolated VM. In the world of Xen, a running VM is a "domain" and a "stub" implies a single-purpose OS image rather than a general-purpose machine. Previously if something bad happened in "domain 0" (the privileged general-purpose OS where xenstore traditionally runs) such as an out-of-memory event or a performance problem, then the critical xenstore process might become unusable or fail altogether. Instead if xenstore is run as a "stub domain" then it is immune to such problems in domain 0. In fact, it will even allow us to <b>reboot</b> domain 0 in future (along with all other privileged domains) without incurring any VM downtime during the reset!</p><p>The new code in <a href="http://xenbits.xensource.com/xen-unstable.hg">xen-unstable.hg</a> lays the necessary groundwork (Xen and domain 0 kernel changes) and ports the original C xenstored to run as a stub domain.</p><p>Meanwhile, thanks to <a href="http://tab.snarc.org">Vincent Hanquez</a> and <a href="http://gazagnaire.org">Thomas Gazagnaire</a>, we also have an <a href="http://gazagnaire.org/pub/SSGM10.pdf">OCaml implementation of xenstore</a> which, as well as the offering memory-safety, also supports a high-performance transaction engine, necessary for surviving a stressful "VM bootstorm" event on a large server in the cloud. Vincent and Thomas' code is Linux/POSIX only.</p><p>Ideally we would have the best of both worlds:</p><ul> <li> <p>a fast, memory-safe xenstored written in OCaml,</p> </li><li> <p>running directly as a Xen stub domain i.e. as a specialised kernel image without Linux or POSIX</p> </li> </ul><p>We can now do both, using Mirage!  If you're saying, "that sounds great! How do I do that?" then read on...</p><p><b>Step 1: remove dependency on POSIX/Linux</b></p><p>If you read through the existing OCaml xenstored code, it becomes obvious that the main uses of POSIX APIs are for communication with clients, both Unix sockets and for a special Xen inter-domain shared memory interface. It was a fairly painless process to extract the required socket-like IO signature and turn the bulk of the server into a <a href="http://caml.inria.fr/pub/docs/manual-ocaml-4.00/manual004.html">functor</a>. The IO signature ended up looking approximately like:</p><div class="ocaml"><pre><code><span class="keyword4">type</span> t
 <span class="keyword4">val</span> read<span class="keyword2">:</span> t -<span class="keyword2">&gt;</span> <span class="keyword3">string</span> -<span class="keyword2">&gt;</span> <span class="keyword3">int</span> -<span class="keyword2">&gt;</span> <span class="keyword3">int</span> -<span class="keyword2">&gt;</span> <span class="keyword3">int</span> <span class="keyword5">Lwt.</span>t
@@ -3948,7 +4078,7 @@ eval `opam config -env`
 make
 </code></pre></div><p>The binary now lives in <code>xen/_build/src/server_xen.xen</code></p><p><b>Deploying on a Xen system</b></p><p>Running a stub Xenstored is a little tricky because it depends on the latest and greatest Xen and Linux PVops kernel. In the future it'll become much easier (and probably the default) but for now you need the following:</p><ul> <li> <p>xen-4.2 with XSM (Xen Security Modules) turned on</p> </li><li> <p>A XSM/FLASK policy which allows the stubdom to call the "domctl getdomaininfo". For the moment it's safe to skip this step with the caveat that xenstored will leak connections when domains die.</p> </li><li> <p>a Xen-4.2-compatible toolstack (either the bundled xl/libxl or xapi with <a href="http://github.com/djs55/xen-api/tree/xen-4.2">some patches</a>)</p> </li><li> <p>Linux-3.5 PVops domain 0 kernel</p> </li><li> <p>the domain builder binary <code>init-xenstore-domain</code> from <code>xen-4.2/tools/xenstore</code>.</p> </li> </ul><p>To turn the stub xenstored on, you need to edit whichever <code>init.d</code> script is currently starting xenstore and modify it to call</p><div class="ocaml"><pre><code>init-xenstore-domain /path/<span class="keyword1">to</span>/server_xen.xen <span class="keyword8">256</span> flask_label
 </code></pre></div> 
-   </div></div>
+   </div>  </div>
 
 
 
@@ -3959,9 +4089,10 @@ make
 <p class="date">
 <a href="http://openmirage.org/blog/xenstore-stub-domain">by Dave Scott (dave@recoil.org) at Wed, 12 Sep 2012</a>
 </p>
-</div>
+  </div>
 </div>
 
+</div>
 
 <div class="channelgroup">
 
@@ -3974,7 +4105,6 @@ make
 <!-- <h3><a href="http://anil.recoil.org" title="anil.recoil.org">Anil Madhavapeddy</a></h3> -->
 <img style="float:right; padding-left: 20px;" class="face" src="images/../../mugshots/avsm.jpg" width="" height="50" alt="">
 
-
 <div class="entrygroup" id="http://anil.recoil.org/2012/07/31/the-functional-week">
 <a name="http://anil.recoil.org/2012/07/31/the-functional-week"> </a>
 <h1 class="posttitle"><a href="http://anil.recoil.org/2012/07/31/the-functional-week.html">Why you should go to ICFP 2012</a>
@@ -3982,7 +4112,7 @@ make
 </h1>
 <hr/>
 <div class="entry">
-<div class="content">
+  <div class="content">
 <p>Functional programming has been gaining popularity pretty rapidly recently. We&#8217;ve got serious projects from big Internet shops (<a href="http://cufp.org/videos/f-embracing-functional-programming-visual-studio-2010-luke-hoban-mic">Microsoft</a>, <a href="http://cufp.org/videos/large-scale-internet-services-using-scala">Twitter</a> and <a href="http://cufp.org/videos/functional-programming-facebook">Facebook</a>), to varied domains such as <a href="http://cufp.org/videos/fourteen-days-haskell">radio</a>, <a href="http://cufp.org/videos/functional-programming-freebase-warren-harris-metaweb">knowledge
 bases</a>, <a href="http://cufp.org/videos/discrete-event-simulation-using-erlang">the energy
 grid</a>, <a href="http://cufp.org/videos/theorem-based-derivation-aes-implementation">cryptography</a>, NoSQL <a href="http://cufp.org/conference/sessions/2010/riak-core-building-distributed-applications-withou">databases</a> and <a href="http://cufp.org/videos/ocaml-and-acunu-experience-report">storage</a>, intricate <a href="http://cufp.org/videos/functional-mzscheme-dsls-game-development">PS3 games</a>, and even <a href="http://cufp.org/videos/model-based-testing-autosar-automotive-components">making
@@ -4053,7 +4183,7 @@ International Conference on Functional Programming</a>. The early days consisted
 
 <p>This has been a whirlwind tour of the ICFP week (or rather, me writing this down while planning my own schedule). The early registration deadline is <em>next week</em> (Aug 9th), and the <b><a href="http://www.icfpconference.org/icfp2012/registration.html">online registration</a></b> has all the details of the full schedule and day prices. There is also <a href="http://www.icfpconference.org/icfp2012/local.html">local information</a> about where to stay and visit in Copenhagen, if you want to take a late-summer break while making the trip.</p>
 
-<p>Something worth noting is that all of this is run under the auspices of the ACM by volunteers, which accounts for the somewhat chaotic spread of information across all the websites. We&#8217;ve tried to demystify the CUFP process <a href="http://cufp.org/cufp-2012-registration">here</a>, but <em>please</em> get in touch with any of the organisers if you are confused and want some help. We always welcome volunteer offers too, and the first round of drinks is on me for anyone who helps out during the week!</p></div>
+<p>Something worth noting is that all of this is run under the auspices of the ACM by volunteers, which accounts for the somewhat chaotic spread of information across all the websites. We&#8217;ve tried to demystify the CUFP process <a href="http://cufp.org/cufp-2012-registration">here</a>, but <em>please</em> get in touch with any of the organisers if you are confused and want some help. We always welcome volunteer offers too, and the first round of drinks is on me for anyone who helps out during the week!</p>  </div>
 
 
 
@@ -4064,9 +4194,10 @@ International Conference on Functional Programming</a>. The early days consisted
 <p class="date">
 <a href="http://anil.recoil.org/2012/07/31/the-functional-week.html">Mon, 30 Jul 2012</a>
 </p>
-</div>
+  </div>
 </div>
 
+</div>
 
 <div class="channelgroup">
 
@@ -4078,7 +4209,6 @@ International Conference on Functional Programming</a>. The early days consisted
 
 <!-- <h3><a href="http://openmirage.org/blog/" title="openmirage blog">MirageOS</a></h3> -->
 
-
 <div class="entrygroup" id="http://openmirage.org/blog/announcing-mirage-openflow">
 <a name="http://openmirage.org/blog/announcing-mirage-openflow"> </a>
 <h1 class="posttitle"><a href="http://openmirage.org/blog/announcing-mirage-openflow">Connected Cloud Control: OpenFlow in Mirage</a>
@@ -4086,7 +4216,7 @@ International Conference on Functional Programming</a>. The early days consisted
 </h1>
 <hr/>
 <div class="entry">
-<div class="content">
+  <div class="content">
 <div>
       <p>[<b>N.B.  Due to continuing development, some of the details in this blog post are now out-of-date. It is archived here.</b> ]</p><p>Something we've been working on for a little while now that we're pretty excited about is an <a href="http://openflow.org/">OpenFlow</a> implementation for Mirage. For those who're not networking types, in short, OpenFlow is a protocol and framework for devolving network control to software running on platforms other than the network elements themselves. It consists of three main parts:</p><ul> <li> <p>a <b>controller</b>, responsible for exercising control over the network;</p> </li><li> <p><b>switches</b>, consisting of switching hardware, with flow tables that apply forwarding behaviours to matching packets; and</p> </li><li> <p>the <b>protocol</b>, by which controllers and switches communicate.</p> </li> </ul><p>For more -- and far clearer! -- explanations, see any of the many online OpenFlow resources such as <a href="http://openflowhub.org">OpenFlowHub</a>.</p><p>Within Mirage we have an OpenFlow implementation in two parts: individual libraries that provide controller and switch functionality. Linking the switch library enables your application to become a software-based OpenFlow switch. Linking in the controller library enables your application to exercise direct control over OpenFlow network elements.</p><p>The controller is modelled after the <a href="http://noxrepo.org/">NOX</a> open-source controller and currently provides only relatively low-level access to the OpenFlow primitives: a very cool thing to build on top of it would be a higher-level abstraction such as that provided by <a href="http://haskell.cs.yale.edu/?page_id=376">Nettle</a> or <a href="http://www.frenetic-lang.org/">Frenetic</a>.</p><p>The switch is primarily intended as an experimental platform -- it is hopefully easier to extend than some of the existing software switches while still being sufficiently high performance to be interesting!</p><p>By way of a sample of how it fits together, here's a skeleton for a simple controller application:</p><div class="ocaml"><pre><code><span class="keyword4">type</span> mac_switch <span class="keyword2">=</span> <span class="keyword2">{</span>
   addr<span class="keyword2">:</span> <span class="keyword5">OP.</span>eaddr<span class="keyword2">;</span>
@@ -4124,7 +4254,7 @@ International Conference on Functional Programming</a>. The early days consisted
     <span class="keyword5">OC.</span>listen mgr <span class="keyword2">(</span>None, port<span class="keyword2">)</span> init
   <span class="keyword2">)</span>
 </code></pre></div><p>We've written up some of the gory details of the design, implementation and performance in a <a href="http://openmirage.org/docs/iccsdn12-mirage.pdf">short paper</a> to the <a href="http://www.ieee-icc.org/">ICC</a> <a href="http://sdn12.mytestbed.net/">Software Defined Networking</a> workshop. Thanks to some sterling work by <a href="http://www.cl.cam.ac.uk/~cr409/">Haris</a> and <a href="mailto:balraj.singh@cl.cam.ac.uk">Balraj</a>, the headline numbers are pretty good though: the unoptimised Mirage controller implementation is only 30--40% lower performance than the highly optimised NOX <b>destiny-fast</b> branch, which drops most of the programmability and flexibility of NOX; but is about <b>six times</b> higher performance than the fully flexible current NOX release. The switch's performance  running as a domU virtual machine is indistinguishable from the current <a href="http://openvswitch.org/">Open vSwitch</a> release.</p><p>For more details see <a href="http://openmirage.org/docs/iccsdn12-mirage.pdf">the paper</a> or contact <a href="mailto:mort@cantab.net">Mort</a>, <a href="mailto:charalampos.rotsos@cl.cam.ac.uk">Haris</a> or <a href="mailto:anil@recoil.org">Anil</a>. Please do get in touch if you've any comments or questions, or you do anything interesting with it!</p> 
-   </div></div>
+   </div>  </div>
 
 
 
@@ -4135,9 +4265,10 @@ International Conference on Functional Programming</a>. The early days consisted
 <p class="date">
 <a href="http://openmirage.org/blog/announcing-mirage-openflow">by Richard Mortier (mort@cantab.net) at Wed, 29 Feb 2012</a>
 </p>
-</div>
+  </div>
 </div>
 
+</div>
 
 <div class="channelgroup">
 
@@ -4150,7 +4281,6 @@ International Conference on Functional Programming</a>. The early days consisted
 <!-- <h3><a href="http://anil.recoil.org" title="anil.recoil.org">Anil Madhavapeddy</a></h3> -->
 <img style="float:right; padding-left: 20px;" class="face" src="images/../../mugshots/avsm.jpg" width="" height="50" alt="">
 
-
 <div class="entrygroup" id="http://anil.recoil.org/2012/02/25/dreamplug-debian-and-ocaml">
 <a name="http://anil.recoil.org/2012/02/25/dreamplug-debian-and-ocaml"> </a>
 <h1 class="posttitle"><a href="http://anil.recoil.org/2012/02/25/dreamplug-debian-and-ocaml.html">Dreaming of an ARM OCaml</a>
@@ -4158,7 +4288,7 @@ International Conference on Functional Programming</a>. The early days consisted
 </h1>
 <hr/>
 <div class="entry">
-<div class="content">
+  <div class="content">
 <a title="dreamplug by tlamer, on Flickr" href="http://www.flickr.com/photos/tlamer/5693063642/"><img align="right" width="200" alt="dreamplug" height="134" src="http://farm6.staticflickr.com/5230/5693063642_47aa7c4c99.jpg" /></a>
 <p>I&#8217;ve been meaning to play with <a href="http://www.plugcomputer.org/">Plug Computers</a> for some time now, as I need a low-power embedded system around the house. I recently bought a <a href="http://soekris.com/products/net6501.html">Soekris Net6501</a> (a pretty powerful Intel CPU, that even has VT support), but had annoying <a href="http://marc.info/?l=soekris-tech&m=132915532912206&w=2">issues</a> getting it working reliably. I ordered an ARM-based <a href="http://www.newit.co.uk/shop/products.php?cat=21">Dreamplug</a> as an alternative (and as a bonus, the Dreamplug is 6x cheaper than the Soekris!). Here are my notes on getting it to work.</p>
 
@@ -4246,7 +4376,7 @@ International Conference on Functional Programming</a>. The early days consisted
 </div>
 <p>This compiles the bytecode and native code compilers, and then compiles them again using the native code generator. This takes a while to do on the poor little ARM CPU. Once that finished, I compiled up a few simple modules and they worked great! Since the trunk of OCaml is a development branch, you may run into a few packaging issues (use the very latest OASIS to regenerate any <code>setup.ml</code>, and you will need a small patch until <a href="http://caml.inria.fr/mantis/view.php?id=5503">PR 5503</a> is applied).</p>
 
-<p>Incidentally, if anyone is interested in working on a <a href="http://openmirage.org">Mirage</a> port to ARM as an internship in the <a href="http://www.cl.cam.ac.uk/research/srg/netos/">Cambridge Computer Lab</a>, do get in touch with me&#8230;</p></div>
+<p>Incidentally, if anyone is interested in working on a <a href="http://openmirage.org">Mirage</a> port to ARM as an internship in the <a href="http://www.cl.cam.ac.uk/research/srg/netos/">Cambridge Computer Lab</a>, do get in touch with me&#8230;</p>  </div>
 
 
 
@@ -4257,9 +4387,10 @@ International Conference on Functional Programming</a>. The early days consisted
 <p class="date">
 <a href="http://anil.recoil.org/2012/02/25/dreamplug-debian-and-ocaml.html">Sat, 25 Feb 2012</a>
 </p>
-</div>
+  </div>
 </div>
 
+</div>
 
 <div class="channelgroup">
 
@@ -4271,7 +4402,6 @@ International Conference on Functional Programming</a>. The early days consisted
 
 <!-- <h3><a href="http://openmirage.org/blog/" title="openmirage blog">MirageOS</a></h3> -->
 
-
 <div class="entrygroup" id="http://openmirage.org/blog/an-outing-to-cufp">
 <a name="http://openmirage.org/blog/an-outing-to-cufp"> </a>
 <h1 class="posttitle"><a href="http://openmirage.org/blog/an-outing-to-cufp">An Outing to CUFP 2011</a>
@@ -4279,10 +4409,10 @@ International Conference on Functional Programming</a>. The early days consisted
 </h1>
 <hr/>
 <div class="entry">
-<div class="content">
+  <div class="content">
 <div>
       <p>The team signed up to do a tutorial at <a href="http://cufp.org">CUFP</a> on the topic of <a href="http://cufp.org/conference/sessions/2011/t3-building-functional-os">Building a Functional OS</a>, which meant zooming off to Tokyo!  This was the first public show of the project, and resulted in a furious <a href="https://github.com/avsm/mirage/graphs/impact">flurry of commits</a> from the whole team to get it ready. The 45-strong crowd at the tutorial were really full of feedback, and particular thanks to <a href="http://www.deinprogramm.de/sperber/">Michael</a> for organising the event, and <a href="http://ocaml.janestreet.com/?q=blog/5">Yaron</a>, <a href="http://monkey.org/~marius/">Marius</a>, <a href="https://twitter.com/#!/stevej">Steve</a>, <a href="https://twitter.com/wil">Wil</a>, <a href="https://twitter.com/#!/adoemon">Adrian</a> and the rest for shouting out questions regularly!</p><ul> <li> <p><b>The tutorial</b> is <a href="http://github.com/avsm/mirage-tutorial">a Mirage application</a>, so you can clone it and view it locally through your web browser. The content is mirrored at <a href="http://tutorial.openmirage.org">tutorial.openmirage.org</a>, although it does require cleanup to make it suitable to an online audience. The SVG integration is awkward and it only works on Chrome/Safari, so I will probably rewrite it using <a href="http://imakewebthings.github.com/deck.js/">deck.js</a> soon. The tutorial is a good showcase of Mirage, as it compiles to Xen, UNIX (both kernel sockets and direct tuntap) with a RAMdisk or external filesystem, and is a good way to mess around with application synthesis (look at the <code>Makefile</code> targets in <code>slides/</code>).</p> </li><li> <p><b>Installation</b>: <a href="http://openmirage.org/wiki/install">instructions</a> have been simplified, and we now only require OCaml on the host and include everything else in-tree. Thomas has also made Emacs and Vim plugins that are compatible with the ocamlbuild layout.</p> </li><li> <p><b>Lwt</b>: a <a href="http://openmirage.org/wiki/tutorial-lwt">new tutorial</a> which walks you through the cooperative threading library we use, along with exercises (all available in <a href="http://github.com/avsm/mirage-tutorial">mirage-tutorial</a>). Raphael and Balraj are looking for feedback on this, so get in touch!</p> </li><li> <p><b>Javascript</b>: via <a href="http://nodejs.org">node.js</a> did not work in time for the tutorial, as integrating I/O is a tangled web that will take some time to sort out. Raphael is working on this in a <a href="https://github.com/raphael-proust/nodejs_of_ocaml">separate tree</a> for now.  As part of this effort though, he integrated a pure OCaml <a href="http://openmirage.org/wiki/ocaml-regexp">regular expression library</a> that does not require C bindings, and is surprisingly fast.</p> </li><li> <p><b>Devices</b>: we can now synthesise binaries that share common code but have very different I/O interfaces. This is due to a new device manager, and David also heroically wrote a complete <a href="http://github.com/avsm/mirage/tree/master/lib/fs">FAT12/16/32 library</a> that we demonstrated.  Yaron Minsky suggested a <a href="https://gist.github.com/1245418">different approach</a> to the device manager using <a href="http://caml.inria.fr/pub/docs/manual-ocaml/manual021.html#toc81">first-class modules</a> instead of objects, so I am experimentally trying this before writing documentation on it.</p> </li><li> <p><b>TCP</b>: the notorious Mirage stack is far more robust due to our resident networking guru Balraj hunting down last-minute bugs. Although it held together with sticky tape during the tutorial, he is now adding retransmission and congestion control to make it actually standards-compliant.  Still, if you dont have any packet loss, the <a href="http://xen.openmirage.org/">microkernel version</a> of this website does actually serve pages.</p> </li><li> <p><b>OpenFlow</b>: is a new <a href="http://www.openflow.org/wk/index.php/OpenFlow_v1.0">standard</a> for <a href="http://networkheresy.wordpress.com/">Software Defined Networking</a>, and Haris and Mort have been hacking away at a complete implementation directly in Mirage!  We will be giving a tutorial on this at the <a href="http://changeofelia.info.ucl.ac.be/">OFELIA summer school</a> in November (it is summer somewhere, I guess). The prospect of a high-speed microkernel switching fabric for the cloud, programmed in a functional style, is something I am really looking forward to seeing!</p> </li><li> <p><b>Jane Street Core</b>: preceeding us was Yaron's <a href="http://cufp.org/conference/sessions/2011/t2-janestreets-ocaml-core-library">Core</a> tutorial. Since Mirage provides it own complete standard library, we can adopt portions of Core that do not require OS threads or UNIX-specific features.  I really like the idea that Mirage enforces a discipline on writing portable interfaces, as dependencies on OS-specific features do sneak in insiduously and make switching to different platforms very difficult (e.g. Windows support). Incidentally, Yaron's <a href="http://queue.acm.org/detail.cfm?id=2038036&ref=fullrss">ACM Queue</a> article is a great introduction to OCaml.</p> </li> </ul><p>So as you can see, it has been a busy few months!  Much of the core of Mirage is settling down now, and we are writing a paper with detailed performance benchmarks of our various backends.  Keep an eye on the <a href="https://github.com/avsm/mirage/issues?milestone=2&state=open">Github milestone</a> for the preview release, join our <a href="https://lists.cam.ac.uk/mailman/listinfo/cl-mirage">new mailing list</a>, or follow the newly sentient <a href="http://twitter.com/openmirage">openmirage on twitter</a>!</p> 
-   </div></div>
+   </div>  </div>
 
 
 
@@ -4293,9 +4423,10 @@ International Conference on Functional Programming</a>. The early days consisted
 <p class="date">
 <a href="http://openmirage.org/blog/an-outing-to-cufp">by Anil Madhavapeddy (anil@recoil.org) at Thu, 29 Sep 2011</a>
 </p>
-</div>
+  </div>
 </div>
 
+</div>
 
 <div class="channelgroup">
 
@@ -4308,7 +4439,6 @@ International Conference on Functional Programming</a>. The early days consisted
 <!-- <h3><a href="http://anil.recoil.org" title="anil.recoil.org">Anil Madhavapeddy</a></h3> -->
 <img style="float:right; padding-left: 20px;" class="face" src="images/../../mugshots/avsm.jpg" width="" height="50" alt="">
 
-
 <div class="entrygroup" id="http://anil.recoil.org/2011/08/09/cufp2011-schedule">
 <a name="http://anil.recoil.org/2011/08/09/cufp2011-schedule"> </a>
 <h1 class="posttitle"><a href="http://anil.recoil.org/2011/08/09/cufp2011-schedule.html">Commercial Users of Functional Programming 2011 Schedule</a>
@@ -4316,7 +4446,7 @@ International Conference on Functional Programming</a>. The early days consisted
 </h1>
 <hr/>
 <div class="entry">
-<div class="content">
+  <div class="content">
 <!-- /#content-top --><div id="content-area">
 <div class="view view-Schedule view-id-Schedule view-display-id-page_1 view-dom-id-29">
 <div class="view-header">
@@ -4786,7 +4916,7 @@ Wilkie</a></span></div>
 </div>
 </div>
 </div>
-</div></div>
+</div>  </div>
 
 
 
@@ -4797,186 +4927,14 @@ Wilkie</a></span></div>
 <p class="date">
 <a href="http://anil.recoil.org/2011/08/09/cufp2011-schedule.html">Mon, 08 Aug 2011</a>
 </p>
-</div>
-</div>
-
-
-<div class="channelgroup">
-
-
-
-
-
-
-
-<!-- <h3><a href="http://anil.recoil.org" title="anil.recoil.org">Anil Madhavapeddy</a></h3> -->
-<img style="float:right; padding-left: 20px;" class="face" src="images/../../mugshots/avsm.jpg" width="" height="50" alt="">
-
-
-<div class="entrygroup" id="http://anil.recoil.org/2011/06/18/datacaml-with-ciel">
-<a name="http://anil.recoil.org/2011/06/18/datacaml-with-ciel"> </a>
-<h1 class="posttitle"><a href="http://anil.recoil.org/2011/06/18/datacaml-with-ciel.html">DataCaml - a first look at distributed dataflow programming in OCaml</a>
-(<a href="http://anil.recoil.org" title="anil.recoil.org">Anil Madhavapeddy</a>)
-</h1>
-<hr/>
-<div class="entry">
-<div class="content">
-<p>Distributed programming frameworks like <a href="http://wiki.apache.org/hadoop">Hadoop</a> and <a href="http://research.microsoft.com/en-us/projects/dryad/">Dryad</a> are popular for performing computation over large amounts of data. The reason is programmer convenience: they accept a query expressed in a simple form such as <a href="http://wiki.apache.org/hadoop/HadoopMapReduce">MapReduce</a>, and automatically take care of distributing computation to multiple hosts, ensuring the data is available at all nodes that need it, and dealing with host failures and stragglers.</p>
-
-<p>A major limitation of Hadoop and Dryad is that they are not well-suited to expressing <a href="http://en.wikipedia.org/wiki/Iterative_method">iterative algorithms</a> or <a href="http://en.wikipedia.org/wiki/Dynamic_programming">dynamic programming</a> problems. These are very commonly found patterns in many algorithms, such as <a href="http://en.wikipedia.org/wiki/K-means_clustering">k-means clustering</a>, <a href="http://en.wikipedia.org/wiki/Binomial_options_pricing_model">binomial options pricing</a> or <a href="http://en.wikipedia.org/wiki/Smith–Waterman_algorithm">Smith Waterman</a> for sequence alignment.</p>
-
-<p>Over in the SRG in Cambridge, <a href="http://www.cl.cam.ac.uk/research/srg/netos/ciel/who-we-are/">we</a> developed a Turing-powerful distributed execution engine called <a href="http://www.cl.cam.ac.uk/research/srg/netos/ciel/">CIEL</a> that addresses this. The <a href="http://anil.recoil.org/papers/2011-nsdi-ciel.pdf">NSDI 2011</a> paper describes the system in detail, but here&#8217;s a shorter introduction.</p>
-
-<h2 id="the_ciel_execution_engine">The CIEL Execution Engine</h2>
-
-<p>CIEL consists of a master coordination server and workers installed on every host. The engine is job-oriented: a job consists of a graph of tasks which results in a deterministic output. CIEL tasks can run in any language and are started by the worker processes as needed. Data flows around the cluster in the form of <em>references</em> that are fed to tasks as dependencies. Tasks can publish their outputs either as <em>concrete</em> references if they can finish the work immediately or as a <em>future</em> reference. Additionally, tasks can dynamically spawn more tasks and delegate references to them, which makes the system Turing-powerful and suitable for iterative and dynamic programming problems where the task graph cannot be computed statically.</p>
-
-<p>The first iteration of CIEL used a domain-specific language called <a href="http://anil.recoil.org/papers/2011-nsdi-ciel.pdf">Skywriting</a> to coordinate how tasks should run across a cluster. Skywriting is an interpreted language that is &#8220;native&#8221; to CIEL, and when it needs to block it stores its entire execution state inside CIEL as a continuation. <a href="http://www.cl.cam.ac.uk/~dgm36/">Derek Murray</a> has written a blog post <a href="http://www.syslog.cl.cam.ac.uk/2011/04/06/ciel/">explaining this in more detail</a>.</p>
-
-<p>More recently, we have been working on eliminating the need for Skywriting entirely, by adding direct support for CIEL into languages such as <a href="http://www.stackless.com/">Python</a>, Java, <a href="http://www.scala-lang.org/">Scala</a>, and the main subject of this post &#8211; <a href="http://caml.inria.fr">OCaml</a>. It works via libraries that communicate with CIEL to spawn tasks, publish references, or suspend itself into the cluster to be woken up when a future reference is completed.</p>
-
-<h2 id="datacaml_api">DataCaml API</h2>
-
-<p>Rather than go into too much detail about the innards of CIEL, this post describes the OCaml API and gives some examples of how to use it. The simplest interface to start with is:</p>
-<div class="highlight"><pre><code class="ocaml">	  <span class="k">type</span> <span class="k">'</span><span class="n">a</span> <span class="n">ref</span>
-	  <span class="k">val</span> <span class="n">deref</span> <span class="o">:</span> <span class="k">'</span><span class="n">a</span> <span class="n">ref</span> <span class="o">-&gt;</span> <span class="k">'</span><span class="n">a</span>
-	
-</code></pre>
-</div>
-<p>The type <code>'a ref</code> represents a CIEL reference. This data might not be immediately present on the current node, and so must be dereferenced using the <code>deref</code> function.</p>
-
-<p>If the reference has been completed, then the OCaml value is unmarshalled and returned. If it is not present, then the program needs to wait until the computation involving the reference has completed elsewhere. The future reference might contain a large data structure and be on another host entirely, and so we should serialise the program state and spawn a task that is dependent on the future&#8217;s completion. This way, CIEL can resume execution on whatever node finished that computation, avoiding the need to move data across the network.</p>
-
-<p>Luckily, we do not need to serialise the entire heap to suspend the program. DataCaml uses the <a href="http://okmij.org/ftp/continuations/implementations.html">delimcc</a> delimited continuations library to walk the stack and save only the subset required to restart this particular task. Delimcc abstracts this in the form a &#8220;restartable exception&#8221; that supplies a closure which can be called later to resume the execution, as if the exception had never happened. Delimcc supports serialising this closure to an output channel, which you can read about in Oleg&#8217;s <a href="http://okmij.org/ftp/continuations/caml-shift.pdf">paper</a>.</p>
-
-<p>So how do we construct references? Lets fill in more of the interface:</p>
-<div class="highlight"><pre><code class="ocaml">	<span class="k">module</span> <span class="nc">Ciel</span> <span class="o">=</span> <span class="k">struct</span>
-	  <span class="k">type</span> <span class="k">'</span><span class="n">a</span> <span class="n">ref</span>
-	  <span class="k">val</span> <span class="n">deref</span> <span class="o">:</span> <span class="k">'</span><span class="n">a</span> <span class="n">ref</span> <span class="o">-&gt;</span> <span class="k">'</span><span class="n">a</span>
-	  <span class="k">val</span> <span class="n">spawn</span> <span class="o">:</span> <span class="o">(</span><span class="k">'</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="k">'</span><span class="n">b</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="k">'</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="k">'</span><span class="n">b</span> <span class="n">ref</span>
-	  <span class="k">val</span> <span class="n">run</span> <span class="o">:</span> <span class="o">(</span><span class="kt">string</span> <span class="kt">list</span> <span class="o">-&gt;</span> <span class="k">'</span><span class="n">a</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="o">(</span><span class="k">'</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="kt">string</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="kt">unit</span>
-        <span class="k">end</span>
-	
-</code></pre>
-</div>
-<p>The <code>spawn</code> function accepts a closure and an argument, and returns a future of the result as a reference. The <code>run</code> function begins the execution of a job, with the first parameter taking some <code>string arguments</code> and returning an <code>'a</code> value. We also supply a pretty-printer second argument to convert the <code>'a</code> into a string for returning as the result of the job (this can actually be any JSON value in CIEL, and just simplified here).</p>
-<div class="highlight"><pre><code class="ocaml">	<span class="k">let</span> <span class="n">r1</span> <span class="o">=</span> <span class="n">spawn</span> <span class="o">(</span><span class="k">fun</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">5</span><span class="o">)</span> <span class="n">arg1</span> <span class="k">in</span>
-  	<span class="k">let</span> <span class="n">r2</span> <span class="o">=</span> <span class="n">spawn</span> <span class="o">(</span><span class="k">fun</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">deref</span> <span class="n">r1</span> <span class="o">+</span> <span class="mi">5</span><span class="o">)</span> <span class="n">arg1</span> <span class="k">in</span>
-	<span class="n">deref</span> <span class="n">r2</span> 
-	
-</code></pre>
-</div>
-<p>We first spawn a function <code>r1</code> which simply adds 5 to the job argument. A job in CIEL is <em>lazily scheduled</em>, so this marshals the function to CIEL, creates a future, and returns immediately. Next, the <code>r2</code> function spawns a task which also adds 5, but to the dereferenced value of <code>r1</code>. Again, it is not scheduled yet as the return reference has not been dereferenced.</p>
-
-<p>Finally, we attempt to dereference <code>r2</code>, which causes it be scheduled on a worker. While executing, it will try to dereference <code>r1</code> that will schedule it, and all the tasks will run to completion.</p>
-
-<p>Programming language boffins will recognise that this interface is very similar to <a href="http://www.ps.uni-saarland.de/alice/">AliceML</a>&#8217;s concept of <a href="http://www.ps.uni-saarland.de/alice/manual/futures.html">lazy futures</a>. The main difference is that it is implemented as a pure OCaml library, and uses a general-purpose distributed engine that can also work with other languages.</p>
-
-<h2 id="streaming_references">Streaming References</h2>
-
-<p>The references described so far only have two states: they are either concrete or futures. However, there are times when a task can progressively accept input and make forward progress. For these situations, references can also be typed as <em>opaque</em> references that are accessed via <code>in_channel</code> and <code>out_channel</code>, as networks are:</p>
-<div class="highlight"><pre><code class="ocaml">	<span class="k">type</span> <span class="n">opaque_ref</span>
-
-	<span class="k">val</span> <span class="n">spawn_ref</span> <span class="o">:</span> <span class="o">(</span><span class="kt">unit</span> <span class="o">-&gt;</span> <span class="n">opaque_ref</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="n">opaque_ref</span>
-	<span class="k">val</span> <span class="n">output</span> <span class="o">:</span> <span class="o">?</span><span class="n">stream</span><span class="o">:</span><span class="kt">bool</span> <span class="o">-&gt;</span> <span class="o">?</span><span class="n">pipe</span><span class="o">:</span><span class="kt">bool</span> <span class="o">-&gt;</span> <span class="o">(</span><span class="n">out_channel</span> <span class="o">-&gt;</span> <span class="kt">unit</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="n">opaque_ref</span>
-	<span class="k">val</span> <span class="n">input</span> <span class="o">:</span> <span class="o">(</span><span class="n">in_channel</span> <span class="o">-&gt;</span> <span class="k">'</span><span class="n">a</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="n">opaque_ref</span> <span class="o">-&gt;</span> <span class="k">'</span><span class="n">a</span>
-	
-</code></pre>
-</div>
-<p>This interface is a lower-level version of the previous one:</p>
-
-<ul>
-<li><code>spawn_ref</code> creates a lazy future as before, but the type of references here is completely opaque to the program.</li>
-
-<li>Inside a spawned function, <code>output</code> is called with a closure that accepts an <code>out_channel</code>. The <code>stream</code> argument informs CIEL that a dependent task can consume the output before it is completed, and <code>pipe</code> forms an even more closely coupled shared-memory connection (requiring the tasks to be scheduled on the same host). Piping is more efficient, but will require more work to recover from a fault, and so using it is left to the programmer to decide.</li>
-
-<li>The <code>input</code> function is used by the receiving task to parse the input as a standard <code>in_channel</code>.</li>
-</ul>
-
-<p>The CIEL engine actually supports multiple concurrent input and output streams to a task, but I&#8217;ve just bound it as a single version for now while the bindings find their feet. Here&#8217;s an example of how streaming references can be used:</p>
-<div class="highlight"><pre><code class="ocaml">	<span class="k">let</span> <span class="n">x_ref</span> <span class="o">=</span> <span class="n">spawn_ref</span> <span class="o">(</span><span class="k">fun</span> <span class="bp">()</span> <span class="o">-&gt;</span>
-	  <span class="n">output</span> <span class="o">~</span><span class="n">stream</span><span class="o">:</span><span class="bp">true</span> <span class="o">(</span><span class="k">fun</span> <span class="n">oc</span> <span class="o">-&gt;</span>
-	    <span class="k">for</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">to</span> <span class="mi">5</span> <span class="k">do</span>
-	      <span class="nn">Unix</span><span class="p">.</span><span class="n">sleep</span> <span class="mi">1</span><span class="o">;</span>
-	      <span class="n">fprintf</span> <span class="n">oc</span> <span class="s2">&quot;%d</span><span class="se">\n</span><span class="s2">%!&quot;</span> <span class="n">i</span><span class="o">;</span>
-	    <span class="k">done</span>
-	  <span class="o">)</span>
-	<span class="o">)</span> <span class="k">in</span>
-	<span class="k">let</span> <span class="n">y_ref</span> <span class="o">=</span> <span class="n">spawn_ref</span> <span class="o">(</span><span class="k">fun</span> <span class="bp">()</span> <span class="o">-&gt;</span>
-	  <span class="n">input</span> <span class="o">(</span><span class="k">fun</span> <span class="n">ic</span> <span class="o">-&gt;</span>
-	    <span class="n">output</span> <span class="o">~</span><span class="n">stream</span><span class="o">:</span><span class="bp">true</span> <span class="o">(</span><span class="k">fun</span> <span class="n">oc</span> <span class="o">-&gt;</span>
-	      <span class="k">for</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">to</span> <span class="mi">5</span> <span class="k">do</span>
-	        <span class="k">let</span> <span class="n">line</span> <span class="o">=</span> <span class="n">input_line</span> <span class="n">ic</span> <span class="k">in</span>
-	        <span class="n">fprintf</span> <span class="n">oc</span> <span class="s2">&quot;LINE=%s</span><span class="se">\n</span><span class="s2">%!&quot;</span> <span class="n">line</span>
-	      <span class="k">done</span>
-	    <span class="o">)</span>
-	  <span class="o">)</span> <span class="n">x_ref</span>
-	<span class="o">)</span> <span class="k">in</span>
-	
-</code></pre>
-</div>
-<p>We first spawn an <code>x_ref</code> which pretends to do 5 seconds of work by sleeping and outputing a number. This would of course be heavy number crunching in a real program. The <code>y_ref</code> then inputs this stream, and outputs its own result by prepending a string to each line.</p>
-
-<h2 id="try_it_out">Try it out</h2>
-
-<p>If you are interested in a more real example, then read through the <a href="https://github.com/avsm/ciel/blob/master/src/ocaml/binomial.ml">binomial options</a> calculator that uses streaming references to parallelise a dynamic programming problem (this would be difficult to express in MapReduce). On my Mac, I can run this by:</p>
-
-<ul>
-<li>check out CIEL from from Derek&#8217;s <a href="http://github.com/mrry/ciel">Git repository</a>.</li>
-
-<li>install all the Python libraries required (see the <code>INSTALL</code> file) and OCaml libraries (<a href="http://okmij.org/ftp/continuations/implementations.html">delimcc</a> and <a href="http://martin.jambon.free.fr/yojson.html">Yojson</a>).</li>
-
-<li>add <code>&lt;repo&gt;/src/python</code> to your <code>PYTHONPATH</code></li>
-
-<li>in one terminal: <code>./scripts/run_master.sh</code></li>
-
-<li>in another terminal: <code>./scripts/run_worker.sh -n 5</code> (this allocates 5 execution slots)</li>
-
-<li>build the OCaml libraries: <code>cd src/ocaml &amp;&amp; make</code></li>
-
-<li>start the binomial options job: <code>./scripts/sw-start-job -m http://localhost:8000 ./src/package/ocaml_binopt.pack</code></li>
-
-<li>there will be a URL printed which shows the execution progress in real-time</li>
-
-<li>you should see log activity on the worker(s), and a result reference with the answer (<code>10.x</code>)</li>
-
-<li>let us know the happy news if it worked or sad news if something broke</li>
-</ul>
-
-<h2 id="discussion">Discussion</h2>
-
-<p>The DataCaml bindings outlined here provide an easy way to write distributed, fault-tolerant and cluster-scheduled jobs in OCaml. The current implementation of the engine is aimed at cluster computation, but <a href="http://www.cl.cam.ac.uk/~ms705">Malte</a> has been working on <a href="http://www.cl.cam.ac.uk/~ms705/pub/papers/2011-ciel-sfma.pdf">condensing CIEL onto multicore hardware</a>. Thus, this could be one approach to &#8216;solving the OCaml multicore problem&#8217; for problems that fit nicely into the dataflow paradigm.</p>
-
-<p>The biggest limitation for using these bindings is that delimited continuation serialisation only works in bytecode. Native code delimcc supports <code>shift/reduce</code> in the same program, but serialising is problematic since native code continuations contain a C stack, which may have unwrapped integers. One way to work around this is by switching to a monadic approach to dereferencing, but I find delimcc programming more natural (also see <a href="http://www.openmirage.org/wiki/delimcc-vs-lwt">this discussion</a>).</p>
-
-<p>Another important point is that tasks are lazy and purely functional (remind you of Haskell?). This is essential for reliable fault-tolerance and reproducibility, while allowing individual tasks to run fast, strict and mutable OCaml code. The tasks must remain referentially transparent and idempotent, as CIEL may choose to schedule them multiple times (in the case of faults or straggler correction). Derek has been working on <a href="http://www.cl.cam.ac.uk/~dgm36/publications/2011-murray2011nondet.pdf">integrating non-determinism into CIEL</a>, so this restriction may be relaxed soon.</p>
-
-<p>Finally, these ideas are not limited to OCaml at all, but also apply to Scala, Java, and Python. We have submitted a draft paper dubbed <em>&#8217;<a href="http://www.cl.cam.ac.uk/~ms705/pub/papers/2011-ciel-socc-draft.pdf">A Polyglot Approach to Cloud Programming</a>&#8217;</em> with more details and the ubiquitous evaluation versus Hadoop. There is a really interesting line to explore between low-level <a href="http://en.wikipedia.org/wiki/Message_Passing_Interface">MPI</a> coding and high-level MapReduce, and we think CIEL is a useful spot in that design space.</p>
-
-<p>Incidentally, I was recently hosted by <a href="http://research.nokia.com/">Nokia Research</a> in Palo Alto by my friend <a href="http://www.linkedin.com/pub/prashanth-mundkur/6/b44/27">Prashanth Mundkur</a>, where they work on the Python/Erlang/OCaml <a href="http://discoproject.org/">Disco</a> MapReduce engine. I&#8217;m looking forward to seeing more critical comparisons and discussions of alternatives to Hadoop, from them and others.</p>
-
-<p><em>Thanks are due to <a href="http://www.cl.cam.ac.uk/~dgm36/">Derek</a>, <a href="https://twitter.com/#!/chrissmowton">Chris</a> and <a href="http://www.cl.cam.ac.uk/~ms705">Malte</a> for answering my incessant CIEL questions while writing this post! Remember that DataCaml is a work in progress and a research prototype, and feedback is most welcome.</em></p></div>
-
-
-
-
-
-
-
-<p class="date">
-<a href="http://anil.recoil.org/2011/06/18/datacaml-with-ciel.html">Fri, 17 Jun 2011</a>
-</p>
-</div>
-</div>
-
-
+  </div>
 </div>
 
 </div>
 
 <p>
 <strong>Last updated:</strong><br>
-Tue, 17 Sep 2013<br>
+Wed, 18 Sep 2013<br>
 <em>All times are UTC.</em><br>
 <br>
 <div align="center">Powered by: <a href="http://www.planetplanet.org/"><img src="images/planet.png" width="80" height="15" alt="Planet" border="0"></a></div>
