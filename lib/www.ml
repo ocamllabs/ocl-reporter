@@ -34,7 +34,7 @@ let ref_to_html rf =
   |`Github_issues (u,p) -> let r = sprintf "https://github.com/%s/%s/issues" u p in <:html<<a class="icon-wrench" href=$str:r$>$l$</a>&>>
   |`Github_tag (u,p,t) -> let r = sprintf "https://github.com/%s/%s/archives/%s.tar.gz" u p t in <:html<<a class="icon-github" href=$str:r$>$l$</a>&>>
   |`Mantis id -> let r = sprintf "http://caml.inria.fr/mantis/view.php?id=%d" id in <:html<<a href=$str:r$>$l$</a>&>>
-  |`Paper {Types.Paper.id} -> let r = sprintf "../outputs/index.html#%s" id in <:html<<a class="icon-pdf" href=$str:r$>$l$</a>&>>
+  |`Paper {Types.Paper.id} -> let r = sprintf "../papers/index.html#%s" id in <:html<<a class="icon-pdf" href=$str:r$>$l$</a>&>>
 
 let refs_to_html rs =
   let x = List.map ~f:(fun x -> <:html<$ref_to_html x$ &nbsp; >>) rs in
@@ -251,10 +251,8 @@ let outputs =
   let body = <:html<
      <h1 id="Publications">Publications</h1>
      $list:pubs$
-     <h1 id="Software">Software</h1>
-     <p>TODO</p>
     >> in
-  one_page ~title:"Outputs" ~body ()
+  one_page ~title:"Papers" ~body ()
 
 let news =
   let monthly = List.map Data_news.monthlies ~f:(fun (_,m) ->
@@ -339,8 +337,8 @@ let _ =
   write_html "tasks/index" projects;
   List.iter Data.Projects.all ~f:(fun p ->
     write_html ("tasks/"^p.Types.Project.project_id) (one_project p));
-  write_uconfig "outputs" [];
-  write_html "outputs/index" outputs;
+  write_uconfig "papers" [];
+  write_html "papers/index" outputs;
   write_uconfig "news" [];
   write_html "news/index" news;
   write_xml "news/atom" news_atom;
