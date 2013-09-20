@@ -8,6 +8,43 @@
 	<description>OCaml Labs updates - http://www.cl.cam.ac.uk/projects/ocamllabs/blogs</description>
 
 <item>
+	<title>Anil Madhavapeddy: OPAM 1.1 beta available, with pretty colours</title>
+	<guid isPermaLink="">http://anil.recoil.org/2013/09/20/opam-1-1-beta</guid>
+	<link>http://anil.recoil.org/2013/09/20/opam-1-1-beta.html</link>
+	<description>&lt;p&gt;&lt;a href=&quot;http://gazagnaire.org&quot;&gt;Thomas&lt;/a&gt; just announced the availability of the &lt;a href=&quot;http://opam.ocamlpro.com&quot;&gt;OPAM&lt;/a&gt; beta release. This has been a huge amount of work for him and &lt;a href=&quot;http://louis.gesbert.fr/&quot;&gt;Louis&lt;/a&gt;, so I&amp;#8217;m excited to see this release! Aside from general stability, the main highlights for me are:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;A switch to the &lt;a href=&quot;http://creativecommons.org/publicdomain/zero/1.0/&quot;&gt;CC0&lt;/a&gt; public-domain-like license for the repository, and LGPL2+linking exception for OPAM itself. The &lt;a href=&quot;https://github.com/OCamlPro/opam-repository/issues/955&quot;&gt;cutover to the new license&lt;/a&gt; was the first non-gratuitous use of GitHub&amp;#8217;s fancy issue lists I&amp;#8217;ve seen, too! As part of this, we&amp;#8217;re also beginning a transition over to hosting it at &lt;code&gt;opam.ocaml.org&lt;/code&gt;, to underline our committment to maintaining it as an OCaml community resource.&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;Much-improved support for package pinning and updates. This is the feature that makes OPAM work well with &lt;a href=&quot;http://openmirage.org&quot;&gt;MirageOS&lt;/a&gt;, since we often need to do development work on a low-level library (such as a &lt;a href=&quot;https://github.com/mirage/ocaml-xen-block-driver&quot;&gt;device driver&lt;/a&gt; and recompile all the reverse dependencies.&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;Support for post-installation messages (e.g. to display &lt;a href=&quot;https://github.com/OCamlPro/opam-repository/pull/1100&quot;&gt;licensing information&lt;/a&gt; or configuration hints) and better support for the external library management issues I explained in an earlier post about &lt;a href=&quot;http://anil.recoil.org/2013/09/09/ocamlot-autotriaging.html&quot;&gt;OCamlot testing&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;Better library structuring to let tools like &lt;a href=&quot;http://github.com/OCamlPro/opam2web&quot;&gt;Opam2web&lt;/a&gt; work with the package metadata. For instance, my group&amp;#8217;s &lt;a href=&quot;http://ocaml.io&quot;&gt;OCaml Labs&lt;/a&gt; has a comprehensive list of &lt;a href=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/pkg/index.html&quot;&gt;the software packages that we work on&lt;/a&gt; generated directly from an OPAM remote.&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;A growing set of administration tools (via the &lt;code&gt;opam-admin&lt;/code&gt; binary) that run health checks and compute statistics over package repositories. For example, here&amp;#8217;s the result of running &lt;code&gt;opam-admin stats&lt;/code&gt; over the latest package repository to show various growth curves.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table align=&quot;center&quot; width=&quot;90%&quot;&gt;
+&lt;tr&gt;
+&lt;td width=&quot;30%&quot; class=&quot;bimg&quot;&gt;&lt;a href=&quot;http://anil.recoil.org/images/opam11-beta-contributors.png&quot;&gt;&lt;img border=&quot;0&quot; width=&quot;220&quot; src=&quot;http://anil.recoil.org/images/opam11-beta-contributors.png&quot; /&gt;&lt;/a&gt;&lt;br /&gt;Number of unique contributors to the main OPAM package repository.&lt;/td&gt;
+&lt;td width=&quot;30%&quot; class=&quot;bimg&quot;&gt;&lt;a href=&quot;http://anil.recoil.org/images/opam11-beta-packages.png&quot;&gt;&lt;img border=&quot;0&quot; width=&quot;220&quot; src=&quot;http://anil.recoil.org/images/opam11-beta-packages.png&quot; /&gt;&lt;/a&gt;&lt;br /&gt;Total number of unique packages (including multiple versions of the same package).&lt;/td&gt;
+&lt;td width=&quot;30%&quot; class=&quot;bimg&quot;&gt;&lt;a href=&quot;http://anil.recoil.org/images/opam11-beta-unique-packages.png&quot;&gt;&lt;img border=&quot;0&quot; width=&quot;220&quot; src=&quot;http://anil.recoil.org/images/opam11-beta-packages.png&quot; /&gt;&lt;/a&gt;&lt;br /&gt;Total packages with multiple versions coalesced so you can see new package growth.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;p&gt;Is it a &lt;a href=&quot;http://www.theatlantic.com/technology/archive/2013/05/the-hockey-stick-the-most-controversial-chart-in-science-explained/275753/&quot;&gt;hockey stick&lt;/a&gt; graph? Only time will tell! See Thomas&amp;#8217; &lt;a href=&quot;https://sympa.inria.fr/sympa/arc/caml-list/2013-09/msg00300.html&quot;&gt;full release announcement&lt;/a&gt; and let us know how you get along with this new release&amp;#8230;&lt;/p&gt;</description>
+	<pubDate>Thu, 19 Sep 2013 23:00:00 +0000</pubDate>
+</item>
+<item>
 	<title>Heidi Howard: OCaml Monthly Meeting – Live Blog</title>
 	<guid isPermaLink="">http://hh360.user.srcf.net/blog/?p=352</guid>
 	<link>http://hh360.user.srcf.net/blog/2013/09/ocaml-monthly-meeting-live-blog/</link>
@@ -137,7 +174,7 @@ you there!&lt;/p&gt;</description>
 	<link>http://anil.recoil.org/2013/09/16/camlpdf-the-end-of-sucky-pdf-tools.html</link>
 	<description>&lt;p&gt;The fine folks at O&amp;#8217;Reilly have been proof-reading the &lt;a href=&quot;https://realworldocaml.org&quot;&gt;Real World OCaml&lt;/a&gt; book that I&amp;#8217;ve been working on. My heart leapt with joy when the copyeditor commented that she thought it was very well written, but my joy was short-lived when it turns out that all her comments were safely ensconced as PDF comments. A few hundreds comments that required a response from us, too.&lt;/p&gt;
 
-&lt;p&gt;&lt;em&gt;&amp;#8220;No problem! MacOS X Preview can handle these!&amp;#8221;&lt;/em&gt; was of course my first response, but it turns out it&amp;#8217;s totally broken with PDF notes. The first note that you select will appear as the content of all the other subsequent notes. Yaron Minsky then experimented with Adobe Acrobat, which I&amp;#8217;ve sworn never to install again after an unfortunate incident involving the uninstaller a couple of years ago. That turned out to be incredibly slow. I tried a few open-source tools such as &lt;a href=&quot;http://en.wikipedia.org/wiki/Skim_(software&quot;&gt;Skim&lt;/a&gt; which, while otherwise an excellent bit of software, couldn&amp;#8217;t render these particular annotations.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&amp;#8220;No problem! MacOS X Preview can handle these!&amp;#8221;&lt;/em&gt; was of course my first response, but it turns out it&amp;#8217;s totally broken with PDF notes. The first note that you select will appear as the content of all the other subsequent notes. Yaron Minsky then experimented with Adobe Acrobat, which I&amp;#8217;ve sworn never to install again after an unfortunate incident involving the uninstaller a couple of years ago. That turned out to be incredibly slow. I tried a few open-source tools such as &lt;a href=&quot;http://en.wikipedia.org/wiki/Skim_(software)&quot;&gt;Skim&lt;/a&gt; which, while otherwise an excellent bit of software, couldn&amp;#8217;t render these particular annotations.&lt;/p&gt;
 &lt;table&gt;
 &lt;tr&gt;&lt;td&gt;
 &lt;a href=&quot;http://anil.recoil.org/images/anil-jumping-acropolis.jpg&quot;&gt;&lt;img width=&quot;207&quot; src=&quot;http://anil.recoil.org/images/anil-jumping-acropolis-thumb.jpg&quot; /&gt;&lt;/a&gt;
@@ -442,11 +479,11 @@ opam &lt;span&gt;install&lt;/span&gt; merlin&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&l
 &lt;p&gt;Given these raw compiler tools, it&amp;#8217;s very easy to compile OCaml into all sorts of weird and wonderful architectures. We&amp;#8217;ve seen it run on &lt;a href=&quot;http://www.algo-prog.info/ocaml_for_pic/web/index.php&quot;&gt;8-bit PICs&lt;/a&gt;, several efficient Javascript backends (originally &lt;a href=&quot;http://jaked.github.io/ocamljs/&quot;&gt;ocamljs&lt;/a&gt; and more recently &lt;a href=&quot;http://ocsigen.org/js_of_ocaml&quot;&gt;js_of_ocaml&lt;/a&gt;), and of course my own &lt;a href=&quot;http://openmirage.org&quot;&gt;Mirage&lt;/a&gt; Xen unikernel.&lt;/p&gt;
 
 &lt;p&gt;While the compiler tools themselves are quite portable and work on almost any UNIX-like system, the build system scaffolding around third-party packages is less portable. Some features such as C bindings often contribute to build breakage on some less-used operating systems such as FreeBSD or OpenBSD, as they usually require probing for header file locations or adding custom &lt;code&gt;CFLAGS&lt;/code&gt; before building.&lt;/p&gt;
-&lt;table width=&quot;90%&quot; align=&quot;center&quot;&gt;
+&lt;table align=&quot;center&quot; width=&quot;90%&quot;&gt;
 &lt;tr&gt;
-&lt;td width=&quot;30%&quot; class=&quot;bimg&quot;&gt;&lt;a href=&quot;http://anil.recoil.org/images/dreamplug-nest-1.jpg&quot;&gt;&lt;img width=&quot;200&quot; border=&quot;0&quot; src=&quot;http://anil.recoil.org/images/dreamplug-nest-1-thumb.jpg&quot; /&gt;&lt;/a&gt;&lt;br /&gt;Every Internet of Things starts with a tangled pile of ARM Dreamplugs.&lt;/td&gt;
-&lt;td width=&quot;30%&quot; class=&quot;bimg&quot;&gt;&lt;a href=&quot;http://anil.recoil.org/images/sparc-macppc-openbsd-1.jpg&quot;&gt;&lt;img width=&quot;200&quot; border=&quot;0&quot; src=&quot;http://anil.recoil.org/images/sparc-macppc-openbsd-1-thumb.jpg&quot; /&gt;&lt;/a&gt;&lt;br /&gt;And in our server room, venerable Sparc and PowerPC G4 OpenBSD boxen still live.&lt;/td&gt;
-&lt;td width=&quot;30%&quot; class=&quot;bimg&quot;&gt;&lt;a href=&quot;http://anil.recoil.org/images/macppc-desktop-1.jpg&quot;&gt;&lt;img width=&quot;200&quot; border=&quot;0&quot; src=&quot;http://anil.recoil.org/images/macppc-desktop-1-thumb.jpg&quot; /&gt;&lt;/a&gt;&lt;br /&gt;Finding older machines is getting tough, but here's &lt;a href=&quot;http://dave.recoil.org&quot;&gt;Dave's&lt;/a&gt; old iMac G5 running Linux.&lt;/td&gt;
+&lt;td width=&quot;30%&quot; class=&quot;bimg&quot;&gt;&lt;a href=&quot;http://anil.recoil.org/images/dreamplug-nest-1.jpg&quot;&gt;&lt;img border=&quot;0&quot; width=&quot;200&quot; src=&quot;http://anil.recoil.org/images/dreamplug-nest-1-thumb.jpg&quot; /&gt;&lt;/a&gt;&lt;br /&gt;Every Internet of Things starts with a tangled pile of ARM Dreamplugs.&lt;/td&gt;
+&lt;td width=&quot;30%&quot; class=&quot;bimg&quot;&gt;&lt;a href=&quot;http://anil.recoil.org/images/sparc-macppc-openbsd-1.jpg&quot;&gt;&lt;img border=&quot;0&quot; width=&quot;200&quot; src=&quot;http://anil.recoil.org/images/sparc-macppc-openbsd-1-thumb.jpg&quot; /&gt;&lt;/a&gt;&lt;br /&gt;And in our server room, venerable Sparc and PowerPC G4 OpenBSD boxen still live.&lt;/td&gt;
+&lt;td width=&quot;30%&quot; class=&quot;bimg&quot;&gt;&lt;a href=&quot;http://anil.recoil.org/images/macppc-desktop-1.jpg&quot;&gt;&lt;img border=&quot;0&quot; width=&quot;200&quot; src=&quot;http://anil.recoil.org/images/macppc-desktop-1-thumb.jpg&quot; /&gt;&lt;/a&gt;&lt;br /&gt;Finding older machines is getting tough, but here's &lt;a href=&quot;http://dave.recoil.org&quot;&gt;Dave's&lt;/a&gt; old iMac G5 running Linux.&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/table&gt;
 &lt;p&gt;Most OCaml developers use x86-based machines and so foreign architectures also get less day-to-day testing (OCaml has superb support for fast native code compilation on ARM, PowerPC, Sparc32, and we&amp;#8217;re working on MIPS64 here as part of the &lt;a href=&quot;http://www.cl.cam.ac.uk/research/security/ctsrd/cheri.html&quot;&gt;CHERI&lt;/a&gt; project).&lt;/p&gt;
@@ -2929,7 +2966,7 @@ International Conference on Functional Programming&lt;/a&gt;. The early days con
 &lt;/li&gt;
 
 &lt;li&gt;
-&lt;p&gt;&lt;em&gt;There&amp;#8217;s safety in crowds&lt;/em&gt;: &lt;a href=&quot;http://anil.recoil.org/images/icfp2011-4.jpg&quot;&gt;&lt;img width=&quot;120&quot; align=&quot;right&quot; alt=&quot;Team Twitter talking about Scala at CUFP 2011&quot; src=&quot;http://anil.recoil.org/images/icfp2011-4-thumb.jpg&quot; /&gt;&lt;/a&gt;The final day of CUFP (on Saturday 15th) is a full day of experience reports from industry speakers who have applied FP techniques to their day-to-day work. These talks are not intended to be deeply technical, but instead reflect on the social and engineering challenges around integrating a new (and often risky) technology into an existing business. The sessions &lt;a href=&quot;http://cufp.org/conference/schedule&quot;&gt;this year&lt;/a&gt; are diverse, with talks from Citrix on client-side cloud computing, on building NoSQL databases, and a number of talks on biotech (&lt;a href=&quot;http://cufp.org/conference/sessions/2012/ashish-agarwal-nyu-functional-big-data-genomics&quot;&gt;bigdata&lt;/a&gt;, &lt;a href=&quot;http://cufp.org/conference/sessions/2012/adam-granicz-intellifactory-developing-f-bioinform&quot;&gt;visualisation&lt;/a&gt; and &lt;a href=&quot;http://cufp.org/conference/sessions/2012/stefan-wehr-factis-research-developing-medical-sof&quot;&gt;medical software&lt;/a&gt;), developing &lt;a href=&quot;http://cufp.org/conference/sessions/2012/sebastian-egner-entelios-functional-programs-conne&quot;&gt;real-time&lt;/a&gt; and &lt;a href=&quot;http://cufp.org/conference/sessions/2012/kevin-lynagh-keming-labs-clojure-ipad-analytics-da&quot;&gt;offline&lt;/a&gt; analytics for national power grids, and even using FP to write software that runs directly on &lt;a href=&quot;http://cufp.org/conference/sessions/2012/peter-braam-parallel-scientific-awesome-haskell-fp&quot;&gt;FPGAs&lt;/a&gt; (including directly on a new 10GBs switch from &lt;a href=&quot;http://aristanetworks.com&quot;&gt;Arista networks&lt;/a&gt;). We really try to make this talk session a balanced view of the upsides and downsides of using FP, and encourage speakers to relate what went &lt;em&gt;wrong&lt;/em&gt; as well as right in their experiences.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;There&amp;#8217;s safety in crowds&lt;/em&gt;: &lt;a href=&quot;http://anil.recoil.org/images/icfp2011-4.jpg&quot;&gt;&lt;img align=&quot;right&quot; width=&quot;120&quot; alt=&quot;Team Twitter talking about Scala at CUFP 2011&quot; src=&quot;http://anil.recoil.org/images/icfp2011-4-thumb.jpg&quot; /&gt;&lt;/a&gt;The final day of CUFP (on Saturday 15th) is a full day of experience reports from industry speakers who have applied FP techniques to their day-to-day work. These talks are not intended to be deeply technical, but instead reflect on the social and engineering challenges around integrating a new (and often risky) technology into an existing business. The sessions &lt;a href=&quot;http://cufp.org/conference/schedule&quot;&gt;this year&lt;/a&gt; are diverse, with talks from Citrix on client-side cloud computing, on building NoSQL databases, and a number of talks on biotech (&lt;a href=&quot;http://cufp.org/conference/sessions/2012/ashish-agarwal-nyu-functional-big-data-genomics&quot;&gt;bigdata&lt;/a&gt;, &lt;a href=&quot;http://cufp.org/conference/sessions/2012/adam-granicz-intellifactory-developing-f-bioinform&quot;&gt;visualisation&lt;/a&gt; and &lt;a href=&quot;http://cufp.org/conference/sessions/2012/stefan-wehr-factis-research-developing-medical-sof&quot;&gt;medical software&lt;/a&gt;), developing &lt;a href=&quot;http://cufp.org/conference/sessions/2012/sebastian-egner-entelios-functional-programs-conne&quot;&gt;real-time&lt;/a&gt; and &lt;a href=&quot;http://cufp.org/conference/sessions/2012/kevin-lynagh-keming-labs-clojure-ipad-analytics-da&quot;&gt;offline&lt;/a&gt; analytics for national power grids, and even using FP to write software that runs directly on &lt;a href=&quot;http://cufp.org/conference/sessions/2012/peter-braam-parallel-scientific-awesome-haskell-fp&quot;&gt;FPGAs&lt;/a&gt; (including directly on a new 10GBs switch from &lt;a href=&quot;http://aristanetworks.com&quot;&gt;Arista networks&lt;/a&gt;). We really try to make this talk session a balanced view of the upsides and downsides of using FP, and encourage speakers to relate what went &lt;em&gt;wrong&lt;/em&gt; as well as right in their experiences.&lt;/p&gt;
 &lt;/li&gt;
 
 &lt;li&gt;
@@ -2964,11 +3001,11 @@ International Conference on Functional Programming&lt;/a&gt;. The early days con
 &lt;h3 id=&quot;erlang&quot;&gt;Erlang&lt;/h3&gt;
 
 &lt;p&gt;The &lt;a href=&quot;http://www.cse.chalmers.se/~rjmh/EWCFP.html&quot;&gt;Erlang workshop&lt;/a&gt; at ICFP has been running for eleven years now, and tends to be a combination of big projects and work-in-progress reports. This year has the latest on porting Erlang to use &lt;a href=&quot;http://www.softlab.ntua.gr/~gtsiour/files/erllvm_pres-20111107.pdf&quot;&gt;LLVM&lt;/a&gt; for high-performance computing, as well as experience reports on scalability testing and the widely-used &lt;a href=&quot;http://wiki.basho.com&quot;&gt;Riak&lt;/a&gt; distributed database. Despite my prelediction towards static typing, Erlang is a language that I keep intending to make bigger use of, so I plan to drop into this session for sure.&lt;/p&gt;
-&lt;table width=&quot;90%&quot; align=&quot;center&quot;&gt;
+&lt;table align=&quot;center&quot; width=&quot;90%&quot;&gt;
 &lt;tr&gt;
-&lt;td width=&quot;30%&quot; class=&quot;bimg&quot;&gt;&lt;a href=&quot;http://anil.recoil.org/images/icfp2011-1.jpg&quot;&gt;&lt;img width=&quot;120&quot; border=&quot;0&quot; src=&quot;http://anil.recoil.org/images/icfp2011-1-thumb.jpg&quot; /&gt;&lt;/a&gt;&lt;br /&gt;&lt;i&gt;Last year we had to learn Japanese, the hardest functional language&lt;/i&gt;&lt;/td&gt;
-&lt;td width=&quot;30%&quot; class=&quot;bimg&quot;&gt;&lt;a href=&quot;http://anil.recoil.org/images/icfp2011-2.jpg&quot;&gt;&lt;img width=&quot;120&quot; border=&quot;0&quot; src=&quot;http://anil.recoil.org/images/icfp2011-2-thumb.jpg&quot; /&gt;&lt;/a&gt;&lt;br /&gt;&lt;i&gt;We also made a lot of new local friends&lt;/i&gt;&lt;/td&gt;
-&lt;td width=&quot;30%&quot; class=&quot;bimg&quot;&gt;&lt;a href=&quot;http://anil.recoil.org/images/icfp2011-3.jpg&quot;&gt;&lt;img width=&quot;120&quot; border=&quot;0&quot; src=&quot;http://anil.recoil.org/images/icfp2011-3-thumb.jpg&quot; /&gt;&lt;/a&gt;&lt;br /&gt;&lt;i&gt;Luckily, the weather made us feel at home though&lt;/i&gt;&lt;/td&gt;
+&lt;td width=&quot;30%&quot; class=&quot;bimg&quot;&gt;&lt;a href=&quot;http://anil.recoil.org/images/icfp2011-1.jpg&quot;&gt;&lt;img border=&quot;0&quot; width=&quot;120&quot; src=&quot;http://anil.recoil.org/images/icfp2011-1-thumb.jpg&quot; /&gt;&lt;/a&gt;&lt;br /&gt;&lt;i&gt;Last year we had to learn Japanese, the hardest functional language&lt;/i&gt;&lt;/td&gt;
+&lt;td width=&quot;30%&quot; class=&quot;bimg&quot;&gt;&lt;a href=&quot;http://anil.recoil.org/images/icfp2011-2.jpg&quot;&gt;&lt;img border=&quot;0&quot; width=&quot;120&quot; src=&quot;http://anil.recoil.org/images/icfp2011-2-thumb.jpg&quot; /&gt;&lt;/a&gt;&lt;br /&gt;&lt;i&gt;We also made a lot of new local friends&lt;/i&gt;&lt;/td&gt;
+&lt;td width=&quot;30%&quot; class=&quot;bimg&quot;&gt;&lt;a href=&quot;http://anil.recoil.org/images/icfp2011-3.jpg&quot;&gt;&lt;img border=&quot;0&quot; width=&quot;120&quot; src=&quot;http://anil.recoil.org/images/icfp2011-3-thumb.jpg&quot; /&gt;&lt;/a&gt;&lt;br /&gt;&lt;i&gt;Luckily, the weather made us feel at home though&lt;/i&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/table&gt;&lt;a name=&quot;icfpreg&quot;&gt;&amp;nbsp;&lt;/a&gt;
 &lt;h2 id=&quot;registration&quot;&gt;Registration&lt;/h2&gt;
@@ -3027,7 +3064,7 @@ International Conference on Functional Programming&lt;/a&gt;. The early days con
 	<title>Anil Madhavapeddy: Dreaming of an ARM OCaml</title>
 	<guid isPermaLink="">http://anil.recoil.org/2012/02/25/dreamplug-debian-and-ocaml</guid>
 	<link>http://anil.recoil.org/2012/02/25/dreamplug-debian-and-ocaml.html</link>
-	<description>&lt;a title=&quot;dreamplug by tlamer, on Flickr&quot; href=&quot;http://www.flickr.com/photos/tlamer/5693063642/&quot;&gt;&lt;img align=&quot;right&quot; width=&quot;200&quot; alt=&quot;dreamplug&quot; height=&quot;134&quot; src=&quot;http://farm6.staticflickr.com/5230/5693063642_47aa7c4c99.jpg&quot; /&gt;&lt;/a&gt;
+	<description>&lt;a href=&quot;http://www.flickr.com/photos/tlamer/5693063642/&quot; title=&quot;dreamplug by tlamer, on Flickr&quot;&gt;&lt;img align=&quot;right&quot; width=&quot;200&quot; alt=&quot;dreamplug&quot; src=&quot;http://farm6.staticflickr.com/5230/5693063642_47aa7c4c99.jpg&quot; height=&quot;134&quot; /&gt;&lt;/a&gt;
 &lt;p&gt;I&amp;#8217;ve been meaning to play with &lt;a href=&quot;http://www.plugcomputer.org/&quot;&gt;Plug Computers&lt;/a&gt; for some time now, as I need a low-power embedded system around the house. I recently bought a &lt;a href=&quot;http://soekris.com/products/net6501.html&quot;&gt;Soekris Net6501&lt;/a&gt; (a pretty powerful Intel CPU, that even has VT support), but had annoying &lt;a href=&quot;http://marc.info/?l=soekris-tech&amp;m=132915532912206&amp;w=2&quot;&gt;issues&lt;/a&gt; getting it working reliably. I ordered an ARM-based &lt;a href=&quot;http://www.newit.co.uk/shop/products.php?cat=21&quot;&gt;Dreamplug&lt;/a&gt; as an alternative (and as a bonus, the Dreamplug is 6x cheaper than the Soekris!). Here are my notes on getting it to work.&lt;/p&gt;
 
 &lt;p&gt;Requirements:&lt;/p&gt;
@@ -3126,482 +3163,6 @@ International Conference on Functional Programming&lt;/a&gt;. The early days con
    &lt;/div&gt;</description>
 	<pubDate>Thu, 29 Sep 2011 11:10:00 +0000</pubDate>
 	<author>anil@recoil.org (Anil Madhavapeddy)</author>
-</item>
-<item>
-	<title>Anil Madhavapeddy: Commercial Users of Functional Programming 2011 Schedule</title>
-	<guid isPermaLink="">http://anil.recoil.org/2011/08/09/cufp2011-schedule</guid>
-	<link>http://anil.recoil.org/2011/08/09/cufp2011-schedule.html</link>
-	<description>&lt;!-- /#content-top --&gt;&lt;div id=&quot;content-area&quot;&gt;
-&lt;div class=&quot;view view-Schedule view-id-Schedule view-display-id-page_1 view-dom-id-29&quot;&gt;
-&lt;div class=&quot;view-header&quot;&gt;
-&lt;p&gt;The CUFP 2011 schedule is now &lt;a href=&quot;http://cufp.org/conference/schedule/2011&quot;&gt;available&lt;/a&gt; and the &lt;a href=&quot;https://regmaster3.com/2011conf/ICFP11/register.php&quot;&gt;conference registration&lt;/a&gt; is open!
-The &lt;tt&gt;cufp.org&lt;/tt&gt; website is having a few DNS propagation issues at the moment and is unreachable, so I have replicated the schedule below for
-your perusal.  Hope to see lots of new faces in Tokyo!&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;view-content&quot;&gt;
-&lt;div class=&quot;views-row views-row-1 views-row-odd views-row-first views-row-last&quot;&gt;
-&lt;h3&gt;September 22nd, &lt;b&gt;2011&lt;/b&gt;&lt;/h3&gt;
-&lt;br /&gt;
-&lt;div class=&quot;view view-Schedule-Header view-id-Schedule_Header view-display-id-default view-dom-id-1&quot;&gt;
-&lt;div class=&quot;view-content&quot;&gt;
-&lt;div class=&quot;views-row views-row-1 views-row-odd views-row-first views-row-last&quot;&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;view view-Schedule-By-Day view-id-Schedule_By_Day view-display-id-default view-dom-id-6&quot;&gt;
-&lt;div class=&quot;view-content&quot;&gt;
-&lt;table class=&quot;views-table cols-4&quot;&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Time&lt;/th&gt;&lt;th&gt;Speakers&lt;/th&gt;&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr class=&quot;odd views-row-first&quot;&gt;
-&lt;td class=&quot;views-field views-field-field-sesion-time-value active&quot;&gt;
-&lt;span class=&quot;date-display-single&quot;&gt;&lt;span class=&quot;date-display-start&quot;&gt;09:00 AM&lt;/span&gt; &lt;span class=&quot;date-display-separator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;date-display-end&quot;&gt;12:30 PM&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;
-&lt;td class=&quot;views-field views-field-title&quot;&gt;&lt;a href=&quot;http://cufp.org/conference/sessions/2011/t1-building-reliable-client-server-applications-er&quot;&gt;
-T1: Building Reliable Client-Server Applications in Erlang&lt;/a&gt;&lt;/td&gt;
-&lt;td class=&quot;views-field views-field-phpcode-1&quot;&gt;
-&lt;div class=&quot;view view-Speakers view-id-Speakers view-display-id-default view-dom-id-2&quot;&gt;
-&lt;div class=&quot;view-content&quot;&gt;
-&lt;div class=&quot;views-row views-row-1 views-row-odd views-row-first views-row-last&quot;&gt;
-&lt;div class=&quot;views-field-phpcode&quot;&gt;&lt;span class=&quot;field-content&quot;&gt;&lt;a href=&quot;http://cufp.org/users/francescoc&quot;&gt;Francesco
-Cesarini&lt;/a&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;div class=&quot;views-field-tid&quot;&gt;&lt;span class=&quot;field-content&quot;&gt;&lt;em&gt;Erlang
-Solutions Ltd.&lt;/em&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&quot;even&quot;&gt;
-&lt;td class=&quot;views-field views-field-field-sesion-time-value active&quot;&gt;
-&lt;span class=&quot;date-display-single&quot;&gt;&lt;span class=&quot;date-display-start&quot;&gt;09:00 AM&lt;/span&gt; &lt;span class=&quot;date-display-separator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;date-display-end&quot;&gt;12:30 PM&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;
-&lt;td class=&quot;views-field views-field-title&quot;&gt;&lt;a href=&quot;http://cufp.org/conference/sessions/2011/t2-janestreets-ocaml-core-library&quot;&gt;T2:
-JaneStreet's OCaml Core Library&lt;/a&gt;&lt;/td&gt;
-&lt;td class=&quot;views-field views-field-phpcode-1&quot;&gt;
-&lt;div class=&quot;view view-Speakers view-id-Speakers view-display-id-default view-dom-id-3&quot;&gt;
-&lt;div class=&quot;view-content&quot;&gt;
-&lt;div class=&quot;views-row views-row-1 views-row-odd views-row-first views-row-last&quot;&gt;
-&lt;div class=&quot;views-field-phpcode&quot;&gt;&lt;span class=&quot;field-content&quot;&gt;&lt;a href=&quot;http://cufp.org/users/yminsky&quot;&gt;Yaron
-Minsky&lt;/a&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;div class=&quot;views-field-tid&quot;&gt;&lt;span class=&quot;field-content&quot;&gt;&lt;em&gt;Jane
-Street&lt;/em&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&quot;odd&quot;&gt;
-&lt;td class=&quot;views-field views-field-field-sesion-time-value active&quot;&gt;
-&lt;span class=&quot;date-display-single&quot;&gt;&lt;span class=&quot;date-display-start&quot;&gt;02:00 PM&lt;/span&gt; &lt;span class=&quot;date-display-separator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;date-display-end&quot;&gt;05:30 PM&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;
-&lt;td class=&quot;views-field views-field-title&quot;&gt;&lt;a href=&quot;http://cufp.org/conference/sessions/2011/t3-building-functional-os&quot;&gt;T3: Building
-a Functional OS&lt;/a&gt;&lt;/td&gt;
-&lt;td class=&quot;views-field views-field-phpcode-1&quot;&gt;
-&lt;div class=&quot;view view-Speakers view-id-Speakers view-display-id-default view-dom-id-4&quot;&gt;
-&lt;div class=&quot;view-content&quot;&gt;
-&lt;div class=&quot;views-row views-row-1 views-row-odd views-row-first&quot;&gt;
-&lt;div class=&quot;views-field-phpcode&quot;&gt;&lt;span class=&quot;field-content&quot;&gt;&lt;a href=&quot;http://cufp.org/users/avsm&quot;&gt;Anil
-Madhavapeddy&lt;/a&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;div class=&quot;views-field-tid&quot;&gt;&lt;span class=&quot;field-content&quot;&gt;&lt;em&gt;University of Cambridge&lt;/em&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;views-row views-row-2 views-row-even&quot;&gt;
-&lt;div class=&quot;views-field-phpcode&quot;&gt;&lt;span class=&quot;field-content&quot;&gt;&lt;a href=&quot;http://cufp.org/users/djs55&quot;&gt;David Scott&lt;/a&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;div class=&quot;views-field-tid&quot;&gt;&lt;span class=&quot;field-content&quot;&gt;&lt;em&gt;Citrix&lt;/em&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;views-row views-row-3 views-row-odd views-row-last&quot;&gt;
-&lt;div class=&quot;views-field-phpcode&quot;&gt;&lt;span class=&quot;field-content&quot;&gt;&lt;a href=&quot;http://cufp.org/users/mort&quot;&gt;Richard
-Mortier&lt;/a&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;div class=&quot;views-field-tid&quot;&gt;&lt;span class=&quot;field-content&quot;&gt;&lt;em&gt;university of nottingham&lt;/em&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&quot;even views-row-last&quot;&gt;
-&lt;td class=&quot;views-field views-field-field-sesion-time-value active&quot;&gt;
-&lt;span class=&quot;date-display-single&quot;&gt;&lt;span class=&quot;date-display-start&quot;&gt;02:00 PM&lt;/span&gt; &lt;span class=&quot;date-display-separator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;date-display-end&quot;&gt;05:30 PM&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;
-&lt;td class=&quot;views-field views-field-title&quot;&gt;&lt;a href=&quot;http://cufp.org/conference/sessions/2011/t4-collaborative-scientific-software&quot;&gt;T4:
-Collaborative Scientific Software&lt;/a&gt;&lt;/td&gt;
-&lt;td class=&quot;views-field views-field-phpcode-1&quot;&gt;
-&lt;div class=&quot;view view-Speakers view-id-Speakers view-display-id-default view-dom-id-5&quot;&gt;
-&lt;div class=&quot;view-content&quot;&gt;
-&lt;div class=&quot;views-row views-row-1 views-row-odd views-row-first views-row-last&quot;&gt;
-&lt;div class=&quot;views-field-phpcode&quot;&gt;&lt;span class=&quot;field-content&quot;&gt;&lt;a href=&quot;http://cufp.org/users/ashish&quot;&gt;Ashish
-Agarwal&lt;/a&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;div class=&quot;views-field-tid&quot;&gt;&lt;span class=&quot;field-content&quot;&gt;&lt;em&gt;New
-York University&lt;/em&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;h3&gt;September 23rd, &lt;b&gt;2011&lt;/b&gt;&lt;/h3&gt;
-&lt;br /&gt;
-&lt;div class=&quot;view view-Schedule-Header view-id-Schedule_Header view-display-id-default view-dom-id-7&quot;&gt;
-&lt;/div&gt;
-&lt;div class=&quot;view view-Schedule-By-Day view-id-Schedule_By_Day view-display-id-default view-dom-id-12&quot;&gt;
-&lt;div class=&quot;view-content&quot;&gt;
-&lt;table class=&quot;views-table cols-4&quot;&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Time&lt;/th&gt;&lt;th&gt;Speakers&lt;/th&gt;&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr class=&quot;odd views-row-first&quot;&gt;
-&lt;td class=&quot;views-field views-field-field-sesion-time-value active&quot;&gt;
-&lt;span class=&quot;date-display-single&quot;&gt;&lt;span class=&quot;date-display-start&quot;&gt;09:00 AM&lt;/span&gt; &lt;span class=&quot;date-display-separator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;date-display-end&quot;&gt;12:30 PM&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;
-&lt;td class=&quot;views-field views-field-title&quot;&gt;&lt;a href=&quot;http://cufp.org/conference/sessions/2011/t5-parallel-programming-haskell-simon-peyton-jones&quot;&gt;
-T5: Parallel Programming in Haskell (Simon Peyton Jones, Simon
-Marlow, Manuel Chakravarty)&lt;/a&gt;&lt;/td&gt;
-&lt;td class=&quot;views-field views-field-phpcode-1&quot;&gt;
-&lt;div class=&quot;view view-Speakers view-id-Speakers view-display-id-default view-dom-id-8&quot;&gt;
-&lt;div class=&quot;view-content&quot;&gt;
-&lt;div class=&quot;views-row views-row-1 views-row-odd views-row-first views-row-last&quot;&gt;
-&lt;div class=&quot;views-field-phpcode&quot;&gt;&lt;span class=&quot;field-content&quot;&gt;&lt;a href=&quot;http://cufp.org/users/simonpj&quot;&gt;Simon
-Peyton-Jones&lt;/a&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;div class=&quot;views-field-tid&quot;&gt;&lt;span class=&quot;field-content&quot;&gt;&lt;em&gt;Microsoft&lt;/em&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&quot;even&quot;&gt;
-&lt;td class=&quot;views-field views-field-field-sesion-time-value active&quot;&gt;
-&lt;span class=&quot;date-display-single&quot;&gt;&lt;span class=&quot;date-display-start&quot;&gt;09:00 AM&lt;/span&gt; &lt;span class=&quot;date-display-separator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;date-display-end&quot;&gt;12:30 PM&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;
-&lt;td class=&quot;views-field views-field-title&quot;&gt;&lt;a href=&quot;http://cufp.org/conference/sessions/2011/t6-systems-programming-scala-steven-jenson-marius-&quot;&gt;
-T6: Systems Programming in Scala (Steven Jenson, Marius
-Eriksen)&lt;/a&gt;&lt;/td&gt;
-&lt;td class=&quot;views-field views-field-phpcode-1&quot;&gt;
-&lt;div class=&quot;view view-Speakers view-id-Speakers view-display-id-default view-dom-id-9&quot;&gt;
-&lt;div class=&quot;view-content&quot;&gt;
-&lt;div class=&quot;views-row views-row-1 views-row-odd views-row-first views-row-last&quot;&gt;
-&lt;div class=&quot;views-field-phpcode&quot;&gt;&lt;span class=&quot;field-content&quot;&gt;&lt;a href=&quot;http://cufp.org/users/marius-eriksen&quot;&gt;Marius
-Eriksen&lt;/a&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;div class=&quot;views-field-tid&quot;&gt;&lt;span class=&quot;field-content&quot;&gt;&lt;em&gt;Twitter&lt;/em&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&quot;odd&quot;&gt;
-&lt;td class=&quot;views-field views-field-field-sesion-time-value active&quot;&gt;
-&lt;span class=&quot;date-display-single&quot;&gt;&lt;span class=&quot;date-display-start&quot;&gt;02:00 PM&lt;/span&gt; &lt;span class=&quot;date-display-separator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;date-display-end&quot;&gt;05:30 PM&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;
-&lt;td class=&quot;views-field views-field-title&quot;&gt;&lt;a href=&quot;http://cufp.org/conference/sessions/2011/t7-snap-framework-web-applications-haskell-gregory&quot;&gt;
-T7: The Snap Framework for web applications in Haskell (Gregory
-Collins)&lt;/a&gt;&lt;/td&gt;
-&lt;td class=&quot;views-field views-field-phpcode-1&quot;&gt;
-&lt;div class=&quot;view view-Speakers view-id-Speakers view-display-id-default view-dom-id-10&quot;&gt;
-&lt;div class=&quot;view-content&quot;&gt;
-&lt;div class=&quot;views-row views-row-1 views-row-odd views-row-first views-row-last&quot;&gt;
-&lt;div class=&quot;views-field-phpcode&quot;&gt;&lt;span class=&quot;field-content&quot;&gt;&lt;a href=&quot;http://anil.recoil.org/user/&quot;&gt;&lt;/a&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&quot;even views-row-last&quot;&gt;
-&lt;td class=&quot;views-field views-field-field-sesion-time-value active&quot;&gt;
-&lt;span class=&quot;date-display-single&quot;&gt;&lt;span class=&quot;date-display-start&quot;&gt;02:00 PM&lt;/span&gt; &lt;span class=&quot;date-display-separator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;date-display-end&quot;&gt;05:30 PM&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;
-&lt;td class=&quot;views-field views-field-title&quot;&gt;&lt;a href=&quot;http://cufp.org/conference/sessions/2011/t8-f-working-functional-programmer&quot;&gt;T8:
-F# for the Working Functional Programmer&lt;/a&gt;&lt;/td&gt;
-&lt;td class=&quot;views-field views-field-phpcode-1&quot;&gt;
-&lt;div class=&quot;view view-Speakers view-id-Speakers view-display-id-default view-dom-id-11&quot;&gt;
-&lt;div class=&quot;view-content&quot;&gt;
-&lt;div class=&quot;views-row views-row-1 views-row-odd views-row-first views-row-last&quot;&gt;
-&lt;div class=&quot;views-field-phpcode&quot;&gt;&lt;span class=&quot;field-content&quot;&gt;&lt;a href=&quot;http://cufp.org/users/msperber&quot;&gt;Michael
-Sperber&lt;/a&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;div class=&quot;views-field-tid&quot;&gt;&lt;span class=&quot;field-content&quot;&gt;&lt;em&gt;Active
-Group&lt;/em&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;h3&gt;September 24th, &lt;b&gt;2011&lt;/b&gt;&lt;/h3&gt;
-&lt;br /&gt;
-&lt;div class=&quot;view view-Schedule-Header view-id-Schedule_Header view-display-id-default view-dom-id-13&quot;&gt;
-&lt;/div&gt;
-&lt;div class=&quot;view view-Schedule-By-Day view-id-Schedule_By_Day view-display-id-default view-dom-id-28&quot;&gt;
-&lt;div class=&quot;view-content&quot;&gt;
-&lt;table class=&quot;views-table cols-14&quot;&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Time&lt;/th&gt;&lt;th&gt;Speakers&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr class=&quot;odd views-row-first&quot;&gt;
-&lt;td class=&quot;views-field views-field-field-sesion-time-value active&quot;&gt;
-&lt;span class=&quot;date-display-single&quot;&gt;&lt;span class=&quot;date-display-start&quot;&gt;09:00 AM&lt;/span&gt; &lt;span class=&quot;date-display-separator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;date-display-end&quot;&gt;10:00 AM&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;
-&lt;td class=&quot;views-field views-field-title&quot;&gt;&lt;a href=&quot;http://cufp.org/conference/sessions/2011/keynote-pragmatic-haskell&quot;&gt;Keynote:
-Pragmatic Haskell&lt;/a&gt;&lt;/td&gt;
-&lt;td class=&quot;views-field views-field-phpcode-1&quot;&gt;
-&lt;div class=&quot;view view-Speakers view-id-Speakers view-display-id-default view-dom-id-14&quot;&gt;
-&lt;div class=&quot;view-content&quot;&gt;
-&lt;div class=&quot;views-row views-row-1 views-row-odd views-row-first views-row-last&quot;&gt;
-&lt;div class=&quot;views-field-phpcode&quot;&gt;&lt;span class=&quot;field-content&quot;&gt;&lt;a href=&quot;http://cufp.org/users/lennartaugustsson&quot;&gt;Lennart
-Augustsson&lt;/a&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;div class=&quot;views-field-tid&quot;&gt;&lt;span class=&quot;field-content&quot;&gt;&lt;em&gt;Standard Chartered Bank&lt;/em&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&quot;even&quot;&gt;
-&lt;td class=&quot;views-field views-field-field-sesion-time-value active&quot;&gt;
-&lt;span class=&quot;date-display-single&quot;&gt;&lt;span class=&quot;date-display-start&quot;&gt;10:00 AM&lt;/span&gt; &lt;span class=&quot;date-display-separator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;date-display-end&quot;&gt;10:30 AM&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;
-&lt;td class=&quot;views-field views-field-title&quot;&gt;Tea Break&lt;/td&gt;
-&lt;td class=&quot;views-field views-field-phpcode-1&quot;&gt;
-&lt;div class=&quot;view view-Speakers view-id-Speakers view-display-id-default view-dom-id-15&quot;&gt;
-&lt;div class=&quot;view-content&quot;&gt;
-&lt;div class=&quot;views-row views-row-1 views-row-odd views-row-first views-row-last&quot;&gt;
-&lt;div class=&quot;views-field-phpcode&quot;&gt;&lt;span class=&quot;field-content&quot;&gt;&lt;a href=&quot;http://anil.recoil.org/user/&quot;&gt;&lt;/a&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&quot;odd&quot;&gt;
-&lt;td class=&quot;views-field views-field-field-sesion-time-value active&quot;&gt;
-&lt;span class=&quot;date-display-single&quot;&gt;&lt;span class=&quot;date-display-start&quot;&gt;10:30 AM&lt;/span&gt; &lt;span class=&quot;date-display-separator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;date-display-end&quot;&gt;11:00 AM&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;
-&lt;td class=&quot;views-field views-field-title&quot;&gt;&lt;a href=&quot;http://cufp.org/conference/sessions/2011/theorem-based-derivation-aes-implementation&quot;&gt;
-Theorem-based derivation of an AES Implementation&lt;/a&gt;&lt;/td&gt;
-&lt;td class=&quot;views-field views-field-phpcode-1&quot;&gt;
-&lt;div class=&quot;view view-Speakers view-id-Speakers view-display-id-default view-dom-id-16&quot;&gt;
-&lt;div class=&quot;view-content&quot;&gt;
-&lt;div class=&quot;views-row views-row-1 views-row-odd views-row-first views-row-last&quot;&gt;
-&lt;div class=&quot;views-field-phpcode&quot;&gt;&lt;span class=&quot;field-content&quot;&gt;&lt;a href=&quot;http://cufp.org/users/jlaunchbury&quot;&gt;John
-Launchbury&lt;/a&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;div class=&quot;views-field-tid&quot;&gt;&lt;span class=&quot;field-content&quot;&gt;&lt;em&gt;Galois&lt;/em&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&quot;even&quot;&gt;
-&lt;td class=&quot;views-field views-field-field-sesion-time-value active&quot;&gt;
-&lt;span class=&quot;date-display-single&quot;&gt;&lt;span class=&quot;date-display-start&quot;&gt;11:00 AM&lt;/span&gt; &lt;span class=&quot;date-display-separator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;date-display-end&quot;&gt;11:30 AM&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;
-&lt;td class=&quot;views-field views-field-title&quot;&gt;&lt;a href=&quot;http://cufp.org/conference/sessions/2011/discrete-event-simulation-using-erlang&quot;&gt;Discrete
-Event Simulation using Erlang&lt;/a&gt;&lt;/td&gt;
-&lt;td class=&quot;views-field views-field-phpcode-1&quot;&gt;
-&lt;div class=&quot;view view-Speakers view-id-Speakers view-display-id-default view-dom-id-17&quot;&gt;
-&lt;div class=&quot;view-content&quot;&gt;
-&lt;div class=&quot;views-row views-row-1 views-row-odd views-row-first views-row-last&quot;&gt;
-&lt;div class=&quot;views-field-phpcode&quot;&gt;&lt;span class=&quot;field-content&quot;&gt;&lt;a href=&quot;http://cufp.org/users/olivier-boudeville&quot;&gt;Mr. Olivier
-Boudeville&lt;/a&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;div class=&quot;views-field-tid&quot;&gt;&lt;span class=&quot;field-content&quot;&gt;&lt;em&gt;EDF
-R&amp;amp;D&lt;/em&gt;, &lt;em&gt;energy utility&lt;/em&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&quot;odd&quot;&gt;
-&lt;td class=&quot;views-field views-field-field-sesion-time-value active&quot;&gt;
-&lt;span class=&quot;date-display-single&quot;&gt;&lt;span class=&quot;date-display-start&quot;&gt;11:30 AM&lt;/span&gt; &lt;span class=&quot;date-display-separator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;date-display-end&quot;&gt;12:00 PM&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;
-&lt;td class=&quot;views-field views-field-title&quot;&gt;&lt;a href=&quot;http://cufp.org/conference/sessions/2011/model-based-testing-autosar-automotive-components&quot;&gt;
-Model based testing of AUTOSAR automotive components&lt;/a&gt;&lt;/td&gt;
-&lt;td class=&quot;views-field views-field-phpcode-1&quot;&gt;
-&lt;div class=&quot;view view-Speakers view-id-Speakers view-display-id-default view-dom-id-18&quot;&gt;
-&lt;div class=&quot;view-content&quot;&gt;
-&lt;div class=&quot;views-row views-row-1 views-row-odd views-row-first views-row-last&quot;&gt;
-&lt;div class=&quot;views-field-phpcode&quot;&gt;&lt;span class=&quot;field-content&quot;&gt;&lt;a href=&quot;http://cufp.org/users/thomas&quot;&gt;Dr. Thomas
-Arts&lt;/a&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;div class=&quot;views-field-tid&quot;&gt;&lt;span class=&quot;field-content&quot;&gt;&lt;em&gt;QuviQ&lt;/em&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&quot;even&quot;&gt;
-&lt;td class=&quot;views-field views-field-field-sesion-time-value active&quot;&gt;
-&lt;span class=&quot;date-display-single&quot;&gt;&lt;span class=&quot;date-display-start&quot;&gt;12:00 PM&lt;/span&gt; &lt;span class=&quot;date-display-separator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;date-display-end&quot;&gt;01:30 PM&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;
-&lt;td class=&quot;views-field views-field-title&quot;&gt;Lunch Break&lt;/td&gt;
-&lt;td class=&quot;views-field views-field-phpcode-1&quot;&gt;
-&lt;div class=&quot;view view-Speakers view-id-Speakers view-display-id-default view-dom-id-19&quot;&gt;
-&lt;div class=&quot;view-content&quot;&gt;
-&lt;div class=&quot;views-row views-row-1 views-row-odd views-row-first views-row-last&quot;&gt;
-&lt;div class=&quot;views-field-phpcode&quot;&gt;&lt;span class=&quot;field-content&quot;&gt;&lt;a href=&quot;http://anil.recoil.org/user/&quot;&gt;&lt;/a&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&quot;odd&quot;&gt;
-&lt;td class=&quot;views-field views-field-field-sesion-time-value active&quot;&gt;
-&lt;span class=&quot;date-display-single&quot;&gt;&lt;span class=&quot;date-display-start&quot;&gt;01:30 PM&lt;/span&gt; &lt;span class=&quot;date-display-separator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;date-display-end&quot;&gt;02:00 PM&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;
-&lt;td class=&quot;views-field views-field-title&quot;&gt;&lt;a href=&quot;http://cufp.org/conference/sessions/2011/html5-web-application-development-ocaml&quot;&gt;
-HTML5 web application development in OCaml&lt;/a&gt;&lt;/td&gt;
-&lt;td class=&quot;views-field views-field-phpcode-1&quot;&gt;
-&lt;div class=&quot;view view-Speakers view-id-Speakers view-display-id-default view-dom-id-20&quot;&gt;
-&lt;div class=&quot;view-content&quot;&gt;
-&lt;div class=&quot;views-row views-row-1 views-row-odd views-row-first views-row-last&quot;&gt;
-&lt;div class=&quot;views-field-phpcode&quot;&gt;&lt;span class=&quot;field-content&quot;&gt;&lt;a href=&quot;http://cufp.org/users/keigoi&quot;&gt;Mr. Keigo
-Imai&lt;/a&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;div class=&quot;views-field-tid&quot;&gt;&lt;span class=&quot;field-content&quot;&gt;&lt;em&gt;IT
-Planning, Inc.&lt;/em&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&quot;even&quot;&gt;
-&lt;td class=&quot;views-field views-field-field-sesion-time-value active&quot;&gt;
-&lt;span class=&quot;date-display-single&quot;&gt;&lt;span class=&quot;date-display-start&quot;&gt;02:00 PM&lt;/span&gt; &lt;span class=&quot;date-display-separator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;date-display-end&quot;&gt;02:30 PM&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;
-&lt;td class=&quot;views-field views-field-title&quot;&gt;&lt;a href=&quot;http://cufp.org/conference/sessions/2011/large-scale-internet-services-scala-twitter&quot;&gt;
-Large-scale Internet Services in Scala at Twitter&lt;/a&gt;&lt;/td&gt;
-&lt;td class=&quot;views-field views-field-phpcode-1&quot;&gt;
-&lt;div class=&quot;view view-Speakers view-id-Speakers view-display-id-default view-dom-id-21&quot;&gt;
-&lt;div class=&quot;view-content&quot;&gt;
-&lt;div class=&quot;views-row views-row-1 views-row-odd views-row-first&quot;&gt;
-&lt;div class=&quot;views-field-phpcode&quot;&gt;&lt;span class=&quot;field-content&quot;&gt;&lt;a href=&quot;http://cufp.org/users/wilhelm-bierbaum&quot;&gt;Wilhelm
-Bierbaum&lt;/a&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;div class=&quot;views-field-tid&quot;&gt;&lt;span class=&quot;field-content&quot;&gt;&lt;em&gt;Twitter&lt;/em&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;views-row views-row-2 views-row-even views-row-last&quot;&gt;
-&lt;div class=&quot;views-field-phpcode&quot;&gt;&lt;span class=&quot;field-content&quot;&gt;&lt;a href=&quot;http://cufp.org/users/stevejenson&quot;&gt;Steve
-Jenson&lt;/a&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;div class=&quot;views-field-tid&quot;&gt;&lt;span class=&quot;field-content&quot;&gt;&lt;em&gt;Twitter&lt;/em&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&quot;odd&quot;&gt;
-&lt;td class=&quot;views-field views-field-field-sesion-time-value active&quot;&gt;
-&lt;span class=&quot;date-display-single&quot;&gt;&lt;span class=&quot;date-display-start&quot;&gt;02:30 PM&lt;/span&gt; &lt;span class=&quot;date-display-separator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;date-display-end&quot;&gt;03:00 PM&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;
-&lt;td class=&quot;views-field views-field-title&quot;&gt;&lt;a href=&quot;http://cufp.org/conference/sessions/2011/applying-functional-programming-build-platform-ind&quot;&gt;
-Applying Functional Programming to Build Platform-Independent
-Mobile Applications&lt;/a&gt;&lt;/td&gt;
-&lt;td class=&quot;views-field views-field-phpcode-1&quot;&gt;
-&lt;div class=&quot;view view-Speakers view-id-Speakers view-display-id-default view-dom-id-22&quot;&gt;
-&lt;div class=&quot;view-content&quot;&gt;
-&lt;div class=&quot;views-row views-row-1 views-row-odd views-row-first views-row-last&quot;&gt;
-&lt;div class=&quot;views-field-phpcode&quot;&gt;&lt;span class=&quot;field-content&quot;&gt;&lt;a href=&quot;http://cufp.org/users/agranicz&quot;&gt;Adam
-Granicz&lt;/a&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;div class=&quot;views-field-tid&quot;&gt;&lt;span class=&quot;field-content&quot;&gt;&lt;em&gt;IntelliFactory&lt;/em&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&quot;even&quot;&gt;
-&lt;td class=&quot;views-field views-field-field-sesion-time-value active&quot;&gt;
-&lt;span class=&quot;date-display-single&quot;&gt;&lt;span class=&quot;date-display-start&quot;&gt;03:00 PM&lt;/span&gt; &lt;span class=&quot;date-display-separator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;date-display-end&quot;&gt;03:30 PM&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;
-&lt;td class=&quot;views-field views-field-title&quot;&gt;Tea Break&lt;/td&gt;
-&lt;td class=&quot;views-field views-field-phpcode-1&quot;&gt;
-&lt;div class=&quot;view view-Speakers view-id-Speakers view-display-id-default view-dom-id-23&quot;&gt;
-&lt;div class=&quot;view-content&quot;&gt;
-&lt;div class=&quot;views-row views-row-1 views-row-odd views-row-first views-row-last&quot;&gt;
-&lt;div class=&quot;views-field-phpcode&quot;&gt;&lt;span class=&quot;field-content&quot;&gt;&lt;a href=&quot;http://anil.recoil.org/user/&quot;&gt;&lt;/a&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&quot;odd&quot;&gt;
-&lt;td class=&quot;views-field views-field-field-sesion-time-value active&quot;&gt;
-&lt;span class=&quot;date-display-single&quot;&gt;&lt;span class=&quot;date-display-start&quot;&gt;03:30 PM&lt;/span&gt; &lt;span class=&quot;date-display-separator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;date-display-end&quot;&gt;04:00 PM&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;
-&lt;td class=&quot;views-field views-field-title&quot;&gt;&lt;a href=&quot;http://cufp.org/conference/sessions/2011/fourteen-days-haskell-real-time-programming-projec&quot;&gt;
-Fourteen Days of Haskell: A Real Time Programming Project in Real
-Time&lt;/a&gt;&lt;/td&gt;
-&lt;td class=&quot;views-field views-field-phpcode-1&quot;&gt;
-&lt;div class=&quot;view view-Speakers view-id-Speakers view-display-id-default view-dom-id-24&quot;&gt;
-&lt;div class=&quot;view-content&quot;&gt;
-&lt;div class=&quot;views-row views-row-1 views-row-odd views-row-first views-row-last&quot;&gt;
-&lt;div class=&quot;views-field-phpcode&quot;&gt;&lt;span class=&quot;field-content&quot;&gt;&lt;a href=&quot;http://cufp.org/users/gregorywright&quot;&gt;Gregory
-Wright&lt;/a&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;div class=&quot;views-field-tid&quot;&gt;&lt;span class=&quot;field-content&quot;&gt;&lt;em&gt;Alcatel-Lucent&lt;/em&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&quot;even&quot;&gt;
-&lt;td class=&quot;views-field views-field-field-sesion-time-value active&quot;&gt;
-&lt;span class=&quot;date-display-single&quot;&gt;&lt;span class=&quot;date-display-start&quot;&gt;04:00 PM&lt;/span&gt; &lt;span class=&quot;date-display-separator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;date-display-end&quot;&gt;04:30 PM&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;
-&lt;td class=&quot;views-field views-field-title&quot;&gt;&lt;a href=&quot;http://cufp.org/conference/sessions/2011/disco-using-erlang-implement-mapreduce-nokia&quot;&gt;
-Disco: using Erlang to implement Mapreduce, Nokia&lt;/a&gt;&lt;/td&gt;
-&lt;td class=&quot;views-field views-field-phpcode-1&quot;&gt;
-&lt;div class=&quot;view view-Speakers view-id-Speakers view-display-id-default view-dom-id-25&quot;&gt;
-&lt;div class=&quot;view-content&quot;&gt;
-&lt;div class=&quot;views-row views-row-1 views-row-odd views-row-first&quot;&gt;
-&lt;div class=&quot;views-field-phpcode&quot;&gt;&lt;span class=&quot;field-content&quot;&gt;&lt;a href=&quot;http://cufp.org/users/jaredflatow&quot;&gt;Jared
-Flatow&lt;/a&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;div class=&quot;views-field-tid&quot;&gt;&lt;span class=&quot;field-content&quot;&gt;&lt;em&gt;Erlang&lt;/em&gt;, &lt;em&gt;Nokia&lt;/em&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;views-row views-row-2 views-row-even&quot;&gt;
-&lt;div class=&quot;views-field-phpcode&quot;&gt;&lt;span class=&quot;field-content&quot;&gt;&lt;a href=&quot;http://cufp.org/users/prashanthmundkur&quot;&gt;Prashanth
-Mundkur&lt;/a&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;div class=&quot;views-field-tid&quot;&gt;&lt;span class=&quot;field-content&quot;&gt;&lt;em&gt;Erlang&lt;/em&gt;, &lt;em&gt;Nokia&lt;/em&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;views-row views-row-3 views-row-odd views-row-last&quot;&gt;
-&lt;div class=&quot;views-field-phpcode&quot;&gt;&lt;span class=&quot;field-content&quot;&gt;&lt;a href=&quot;http://cufp.org/users/tuulos&quot;&gt;Ville
-Tuulos&lt;/a&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;div class=&quot;views-field-tid&quot;&gt;&lt;span class=&quot;field-content&quot;&gt;&lt;em&gt;Nokia
-Research&lt;/em&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&quot;odd&quot;&gt;
-&lt;td class=&quot;views-field views-field-field-sesion-time-value active&quot;&gt;
-&lt;span class=&quot;date-display-single&quot;&gt;&lt;span class=&quot;date-display-start&quot;&gt;04:30 PM&lt;/span&gt; &lt;span class=&quot;date-display-separator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;date-display-end&quot;&gt;05:00 PM&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;
-&lt;td class=&quot;views-field views-field-title&quot;&gt;&lt;a href=&quot;http://cufp.org/conference/sessions/2011/functional-mzscheme-dsls-game-development&quot;&gt;
-Functional mzScheme DSLs in Game Development&lt;/a&gt;&lt;/td&gt;
-&lt;td class=&quot;views-field views-field-phpcode-1&quot;&gt;
-&lt;div class=&quot;view view-Speakers view-id-Speakers view-display-id-default view-dom-id-26&quot;&gt;
-&lt;div class=&quot;view-content&quot;&gt;
-&lt;div class=&quot;views-row views-row-1 views-row-odd views-row-first views-row-last&quot;&gt;
-&lt;div class=&quot;views-field-phpcode&quot;&gt;&lt;span class=&quot;field-content&quot;&gt;&lt;a href=&quot;http://cufp.org/users/danliebgold&quot;&gt;Dan
-Liebgold&lt;/a&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;div class=&quot;views-field-tid&quot;&gt;&lt;span class=&quot;field-content&quot;&gt;&lt;em&gt;Naughty Dog Inc.&lt;/em&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&quot;even views-row-last&quot;&gt;
-&lt;td class=&quot;views-field views-field-field-sesion-time-value active&quot;&gt;
-&lt;span class=&quot;date-display-single&quot;&gt;&lt;span class=&quot;date-display-start&quot;&gt;05:00 PM&lt;/span&gt; &lt;span class=&quot;date-display-separator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;date-display-end&quot;&gt;05:30 PM&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;
-&lt;td class=&quot;views-field views-field-title&quot;&gt;&lt;a href=&quot;http://cufp.org/conference/sessions/2011/ocaml-and-acunu-experience-report&quot;&gt;OCaml
-and Acunu Experience Report&lt;/a&gt;&lt;/td&gt;
-&lt;td class=&quot;views-field views-field-phpcode-1&quot;&gt;
-&lt;div class=&quot;view view-Speakers view-id-Speakers view-display-id-default view-dom-id-27&quot;&gt;
-&lt;div class=&quot;view-content&quot;&gt;
-&lt;div class=&quot;views-row views-row-1 views-row-odd views-row-first&quot;&gt;
-&lt;div class=&quot;views-field-phpcode&quot;&gt;&lt;span class=&quot;field-content&quot;&gt;&lt;a href=&quot;http://cufp.org/users/andrewbyde&quot;&gt;Andrew
-Byde&lt;/a&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;div class=&quot;views-field-tid&quot;&gt;&lt;span class=&quot;field-content&quot;&gt;&lt;em&gt;Acunu&lt;/em&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;views-row views-row-2 views-row-even views-row-last&quot;&gt;
-&lt;div class=&quot;views-field-phpcode&quot;&gt;&lt;span class=&quot;field-content&quot;&gt;&lt;a href=&quot;http://cufp.org/users/tomwilkie&quot;&gt;Tom
-Wilkie&lt;/a&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;div class=&quot;views-field-tid&quot;&gt;&lt;span class=&quot;field-content&quot;&gt;&lt;em&gt;Acunu&lt;/em&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;</description>
-	<pubDate>Mon, 08 Aug 2011 23:00:00 +0000</pubDate>
 </item>
 
 </channel>
