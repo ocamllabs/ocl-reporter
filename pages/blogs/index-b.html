@@ -45,6 +45,41 @@ div#content-primary p img, div#content-primary img.right { float: none; }
 <h4>Recent Posts</h4>
 <table width="90%">
   <tr>
+    <td><i>Mon, 09 Dec 2013</i></td>
+    <td><a href="#http://openmirage.org/blog/announcing-mirage10">Mirage 1.0: not just a hallucination!</a></td>
+    <td>MirageOS</td>
+  </tr>
+  <tr>
+    <td><i>Tue, 26 Nov 2013</i></td>
+    <td><a href="#http://amirchaudhry.com/switching-from-bootstrap-to-zurb-foundation">Switching from Bootstrap to Zurb Foundation</a></td>
+    <td>Amir Chaudhry</td>
+  </tr>
+  <tr>
+    <td><i>Wed, 20 Nov 2013</i></td>
+    <td><a href="#http://amirchaudhry.com/announcing-new-ocamlorg">Announcing the new OCaml.org</a></td>
+    <td>Amir Chaudhry</td>
+  </tr>
+  <tr>
+    <td><i>Wed, 06 Nov 2013</i></td>
+    <td><a href="#http://amirchaudhry.com/migration-plan-ocaml-org">Migration plan for the OCaml.org redesign</a></td>
+    <td>Amir Chaudhry</td>
+  </tr>
+  <tr>
+    <td><i>Wed, 30 Oct 2013</i></td>
+    <td><a href="#http://ocamllabs.github.com/compiler-hacking/2013/10/30/third-compiler-hacking-session">Third OCaml compiler hacking session</a></td>
+    <td>Compiler Hacking</td>
+  </tr>
+  <tr>
+    <td><i>Mon, 28 Oct 2013</i></td>
+    <td><a href="#http://amirchaudhry.com/fpdays-review">Review of the OCaml FPDays tutorial</a></td>
+    <td>Amir Chaudhry</td>
+  </tr>
+  <tr>
+    <td><i>Tue, 22 Oct 2013</i></td>
+    <td><a href="#http://amirchaudhry.com/fpdays-ocaml-session">FP Days OCaml Session</a></td>
+    <td>Amir Chaudhry</td>
+  </tr>
+  <tr>
     <td><i>Mon, 07 Oct 2013</i></td>
     <td><a href="#http://anil.recoil.org/2013/10/08/fpdays-real-world-ocaml">FPDays 2013 Real World OCaml tutorial in Cambridge</a></td>
     <td>Anil Madhavapeddy</td>
@@ -209,45 +244,678 @@ div#content-primary p img, div#content-primary img.right { float: none; }
     <td><a href="#http://anil.recoil.org/2013/06/17/real-world-ocaml-beta-available">Phew, Real World OCaml beta now available.</a></td>
     <td>Anil Madhavapeddy</td>
   </tr>
-  <tr>
-    <td><i>Sat, 01 Jun 2013</i></td>
-    <td><a href="#http://www.cl.cam.ac.uk/projects/ocamllabs/news/2013-06-01">Jun 2013 news update</a></td>
-    <td>Monthly News</td>
-  </tr>
-  <tr>
-    <td><i>Mon, 20 May 2013</i></td>
-    <td><a href="#http://openmirage.org/blog/the-road-to-a-dev-release">The road to a developer preview at OSCON 2013</a></td>
-    <td>MirageOS</td>
-  </tr>
-  <tr>
-    <td><i>Wed, 01 May 2013</i></td>
-    <td><a href="#http://www.cl.cam.ac.uk/projects/ocamllabs/news/2013-05-01">May 2013 news update</a></td>
-    <td>Monthly News</td>
-  </tr>
-  <tr>
-    <td><i>Mon, 01 Apr 2013</i></td>
-    <td><a href="#http://www.cl.cam.ac.uk/projects/ocamllabs/news/2013-04-01">Apr 2013 news update</a></td>
-    <td>Monthly News</td>
-  </tr>
-  <tr>
-    <td><i>Thu, 14 Mar 2013</i></td>
-    <td><a href="#http://amirchaudhry.com/wireframe-demos-for-ocamlorg">Wireframe demos for OCaml.org</a></td>
-    <td>Amir Chaudhry</td>
-  </tr>
-  <tr>
-    <td><i>Sun, 10 Mar 2013</i></td>
-    <td><a href="#http://lpw25.net/2013/03/10/ocaml-namespaces">Adding namespaces to OCaml</a></td>
-    <td>Leo White</td>
-  </tr>
-  <tr>
-    <td><i>Fri, 01 Mar 2013</i></td>
-    <td><a href="#http://www.cl.cam.ac.uk/projects/ocamllabs/news/2013-03-01">Mar 2013 news update</a></td>
-    <td>Monthly News</td>
-  </tr>
 </table>
 
 
 
+
+<div class="channelgroup">
+
+
+
+
+
+
+
+<!-- <h3><a href="http://openmirage.org/blog/" title="openmirage blog">MirageOS</a></h3> -->
+
+<div class="entrygroup" id="http://openmirage.org/blog/announcing-mirage10">
+<a name="http://openmirage.org/blog/announcing-mirage10"> </a>
+<h1 class="posttitle"><a href="http://openmirage.org/blog/announcing-mirage10">Mirage 1.0: not just a hallucination!</a>
+(<a href="http://openmirage.org/blog/" title="openmirage blog">MirageOS</a>)
+</h1>
+<hr/>
+<div class="entry">
+  <div class="content">
+<div>
+      <p><b>First</b>: read the <a href="http://openmirage.org/wiki/overview-of-mirage">overview</a> and <a href="http://openmirage.org/wiki/technical_background">technical background</a> behind the project.</p><p>When we started hacking on Mirage back in 2009, it started off looking like a conventional OS, except written in OCaml.   The <a href="https://github.com/mirage/mirage/tree/old-master">monolithic repository</a> contained all the libraries and boot code, and exposed a big <code>OS</code> module for applications to use. We used this to do several fun <a href="http://cufp.org/conference/sessions/2011/t3-building-functional-os">tutorials</a> at conferences such as ICFP/CUFP and get early feedback.</p><p>As development continued though, we started to understand what it is we were building: a <a href="http://anil.recoil.org/papers/2013-asplos-mirage.pdf">"library operating system"</a>.  As the number of libraries grew, putting everything into one repository just wasn't scaling, and it made it hard to work with third-party code.  We spent some time developing tools to make Mirage fit into the broader OCaml ecosystem.</p><p>Three key things have emerged from this effort:</p><ul> <li> <p><a href="https://opam.ocaml.org">OPAM</a>, a source-based package manager for OCaml. It supports multiple simultaneous compiler installations, flexible package constraints, and a Git-friendly development workflow.  Since releasing 1.0 in March 2013 and 1.1 in October, the community has leapt in to contribute over 1800 packages in this short time.  All of the Mirage libraries are now tracked using it, including the Xen libraries.</p> </li><li> <p>The build system for embedded programming (such as the Xen target) is a difficult one to get right.  After several experiments, Mirage provides a single <b></b><a href="https://github.com/mirage/mirage">command-line tool</a><b></b> that combines configuration directives (also written in OCaml) with OPAM to make building Xen unikernels as easy as Unix binaries.</p> </li><li> <p>All of the Mirage-compatible libraries satisfy a set of module type signatures in a <b></b><a href="https://github.com/mirage/mirage-types/blob/master/lib/v1.mli">single file</a><b></b>. This is where Mirage lives up to its name: we've gone from the early monolithic repository to a single, standalone interface file that describes the interfaces.  Of course, we also have libraries to go along with this signature, and they all live in the <a href="https://github.com/mirage">Mirage GitHub organization</a>.</p> </li> </ul><p>With these components, I'm excited to announce that Mirage 1.0 is finally ready to see the light of day!  Since it consists of so many libraries, we've decided not to have a "big bang" release where we dump fifty complex libraries on the open-source community.  Instead, we're going to spend the month of December writing a series of blog posts that explain how the core components work, leading up to several use cases:</p><ul> <li> <p>The development team have all decided to shift our personal homepages to be Mirage kernels running on Xen as a little Christmas present to ourselves, so we'll work through that step-by-step how to build a dedicated unikernel and maintain and deploy it (<b></b>spoiler:<b></b> see <a href="https://github.com/mirage/mirage-www-deployment">this repo</a>).  This will culminate in a webservice that our colleagues at <a href="http://horizon.ac.uk">Horizon</a> have been building using Android apps and an HTTP backend.</p> </li><li> <p>The <a href="http://xenserver.org">XenServer</a> crew at Citrix are using Mirage to build custom middlebox VMs such as block device caches.</p> </li><li> <p>For teaching purposes, the <a href="http://ocaml.io">Cambridge Computer Lab team</a> want a JavaScript backend, so we'll explain how to port Mirage to this target (which is rather different from either Unix or Xen, and serves to illustrate the portability of our approach).</p> </li> </ul><h3><a name="h3-Howtogetinvolved" class="anchor-toc"> How to get involved</a></h3><p>Bear with us while we update all the documentation and start the blog posts off today (the final libraries for the 1.0 release are all being merged into OPAM while I write this, and the usually excellent <a href="http://travis-ci.org">Travis</a> continuous integration system is down due to a <a href="https://github.com/travis-ci/travis-ci/issues/1727">bug</a> on their side).  I'll edit this post to contain links to the future posts as they happen.</p><p>Since we're now also a proud Xen and Linux Foundation incubator project, our mailing list is shifting to <a href="http://lists.xenproject.org/cgi-bin/mailman/listinfo/mirageos-devel">mirageos-devel@lists.xenproject.org</a>, and we very much welcome comments and feedback on our efforts over there. The <code>#mirage</code> channel on FreeNode IRC is also growing increasingly popular, as is simply reporting issues on the main <a href="http://github.com/mirage/mirage">Mirage GitHub</a> repository.</p><p>Several people have also commented that they want to learn OCaml properly to start using Mirage.  I've just co-published an O'Reilly book called <a href="https://realworldocaml.org">Real World OCaml</a> that's available for free online and also as hardcopy/ebook.  Our Cambridge colleague John Whittington has also written an excellent <a href="http://ocaml-book.com/">introductory text</a>, and you can generally find more resources <a href="http://ocaml.org/docs/">online</a>. Feel free to ask beginner OCaml questions on our mailing lists and we'll help as best we can!</p> 
+   </div>  </div>
+
+
+
+
+
+
+
+<p class="date">
+<a href="http://openmirage.org/blog/announcing-mirage10">by Anil Madhavapeddy (anil@recoil.org) at Mon, 09 Dec 2013</a>
+</p>
+  </div>
+</div>
+
+</div>
+
+<div class="channelgroup">
+
+
+
+
+
+
+
+<!-- <h3><a href="http://amirchaudhry.com" title="Amir Chaudhry - 'ocaml-labs'">Amir Chaudhry</a></h3> -->
+<img style="float:right; padding-left: 20px;" class="face" src="images/../../mugshots/amir.jpg" width="" height="50" alt="">
+
+<div class="entrygroup" id="http://amirchaudhry.com/switching-from-bootstrap-to-zurb-foundation">
+<a name="http://amirchaudhry.com/switching-from-bootstrap-to-zurb-foundation"> </a>
+<h1 class="posttitle"><a href="http://amirchaudhry.com/switching-from-bootstrap-to-zurb-foundation">Switching from Bootstrap to Zurb Foundation</a>
+(<a href="http://amirchaudhry.com" title="Amir Chaudhry - 'ocaml-labs'">Amir Chaudhry</a>)
+</h1>
+<hr/>
+<div class="entry">
+  <div class="content">
+<p>I've just updated my site's HTML/CSS and moved from Twitter Bootstrap to
+<a href="http://foundation.zurb.com/learn/features.html">Zurb Foundation</a>.  This post captures my subjective notes on the
+migration.</p>
+
+<h4>My use of Bootstrap</h4>
+
+<p>When I originally set this site up, I didn't know what frameworks existed or
+anything more than the basics of dealing with HTML (and barely any CSS).  I
+came across Twitter Bootstrap and immediately decided it would Solve All My
+Problems.  It really did.  Since then, I've gone through one 'upgrade' with
+Bootstrap (from 1.x to 2.x), after which I dutifully ignored all the fixes
+and improvements (note that Bootstrap was up to v2.3.2 while I was still
+using v2.0.2).</p>
+
+<p><img src="http://amirchaudhry.com/images/switch-to-foundation/responsive-design.png" alt="Responsive Design" /></p>
+
+<p>For the most part, this was fine with me but for a while now, I've been
+meaning to make this site 'responsive' (read: not look like crap from a
+mobile).  Bootstrap v3 purports to be mobile-first so upgrading would likely
+give me what I'm after but v3 is <a href="http://getbootstrap.com/getting-started/">not backwards compatible</a>,
+meaning I'd have to rewrite parts of the HTML.  Since this step was
+unavoidable, it led me to have another look at front-end frameworks, just to
+see if I was missing anything.  This was especially relevant since we'd
+<a href="http://amirchaudhry.com/announcing-new-ocamlorg/">just released</a> the new <a href="http://ocaml.org">OCaml.org</a>
+website, itself built with Bootstrap v2.3.1 (we'd done the design/templating
+work long before v3 was released).  It would be useful to know what else is
+out there for any future work.</p>
+
+<p>Around this time I discovered Zurb Foundation and also the numerous
+comparisons between them (note: Foundation seems to come out ahead in most
+of those).  A few days ago, the folks at Zurb released
+<a href="http://zurb.com/article/1280/foundation-5-blasts-off--2">version 5</a>, so I decided that now is the time to kick the
+tires.  For the last few days, I've been playing with the framework and in
+the end I decided to migrate my site over completely.</p>
+
+<p><a href="http://foundation.zurb.com/learn/features.html"><img src="http://amirchaudhry.com/images/switch-to-foundation/zurb-yeti.png" alt="Foundation's Yeti" /></a></p>
+
+<h4>Swapping out one framework for another</h4>
+
+<p>Over time, I've become moderately experienced with HTML/CSS and I can
+usually wrangle things to look the way I want, but my solutions aren't
+necessarily elegant. I was initially concerned that I'd already munged
+things so much that changing anything would be a pain.  When I first put the
+styles for this site together, I had to spend quite a bit of time
+overwriting Bootstrap's defaults so I was prepared for the same when using
+Foundation.  Turns out that I was fine.  I currently use <a href="http://jekyllrb.com">Jekyll</a> (and
+<a href="http://jekyllbootstrap.com">Jekyll Bootstrap</a>) so I only had three template files and a couple of
+HTML pages to edit and because I'd kept most of my custom CSS in a separate
+file, it was literally a case of swapping out one framework for another and
+bug-fixing from there onwards.  There's definitely a lesson here in using
+automation as much as possible.</p>
+
+<p>Customising the styles was another area of concern but I was pleasantly
+surprised to find I needed <em>less</em> customisation than with Bootstrap.  This
+is likely because I didn't have to override as many defaults (and probably
+because I've learned more about CSS since then).  The one thing I seemed to
+be missing was a way to deal with code sections, so I just took what
+Bootstrap had and copied it in.  At some point I should revisit this.</p>
+
+<p>It did take me a while to get my head around Foundation's grid but it was
+worth it in the end.  The idea is that you should design for small screens
+first and then adjust things for larger screens as necessary. There are
+several different default sizes which inherit their properties from the size
+below, unless you explicitly override them.  I initially screwed this up by
+explicitly defining the grid using the <code>small-#</code> classes, which obviously
+looks ridiculous on small screens.  I fixed it by swapping out <code>small-#</code> for
+<code>medium-#</code> everywhere in the HTML, after which everything looked reasonable.
+Items flowed sensibly into a default column for the small screens and looked
+acceptable for larger screens and perfectly fine on desktops.  I could do
+more styling of the mobile view but I'd already achieved most of what I was
+after.</p>
+
+<h4>Fixing image galleries and embedded content</h4>
+
+<p>The only additional thing I used from Bootstrap was the <a href="http://getbootstrap.com/javascript/#carousel">Carousel</a>. I'd
+written some custom helper scripts that would take some images and
+thumbnails from a specified folder and produce clickable thumbnails with a
+slider underneath.  Foundation provides <a href="http://foundation.zurb.com/docs/components/orbit.html">Orbit</a>, so I had to spend time
+rewriting my script to produce the necessary HTML.  This actually resulted
+in cleaner HTML and one of the features I wanted (the ability to link to a
+specific image) was available by default in Orbit.  At this point I also
+tried to make the output look better for the case where JavaScript is
+disabled (in essence, each image is just displayed as a list).  Below is an
+example of an image gallery, taken from a previous post, when I
+<a href="http://amirchaudhry.com/joined-the-computer-lab/">joined the computer lab</a>.</p>
+
+<div class="gallery">
+  <small><em>Note: The gallery needs JavaScript but I've tried to make it degrade gracefully. -Amir</em></small>
+  <ul class="inline-list">
+    
+      <li><a><img src="http://amirchaudhry.com/images/join-comp-lab/join-comp-lab-thumb-1.png" alt="join-comp-lab-thumb-1" /></a></li>
+    
+      <li><a><img src="http://amirchaudhry.com/images/join-comp-lab/join-comp-lab-thumb-2.png" alt="join-comp-lab-thumb-2" /></a></li>
+    
+      <li><a><img src="http://amirchaudhry.com/images/join-comp-lab/join-comp-lab-thumb-3.png" alt="join-comp-lab-thumb-3" /></a></li>
+    
+  </ul>
+  <ul>
+    
+    <li class="gallery-image"><img src="http://amirchaudhry.com/images/join-comp-lab/join-comp-lab-1.jpg" alt="join-comp-lab-1" /></li>
+    
+    <li class="gallery-image"><img src="http://amirchaudhry.com/images/join-comp-lab/join-comp-lab-2.jpg" alt="join-comp-lab-2" /></li>
+    
+    <li class="gallery-image"><img src="http://amirchaudhry.com/images/join-comp-lab/join-comp-lab-3.jpg" alt="join-comp-lab-3" /></li>
+    
+  </ul>
+</div>
+
+
+<p>Foundation also provides a component called <a href="http://foundation.zurb.com/docs/components/flex_video.html">Flex Video</a>, which allows the
+browser to scale videos to the appropriate size.  This fix was as simple as
+going back through old posts and wrapping anything that was <code>&lt;iframe&gt;</code> in a
+<code>&lt;div class="flex-video"&gt;</code>.  It really was that simple and all the Vimeo and
+YouTube items scaled perfectly.  Here's an example of a video from an
+earlier post, where I gave a <a href="http://amirchaudhry.com/wireframe-demos-for-ocamlorg/">walkthrough of the ocaml.org site</a>.
+Try changing the width of your browser window to see it scale.</p>
+
+<div class="flex-video widescreen vimeo">
+  Video demo
+</div>
+
+
+<h4>Framework differences</h4>
+
+<p>Another of the main difference between the two frameworks is that Bootstrap
+uses <a href="http://lesscss.org">LESS</a> to manage its CSS whereas Foundation uses <a href="http://sass-lang.com">SASS</a>.  Frankly,
+I've no experience with either of them so it makes little difference to me.
+It's worth bearing in mind for anyone who's workflow does involve
+pre-processing.  Also, Bootstrap is available under the
+<a href="http://getbootstrap.com/getting-started/#license-faqs">Apache 2 License</a>, while Foundation is released under
+the <a href="http://foundation.zurb.com/learn/faq.html#question-3">MIT license</a>.</p>
+
+<h4>Summary</h4>
+
+<p>Overall, the transition was pretty painless and most of the time was spent
+getting familiar with the grid, hunting for docs/examples and trying to make
+the image gallery work the way I wanted.  I do think Bootstrap's docs are
+better but Foundation's aren't bad.</p>
+
+<p>Although this isn't meant to be a comparison, I much prefer Foundation to
+Bootstrap.  If you're not sure which to use then I think the secret is in
+the names of the frameworks.</p>
+
+<ul>
+<li>Bootstrap (for me) was a <em>great</em> way to '<em>bootstrap</em>' a site quickly with
+lots of acceptable defaults -- it was quick to get started but took some
+work to alter.</li>
+<li>Foundation seems to provide a great '<em>foundation</em>' on which to create more
+customised sites -- it's more flexible but needs more upfront thought.</li>
+</ul>
+
+
+<p>That's pretty much how I'd recommend them to people now.</p>  </div>
+
+
+
+
+
+
+
+<p class="date">
+<a href="http://amirchaudhry.com/switching-from-bootstrap-to-zurb-foundation">by Amir Chaudhry at Tue, 26 Nov 2013</a>
+</p>
+  </div>
+</div>
+
+</div>
+
+<div class="channelgroup">
+
+
+
+
+
+
+
+<!-- <h3><a href="http://amirchaudhry.com" title="Amir Chaudhry - 'ocaml-labs'">Amir Chaudhry</a></h3> -->
+<img style="float:right; padding-left: 20px;" class="face" src="images/../../mugshots/amir.jpg" width="" height="50" alt="">
+
+<div class="entrygroup" id="http://amirchaudhry.com/announcing-new-ocamlorg">
+<a name="http://amirchaudhry.com/announcing-new-ocamlorg"> </a>
+<h1 class="posttitle"><a href="http://amirchaudhry.com/announcing-new-ocamlorg">Announcing the new OCaml.org</a>
+(<a href="http://amirchaudhry.com" title="Amir Chaudhry - 'ocaml-labs'">Amir Chaudhry</a>)
+</h1>
+<hr/>
+<div class="entry">
+  <div class="content">
+<p>As some of you may have noticed, the new OCaml.org site is now live!</p>
+
+<p>The DNS may still be propagating so if <a href="http://ocaml.org">http://ocaml.org</a> hasn't updated for you then try http://166.78.252.20.  This post is in two parts: the first is the announcement and the second is a call for content.</p>
+
+<h3>New OCaml.org website design!</h3>
+
+<p>The new site represents a major milestone in the continuing growth of the OCaml ecosystem. It's the culmination of a lot of volunteer work over the last several months and I'd specifically like to thank <a href="https://github.com/Chris00">Christophe</a>, <a href="http://ashishagarwal.org">Ashish</a> and <a href="http://philippewang.info/CL/">Philippe</a> for their dedication (the <a href="https://github.com/ocaml/ocaml.org/commits/master">commit logs</a> speak volumes).</p>
+
+<p><a href="http://amirchaudhry.com/wireframe-demos-for-ocamlorg/"><img src="http://amirchaudhry.com/images/ann-new-ocamlorg/ocaml-home-wire.png" alt="OCaml.org Wireframes" /></a></p>
+
+<p>We began this journey just over 8 months ago with paper, pencils and a lot of ideas. This led to a comprehensive set of <a href="http://amirchaudhry.com/wireframe-demos-for-ocamlorg/">wireframes and walk-throughs</a> of the site, which then developed into a collection of <a href="https://github.com/ocaml/ocaml.org/wiki/Site-Redesign">Photoshop mockups</a>. In turn, these formed the basis for the html templates and style sheets, which we've adapted to fit our needs across the site.</p>
+
+<p>Alongside the design process, we also considered the kind of structure and <a href="http://lists.ocaml.org/pipermail/infrastructure/2013-July/000211.html">workflow we aspired to</a>, both as maintainers and contributors.  This led us to develop completely new tools for <a href="http://pw374.github.io/posts/2013-09-05-22-31-26-about-omd.html">Markdown</a> and <a href="http://pw374.github.io/posts/2013-10-03-20-35-12-using-mpp-two-different-ways.html">templating</a> in OCaml, which are now available in OPAM for the benefit all.</p>
+
+<p>Working on all these things in parallel definitely had it challenges (which I'll write about separately) but the result has been worth the effort.</p>
+
+<p><a href="http://ocaml.org"><img src="http://amirchaudhry.com/images/ann-new-ocamlorg/ocaml-home-mockup.png" alt="OCaml.org" /></a></p>
+
+<p>The journey is ongoing and we still have many more improvements we hope to make. The site you see today primarily improves upon the design, structure and workflows but in time, we also intend to incorporate more information on packages and documentation. With the new tooling, moving the website forward will become much easier and I hope that more members of the community become involved in the generation and curation of content.  This brings me to the second part of this post.</p>
+
+<h3>Call for content</h3>
+
+<p>We have lots of great content on the website but there are parts that could do with a refresh and gaps that could be filled.  As a community driven site, we need ongoing contributions to ensure that the site best reflects its members.</p>
+
+<p>For example, if you do commercial work on OCaml then maybe you'd like to add yourself to the <a href="http://ocaml.org/community/support.html">support page</a>? Perhaps there are tutorials you can help to complete, like <a href="http://ocaml.org/learn/tutorials/99problems.html">99 problems</a>?  If you're not sure where to begin, there are already a number of <a href="https://github.com/ocaml/ocaml.org/issues?labels=content">content issues</a> you could contribute to.</p>
+
+<p>Although we've gone through a bug-hunt already, feedback on the site is still very welcome.  You can either <a href="https://github.com/ocaml/ocaml.org/issues">create an issue</a> on the tracker (preferred), or email the infrastructure list.</p>
+
+<p>It's fantastic how far we've come and I look forward to the next phase!</p>  </div>
+
+
+
+
+
+
+
+<p class="date">
+<a href="http://amirchaudhry.com/announcing-new-ocamlorg">by Amir Chaudhry at Wed, 20 Nov 2013</a>
+</p>
+  </div>
+</div>
+
+</div>
+
+<div class="channelgroup">
+
+
+
+
+
+
+
+<!-- <h3><a href="http://amirchaudhry.com" title="Amir Chaudhry - 'ocaml-labs'">Amir Chaudhry</a></h3> -->
+<img style="float:right; padding-left: 20px;" class="face" src="images/../../mugshots/amir.jpg" width="" height="50" alt="">
+
+<div class="entrygroup" id="http://amirchaudhry.com/migration-plan-ocaml-org">
+<a name="http://amirchaudhry.com/migration-plan-ocaml-org"> </a>
+<h1 class="posttitle"><a href="http://amirchaudhry.com/migration-plan-ocaml-org">Migration plan for the OCaml.org redesign</a>
+(<a href="http://amirchaudhry.com" title="Amir Chaudhry - 'ocaml-labs'">Amir Chaudhry</a>)
+</h1>
+<hr/>
+<div class="entry">
+  <div class="content">
+<p>We're close to releasing the new design of ocaml.org but need help from the
+OCaml community to identify and fix bugs before we switch next week.</p>
+
+<p>Ashish, Christophe, Philippe and I have been discussing how we should go
+about this and below is the plan for migration.  If anyone would like to
+discuss any of this, then the <a href="http://lists.ocaml.org/listinfo/infrastructure">infrastructure list</a> is the best
+place to do so.</p>
+
+<ol>
+<li><p>We've made a <strong><a href="https://github.com/ocaml/ocaml.org/tree/redesign">new branch</a></strong> on the main ocaml.org repository with
+the redesign.  This branch is a fork of the master and we've simply cleaned
+up and replayed our git commits there.</p></li>
+<li><p>We've built a live version of the new site, which is visible at
+<strong><a href="http://preview.ocaml.org">http://preview.ocaml.org</a></strong> - this is rebuilt every few minutes
+from the branch mentioned above.</p></li>
+<li><p>Over the course of one week, we ask the community to review the new site
+and <strong><a href="https://github.com/ocaml/ocaml.org/issues">report any bugs or problems</a></strong> on the issue tracker. We <em>triage</em>
+those bugs to identify any blockers and work on those first.  This is the
+phase we'll be in from <em>today</em>.</p></li>
+<li><p>After one week (7 days), and after blocking bugs have been fixed, we
+<strong>merge the redesign branch</strong> into the master branch.  This would
+effectively present the new site to the world.</p></li>
+</ol>
+
+
+<p>During the above, we would not be able to accept any new pull requests on
+the master branch but would be happy to accept them on the new, redesign
+branch.  Hence, restricting the time frame to one week.</p>
+
+<p>Please note that the above is only intended to merge the <em>design</em> and
+<em>toolchain</em> for the new site.  Specifically, we've created new landing
+pages, have new style sheets and have restructured the site's contents as
+well as made some new libraries (<a href="http://pw374.github.io/posts/2013-09-05-22-31-26-about-omd.html">OMD</a> and <a href="http://pw374.github.io/posts/2013-10-03-20-39-07-OPAMaging-MPP.html">MPP</a>). The new toolchain
+means people can write files in markdown, which makes contributing content a
+lot easier.</p>
+
+<p>Since the files are on GitHub, people don't even need to clone the site
+locally to make simple edits (or even add new pages). Just click the 'Edit
+this page' link in the footer to be taken to the right file in the
+repository and GitHub's editing and pull request features will allow you to
+make changes and submit updates, all from within your browser (see the
+<a href="https://help.github.com/articles/creating-and-editing-files-in-your-repository">GitHub Article</a> for details).</p>
+
+<p>There is still work to be done on adding new features but the above changes
+are already a great improvement to the site and are ready to be reviewed by
+the OCaml community and merged.</p>  </div>
+
+
+
+
+
+
+
+<p class="date">
+<a href="http://amirchaudhry.com/migration-plan-ocaml-org">by Amir Chaudhry at Wed, 06 Nov 2013</a>
+</p>
+  </div>
+</div>
+
+</div>
+
+<div class="channelgroup">
+
+
+
+
+
+
+
+<!-- <h3><a href="http://ocamllabs.github.com/compiler-hacking/" title="OCaml Labs compiler hacking">Compiler Hacking</a></h3> -->
+<img style="float:right; padding-left: 20px;" class="face" src="images/../../images/hax0ring.jpg" width="70" height="" alt="">
+
+<div class="entrygroup" id="http://ocamllabs.github.com/compiler-hacking/2013/10/30/third-compiler-hacking-session" lang="en-us">
+<a name="http://ocamllabs.github.com/compiler-hacking/2013/10/30/third-compiler-hacking-session"> </a>
+<h1 class="posttitle"><a href="http://ocamllabs.github.com/compiler-hacking/2013/10/30/third-compiler-hacking-session.html">Third OCaml compiler hacking session</a>
+(<a href="http://ocamllabs.github.com/compiler-hacking/" title="OCaml Labs compiler hacking">Compiler Hacking</a>)
+</h1>
+<hr/>
+<div class="entry">
+  <div class="content">
+<p>It's time for the third Cambridge OCaml compiler-hacking session!  This time we're going to be back in the <a href="http://www.cl.cam.ac.uk/">Computer Lab</a>, where the first session was held.</p>
+
+<p>If you're planning to come along, it'd be helpful if you could <a href="http://doodle.com/czzp7ik4r72npz6p"><strong>indicate interest via Doodle</strong></a> and <a href="http://lists.ocaml.org/listinfo/cam-compiler-hacking"><strong>sign up to the mailing list</strong></a> to receive updates:</p>
+
+<p><strong>Where</strong>: Room <a href="http://www.cl.cam.ac.uk/research/dtg/openroommap/static/?s=FW11&labels=1">FW11</a>, <a href="http://www.cl.cam.ac.uk/directions/">Computer Laboratory, Madingley Road</a></p>
+
+<p><strong>When</strong>: 6pm, Wednesday 6th November</p>
+
+<p><strong>Who</strong>: anyone interested in improving OCaml.  Knowledge of OCaml programming will obviously be helpful, but prior experience of working on OCaml internals isn't necessary.</p>
+
+<p><strong>What</strong>: fixing bugs, implementing new features, learning about OCaml internals</p>
+
+<p><strong>Wiki</strong>: <a href="https://github.com/ocamllabs/compiler-hacking/wiki">https://github.com/ocamllabs/compiler-hacking/wiki</a></p>
+
+<p>We're defining &quot;compiler&quot; pretty broadly, to include anything that's part of the standard distribution, which means at least the <a href="http://caml.inria.fr/pub/docs/manual-ocaml-4.01/libref/index.html">standard library</a>, <a href="http://caml.inria.fr/pub/docs/manual-ocaml-4.00/manual024.html">runtime</a>, tools (<a href="http://caml.inria.fr/pub/docs/manual-ocaml-4.01/depend.html">ocamldep</a>, <a href="http://caml.inria.fr/pub/docs/manual-ocaml-4.00/manual026.html#toc105">ocamllex</a>, <a href="http://caml.inria.fr/pub/docs/manual-ocaml-4.00/manual026.html#toc107">ocamlyacc</a>, etc.), <a href="http://caml.inria.fr/pub/docs/manual-camlp4/manual002.html">camlp4</a>, <a href="http://caml.inria.fr/pub/docs/manual-ocaml-4.00/manual032.html">ocamlbuild</a>, the <a href="http://caml.inria.fr/resources/doc/index.en.html">documentation</a>, and the compiler itself.  We'll have suggestions for <a href="https://github.com/ocamllabs/compiler-hacking/wiki/Things-to-work-on">mini-projects</a> for various levels of experience, but feel free to come along and work on whatever you fancy.</p>
+
+<p>We'll also be ordering pizza, so if you want to be counted for food you should aim to arrive by 6.30pm.</p>  </div>
+
+
+
+
+
+
+
+<p class="date">
+<a href="http://ocamllabs.github.com/compiler-hacking/2013/10/30/third-compiler-hacking-session.html">by cl-ocamllabs@lists.cam.ac.uk (OCaml Labs) at Wed, 30 Oct 2013</a>
+</p>
+  </div>
+</div>
+
+</div>
+
+<div class="channelgroup">
+
+
+
+
+
+
+
+<!-- <h3><a href="http://amirchaudhry.com" title="Amir Chaudhry - 'ocaml-labs'">Amir Chaudhry</a></h3> -->
+<img style="float:right; padding-left: 20px;" class="face" src="images/../../mugshots/amir.jpg" width="" height="50" alt="">
+
+<div class="entrygroup" id="http://amirchaudhry.com/fpdays-review">
+<a name="http://amirchaudhry.com/fpdays-review"> </a>
+<h1 class="posttitle"><a href="http://amirchaudhry.com/fpdays-review">Review of the OCaml FPDays tutorial</a>
+(<a href="http://amirchaudhry.com" title="Amir Chaudhry - 'ocaml-labs'">Amir Chaudhry</a>)
+</h1>
+<hr/>
+<div class="entry">
+  <div class="content">
+<p><a href="http://fpdays.net/2013/sessions/index.php?session=24"><img src="http://amirchaudhry.com/images/web/fpdays-logo.png" /></a>
+Last Thursday a bunch of us from the OCaml Labs team gave an OCaml tutorial
+at the <a href="http://fpdays.net/2013/sessions/index.php?session=24">FPDays</a> conference (an event for people interested in Functional
+Programming).  <a href="https://github.com/yallop">Jeremy</a> and I led the session with <a href="http://www.lpw25.net">Leo</a>, <a href="https://github.com/dsheets">David</a> and
+<a href="http://philippewang.info/CL/">Philippe</a> helping everyone progress and dealing with questions.</p>
+
+<p><img src="http://amirchaudhry.com/images/fpdays2013/fpdays2013-01.jpg" />
+It turned out to be by far the <em>most popular session</em> at the conference with
+over 20 people all wanting to get to grips with OCaml!  An excellent turnout
+and a great indicator of the interest that's out there, especially when you
+offer a hands-on session to people.  This shouldn't be a surprise as we've
+had good attendance for the general <a href="http://www.meetup.com/Cambridge-NonDysFunctional-Programmers/">OCaml meetups</a> I've run
+and also the <a href="http://ocamllabs.github.io/compiler-hacking/2013/09/17/compiler-hacking-july-2013.html">compiler hacking sessions</a>, which Jeremy and
+Leo have been building up (do sign up if you're interested in either of
+those!).  We had a nice surprise for attendees, which were
+<a href="http://en.wikipedia.org/wiki/Galley_proof">uncorrected proof</a> copies of Real World OCaml and luckily, we had just
+enough to go around.</p>
+
+<p>For the tutorial itself, Jeremy put together a nice sequence of exercises
+and a <a href="https://github.com/ocamllabs/fpdays-skeleton">skeleton repo</a> (with helpful comments in the code) so that people
+could dive in quickly.  The event was set up to be really informal and the
+rough plan was as following:</p>
+
+<ol>
+<li><p><em>Installation/Intro</em> - We checked that people had been able to follow the
+<a href="http://amirchaudhry.com/fpdays-ocaml-session/">installation instructions</a>, which we'd sent them in advance.
+We also handed out copies of the book and made sure folks were comfortable
+with <a href="http://opam.ocaml.org">OPAM</a>.</p></li>
+<li><p><em>Hello world</em> - A light intro to get people familiar with the OCaml
+syntax and installing packages with OPAM. This would also help people to get
+familiar with the toolchain, workflow and compilation.</p></li>
+<li><p><em>Monty Hall browser game</em> - Using <a href="http://ocsigen.org/js_of_ocaml/"><code>js_of_ocaml</code></a>, we wanted
+people to create and run the <a href="http://en.wikipedia.org/wiki/Monty_Hall_problem">Monty Hall problem</a> in their
+browser.  This would give people a taste of some real world interaction by
+having to deal with the DOM and interfaces.  If folks did well, they could
+add code to keep logs of the game results.</p></li>
+<li><p><em>Client-server game</em> - The previous game was all in the browser (so could
+be examined by players) so here the task was to split it into a client and
+server, ensuring the two stay in sync.  This would demonstrate the
+re-usability of the OCaml code already written and give people a feel for
+client server interactions. If people wanted to do more, they could use
+<a href="http://opam.ocaml.org/pkg/ctypes/0.1.1/">ctypes</a> and get better random numbers.</p></li>
+</ol>
+
+
+<p>We did manage to stick to the overall scheme as above and we think this is a
+great base from which to improve future tutorials.  It has the really nice
+benefit of having visual, interactive elements and the ability to run things
+both in the browser as well as on the server is a great way to show the
+versatility of OCaml.  <code>js_of_ocaml</code> is quite a mature tool and so it's
+no surprise that it's also used by companies such as Facebook (see the recent
+<a href="http://www.youtube.com/watch?v=gKWNjFagR9k">CUFP talk by Julien Verlaguet</a> - skip to <a href="http://www.youtube.com/watch?feature=player_detailpage&v=gKWNjFagR9k#t=1149">19:00</a>).</p>
+
+<p>We learned a lot from running this session so we've captured the good, the
+bad and the ugly below.  This is useful for anyone who'd like to run an
+OCaml tutorial in the future and also for us to be aware of the next
+time we do this.  I've incorporated the feedback from the attendees as well
+as our own thoughts.</p>
+
+<p><img src="http://amirchaudhry.com/images/fpdays2013/fpdays2013-03.jpg" alt="Heads down and hands on" /></p>
+
+<h3>Things we learnt</h3>
+
+<h4>The Good</h4>
+
+<ul>
+<li><p>Most people really did follow the install instructions beforehand. This
+made things so much easier on the day as we didn't have to worry about
+compile times and people getting bored.  A few people had even got in touch
+with me the night before to sort out installation problems.</p></li>
+<li><p>Many folks from OCaml Labs also came over to help people, which meant
+no-one was waiting longer than around 10 seconds before getting help.</p></li>
+<li><p>We had a good plan of the things we wanted to cover but we were happy to
+be flexible and made it clear the aim was to get right into it.  Several
+folks told us that they really appreciated this loose (as opposed to rigid)
+structure.</p></li>
+<li><p>We didn't spend any time lecturing the room but instead got people right
+into the code.  Having enough of a skeleton to get something interesting
+working was a big plus in this regard. People did progress from the early
+examples to the later ones fairly well.</p></li>
+<li><p>We had a VM with the correct set up that we could log people into if they
+were having trouble locally.  Two people made use of this.</p></li>
+<li><p>Of course, It was great to have early proofs of the book and these were
+well-received.</p></li>
+</ul>
+
+
+<p><img src="http://amirchaudhry.com/images/fpdays2013/fpdays2013-02.jpg" alt="RWO books galore!" /></p>
+
+<h4>The Bad</h4>
+
+<ul>
+<li><p>In our excitement to get right into the exercises, we didn't really give
+an overview of OCaml and its benefits.  A few minutes at the beginning would
+be enough and it's important so that people can leave with a few sound-bites.</p></li>
+<li><p>Not everyone received my email about installation, and certainly not the
+late arrivals.  This meant some pain getting things downloaded and running
+especially due to the wifi (see 'Ugly' below).</p></li>
+<li><p>A few of the people who <em>had</em> installed, didn't complete the instructions
+fully but didn't realise this until the morning of the session.  There was a good
+suggestion about having some kind of test to run that would check
+everything, so you'd know if there was something missing.</p></li>
+<li><p>We really should have had a cut-off where we told people to use VMs
+instead of fixing installation issues and 10-15 minutes would have been
+enough.  This would have been especially useful for the late-comers.</p></li>
+<li><p>We didn't really keep a record of the problems folks were having so we
+can't now go back and fix underlying issues.  To be fair, this would have
+been a little awkward to do ad-hoc but in hindsight, it's a good thing to
+plan for.</p></li>
+</ul>
+
+
+<h4>The Ugly</h4>
+
+<ul>
+<li>The only ugly part was the wifi.  It turned out that the room itself was a
+bit of a dead-spot and that wasn't helped by 30ish devices trying to connect
+to one access point!  Having everyone grab packages at the same time in the
+morning probably didn't help.  It was especially tricky as all our
+mitigation plans seemed to revolve around at least having local connectivity.
+In any case, this problem only lasted for the morning session and was a
+little better by the afternoon.  I'd definitely recommend a backup plan in
+the case of complete wifi failure next time!  One such plan that Leo got
+started on was to put the repository and other information onto a flash
+drive that could be shared with people.  We didn't need this in the end but
+it'll be useful to have something like this prepared for next time.  If
+anyone fancies donating a bunch of flash drives, I'll happily receive them!</li>
+</ul>
+
+
+<p>Overall, it was a great session and everyone left happy, having completed
+most of the tutorial (and with a book!).  A few even continued at home
+afterwards and <a href="https://twitter.com/richardclegg/status/393458073052139520">got in touch</a> to let us know that they got
+everything working.
+It was a great session and thanks to <a href="https://twitter.com/MarkDalgarno">Mark</a>, <a href="https://twitter.com/JacquiDDavidson">Jacqui</a> and the rest of
+the FPDays crew for a great conference!</p>
+
+<p><img src="http://amirchaudhry.com/images/fpdays2013/fpdays2013-04.jpg" alt="RWO Book giveaway" /></p>
+
+<p>(Thanks to Jeremy, Leo, David and Philippe for contributions to this post)</p>  </div>
+
+
+
+
+
+
+
+<p class="date">
+<a href="http://amirchaudhry.com/fpdays-review">by Amir Chaudhry at Mon, 28 Oct 2013</a>
+</p>
+  </div>
+</div>
+
+</div>
+
+<div class="channelgroup">
+
+
+
+
+
+
+
+<!-- <h3><a href="http://amirchaudhry.com" title="Amir Chaudhry - 'ocaml-labs'">Amir Chaudhry</a></h3> -->
+<img style="float:right; padding-left: 20px;" class="face" src="images/../../mugshots/amir.jpg" width="" height="50" alt="">
+
+<div class="entrygroup" id="http://amirchaudhry.com/fpdays-ocaml-session">
+<a name="http://amirchaudhry.com/fpdays-ocaml-session"> </a>
+<h1 class="posttitle"><a href="http://amirchaudhry.com/fpdays-ocaml-session">FP Days OCaml Session</a>
+(<a href="http://amirchaudhry.com" title="Amir Chaudhry - 'ocaml-labs'">Amir Chaudhry</a>)
+</h1>
+<hr/>
+<div class="entry">
+  <div class="content">
+<p>On Thursday, along with <a href="https://github.com/yallop">Jeremy</a> and
+<a href="http://www.lpw25.net">Leo</a>, I'll be running an OCaml Hands-on Session at
+the <a href="http://fpdays.net/2013/">FPDays conference</a>. Below are some prep
+instructions for attendees.</p>
+
+<h3>Preparation for the session</h3>
+
+<p>If you're starting from scratch, installation can take some time so it's
+best to get as much done in advance as possible.  You'll need OPAM (the
+package manager), OCaml 4.01 (available through OPAM) and a few libraries
+before Thursday.  If you have any issues, please contact Amir.</p>
+
+<ul>
+<li><p><strong>OPAM</strong>: Follow the instructions for your platform at <a href="http://opam.ocaml.org/doc/Quick_Install.html">http://opam.ocaml.org/doc/Quick_Install.html</a>.
+OPAM requires OCaml so hopefully the relevant dependencies will kick in and
+you'll get OCaml too (most likely version 3.12).  You can get a cup of
+coffee while you wait. After installation, run <code>opam init</code> to initialise OPAM.</p></li>
+<li><p><strong>OCaml 4.01</strong>: We actually need the latest version of OCaml but OPAM
+makes this easy.  Just run the following (and get more coffee):</p></li>
+</ul>
+
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>opam update
+<span class="nv">$ </span>opam switch 4.01.0
+<span class="nv">$ </span><span class="nb">eval</span> <span class="sb">`</span>opam config env<span class="sb">`</span>
+</code></pre></div>
+
+
+<ul>
+<li><strong>Libraries</strong>: For the workshop you will need to check that you have the
+following installed: <code>libffi</code>, <code>pcre</code> and <code>pkg-config</code>.  This will depend on
+your platform so on a Mac with homebrew I would do
+<code>brew install libffi pcre pkg-config</code> or on Debian or Ubuntu
+<code>apt-get install libffi-dev</code>.  After this, two OCaml packages it's worth
+installing in advance are <code>core</code> and <code>js_of_ocaml</code> so simply run:</li>
+</ul>
+
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>opam install core js_of_ocaml
+</code></pre></div>
+
+
+<p>OPAM will take care of the dependencies and the rest we can get on the day!</p>  </div>
+
+
+
+
+
+
+
+<p class="date">
+<a href="http://amirchaudhry.com/fpdays-ocaml-session">by Amir Chaudhry at Tue, 22 Oct 2013</a>
+</p>
+  </div>
+</div>
+
+</div>
 
 <div class="channelgroup">
 
@@ -464,7 +1132,7 @@ the day, and  it's best if it comes directly  from the sun. Apparently
 (although I'm not  a hundred percent sure) it's  actually important to
 be exposed to (very) bright light at least 30 minutes a day.</p>
 <p>So, instead of using a very expensive 
-<a href="https://www.google.com/search?SAD+light">S.A.D.  light</a> 
+<a href="https://www.google.com/search?q=SAD+light">S.A.D.  light</a> 
 to prevent potential
 <a href="http://en.wikipedia.org/wiki/Seasonal_affective_disorder">seasonal affective disorder</a>,
 well, I'm using very bright state-of-the-art LEDs to light up my home. :-)</p>
@@ -489,7 +1157,11 @@ are  stuck  together using  aluminium  tape,  which  has good  thermal
 conductivity, reflects light not too badly and is not too expensive.</p>
 <p><a href="http://pw374.github.io/img/4-COB-LEDs-off.jpg"><img src="http://pw374.github.io/img/4-COB-LEDs-off-640.jpg" alt="4-COB-LEDs-off-640.jpg" /></a></p>
 <p><a href="http://pw374.github.io/img/4-COB-LEDs-off-unplugged.jpg"><img src="http://pw374.github.io/img/4-COB-LEDs-off-unplugged-640.jpg" alt="4-COB-LEDs-off-unplugged-640.jpg" /></a></p>
-<p><a href="http://pw374.github.io/img/4-COB-LEDs-off2.jpg"><img src="http://pw374.github.io/img/4-COB-LEDs-off2-640.jpg" alt="4-COB-LEDs-off2-640.jpg" /></a></p>  </div>
+<p><a href="http://pw374.github.io/img/4-COB-LEDs-off2.jpg"><img src="http://pw374.github.io/img/4-COB-LEDs-off2-640.jpg" alt="4-COB-LEDs-off2-640.jpg" /></a></p>
+<h6 id="IfyoudowantLEDsbutdon39twanttosolderanything"> If you do want LEDs but don't want to solder anything</h6>
+<p>Well, you may find a lot of websites on
+<a href="https://www.google.com/search?q=COB+LED">Google</a> selling LEDs, you may also try
+<a href="http://kosilum.com/">this one</a>, which belongs to a friend of mine.</p>  </div>
 
 
 
@@ -2038,18 +2710,30 @@ and that saves so much time!</p>
 <hr/>
 <div class="entry">
   <div class="content">
-<p>There is a work-in-progress site at <a href="http://ocaml-redesign.github.io">ocaml-redesign.github.io</a>, where we&#8217;ve been developing both the tools and design for the new ocaml.org pages. This allows us to test our tools and fix issues before we consider merging changes upstream.</p>
+<p>There is a work-in-progress site at
+<a href="http://ocaml-redesign.github.io">ocaml-redesign.github.io</a>, where we've
+been developing both the tools and design for the new ocaml.org pages.  This
+allows us to test our tools and fix issues before we consider merging
+changes upstream.</p>
 
-<p>There is a more detailed post coming about all the design work to date and the workflow we&#8217;re using, but in the meantime, feedback on the following areas would be most welcome. Please leave feedback in the form of issues on the <a href="https://github.com/ocamllabs/sandbox-ocaml.org/issues">ocaml.org sandbox repo</a>. You can also raise points on the <a href="http://lists.ocaml.org/listinfo/infrastructure">infrastructure mailing list</a>.</p>
+<p>There is a more detailed post coming about all the design work to date and
+the workflow we're using, but in the meantime, feedback on the following
+areas would be most welcome.  Please leave feedback in the form of issues on
+the <a href="https://github.com/ocamllabs/sandbox-ocaml.org/issues">ocaml.org sandbox repo</a>.  You can also raise points on the
+<a href="http://lists.ocaml.org/listinfo/infrastructure">infrastructure mailing list</a>.</p>
 
 <ol>
-<li>
-<p><strong>OCaml Logo</strong> - There was some feedback on the last iteration of the logo, especially regarding the font, so there are now several options to consider. Please look at the images on the <a href="https://github.com/ocaml/ocaml.org/wiki/Draft-OCaml-Logos">ocaml.org GitHub wiki</a> and then leave your feedback on <a href="https://github.com/ocamllabs/sandbox-ocaml.org/issues/16">issue #16 on the sandbox repo</a>.</p>
-</li>
-
-<li>
-<p><strong>Site design</strong> - Please do give feedback on the design and any glitches you notice. Text on each of the new landing pages is still an initial draft so comments and improvements there are also welcome (specifically: Home Page, Learn, Documentation, Platform, Community). There are already a few <a href="https://github.com/ocamllabs/sandbox-ocaml.org/issues">known issues</a>, so do add your comments to those threads first.</p>
-</li>
+<li><p><strong>OCaml Logo</strong> - There was some feedback on the last iteration of the
+logo, especially regarding the font, so there are now several options to
+consider.  Please look at the images on the
+<a href="https://github.com/ocaml/ocaml.org/wiki/Draft-OCaml-Logos">ocaml.org GitHub wiki</a> and then leave your feedback on
+<a href="https://github.com/ocamllabs/sandbox-ocaml.org/issues/16">issue #16 on the sandbox repo</a>.</p></li>
+<li><p><strong>Site design</strong> - Please do give feedback on the design and any glitches
+you notice. Text on each of the new landing pages is still an initial draft
+so comments and improvements there are also welcome (specifically: Home
+Page, Learn, Documentation, Platform, Community). There are already a few
+<a href="https://github.com/ocamllabs/sandbox-ocaml.org/issues">known issues</a>, so do
+add your comments to those threads first.</p></li>
 </ol>  </div>
 
 
@@ -4179,1355 +4863,9 @@ $ <span>eval</span> <span>`</span>opam config <span>env</span><span>`</span></pr
 
 </div>
 
-<div class="channelgroup">
-
-
-
-
-
-
-
-<!-- <h3><a href="http://www.cl.cam.ac.uk/projects/ocamllabs//news/" title="OCaml Labs News">Monthly News</a></h3> -->
-
-<div class="entrygroup" id="http://www.cl.cam.ac.uk/projects/ocamllabs/news/2013-06-01">
-<a name="http://www.cl.cam.ac.uk/projects/ocamllabs/news/2013-06-01"> </a>
-<h1 class="posttitle"><a href="http://www.cl.cam.ac.uk/projects/ocamllabs/news/index.html#Jun%202013">Jun 2013 news update</a>
-(<a href="http://www.cl.cam.ac.uk/projects/ocamllabs//news/" title="OCaml Labs News">Monthly News</a>)
-</h1>
-<hr/>
-<div class="entry">
-  <div class="content">
-<div>
-      <p><a href="http://www.cl.cam.ac.uk/projects/ocamllabs/images/rwo-celebration.jpg"><img src="http://www.cl.cam.ac.uk/projects/ocamllabs/images/rwo-celebration-thumb.jpg" class="left" /></a>
-The rain continues to plummet down relentlessly as "summer" starts in OCaml
-Labs. The most exciting news has been the public release of the <a href="https://realworldocaml.org">Real World
-OCaml</a>, which hit the front page of the usual news
-aggregators and generated huge interest!  This (reminiscent of the Xen 1.0
-release) promptly took down servers for a couple of hours, but we managed to
-minimise downtime in time for the Californians waking up.</p>
-<p>O'Reilly has also started selling PDF copies of the book under their <a href="http://shop.oreilly.com/product/0636920024743.do">Rough
-Cuts</a> program.  This gives you
-a copy of the final book when it's released too.  Commenting is still open
-on the <a href="http://realworldocaml.org">online version</a>, so please do feel free to
-participate there if you have time.</p>
-<h3 id="SystemsProjects"> Systems Projects</h3>
-<p><b>Mirage</b>: Anil and Dave did the last of the sweeping build changes to make
-Mirage friendlier to use for beginners.  Previously, we required a custom OPAM
-switch to build kernels, but now we use <a href="http://www.openmirage.org/wiki/weekly-2013-06-11">virtual
-packages</a> to separate the
-choice of compiler and packages.  This of course breaks all our documentation,
-but we're going to do a big sweep in July before
-<a href="http://www.oscon.com/oscon2013/public/schedule/speaker/109140">OSCON</a> with the
-new scheme.  Vincent has also been burning through the core platform libraries,
-cleaning them up and adding documentation strings.  He is also building a
-shared memory <a href="http://github.com/vbmithr/ocaml-vchan">vchan</a> driver that will
-make parallel-Mirage unikernels very easy to coordinate on the same host.</p>
-<p>The huge news from our friends at Citrix is the open-sourcing of
-<a href="http://www.xenserver.org">XenServer</a>, which is the popular Citrix product that
-embeds the <a href="https://github.com/xapi-project">OCaml XAPI</a> cloud management
-stack.  There are almost 100 major components
-<a href="http://github.com/xenserver">released</a> as part of this, several of which can
-be directly reused with Mirage.  Mirage was always an ambitious project, but
-it's all coming together now thanks to bold moves such as this from Citrix!</p>
-<p><b>Signpost:</b> We woke up to the excellent but slightly scary news that
-our <a href="https://www.usenix.org/conference/foci13">USENIX FOCI</a> paper was accepted.
-This now means that we get to present it in August at USENIX Security, but
-the team is now racing to pull together the prototypes into a complete system
-before the conference.  Nothing like a deadline to focus the mind!  We're
-also working on the camera-ready version of the paper, which we will share
-here when it's ready.</p>
-<h3 id="PlatformProjects"> Platform Projects</h3>
-<p><b>OCamlot:</b> David Sheets did an astounding job at pulling together a
-working continuous build system in a very short amount of time, and promptly
-managed to melt some of the older <a href="http://www.cl.cam.ac.uk/projects/ocamllabs/tasks/platform.html#Machine%20Pool">non-x86
-machines</a> in Anil's office.  Once Anil
-sadly replaced them, the builder churned through a matrix of different compiler
-versions (4.0,4.1dev,4.2dev), architectures (x86, x86_64, ARM, PowerPC), and
-operating systems (Debian, Ubuntu, FreeBSD, OpenBSD to start with).  There's
-a <a href="https://ocaml-www3.ocamllabs.cl.cam.ac.uk/github/OCamlPro/opam-repository">development URL</a>, but
-the next step is to retire this and move it to a proper home at <a href="http://ocaml.org">ocaml.org</a>.</p>
-<p>Having continuous build for OPAM is really, really useful though, as it lets us
-vet pull requests on several architectures before merging them. It also let
-Anil repair OCaml on <a href="https://github.com/avsm/ocaml/commit/c1da5f35cda0ee85e576197b88f503333ed9e9a1">OpenBSD/macppc</a>
-too, which is possibly the most obscure fix he's done in a while.</p>
-<p>The next steps with OCamlot are to take a shot at porting the core to
-<a href="http://github.com/janestreet/jenga">Jenga</a>, which is Jane Street's next-generation
-distributed build system.  This should let us improve the fault-tolerance and
-logging aspects of it before putting it properly into production later in the summer.</p>
-<p><b>Ctypes:</b> The May <a href="http://github.com/ocamllabs/ocaml-ctypes">release</a>
-brought with it a good chunk of feedback, so Jeremy spent time incorporating
-that and contributing to the Real World OCaml ctypes chapter.  He also added
-support for garbage-collecting closures passed to C, and also very cool support
-for <a href="https://github.com/ocamllabs/ocaml-ctypes/pull/27">printing C types and values</a>.
-Our friends at Citrix have started looking at ctypes, and Rob Hoes has already
-used it to write <a href="https://github.com/robhoes/ocaml-libnl">bindings</a> to the
-Netlink Protocol Library Suite.</p>
-<p><a href="http://www.cl.cam.ac.uk/projects/ocamllabs/images/daniel-presentation-vg.jpg"><img src="http://www.cl.cam.ac.uk/projects/ocamllabs/images/daniel-presentation-vg-thumb.jpg" class="right" /></a>
-<b>OPAM-doc</b>: Vincent Botbol got the documentation generator stable enough
-to pass the Core library through.  This is particularly challenging since Core
-exercises pretty much every trick in the book when it comes to the use of the
-module system.  However, Vincent successfully demonstrated the workflow of
-OPAM-doc at the end-of-month meeting, and is aiming to have a public release
-via OPAM in July (hopefully in time for the next beta release of Real World OCaml,
-which uses Core heavily).</p>
-<p><b>Visualisation libraries:</b> <a href="http://erratique.ch/contact.en">Daniel Bünzli</a> has
-been spending a few months based in Citrix, working on a foundational new
-declarative drawing library written in pure OCaml.  The <a href="http://erratique.ch/software/vg">Vg</a> is already quite functional despite
-still being in beta, and features a <a href="http://erratique.ch/software/vg/demos/rhtmlc.html#arrowhead">Javascript backend</a>
-that renders to both SVG and Canvas in HTML5.  That's not all though!  He's
-also developing the <a href="http://erratique.ch/software/vz">Vz</a> visualization library
-that uses Vg to assemble more complex scenes and graphs.  Daniel's going to
-join us in OCaml Labs for the remainder of the summer, so we're looking
-forward to developing this more and using it on our various Platform projects
-such as OCamlot.</p>
-<h3 id="Outreach"> Outreach</h3>
-<p><b>Real World OCaml:</b> As mentioned earlier, the beta release of RWO went
-splendidly, with a pleasing vibe that the book is what people expected.  There
-were some interesting criticisms of the choice of Github authentication, but
-we've had over 6000 registered commentators despite this (and of course, we
-have plans <a href="http://nymote.org">brewing</a> to tackle the identity problem).</p>
-<p>No beta release is perfect, of course, and our now-public commenting system has
-resulted in <a href="https://github.com/ocamllabs/rwo-comments/issues">over 1500</a>
-issues being raised.  Well, that's all of Yaron, Anil and Jason's free time
-gone for some time!</p>
-<p><a href="http://www.cl.cam.ac.uk/projects/ocamllabs/images/amir-shisha.jpg"><img src="http://www.cl.cam.ac.uk/projects/ocamllabs/images/amir-shisha-thumb.jpg" class="right" /></a>
-<b>OCaml.org</b>: We're in the process of looking at the site as a whole and
-designing the workflow we'd like to have for growing and maintaining it.  Some
-discussions have taken place about using Markdown in place of the current HTML
-snippets, which would make it easier for external contributors to get involved.
-In the meantime, Amir has converted the current site to Markdown format to see
-how this process would work in practice.  You can see his experimenting and
-scripts in the <a href="https://github.com/ocamllabs/ocaml.org-temp">temporary repo</a> in
-the <code>markdown-site/</code> folder.
-Philippe also showed off <a href="https://github.com/pw374/MPP-language-blender">MPP</a>
-at the internal meetings, and is stabilising it for a public release this
-summer (once it has been integrated into the ocaml.org workflow).</p>
-<p>This month also had a number of programming language gurus show up at the Lab
-for the <em>Algebraic Effects and Handlers</em> workshop organised by <a href="http://www.cl.cam.ac.uk/~ss368/">Sam
-Staton</a>.  Most of the group attended this, as
-we're all interested in how to encode effects for several of our projects (most
-notably <a href="http://www.cl.cam.ac.uk/projects/ocamllabs/tasks/t2.html#Irminsule">Irminsule</a>).</p>
-<p>We also enjoyed a visit by <a href="https://github.com/bvaugon">Benoît Vaugon</a>, who gave a talk on his
-<a href="http://oud.ocaml.org/2012/slides/oud2012-paper10-slides.pdf">OCamlCC</a>
-OCaml-to-C compiler, and also participated in a talk on
-<a href="http://www.algo-prog.info/ocaml_for_pic/web/index.php?id=ocapic">OCAPIC</a>. He
-also chatted with us about his alternative <a href="http://caml.inria.fr/mantis/view.php?id=6017">GADT-based implementation of
-Printf</a>, which promises to both
-speed up and simplify the printer support in OCaml (and also relieve Mirage of
-another dependency on <code>libc</code>).<br /></p>
-<p><i>Link roundup:</i></p>
-<ul>
- <li><a href="http://blog.xen.org/index.php/2013/06/25/xenserver-org-and-the-xen-project/" class="icon-community">XenServer open-sourced!</a> <em>(Jun 25th)</em>
- </li>
- <li><a href="http://realworldocaml.org" class="icon-quick-links">Real World OCaml public beta now available.</a> <em>(Jun 17th)</em>
- </li>
-</ul>
-
-   </div>  </div>
-
-
-
-
-
-
-
-<p class="date">
-<a href="http://www.cl.cam.ac.uk/projects/ocamllabs/news/index.html#Jun%202013">by Anil Madhavapeddy (anil@recoil.org) at Sat, 01 Jun 2013</a>
-</p>
-  </div>
-</div>
-
-</div>
-
-<div class="channelgroup">
-
-
-
-
-
-
-
-<!-- <h3><a href="http://openmirage.org/blog/" title="openmirage blog">MirageOS</a></h3> -->
-
-<div class="entrygroup" id="http://openmirage.org/blog/the-road-to-a-dev-release">
-<a name="http://openmirage.org/blog/the-road-to-a-dev-release"> </a>
-<h1 class="posttitle"><a href="http://openmirage.org/blog/the-road-to-a-dev-release">The road to a developer preview at OSCON 2013</a>
-(<a href="http://openmirage.org/blog/" title="openmirage blog">MirageOS</a>)
-</h1>
-<hr/>
-<div class="entry">
-  <div class="content">
-<div>
-      <p>There's been a crazy stream of activity since the start of the year, but the most important news is that we have a release target for an integrated developer preview of the Mirage stack: a talk at <a href="http://www.oscon.com/oscon2013/public/schedule/detail/28956">O'Reilly OSCon</a> in July!  Do turn up there and find <a href="http://dave.recoil.org">Dave Scott</a> and <a href="http://anil.recoil.org">Anil Madhavapeddy</a> showing off interactive demonstrations.</p><p>Meanwhile, another significant announcement has been that Xen is <a href="http://www.linuxfoundation.org/news-media/announcements/2013/04/xen-become-linux-foundation-collaborative-project">joining the Linux Foundation</a> as a collaborative project.  This is great news for Mirage: as a library operating system, we can operate just as easily under other hypervisors, and even on bare-metal devices such as the <a href="http://raspberrypi.org">Raspberry Pi</a>.  We're very much looking forward to getting the Xen-based developer release done, and interacting with the wider Linux community (and FreeBSD, for that matter, thanks to Gabor Pali's <a href="https://github.com/pgj/mirage-kfreebsd">kFreeBSD</a> backend).</p><p>Here's some other significant news from the past few months:</p><ul> <li> <p><a href="http://www.ocamlpro.com/blog/2013/03/14/opam-1.0.0.html">OPAM 1.0 was released</a>, giving Mirage a solid package manager for handling the many libraries required to glue an application together.  <a href="https://github.com/vbmithr">Vincent Bernardoff</a> joined the team at Citrix and has been building a Mirage build-frontend called <a href="https://github.com/mirage/mirari">Mirari</a> to hide much of the system complexity from a user who isn't too familiar with either Xen or OCaml.</p> </li><li> <p>A new group called the <a href="http://ocaml.io">OCaml Labs</a> has started up in the <a href="http://www.cl.cam.ac.uk">Cambridge Computer Laboratory</a>, and is working on improving the OCaml toolchain and platform.  This gives Mirage a big boost, as we can re-use several of the documentation, build and test improvements in our own releases.  You can read up on the group's activities via the <a href="http://ocaml.io/news">monthly updates</a>, or browse through the various <a href="http://ocaml.io/tasks">projects</a>.  One of the more important projects is the <a href="http://www.cl.cam.ac.uk/projects/ocamllabs/tasks/platform.html#OCamlot">OCamlot</a> continuous build infrastructure, which will also be testing Mirage kernels as one of the supported backends.</p> </li><li> <p>As we head into release mode, we've started <a href="http://openmirage.org/wiki/tag/overview/meetings">weekly meetings</a> to coordinate all the activities.  We're keeping notes as we go along, so you should be able to skim the notes and <a href="https://lists.cam.ac.uk/pipermail/cl-mirage/">mailing list archives</a> to get a feel for the overall activities.  Anil is maintaining a <a href="http://openmirage.org/wiki/dev-preview-checklist">release checklist</a> for the summer developer preview.</p> </li><li> <p>Anil (along with Yaron Minsky and Jason Hickey) is finishing up an O'Reilly book on <a href="http://realworldocaml.org">Real World OCaml</a>, which will be a useful guide to using OCaml for systems and network programming. If you'd like to review an early copy, please get in touch.  The final book is anticipated to be released towards the end of the year, with a <a href="http://shop.oreilly.com/category/roughcuts.do">Rough Cut</a> at the end of the summer.</p> </li><li> <p>The core system was described in an <a href="http://anil.recoil.org/papers/2013-asplos-mirage.pdf">ASPLOS 2013</a> paper, which should help you understand the background behind library operating systems. Some of the Mirage libraries are also currently being integrated into the next-generation <a href="http://blogs.citrix.com/2012/05/17/introducing-windsor-a-new-xen-based-virtualization-architecture/">Windsor</a> release of the Xen Cloud Platform, which means that several of the libraries will be used in production and hence move beyond research-quality code.</p> </li> </ul><p>In the next few months, the installation notes and getting started guides will all be revamped to match the reality of the new tooling, so expect some flux there.   If you want to take an early try of Mirage beforehand, don't forget to hop on the <code>#mirage</code> IRC channel on Freenode and ping us with questions directly.  We will also be migrating some of the project infrastructure to be fully self-hosted on Mirage and Xen, and placing some of the services onto the new <a href="http://xenproject.org">xenproject.org</a> infrastructure.</p> 
-   </div>  </div>
-
-
-
-
-
-
-
-<p class="date">
-<a href="http://openmirage.org/blog/the-road-to-a-dev-release">by Anil Madhavapeddy (anil@recoil.org) at Mon, 20 May 2013</a>
-</p>
-  </div>
-</div>
-
-</div>
-
-<div class="channelgroup">
-
-
-
-
-
-
-
-<!-- <h3><a href="http://www.cl.cam.ac.uk/projects/ocamllabs//news/" title="OCaml Labs News">Monthly News</a></h3> -->
-
-<div class="entrygroup" id="http://www.cl.cam.ac.uk/projects/ocamllabs/news/2013-05-01">
-<a name="http://www.cl.cam.ac.uk/projects/ocamllabs/news/2013-05-01"> </a>
-<h1 class="posttitle"><a href="http://www.cl.cam.ac.uk/projects/ocamllabs/news/index.html#May%202013">May 2013 news update</a>
-(<a href="http://www.cl.cam.ac.uk/projects/ocamllabs//news/" title="OCaml Labs News">Monthly News</a>)
-</h1>
-<hr/>
-<div class="entry">
-  <div class="content">
-<div>
-      <p><a href="http://www.cl.cam.ac.uk/projects/ocamllabs/images/thomas-nycoug-2013.jpg"><img src="http://www.cl.cam.ac.uk/projects/ocamllabs/images/thomas-nycoug-2013-thumb.jpg" class="left" /></a>
-May is exam time in Cambridge, and the corridors of the OCaml Labs resounded
-with the wailing of frantic students finishing their dissertations and
-preparing for exams.  We welcomed <a href="https://github.com/vincent-botbol">Vincent Botbol</a> to join us for a summer internship,
-and he started hacking on the new <a href="http://www.cl.cam.ac.uk/projects/ocamllabs/tasks/platform.html#OPAM%20Doc">opam-doc</a>
-right away.</p>
-<p>Anil, Thomas, Leo and Amir also visited <a href="http://janestreet.com">Jane
-Street</a> HQ in New York City, where we had a productive
-couple of days reviewing our projects and getting feedback from them about
-approaches to multicore and type system enhancements. <a href="http://ashishagarwal.org">Ashish
-Agarwal</a> also organised a fun evening with the <a href="http://www.meetup.com/NYC-OCaml/events/117222022/">New
-York OCaml Users Group</a>,
-where Anil and Thomas presented our plans for the nascent OCaml Platform.</p>
-<h3 id="SystemsProjects"> Systems Projects</h3>
-<p><b>Mirage:</b> This was a month of consolidation and bugfixing in Mirage.  We've
-been settling into weekly meetings to coordinate the hacking between us and
-Citrix, and the minutes (<a href="http://www.openmirage.org/wiki/weekly-2013-05-14">1</a>
-<a href="http://www.openmirage.org/wiki/weekly-2013-05-21">2</a>
-<a href="http://www.openmirage.org/wiki/weekly-2013-05-28">3</a>) may be useful if you
-want to catch up.  The biggest bugbear is always the build system, and we've
-been exploring the use of <a href="http://github.com/janestreet/jenga">Jenga</a> as the
-eventual async-aware coordination and build system for running Mirage kernels.
-Dave made great progress with a
-<a href="http://github.com/djs55/message-switch">message-switch</a> that coordinates
-multiple kernels, and Balraj fixed several performance regressions in the
-TCP/IP stack by building unit tests that spawn millions of parallel TCP
-connections.</p>
-<p><b>Signpost:</b> We took a break from building prototypes to submit a paper on the
-basic design to the USENIX Free and Open Communications (<a href="https://www.usenix.org/conference/foci13">FOCI
-2013</a>) workshop.  Haris and Heidi
-blazed a path on writing this paper, and we've got even more ideas rolling
-around about how to use DNSSEC to break the cloud deadlock.  The
-<a href="http://github.com/mirage/ocaml-dns">ocaml-dns</a> continues to grow features too.</p>
-<h3 id="PlatformProjects"> Platform Projects</h3>
-<p><a href="http://www.cl.cam.ac.uk/projects/ocamllabs/images/nycoug-drinkup-2013.jpg"><img src="http://www.cl.cam.ac.uk/projects/ocamllabs/images/nycoug-drinkup-2013-thumb.jpg" class="right" /></a>
-<b>Ctypes:</b> Jeremy
-<a href="https://sympa.inria.fr/sympa/arc/caml-list/2013-06/msg00046.html">announced</a>
-the first release of a new foreign-function mechanism for OCaml that doesn't
-require you to write any C stubs at all!  You can browse the <a href="https://github.com/ocamllabs/ocaml-ctypes">source
-code</a> and
-<a href="https://github.com/ocamllabs/ocaml-ctypes/wiki/ctypes-tutorial">tutorial</a>, and
-install it via OPAM.  This is very much the first 0.1 release, and we have
-exciting future developments to turn this into a full-fledged replacement for
-the fast-but-rather-difficult-to-use-right OCaml FFI.</p>
-<p><b>OPAM-doc:</b> Vincent Botbol started building on Leo's work on the new
-<a href="http://github.com/vincent-botbol/opam-doc">opam-doc</a> tool. This is intended to
-replace the venerable <code>ocamldoc</code> with one that uses all the latest features of
-the compiler.  In particular, it can use the new typed AST <code>cmt</code> output to
-avoid duplicating the compiler functionality, and can also build up a global
-package table to generate complete cross-references across an entire OPAM 
-collection.</p>
-<p><b>OCamlot:</b> David has been building up the libraries and tools needed for
-the <a href="http://www.cl.cam.ac.uk/projects/ocamllabs/tasks/platform.html#OCamlot%200.2.0">continuous build</a> infrastructure.
-This includes much-improved
-<a href="http://github.com/avsm/ocaml-github">ocaml-github</a>, bindings, which are now
-being used to power the <a href="https://realworldocaml.org">Real World OCaml</a> site as
-well as well as OCamlot.  In addition, he's got an interesting collection of
-regular expressions to automatically triage common failures from OPAM
-(such as missing external dependencies), that should help reduce the manual
-burden of getting thousands of tests results dumped on the small OPAM team.</p>
-<h3 id="CompilerProjects"> Compiler Projects</h3>
-<p><a href="http://www.cl.cam.ac.uk/projects/ocamllabs/images/janestreet-hq-2013.jpg"><img src="http://www.cl.cam.ac.uk/projects/ocamllabs/images/janestreet-hq-2013-thumb.jpg" class="left" /></a>
-<b>OCaml-Java</b>: Xavier Clerc has been hacking away at his next-generation
-OCaml-Java backend (using many new features in JDK7). He's released a
-<a href="http://ocamljava.x9c.fr/preview/concurrency.html">preview</a> of the bindings to
-Java concurrency, and is looking for feedback on it.</p>
-<p><b>Performance profiling</b>: Mark Shinwell has been hacking on improving the
-integration of the runtime with <code>perf</code>.  This should give us the hooks to
-reliably track where memory was allocated.  His branch isn't going to land in
-OCaml 4.1, but should be available as an OPAM switch for people to easily
-try out when it's more stable.</p>
-<h3 id="Outreach"> Outreach</h3>
-<p><b>OCaml.org:</b> Philippe and Amir have been putting their heads together with
-Christophe and Ashish to turn the <a href="http://ocaml.org">ocaml.org</a> build pipeline
-into something a little more structured.  Philippe is building a <a href="https://github.com/pw374/MPP-language-blender">template
-processor</a> for this purpose.
-The OCaml site is a more complicated than the average site due to our desire to
-embed <a href="http://ocsigen.org/js_of_ocaml">js_of_ocaml</a> interactive toplevels
-throughout the tutorials, and also to have active OPAM integration throughout
-the site to make it easier for newcomers to sample the language.</p>
-<p>The design of a handful of pages are also now available to preview, if you
-don't mind some manual git cloning. The best way to do this is to clone the
-<a href="https://github.com/ocamllabs/ocaml.org-temp">temporary repo</a> onto your local
-machine and look in the <code>new-design/_site</code> directory.  There are examples of
-the home page, 100 lines of OCaml page and several others.  Since we're just
-getting started with applying these changes the site isn't clicky (yet).  For
-some extra fun, try resizing your browser window and see how the pages reflow
-to suit smaller (mobile) screens!</p>
-<p><a href="http://www.cl.cam.ac.uk/projects/ocamllabs/images/nyc-trip-balcony-view-2013.jpg"><img src="http://www.cl.cam.ac.uk/projects/ocamllabs/images/nyc-trip-balcony-view-2013-thumb.jpg" class="right" /></a>
-<b>Real World OCaml:</b> Anil, Yaron and Jason continue to work hard on getting
-a release out of the door.  We shipped a final alpha6 this month that is 
-chapter-complete, and have been preparing for a big public June release of
-the book.  Thousands of comments have been received and closed already,
-making this an unusually active (but incredibly useful) ongoing review
-process.  Leo and Jeremy also contributed portions of text for the Objects
-and FFI chapters in alpha6, and join Stephen Weeks as external contributors
-to the book.</p>
-<p>Meanwhile, Leo himself has recovered from the elation of being granted his PhD,
-to the harsh reality of having to finish corrections.  He has been forced by
-his colleagues to stop hacking on OCaml and submit his final thesis.  Rumours
-are that he will reemerge in June after delivering his <a href="http://staticanalysis.org/SAS13/papers.html">SAS
-2013</a> talk on using an
-implication-algebra generalisation of logic programming to concisely analyse
-OpenMP programs for parallisation opportunities.</p>
-<p>This month's talk was courtesy of <a href="http://www.lip6.fr/actualite/personnes-fiche.php?ident=D1161&LANG=en">Mathias Bourgoin</a>,
-who visited from France and gave a talk on his PhD work on GPU processing.  His
-tool, <a href="http://www.algo-prog.info/spoc/web/index.php?id=spoc">SPOC</a> has been
-released onto OPAM and is a set of easy-to-use tools for generating CUDA and
-OpenCL code, and also a camlp4 extension to write external kernels directly in
-OCaml.  Thanks for visiting, Mathias!</p>
-
-   </div>  </div>
-
-
-
-
-
-
-
-<p class="date">
-<a href="http://www.cl.cam.ac.uk/projects/ocamllabs/news/index.html#May%202013">by Anil Madhavapeddy (anil@recoil.org) at Wed, 01 May 2013</a>
-</p>
-  </div>
-</div>
-
-</div>
-
-<div class="channelgroup">
-
-
-
-
-
-
-
-<!-- <h3><a href="http://www.cl.cam.ac.uk/projects/ocamllabs//news/" title="OCaml Labs News">Monthly News</a></h3> -->
-
-<div class="entrygroup" id="http://www.cl.cam.ac.uk/projects/ocamllabs/news/2013-04-01">
-<a name="http://www.cl.cam.ac.uk/projects/ocamllabs/news/2013-04-01"> </a>
-<h1 class="posttitle"><a href="http://www.cl.cam.ac.uk/projects/ocamllabs/news/index.html#Apr%202013">Apr 2013 news update</a>
-(<a href="http://www.cl.cam.ac.uk/projects/ocamllabs//news/" title="OCaml Labs News">Monthly News</a>)
-</h1>
-<hr/>
-<div class="entry">
-  <div class="content">
-<div>
-      <p><a href="http://www.cl.cam.ac.uk/projects/ocamllabs/images/leo-oculus.jpg"><img src="http://www.cl.cam.ac.uk/projects/ocamllabs/images/leo-oculus-thumb.jpg" class="left" width="150px" /></a>
-It's been a heads-down month of hacking at the Labs for April, as the
-group have settled into their projects and are concentrating on getting code
-out.  We did take the opportunity to redesign the <a href="http://www.cl.cam.ac.uk/projects/ocamllabs/tasks/index.html">project pages</a> as the active projects grew.</p>
-<p>We welcomed <a href="http://www.cl.cam.ac.uk/projects/ocamllabs/people/euan.html">Euan Harris</a> as a new visitor, and he has
-begun work on a distributed actor library in the vein of Erlang's
-<a href="https://github.com/erlang/otp">OTP</a>.  The prolific <a href="http://erratique.ch">Daniel Bünzli</a> also joined us for the summer to work on his <a href="http://erratique.ch/software/vg/">Vg</a> visualisation library.  He's based out of the Citrix offices, and is also contributing to the Xen project.</p>
-<h3 id="Platformprojects"> Platform projects</h3>
-<p><b>OPAM: </b> The project has entered a bug fixing stage after its release, and
-the package set has steadily grown via external contributors. David Sheets has
-been hacking away on the automated <a href="http://www.cl.cam.ac.uk/projects/ocamllabs/tasks/platform.html#OCamlot">OCamlot</a>
-bot, and we released improved <a href="https://github.com/avsm/ocaml-github">Github</a>
-API bindings.  We're aiming to get OCamlot live and running in May, so stay
-tuned!  There is a <a href="http://www.cl.cam.ac.uk/projects/ocamllabs/tasks/platform.html#Machine%20Pool">steadily growing
-collection</a> of odd ARM and PowerPC
-devices in Anil's desk that will generally make it easier to test your OCaml
-code in unusual environments.</p>
-<p><b>OCaml.org redesign:</b> Progress on the website continues and we're now
-working on the actual HTML/CSS from the earlier
-<a href="https://github.com/ocaml/ocaml.org/wiki/Site-Redesign">mockups</a>.  We'll be
-publishing these in a fork of the website
-<a href="https://github.com/ocamllabs/ocaml.org">repository</a>, so do feel free to create
-issues there with your comments.  Philippe has begun the
-<a href="http://www.cl.cam.ac.uk/projects/ocamllabs/tasks/outreach.html#Meta%20preprocessor">MPP</a> templating tool to glue together
-all the website scripts more coherently. Discussions about this take place on
-the <a href="http://lists.ocaml.org/listinfo/infrastructure">infrastructure</a> mailing
-list, which is open to all.</p>
-<p><a href="http://www.cl.cam.ac.uk/projects/ocamllabs/images/makespace-apr-2013.jpg"><img src="http://www.cl.cam.ac.uk/projects/ocamllabs/images/makespace-apr-2013-thumb.jpg" class="left" width="150px" /></a>
-The monthly OCaml get togethers in the <a href="http://makespace.org">Cambridge
-Makespace</a> are also really fun.  This month saw around 30
-people wander through the doors, and work through the latest excerpts of
-<a href="http://realworldocaml.org">Real World OCaml</a>. And around midnight, Jeremy and
-Leo competed to find more and more obscure
-<a href="http://caml.inria.fr/mantis/view.php?id=5992">bugs</a> in the corners of the
-OCaml type system...  You can track the subsequent meetups via the <a href="http://www.meetup.com/Cambridge-NonDysFunctional-Programmers/events/114286762/">NonDysFunctional Meetup group</a>, which includes functional programmers from around the Cambridgeshire area.  Jon and Anil also attended the <a href="http://developer.yahoo.com/events/hack_europe_london/">Yahoo Hackday</a> in London, where Jon met a giant robot and started <a href="https://github.com/jonludlam/mssl">SSL bindings</a>, and Anil experimented with <a href="http://github.com/avsm/ocaml-js-localstorage">js_of_ocaml LocalStorage</a> for Irminsule.</p>
-<h3 id="Systemsprojects"> Systems projects</h3>
-<p><b>Mirage</b>: We've finally got a release date for the first preview of
-Mirage, which will be at <a href="http://www.oscon.com/oscon2013/public/schedule/detail/28956">O'Reilly OSCON</a> this July!  Pulling together the release is a big endeavour, and the
-<a href="http://www.cl.cam.ac.uk/projects/ocamllabs/tasks/mirage.html">team</a> has started weekly calls to work through the
-project.  The minutes for these are online, so you can
-<a href="http://www.openmirage.org/wiki/tag/overview/meetings">browse</a> them to catch
-up. There's also a slightly scary
-<a href="http://www.openmirage.org/wiki/dev-preview-checklist">checklist</a> of all the
-libraries that need to be released before July, so the team has its work cut
-out for it!  The Xen group also announced that it is joining the Linux Foundation,
-and the <a href="http://www.linuxfoundation.org/news-media/announcements/2013/04/xen-become-linux-foundation-collaborative-project">press release</a> gave Mirage a prominent mention as one of the key recent developments in Xen.</p>
-<p><a href="http://www.cl.cam.ac.uk/projects/ocamllabs/images/jon-robot-yahoo.jpg"><img src="http://www.cl.cam.ac.uk/projects/ocamllabs/images/jon-robot-yahoo-thumb.jpg" class="right" width="120px" /></a>
-<b>Irminsule</b>: Thomas now has a full implementation of the git file format
-in his <a href="http://github.com/samoht/cagit">cagit</a> repository, and the interfaces
-for Irminsule's branch-consistent model are coming together.  He gave a demo to
-the Mirage team, with <a href="http://www.openmirage.org/wiki/weekly-2013-04-23">discussion
-notes</a> available.</p>
-<h3 id="Compilerprojects"> Compiler projects</h3>
-<p><b>Multicore and Concurrency</b>: Stephen Dolan's made great progress on bringing up a multicore
-runtime using <a href="https://github.com/stedolan/ocaml">thread-local storage</a>, which results
-in a surprisingly compact diff to the OCaml runtime.  We're now moving onto the
-higher-level bindings to use the parallel runtimes effectively from within OCaml.
-We also began a <a href="http://lists.ocaml.org/listinfo/wg-parallel">wg-parallel</a> working
-group in order to start figuring out the evolution of the <a href="http://ocsigen.org/lwt">Lwt</a> and 
-<a href="https://github.com/janestreet/async">Async</a> concurrency libraries.</p>
-<p><b>libffi</b>: Jeremy got frustrated by the difficulty of writing safe C bindings,
-and started the <a href="http://github.com/ocamllabs/ocaml-ctypes">ctypes</a> library, which
-offers a pure OCaml solution. This even includes managing callbacks across the
-OCaml/C divide, and uses <a href="https://github.com/atgreen/libffi">libffi</a> under the hood
-to remain efficient and platform-independent.  There is the exciting possibility
-about hooking this library with the <a href="http://www.cl.cam.ac.uk/projects/ocamllabs/tasks/compiler.html#Compile-time%20meta%20programming">compile-time metaprogramming</a> to eliminate all performance cost, so we're going to spend some time
-on this project to make it a well-documented alternative to the existing C FFI.</p>
-<p><a href="http://www.cl.cam.ac.uk/projects/ocamllabs/images/mezzo-talk.jpg"><img src="http://www.cl.cam.ac.uk/projects/ocamllabs/images/mezzo-talk.jpg" class="right" width="120px" /></a>
-The OCaml Labs talk series continued with a visit from <a href="http://gallium.inria.fr/~fpottier/">Francois
-Pottier</a> ad <a href="http://www.xulforum.org">Jonathan
-Protzenko</a> from the INRIA
-<a href="http://gallium.inria.fr">Gallium</a> research team.  Jonathan presented their
-<a href="http://gallium.inria.fr/~protzenk/mezzo-lang">Mezzo</a> language, which places
-emphasis on aliasing and controlled access to mutation.  This is of particular
-interest to several of our systems projects that do not require the full power of
-OCaml to build low-level systems components, and Raphael, Alan, Leo and Anil
-had productive discussions about how we could try Mezzo out when it's released.</p>
-<p><i>Link roundup:</i></p>
-<ul>
- <li><a href="http://www.linuxfoundation.org/news-media/announcements/2013/04/xen-become-linux-foundation-collaborative-project" class="icon-rss">Xen and MirageOS to join Linux Foundation</a> <em>(Apr 14th)</em>
- </li>
- <li><a href="http://www.meetup.com/Cambridge-NonDysFunctional-Programmers/events/114286762/" class="icon-community">OCaml Hacking/Meetup Session</a> <em>(Apr 18th)</em>
- </li>
- <li><a href="http://www.oscon.com/oscon2013/public/schedule/detail/28956" class="icon-quick-links">OSCon Mirage talk selected.</a> <em>(Apr 21st)</em>
- </li>
-</ul>
-
-   </div>  </div>
-
-
-
-
-
-
-
-<p class="date">
-<a href="http://www.cl.cam.ac.uk/projects/ocamllabs/news/index.html#Apr%202013">by Anil Madhavapeddy (anil@recoil.org) at Mon, 01 Apr 2013</a>
-</p>
-  </div>
-</div>
-
-</div>
-
-<div class="channelgroup">
-
-
-
-
-
-
-
-<!-- <h3><a href="http://amirchaudhry.com" title="Amir Chaudhry - 'ocaml-labs'">Amir Chaudhry</a></h3> -->
-<img style="float:right; padding-left: 20px;" class="face" src="images/../../mugshots/amir.jpg" width="" height="50" alt="">
-
-<div class="entrygroup" id="http://amirchaudhry.com/wireframe-demos-for-ocamlorg">
-<a name="http://amirchaudhry.com/wireframe-demos-for-ocamlorg"> </a>
-<h1 class="posttitle"><a href="http://amirchaudhry.com/wireframe-demos-for-ocamlorg">Wireframe demos for OCaml.org</a>
-(<a href="http://amirchaudhry.com" title="Amir Chaudhry - 'ocaml-labs'">Amir Chaudhry</a>)
-</h1>
-<hr/>
-<div class="entry">
-  <div class="content">
-<h3 id="making_mockups">Making mockups</h3>
-
-<p>Over the last few months, I&#8217;ve been working on various aspects of the <a href="http://ocaml.org">OCaml.org</a> design project. This covers things like the design, information architecture and how to incorporate new functionality. One of the methods for thinking through these was to put together a bunch of wireframes using <a href="http://www.balsamiq.com">Balsamiq</a> and use these to express (and generate) ideas as well as get feedback quickly.</p>
-
-<p>If you haven&#8217;t used wireframes before, think of them as a slightly more advanced form of sketching things out on a whiteboard. The best aspect is that it&#8217;s far quicker, easier and <em>cheaper</em> to iterate using wireframes than on an actual website. As you&#8217;ll see below, you can also convey a lot of information about how a site might work by showing people a clickable demo.</p>
-
-<p>I want to make this work public and I thought the best way would be to show you some screencasts of how the upcoming <a href="http://ocaml.org">OCaml.org</a> website might work and also make the demo available to all of you. The three videos below cover three aspects of the site and I&#8217;d encourage you to go through them in order (about 16 minutes in total). Apologies if my screen isn&#8217;t particularly clear in the videos but you can visit the demo for yourself and see things in more detail (link and info on feedback at the end of this post).</p>
-
-<h3 id="video_walkthroughs">Video walkthroughs</h3>
-
-<p>For those who&#8217;d like to watch the videos back-to-back and scaled to fit your browser window, you can <a href="http://vimeo.com/couchmode/album/2301640">view the Vimeo album in &#8216;couchmode&#8217;</a>. Otherwise, individual videos are embedded below (total time 16m17s).</p>
-
-<p>&#32; Video Part 1 - Overview - http://player.vimeo.com/video/61768157</p>
-
-<p>&#32; Video Part 2 - Documentation - http://player.vimeo.com/video/61768235</p>
-
-<p>&#32; Video Part 3 - Continuous Integration - http://player.vimeo.com/video/61768273</p>
-
-<h3 id="public_wireframe_demo">Public wireframe demo</h3>
-
-<p>A demo you can interact with can be found at <a href="https://ocaml.mybalsamiq.com/projects/public-demo/naked/0_home?key=b897ea86d8a8199c6e46b3295ddf630dfa33e5e1">OCaml.org wireframe demo</a> and image files for each page are available on the <a href="https://github.com/ocaml/ocaml.org/wiki/Wireframes">github ocaml.org wiki</a>. Please bear in mind the following:</p>
-
-<ul>
-<li>
-<p>Not everything that looks like it might be clickable actually is (and vice versa). There&#8217;ll be a toggle on the bottom right of the browser window that will highlight what can be clicked.</p>
-</li>
-
-<li>
-<p>There are parts of the site which are &#8216;work in progress&#8217; and are marked as such.</p>
-</li>
-
-<li>
-<p>The designs you see aren&#8217;t necessarily final. Your feedback will help shape our decisions and the best way to provide it is via the <a href="http://lists.ocaml.org/listinfo/infrastructure">infrastructure mailing list</a>.</p>
-</li>
-</ul>  </div>
-
-
-
-
-
-
-
-<p class="date">
-<a href="http://amirchaudhry.com/wireframe-demos-for-ocamlorg">by Amir Chaudhry at Thu, 14 Mar 2013</a>
-</p>
-  </div>
-</div>
-
-</div>
-
-<div class="channelgroup">
-
-
-
-
-
-
-
-<!-- <h3><a href="http://lpw25.net/" title="lpw25">Leo White</a></h3> -->
-<img style="float:right; padding-left: 20px;" class="face" src="images/../../mugshots/lpw25.jpg" width="" height="50" alt="">
-
-<div class="entrygroup" id="http://lpw25.net/2013/03/10/ocaml-namespaces">
-<a name="http://lpw25.net/2013/03/10/ocaml-namespaces"> </a>
-<h1 class="posttitle"><a href="http://lpw25.net/2013/03/10/ocaml-namespaces.html">Adding namespaces to OCaml</a>
-(<a href="http://lpw25.net/" title="lpw25">Leo White</a>)
-</h1>
-<hr/>
-<div class="entry">
-  <div class="content">
-<div class="well well-small">
-  <h4>
-Contents
-</h4>
-<ul id="markdown-toc">
-  <li><a href="http://www.lpw25.net/atom.xml#problems-with-pack">Problems with pack</a></li>
-  <li><a href="http://www.lpw25.net/atom.xml#formal-semantics">Formal semantics</a></li>
-  <li><a href="http://www.lpw25.net/atom.xml#design-goals">Design goals</a></li>
-  <li><a href="http://www.lpw25.net/atom.xml#design-choices">Design choices</a>    <ul>
-      <li><a href="http://www.lpw25.net/atom.xml#flat-or-hierarchical">Flat or hierarchical?</a></li>
-      <li><a href="http://www.lpw25.net/atom.xml#should-namespaces-be-opened-explicitly-in-source-code">Should namespaces be opened explicitly in source code?</a></li>
-      <li><a href="http://www.lpw25.net/atom.xml#how-should-the-compiler-find-modules-in-the-presence-of-namespaces">How should the compiler find modules in the presence of namespaces?</a></li>
-      <li><a href="http://www.lpw25.net/atom.xml#how-should-namespaces-specified">How should namespaces specified?</a></li>
-      <li><a href="http://www.lpw25.net/atom.xml#how-rich-should-a-description-language-be">How rich should a description language be?</a></li>
-      <li><a href="http://www.lpw25.net/atom.xml#should-namespaces-support-automatically-opened-members">Should namespaces support automatically opened members?</a></li>
-    </ul>
-  </li>
-  <li><a href="http://www.lpw25.net/atom.xml#proposal">Proposal</a>    <ul>
-      <li><a href="http://www.lpw25.net/atom.xml#simple-namespaces-through-filenames">Simple namespaces through filenames</a></li>
-      <li><a href="http://www.lpw25.net/atom.xml#an-alternative-to-search-paths">An alternative to search paths</a></li>
-      <li><a href="http://www.lpw25.net/atom.xml#the--name-argument">The “-name” argument</a></li>
-      <li><a href="http://www.lpw25.net/atom.xml#the--open-argument">The “-open” argument</a></li>
-    </ul>
-  </li>
-</ul>
-
-</div>
-
-<p>Recently there has been a lot of discussion on
-<a href="http://lists.ocaml.org/listinfo/platform">platform@lists.ocaml.org</a> about
-proposals for adding namespaces to OCaml. I’ve written this post to summarise
-the design decisions for such a proposal and to make my own proposal.</p>
-
-<p>Before discussing what namespaces are and the issues surrounding their
-implementation, it is important to explain why they are needed in the first
-place. </p>
-
-<p>The most important reason for adding namespaces is to provide some means for
-grouping the components of a library together. Up to now this has been
-achieved using the OCaml module system. Since the components of an OCaml
-library are modules, a module can be created that contains all the components
-of the library as sub-modules. The “-pack” option for the compiler was created
-to allow this module to be created while still keeping each component of the
-library in its own file.</p>
-
-<h3 id="problems-with-pack">Problems with pack</h3>
-
-<p>There are some critical problems with using “-pack” to create a single module
-containing the whole library:</p>
-
-<ul>
-  <li>
-    <p>The packed module is a single unit that has to be linked or not as a
-unit. This means that any program using part of the library must include the
-entire library.</p>
-  </li>
-  <li>
-    <p>The packed module is a choke-point in the dependency graph.  If a file
-depends on one thing in the packed module then it needs to be recompiled if
-anything in the packed module changes.</p>
-  </li>
-  <li>
-    <p>Opening a large packed module is very slow and can seriously affect build
-performance.</p>
-  </li>
-</ul>
-
-<p>These problems are all caused by the fact that pack creates an OCaml
-module. To understand this consider the run-time semantics of the module
-system.</p>
-
-<p>At run-time a module is a record. Initialising a module involves initialising
-every component of the module and placing them in this record.  Initialising
-these components can involve executing arbitrary code; in fact the execution
-of an OCaml program is simply the initialisation of all its modules.</p>
-
-<p>The problems with pack are related to these dynamic semantics. In order to
-be a module pack must create a record to represent this module. This means
-that it must initialise all of its components. It is this (rather than any
-detail of pack’s implementation) that causes the problems identified above.</p>
-
-<p>Access to the components of a top-level module could proceed without the
-existence of this record. However, the record is required in order to “alias”
-the module, use the module as a first-class value or use it as the argument to
-a functor.</p>
-
-<p>Any attempt to overcome the problems with pack, whilst still maintaining
-the illusion that the “pack” is a normal module, would result (at the very
-least) in one of the following unhealthy situations:</p>
-
-<ul>
-  <li>
-    <p>The module type of the “packed module” would depend on which of its
-components were accessed by the program.</p>
-  </li>
-  <li>
-    <p>Any use of the “packed module” other than as a simple container
-(e.g.
-<span class="highlight"><code><span class="k">module</span>
-<span class="nc">CS</span>
-<span class="o">=</span>
-<span class="nn">Core</span><span class="p">.</span><span class="nc">Std</span></code></span> 
-) could have a dramatic effect on what was
-linked into the program and potentially on the semantics of the program.</p>
-  </li>
-</ul>
-
-<p>Namespaces are basically modules that can only be used as a simple
-container. This means that they do not need a corresponding record at
-run-time (or any other run-time representation). This avoids the problems
-with pack as well as enabling other useful features.</p>
-
-<h3 id="formal-semantics">Formal semantics</h3>
-
-<p>Following the semantics and description language for namespaces described by
-<a href="http://gallium.inria.fr/~scherer/namespaces/spec.pdf">Gabriel Scherer et al</a>,
-I will consider namespaces to be name-labelled trees whose leaves are
-compilation units. I will use 
-<span class="highlight"><code><span class="o">#</span></code></span> 
-to represent projection on namespaces, so the 
-<span class="highlight"><code><span class="nc">Bar</span></code></span>
-member of the 
-<span class="highlight"><code><span class="nc">Foo</span></code></span>
-namespace will be referred to as 
-<span class="highlight"><code><span class="nc">Foo</span><span class="o">#</span><span class="nc">Bar</span></code></span>.</p>
-
-<h3 id="design-goals">Design goals</h3>
-
-<p>Some design goals that we might want from a proposal for adding namespaces to
-OCaml include:</p>
-
-<ul>
-  <li>
-    <p><strong>Allow library components to be grouped together without creating a module
-containing them.</strong></p>
-  </li>
-  <li>
-    <p><strong>Allow users to group together modules from different libraries as they see
-fit.</strong> This means letting people change which namespace a library module is
-in.</p>
-  </li>
-  <li>
-    <p><strong>Allow library components to be given multiple names.</strong> For example
-<span class="highlight"><code><span class="nc">Lib</span><span class="o">#</span><span class="nc">Foo</span></code></span>
-and 
-<span class="highlight"><code><span class="nc">Lib</span><span class="o">#</span><span class="nc">Stable</span><span class="o">#</span><span class="nc">Foo</span></code></span>
-, where 
-<span class="highlight"><code><span class="nc">Lib</span><span class="o">#</span><span class="nc">Stable</span></code></span>
-is a namespace containing only those components whose interfaces are stable.</p>
-  </li>
-  <li>
-    <p><strong>Be simple and easy to explain to beginners.</strong></p>
-  </li>
-  <li>
-    <p><strong>Allow multiple source files to share the same filename.</strong> Each module that
-is linked into an OCaml program must have a unique name. Currently, a
-module’s name is completely determined by its filename. This forces library
-developers to either use pack (which gives its components new long names) or
-give their source files long names like “libName_Foo.ml”. A namespaces
-proposal may be able to alleviate this problem.</p>
-  </li>
-  <li>
-    <p><strong>Allow libraries to control which modules are open by default.</strong> By default
-OCaml opens the standard library’s 
-<span class="highlight"><code><span class="nc">Pervasives</span></code></span>
-module. Libraries that wish to replace the standard library may also wish to
-provide their own
-<span class="highlight"><code><span class="nc">Pervasives</span></code></span>
-module and have it opened by default.</p>
-  </li>
-  <li>
-    <p><strong>Support libraries that wish to remain compatible with versions of OCaml
-without namespaces.</strong></p>
-  </li>
-  <li>
-    <p><strong>Require minimal changes to existing build systems.</strong> Since a namespace
-proposal changes how a library’s components are named, it may require
-changes to some build systems. If these changes are too invasive then users
-of some build systems will probably be unable to use namespaces in the near
-future.</p>
-  </li>
-</ul>
-
-<h3 id="design-choices">Design choices</h3>
-
-<h4 id="flat-or-hierarchical">Flat or hierarchical?</h4>
-
-<p>In order to replace pack, namespaces must be able to contain modules. It is
-not clear, however, whether they need to be able to contain other
-namespaces. We call namespaces that can contain other namespaces
-<em>hierarchical</em>, as opposed to <em>flat</em>.</p>
-
-<p>In favour of flat namespaces:</p>
-
-<ul>
-  <li>
-    <p>Hierarchical namespaces might lead to arbitrary categorising of components
-(e.g.<br />
-<span class="highlight"><code><span class="nc">Data</span><span class="o">#</span><span class="nc">Array</span></code></span>
-). These add syntactic clutter and do not bring any real benefit.  </p>
-  </li>
-  <li>
-    <p>Hierarchical namespaces might lead to deep java-style hierarchies
-(e.g.<br />
-<span class="highlight"><code><span class="nc">Com</span><span class="o">#</span><span class="nc">Janestreet</span><span class="o">#</span><span class="nc">Core</span><span class="o">#</span><span class="nc">Std</span></code></span>
-). These add syntactic clutter without adding any actual information.</p>
-  </li>
-</ul>
-
-<p>In favour of hierarchical namespaces:</p>
-
-<ul>
-<li>
-A library may wish to provide multiple versions of some of its components. For
-example:
-
-<ul>
-<li>    
-<span class="highlight"><code><span class="nc">Http</span><span class="o">#</span><span class="nc">Async</span><span class="o">#</span><span class="nc">IO</span></code></span>
- and 
-<span class="highlight"><code><span class="nc">Http</span><span class="o">#</span><span class="nc">Lwt</span><span class="o">#</span><span class="nc">IO</span></code></span>
-</li>
-<li>
-<span class="highlight"><code><span class="nc">File</span><span class="o">#</span><span class="nc">Windows</span><span class="o">#</span><span class="nc">Directories</span></code></span>
-and 
-<span class="highlight"><code><span class="nc">File</span><span class="o">#</span><span class="nc">Unix</span><span class="o">#</span><span class="nc">Directories</span></code></span>
-</li>
-<li>
-<span class="highlight"><code><span class="nc">Core</span><span class="o">#</span><span class="nc">Mutex</span></code></span>
-and 
-<span class="highlight"><code><span class="nc">Core</span><span class="o">#</span><span class="nc">Testing</span><span class="o">#</span><span class="nc">Mutex</span></code></span>
-</li>
-</ul>
-
-In such situations it is useful to be able to write both
-
-
-<div class="highlight"><pre><code class="ocaml"><span class="k">open</span> <span class="nc">Core</span>
-<span class="o">[...]</span>
-<span class="nc">Testing</span><span class="o">#</span><span class="nn">Mutex</span><span class="p">.</span><span class="n">lock</span> <span class="n">x</span>
-</code></pre></div>
-
-
-and
-
-
-<div class="highlight"><pre><code class="ocaml"><span class="k">open</span> <span class="nc">Core</span><span class="o">#</span><span class="nc">Testing</span>
-<span class="o">[...]</span>
-<span class="nn">Mutex</span><span class="p">.</span><span class="n">lock</span> <span class="n">x</span>
-</code></pre></div>
-
-</li>
-<li>
-None of the systems of namespaces that have been proposed have any
-additional cost for supporting hierarchical namespaces.
-</li>
-</ul>
-
-<h4 id="should-namespaces-be-opened-explicitly-in-source-code">Should namespaces be opened explicitly in source code?</h4>
-
-<p>There was some debate on the platform mailing list about whether to support
-opening namespaces explicitly in source code. This means allowing a syntax
-like:</p>
-
-<div class="highlight">
-<pre><code class="ocaml"><span class="k">open</span> <span class="k">namespace</span> <span class="nc">Foo</span></code></pre>
-</div>
-
-<p>that allows the members of namespace 
-<span class="highlight"><code><span class="nc">Foo</span></code></span>
-to be referenced directly (i.e.
-<span class="highlight"><code><span class="nc">Foo</span><span class="o">#</span><span class="nc">Bar</span></code></span>
-can be referred to as 
-<span class="highlight"><code><span class="nc">Bar</span></code></span>).</p>
-
-<p>The alternative would be to only support opening namespaces through a
-command-line argument.</p>
-
-<p>In favour of supporting explicit opens:</p>
-
-<ul>
-  <li>
-    <p>If you open two namespaces with commonly named sub-components then the order
-of those opens matters. If the opens are command-line arguments then the
-order of those command-line arguments (often determined by build systems and
-other tools) matters. This is potentially very fragile.</p>
-  </li>
-  <li>
-    <p>Explicit opens in a source file give valuable information about which
-libraries are being used by that source file. If a file contains “open
-namespace Core” then you know it uses the Core library.</p>
-  </li>
-  <li>
-    <p>Local namespace opens provide users more precise control over their naming
-environment.</p>
-  </li>
-</ul>
-
-<p>Against supporting explicit opens:</p>
-
-<ul>
-  <li>They require a new syntactic construct.</li>
-</ul>
-
-<h4 id="how-should-the-compiler-find-modules-in-the-presence-of-namespaces">How should the compiler find modules in the presence of namespaces?</h4>
-
-<p>Currently, when looking for a module 
-<span class="highlight"><code><span class="nc">Bar</span></code></span>
-that is not in the current environment, the OCaml compiler will search the
-directories in its search path for a file called “bar.cmi”.</p>
-
-<p>In the presence of namespaces this becomes more complicated: how does the
-compiler find the module 
-<span class="highlight"><code><span class="nc">Foo</span><span class="o">#</span><span class="nc">Bar</span></code></span>
-?</p>
-
-<p>The suggested possible methods for finding modules in the presence of
-namespaces fall into four categories.</p>
-
-<h5 id="using-filenames">Using filenames</h5>
-
-<p>By storing the interface for 
-<span class="highlight"><code><span class="nc">Foo</span><span class="o">#</span><span class="nc">Bar</span></code></span>
-in a file named “foo-bar.cmi” the compiler can continue to simply look-up
-modules in its search path.</p>
-
-<p>Note that “-“ is an illegal character in module names so there is no risk of
-<span class="highlight"><code><span class="nc">Foo</span><span class="o">#</span><span class="nc">Bar</span></code></span>
-being confused with a module called 
-<span class="highlight"><code><span class="nc">Foo-bar</span></code></span>.</p>
-
-<p>This simple scheme does not support placing a module within multiple
-namespaces or allowing users to put existing modules in a new namespace.</p>
-
-<h5 id="checking-multiple-cmi-files">Checking multiple “.cmi” files</h5>
-
-<p>The name of the namespace containing a compilation unit could be included in
-the “.cmi” file of that unit. Then, when looking for a module 
-<span class="highlight"><code><span class="nc">Foo</span><span class="o">#</span><span class="nc">Bar</span></code></span>
-, the compiler would try every “bar.cmi” file in its search path until it
-found one that was part of the “Foo” namespace. This may require the compiler
-to open all the “bar.cmi” files on its search path, which could be expensive
-on certain operating systems.</p>
-
-<p>This scheme does not support allowing users to put existing modules in a new
-namespace, but can support placing a module in multiple namespaces.</p>
-
-<p>It is difficult to detect typos in namespace open statements using this
-scheme. For example, detecting that
-<span class="highlight"><code><span class="k">open</span>
-<span class="k">namespace</span>
-<span class="nc">Core</span><span class="o">#</span><span class="nc">Sdt</span></code></span> 
-should have been
-<span class="highlight"><code><span class="k">open</span>
-<span class="k">namespace</span>
-<span class="nc">Core</span><span class="o">#</span><span class="nc">Std</span></code></span>
-would require the compiler to check every file in its search path for one that
-was part of namespace
-<span class="highlight"><code><span class="nc">Core</span><span class="o">#</span><span class="nc">Sdt</span></code></span>.</p>
-
-<h5 id="using-namespace-description-files">Using namespace description files</h5>
-
-<p>The compiler could find a member of a namespace by consulting a file that
-describes the members of that namespace.</p>
-
-<p>For example, if namespace 
-<span class="highlight"><code><span class="nc">Foo</span></code></span>
-was described by a file “foo.ns” that was on the compiler’s search path then
-the compiler could find
-<span class="highlight"><code><span class="nc">Foo</span><span class="o">#</span><span class="nc">Bar</span></code></span>
-by locating “foo.ns” and using it to look-up the location of the “.cmi” file
-for
-<span class="highlight"><code><span class="nc">Bar</span></code></span>.</p>
-
-<p>These namespace description files could be created automatically by some
-tool. However, they must be produced before detecting dependencies with
-OCamlDep, which could complicate the build process.</p>
-
-<h5 id="using-environment-description-files">Using environment description files</h5>
-
-<p>The compiler could find a member of a namespace by consulting a file that
-describes a mapping between module names and “.cmi” files.</p>
-
-<p>For example, if a file “foo.mlpath” included the mapping “Foo#Bar:
-foo/bar.cmi” then that file could be passed as a command-line argument to the
-compiler and used to look up the “bar.cmi” file directly.</p>
-
-<p>Looking up modules using this scheme may speed up compilation by avoiding the
-need to scan directories for files.</p>
-
-<h4 id="how-should-namespaces-specified">How should namespaces specified?</h4>
-
-<p>Perhaps the most important question for any namespaces proposal is how
-namespaces are specified. It is closely related to the above question of how
-the compiler finds modules in the presence of namespaces.</p>
-
-<p>The suggested possible methods for specifying namespaces fall into five
-categories.</p>
-
-<h5 id="explicitly-in-the-source-files">Explicitly in the source files</h5>
-
-<p>Namespaces could be specified by adding a line like:</p>
-
-<div class="highlight">
-<pre><code class="ocaml"><span class="k">namespace</span> <span class="nc">Foo</span></code></pre>
-</div>
-
-<p>to the beginning of each compilation unit that is part of the 
-<span class="highlight"><code><span class="nc">Foo</span></code></span> 
-namespace. </p>
-
-<p>This has the benefit of making namespaces explicitly part of the language
-itself, however it does mean that the full name of a module is specified in
-two locations: partly in the filename and partly within the file itself.</p>
-
-<h5 id="through-command-line-arguments">Through command-line arguments</h5>
-
-<p>Namespaces could be specified by passing a command-line argument to the
-compiler. For example, 
-<span class="highlight"><code><span class="nc">Foo</span><span class="o">#</span><span class="nc">Bar</span></code></span> 
-could be compiled with the command-line:</p>
-
-<div class="highlight"><pre><code class="sh">ocamlc -c -namespace Foo bar.ml 
-</code></pre></div>
-
-<p>This scheme also means that the full name of a module is specified in two
-locations: partly in the build system and partly in the filename.</p>
-
-<h5 id="through-filenames">Through filenames</h5>
-
-<p>Namespaces could be specified using the filenames of source files. For
-example, 
-<span class="highlight"><code><span class="nc">Foo</span><span class="o">#</span><span class="nc">Bar</span></code></span> 
-would be created by compiling a file “foo-bar.ml”</p>
-
-<p>This scheme is simple and very similar to how modules are currently named, but
-it would require all source files to have long unique names.</p>
-
-<h5 id="through-namespace-description-files">Through namespace description files</h5>
-
-<p>Namespaces could be specified using namespace description files. The 
-<span class="highlight"><code><span class="nc">Foo</span></code></span>
-namespace would be specified by a file “foo.ns” that described the members of
-<span class="highlight"><code><span class="nc">Foo</span></code></span>:</p>
-
-<pre><code>module Bar = "foo_bar.cmi"
-namespace Testing = "testing.ns"
-</code></pre>
-
-<h5 id="through-environment-description-files">Through environment description files</h5>
-
-<p>Namespaces could be specified using environment description files. A namespace
-<span class="highlight"><code><span class="nc">Foo</span></code></span>
-would be defined by passing an environment description file to the compiler
-that included mappings for each of the members of
-<span class="highlight"><code><span class="nc">Foo</span></code></span>. For example:</p>
-
-<pre><code>Foo#Bar: "foo_bar.cmi"
-Foo#Testing#Bar: "foo_testing_bar.cmi"
-Baz: "baz.cmi"
-</code></pre>
-
-<p>In addition to specifying namespaces, this system allows users (or a tool like
-OCamlFind) to have complete control the naming environment of a program.</p>
-
-<h4 id="how-rich-should-a-description-language-be">How rich should a description language be?</h4>
-
-<p>For namespace proposals that use namespace or environment description files,
-they must decide how rich their description language should be.</p>
-
-<p>For example, <a href="http://gallium.inria.fr/~scherer/namespaces/spec.pdf">Gabriel Scherer et
-al</a> describe a very rich
-environment description language including many different operations that can
-be performed on namespaces.</p>
-
-<p>A rich description language can produce shorter descriptions. However, the
-more operations a language supports the more syntax that users must understand
-in order to read description files. The majority of description files are
-unlikely to require complex operations.</p>
-
-<h4 id="should-namespaces-support-automatically-opened-members">Should namespaces support automatically opened members?</h4>
-
-<p>A feature of namespaces that has been proposed on the mailing list is to allow
-some modules within a namespace to be automatically opened when the namespace
-is also opened. This makes it seem that the namespace has values and types as
-members.</p>
-
-<p>This feature is based on the current design of Jane Street’s Core
-library. Users of the Core library are expected to open the
-<span class="highlight"><code><span class="nc">Core<span class="p">.</span>Std</span></code></span>
- module before using the library. Opening this module provides access to all
-the other modules of the library (much like opening a namespace), but it also
-provides types and values similar to those provided by the standard library’s
-<span class="highlight"><code><span class="nc">Pervasives</span></code></span> module.</p>
-
-<p>Supporting auto-opened modules would allow 
-<span class="highlight"><code><span class="nc">Core<span class="p">.</span>Std</span></code></span>
-to be directly replaced by a namespace. However, the semantics of this feature
-could be awkward due to potential conflicts between members of the namespace
-and sub-modules of the auto-opened modules. It also increases the overlap
-between namespaces and modules.</p>
-
-<h3 id="proposal">Proposal</h3>
-
-<p>In the last section of this post I will outline a namespaces proposal that I
-think satisfies the design goals set out earlier.</p>
-
-<p>I think that satisfying these design goals requires a combination of
-extensions to OCaml. My proposal is made up of four such extensions. To keep
-things simple for users to understand, I have tried to keep each of these
-extensions completely independent of the others and with a clearly defined
-goal.</p>
-
-<h4 id="simple-namespaces-through-filenames">Simple namespaces through filenames</h4>
-
-<p>Currently, the name of a module is completely defined by its filename, and
-modules are looked up using a simple search path. While it has some problems,
-this simple paradigm has served OCaml well and I think that it is important to
-provide some support for namespaces within this paradigm.</p>
-
-<p>This means allowing simple namespaces to be specified using source file
-names. For example, to create a module 
-<span class="highlight"><code><span class="nc">Bar</span></code></span>
-within the namespace 
-<span class="highlight"><code><span class="nc">Foo</span></code></span>
-developers can simply create an implementation file “foo-bar.ml” and an
-interface file “foo-bar.mli”. This interface file would be compiled to a
-“foo-bar.cmi” file. Hierarchical namespaces would be created by files with
-names like “foo-bar-baz.ml”.</p>
-
-<p>These namespaced modules can be referred to using the syntax 
-<span class="highlight"><code><span class="nc">Foo</span><span class="o">#</span><span class="nc">Bar</span></code></span>. 
-This syntax simply causes the compiler to look in its search path for a
-“foo-bar.cmi” file.</p>
-
-<p>I also propose supporting a namespace opening syntax like:
-&lt;div class="highlight"&gt;</p>
-<pre><code class="ocaml"><span class="k">open</span> <span class="k">namespace</span> <span class="nc">Foo</span>
-[...]
-<span class="nc">Bar</span></code></pre>
-<p>&lt;/div&gt;</p>
-
-<h4 id="an-alternative-to-search-paths">An alternative to search paths</h4>
-
-<p>Forcing the name of a module to be completely defined by its (compiled)
-filename makes it easy to look-up modules in a search path. However, it
-prevents modules from being given multiple names or being renamed by users. So
-I propose supporting an alternative look-up mechanism.</p>
-
-<p>I propose supporting environment description files called <em>search path
-files</em>. These files would have a syntax like:</p>
-
-<pre><code>Foo#Bar : "other_bar.cmi"
-Foo#Baz : Foo#Bar
-</code></pre>
-
-<p>This file can be given to the “-I” command-line argument instead of a
-directory and used to look-up the locations of “.cmi” files for given module
-names.</p>
-
-<p>These search path files can be used to alias modules and to create new
-namespaces. They also allow a module to be available under multiple namespaces.</p>
-
-<p>I envisage two particular modes of use:</p>
-
-<ul>
-  <li>
-    <p>Library authors can write “.mlpath” files and tell OCamlFind to use that
-file as its search path instead of a list of directories.</p>
-  </li>
-  <li>
-    <p>A user (or potentially OCamlFind) can create search path files to define
-their entire naming environment as they see fit.</p>
-  </li>
-</ul>
-
-<h4 id="the--name-argument">The “-name” argument</h4>
-
-<p>While the hard link between a module’s name and the name of its source file
-makes life easier for build systems (“list.cmi” can only be produced by
-compiling “list.ml”), it forces library authors to give their source files long
-unique names.</p>
-
-<p>I propose adding a “-name” command-line argument to the OCaml compiler. This
-would be used as follows:</p>
-
-<div class="highlight"><pre><code class="sh">ocamlc -c -name Foo#Bar other.ml
-</code></pre></div>
-
-<p>This command would produce a “foo-bar.cmi” file defining a module named
-<span class="highlight"><code><span class="nc">Foo</span><span class="o">#</span><span class="nc">Bar</span></code></span>
-. This means that “.cmi” files would still be expected to be unique, but
-source files could be named however the developer wants.</p>
-
-<p>Obviously, any tools that assume that a module 
-<span class="highlight"><code><span class="nc">Bar</span></code></span>
-must be compiled from a file called “bar.ml” will not work in this
-situation. However, the only OCaml tool that absolutely relies on this
-assumption is “OCamlDep” when it is producing makefile formatted output.</p>
-
-<p>Build systems would not be required to support the “-name” argument, however
-it would make it easy for them to provide features such as:</p>
-
-<ul>
-  <li>
-    <p>Creating namespaces to reflect a directory structure (e.g. “foo/bar.mli” becomes “foo-bar.cmi”).</p>
-  </li>
-  <li>
-    <p>Placing all the modules of a library under a common namespace (e.g. “bar.mli” becomes “foo-bar.cmi”)</p>
-  </li>
-</ul>
-
-<p>This would mean that the names of source files could be kept conveniently
-short.</p>
-
-<h4 id="the--open-argument">The “-open” argument</h4>
-
-<p>My proposals do not include support for automatically opened modules within
-namespaces. I feel that this feature conflates two separate issues and it
-would be better to solve the problem of automatically opened modules elsewhere. </p>
-
-<p>Auto-opened modules are meant to allow libraries to provide their own
-equivalent of the standard library’s 
-<span class="highlight"><code><span class="nc">Pervasives</span></code></span>
-module. I think that it would be more appropriate to have these “pervasive”
-modules opened by default in any program compiled using one of these
-libraries.</p>
-
-<p>I propose adding a command-line argument “-open” that could be used to open a
-module by default:</p>
-
-<div class="highlight"><pre><code class="sh">ocamlc -c -open core-pervasives.cmi foo.ml
-</code></pre></div>
-
-<p>By adding support for this feature to OCamlFind, libraries could add this
-argument to every program compiled using them. This amounts to having
-automatically opened modules as part of the package system rather than part of
-the namespace system.</p>  </div>
-
-
-
-
-
-
-
-<p class="date">
-<a href="http://lpw25.net/2013/03/10/ocaml-namespaces.html">by Leo White at Sun, 10 Mar 2013</a>
-</p>
-  </div>
-</div>
-
-</div>
-
-<div class="channelgroup">
-
-
-
-
-
-
-
-<!-- <h3><a href="http://www.cl.cam.ac.uk/projects/ocamllabs//news/" title="OCaml Labs News">Monthly News</a></h3> -->
-
-<div class="entrygroup" id="http://www.cl.cam.ac.uk/projects/ocamllabs/news/2013-03-01">
-<a name="http://www.cl.cam.ac.uk/projects/ocamllabs/news/2013-03-01"> </a>
-<h1 class="posttitle"><a href="http://www.cl.cam.ac.uk/projects/ocamllabs/news/index.html#Mar%202013">Mar 2013 news update</a>
-(<a href="http://www.cl.cam.ac.uk/projects/ocamllabs//news/" title="OCaml Labs News">Monthly News</a>)
-</h1>
-<hr/>
-<div class="entry">
-  <div class="content">
-<div>
-      <p>The OCaml Labs hackers continue to arrive, with <a href="http://www.cl.cam.ac.uk/projects/ocamllabs/people/sheets.html">David
-Sheets</a> arriving from sunny San Francisco, and <a href="http://www.cl.cam.ac.uk/projects/ocamllabs/people/xclerc.html">Xavier Clerc</a> visiting from the less-sunny
-<a href="http://www.inria.fr">INRIA</a> in France.  David's done great work on several
-OCaml libraries such as <a href="http://github.com/avsm/ocaml-cohttp">Cohttp</a> and on
-<a href="http://www.youtube.com/watch?v=ll9z1ULtgqo&feature=plcp">WebGL</a>, and he's diving
-straight into a first release of <a href="http://www.cl.cam.ac.uk/projects/ocamllabs/tasks/platform.html">OCamlot</a> before
-starting his PhD later in the year. Xavier will
-work on releasing his <a href="http://ocamljava.x9c.fr/preview/">OCaml Java
-2.0</a> rewrite this summer, which takes
-advantage of all the latest JDK features for non-Java languages.</p>
-<p>A new research grant has also been awarded to <a href="http://www.cl.cam.ac.uk/projects/ocamllabs/people/crowcroft.html">Jon Crowcroft</a>.
-The <a href="http://hubofallthings.wordpress.com">Hub of All Things</a> is a £1.2m multi-disciplinary
-project funded by the <a href="http://www.rcuk.ac.uk/research/xrcprogrammes/Digital/Pages/home.aspx">RCUK Digital Economy Programme</a> and led by 
-<a href="http://www2.warwick.ac.uk/fac/sci/wmg/people/profile/?wmgid=849">Irene Ng</a> 
-in Warwick.  HAT aims to create a home platform, under the user's control, 
-where a market to exchange their personal data for new products and 
-personalised services could exist.  The Cambridge piece of this work will use
-<a href="http://www.cl.cam.ac.uk/projects/ocamllabs/tasks/mirage.html">Mirage</a> for embedded systems programming, and
-<a href="http://signpost.io">Signpost</a>, to enable devices to connect and communicate
-with each-other across the edge network.</p>
-<h3 id="Platformprojects"> Platform projects</h3>
-<p><b>OPAM: </b> <a href="http://opam.ocamlpro.com">OPAM</a>, the popular OCaml Package Manager, recently had its <a href="http://www.ocamlpro.com/blog/2013/03/14/opam-1.0.0.html">1.0
-release</a>!  OPAM has
-been in development for just over a year, and this is a significant milestone
-for the project.  The OPAM <a href="https://github.com/OCamlPro/opam-repository/issues">package repository</a> has had over 500 issues, closed over 400 pull requests and now contains over 450 packages
-(and more than twice that number if you consider that multiple versions are
-available).  This kind of user adoption is a fantastic sign for the OCaml
-community.  We're very happy to be using OPAM as a key piece of the upcoming
-OCaml Platform and the continuous integration and test system.</p>
-<p><a href="https://github.com/ocaml/ocaml.org/wiki/Site-Redesign"><img src="http://www.cl.cam.ac.uk/projects/ocamllabs/images/ocaml_home_v2-2-thumb.jpg" class="right" width="220px" /></a>
-<b>OCaml.org redesign:</b> Amir extended the Balsamiq mockups into more
-realistic static site designs that can be <a href="https://github.com/ocaml/ocaml.org/wiki/Site-Redesign">found on the
-wiki</a>.  We're building
-on the theme we began with the <a href="https://github.com/ocaml/ocaml.org/wiki/Draft-OCaml-Logos">OCaml Logo</a>, but also
-including the full functionality we want for the revamped site.  The samples
-should give people an idea of the colour schemes and images we'll be using, and
-feedback is <em>very</em> welcome.  Next, we're creating the HTML/CSS templates we
-need to make these mockups a reality.</p>
-<p><b>OCamlot</b>: Within hours of getting off the plane, David was already 
-getting well into the OCaml-based test tool and working on the pieces we 
-need to get to a usable first version.  The OCamlot workflow was last 
-described in Amir's
-<a href="http://amirchaudhry.com/wireframe-demos-for-ocamlorg/">Balsamiq mockups</a>
-in case you want to catch up.  This work is made all the more important as 
-Jane Street continues to demonstrate their strong commitment to open-source 
-by sending in OPAM pull requests 
-<a href="https://github.com/OCamlPro/opam-repository/pull/644">every week</a> 
-for new releases of their <a href="http://janestreet.github.io">libraries</a>.  The 
-testing for these releases is currently handled manually and we're really 
-looking forward to having them dealt with automatically!</p>
-<h3 id="Systemsprojects"> Systems projects</h3>
-<p><a href="http://www.cl.cam.ac.uk/projects/ocamllabs/images/asplos-mort.jpg"><img src="http://www.cl.cam.ac.uk/projects/ocamllabs/images/asplos-mort-thumb.jpg" class="right" width="120px" /></a>
-<b>Mirage</b>: There is much preparation ongoing for the big 
-<a href="http://wiki.xen.org/wiki/Mirage_Incubation_Project_Proposal">xen.org incubation</a>, 
-which has now been approved by the Xen community board. Vincent's work on 
-<a href="http://www.cl.cam.ac.uk/projects/ocamllabs/tasks/mirage.html">Mirari</a> is going very well, and he's updated the 
-<a href="http://www.openmirage.org/wiki/install">Mirage installation</a> instructions 
-to use Mirari instead of the manual process required before. 
-<a href="http://www.cl.cam.ac.uk/projects/ocamllabs/people/avsm.html">Anil</a> and <a href="http://www.cl.cam.ac.uk/projects/ocamllabs/people/mort.html">Mort</a> also attended 
-and presented the 
-<a href="http://anil.recoil.org/papers/2013-asplos-mirage.pdf">ASPLOS 2013</a> paper in 
-Houston.  For the curious, 
-<a href="http://www.yelp.co.uk/biz/bens-beans-houston">Ben's Beans</a> is the only good 
-coffee we could find suitable for a European in Texas.</p>
-<p><b>Irminsule</b>: Now that the core of Mirage is heading for release, the 
-team is turning their attention to the storage and distributed programming 
-challenge. <a href="http://www.cl.cam.ac.uk/projects/ocamllabs/people/tg.html">Thomas</a> and Anil have been working on a new 
-policy-free, branch-consistent storage layer that exposed a raw git-like 
-universe to Mirage applications. We're working on as part of the 
-<a href="http://www.cl.cam.ac.uk/projects/ocamllabs/tasks/t2.html">Trilogy2</a> that's investigating how to improve the 
-reliability of congested datacenters.</p>
-<p><a href="http://www.cl.cam.ac.uk/projects/ocamllabs/images/heidi-signposts.jpg"><img src="http://www.cl.cam.ac.uk/projects/ocamllabs/images/heidi-signposts-thumb.jpg" class="right" width="130px" /></a>
-<b>Signposts</b>: <a href="http://www.cl.cam.ac.uk/projects/ocamllabs/people/heidi.html">Heidi</a> gave an <em>excellent</em> talk 
-about Signpost and the benefits it can offer internet users today
-<i>(see right)</i>. This was one of a set of talks that took place in the 
-Computer Lab, organised by <a href="http://www.cl.cam.ac.uk/projects/ocamllabs/people/mycroft.html">Alan Mycroft</a>, on open 
-software and open hardware with speakers such as
-<a href="http://en.wikipedia.org/wiki/Jon_Hall_(programmer)">Jon 'maddog' Hall</a> of
-Linux International. There was fairly unanimous agreement that Heidi's 
-slides were better than Anil's.</p>
-<h3 id="Compilerprojects"> Compiler projects</h3>
-<p><b>Multicore</b>: Once the dreaded ICFP deadline was out of the way, 
-Stephen, Leo, Raphael and Anil put their heads together to start 
-architecting the support for parallel multicore support in the OCaml runtime.
-A key part of the design space is to maintain the sequential performance and 
-simplicity of the existing runtime, but still make it easy to extend shared 
-memory onto different cores.  We'll have more details on this shortly when 
-early prototypes are done and some benchmarks run.</p>
-<p><b>Namespaces:</b> Leo's also been extremely busy in the 
-<a href="http://lists.ocaml.org/listinfo/platform">platform mailing list</a>, which has 
-been the location for the discussion of namespaces.  A few hundred emails 
-have been exchanged on this topic and Leo has summarised the discussion and 
-made proposals in his blog post about 
-<a href="http://www.lpw25.net/2013/03/10/ocaml-namespaces.html">OCaml namespaces</a>.  Although this is a complex issue, aspects of namespaces will be important to 
-the work on the OCaml Platform so we look forward to the outcome of these 
-discussions.</p>
-<p><i>Link roundup:</i></p>
-<ul>
- <li><a href="http://lists.ocaml.org/pipermail/platform/2013-March/000291.html" class="icon-email">OPAM 1.0 Released!</a> <em>(Mar 14th)</em>
- </li>
- <li><a href="http://amirchaudhry.com/wireframe-demos-for-ocamlorg/" class="icon-rss">Wireframe demos for OCaml.org</a> <em>(Mar 14th)</em>
- </li>
- <li><a href="http://www.lpw25.net/2013/03/10/ocaml-namespaces.html" class="icon-rss">Adding namespaces to OCaml</a> <em>(Mar 10th)</em>
- </li>
-</ul>
-
-   </div>  </div>
-
-
-
-
-
-
-
-<p class="date">
-<a href="http://www.cl.cam.ac.uk/projects/ocamllabs/news/index.html#Mar%202013">by Anil Madhavapeddy (anil@recoil.org) at Fri, 01 Mar 2013</a>
-</p>
-  </div>
-</div>
-
-</div>
-
 <p>
 <strong>Last updated:</strong><br>
-Wed, 09 Oct 2013<br>
+Thu, 19 Dec 2013<br>
 <em>All times are UTC.</em><br>
 <br>
 <div align="center">Powered by: <a href="http://www.planetplanet.org/"><img src="images/planet.png" width="80" height="15" alt="Planet" border="0"></a></div>
