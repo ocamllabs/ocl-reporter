@@ -20,6 +20,15 @@ let cufp_2012 =
      ~conf:"Journal of Functional Programming"
      ~conf_url:"http://mc.manuscriptcentral.com/jfp_submit"
 
+let trevi_hotnets_2013 =
+  mk ~id:"hotnets-trevi-2013"
+     ~title:"Trevi: Watering Down Storage Hotspots with Cool Fountain Codes"
+     ~url:"http://anil.recoil.org/papers/2013-hotnets-trevi.pdf"
+     ~authors:"George Parisis, Toby Moncaster, Anil Madhavapeddy and Jon Crowcroft"
+     ~date:"2013-11-21"
+     ~conf:"Twelfth ACM Workshop on Hot Topics in Networks (HotNets-XII)"
+     ~conf_url:"http://conferences.sigcomm.org/hotnets/2013/cfp.shtml"
+
 let usenix_foci_2013 =
   mk ~id:"foci-2013-signposts"
      ~title:"Lost In the Edge: Finding Your Way With Signposts"
@@ -68,6 +77,7 @@ let sas_2013 =
 let all = [
   rwo_2013;
   cufp_2012;
+  trevi_hotnets_2013;
   usenix_foci_2013;
   asplos_2013;
   hotcloud_2010;
