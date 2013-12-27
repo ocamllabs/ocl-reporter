@@ -2,6 +2,24 @@
 open Core.Std
 open Types.Paper
 
+let rwo_2013 =
+  mk ~id:"rwo-2013"
+     ~title:"Real World OCaml: Functional Programming for the Masses"
+     ~url:"https://realworldocaml.org"
+     ~authors:"Yaron Minsky, Anil Madhavapeddy and Jason Hickey"
+     ~date:"2013-11-22"
+     ~conf:"O'Reilly Associated"
+     ~conf_url:"http://oreilly.com"
+
+let cufp_2012 =
+  mk ~id:"cufp-jfp-2012"
+     ~title:"Commercial Users of Functional Programming 2012 Workshop Report"
+     ~url:"http://anil.recoil.org/papers/drafts/2012-cufp-scribe-DRAFT.pdf"
+     ~authors:"Michael Sperber and Anil Madhavapeddy"
+     ~date:"2013-11-01"
+     ~conf:"Journal of Functional Programming"
+     ~conf_url:"http://mc.manuscriptcentral.com/jfp_submit"
+
 let usenix_foci_2013 =
   mk ~id:"foci-2013-signposts"
      ~title:"Lost In the Edge: Finding Your Way With Signposts"
@@ -48,6 +66,8 @@ let sas_2013 =
      ~conf_url:"http://research.microsoft.com/en-us/events/sas2013/"
 
 let all = [
+  rwo_2013;
+  cufp_2012;
   usenix_foci_2013;
   asplos_2013;
   hotcloud_2010;
