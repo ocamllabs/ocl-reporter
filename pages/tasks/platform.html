@@ -79,10 +79,8 @@ for the Platform.  A key aspect of this selection will be which libraries
 are already popular and in use, and also how actively maintained and portable
 they are across different operating systems.</p>
 <p>The tasks below reflect this by:</p>
-<ul> <li>The OPAM package manager acts as the package management front end.
- </li>
- <li>The OPAM Doc tool replaces the venerable <code>ocamldoc</code> tool with modern, cross-referenced HTML output across several libraries.
- </li>
+<ul> <li>The OPAM package manager acts as the package management front end.</li>
+ <li>The OPAM Doc tool replaces the venerable <code>ocamldoc</code> tool with modern, cross-referenced HTML output across several libraries.</li>
  <li>The OCamlot testing infrastructure runs continuous integration of OPAM stable and candidate packages across a variety of operating systems and CPU architectures.</li>
 </ul>
 
@@ -150,7 +148,7 @@ package metadata being added to facilitate the process, and tools such as
 this by looking inside the packages themselves.  The whole of OPAM is exported
 as a <a href="http://opam.ocamlpro.com/pkg/opam-lib.1.0.0.html">library</a> so that third-party
 packages can interface with the OPAM repository without changing OPAM itself.
-This is exactly what the [OCamlot](#OCamlot 0.2.0) project does.</p>
+This is exactly what the <a href="#OCamlot 0.2.0">OCamlot</a> project does.</p>
 
          <h4><em>Related work</em></h4>
           <ul><li><a href="platform.html#OPAM 1.2 (the Platform release)">OPAM 1.2</a></li><li><a href="platform.html#OCamlot">OCamlot</a></li></ul><br /></div>
@@ -198,7 +196,7 @@ environments. Ultimately, we would also like to integrate benchmarking,
 constraint exploration, experimental design, complete isolation, and
 domain testing into this system.</p>
 <p>The resourcing and commissioning of the Machine Pool itself is dealt
-with [separately](#Machine Pool) from this software which utilises it.</p>
+with <a href="#Machine Pool">separately</a> from this software which utilises it.</p>
 <p>Current status: Minimal <a href="">version 0.2.0 released</a></p>
 
          <h4><em>Related work</em></h4>
@@ -223,22 +221,14 @@ high-powered machines that can build the whole OPAM package set quite
 quickly, and also more unusual CPU architectures and operating systems
 that will help developers that don't have access to them. So far we
 have:</p>
-<ul> <li>12-core AMD64/Linux Debian 64-bit
- </li>
- <li>12-core AMD64/Linux Debian 32-bit
- </li>
- <li>ARMv6l/Raspbian Linux 32-bit (Raspberry Pi 512MB)
- </li>
- <li>ARMv5tel/Debian Linux 32-bit (Dreamplug)
- </li>
- <li>sparc64/FreeBSD (thanks to Jasper Wallace for the donation)
- </li>
- <li>macppc/OpenBSD (G4 Powerbook) (thanks to Dave Scott for the donation)
- </li>
- <li>AMD64/MacOS X 10.8
- </li>
- <li>iMac G5/Debian Linux 64-bit
- </li>
+<ul> <li>12-core AMD64/Linux Debian 64-bit</li>
+ <li>12-core AMD64/Linux Debian 32-bit</li>
+ <li>ARMv6l/Raspbian Linux 32-bit (Raspberry Pi 512MB)</li>
+ <li>ARMv5tel/Debian Linux 32-bit (Dreamplug)</li>
+ <li>sparc64/FreeBSD (thanks to Jasper Wallace for the donation)</li>
+ <li>macppc/OpenBSD (G4 Powerbook) (thanks to Dave Scott for the donation)</li>
+ <li>AMD64/MacOS X 10.8</li>
+ <li>iMac G5/Debian Linux 64-bit</li>
 </ul>
 
          <h4><em>Related work</em></h4>

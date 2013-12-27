@@ -22,7 +22,7 @@ Cuts</a> program.  This gives you
 a copy of the final book when it's released too.  Commenting is still open
 on the <a href="http://realworldocaml.org">online version</a>, so please do feel free to
 participate there if you have time.</p>
-<h3 id="SystemsProjects"> Systems Projects</h3>
+<h3 id="SystemsProjects">Systems Projects</h3>
 <p><b>Mirage</b>: Anil and Dave did the last of the sweeping build changes to make
 Mirage friendlier to use for beginners.  Previously, we required a custom OPAM
 switch to build kernels, but now we use <a href="http://www.openmirage.org/wiki/weekly-2013-06-11">virtual
@@ -48,7 +48,7 @@ the team is now racing to pull together the prototypes into a complete system
 before the conference.  Nothing like a deadline to focus the mind!  We're
 also working on the camera-ready version of the paper, which we will share
 here when it's ready.</p>
-<h3 id="PlatformProjects"> Platform Projects</h3>
+<h3 id="PlatformProjects">Platform Projects</h3>
 <p><b>OCamlot:</b> David Sheets did an astounding job at pulling together a
 working continuous build system in a very short amount of time, and promptly
 managed to melt some of the older <a href="../tasks/platform.html#Machine%20Pool">non-x86
@@ -92,7 +92,7 @@ that uses Vg to assemble more complex scenes and graphs.  Daniel's going to
 join us in OCaml Labs for the remainder of the summer, so we're looking
 forward to developing this more and using it on our various Platform projects
 such as OCamlot.</p>
-<h3 id="Outreach"> Outreach</h3>
+<h3 id="Outreach">Outreach</h3>
 <p><b>Real World OCaml:</b> As mentioned earlier, the beta release of RWO went
 splendidly, with a pleasing vibe that the book is what people expected.  There
 were some interesting criticisms of the choice of Github authentication, but
@@ -126,13 +126,11 @@ OCaml-to-C compiler, and also participated in a talk on
 also chatted with us about his alternative <a href="http://caml.inria.fr/mantis/view.php?id=6017">GADT-based implementation of
 Printf</a>, which promises to both
 speed up and simplify the printer support in OCaml (and also relieve Mirage of
-another dependency on <code>libc</code>).<br/></p>
+another dependency on <code>libc</code>).</p>
 <p><i>Link roundup:</i></p>
 <ul>
- <li><a class="icon-community" href="http://blog.xen.org/index.php/2013/06/25/xenserver-org-and-the-xen-project/">XenServer open-sourced!</a> <em>(Jun 25th)</em>
- </li>
- <li><a class="icon-quick-links" href="http://realworldocaml.org">Real World OCaml public beta now available.</a> <em>(Jun 17th)</em>
- </li>
+ <li><a class="icon-community" href="http://blog.xen.org/index.php/2013/06/25/xenserver-org-and-the-xen-project/">XenServer open-sourced!</a> <em>(Jun 25th)</em></li>
+ <li><a class="icon-quick-links" href="http://realworldocaml.org">Real World OCaml public beta now available.</a> <em>(Jun 17th)</em></li>
 </ul>
 
    </div>
@@ -157,7 +155,7 @@ approaches to multicore and type system enhancements. <a href="http://ashishagar
 Agarwal</a> also organised a fun evening with the <a href="http://www.meetup.com/NYC-OCaml/events/117222022/">New
 York OCaml Users Group</a>,
 where Anil and Thomas presented our plans for the nascent OCaml Platform.</p>
-<h3 id="SystemsProjects"> Systems Projects</h3>
+<h3 id="SystemsProjects">Systems Projects</h3>
 <p><b>Mirage:</b> This was a month of consolidation and bugfixing in Mirage.  We've
 been settling into weekly meetings to coordinate the hacking between us and
 Citrix, and the minutes (<a href="http://www.openmirage.org/wiki/weekly-2013-05-14">1</a>
@@ -177,7 +175,7 @@ basic design to the USENIX Free and Open Communications (<a href="https://www.us
 blazed a path on writing this paper, and we've got even more ideas rolling
 around about how to use DNSSEC to break the cloud deadlock.  The
 <a href="http://github.com/mirage/ocaml-dns">ocaml-dns</a> continues to grow features too.</p>
-<h3 id="PlatformProjects"> Platform Projects</h3>
+<h3 id="PlatformProjects">Platform Projects</h3>
 <p><a href="../images/nycoug-drinkup-2013.jpg"><img class="right" src="../images/nycoug-drinkup-2013-thumb.jpg"/></a>
 <b>Ctypes:</b> Jeremy
 <a href="https://sympa.inria.fr/sympa/arc/caml-list/2013-06/msg00046.html">announced</a>
@@ -204,7 +202,7 @@ well as well as OCamlot.  In addition, he's got an interesting collection of
 regular expressions to automatically triage common failures from OPAM
 (such as missing external dependencies), that should help reduce the manual
 burden of getting thousands of tests results dumped on the small OPAM team.</p>
-<h3 id="CompilerProjects"> Compiler Projects</h3>
+<h3 id="CompilerProjects">Compiler Projects</h3>
 <p><a href="../images/janestreet-hq-2013.jpg"><img class="left" src="../images/janestreet-hq-2013-thumb.jpg"/></a>
 <b>OCaml-Java</b>: Xavier Clerc has been hacking away at his next-generation
 OCaml-Java backend (using many new features in JDK7). He's released a
@@ -215,7 +213,7 @@ integration of the runtime with <code>perf</code>.  This should give us the hook
 reliably track where memory was allocated.  His branch isn't going to land in
 OCaml 4.1, but should be available as an OPAM switch for people to easily
 try out when it's more stable.</p>
-<h3 id="Outreach"> Outreach</h3>
+<h3 id="Outreach">Outreach</h3>
 <p><b>OCaml.org:</b> Philippe and Amir have been putting their heads together with
 Christophe and Ashish to turn the <a href="http://ocaml.org">ocaml.org</a> build pipeline
 into something a little more structured.  Philippe is building a <a href="https://github.com/pw374/MPP-language-blender">template
@@ -271,7 +269,7 @@ out.  We did take the opportunity to redesign the <a href="../tasks/index.html">
 <p>We welcomed <a href="../people/euan.html">Euan Harris</a> as a new visitor, and he has
 begun work on a distributed actor library in the vein of Erlang's
 <a href="https://github.com/erlang/otp">OTP</a>.  The prolific <a href="http://erratique.ch">Daniel Bünzli</a> also joined us for the summer to work on his <a href="http://erratique.ch/software/vg/">Vg</a> visualisation library.  He's based out of the Citrix offices, and is also contributing to the Xen project.</p>
-<h3 id="Platformprojects"> Platform projects</h3>
+<h3 id="Platformprojects">Platform projects</h3>
 <p><b>OPAM: </b> The project has entered a bug fixing stage after its release, and
 the package set has steadily grown via external contributors. David Sheets has
 been hacking away on the automated <a href="../tasks/platform.html#OCamlot">OCamlot</a>
@@ -299,7 +297,7 @@ people wander through the doors, and work through the latest excerpts of
 Leo competed to find more and more obscure
 <a href="http://caml.inria.fr/mantis/view.php?id=5992">bugs</a> in the corners of the
 OCaml type system...  You can track the subsequent meetups via the <a href="http://www.meetup.com/Cambridge-NonDysFunctional-Programmers/events/114286762/">NonDysFunctional Meetup group</a>, which includes functional programmers from around the Cambridgeshire area.  Jon and Anil also attended the <a href="http://developer.yahoo.com/events/hack_europe_london/">Yahoo Hackday</a> in London, where Jon met a giant robot and started <a href="https://github.com/jonludlam/mssl">SSL bindings</a>, and Anil experimented with <a href="http://github.com/avsm/ocaml-js-localstorage">js_of_ocaml LocalStorage</a> for Irminsule.</p>
-<h3 id="Systemsprojects"> Systems projects</h3>
+<h3 id="Systemsprojects">Systems projects</h3>
 <p><b>Mirage</b>: We've finally got a release date for the first preview of
 Mirage, which will be at <a href="http://www.oscon.com/oscon2013/public/schedule/detail/28956">O'Reilly OSCON</a> this July!  Pulling together the release is a big endeavour, and the
 <a href="../tasks/mirage.html">team</a> has started weekly calls to work through the
@@ -316,7 +314,7 @@ in his <a href="http://github.com/samoht/cagit">cagit</a> repository, and the in
 for Irminsule's branch-consistent model are coming together.  He gave a demo to
 the Mirage team, with <a href="http://www.openmirage.org/wiki/weekly-2013-04-23">discussion
 notes</a> available.</p>
-<h3 id="Compilerprojects"> Compiler projects</h3>
+<h3 id="Compilerprojects">Compiler projects</h3>
 <p><b>Multicore and Concurrency</b>: Stephen Dolan's made great progress on bringing up a multicore
 runtime using <a href="https://github.com/stedolan/ocaml">thread-local storage</a>, which results
 in a surprisingly compact diff to the OCaml runtime.  We're now moving onto the
@@ -343,12 +341,9 @@ OCaml to build low-level systems components, and Raphael, Alan, Leo and Anil
 had productive discussions about how we could try Mezzo out when it's released.</p>
 <p><i>Link roundup:</i></p>
 <ul>
- <li><a class="icon-rss" href="http://www.linuxfoundation.org/news-media/announcements/2013/04/xen-become-linux-foundation-collaborative-project">Xen and MirageOS to join Linux Foundation</a> <em>(Apr 14th)</em>
- </li>
- <li><a class="icon-community" href="http://www.meetup.com/Cambridge-NonDysFunctional-Programmers/events/114286762/">OCaml Hacking/Meetup Session</a> <em>(Apr 18th)</em>
- </li>
- <li><a class="icon-quick-links" href="http://www.oscon.com/oscon2013/public/schedule/detail/28956">OSCon Mirage talk selected.</a> <em>(Apr 21st)</em>
- </li>
+ <li><a class="icon-rss" href="http://www.linuxfoundation.org/news-media/announcements/2013/04/xen-become-linux-foundation-collaborative-project">Xen and MirageOS to join Linux Foundation</a> <em>(Apr 14th)</em></li>
+ <li><a class="icon-community" href="http://www.meetup.com/Cambridge-NonDysFunctional-Programmers/events/114286762/">OCaml Hacking/Meetup Session</a> <em>(Apr 18th)</em></li>
+ <li><a class="icon-quick-links" href="http://www.oscon.com/oscon2013/public/schedule/detail/28956">OSCon Mirage talk selected.</a> <em>(Apr 21st)</em></li>
 </ul>
 
    </div>
@@ -380,7 +375,7 @@ personalised services could exist.  The Cambridge piece of this work will use
 <a href="../tasks/mirage.html">Mirage</a> for embedded systems programming, and
 <a href="http://signpost.io">Signpost</a>, to enable devices to connect and communicate
 with each-other across the edge network.</p>
-<h3 id="Platformprojects"> Platform projects</h3>
+<h3 id="Platformprojects">Platform projects</h3>
 <p><b>OPAM: </b> <a href="http://opam.ocamlpro.com">OPAM</a>, the popular OCaml Package Manager, recently had its <a href="http://www.ocamlpro.com/blog/2013/03/14/opam-1.0.0.html">1.0
 release</a>!  OPAM has
 been in development for just over a year, and this is a significant milestone
@@ -410,7 +405,7 @@ by sending in OPAM pull requests
 for new releases of their <a href="http://janestreet.github.io">libraries</a>.  The 
 testing for these releases is currently handled manually and we're really 
 looking forward to having them dealt with automatically!</p>
-<h3 id="Systemsprojects"> Systems projects</h3>
+<h3 id="Systemsprojects">Systems projects</h3>
 <p><a href="../images/asplos-mort.jpg"><img class="right" width="120px" thumb="ASPLOS served green drinks. Hmm" src="../images/asplos-mort-thumb.jpg"/></a>
 <b>Mirage</b>: There is much preparation ongoing for the big 
 <a href="http://wiki.xen.org/wiki/Mirage_Incubation_Project_Proposal">xen.org incubation</a>, 
@@ -440,7 +435,7 @@ software and open hardware with speakers such as
 <a href="http://en.wikipedia.org/wiki/Jon_Hall_(programmer)">Jon 'maddog' Hall</a> of
 Linux International. There was fairly unanimous agreement that Heidi's 
 slides were better than Anil's.</p>
-<h3 id="Compilerprojects"> Compiler projects</h3>
+<h3 id="Compilerprojects">Compiler projects</h3>
 <p><b>Multicore</b>: Once the dreaded ICFP deadline was out of the way, 
 Stephen, Leo, Raphael and Anil put their heads together to start 
 architecting the support for parallel multicore support in the OCaml runtime.
@@ -458,12 +453,9 @@ the work on the OCaml Platform so we look forward to the outcome of these
 discussions.</p>
 <p><i>Link roundup:</i></p>
 <ul>
- <li><a class="icon-email" href="http://lists.ocaml.org/pipermail/platform/2013-March/000291.html">OPAM 1.0 Released!</a> <em>(Mar 14th)</em>
- </li>
- <li><a class="icon-rss" href="http://amirchaudhry.com/wireframe-demos-for-ocamlorg/">Wireframe demos for OCaml.org</a> <em>(Mar 14th)</em>
- </li>
- <li><a class="icon-rss" href="http://www.lpw25.net/2013/03/10/ocaml-namespaces.html">Adding namespaces to OCaml</a> <em>(Mar 10th)</em>
- </li>
+ <li><a class="icon-email" href="http://lists.ocaml.org/pipermail/platform/2013-March/000291.html">OPAM 1.0 Released!</a> <em>(Mar 14th)</em></li>
+ <li><a class="icon-rss" href="http://amirchaudhry.com/wireframe-demos-for-ocamlorg/">Wireframe demos for OCaml.org</a> <em>(Mar 14th)</em></li>
+ <li><a class="icon-rss" href="http://www.lpw25.net/2013/03/10/ocaml-namespaces.html">Adding namespaces to OCaml</a> <em>(Mar 10th)</em></li>
 </ul>
 
    </div>
@@ -485,12 +477,11 @@ visit in April, with much interest in his <a href="http://argot.x9c.fr">Argot</a
 and the upcoming <a href="../tasks/outreach.html#OCaml.org%20redesign">redesign of OCaml.org</a>.</p>
 <p>Two new research grants have been awarded that are relevant to the OCaml Labs mission:</p>
 <ul>
- <li><a href="http://gow.epsrc.ac.uk/NGBOViewGrant.aspx?GrantRef=EP/K032968/1">Network-as-a-Service</a> is a 3-year grant to solve pressing problems in &quot;Big Data&quot; processing, and will enable us to continue to develop <a href="http://openmirage.org">MirageOS</a> and the use of OCaml and functional programming in this space.  We're going to be collaborating with Imperial and Nottingham on this, with the Cambridge efforts led by <a href="http://www.cl.cam.ac.uk/~awm22/">Andrew Moore</a>, <a href="../people/crowcroft.html">Jon Crowcroft</a> and <a href="../people/avsm.html">Anil Madhavapeddy</a>.
- </li>
+ <li><a href="http://gow.epsrc.ac.uk/NGBOViewGrant.aspx?GrantRef=EP/K032968/1">Network-as-a-Service</a> is a 3-year grant to solve pressing problems in &quot;Big Data&quot; processing, and will enable us to continue to develop <a href="http://openmirage.org">MirageOS</a> and the use of OCaml and functional programming in this space.  We're going to be collaborating with Imperial and Nottingham on this, with the Cambridge efforts led by <a href="http://www.cl.cam.ac.uk/~awm22/">Andrew Moore</a>, <a href="../people/crowcroft.html">Jon Crowcroft</a> and <a href="../people/avsm.html">Anil Madhavapeddy</a>.</li>
  <li><a href="http://rems.io">Rigorous Engineering of Mainstream Systems</a> asks how we can use rigorous maths to improve the quality of mainstream computer systems.  It is led by <a href="http://www.cl.cam.ac.uk/~pes20">Peter Sewell</a> at Cambridge, and most of the tools (including <a href="http://www.cl.cam.ac.uk/~pes20/ott/">Ott</a> and <a href="http://www.cs.kent.ac.uk/people/staff/sao/lem/">Lem</a>) are written in OCaml and will benefit from the ongoing work at OCaml Labs.</li>
 </ul>
 
-<h3 id="Platformprojects"> Platform projects</h3>
+<h3 id="Platformprojects">Platform projects</h3>
 <p><b>OPAM</b>: <a href="../images/rdc-talk.jpg"><img class="right" width="130px" src="../images/rdc-talk-thumb.jpg"/></a>
 We've been working hard on an OPAM 1.0 release, and Thomas and Anil have been sweeping through the package tree to stabilise the repository via automated builds.
 We also had a brilliant visit from <a href="http://www.dicosmo.org/index.html.en">Roberto Di Cosmo</a> from <a href="http://www.pps.univ-paris-diderot.fr">PPS</a>, who has contributed extensively to the open-source community over the years.  He gave a talk on the <a href="http://upsilon.cc/~zack/research/publications/infsof2012-mpm.pdf">challenges of handling large-scale versioning</a> of packages from a mathematical perspective (particularly applied to Debian), which is very useful input for the ongoing OPAM work.</p>
@@ -510,13 +501,12 @@ screencasts that talk though a wireframe demo of the new site.  These short
 videos covered elements of design, the new documentation system and an overview
 of how the continuous integration system would work.  You can read more and
 experience the clickable demo via <a href="http://amirchaudhry.com/wireframe-demos-for-ocamlorg">Amir's blog post</a>.</p>
-<h3 id="Systemsandcompilerprojects"> Systems and compiler projects</h3>
+<h3 id="Systemsandcompilerprojects">Systems and compiler projects</h3>
 <p><b>Mirage</b>: Anil gave two tech talks about <a href="http://openmirage.org">Mirage</a> this month at Citrix and Microsoft Research, as practise talks for <a href="http://asplos13.rice.edu">ASPLOS 2013</a>. Mirage itself is nearing a release, and <a href="https://github.com/vbmithr">Vincent Bernardoff</a> has joined the Citrix engineering team to help drive it to release. He's been primarily focussed on the build frontend (dubbed <a href="../tasks/mirage.html#Mirari">Mirari</a>) to make Mirage applications easier to compile out-of-the-box.</p>
 <p><b>camlp4 redesign:</b> There has been more discussion about the future of camlp4 and <a href="http://www.lpw25.net/2013/02/05/camlp4-alternative-part-2.html">Leo posted another summary</a> on his thoughts for an alternative apporach to quotations.</p>
 <p><i>Link roundup:</i></p>
 <ul>
- <li><a class="icon-rss" href="http://www.lpw25.net/2013/02/05/camlp4-alternative-part-2.html">An alternative to camlp4 - Part 2</a> <em>(Feb 5th)</em>
- </li>
+ <li><a class="icon-rss" href="http://www.lpw25.net/2013/02/05/camlp4-alternative-part-2.html">An alternative to camlp4 - Part 2</a> <em>(Feb 5th)</em></li>
 </ul>
 
    </div>
@@ -534,7 +524,7 @@ an overview of the <a href="../tasks/index.html">research work</a> that OCaml La
 starting. An interesting theme of the discussion that followed was
 related to undergraduate teaching and how things like the <a href="../tasks/platform.html">OCaml
 Platform</a> and infrastructure would make it easier for
-students to get to grips with programming.<br/></p>
+students to get to grips with programming.</p>
 <p>For the evening after the meeting, <a href="../people/amirmc.html">Amir</a> set up 
 an informal OCaml hacking/tutorial session in Cambridge.  Around 15 eager 
 people attended the event in <a href="http://makespace.org">Makespace</a> (a community 
@@ -548,7 +538,7 @@ related to a perfect storm of package issues, which everyone is keen to
 improve.  Despite these problems, attendees were very positive and were keen 
 to see more gatherings like this in future.  When Amir asked for feedback, 
 pretty much everyone commented on how great the pizza was.</p>
-<h3 id="Platformprojects"> Platform projects</h3>
+<h3 id="Platformprojects">Platform projects</h3>
 <p>OCaml Labs also hosted its first visitor this month as <a href="../people/tg.html">Thomas
 Gazagnaire</a>, the CTO of OCamlPro, spent three weeks in
 Cambridge.  Much effort was put into preparing Mirage for release, discussions
@@ -556,7 +546,6 @@ about parallelism and the OCaml Platform, and anything where OPAM is a crucial
 component.  Worth noting is that (at time of writing) the 
 <a href="https://github.com/OCamlPro/opam-repository">opam-repository</a> has now 
 become the <a href="https://github.com/languages/OCaml">overall most forked OCaml project on Github</a>.<br/>
-
 The <a href="http://lists.ocaml.org/pipermail/platform/">Platform mailing list</a> 
 has also been formed for discussion regarding the OCaml Platform.  Anyone 
 interested in the discussions about the platform, which will include 
@@ -564,7 +553,6 @@ development on OPAM, should join this list.</p>
 <p>Part of the Platform work involves creating a new 
 <a href="../tasks/platform.html">design for OCaml.org</a>, which also 
 <a href="http://lists.ocaml.org/pipermail/infrastructure/2013-February/000194.html">kicked-off this week</a>.<br/>
-
 Amir will keep people updated about progress via updates to the 
 <a href="../tasks/outreach.html#OCaml.org%20redesign">OCL website</a>, 
 <a href="http://lists.ocaml.org/pipermail/infrastructure/">Infrastructure mailing list</a> and also by posting things to the 
@@ -574,7 +562,7 @@ requires, in order to refine the templates we need.  As part of this, we
 also commissioned a new logo for OCaml and although it's still under 
 development, you can see the latest draft on the 
 <a href="https://github.com/ocaml/ocaml.org/wiki/Draft-OCaml-Logos">OCaml.org wiki</a>.
-  Please send any feedback directly to Amir.</p>
+ Please send any feedback directly to Amir.</p>
 <p><a href="../images/t2-kickoff-2.jpg"><img class="right" width="130px" src="../images/t2-kickoff-2-thumb.jpg"/></a>
 The Real World OCaml book website was released as a 
 <a href="http://www.realworldocaml.org">limited alpha</a> earlier in the month, with 
@@ -586,7 +574,7 @@ content.  So far there have been over 250 comments on the alpha, with half
 them being dealt with already.</p>
 <p>A new EU project also kicked-off called <a href="../tasks/t2.html">Trilogy 2</a>, which builds on the 
 award-winning work from the original <a href="http://www.trilogy-project.org">Trilogy</a> project.  OnApp (a member of Trilogy 2), will be providing the <a href="http://lists.ocaml.org/pipermail/infrastructure/2013-February/000198.html">cloud Infrastructure for ocaml.org</a>, and Thomas and Anil will be expanding the Mirage project into distributed computing under this umbrella.  As befits an EU project, it kicked off with an especially nice dinner at <a href="http://www.christs.cam.ac.uk">Christ's College</a>...</p>
-<h3 id="Systemsresearch"> Systems research</h3>
+<h3 id="Systemsresearch">Systems research</h3>
 <p><b>Mirage:</b> This was formally proposed as an 
 <a href="../tasks/mirage.html">incubated Xen.org project</a> and the proposal was put forward for 
 <a href="http://wiki.xen.org/wiki/Mirage_Incubation_Project_Proposal">community review</a>. There were many positive 
@@ -598,7 +586,7 @@ visibility and access to resources.  This would accelerate progress towards an
 alpha release in Q1/Q2 this year.  In 
 addition to this, a proposal for an 
 <a href="http://www.oscon.com/oscon2013">OSCON talk</a> was also submitted and the camera-ready version of the ASPLOS paper is 
-<a href="http://anil.recoil.org/papers/2013-asplos-mirage.pdf">now available</a>.<br/></p>
+<a href="http://anil.recoil.org/papers/2013-asplos-mirage.pdf">now available</a>.</p>
 <p><b>Illuminate</b>: A related research topic where Mirage could be useful is in embedded systems 
 and the Internet of Things.  One specific use case is the 
 <a href="../tasks/illuminate.html">Illuminate Project</a>, where Mirage can be used 
@@ -620,7 +608,7 @@ opinions (we want decentralised identity, Google want it all to go through
 them).  Either way, we're even more motivated to get the Signpost tech out to
 the big bad world as soon as possible.  Meanwhile, Haris found his identical
 twin brother in <a href="http://en.wikipedia.org/wiki/St_John%27s_College,_Cambridge#The_Master.27s_Lodge_and_Garden">St Johns Masters Lodge</a>...</p>
-<h3 id="Compilerprojects"> Compiler projects</h3>
+<h3 id="Compilerprojects">Compiler projects</h3>
 <p>Several mailing lists are in progress for various community-driven projects.
 The first of these is a working group on the future of syntax extensions in 
 OCaml (<a href="http://lists.ocaml.org/pipermail/wg-camlp4">wg-camlp4</a>).  This group is 
@@ -628,7 +616,7 @@ chaired by <a href="http://alain.frisch.fr">Alain Frisch</a> and Leo White and h
 generated a great deal of discussion in the last two weeks.  Leo is 
 summarising his thoughts in a series of <a href="http://www.lpw25.net">blog posts</a> 
 as he goes.  Further working groups on parallelism in OCaml and build systems are under 
-discussion and will be announced in due course.<br/></p>
+discussion and will be announced in due course.</p>
 <p>As well as all the research and development activity we've also been 
 recruiting.  We've had several rounds of interviews and made a number of 
 offers so hopefully we'll be announcing new members of the OCaml Labs team 
@@ -675,7 +663,6 @@ Real World Haskell, and the site will have commenting functionality so that
 people can suggest improvements before the book is finalised.  As part of this,
 we also worked with a design firm to begin creating a <a href="../tasks/outreach.html#OCaml.org%20redesign">new logo for the OCaml
 language</a>.<br/>
-
 The logo will be placed into the
 public domain for use by anyone.</p>
 <p>Last, but certainly not least, Ashish put the new <a href="http://ocaml.org">ocaml.org</a>

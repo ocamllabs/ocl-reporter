@@ -45,15 +45,12 @@
     <div class="width:75%"><p><a href="http://#"><img class="left" src="../images/illuminate.gif" width="70px"/></a>Embedded computer systems that are low-power, physically mobile, 
 and which contain actuators and sensors to interface and influence the &quot;real 
 world&quot; are becoming increasingly common.<br/>
-
 Many people are referring to this collectively as the &quot;Internet of Things&quot;.
 We're building the core technology to make these distributed devices fundamentally more secure, reliable and easier to program.
 This consists of three main bits of technology:</p>
 <ul>
- <li>The Mirage OS (described separately) to build specialised, type-safe embedded images.
- </li>
- <li>The Signposts coordination system for embedded devices to find each other securely across a complex edge network.
- </li>
+ <li>The Mirage OS (described separately) to build specialised, type-safe embedded images.</li>
+ <li>The Signposts coordination system for embedded devices to find each other securely across a complex edge network.</li>
  <li>The Irminsule (described in T2) persistent storage system to provide a flexible coordination workflow across such sensors.</li>
 </ul>
 
@@ -145,12 +142,10 @@ This is due to differences in the ARMv6 and ARMv7 instruction setsa
 <p>Luckily, the issue has been <a href="https://github.com/ocaml/ocaml/commit/a4253570ff0fcfcf25e145d68e02e198915503fb">fixed</a> upstream in the OCaml compiler, and will appear in version <code>4.00.2</code>.
 Meanwhile, you can download precompiled debs with this patch by adding the following to <code>/etc/apt/sources.list</code>:</p>
 <pre><code>deb http://www.cl.cam.ac.uk/~lpw25/ocaml-rpi/ wheezy main
-deb-src http://www.cl.cam.ac.uk/~lpw25/ocaml-rpi/ wheezy main
-</code></pre>
+deb-src http://www.cl.cam.ac.uk/~lpw25/ocaml-rpi/ wheezy main</code></pre>
 <p>Alternatively, you can also use <a href="http://opam.ocamlpro.com">OPAM</a> to compile a custom compiler (see the Jane Street blog post above for instructions on how to install OPAM):</p>
 <pre><code>$ opam switch 4.00.1+raspberrypi
-$ eval `opam config -env`
-</code></pre>
+$ eval `opam config -env`</code></pre>
 <p>This compiler should work on Raspbian with no issues.
 Many thanks to <a href="http://psellos.com/ocaml/compile-to-iphone.html">Jeffery Scofield</a> for all this help with this patch!</p>
 

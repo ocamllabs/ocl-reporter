@@ -96,7 +96,7 @@ times, for instance as part of a solution to the expression problem
 Unlike &quot;exn&quot;, these extensible types can have type parameters, allowing
 for extensible GADTs.</p>
 <p>For example:</p>
-<pre><code class="ocaml">type foo = ..
+<pre class="ocaml"><code class="ocaml">type foo = ..
 
 type foo += A
 
@@ -105,8 +105,7 @@ type foo += B of int
 let is_a x =
   match x with
     A -&gt; true
-  | _ -&gt; false
-</code></pre>
+  | _ -&gt; false</code></pre>
 
          <br/></div>
       
@@ -156,20 +155,17 @@ contains all the components of the library as sub-modules. However, there are
 some critical problems with creating a single module containing the whole
 library:</p>
 <ul>
- <li>The module is a single unit that has to be linked or not as a whole. This
+ <li><p>The module is a single unit that has to be linked or not as a whole. This
  means that any program using part of the library must include the entire
- library.</li>
-</ul>
-
-<ul>
- <li>The module is a choke-point in the dependency graph. If a file depends
+ library.</p>
+ </li>
+ <li><p>The module is a choke-point in the dependency graph. If a file depends
  on one thing in the library then it needs to be recompiled if anything
- in the library changes.</li>
-</ul>
-
-<ul>
- <li>Opening a very large module is slow and can seriously affect build
- performance.</li>
+ in the library changes.</p>
+ </li>
+ <li><p>Opening a very large module is slow and can seriously affect build
+ performance.</p>
+ </li>
 </ul>
 
 <p>These problems are caused by the runtime semantics of modules. Namespaces have
