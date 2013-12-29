@@ -8,3 +8,6 @@ process will help us identify and and refine the initial libraries and tools
 that should form part of v0.1 of the platform proper.  When OCamlot is
 complete, we'll be in a much better position to discuss what components should
 form v0.2 of the Platform.
+
+The current state of the Platform components was also presented at
+[OCaml 2013](http://ocaml.org/meetings/ocaml/2013/slides/madhavapeddy.pdf).
