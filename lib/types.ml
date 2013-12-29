@@ -98,6 +98,7 @@ module Reference = struct
    | `Blog of string
    | `Github of string * string (* user, repo *)
    | `Github_issues of string * string (* user, repo *)
+   | `Github_issue of string * string * int (* user, repo, issue *)
    | `Github_tag of string * string * string (* user, repo, tag *)
    | `Webpage of string
    | `Video of string
@@ -121,6 +122,9 @@ module Reference = struct
 
   let github_issues ?(name="Issues") owner repo =
     { name; link=(`Github_issues (owner,repo)) }
+
+  let github_issue ?(name="Issues") owner repo issue =
+    { name; link=(`Github_issue (owner,repo,issue)) }
 
   let webpage ?(name="Homepage") url =
     { name; link=(`Webpage url) }
