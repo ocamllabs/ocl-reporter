@@ -4,12 +4,13 @@ open Data
 
 open Core.Std
 
-let years = [2012;2013]
+let years = [2012;2013;2014]
 let start_date = Date.create_exn ~y:2012 ~m:Month.Aug ~d:1
+let end_date   = Date.create_exn ~y:2014 ~m:Month.May ~d:1
 let dates = 
   List.concat_map Month.all ~f:(fun m ->
     List.map years ~f:(fun y -> Date.create_exn ~y ~m ~d:1))
-  |> List.filter ~f:(fun d -> Date.(d > start_date))
+  |> List.filter ~f:(fun d -> Date.(d > start_date && d < end_date))
   |> List.sort ~cmp:Date.compare 
 let last_date = List.last_exn dates
 
