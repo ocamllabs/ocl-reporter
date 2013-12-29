@@ -3,6 +3,7 @@ let mk_date y m =
   (y,m,1,12,0), (Printf.sprintf "%.4d-%.2d-%.2d" y m 1)
 
 let monthlies = [
+  (2013,12,29,12,0), (Printf.sprintf "2013-12-29");
   mk_date 2013 6;
   mk_date 2013 5;
   mk_date 2013 4;

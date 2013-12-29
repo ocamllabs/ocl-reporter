@@ -31,6 +31,7 @@ let ref_to_html rf =
   |`Blog r |`Webpage r -> <:html<<a class="icon-cloud" href=$str:r$>$l$</a>&>>
   |`Video r|`Slideshare r -> <:html<<a class="icon-bullhorn" href=$str:r$>$l$</a>&>>
   |`Github (u,p) -> let r = sprintf "https://github.com/%s/%s" u p in <:html<<a class="icon-github" href=$str:r$>$l$</a>&>>
+  |`Github_issue (u,p,i) -> let r = sprintf "https://github.com/%s/%s/issues/%d" u p i in <:html<<a class="icon-wrench" href=$str:r$>$l$</a>&>>
   |`Github_issues (u,p) -> let r = sprintf "https://github.com/%s/%s/issues" u p in <:html<<a class="icon-wrench" href=$str:r$>$l$</a>&>>
   |`Github_tag (u,p,t) -> let r = sprintf "https://github.com/%s/%s/archives/%s.tar.gz" u p t in <:html<<a class="icon-github" href=$str:r$>$l$</a>&>>
   |`Mantis id -> let r = sprintf "http://caml.inria.fr/mantis/view.php?id=%d" id in <:html<<a href=$str:r$>$l$</a>&>>

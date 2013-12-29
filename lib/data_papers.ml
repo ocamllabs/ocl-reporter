@@ -2,6 +2,15 @@
 open Core.Std
 open Types.Paper
 
+let cacm_2014 =
+   mk ~id:"cacm-unikernels-2013"
+     ~title:"Unikernels: the Rise of the Virtual Library Operating System"
+     ~url:"http://cacm.acm.org/magazines/2014/1/170866-unikernels/abstract"
+     ~authors:"Anil Madhavapeddy and Dave Scott"
+     ~date:"2014-01-04"
+     ~conf:"Communications of the ACM"
+     ~conf_url:"http://cacm.acm.org/"
+
 let rwo_2013 =
   mk ~id:"rwo-2013"
      ~title:"Real World OCaml: Functional Programming for the Masses"
@@ -75,6 +84,7 @@ let sas_2013 =
      ~conf_url:"http://research.microsoft.com/en-us/events/sas2013/"
 
 let all = [
+  cacm_2014;
   rwo_2013;
   cufp_2012;
   trevi_hotnets_2013;
