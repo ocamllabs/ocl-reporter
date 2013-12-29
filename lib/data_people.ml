@@ -69,6 +69,15 @@ module People = struct
     homepage=None;
     mugshot=Some "yallop.jpeg";
   }
+  let tg = {
+    id="tg";
+    name="Thomas Gazagnaire";
+    affiliation=`CL;
+    role="Senior RA";
+    bio=None;
+    homepage=Some "http://thomas.gazagnaire.org";
+    mugshot=(Some "tg.png");
+  }
   let pwang = {
     id="pwang";
     name="Philippe Wang";
@@ -114,15 +123,7 @@ module People = struct
     homepage=None;
     mugshot=None;
   }
-  let smh = {
-    id="smh";
-    name="Steven Hand";
-    affiliation=`CLx;
-    role="Reader";
-    bio=None;
-    homepage=Some "http://www.cl.cam.ac.uk/~smh22";
-    mugshot=Some "smh.jpg";
-  }
+
   let haris = {
     id="haris";
     name="Haris Rotsos";
@@ -154,7 +155,7 @@ module People = struct
     id="rwatson";
     name="Robert Watson";
     affiliation=`CLx;
-    role="Senior RA";
+    role="Lecturer";
     bio=None;
     homepage=Some "http://www.cl.cam.ac.uk/~rnw24/";
     mugshot=Some "rwatson.jpg";
@@ -189,24 +190,25 @@ module People = struct
   let gparisis = {
     id="gparisis";
     name="George Parisis";
-    affiliation=`CL;
+    affiliation=`Past;
     role="Research Associate";
     bio=None;
     homepage=Some "http://www.cl.cam.ac.uk/~gp349/";
     mugshot=Some "gparisis.jpg";
   }  
+ 
+  (* 
+    Citrix people
+  *)
   let euan = {
     id="euan";
     name="Euan Harris";
-    affiliation=`Past;
+    affiliation=`Citrix;
     role="Visitor";
     bio=None;
     homepage=None;
     mugshot=None;
-  }  
-  (* 
-    Citrix people
-  *)
+  } 
   let djs = {
     id="djs";
     name="Dave Scott";
@@ -219,8 +221,8 @@ module People = struct
   let vb = {
     id="vb";
     name="Vincent Bernardoff";
-    affiliation=`Citrix;
-    role="Research Intern";
+    affiliation=`Past;
+    role="Research Intern (2013)";
     bio=None;
     homepage=Some "https://github.com/vbmithr";
     mugshot=Some "vb.jpg";
@@ -267,15 +269,6 @@ module People = struct
   (* 
     OCamlPro people
   *)
-  let tg = {
-    id="tg";
-    name="Thomas Gazagnaire";
-    affiliation=`OCP;
-    role="CTO";
-    bio=None;
-    homepage=Some "http://thomas.gazagnaire.org";
-    mugshot=(Some "tg.png");
-  }
   let pierre = {
     id="pierre";
     name="Pierre Chambart";
@@ -285,6 +278,16 @@ module People = struct
     homepage=Some "http://www.lsv.ens-cachan.fr/~chambart";
     mugshot=(Some "pierre.jpg");
   }
+  let gesbert = {
+    id="louis";
+    name="Louis Gesbert";
+    affiliation=`OCP;
+    role="";
+    bio=None;
+    homepage=Some "http://louis.gesbert.fr/";
+    mugshot=None;
+  }
+
   (* INRIA *)
   let fabrice = {
     id="fabrice";
@@ -406,12 +409,21 @@ module People = struct
     homepage=Some "https://github.com/vincent-botbol";
     mugshot=Some "botbol.png";
   }
+  let smh = {
+    id="smh";
+    name="Steven Hand";
+    affiliation=`Past;
+    role="Reader";
+    bio=None;
+    homepage=Some "http://www.cl.cam.ac.uk/~smh22";
+    mugshot=Some "smh.jpg";
+  }
 
   let all = [
     avsm; mycroft; iml; crowcroft; amir; lpw25; yallop; pwang;
     stedolan; balrajsingh; heidi; raphael; smh; haris;  vsevolod;
     griffin; rwatson; alib; bogdan; sheets; gparisis; euan;
-    djs; vb; jludlam; lars; yaron; shinwell; tg; pierre; fabrice;
+    djs; vb; jludlam; lars; yaron; shinwell; tg; pierre; gesbert; fabrice;
     xleroy; mac; mort; ashish; christophe; gabor;
     (* prashanth; *) jhickey; xclerc; dbunzli; vbotbol ]
 
