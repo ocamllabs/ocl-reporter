@@ -40,7 +40,7 @@
 </div>
 
 <div id="container"> <a id="skip-content" name="skip-content"></a>
-<ul id="nav-breadcrumb"><li class="first"><a href="http://www.cam.ac.uk/">University of Cambridge</a></li><li><a href="http://www.cl.cam.ac.uk/">Computer Laboratory</a></li><li><a href="../index.html">OCaml Labs</a></li><li><a href="index.html">Projects</a></li><li><a href="platform.html">OCaml Platform</a></li></ul><ul id="nav-primary"><li><div><a href="../index.html">OCaml Labs</a></div></li><li><div><a href="../news/index.html">News</a></div></li><li><div><a href="../blogs/index.html">Blogs</a></div></li><li class="active"><div><a href="index.html">Projects</a></div></li><li><div><a href="../papers/index.html">Papers</a></div></li><li><div><a href="../pkg/index.html">Software</a></div></li><li><div><a href="../people/index.html">People</a></div></li><li><div><a href="../collaboration.html">Collaboration</a></div></li><li><div><a href="../contact.html">Contact Us</a></div></li></ul><div id="content"><div id="sub-brand"><p class="section">OCaml Labs</p></div><div id="content-primary">    <div class="ucampas-toc right"><table><tbody><tr><td><p>Contents</p><ul><li><a href="#platform">OCaml Platform</a><ul><li><a href="#Team">Team</a></li><li><a href="#Tasks">Tasks</a><ul><li><a href="#OPAM 1.0 (if it builds, ship it)">OPAM 1.0 (if it builds, ship it)</a></li><li><a href="#OPAM 1.1 (the CI and Test release)">OPAM 1.1 (the CI and Test release)</a></li><li><a href="#OPAM 1.2 (the Platform release)">OPAM 1.2 (the Platform release)</a></li><li><a href="#OPAM Doc">OPAM Doc</a></li><li><a href="#OCamlot 0.2.0">OCamlot 0.2.0</a></li><li><a href="#OCamlot 0.3.0">OCamlot 0.3.0</a></li><li><a href="#Machine Pool">Machine Pool</a></li><li><a href="#Platform Preview">Platform Preview</a></li><li><a href="#Foreign Function Interface">Foreign Function Interface</a></li></ul></li></ul></li></ul></td></tr></tbody></table></div>    
+<ul id="nav-breadcrumb"><li class="first"><a href="http://www.cam.ac.uk/">University of Cambridge</a></li><li><a href="http://www.cl.cam.ac.uk/">Computer Laboratory</a></li><li><a href="../index.html">OCaml Labs</a></li><li><a href="index.html">Projects</a></li><li><a href="platform.html">OCaml Platform</a></li></ul><ul id="nav-primary"><li><div><a href="../index.html">OCaml Labs</a></div></li><li><div><a href="../news/index.html">News</a></div></li><li><div><a href="../blogs/index.html">Blogs</a></div></li><li class="active"><div><a href="index.html">Projects</a></div></li><li><div><a href="../papers/index.html">Papers</a></div></li><li><div><a href="../pkg/index.html">Software</a></div></li><li><div><a href="../people/index.html">People</a></div></li><li><div><a href="../collaboration.html">Collaboration</a></div></li><li><div><a href="../contact.html">Contact Us</a></div></li></ul><div id="content"><div id="sub-brand"><p class="section">OCaml Labs</p></div><div id="content-primary">    <div class="ucampas-toc right"><table><tbody><tr><td><p>Contents</p><ul><li><a href="#platform">OCaml Platform</a><ul><li><a href="#Team">Team</a></li><li><a href="#Tasks">Tasks</a><ul><li><a href="#OPAM 1.0 (if it builds, ship it)">OPAM 1.0 (if it builds, ship it)</a></li><li><a href="#OPAM 1.1 (the CI and Test release)">OPAM 1.1 (the CI and Test release)</a></li><li><a href="#OPAM 1.2 (the Platform release)">OPAM 1.2 (the Platform release)</a></li><li><a href="#OPAM-in-a-box">OPAM-in-a-box</a></li><li><a href="#OPAMDoc prototype">OPAMDoc prototype</a></li><li><a href="#OCamlot 0.2.0">OCamlot 0.2.0</a></li><li><a href="#OCamlot 0.3.0">OCamlot 0.3.0</a></li><li><a href="#Non-x86 Machine Pool">Non-x86 Machine Pool</a></li><li><a href="#Platform Preview">Platform Preview</a></li><li><a href="#Ctypes">Ctypes</a></li><li><a href="#Ctypes stub generation">Ctypes stub generation</a></li></ul></li></ul></li></ul></td></tr></tbody></table></div>    
     
             <style type="text/css">            table { 
             table-layout: fixed;
@@ -79,10 +79,8 @@ for the Platform.  A key aspect of this selection will be which libraries
 are already popular and in use, and also how actively maintained and portable
 they are across different operating systems.</p>
 <p>The tasks below reflect this by:</p>
-<ul> <li>The OPAM package manager acts as the package management front end.
- </li>
- <li>The OPAM Doc tool replaces the venerable <code>ocamldoc</code> tool with modern, cross-referenced HTML output across several libraries.
- </li>
+<ul> <li>The OPAM package manager acts as the package management front end.</li>
+ <li>The OPAM Doc tool replaces the venerable <code>ocamldoc</code> tool with modern, cross-referenced HTML output across several libraries.</li>
  <li>The OCamlot testing infrastructure runs continuous integration of OPAM stable and candidate packages across a variety of operating systems and CPU architectures.</li>
 </ul>
 
@@ -91,17 +89,18 @@ they are across different operating systems.</p>
     <h2 id="Team">Team</h2>
     <p><a href="../people/amirmc.html"><img class="inline" height="50px" src="../mugshots/amir.jpg" style="" /></a><a href="../people/avsm.html"><img class="inline" height="50px" src="../mugshots/avsm.jpg" style="" /></a><a href="../people/lpw25.html"><img class="inline" height="50px" src="../mugshots/lpw25.jpg" style="" /></a><a href="../people/pwang.html"><img class="inline" height="50px" src="../mugshots/pwang.jpg" style="" /></a><a href="../people/sheets.html"><img class="inline" height="50px" src="../mugshots/sheets.png" style="" /></a><a href="../people/tg.html"><img class="inline" height="50px" src="../mugshots/tg.png" style="" /></a><a href="../people/vbotbol.html"><img class="inline" height="50px" src="../mugshots/botbol.png" style="" /></a><a href="../people/yallop.html"><img class="inline" height="50px" src="../mugshots/yallop.jpeg" style="" /></a></p>
     <h2 id="Tasks">Tasks</h2>
-    <table class="projects" width="95%">    <tbody><tr class="dates"><td>Sep '12</td><td>Oct '12</td><td>Nov '12</td><td>Dec '12</td><td>Jan '13</td><td>Feb '13</td><td>Mar '13</td><td>Apr '13</td><td>May '13</td><td>Jun '13</td><td>Jul '13</td><td>Aug '13</td><td>Sep '13</td><td>Oct '13</td><td>Nov '13</td><td>Dec '13</td><td>&#8734;</td></tr>
+    <table class="projects" width="95%">    <tbody><tr class="dates"><td>Sep '12</td><td>Oct '12</td><td>Nov '12</td><td>Dec '12</td><td>Jan '13</td><td>Feb '13</td><td>Mar '13</td><td>Apr '13</td><td>May '13</td><td>Jun '13</td><td>Jul '13</td><td>Aug '13</td><td>Sep '13</td><td>Oct '13</td><td>Nov '13</td><td>Dec '13</td><td>Jan '14</td><td>Feb '14</td><td>Mar '14</td><td>Apr '14</td><td>&#8734;</td></tr>
      <tr>  <td class="complete" colspan="7">               <a href="http://thomas.gazagnaire.org"><img alt="Thomas Gazagnaire" class="mugshot" height="30px" src="../mugshots/tg.png" /></a>
-               <a href="#OPAM 1.0 (if it builds, ship it)">OPAM 1.0 (if it builds, ship it)</a><br />             </td> <td class="blank" colspan="9"></td> <td></td> </tr>  <tr> <td class="blank" colspan="6"></td> <td class="doing" colspan="4">               <a href="http://thomas.gazagnaire.org"><img alt="Thomas Gazagnaire" class="mugshot" height="30px" src="../mugshots/tg.png" /></a>
-               <a href="#OPAM 1.1 (the CI and Test release)">OPAM 1.1 (the CI and Test release)</a><br />             </td> <td class="blank" colspan="6"></td> <td></td> </tr>  <tr> <td class="blank" colspan="10"></td> <td class="planning" colspan="3">               <a href="http://thomas.gazagnaire.org"><img alt="Thomas Gazagnaire" class="mugshot" height="30px" src="../mugshots/tg.png" /></a>
-               <a href="#OPAM 1.2 (the Platform release)">OPAM 1.2 (the Platform release)</a><br />             </td> <td class="blank" colspan="3"></td> <td></td> </tr>  <tr> <td class="blank" colspan="5"></td> <td class="doing" colspan="7">               <a href="https://github.com/vincent-botbol"><img alt="Vincent Botbol" class="mugshot" height="30px" src="../mugshots/botbol.png" /></a>
-               <a href="#OPAM Doc">OPAM Doc</a><br />             </td> <td class="blank" colspan="4"></td> <td></td> </tr>  <tr> <td class="blank" colspan="7"></td> <td class="complete" colspan="3">               <a href="https://github.com/dsheets"><img alt="David Sheets" class="mugshot" height="30px" src="../mugshots/sheets.png" /></a>
-               <a href="#OCamlot 0.2.0">OCamlot 0.2.0</a><br />             </td> <td class="blank" colspan="6"></td> <td></td> </tr>  <tr> <td class="blank" colspan="10"></td> <td class="doing" colspan="3">               <a href="https://github.com/dsheets"><img alt="David Sheets" class="mugshot" height="30px" src="../mugshots/sheets.png" /></a>
-               <a href="#OCamlot 0.3.0">OCamlot 0.3.0</a><br />             </td> <td class="blank" colspan="3"></td> <td></td> </tr>  <tr> <td class="blank" colspan="3"></td> <td class="doing" colspan="7">               <a href="http://anil.recoil.org"><img alt="Anil Madhavapeddy" class="mugshot" height="30px" src="../mugshots/avsm.jpg" /></a>
-               <a href="#Machine Pool">Machine Pool</a><br />             </td> <td class="blank" colspan="6"></td> <td></td> </tr>  <tr> <td class="blank" colspan="7"></td> <td class="planning" colspan="4">               <a href="http://amirchaudhry.com"><img alt="Amir Chaudhry" class="mugshot" height="30px" src="../mugshots/amir.jpg" /></a>
-               <a href="#Platform Preview">Platform Preview</a><br />             </td> <td class="blank" colspan="5"></td> <td></td> </tr>  <tr> <td class="blank" colspan="7"></td> <td class="complete" colspan="3">               <img alt="Jeremy Yallop" class="mugshot" height="30px" src="../mugshots/yallop.jpeg" />               <a href="#Foreign Function Interface">Foreign Function Interface</a><br />             </td> <td class="blank" colspan="6"></td> <td></td> </tr> 
-    <tr><td colspan="17">&#160;</td></tr>
+               <a href="#OPAM 1.0 (if it builds, ship it)">OPAM 1.0 (if it builds, ship it)</a><br />             </td> <td class="blank" colspan="13"></td> <td></td> </tr>  <tr> <td class="blank" colspan="6"></td> <td class="complete" colspan="8">               <a href="http://thomas.gazagnaire.org"><img alt="Thomas Gazagnaire" class="mugshot" height="30px" src="../mugshots/tg.png" /></a>
+               <a href="#OPAM 1.1 (the CI and Test release)">OPAM 1.1 (the CI and Test release)</a><br />             </td> <td class="blank" colspan="6"></td> <td></td> </tr>  <tr> <td class="blank" colspan="15"></td> <td class="planning" colspan="4">               <a href="http://thomas.gazagnaire.org"><img alt="Thomas Gazagnaire" class="mugshot" height="30px" src="../mugshots/tg.png" /></a>
+               <a href="#OPAM 1.2 (the Platform release)">OPAM 1.2 (the Platform release)</a><br />             </td> <td class="blank" colspan="1"></td> <td></td> </tr>  <tr> <td class="blank" colspan="16"></td> <td class="doing" colspan="3">               <a href="http://thomas.gazagnaire.org"><img alt="Thomas Gazagnaire" class="mugshot" height="30px" src="../mugshots/tg.png" /></a>
+               <a href="#OPAM-in-a-box">OPAM-in-a-box</a><br />             </td> <td class="blank" colspan="1"></td> <td></td> </tr>  <tr> <td class="blank" colspan="5"></td> <td class="complete" colspan="10">               <a href="https://github.com/vincent-botbol"><img alt="Vincent Botbol" class="mugshot" height="30px" src="../mugshots/botbol.png" /></a>
+               <a href="#OPAMDoc prototype">OPAMDoc prototype</a><br />             </td> <td class="blank" colspan="5"></td> <td></td> </tr>  <tr> <td class="blank" colspan="7"></td> <td class="complete" colspan="3">               <a href="https://github.com/dsheets"><img alt="David Sheets" class="mugshot" height="30px" src="../mugshots/sheets.png" /></a>
+               <a href="#OCamlot 0.2.0">OCamlot 0.2.0</a><br />             </td> <td class="blank" colspan="10"></td> <td></td> </tr>  <tr> <td class="blank" colspan="10"></td> <td class="complete" colspan="3">               <a href="https://github.com/dsheets"><img alt="David Sheets" class="mugshot" height="30px" src="../mugshots/sheets.png" /></a>
+               <a href="#OCamlot 0.3.0">OCamlot 0.3.0</a><br />             </td> <td class="blank" colspan="7"></td> <td></td> </tr>  <tr> <td class="blank" colspan="3"></td> <td class="complete" colspan="7">               <a href="http://anil.recoil.org"><img alt="Anil Madhavapeddy" class="mugshot" height="30px" src="../mugshots/avsm.jpg" /></a>
+               <a href="#Non-x86 Machine Pool">Non-x86 Machine Pool</a><br />             </td> <td class="blank" colspan="10"></td> <td></td> </tr>  <tr> <td class="blank" colspan="7"></td> <td class="complete" colspan="4">               <a href="http://amirchaudhry.com"><img alt="Amir Chaudhry" class="mugshot" height="30px" src="../mugshots/amir.jpg" /></a>
+               <a href="#Platform Preview">Platform Preview</a><br />             </td> <td class="blank" colspan="9"></td> <td></td> </tr>  <tr> <td class="blank" colspan="7"></td> <td class="complete" colspan="3">               <img alt="Jeremy Yallop" class="mugshot" height="30px" src="../mugshots/yallop.jpeg" />               <a href="#Ctypes">Ctypes</a><br />             </td> <td class="blank" colspan="10"></td> <td></td> </tr>  <tr> <td class="blank" colspan="13"></td> <td class="doing" colspan="6">               <img alt="Jeremy Yallop" class="mugshot" height="30px" src="../mugshots/yallop.jpeg" />               <a href="#Ctypes stub generation">Ctypes stub generation</a><br />             </td> <td class="blank" colspan="1"></td> <td></td> </tr> 
+    <tr><td colspan="21">&#160;</td></tr>
     </tbody></table>
   
     
@@ -130,7 +129,7 @@ contained within the <a href="http://github.com/OCamlPro/opam-repository">main p
           <ul><li><a href="platform.html#OPAM 1.1 (the CI and Test release)">OPAM 1.1</a></li></ul><br /></div>
       
          <div style="width:75%">         <h3 id="OPAM 1.1 (the CI and Test release)" style="border-bottom: thin solid #999999;">OPAM 1.1 (the CI and Test release)</h3>
-         <p><a href="../people/tg.html"><img class="inline" height="40px" src="../mugshots/tg.png" style="float:left; padding-right: 30px" /></a>  <span class="doing">In Progress</span> by <a href="../people/tg.html">Thomas Gazagnaire</a> (Feb 2013 - Jun 2013) <br /><a class="icon-github" href="https://github.com/OCamlPro/opam">Github</a> &#160; <a class="icon-cloud" href="http://ocamlpro.opam.com">Homepage</a> &#160; <a class="icon-pdf" href="https://github.com/OCamlPro/opam/blob/master/doc/dev-manual/dev-manual.pdf?raw=true">Developer Manual</a> &#160; <a class="icon-wrench" href="https://github.com/OCamlPro/opam/issues">Issues</a> &#160; </p>
+         <p><a href="../people/tg.html"><img class="inline" height="40px" src="../mugshots/tg.png" style="float:left; padding-right: 30px" /></a>  <span class="complete">Complete</span> by <a href="../people/tg.html">Thomas Gazagnaire</a> (Feb 2013 - Oct 2013) <br /><a class="icon-github" href="https://github.com/OCamlPro/opam">Github</a> &#160; <a class="icon-cloud" href="http://ocamlpro.opam.com">Homepage</a> &#160; <a class="icon-pdf" href="https://github.com/OCamlPro/opam/blob/master/doc/dev-manual/dev-manual.pdf?raw=true">Developer Manual</a> &#160; <a class="icon-wrench" href="https://github.com/OCamlPro/opam/issues">Issues</a> &#160; </p>
          <p>Since the release of OPAM 1.0, we've steadily been fixing bugs that have been
 reported from the wider userbase.  The release has actually been remarkably
 stable, and most of the issues are around the constraint solver (which tackles
@@ -150,13 +149,13 @@ package metadata being added to facilitate the process, and tools such as
 this by looking inside the packages themselves.  The whole of OPAM is exported
 as a <a href="http://opam.ocamlpro.com/pkg/opam-lib.1.0.0.html">library</a> so that third-party
 packages can interface with the OPAM repository without changing OPAM itself.
-This is exactly what the [OCamlot](#OCamlot 0.2.0) project does.</p>
+This is exactly what the <a href="#OCamlot 0.2.0">OCamlot</a> project does.</p>
 
          <h4><em>Related work</em></h4>
           <ul><li><a href="platform.html#OPAM 1.2 (the Platform release)">OPAM 1.2</a></li><li><a href="platform.html#OCamlot">OCamlot</a></li></ul><br /></div>
       
          <div style="width:75%">         <h3 id="OPAM 1.2 (the Platform release)" style="border-bottom: thin solid #999999;">OPAM 1.2 (the Platform release)</h3>
-         <p><a href="../people/tg.html"><img class="inline" height="40px" src="../mugshots/tg.png" style="float:left; padding-right: 30px" /></a>  <span class="planning">Planning</span> by <a href="../people/tg.html">Thomas Gazagnaire</a> (Jun 2013 - Sep 2013) <br /><a class="icon-github" href="https://github.com/OCamlPro/opam">Github</a> &#160; <a class="icon-cloud" href="http://ocamlpro.opam.com">Homepage</a> &#160; <a class="icon-pdf" href="https://github.com/OCamlPro/opam/blob/master/doc/dev-manual/dev-manual.pdf?raw=true">Developer Manual</a> &#160; <a class="icon-wrench" href="https://github.com/OCamlPro/opam/issues">Issues</a> &#160; </p>
+         <p><a href="../people/tg.html"><img class="inline" height="40px" src="../mugshots/tg.png" style="float:left; padding-right: 30px" /></a>  <span class="planning">Planning</span> by <a href="../people/tg.html">Thomas Gazagnaire</a> (Nov 2013 - Mar 2014) <br /><a class="icon-github" href="https://github.com/OCamlPro/opam">Github</a> &#160; <a class="icon-cloud" href="http://ocamlpro.opam.com">Homepage</a> &#160; <a class="icon-pdf" href="https://github.com/OCamlPro/opam/blob/master/doc/dev-manual/dev-manual.pdf?raw=true">Developer Manual</a> &#160; <a class="icon-wrench" href="https://github.com/OCamlPro/opam/issues">Issues</a> &#160; </p>
          <p>OPAM 1.2 will be the release that forms part of the OCaml Platform.  We're still planning this feature-set in more detail, but here are some thoughts:</p>
 <ul> <li><p>OPAM could become a compiler front-end by linking to the <code>compiler-libs</code> that are installed by the OCaml compiler.  This lets OPAM automatically satisfy dependencies for packages and generate the boilerplate for testing and benchmarking code.</p>
  </li>
@@ -169,23 +168,37 @@ This is exactly what the [OCamlot](#OCamlot 0.2.0) project does.</p>
          <h4><em>Related work</em></h4>
           <ul><li><a href="platform.html#Platform Preview">Platform Preview</a></li></ul><br /></div>
       
-         <div style="width:75%">         <h3 id="OPAM Doc" style="border-bottom: thin solid #999999;">OPAM Doc</h3>
-         <p><a href="../people/vbotbol.html"><img class="inline" height="40px" src="../mugshots/botbol.png" style="float:left; padding-right: 30px" /></a>  <span class="doing">In Progress</span> by <a href="../people/vbotbol.html">Vincent Botbol</a> (Jan 2013 - Aug 2013) <br /><a class="icon-github" href="https://github.com/lpw25/opam-doc">opam-doc</a> &#160; <a class="icon-github" href="https://github.com/lpw25/bin-doc">bin-doc</a> &#160; </p>
-         <p>The OCaml toolchain has shipped with the <code>ocamldoc</code> tool for a long time.  <code>ocamldoc</code> runs over a single OCaml library and generates cross-referenced documentation.  It also supports a variety of outputs, such as Latex, HTML, PDF and even manpages.  However, it is starting to show its age for large, complex codebases such as <a href="http://github.com/janestreet/core">Core</a>, and so we are developing a more scalable alternative for the Platform effort.</p>
+         <div style="width:75%">         <h3 id="OPAM-in-a-box" style="border-bottom: thin solid #999999;">OPAM-in-a-box</h3>
+         <p><a href="../people/tg.html"><img class="inline" height="40px" src="../mugshots/tg.png" style="float:left; padding-right: 30px" /></a>  <span class="doing">In Progress</span> by <a href="../people/tg.html">Thomas Gazagnaire</a> (Dec 2013 - Mar 2014) <br /><a class="icon-wrench" href="https://github.com/ocaml/opam/issues/1035">Task ticket</a> &#160; </p>
+          
+         <h4><em>Related work</em></h4>
+          <ul><li><a href="platform.html#OPAM 1.2 (the Platform release)">OPAM 1.2</a></li></ul><br /></div>
+      
+         <div style="width:75%">         <h3 id="OPAMDoc prototype" style="border-bottom: thin solid #999999;">OPAMDoc prototype</h3>
+         <p><a href="../people/vbotbol.html"><img class="inline" height="40px" src="../mugshots/botbol.png" style="float:left; padding-right: 30px" /></a>  <span class="complete">Complete</span> by <a href="../people/vbotbol.html">Vincent Botbol</a> (Jan 2013 - Nov 2013) <br /><a class="icon-github" href="https://github.com/ocamllabs/opam-doc">opam-doc</a> &#160; <a class="icon-cloud" href="http://mirage.github.io">Snapshot Docs</a> &#160; </p>
+         <p>The OCaml toolchain has shipped with the <code>ocamldoc</code> tool for a long time.
+<code>ocamldoc</code> runs over a single OCaml library and generates cross-referenced
+documentation.  It also supports a variety of outputs, such as Latex, HTML, PDF
+and even manpages.  However, it is starting to show its age for large, complex
+codebases such as <a href="http://github.com/janestreet/core">Core</a>, and so we are
+developing a more scalable alternative for the Platform effort.</p>
 <p>OPAM-doc consists of two separate commands:</p>
-<ul> <li><p><a href="http://github.com/lpw25/bin-doc">bin-doc</a> is a replacement for the OCamldoc lexer (which extracts documentation from <a href="http://caml.inria.fr/pub/docs/manual-ocaml-4.00/manual029.html">source code comments</a>. It uses the OCaml-4.00+ facility for generating <code>.cmt</code> files that contain the typed AST, and generates <code>.cmd</code> files which contain the documentation information.  By using a separate file from the AST, we leave open the possibility of having multiple language translations in the future.  These <code>.cmd</code> and <code>.cmdi</code> files can be combined with the <code>.cmt</code> files to generate complete documentation directly from the output of the compiler.  This command is intended to be temporary, and can be integrated into the upstream in the future.</p>
+<ul> <li><p><a href="http://github.com/ocamllabs/bin-doc">bin-doc</a> is a replacement for the OCamldoc lexer (which extracts documentation from <a href="http://caml.inria.fr/pub/docs/manual-ocaml-4.00/manual029.html">source code comments</a>. It uses the OCaml-4.00+ facility for generating <code>.cmt</code> files that contain the typed AST, and generates <code>.cmd</code> files which contain the documentation information.  By using a separate file from the AST, we leave open the possibility of having multiple language translations in the future.  These <code>.cmd</code> and <code>.cmdi</code> files can be combined with the <code>.cmt</code> files to generate complete documentation directly from the output of the compiler.  This command is intended to be temporary, and can be integrated into the upstream in the future.</p>
  </li>
- <li><p><a href="http://github.com/lpw25/opam-doc">opam-doc</a> takes a set of <code>cmt</code> and <code>cmd</code> files and outputs a single JSON representation of all the files.  This JSON can then be post-processed (or directly rendered in Javascript) to create a single documentation repository that reliably renders cross-references across entire libraries.  Thus, the entire Platform can have one documentation source rather than having to search across packages.</p>
+ <li><p><a href="http://github.com/ocamllabs/opam-doc">opam-doc</a> takes a set of <code>cmt</code> and <code>cmd</code> files and outputs a single JSON representation of all the files.  This JSON can then be post-processed (or directly rendered in Javascript) to create a single documentation repository that reliably renders cross-references across entire libraries.  Thus, the entire Platform can have one documentation source rather than having to search across packages.</p>
  </li>
 </ul>
 
 <p>The ultimate aim is to support the OCaml platform with interactive tutorials using the
-<a href="http://ocsigen.org/js_of_ocaml">js_of_ocaml</a> compiler.</p>
+<a href="http://ocsigen.org/js_of_ocaml">js_of_ocaml</a> compiler.  You can try out the prototype
+of this in OPAM via <code>opam install opam-doc &amp;&amp; opam doc core async</code>.  It will start a
+local webserver on which you can browse the traffic.  There is also a snapshot available
+on <a href="http://mirage.github.io">the Mirage documentation</a> site.</p>
 
          <br /></div>
       
          <div style="width:75%">         <h3 id="OCamlot 0.2.0" style="border-bottom: thin solid #999999;">OCamlot 0.2.0</h3>
-         <p><a href="../people/sheets.html"><img class="inline" height="40px" src="../mugshots/sheets.png" style="float:left; padding-right: 30px" /></a>  <span class="complete">Complete</span> by <a href="../people/sheets.html">David Sheets</a> (Mar 2013 - Jun 2013) <br /><a class="icon-cloud" href="https://ocaml-www3.ocamllabs.cl.cam.ac.uk/">Homepage</a> &#160; <a class="icon-github" href="https://github.com/ocamlot/ocamlot-state">ocamlot-state</a> &#160; <a class="icon-github" href="https://github.com/ocamllabs/ocamlot">ocamlot</a> &#160; <a class="icon-wrench" href="https://github.com/ocamllabs/ocamlot/issues">Issues</a> &#160; </p>
+         <p><a href="../people/sheets.html"><img class="inline" height="40px" src="../mugshots/sheets.png" style="float:left; padding-right: 30px" /></a>  <span class="complete">Complete</span> by <a href="../people/sheets.html">David Sheets</a> (Mar 2013 - Jun 2013) <br /><a class="icon-cloud" href="https://ocaml-www3.ocamllabs.cl.cam.ac.uk/">Homepage</a> &#160; <a class="icon-github" href="https://github.com/ocamlot/ocamlot-state">ocamlot-state</a> &#160; <a class="icon-github" href="https://github.com/ocamllabs/ocamlot">ocamlot</a> &#160; <a class="icon-wrench" href="https://github.com/ocamllabs/ocamlot/issues">Issues</a> &#160; <a class="icon-cloud" href="http://anil.recoil.org/2013/09/30/travis-and-ocaml.html">Travis and OPAM</a> &#160; </p>
          <p>OCamlot (OCaml Online Testing), is a Continuous Integration and Testing
 system for packages provided via <a href="http://opam.ocamlpro.com">OPAM</a>.  It comprises all the
 appropriate tools and libraries to enable management and development of
@@ -198,14 +211,14 @@ environments. Ultimately, we would also like to integrate benchmarking,
 constraint exploration, experimental design, complete isolation, and
 domain testing into this system.</p>
 <p>The resourcing and commissioning of the Machine Pool itself is dealt
-with [separately](#Machine Pool) from this software which utilises it.</p>
+with <a href="#Machine Pool">separately</a> from this software which utilises it.</p>
 <p>Current status: Minimal <a href="">version 0.2.0 released</a></p>
 
          <h4><em>Related work</em></h4>
           <ul><li><a href="platform.html#OPAM 1.0 (if it builds, ship it)">OPAM 1.0</a></li><li><a href="platform.html#Machine Pool">Machine Pool</a></li></ul><br /></div>
       
          <div style="width:75%">         <h3 id="OCamlot 0.3.0" style="border-bottom: thin solid #999999;">OCamlot 0.3.0</h3>
-         <p><a href="../people/sheets.html"><img class="inline" height="40px" src="../mugshots/sheets.png" style="float:left; padding-right: 30px" /></a>  <span class="doing">In Progress</span> by <a href="../people/sheets.html">David Sheets</a> (Jun 2013 - Sep 2013) <br /><a class="icon-cloud" href="https://ocaml-www3.ocamllabs.cl.cam.ac.uk/">Homepage</a> &#160; <a class="icon-github" href="https://github.com/ocamlot/ocamlot-state">ocamlot-state</a> &#160; <a class="icon-github" href="https://github.com/ocamllabs/ocamlot">ocamlot</a> &#160; <a class="icon-wrench" href="https://github.com/ocamllabs/ocamlot/issues">Issues</a> &#160; </p>
+         <p><a href="../people/sheets.html"><img class="inline" height="40px" src="../mugshots/sheets.png" style="float:left; padding-right: 30px" /></a>  <span class="complete">Complete</span> by <a href="../people/sheets.html">David Sheets</a> (Jun 2013 - Sep 2013) <br /><a class="icon-cloud" href="https://ocaml-www3.ocamllabs.cl.cam.ac.uk/">Homepage</a> &#160; <a class="icon-github" href="https://github.com/ocamlot/ocamlot-state">ocamlot-state</a> &#160; <a class="icon-github" href="https://github.com/ocamllabs/ocamlot">ocamlot</a> &#160; <a class="icon-wrench" href="https://github.com/ocamllabs/ocamlot/issues">Issues</a> &#160; <a class="icon-cloud" href="http://anil.recoil.org/2013/09/30/travis-and-ocaml.html">Travis and OPAM</a> &#160; </p>
          <p>This release of OCamlot will monitor GitHub and model
 packages and their attendant tasks more accurately.</p>
 <p>Current status: In development</p>
@@ -213,8 +226,8 @@ packages and their attendant tasks more accurately.</p>
          <h4><em>Related work</em></h4>
           <ul><li><a href="platform.html#OPAM 1.1 (the CI and Test release)">OPAM 1.1</a></li><li><a href="platform.html#Machine Pool">Machine Pool</a></li></ul><br /></div>
       
-         <div style="width:75%">         <h3 id="Machine Pool" style="border-bottom: thin solid #999999;">Machine Pool</h3>
-         <p><a href="../people/avsm.html"><img class="inline" height="40px" src="../mugshots/avsm.jpg" style="float:left; padding-right: 30px" /></a>  <span class="doing">In Progress</span> by <a href="../people/avsm.html">Anil Madhavapeddy</a> (Nov 2012 - Jun 2013) <br /></p>
+         <div style="width:75%">         <h3 id="Non-x86 Machine Pool" style="border-bottom: thin solid #999999;">Non-x86 Machine Pool</h3>
+         <p><a href="../people/avsm.html"><img class="inline" height="40px" src="../mugshots/avsm.jpg" style="float:left; padding-right: 30px" /></a>  <span class="complete">Complete</span> by <a href="../people/avsm.html">Anil Madhavapeddy</a> (Nov 2012 - Jun 2013) <br /></p>
          <p>In order to create a robust and stable Continuous Integration system, we
 need a pool of machines that reflect the diverse environments where
 OCaml code is deployed.</p>
@@ -223,29 +236,21 @@ high-powered machines that can build the whole OPAM package set quite
 quickly, and also more unusual CPU architectures and operating systems
 that will help developers that don't have access to them. So far we
 have:</p>
-<ul> <li>12-core AMD64/Linux Debian 64-bit
- </li>
- <li>12-core AMD64/Linux Debian 32-bit
- </li>
- <li>ARMv6l/Raspbian Linux 32-bit (Raspberry Pi 512MB)
- </li>
- <li>ARMv5tel/Debian Linux 32-bit (Dreamplug)
- </li>
- <li>sparc64/FreeBSD (thanks to Jasper Wallace for the donation)
- </li>
- <li>macppc/OpenBSD (G4 Powerbook) (thanks to Dave Scott for the donation)
- </li>
- <li>AMD64/MacOS X 10.8
- </li>
- <li>iMac G5/Debian Linux 64-bit
- </li>
+<ul> <li>12-core AMD64/Linux Debian 64-bit</li>
+ <li>12-core AMD64/Linux Debian 32-bit</li>
+ <li>ARMv6l/Raspbian Linux 32-bit (Raspberry Pi 512MB)</li>
+ <li>ARMv5tel/Debian Linux 32-bit (Dreamplug)</li>
+ <li>sparc64/FreeBSD (thanks to Jasper Wallace for the donation)</li>
+ <li>macppc/OpenBSD (G4 Powerbook) (thanks to Dave Scott for the donation)</li>
+ <li>AMD64/MacOS X 10.8</li>
+ <li>iMac G5/Debian Linux 64-bit</li>
 </ul>
 
          <h4><em>Related work</em></h4>
           <ul><li><a href="platform.html#OCamlot">OCamlot</a></li></ul><br /></div>
       
          <div style="width:75%">         <h3 id="Platform Preview" style="border-bottom: thin solid #999999;">Platform Preview</h3>
-         <p><a href="../people/amirmc.html"><img class="inline" height="40px" src="../mugshots/amir.jpg" style="float:left; padding-right: 30px" /></a>  <span class="planning">Planning</span> by <a href="../people/amirmc.html">Amir Chaudhry</a> (Mar 2013 - Jul 2013) <br /><a class="icon-cloud" href="http://lists.ocaml.org/listinfo/platform">Platform mailing list</a> &#160; </p>
+         <p><a href="../people/amirmc.html"><img class="inline" height="40px" src="../mugshots/amir.jpg" style="float:left; padding-right: 30px" /></a>  <span class="complete">Complete</span> by <a href="../people/amirmc.html">Amir Chaudhry</a> (Mar 2013 - Jul 2013) <br /><a class="icon-pdf" href="http://ocaml.org/meetings/ocaml/2013/slides/madhavapeddy.pdf">OCaml 2013 status</a> &#160; <a class="icon-cloud" href="http://lists.ocaml.org/listinfo/platform">Platform mailing list</a> &#160; </p>
          <p>The OCaml Platform is intended to combine the core OCaml compiler with a
 coherent set of libraries, tools, docs and other resources.  The direction of
 the Platform will be guided by the major users of OCaml (including consortium
@@ -255,11 +260,13 @@ process will help us identify and and refine the initial libraries and tools
 that should form part of v0.1 of the platform proper.  When OCamlot is
 complete, we'll be in a much better position to discuss what components should
 form v0.2 of the Platform.</p>
+<p>The current state of the Platform components was also presented at
+<a href="http://ocaml.org/meetings/ocaml/2013/slides/madhavapeddy.pdf">OCaml 2013</a>.</p>
 
          <h4><em>Related work</em></h4>
           <ul><li><a href="platform.html#OPAM 1.2 (the Platform release)">OPAM 1.2</a></li><li><a href="platform.html#OCamlot">OCamlot</a></li></ul><br /></div>
       
-         <div style="width:75%">         <h3 id="Foreign Function Interface" style="border-bottom: thin solid #999999;">Foreign Function Interface</h3>
+         <div style="width:75%">         <h3 id="Ctypes" style="border-bottom: thin solid #999999;">Ctypes</h3>
          <p><a href="../people/yallop.html"><img class="inline" height="40px" src="../mugshots/yallop.jpeg" style="float:left; padding-right: 30px" /></a>  <span class="complete">Complete</span> by <a href="../people/yallop.html">Jeremy Yallop</a> (Mar 2013 - Jun 2013) <br /><a class="icon-github" href="https://github.com/ocamllabs/ctypes">Github</a> &#160; <a class="icon-cloud" href="https://github.com/ocamllabs/ocaml-ctypes/wiki">Documentation</a> &#160; </p>
          <p>ctypes is a library for binding to C libraries using pure OCaml. The primary
 aim is to make writing C extensions as straightforward as possible.  The current
@@ -272,6 +279,16 @@ to call, then bind directly to those functions -- all without writing or
 generating any C!</p>
 
          <br /></div>
+      
+         <div style="width:75%">         <h3 id="Ctypes stub generation" style="border-bottom: thin solid #999999;">Ctypes stub generation</h3>
+         <p><a href="../people/yallop.html"><img class="inline" height="40px" src="../mugshots/yallop.jpeg" style="float:left; padding-right: 30px" /></a>  <span class="doing">In Progress</span> by <a href="../people/yallop.html">Jeremy Yallop</a> (Sep 2013 - Mar 2014) <br /><a class="icon-github" href="https://github.com/ocamllabs/ctypes">Github</a> &#160; <a class="icon-cloud" href="https://github.com/ocamllabs/ocaml-ctypes/wiki">Documentation</a> &#160; <a class="icon-pdf" href="http://ocaml.org/meetings/ocaml/2013/proposals/ctypes.pdf">OCaml 2013 demo</a> &#160; </p>
+         <p>The first Ctypes release used <code>dlopen</code> to dynamically access C libraries, but this
+approach has <a href="https://github.com/realworldocaml/book/issues/1701">some limitations</a>
+that will be addressed by also generating C stub files that can be compiled
+using the system C compiler.</p>
+
+         <h4><em>Related work</em></h4>
+          <ul><li><a href="platform.html#Ctypes">Ctypes</a></li></ul><br /></div>
       
   </div></div>
 

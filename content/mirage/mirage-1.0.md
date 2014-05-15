@@ -1,0 +1,1 @@
+The first release of Mirage 1.0 has the goal of self-hosting infrastructure running on Xen (ideally on Amazon EC2 or Rackspace), and a set of tools to make it easy to extend the system with new backends and device drivers.  See the announcement blog post for more.

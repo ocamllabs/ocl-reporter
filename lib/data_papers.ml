@@ -2,6 +2,42 @@
 open Core.Std
 open Types.Paper
 
+let cacm_2014 =
+   mk ~id:"cacm-unikernels-2013"
+     ~title:"Unikernels: the Rise of the Virtual Library Operating System"
+     ~url:"http://cacm.acm.org/magazines/2014/1/170866-unikernels/abstract"
+     ~authors:"Anil Madhavapeddy and Dave Scott"
+     ~date:"2014-01-04"
+     ~conf:"Communications of the ACM"
+     ~conf_url:"http://cacm.acm.org/"
+
+let rwo_2013 =
+  mk ~id:"rwo-2013"
+     ~title:"Real World OCaml: Functional Programming for the Masses"
+     ~url:"https://realworldocaml.org"
+     ~authors:"Yaron Minsky, Anil Madhavapeddy and Jason Hickey"
+     ~date:"2013-11-22"
+     ~conf:"O'Reilly Associated"
+     ~conf_url:"http://oreilly.com"
+
+let cufp_2012 =
+  mk ~id:"cufp-jfp-2012"
+     ~title:"Commercial Users of Functional Programming 2012 Workshop Report"
+     ~url:"http://anil.recoil.org/papers/drafts/2012-cufp-scribe-DRAFT.pdf"
+     ~authors:"Michael Sperber and Anil Madhavapeddy"
+     ~date:"2013-11-01"
+     ~conf:"Journal of Functional Programming"
+     ~conf_url:"http://mc.manuscriptcentral.com/jfp_submit"
+
+let trevi_hotnets_2013 =
+  mk ~id:"hotnets-trevi-2013"
+     ~title:"Trevi: Watering Down Storage Hotspots with Cool Fountain Codes"
+     ~url:"http://anil.recoil.org/papers/2013-hotnets-trevi.pdf"
+     ~authors:"George Parisis, Toby Moncaster, Anil Madhavapeddy and Jon Crowcroft"
+     ~date:"2013-11-21"
+     ~conf:"Twelfth ACM Workshop on Hot Topics in Networks (HotNets-XII)"
+     ~conf_url:"http://conferences.sigcomm.org/hotnets/2013/cfp.shtml"
+
 let usenix_foci_2013 =
   mk ~id:"foci-2013-signposts"
      ~title:"Lost In the Edge: Finding Your Way With Signposts"
@@ -48,6 +84,10 @@ let sas_2013 =
      ~conf_url:"http://research.microsoft.com/en-us/events/sas2013/"
 
 let all = [
+  cacm_2014;
+  rwo_2013;
+  cufp_2012;
+  trevi_hotnets_2013;
   usenix_foci_2013;
   asplos_2013;
   hotcloud_2010;
