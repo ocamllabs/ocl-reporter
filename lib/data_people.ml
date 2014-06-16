@@ -81,10 +81,10 @@ module People = struct
   let pwang = {
     id="pwang";
     name="Philippe Wang";
-    affiliation=`CL;
+    affiliation=`Past;
     role="Research Associate";
     bio=None;
-    homepage=Some "http://www.cl.cam.ac.uk/~pw374";
+    homepage=Some "http://philippewang.info/CL/";
     mugshot=Some "pwang.jpg";
   }
   let stedolan = {
@@ -196,7 +196,25 @@ module People = struct
     homepage=Some "http://www.cl.cam.ac.uk/~gp349/";
     mugshot=Some "gparisis.jpg";
   }  
- 
+  let hannes = {
+    id="hannes";
+    name="Hannes Mehnert";
+    affiliation=`CLx;
+    role="Intern";
+    bio=None;
+    homepage=Some "https://github.com/hannesm";
+    mugshot=Some "hannes.jpg";
+  }
+  let greg = {
+    id="greg";
+    name="Gregory Tsipenyuk";
+    affiliation=`CL;
+    role="PhD Student";
+    bio=None;
+    homepage=None;
+    mugshot=Some "greg.jpg";
+  }
+
   (* 
     Citrix people
   *)
@@ -393,7 +411,7 @@ module People = struct
   let dbunzli = {
     id="dbunzli";
     name="Daniel Bünzli";
-    affiliation=`Past;
+    affiliation=`CLx;
     role="Software Engineer";
     bio=None;
     homepage=Some "http://erratique.ch";
@@ -418,6 +436,15 @@ module People = struct
     homepage=Some "http://www.cl.cam.ac.uk/~smh22";
     mugshot=Some "smh.jpg";
   }
+  let kaloper = {
+    id="kaloper";
+    name="David Kaloper";
+    affiliation=`Horizon;
+    role="Intern";
+    bio=None;
+    homepage=Some "https://github.com/pqwy";
+    mugshot=Some "kaloper.jpg";
+  }
 
   let all = [
     avsm; mycroft; iml; crowcroft; amir; lpw25; yallop; pwang;
@@ -425,7 +452,8 @@ module People = struct
     griffin; rwatson; alib; bogdan; sheets; gparisis; euan;
     djs; vb; jludlam; lars; yaron; shinwell; tg; pierre; gesbert; fabrice;
     xleroy; mac; mort; ashish; christophe; gabor;
-    (* prashanth; *) jhickey; xclerc; dbunzli; vbotbol ]
+    (* prashanth; *) jhickey; xclerc; dbunzli; vbotbol; kaloper;
+    hannes; greg ]
 
   (* Split out the CUCL from the org list *)
   let of_cucl, of_cuclx, of_other =
