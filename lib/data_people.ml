@@ -205,6 +205,15 @@ module People = struct
     homepage=Some "https://github.com/hannesm";
     mugshot=Some "hannes.jpg";
   }
+  let greg = {
+    id="greg";
+    name="Gregory Tsipenyuk";
+    affiliation=`CL;
+    role="PhD Student";
+    bio=None;
+    homepage=None;
+    mugshot=Some "greg.jpg";
+  }
 
   (* 
     Citrix people
