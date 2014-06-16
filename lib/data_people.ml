@@ -452,7 +452,8 @@ module People = struct
     griffin; rwatson; alib; bogdan; sheets; gparisis; euan;
     djs; vb; jludlam; lars; yaron; shinwell; tg; pierre; gesbert; fabrice;
     xleroy; mac; mort; ashish; christophe; gabor;
-    (* prashanth; *) jhickey; xclerc; dbunzli; vbotbol; kaloper ]
+    (* prashanth; *) jhickey; xclerc; dbunzli; vbotbol; kaloper;
+    hannes; greg ]
 
   (* Split out the CUCL from the org list *)
   let of_cucl, of_cuclx, of_other =
