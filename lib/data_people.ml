@@ -81,10 +81,10 @@ module People = struct
   let pwang = {
     id="pwang";
     name="Philippe Wang";
-    affiliation=`CL;
+    affiliation=`Past;
     role="Research Associate";
     bio=None;
-    homepage=Some "http://www.cl.cam.ac.uk/~pw374";
+    homepage=Some "http://philippewang.info/CL/";
     mugshot=Some "pwang.jpg";
   }
   let stedolan = {
