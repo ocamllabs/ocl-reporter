@@ -196,7 +196,16 @@ module People = struct
     homepage=Some "http://www.cl.cam.ac.uk/~gp349/";
     mugshot=Some "gparisis.jpg";
   }  
- 
+  let hannes = {
+    id="hannes";
+    name="Hannes Mehnert";
+    affiliation=`CLx;
+    role="Intern";
+    bio=None;
+    homepage=Some "https://github.com/hannesm";
+    mugshot=Some "hannes.jpg";
+  }
+
   (* 
     Citrix people
   *)
@@ -418,6 +427,15 @@ module People = struct
     homepage=Some "http://www.cl.cam.ac.uk/~smh22";
     mugshot=Some "smh.jpg";
   }
+  let kaloper = {
+    id="kaloper";
+    name="David Kaloper";
+    affiliation=`Horizon;
+    role="Intern";
+    bio=None;
+    homepage=Some "https://github.com/pqwy";
+    mugshot=Some "kaloper.jpg";
+  }
 
   let all = [
     avsm; mycroft; iml; crowcroft; amir; lpw25; yallop; pwang;
@@ -425,7 +443,7 @@ module People = struct
     griffin; rwatson; alib; bogdan; sheets; gparisis; euan;
     djs; vb; jludlam; lars; yaron; shinwell; tg; pierre; gesbert; fabrice;
     xleroy; mac; mort; ashish; christophe; gabor;
-    (* prashanth; *) jhickey; xclerc; dbunzli; vbotbol ]
+    (* prashanth; *) jhickey; xclerc; dbunzli; vbotbol; kaloper ]
 
   (* Split out the CUCL from the org list *)
   let of_cucl, of_cuclx, of_other =
