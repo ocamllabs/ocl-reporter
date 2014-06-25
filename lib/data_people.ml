@@ -214,6 +214,78 @@ module People = struct
     homepage=None;
     mugshot=Some "greg.jpg";
   }
+  let benjamin = {
+    id="benjamin";
+    name="Benjamin Farinier";
+    affiliation=`CLx;
+    role="Summer visitor";
+    bio=None;
+    homepage=None;
+    mugshot=None;
+  }
+  let matthieu = {
+    id="matthieu";
+    name="Matthieu Journault";
+    affiliation=`CLx;
+    role="Summer visitor";
+    bio=None;
+    homepage=None;
+    mugshot=None;
+  }
+  let frederic = {
+    id="frederic";
+    name="Frederic Bour";
+    affiliation=`CLx;
+    role="Summer visitor";
+    bio=None;
+    homepage=None;
+    mugshot=None;
+  }
+  let magnus = {
+    id="magnus";
+    name="Magnus Skjegstad";
+    affiliation=`CL;
+    role="Research Associate";
+    bio=None;
+    homepage=None;
+    mugshot=None;
+  }
+  let nicolas = {
+    id="nicolas";
+    name="Nicolas Ojeda Bar";
+    affiliation=`CLx;
+    role="Research Associate";
+    bio=None;
+    homepage=Some "https://www.dpmms.cam.ac.uk/~no263";
+    mugshot=None;
+  }
+  let sebastian = {
+    id="sebastian";
+    name="Sebastian Funk";
+    affiliation=`Past;
+    role="Student";
+    bio=None;
+    homepage=None;
+    mugshot=None;
+  }
+  let stekell = {
+    id="stekell";
+    name="Stephen Kell";
+    affiliation=`CLx;
+    role="Student";
+    bio=None;
+    homepage=Some "http://www.cl.cam.ac.uk/~srk31";
+    mugshot=None;
+  }
+  let tleonard = {
+    id="tleonard";
+    name="Thomas Leonard";
+    affiliation=`CL;
+    role="Senior RA";
+    bio=None;
+    homepage=Some "http://roscidus.com/blog";
+    mugshot=None;
+  }
 
   (* 
     Citrix people
