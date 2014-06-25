@@ -93,7 +93,7 @@ module People = struct
     affiliation=`CL;
     role="PhD candidate";
     bio=None;
-    homepage=None;
+    homepage=Some "https://github.com/stedolan";
     mugshot=None;
   }
   let balrajsingh = {
@@ -120,8 +120,8 @@ module People = struct
     affiliation=`CL;
     role="PhD Student";
     bio=None;
-    homepage=None;
-    mugshot=None;
+    homepage=Some "http://www.cl.cam.ac.uk/~rp452/";
+    mugshot=Some "raphael.jpg";
   }
 
   let haris = {
@@ -176,7 +176,7 @@ module People = struct
     role="ACS Student (2013)";
     bio=None;
     homepage=None;
-    mugshot=None;
+    mugshot=Some "bogdan.jpg";
   }
   let sheets = {
     id="sheets";
@@ -221,7 +221,7 @@ module People = struct
     role="Summer visitor";
     bio=None;
     homepage=None;
-    mugshot=None;
+    mugshot=Some "benjamin.jpg";
   }
   let matthieu = {
     id="matthieu";
@@ -230,7 +230,7 @@ module People = struct
     role="Summer visitor";
     bio=None;
     homepage=None;
-    mugshot=None;
+    mugshot=Some "matthieu.jpg";
   }
   let frederic = {
     id="frederic";
@@ -239,7 +239,7 @@ module People = struct
     role="Summer visitor";
     bio=None;
     homepage=None;
-    mugshot=None;
+    mugshot=Some "frederic.jpg";
   }
   let magnus = {
     id="magnus";
@@ -247,8 +247,8 @@ module People = struct
     affiliation=`CL;
     role="Research Associate";
     bio=None;
-    homepage=None;
-    mugshot=None;
+    homepage=Some "http://www.skjegstad.com";
+    mugshot=Some "magnus.jpg";
   }
   let nicolas = {
     id="nicolas";
@@ -256,8 +256,8 @@ module People = struct
     affiliation=`CLx;
     role="Research Associate";
     bio=None;
-    homepage=Some "https://www.dpmms.cam.ac.uk/~no263";
-    mugshot=None;
+    homepage=Some "https://github.com/nojb";
+    mugshot=Some "nicolas.jpg";
   }
   let sebastian = {
     id="sebastian";
@@ -266,7 +266,7 @@ module People = struct
     role="Student";
     bio=None;
     homepage=None;
-    mugshot=None;
+    mugshot=Some "sebastian.jpg";
   }
   let stekell = {
     id="stekell";
@@ -275,7 +275,7 @@ module People = struct
     role="Student";
     bio=None;
     homepage=Some "http://www.cl.cam.ac.uk/~srk31";
-    mugshot=None;
+    mugshot=Some "stekell.jpg";
   }
   let tleonard = {
     id="tleonard";
@@ -284,7 +284,7 @@ module People = struct
     role="Senior RA";
     bio=None;
     homepage=Some "http://roscidus.com/blog";
-    mugshot=None;
+    mugshot=Some "tleonard.jpg";
   }
 
   (* 
@@ -297,7 +297,7 @@ module People = struct
     role="Visitor";
     bio=None;
     homepage=None;
-    mugshot=None;
+    mugshot=Some "euan.jpg";
   } 
   let djs = {
     id="djs";
@@ -375,7 +375,7 @@ module People = struct
     role="";
     bio=None;
     homepage=Some "http://louis.gesbert.fr/";
-    mugshot=None;
+    mugshot=Some "gesbert.jpg";
   }
 
   (* INRIA *)
@@ -525,7 +525,8 @@ module People = struct
     djs; vb; jludlam; lars; yaron; shinwell; tg; pierre; gesbert; fabrice;
     xleroy; mac; mort; ashish; christophe; gabor;
     (* prashanth; *) jhickey; xclerc; dbunzli; vbotbol; kaloper;
-    hannes; greg ]
+    hannes; greg; benjamin; matthieu; frederic; magnus; nicolas;
+    sebastian; stekell; tleonard ]
 
   (* Split out the CUCL from the org list *)
   let of_cucl, of_cuclx, of_other =
