@@ -94,7 +94,7 @@ module People = struct
     role="PhD candidate";
     bio=None;
     homepage=Some "https://github.com/stedolan";
-    mugshot=None;
+    mugshot=Some "stedolan.jpg";
   }
   let balrajsingh = {
     id="balrajsingh";
@@ -354,7 +354,7 @@ module People = struct
     role="Quantitative Researcher";
     bio=None;
     homepage=Some "http://www.three-tuns.net/mark";
-    mugshot=None;
+    mugshot=Some "shinwell.jpg";
   }
   (* 
     OCamlPro people
