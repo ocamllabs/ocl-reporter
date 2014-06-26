@@ -100,10 +100,10 @@ module People = struct
     id="balrajsingh";
     name="Balraj Singh";
     affiliation=`CL;
-    role="PhD candidate";
+    role="Visitor";
     bio=None;
-    homepage=None;
-    mugshot=None;
+    homepage=Some "https://github.com/balrajsingh";
+    mugshot=Some "balraj.jpg";
   }
   let heidi = {
     id="heidi";
