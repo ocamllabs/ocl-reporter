@@ -18,12 +18,12 @@ let last_date = List.last_exn dates
 let total_colspan = List.length dates + 1
 let cells =
   List.map dates ~f:(fun d ->
-    let s = sprintf "%s '%d" (Month.to_string d.Date.m) (d.Date.y-2000) in
+    let s = sprintf "%s '%d" (Month.to_string (Date.month d)) (Date.year d - 2000) in
     <:html<<td>$str:s$</td>&>>)
   @ [ <:html<<td>&infin;</td>&>> ]
 
 let months_between d1 d2 =
-  let round d = Date.create_exn ~y:d.Date.y ~m:d.Date.m ~d:1 in
+  let round d = Date.create_exn ~y:(Date.year d) ~m:(Date.month d) ~d:1 in
   Date.dates_between d1 d2 
   |> List.map ~f:round
   |> List.dedup

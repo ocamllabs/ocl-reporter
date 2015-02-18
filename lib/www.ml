@@ -44,7 +44,7 @@ let refs_to_html rs =
 (* Convert a Date to a human-readable string.
  * TODO is there a nicer Core function for this? *)
 let human_readable_date d =
-  sprintf "%s %d" (Month.to_string d.Date.m) d.Date.y
+  sprintf "%s %d" (Month.to_string (Date.month d)) (Date.year d)
 
 let mugshot p = sprintf "../mugshots/%s" (Option.value ~default:"unknown.jpg" p.Types.Person.mugshot)
 let mugshot_img ?(float=true) ?(size=60) p =
@@ -235,7 +235,7 @@ let outputs =
   let open Types.Paper in
   let pubs = List.map Data_papers.all_by_date
     ~f:(fun p ->
-      let hrdate = sprintf "%s %d" (Month.to_string p.date.m) p.date.y in
+      let hrdate = sprintf "%s %d" (Month.to_string (Date.month p.date)) (Date.year p.date) in
       <:html<
        <p>
        <a name=$str:p.id$></a>
