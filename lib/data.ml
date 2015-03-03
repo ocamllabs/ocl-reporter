@@ -3,13 +3,14 @@ open Types
 include Data_people
 include Data_papers
 include Data_news
+include Data_blogs
 
 module Projects = struct
   open Project
 
   module Platform = struct
 
-   let opam_refs = [ 
+   let opam_refs = [
      Reference.github "OCamlPro" "opam";
      Reference.webpage "http://ocamlpro.opam.com";
      Reference.pdf ~name:"Developer Manual" "https://github.com/OCamlPro/opam/blob/master/doc/dev-manual/dev-manual.pdf?raw=true";
@@ -25,14 +26,14 @@ module Projects = struct
    ]
 
     let rec project =
-      { project_id="platform"; 
-        project_name="OCaml Platform"; 
+      { project_id="platform";
+        project_name="OCaml Platform";
         project_owner=People.amir;
         project_elevator="A rigorously designed, tested and documented base of OCaml libraries and tools.";
         team=People.([ avsm; tg; lpw25; sheets; yallop; pwang; vbotbol ]);
         tasks;
       }
-    and tasks = [ 
+    and tasks = [
       mk_task ~name:"OPAM 1.0 (if it builds, ship it)"
         ~start:"2012-03-15" ~finish:"2013-03-14"
         ~owner:People.tg
@@ -62,7 +63,7 @@ module Projects = struct
         ~status:`Doing
         ~descr:"opaminabox"
         ~related:[("OPAM 1.2", "platform", "OPAM 1.2 (the Platform release)")]
-        ~refs:[ Reference.github_issue ~name:"Task ticket" "ocaml" "opam" 1035 
+        ~refs:[ Reference.github_issue ~name:"Task ticket" "ocaml" "opam" 1035
         ] ();
 
       mk_task ~name:"OPAMDoc prototype"
@@ -70,7 +71,7 @@ module Projects = struct
         ~owner:People.vbotbol
         ~status:`Complete
         ~descr:"opam-doc"
-        ~refs:[ 
+        ~refs:[
            Reference.github ~name:"opam-doc" "ocamllabs" "opam-doc" ;
            Reference.webpage ~name:"Snapshot Docs" "http://mirage.github.io"
          ] () ;
@@ -110,7 +111,7 @@ module Projects = struct
                   ("OCamlot", "platform", "OCamlot")]
         ~refs:[
           Reference.pdf ~name:"OCaml 2013 status" "http://ocaml.org/meetings/ocaml/2013/slides/madhavapeddy.pdf";
-          Reference.webpage ~name:"Platform mailing list" "http://lists.ocaml.org/listinfo/platform" 
+          Reference.webpage ~name:"Platform mailing list" "http://lists.ocaml.org/listinfo/platform"
         ]
         ();
 
@@ -138,14 +139,14 @@ module Projects = struct
 
   module T2 = struct
     let rec project =
-      { project_id="t2"; 
-        project_name="Trilogy 2"; 
+      { project_id="t2";
+        project_name="Trilogy 2";
         project_owner=People.avsm;
         project_elevator="Building a resilient liquid OS, with multipath and adaptive scheduling.";
         team=People.([ vsevolod; gparisis; amir; crowcroft; tg ]);
         tasks;
       }
-    and tasks = [ 
+    and tasks = [
        mk_task ~name:"Polyversal TCP prototype"
         ~start:"2012-10-01"
         ~finish:"2014-02-01"
@@ -174,7 +175,7 @@ module Projects = struct
     let rec project = {
       project_id="compiler";
       project_name="The OCaml Compiler" ;
-      project_owner = People.lpw25; 
+      project_owner = People.lpw25;
       project_elevator="Maintaining, extending and documenting the core OCaml compiler toolchain";
       team = People.([ yallop; stedolan; avsm ]);
       tasks;
@@ -232,14 +233,14 @@ module Projects = struct
         ~start:"2013-01-01" ~finish:"2014-01-01"
         ~owner:People.shinwell
         ~status:`Doing
-        ~descr:"dwarf" 
+        ~descr:"dwarf"
         ~refs: [ Reference.github ~name:"4.00.1-allocation-profiling" "mshinwell" "ocaml" ] ();
 
       mk_task ~name:"OCaml Java 2.0 preview"
         ~start:"2013-04-01" ~finish:"2013-08-01"
         ~owner:People.xclerc
         ~status:`Complete
-        ~descr:"ocamljava2" 
+        ~descr:"ocamljava2"
         ~refs: [ Reference.webpage "http://ocamljava.x9c.fr/preview/" ] ();
     ]
   end
@@ -249,7 +250,7 @@ module Projects = struct
     let rec project = {
       project_id="outreach";
       project_name="Community Outreach" ;
-      project_owner = People.amir; 
+      project_owner = People.amir;
       project_elevator="Building an effective online presence for the worldwide OCaml community";
       team = People.([ avsm ]);
       tasks;
@@ -298,7 +299,7 @@ module Projects = struct
         ~descr:"ocaml-org-design"
         ~refs:[ Reference.webpage ~name:"OCaml.org" "http://ocaml.org";
                 Reference.webpage ~name:"Wiki" "https://github.com/ocaml/ocaml.org/wiki";
-                Reference.webpage ~name:"Blog" "http://amirchaudhry.com/wireframe-demos-for-ocamlorg" 
+                Reference.webpage ~name:"Blog" "http://amirchaudhry.com/wireframe-demos-for-ocamlorg"
          ] () ;
       mk_task ~name:"FPDays tutorial"
         ~start:"2013-08-01" ~finish:"2013-10-22"
@@ -348,7 +349,7 @@ module Projects = struct
        ~owner:People.avsm
        ~status:`Complete
        ~descr:"raspberryocaml"
-       ~refs: [ 
+       ~refs: [
          Reference.mantis 5798;
          Reference.blog ~name:"Jane Street blog" "https://ocaml.janestreet.com/?q=node/110";
        ]  ();
@@ -360,11 +361,11 @@ module Projects = struct
     let project_owner = People.avsm
     let team = People.([ tg; amir; djs; crowcroft; mort; balrajsingh; raphael; smh; haris; rwatson; vb; jludlam; lars; mac; gabor ])
 
-    let rec project = { 
+    let rec project = {
       project_id="mirage";
-      project_name="Mirage OS"; 
+      project_name="Mirage OS";
       project_elevator="A high-performance, type-safe library OS written in OCaml.";
-      team; project_owner; tasks 
+      team; project_owner; tasks
     } and tasks = [
       mk_task ~name:"Unikernel Mirage prototype"
         ~start:"2012-08-01" ~finish:"2013-03-02"
@@ -374,7 +375,7 @@ module Projects = struct
         ~refs:[
            Reference.paper ~name:"ASPLOS 2013" asplos_2013;
            Reference.paper ~name:"HotCloud 2010" hotcloud_2010;
-         ] ();    
+         ] ();
       mk_task ~name:"Xen.org incubation"
         ~start:"2012-12-01" ~finish:"2013-05-01"
         ~owner:People.amir
@@ -424,11 +425,11 @@ module Projects = struct
       mk_task ~name:"Nigori"
         ~start:"2012-10-01" ~finish:"2013-06-01"
         ~owner:People.bogdan
-        ~status:`Complete ~descr:"nigori" 
+        ~status:`Complete ~descr:"nigori"
         ~refs: [
           Reference.pdf ~name:"Original Nigori paper" "http://www.links.org/files/nigori-overview.pdf";
         ] ();
-    ] 
+    ]
   end
 
   let all = [ Platform.project; Mirage.project; Illuminate.project;

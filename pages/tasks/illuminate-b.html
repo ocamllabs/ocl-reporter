@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <head><title>Illuminate</title>
     <style>
     a.icon-github {
@@ -21,7 +22,7 @@
     }
     </style>
   </head><body>
-    <div class="ucampas-toc right"/>
+    <div class="ucampas-toc right"></div>
     
     
             <style type="text/css">
@@ -42,17 +43,12 @@
             </style>
           
     <h1 id="illuminate">Illuminate</h1>
-    <div class="width:75%"><p><a href="http://#"><img class="left" src="../images/illuminate.gif" width="70px"/></a>Embedded computer systems that are low-power, physically mobile, 
+    <div class="width:75%"><p><a href="http://#"><img width="70px" src="../images/illuminate.gif" class="left"/></a>Embedded computer systems that are low-power, physically mobile, 
 and which contain actuators and sensors to interface and influence the &quot;real 
-world&quot; are becoming increasingly common.<br/>
-Many people are referring to this collectively as the &quot;Internet of Things&quot;.
+world&quot; are becoming increasingly common.<br/>Many people are referring to this collectively as the &quot;Internet of Things&quot;.
 We're building the core technology to make these distributed devices fundamentally more secure, reliable and easier to program.
 This consists of three main bits of technology:</p>
-<ul>
- <li>The Mirage OS (described separately) to build specialised, type-safe embedded images.</li>
- <li>The Signposts coordination system for embedded devices to find each other securely across a complex edge network.</li>
- <li>The Irminsule (described in T2) persistent storage system to provide a flexible coordination workflow across such sensors.</li>
-</ul>
+<ul><li>The Mirage OS (described separately) to build specialised, type-safe embedded images.</li><li>The Signposts coordination system for embedded devices to find each other securely across a complex edge network.</li><li>The Irminsule (described in T2) persistent storage system to provide a flexible coordination workflow across such sensors.</li></ul>
 
 <p>A key first use case for here is revolutionising lighting systems.  Over the
 next decade or so, lighting systems in buildings all over the world will shift
@@ -79,13 +75,13 @@ industry to enable new services.</p>
      <tr>  <td class="complete" colspan="10">
                <a href="http://etc-hosts.blogspot.co.uk"><img class="mugshot" alt="Heidi Howard" src="../mugshots/heidi.jpg" height="30px"/></a>
                <a href="#Signpost prototype">Signpost prototype</a><br/>
-             </td> <td class="blank" colspan="10"/> <td/> </tr>  <tr> <td class="blank" colspan="8"/> <td class="complete" colspan="3">
+             </td> <td class="blank" colspan="10"></td> <td></td> </tr>  <tr> <td class="blank" colspan="8"></td> <td class="complete" colspan="3">
                <a href="http://erratique.ch"><img class="mugshot" alt="Daniel Bünzli" src="../mugshots/dbuenzli.jpg" height="30px"/></a>
                <a href="#Declarative graphing library">Declarative graphing library</a><br/>
-             </td> <td class="blank" colspan="9"/> <td/> </tr>  <tr> <td class="blank" colspan="3"/> <td class="complete" colspan="3">
+             </td> <td class="blank" colspan="9"></td> <td></td> </tr>  <tr> <td class="blank" colspan="3"></td> <td class="complete" colspan="3">
                <a href="http://anil.recoil.org"><img class="mugshot" alt="Anil Madhavapeddy" src="../mugshots/avsm.jpg" height="30px"/></a>
                <a href="#Raspberry OCaml">Raspberry OCaml</a><br/>
-             </td> <td class="blank" colspan="14"/> <td/> </tr> 
+             </td> <td class="blank" colspan="14"></td> <td></td> </tr> 
     <tr><td colspan="21"> </td></tr>
     </table>
   
@@ -124,9 +120,11 @@ This is due to differences in the ARMv6 and ARMv7 instruction setsa
 Meanwhile, you can download precompiled debs with this patch by adding the following to <code>/etc/apt/sources.list</code>:</p>
 <pre><code>deb http://www.cl.cam.ac.uk/~lpw25/ocaml-rpi/ wheezy main
 deb-src http://www.cl.cam.ac.uk/~lpw25/ocaml-rpi/ wheezy main</code></pre>
+
 <p>Alternatively, you can also use <a href="http://opam.ocamlpro.com">OPAM</a> to compile a custom compiler (see the Jane Street blog post above for instructions on how to install OPAM):</p>
 <pre><code>$ opam switch 4.00.1+raspberrypi
 $ eval `opam config -env`</code></pre>
+
 <p>This compiler should work on Raspbian with no issues.
 Many thanks to <a href="http://psellos.com/ocaml/compile-to-iphone.html">Jeffery Scofield</a> for all this help with this patch!</p>
 
