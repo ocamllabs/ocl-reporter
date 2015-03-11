@@ -4,9 +4,9 @@ open Data
 
 open Core.Std
 
-let years = [2012;2013;2014]
+let years = [2012;2013;2014;2015]
 let start_date = Date.create_exn ~y:2012 ~m:Month.Aug ~d:1
-let end_date   = Date.create_exn ~y:2014 ~m:Month.May ~d:1
+let end_date   = Date.create_exn ~y:2015 ~m:Month.Dec ~d:1
 let dates = 
   List.concat_map Month.all ~f:(fun m ->
     List.map years ~f:(fun y -> Date.create_exn ~y ~m ~d:1))
@@ -18,8 +18,10 @@ let last_date = List.last_exn dates
 let total_colspan = List.length dates + 1
 let cells =
   List.map dates ~f:(fun d ->
-    let s = sprintf "%s '%d" (Month.to_string (Date.month d)) (Date.year d - 2000) in
-    <:html<<td>$str:s$</td>&>>)
+    if Date.month d = Month.Jan then
+      <:html<<td>$int:Date.year d$</td>&>> else
+      <:html<<td>&nbsp;</td>&>>
+  )
   @ [ <:html<<td>&infin;</td>&>> ]
 
 let months_between d1 d2 =
@@ -92,9 +94,9 @@ let css = <:html<
             border-spacing: 0px 2px;
             }
             .blank { background-color: #fefefe; }
-            .planning { background-color: #bbccee; }
-            .doing { background-color: #eeeebb; }
-            .complete { background-color: #bbddbb; }
+            .planning { font-size: 80%; background-color: #bbccee; }
+            .doing { font-size: 80%; background-color: #eeeebb; }
+            .complete { font-size: 80%; background-color: #bbddbb; }
             img.mugshot { float:left; padding-right: 5px; }
             tr.dates {
             font-size: 0.75em;
