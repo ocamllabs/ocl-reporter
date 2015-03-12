@@ -11,4 +11,4 @@ copyright_holder="Anil Madhavapeddy",
 copyright_year="2012-2013",
 organization="Computer Laboratory",
 webmaster=(email="avsm2@cl.cam.ac.uk",name="Anil Madhavapeddy"),
-index.html,news,blogs,tasks,papers,pkg,people,collaboration.html,contact.html
+index.html,news,blogs,tasks,papers,people,collaboration.html,contact.html
