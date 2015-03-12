@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <head><title>The OCaml Compiler</title>
     <style>
     a.icon-github {
@@ -21,7 +22,7 @@
     }
     </style>
   </head><body>
-    <div class="ucampas-toc right"/>
+    <div class="ucampas-toc right"></div>
     
     
             <style type="text/css">
@@ -30,9 +31,9 @@
             border-spacing: 0px 2px;
             }
             .blank { background-color: #fefefe; }
-            .planning { background-color: #bbccee; }
-            .doing { background-color: #eeeebb; }
-            .complete { background-color: #bbddbb; }
+            .planning { font-size: 80%; background-color: #bbccee; }
+            .doing { font-size: 80%; background-color: #eeeebb; }
+            .complete { font-size: 80%; background-color: #bbddbb; }
             img.mugshot { float:left; padding-right: 5px; }
             tr.dates {
             font-size: 0.75em;
@@ -42,7 +43,7 @@
             </style>
           
     <h1 id="compiler">The OCaml Compiler</h1>
-    <div class="width:75%"><p><a href="http://ocaml.org"><img class="left" src="../images/ocaml-grey.png" width="70px"/></a>We are working on maintaining and extending the core OCaml compiler toolchain
+    <div class="width:75%"><p><a href="http://ocaml.org"><img width="70px" src="../images/ocaml-grey.png" class="left"/></a>We are working on maintaining and extending the core OCaml compiler toolchain
 and runtime. This consists of a variety of day-to-day tasks such as submitting
 bug fixes, and also longer-term improvements to the type system and runtime
 libraries (see below).</p>
@@ -54,33 +55,33 @@ well-formulated and maintainable.</p>
     <p><a href="../people/avsm.html"><img class="inline" style="" height="50px" src="../mugshots/avsm.jpg"/></a><a href="../people/lpw25.html"><img class="inline" style="" height="50px" src="../mugshots/lpw25.jpg"/></a><a href="../people/shinwell.html"><img class="inline" style="" height="50px" src="../mugshots/unknown.jpg"/></a><a href="../people/stedolan.html"><img class="inline" style="" height="50px" src="../mugshots/unknown.jpg"/></a><a href="../people/xclerc.html"><img class="inline" style="" height="50px" src="../mugshots/xavierclerc.jpg"/></a><a href="../people/yallop.html"><img class="inline" style="" height="50px" src="../mugshots/yallop.jpeg"/></a></p>
     <h2 id="Tasks">Tasks</h2>
     <table class="projects" width="95%">
-    <tr class="dates"><td>Sep '12</td><td>Oct '12</td><td>Nov '12</td><td>Dec '12</td><td>Jan '13</td><td>Feb '13</td><td>Mar '13</td><td>Apr '13</td><td>May '13</td><td>Jun '13</td><td>Jul '13</td><td>Aug '13</td><td>Sep '13</td><td>Oct '13</td><td>Nov '13</td><td>Dec '13</td><td>Jan '14</td><td>Feb '14</td><td>Mar '14</td><td>Apr '14</td><td>∞</td></tr>
-     <tr> <td class="blank" colspan="2"/> <td class="complete" colspan="3">
+    <tr class="dates"><td> </td><td> </td><td> </td><td> </td><td>2013</td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td>2014</td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td>2015</td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td>∞</td></tr>
+     <tr> <td class="blank" colspan="2"></td> <td class="complete" colspan="3">
                <a href="http://lpw25.net"><img class="mugshot" alt="Leo White" src="../mugshots/lpw25.jpg" height="30px"/></a>
                <a href="#Open types">Open types</a><br/>
-             </td> <td class="blank" colspan="15"/> <td/> </tr>  <tr> <td class="blank" colspan="1"/> <td class="complete" colspan="3">
+             </td> <td class="blank" colspan="34"></td> <td></td> </tr>  <tr> <td class="blank" colspan="1"></td> <td class="complete" colspan="3">
                <a href="http://lpw25.net"><img class="mugshot" alt="Leo White" src="../mugshots/lpw25.jpg" height="30px"/></a>
                <a href="#Record disambiguation">Record disambiguation</a><br/>
-             </td> <td class="blank" colspan="16"/> <td/> </tr>  <tr> <td class="blank" colspan="4"/> <td class="complete" colspan="6">
+             </td> <td class="blank" colspan="35"></td> <td></td> </tr>  <tr> <td class="blank" colspan="4"></td> <td class="complete" colspan="6">
                <a href="http://lpw25.net"><img class="mugshot" alt="Leo White" src="../mugshots/lpw25.jpg" height="30px"/></a>
                <a href="#Syntax extensions">Syntax extensions</a><br/>
-             </td> <td class="blank" colspan="10"/> <td/> </tr>  <tr> <td class="blank" colspan="6"/> <td class="complete" colspan="2">
+             </td> <td class="blank" colspan="29"></td> <td></td> </tr>  <tr> <td class="blank" colspan="6"></td> <td class="complete" colspan="2">
                <a href="http://lpw25.net"><img class="mugshot" alt="Leo White" src="../mugshots/lpw25.jpg" height="30px"/></a>
                <a href="#Namespaces plan">Namespaces plan</a><br/>
-             </td> <td class="blank" colspan="12"/> <td/> </tr>  <tr> <td class="blank" colspan="7"/> <td class="planning" colspan="13">
+             </td> <td class="blank" colspan="31"></td> <td></td> </tr>  <tr> <td class="blank" colspan="7"></td> <td class="planning" colspan="32">
                <img class="mugshot" alt="Stephen Dolan" src="../mugshots/unknown.jpg" height="30px"/>
                <a href="#Multicore">Multicore</a><br/>
-             </td>  <td class="planning"><i>plan?</i></td> </tr>  <tr> <td class="blank" colspan="8"/> <td class="planning" colspan="12">
+             </td>  <td class="planning"><i>plan?</i></td> </tr>  <tr> <td class="blank" colspan="8"></td> <td class="planning" colspan="31">
                <img class="mugshot" alt="Jeremy Yallop" src="../mugshots/yallop.jpeg" height="30px"/>
                <a href="#Compile-time meta programming">Compile-time meta programming</a><br/>
-             </td>  <td class="planning"><i>plan?</i></td> </tr>  <tr> <td class="blank" colspan="5"/> <td class="doing" colspan="12">
+             </td>  <td class="planning"><i>plan?</i></td> </tr>  <tr> <td class="blank" colspan="5"></td> <td class="doing" colspan="12">
                <a href="http://www.three-tuns.net/mark"><img class="mugshot" alt="Mark Shinwell" src="../mugshots/unknown.jpg" height="30px"/></a>
                <a href="#Emission of DWARF debugging information">Emission of DWARF debugging information</a><br/>
-             </td> <td class="blank" colspan="3"/> <td/> </tr>  <tr> <td class="blank" colspan="8"/> <td class="complete" colspan="4">
+             </td> <td class="blank" colspan="22"></td> <td></td> </tr>  <tr> <td class="blank" colspan="8"></td> <td class="complete" colspan="4">
                <a href="http://www.x9c.fr"><img class="mugshot" alt="Xavier Clerc" src="../mugshots/xavierclerc.jpg" height="30px"/></a>
                <a href="#OCaml Java 2.0 preview">OCaml Java 2.0 preview</a><br/>
-             </td> <td class="blank" colspan="8"/> <td/> </tr> 
-    <tr><td colspan="21"> </td></tr>
+             </td> <td class="blank" colspan="27"></td> <td></td> </tr> 
+    <tr><td colspan="40"> </td></tr>
     </table>
   
     
@@ -154,19 +155,15 @@ the components of an OCaml library are modules, a module can be created that
 contains all the components of the library as sub-modules. However, there are
 some critical problems with creating a single module containing the whole
 library:</p>
-<ul>
- <li><p>The module is a single unit that has to be linked or not as a whole. This
+<ul><li><p>The module is a single unit that has to be linked or not as a whole. This
  means that any program using part of the library must include the entire
  library.</p>
- </li>
- <li><p>The module is a choke-point in the dependency graph. If a file depends
+</li><li><p>The module is a choke-point in the dependency graph. If a file depends
  on one thing in the library then it needs to be recompiled if anything
  in the library changes.</p>
- </li>
- <li><p>Opening a very large module is slow and can seriously affect build
+</li><li><p>Opening a very large module is slow and can seriously affect build
  performance.</p>
- </li>
-</ul>
+</li></ul>
 
 <p>These problems are caused by the runtime semantics of modules. Namespaces have
 no runtime sematics and could provide a solution to these problems.</p>
