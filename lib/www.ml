@@ -40,7 +40,7 @@ let ref_to_html rf =
 let refs_to_html rs =
   let x = List.map ~f:(fun x -> <:html<$ref_to_html x$ &nbsp; >>) rs in
   <:html<$list:x$>>
- 
+
 (* Convert a Date to a human-readable string.
  * TODO is there a nicer Core function for this? *)
 let human_readable_date d =
@@ -91,7 +91,7 @@ let people =
   let person_to_html p =
     let m = mugshot_img ~size:80 p in
     let phref = sprintf "%s.html" p.id in
-    <:html< 
+    <:html<
       <table style="float:left">
         <tr><td>$m$</td></tr>
         <tr><td width="130px"><a href=$str:phref$>$str:p.name$</a><br /><span style="font-size:90%">$str:p.role$</span></td></tr>
@@ -202,12 +202,12 @@ let one_project proj =
         <:html< $mode$ by $n$ ($start$ -$finish$) >>
       in
       let mugshots = mugshot_img ~size:40 t.owner in
-      let related = 
-        let links = List.map 
+      let related =
+        let links = List.map
           ~f:(fun (desc, pid, tname) ->
-            let url = pid ^ ".html#" ^ tname in  
-              <:html<<li><a href=$str:url$>$str:desc$</a></li>&>>) 
-          t.related 
+            let url = pid ^ ".html#" ^ tname in
+              <:html<<li><a href=$str:url$>$str:desc$</a></li>&>>)
+          t.related
         in
         if links = [] then Cow.Html.nil
         else
@@ -329,6 +329,12 @@ let write_uconfig dir files =
   let buf = List.map files ~f:(fun x -> x^".html") |! String.concat ~sep:"," in
   Out_channel.write_all fname ("navstop=1,\n"^buf)
 
+let write_blogs file =
+  let planet_feeds = List.map ~f:Feeds.feed_of_info Data.all_feeds in
+  let out_file = sprintf "pages/%s-b.html" file in
+  eprintf "writing : %s\n" out_file;
+  Posts.write_posts ?num_posts:(Some 50) ~file:out_file planet_feeds
+
 let _ =
   write_uconfig "people" (List.map Data.People.all ~f:(fun p -> p.Types.Person.id));
   write_html "people/index" people;
@@ -343,4 +349,5 @@ let _ =
   write_uconfig "news" [];
   write_html "news/index" news;
   write_xml "news/atom" news_atom;
+  write_blogs "blogs/index";
   ()

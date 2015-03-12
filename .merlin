@@ -1,0 +1,10 @@
+S lib
+
+B _build/lib
+
+PKG lwt
+PKG syndic
+PKG cohttp
+PKG cow
+PKG netstring
+PKG core
