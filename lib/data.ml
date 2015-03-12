@@ -11,10 +11,10 @@ module Projects = struct
   module Platform = struct
 
    let opam_refs = [
-     Reference.github "OCamlPro" "opam";
-     Reference.webpage "http://ocamlpro.opam.com";
-     Reference.pdf ~name:"Developer Manual" "https://github.com/OCamlPro/opam/blob/master/doc/dev-manual/dev-manual.pdf?raw=true";
-     Reference.github_issues "OCamlPro" "opam";
+     Reference.github "ocaml" "opam";
+     Reference.webpage "https://opam.ocaml.org";
+     Reference.pdf ~name:"Developer Manual" "https://github.com/ocaml/opam/blob/master/doc/dev-manual/dev-manual.pdf?raw=true";
+     Reference.github_issues "ocaml" "opam";
    ]
 
    let ocamlot_refs = [
@@ -49,15 +49,18 @@ module Projects = struct
                    ("OCamlot", "platform", "OCamlot")]
         ~refs: opam_refs () ;
       mk_task ~name:"OPAM 1.2"
-        ~start:"2013-11-01" ~finish:"2014-03-01"
+        ~start:"2013-11-01" ~finish:"2014-10-01"
         ~owner:People.tg
-        ~status:`Planning
+        ~status:`Complete
         ~descr:"opam12"
         ~related:[("Platform Preview", "platform", "Platform Preview")]
-        ~refs:opam_refs ();
+        ~refs: (opam_refs @ [
+          Reference.webpage ~name:"ChangeLog" "https://raw.githubusercontent.com/ocaml/opam/1.2.0/CHANGES";
+          Reference.webpage ~name:"Release Post" "https://opam.ocaml.org/blog/opam-1-2-0-release/";
+        ]) ();
 
       mk_task ~name:"OPAM-in-a-box"
-        ~start:"2013-12-01" ~finish:"2014-03-01"
+        ~start:"2013-12-01" ~finish:"2015-01-01"
         ~owner:People.tg
         ~status:`Doing
         ~descr:"opaminabox"
@@ -92,7 +95,7 @@ module Projects = struct
         ~related:[("OCamlot", "platform", "OCamlot")] ();
 
       mk_task ~name:"Platform Preview"
-        ~start:"2013-03-01" ~finish:"2013-07-01"
+        ~start:"2013-02-01" ~finish:"2013-07-01"
         ~owner:People.amir
         ~status:`Complete
         ~descr:"platform-prev"
@@ -105,18 +108,18 @@ module Projects = struct
         ();
 
       mk_task ~name:"Ctypes 0.1"
-        ~start:"2013-03-01" ~finish:"2013-06-01"
+        ~start:"2013-03-01" ~finish:"2013-07-01"
         ~owner:People.yallop
         ~status:`Complete
         ~descr:"ctypes"
         ~refs:[ Reference.github "ocamllabs" "ctypes";
                 Reference.webpage ~name:"Documentation" "https://github.com/ocamllabs/ocaml-ctypes/wiki" ]
         ();
-      mk_task ~name:"Ctypes 0.2"
+      mk_task ~name:"Ctypes Stubgen"
         ~start:"2013-09-01"
-        ~finish:"2014-03-01"
+        ~finish:"2014-05-01"
         ~owner:People.yallop
-        ~status:`Doing
+        ~status:`Complete
         ~descr:"ctypes-stubs"
         ~refs:[ Reference.github "ocamllabs" "ctypes";
                 Reference.webpage ~name:"Documentation" "https://github.com/ocamllabs/ocaml-ctypes/wiki";
