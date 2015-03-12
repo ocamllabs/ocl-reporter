@@ -17,7 +17,6 @@ module Projects = struct
    ]
 
    let ocamlot_refs = [
-     Reference.webpage "https://ocaml-www3.ocamllabs.cl.cam.ac.uk/";
      Reference.github ~name:"ocamlot-state" "ocamlot" "ocamlot-state";
      Reference.github ~name:"ocamlot" "ocamllabs" "ocamlot";
      Reference.github_issues "ocamllabs" "ocamlot";
@@ -33,14 +32,14 @@ module Projects = struct
         tasks;
       }
     and tasks = [ 
-      mk_task ~name:"OPAM 1.0 (if it builds, ship it)"
+      mk_task ~name:"OPAM 1.0"
         ~start:"2012-03-15" ~finish:"2013-03-14"
         ~owner:People.tg
         ~status:`Complete
         ~descr:"opam10"
         ~related:[("OPAM 1.1", "platform", "OPAM 1.1 (the CI and Test release)")]
         ~refs:opam_refs () ;
-      mk_task ~name:"OPAM 1.1 (the CI and Test release)"
+      mk_task ~name:"OPAM 1.1"
         ~start:"2013-02-17" ~finish:"2013-10-01"
         ~owner:People.tg
         ~status:`Complete
@@ -48,7 +47,7 @@ module Projects = struct
         ~related:[("OPAM 1.2", "platform", "OPAM 1.2 (the Platform release)");
                    ("OCamlot", "platform", "OCamlot")]
         ~refs: opam_refs () ;
-      mk_task ~name:"OPAM 1.2 (the Platform release)"
+      mk_task ~name:"OPAM 1.2"
         ~start:"2013-11-01" ~finish:"2014-03-01"
         ~owner:People.tg
         ~status:`Planning
@@ -76,26 +75,16 @@ module Projects = struct
          ] () ;
 
       mk_task ~name:"OCamlot 0.2.0"
-        ~start:"2013-03-31" ~finish:"2013-06-30"
+        ~start:"2013-03-31" ~finish:"2013-09-15"
         ~owner:People.sheets
         ~status:`Complete
         ~descr:"ocamlot.0.2"
-        ~related:[("OPAM 1.0","platform","OPAM 1.0 (if it builds, ship it)");
+        ~related:[("OPAM 1.0","platform","OPAM 1.0");
                   ("Machine Pool", "platform", "Machine Pool")]
         ~refs: ocamlot_refs () ;
 
-      mk_task ~name:"OCamlot 0.3.0"
-        ~start:"2013-06-30" ~finish:"2013-09-15"
-        ~owner:People.sheets
-        ~status:`Complete
-        ~descr:"ocamlot.0.3"
-        ~related:["OPAM 1.1","platform","OPAM 1.1 (the CI and Test release)";
-                  "Machine Pool", "platform", "Machine Pool"]
-        ~refs: ocamlot_refs () ;
-
       mk_task ~name:"Non-x86 Machine Pool"
-        ~start:"2012-11-16"
-        ~finish:"2013-06-01"
+        ~start:"2012-11-16" ~finish:"2013-06-01"
         ~owner:People.avsm
         ~status:`Complete
         ~descr:"machine-pool"
@@ -111,10 +100,9 @@ module Projects = struct
         ~refs:[
           Reference.pdf ~name:"OCaml 2013 status" "http://ocaml.org/meetings/ocaml/2013/slides/madhavapeddy.pdf";
           Reference.webpage ~name:"Platform mailing list" "http://lists.ocaml.org/listinfo/platform" 
-        ]
-        ();
+        ] ();
 
-      mk_task ~name:"Ctypes"
+      mk_task ~name:"Ctypes 0.1"
         ~start:"2013-03-01" ~finish:"2013-06-01"
         ~owner:People.yallop
         ~status:`Complete
@@ -122,7 +110,7 @@ module Projects = struct
         ~refs:[ Reference.github "ocamllabs" "ctypes";
                 Reference.webpage ~name:"Documentation" "https://github.com/ocamllabs/ocaml-ctypes/wiki" ]
         ();
-      mk_task ~name:"Ctypes stub generation"
+      mk_task ~name:"Ctypes 0.2"
         ~start:"2013-09-01"
         ~finish:"2014-03-01"
         ~owner:People.yallop
@@ -410,7 +398,7 @@ module Projects = struct
            Reference.webpage ~name:"Homepage" "http://openmirage.org";
         ] () ;
 
-      mk_task ~name:"Formalisms for packet processing"
+      mk_task ~name:"TCP/IP Stack"
         ~start:"2013-04-01" ~finish:"2013-10-01"
         ~owner:People.balrajsingh
         ~status:`Planning
