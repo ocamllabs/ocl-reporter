@@ -111,7 +111,10 @@ they are across different operating systems.</p>
              </td> <td class="blank" colspan="5"></td> <td></td> </tr>  <tr> <td class="blank" colspan="20"></td> <td class="complete" colspan="10">
                <a href="https://github.com/dsheets"><img class="mugshot" alt="David Sheets" src="../mugshots/sheets.png" height="30px"/></a>
                <a href="#Codoc 0.2.0">Codoc 0.2.0</a><br/>
-             </td> <td class="blank" colspan="9"></td> <td></td> </tr> 
+             </td> <td class="blank" colspan="9"></td> <td></td> </tr>  <tr> <td class="blank" colspan="22"></td> <td class="doing" colspan="12">
+               <a href="http://thomas.gazagnaire.org"><img class="mugshot" alt="Thomas Gazagnaire" src="../mugshots/tg.png" height="30px"/></a>
+               <a href="#Assemblage">Assemblage</a><br/>
+             </td> <td class="blank" colspan="5"></td> <td></td> </tr> 
     <tr><td colspan="40"> </td></tr>
     </table>
   
@@ -332,6 +335,21 @@ documentation. In particular, we are striving to:</p>
 <ul><li>Cover all of OCaml's language features</li><li>Provide accurate name resolution and linking</li><li>Support cross-linking between different packages</li><li>Expose interfaces to the components we've used to build codoc</li><li>Provide a magic-free command-line interface to the tool itself</li><li>Reduce external dependencies and default integration with other tools</li></ul>
 
 <p>We haven't yet achieved all of these at all levels of our tool stack but are getting close. codoc 0.2.0 is usable today (if a little rough in some areas like default CSS).  Please see the <a href="http://opam.ocaml.org/blog/codoc-0-2-0-released/">blog post</a> for more details about its current status.</p>
+
+         <br/></div>
+      
+         <div style="width:75%">
+         <h3 style="border-bottom: thin solid #999999;" id="Assemblage">Assemblage</h3>
+         <p><a href="../people/tg.html"><img class="inline" style="float:left; padding-right: 30px" height="40px" src="../mugshots/tg.png"/></a>  <span class="doing">In Progress</span> by <a href="../people/tg.html">Thomas Gazagnaire</a> (Jun 2014 - Jun 2015) <br/><a class="icon-github" href="https://github.com/samoht/assemblage">Github</a>   <a class="icon-wrench" href="https://github.com/samoht/assemblage/issues">Issues</a>   <a class="icon-pdf" href="../papers/index.html#ocl-platform-2014">Paper</a>   <a class="icon-pdf" href="http://ocaml.org/meetings/ocaml/2014/ocl-platform-2014-slides.pdf">Slides</a>   </p>
+         <p>The Assemblage toolbox provides an API and a set of binaries to setup, manage,
+and use OCaml projects.  The library can be used to describe OCaml projects
+with static dependencies.  A project description consists of a list of
+libraries, binaries and/or toplevels, each containing a list of compilation
+units with precise (and static) dependency relationships.</p>
+<p>Using a project description, the tools can generate:</p>
+<ul><li>a <code>.merlin</code> to help edit the project;</li><li>a <code>Makefile</code> to build the project;</li><li>a <code>.install</code> to install the project; and</li><li>a <code>META</code> file to use the project</li></ul>
+
+<p>Assemblage is still a work-in-progress and has not had a public release.</p>
 
          <br/></div>
       
