@@ -16,3 +16,6 @@ The ultimate aim is to support the OCaml platform with interactive tutorials usi
 of this in OPAM via `opam install opam-doc && opam doc core async`.  It will start a
 local webserver on which you can browse the traffic.  There is also a snapshot available
 on [the Mirage documentation](http://mirage.github.io) site.
+
+This work is continued in a form intended for upstream inclusion in the compiler
+via the Codoc task.

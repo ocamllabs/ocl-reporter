@@ -60,7 +60,7 @@ module Projects = struct
         ]) ();
 
       mk_task ~name:"OPAM-in-a-box"
-        ~start:"2013-12-01" ~finish:"2015-01-01"
+        ~start:"2013-12-01" ~finish:"2015-05-01"
         ~owner:People.tg
         ~status:`Doing
         ~descr:"opaminabox"
@@ -73,6 +73,7 @@ module Projects = struct
         ~owner:People.vbotbol
         ~status:`Complete
         ~descr:"opam-doc"
+        ~related:[("Codoc", "platform", "Codoc")]
         ~refs:[
            Reference.github ~name:"opam-doc" "ocamllabs" "opam-doc" ;
            Reference.webpage ~name:"Snapshot Docs" "http://mirage.github.io"
@@ -87,7 +88,7 @@ module Projects = struct
                   ("Machine Pool", "platform", "Machine Pool")]
         ~refs: ocamlot_refs () ;
 
-      mk_task ~name:"Non-x86 Machine Pool"
+      mk_task ~name:"Non-x86 Machines"
         ~start:"2012-11-16" ~finish:"2013-06-01"
         ~owner:People.avsm
         ~status:`Complete
@@ -126,7 +127,40 @@ module Projects = struct
                 Reference.pdf ~name:"OCaml 2013 demo" "http://ocaml.org/meetings/ocaml/2013/proposals/ctypes.pdf" ]
         ~related:[("Ctypes", "platform", "Ctypes")]
         ();
-    ]
+
+      mk_task ~name:"Docker Builds"
+        ~start:"2014-06-01"
+        ~finish:"2015-04-01"
+        ~owner:People.avsm
+        ~status:`Doing
+        ~descr:"opam-bulk"
+        ~refs: [ Reference.github "avsm" "ocaml-dockerfile";
+                 Reference.webpage ~name:"Output" "http://www.recoil.org/~avsm/opam-bulk"; ]
+        ~related:[("OPAM 1.2", "platform", "OPAM 1.2")] ();
+
+      mk_task ~name:"OCaml.org governance"
+        ~start:"2014-07-01"
+        ~finish:"2015-06-01"
+        ~owner:People.amir
+        ~status:`Doing
+        ~descr:"governance"
+        ~refs: [ Reference.blog "http://amirchaudhry.com/towards-governance-framework-for-ocamlorg/" ] ();
+
+      mk_task ~name:"Codoc 0.2.0"
+        ~start:"2014-04-01"
+        ~finish:"2015-02-20"
+        ~owner:People.sheets
+        ~status:`Complete
+        ~descr:"codoc.0.2.0"
+        ~refs: [ Reference.blog ~name:"Blog post" "http://opam.ocaml.org/blog/codoc-0-2-0-released/";
+                 Reference.github_issues "dsheets" "codoc";
+                 Reference.github ~name:"Codoc" "dsheets" "codoc";
+                 Reference.github ~name:"Doc-Ock-Lib" "lpw25" "doc-ock-lib";
+                 Reference.github ~name:"Doc-Ock-XML" "dsheets" "doc-ock-xml";
+                 Reference.paper Data_papers.ocaml_platform_2014;
+                 Reference.pdf ~name:"Slides" "http://ocaml.org/meetings/ocaml/2014/ocl-platform-2014-slides.pdf"
+        ] ()
+    ]   
   end
 
   module T2 = struct
