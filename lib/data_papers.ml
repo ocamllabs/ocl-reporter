@@ -56,6 +56,96 @@ let regional_clouds_2014 =
      ~conf:"University of Cambridge Computer Laboratory Technical Report"
      ~conf_url:"http://www.cl.cam.ac.uk/techreports"
 
+let multicore_ocaml_2014 =
+  mk ~id:"multicore-ocaml-2014"
+     ~title:"Multicore OCaml"
+     ~url:"http://ocaml.org/meetings/ocaml/2014/ocaml2014_1.pdf"
+     ~authors:"Stephen Dolan, Leo White and Anil Madhavapeddy"
+     ~date:"2014-09-16"
+     ~conf:"ACM OCaml Workshop 2014"
+     ~conf_url:"http://ocaml.org/meetings/ocaml/2014/"
+
+let module_aliases_2014 =
+  mk ~id:"module-aliases-2014"
+     ~title:"Type-level Module Aliases"
+     ~url:"https://sites.google.com/site/mlworkshoppe/modalias.pdf?attredirects=0"
+     ~authors:"Jacques Garrigue and Leo White"
+     ~date:"2014-09-15"
+     ~conf:"ACM SIGPLAN ML Family Workshop"
+     ~conf_url:"http://okmij.org/ftp/ML/ML14.html"
+
+let mirageos_ocaml_2014 =
+  mk ~id:"metaprogramming-mirage-2014"
+     ~title:"Metaprogramming with ML modules in the MirageOS"
+     ~url:"https://sites.google.com/site/mlworkshoppe/Gazagnaire-abstract.pdf?attredirects=0"
+     ~authors:"Anil Madhavapeddy, Thomas Gazagnaire, David Scott and Richard Mortier"
+     ~date:"2014-09-15"
+     ~conf:"ACM SIGPLAN ML Family Workshop"
+     ~conf_url:"http://okmij.org/ftp/ML/ML14.html"
+
+let ocaml_platform_2014 = 
+  mk ~id:"ocl-platform-2014"
+     ~title:"The OCaml Platform v1.0"
+     ~url:"http://ocaml.org/meetings/ocaml/2014/ocaml2014_7.pdf"
+     ~authors:"Anil Madhavapeddy, Amir Chaudhry, Jeremie Diminio, Thomas Gazagnaire, Louis Gesbert, Thomas Leonard, David Sheets, Mark Shinwell, Leo White and Jeremy Yallop"
+     ~date:"2014-09-16"
+     ~conf:"ACM OCaml Workshop 2014"
+     ~conf_url:"http://ocaml.org/meetings/ocaml/2014/"
+
+let zeroinstall_2014 =
+  mk ~id:"0install-2014"
+     ~title:"The 0install Binary Installation System"
+     ~url:"http://ocaml.org/meetings/ocaml/2014/ocaml2014_3.pdf"
+     ~authors:"Thomas Leonard"
+     ~date:"2014-09-16"
+     ~conf:"ACM OCaml Workshop 2014"
+     ~conf_url:"http://ocaml.org/meetings/ocaml/2014/"
+
+let coeffects_2014 =
+  mk ~id:"coeffects-icfp-2014"
+     ~title:"Coeffects: A Calculus of Context-dependent Computation"
+     ~url:"http://www.cl.cam.ac.uk/~dao29/publ/coeffects-icfp14.pdf"
+     ~authors:"Tomas Petricek, Dominic Orchard and Alan Mycroft"
+     ~date:"2014-09-16"
+     ~conf:"International Conference in Functional Programming (ICFP)"
+     ~conf_url:"http://icfpconference.org/icfp2014/"
+
+let tls_ocaml_2014 =
+  mk ~id:"tls-ocaml-2014"
+     ~title:"Transport Level Security in OCaml"
+     ~url:"http://ocaml.org/meetings/ocaml/2014/ocaml2014_4.pdf"
+     ~authors:"Hannes Mehnert and David Kaloper Mersinjak"
+     ~date:"2014-09-05"
+     ~conf:"ACM OCaml Workshop 2014"
+     ~conf_url:"http://ocaml.org/meetings/ocaml/2014/"
+
+let irmin_ocaml_2014 =
+  mk ~id:"irmin-ocaml-2014"
+     ~title:"Irmin: a Branch-consistent Distributed Library Database"
+     ~url:"http://ocaml.org/meetings/ocaml/2014/ocaml2014_11.pdf"
+     ~authors:"Thomas Gazagnaire, Amir Chaudhry, Jon Crowcroft, Anil Madhavapeddy, Richard Mortier, David Scott, David Sheets and Gregory Tsipenyuk"
+     ~date:"2014-09-05"
+     ~conf:"ACM OCaml Workshop 2014"
+     ~conf_url:"http://ocaml.org/meetings/ocaml/2014/"
+
+let modular_implicits_2014 =
+  mk ~id:"modular-implicits-2014"
+     ~title:"Modular Implicits"
+     ~url:"http://www.lpw25.net/ml2014.pdf"
+     ~authors:"Leo White and Frederic Bour"
+     ~date:"2014-09-14"
+     ~conf:"ACM SIGPLAN ML Family Workshop"
+     ~conf_url:"http://okmij.org/ftp/ML/ML14.html"
+
+let flops_2014 =
+  mk ~id:"higher-2014"
+     ~title:"Lightweight higher-kinded polymorphism"
+     ~url:"http://www.lpw25.net/flops2014.pdf"
+     ~authors:"Jeremy Yallop and Leo White"
+     ~date:"2014-06-04"
+     ~conf:"Twelfth International Symposium on Functional and Logic Programming"
+     ~conf_url:"http://www.jaist.ac.jp/flops2014/"
+
 let cufp_2013 =
   mk ~id:"cufp-jfp-2013"
      ~title:"Commercial Users of Functional Programming 2013 Scribe's Report"
@@ -153,6 +243,16 @@ let all = [
   raft_2015;
   regional_clouds_2014;
   irmin_jfla_2015;
+  flops_2014;
+  coeffects_2014;
+  tls_ocaml_2014;
+  irmin_ocaml_2014;
+  modular_implicits_2014;
+  module_aliases_2014;
+  mirageos_ocaml_2014;
+  multicore_ocaml_2014;
+  ocaml_platform_2014;
+  zeroinstall_2014;
   cufp_2013;
   cacm_2014;
   rwo_2013;
