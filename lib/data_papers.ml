@@ -2,6 +2,42 @@
 open Core.Std
 open Types.Paper
 
+let jitsu_2015 =
+  mk ~id:"jitsu-nsdi-2015"
+     ~title:"Jitsu: Just-In-Time Summoning of Unikernels"
+     ~url:"http://anil.recoil.org/papers/2015-nsdi-jitsu.pdf"
+     ~authors:"Anil Madhavapeddy, Thomas Leonard, Magnus Skjegstad, Thomas Gazagnaire, David Sheets, Dave Scott, Richard Mortier, Amir Chaudhry, Balraj Singh, Jon Ludlam, Jon Crowcroft and Ian Leslie"
+     ~date:"2015-05-04"
+     ~conf:"12th USENIX Symposium on Networked System Design and Implementation"
+     ~conf_url:"https://www.usenix.org/conference/nsdi15/technical-sessions/presentation/madhavapeddy"
+
+let raft_2015 =
+  mk ~id:"raft-osr-2015"
+     ~title:"Raft Refloated: Do We Have Consensus?"
+     ~url:"http://anil.recoil.org/papers/2014-sigops-raft.pdf"
+     ~authors:"Heidi Howard, Malte Schwarzkopf, Anil Madhavapeddy and Jon Crowcroft"
+     ~date:"2015-01-10"
+     ~conf:"ACM SIGOPS Operating System Review special issue on Repeatability and Sharing of Experimental Artifacts"
+     ~conf_url:"http://dl.acm.org/citation.cfm?doid=2723872.2723876"
+ 
+let irmin_jfla_2015 =
+  mk ~id:"irmin-jfla-2015"
+     ~title:"Mergeable Persistent Data Structures"
+     ~url:"http://anil.recoil.org/papers/2015-jfla-irmin.pdf"
+     ~authors:"Benjamin Farinier, Thomas Gazagnaire and Anil Madhavapeddy"
+     ~date:"2015-01-07"
+     ~conf:"Les vingt-sixième Journées Francophones des Langages Applicatifs"
+     ~conf_url:"http://jfla.inria.fr/2015/"
+
+let cufp_2013 =
+  mk ~id:"cufp-jfp-2013"
+     ~title:"Commercial Users of Functional Programming 2013 Scribe's Report"
+     ~url:"http://anil.recoil.org/papers/2013-cufp-scribe-preprint.pdf"
+     ~authors:"Marius Eriksen, Michael Sperber and Anil Madhavapeddy"
+     ~date:"2014-09-01"
+     ~conf:"Journal of Functional Programming"
+     ~conf_url:"http://mc.manuscriptcentral.com/jfp_submit"
+
 let cacm_2014 =
    mk ~id:"cacm-unikernels-2013"
      ~title:"Unikernels: the Rise of the Virtual Library Operating System"
@@ -84,6 +120,10 @@ let sas_2013 =
      ~conf_url:"http://research.microsoft.com/en-us/events/sas2013/"
 
 let all = [
+  jitsu_2015;
+  raft_2015;
+  irmin_jfla_2015;
+  cufp_2013;
   cacm_2014;
   rwo_2013;
   cufp_2012;
