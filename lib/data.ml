@@ -105,8 +105,7 @@ module Projects = struct
         ~refs:[
           Reference.pdf ~name:"OCaml 2013 status" "http://ocaml.org/meetings/ocaml/2013/slides/madhavapeddy.pdf";
           Reference.webpage ~name:"Platform mailing list" "http://lists.ocaml.org/listinfo/platform"
-        ]
-        ();
+        ] ();
 
       mk_task ~name:"Ctypes 0.1"
         ~start:"2013-03-01" ~finish:"2013-07-01"
@@ -159,8 +158,20 @@ module Projects = struct
                  Reference.github ~name:"Doc-Ock-XML" "dsheets" "doc-ock-xml";
                  Reference.paper Data_papers.ocaml_platform_2014;
                  Reference.pdf ~name:"Slides" "http://ocaml.org/meetings/ocaml/2014/ocl-platform-2014-slides.pdf"
-        ] ()
-    ]   
+        ] ();
+
+      mk_task ~name:"Assemblage"
+        ~start:"2014-06-10"
+        ~finish:"2015-06-10"
+        ~owner:People.tg
+        ~status:`Doing
+        ~descr:"assemblage"
+        ~refs: [ Reference.github "samoht" "assemblage";
+                 Reference.github_issues "samoht" "assemblage";
+                 Reference.paper Data_papers.ocaml_platform_2014;
+                 Reference.pdf ~name:"Slides" "http://ocaml.org/meetings/ocaml/2014/ocl-platform-2014-slides.pdf" ]
+        ();
+   ]
   end
 
   module T2 = struct
