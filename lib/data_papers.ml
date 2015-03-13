@@ -11,6 +11,15 @@ let jitsu_2015 =
      ~conf:"12th USENIX Symposium on Networked System Design and Implementation"
      ~conf_url:"https://www.usenix.org/conference/nsdi15/technical-sessions/presentation/madhavapeddy"
 
+let databox_2015 =
+  mk ~id:"databox-2015"
+     ~title:"Personal Data: Thinking Inside the Box"
+     ~url:"http://arxiv.org/pdf/1501.04737v1.pdf"
+     ~authors:"Hamed Haddadi, Heidi Howard, Amir Chaudhry, Jon Crowcroft, Anil Madhavapeddy, Richard Mortier"
+     ~date:"2015-01-20"
+     ~conf:"arXiv:1501.04737"
+     ~conf_url:"http://arxiv.org/abs/1501.04737"
+
 let raft_2015 =
   mk ~id:"raft-osr-2015"
      ~title:"Raft Refloated: Do We Have Consensus?"
@@ -28,6 +37,24 @@ let irmin_jfla_2015 =
      ~date:"2015-01-07"
      ~conf:"Les vingt-sixième Journées Francophones des Langages Applicatifs"
      ~conf_url:"http://jfla.inria.fr/2015/"
+
+let kadupul_2014 =
+  mk ~id:"kadupul-2014"
+     ~title:"Kadupul: Livin' on the Edge with Virtual Currencies and Time-Locked Puzzles"
+     ~url:"http://arxiv.org/pdf/1412.4638v1.pdf"
+     ~authors:"Magnus Skjegstad, Anil Madhavapeddy and Jon Crowcroft"
+     ~date:"2014-12-15"
+     ~conf:"arXiv:1412.4638"
+     ~conf_url:"http://arxiv.org/abs/1412.4638"
+
+let regional_clouds_2014 =
+  mk ~id:"regional-clouds-2014"
+     ~title:"Regional Clouds: Technical Considerations"
+     ~url:"http://www.cl.cam.ac.uk/techreports/UCAM-CL-TR-863.pdf"
+     ~authors:"Jatinder Singh, Jean Bacon, Jon Crowcroft, Anil Madhavapeddy, Thomas Pasquier, W. Kuan Hon, and Christopher Millard"
+     ~date:"2014-11-01"
+     ~conf:"University of Cambridge Computer Laboratory Technical Report"
+     ~conf_url:"http://www.cl.cam.ac.uk/techreports"
 
 let cufp_2013 =
   mk ~id:"cufp-jfp-2013"
@@ -120,8 +147,11 @@ let sas_2013 =
      ~conf_url:"http://research.microsoft.com/en-us/events/sas2013/"
 
 let all = [
+  databox_2015;
+  kadupul_2014;
   jitsu_2015;
   raft_2015;
+  regional_clouds_2014;
   irmin_jfla_2015;
   cufp_2013;
   cacm_2014;
