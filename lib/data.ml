@@ -3,7 +3,6 @@ open Types
 include Data_people
 include Data_papers
 include Data_news
-include Data_blogs
 
 module Projects = struct
   open Project
@@ -32,7 +31,7 @@ module Projects = struct
         team=People.([ avsm; tg; lpw25; sheets; yallop; pwang; vbotbol ]);
         tasks;
       }
-    and tasks = [ 
+    and tasks = [
       mk_task ~name:"OPAM 1.0"
         ~start:"2012-03-15" ~finish:"2013-03-14"
         ~owner:People.tg

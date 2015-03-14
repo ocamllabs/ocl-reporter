@@ -330,10 +330,10 @@ let write_uconfig dir files =
   Out_channel.write_all fname ("navstop=1,\n"^buf)
 
 let write_blogs file =
-  let planet_feeds = List.map ~f:Feeds.feed_of_info Data.all_feeds in
+  let in_file = "lib/data_blog.txt" in
   let out_file = sprintf "pages/%s-b.html" file in
   eprintf "writing : %s\n" out_file;
-  Posts.write_posts ?num_posts:(Some 50) ~file:out_file planet_feeds
+  Blogs.write_posts ?num_posts:(Some 50) ~out_file:out_file in_file
 
 let _ =
   write_uconfig "people" (List.map Data.People.all ~f:(fun p -> p.Types.Person.id));
