@@ -286,6 +286,69 @@ module People = struct
     homepage=Some "http://roscidus.com/blog";
     mugshot=Some "tleonard.jpg";
   }
+  let mpreston = {
+    id="mpreston";
+    name="Mindy Preston";
+    affiliation=`CLx;
+    role="Visitor";
+    bio=None;
+    homepage=Some "http://somerandomidiot.com";
+    mugshot=None;
+  }
+  let aray = {
+    id="aray";
+    name="Andy Ray";
+    affiliation=`Past;
+    role="Visitor";
+    bio=None;
+    homepage=Some "http://www.ujamjar.com";
+    mugshot=None;
+  }
+  let yans = {
+    id="yans";
+    name="Yan Shvartzshnaider";
+    affiliation=`Past;
+    role="Research Associate";
+    bio=None;
+    homepage=Some "http://yansnotes.blogspot.co.uk";
+    mugshot=None;
+  }
+  let cmolina = {
+    id="cmolina";
+    name="Carlos Molina-Jimenez";
+    affiliation=`CLx;
+    role="Research Associate";
+    bio=None;
+    homepage=None;
+    mugshot=None;
+  }
+  let mnasr = {
+    id="mnasr";
+    name="Mounir Nasr Allah";
+    affiliation=`CLx;
+    role="Summer visitor";
+    bio=None;
+    homepage=Some "http://mounirnasrallah.com";
+    mugshot=None;
+  }
+(*  let gpotron = {
+    id="gpotron";
+    name="Guillain Potron";
+    affiliation=`CLx;
+    role="Summer visitor";
+    bio=None;
+    homepage=None;
+    mugshot=None;
+  }*)
+(*  let qli = {
+    id="qli";
+    name="Qi Li";
+    affiliation=`CLx;
+    role="Summer visitor";
+    bio=None;
+    homepage=None;
+    mugshot=None;
+    }*)
 
   (* 
     Citrix people
@@ -526,7 +589,8 @@ module People = struct
     xleroy; mac; mort; ashish; christophe; gabor;
     (* prashanth; *) jhickey; xclerc; dbunzli; vbotbol; kaloper;
     hannes; greg; benjamin; matthieu; frederic; magnus; nicolas;
-    sebastian; stekell; tleonard ]
+    sebastian; stekell; tleonard; mpreston; aray; yans; cmolina; mnasr
+    (* gpotron; *)(* qli; *) ]
 
   (* Split out the CUCL from the org list *)
   let of_cucl, of_cuclx, of_other =
