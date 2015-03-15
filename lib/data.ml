@@ -96,7 +96,7 @@ module Projects = struct
         ~related:[("OCamlot", "platform", "OCamlot")] ();
 
       mk_task ~name:"Platform Preview"
-        ~start:"2013-02-01" ~finish:"2013-07-01"
+        ~start:"2013-01-01" ~finish:"2013-07-01"
         ~owner:People.amir
         ~status:`Complete
         ~descr:"platform-prev"
@@ -247,8 +247,7 @@ module Projects = struct
         ] () ;
 
       mk_task ~name:"Namespaces and module aliases"
-        ~start:"2013-02-01"
-        ~finish:"2014-09-15"
+        ~start:"2013-02-01" ~finish:"2014-09-15"
         ~owner:People.lpw25
         ~status:`Complete
         ~descr:"namespaces"
@@ -256,6 +255,7 @@ module Projects = struct
           Reference.webpage ~name:"Blog" "http://www.lpw25.net/2013/03/10/ocaml-namespaces.html" ;
           Reference.webpage ~name:"Epic Mail Thread" "http://lists.ocaml.org/pipermail/platform/2013-February/000050.html";
           Reference.paper Data_papers.module_aliases_2014;
+          Reference.video "https://www.youtube.com/watch?v=9wYssJyvijA"
        ] () ;
 
       mk_task ~name:"Multicore"
@@ -267,6 +267,7 @@ module Projects = struct
         ~refs: [
            Reference.github "stedolan" "ocaml" ;
            Reference.paper Data_papers.multicore_ocaml_2014;
+           Reference.video "https://www.youtube.com/watch?v=FzmQTC_X5R4";
         ] ();
 
       mk_task ~name:"Emission of DWARF debugging information"
@@ -276,16 +277,49 @@ module Projects = struct
         ~status:`Doing
         ~descr:"dwarf"
         ~refs: [
-           Reference.github ~name:"4.00.1-allocation-profiling" "mshinwell" "ocaml" 
+           Reference.github ~name:"4.00.1-allocation-profiling" "mshinwell" "ocaml";
+           Reference.video "https://www.youtube.com/watch?v=NF2WpWnB-nk";
         ] ();
 
-      mk_task ~name:"OCaml Java 2.0 preview"
+      mk_task ~name:"OCaml Java"
         ~start:"2013-04-01" ~finish:"2013-08-01"
         ~owner:People.xclerc
         ~status:`Complete
         ~descr:"ocamljava2"
         ~refs: [ Reference.webpage "http://ocamljava.x9c.fr/preview/" ] ();
-    ]
+
+      mk_task ~name:"Modular Implicits prototype"
+        ~start:"2014-01-01" ~finish:"2015-02-01"
+        ~owner:People.lpw25
+        ~status:`Complete
+        ~descr:"modular-implicits"
+        ~refs: [
+          Reference.github "ocamllabs" "ocaml-modular-implicits";
+          Reference.webpage ~name:"Demo" "http://andrewray.github.io/iocamljs/modimp_show.html";
+          Reference.paper Data_papers.modular_implicits_2014;
+          Reference.video "https://www.youtube.com/watch?v=3wVUXTd4WNc"
+        ] ();
+ 
+      mk_task ~name:"Higher kinded polymorphism"
+        ~start:"2013-06-01" ~finish:"2014-08-01"
+        ~owner:People.yallop
+        ~status:`Complete
+        ~descr:"higher"
+        ~refs: [
+          Reference.paper Data_papers.flops_2014;
+          Reference.github "ocamllabs" "higher";
+        ] ();
+
+      mk_task ~name:"Exception matches"
+        ~start:"2013-11-01" ~finish:"2014-06-01"
+        ~owner:People.yallop
+        ~status:`Complete
+        ~descr:"exception-match"
+        ~refs: [
+          Reference.blog "http://ocamllabs.github.io/compiler-hacking/2014/02/04/handler-case.html";
+          Reference.mantis 6318;
+        ] ()
+    ]   
   end
 
   module Outreach = struct
