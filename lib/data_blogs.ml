@@ -53,5 +53,14 @@ let tleonard =
           ~face_height:70
           "http://roscidus.com/blog/atom.xml"
 
+let mpreston = 
+  mk_feed ~name:"Mindy Preston"
+          "http://www.somerandomidiot.com/blog/categories/ocaml/atom.xml"
+
+let lpw25 =
+  mk_feed ~name:"Leo White"
+          ~face:(Some "../mugshots/lpw25.jpg")
+          "http://www.lpw25.net/atom.xml"
+
 let all_feeds = [ srg_syslog; anil; amir ; comp; monthly_news; heidi ; mirage_os
-                  ; tleonard ]
+                  ; tleonard; mpreston; lpw25 ]

@@ -310,7 +310,7 @@ let write_blogs file =
   let planet_feeds = List.map ~f:Feeds.feed_of_info Data.all_feeds in
   let out_file = sprintf "pages/%s-b.html" file in
   eprintf "writing : %s\n" out_file;
-  Posts.write_posts ?num_posts:(Some 50) ~file:out_file planet_feeds
+  Posts.write_posts ~num_posts:100 ~file:out_file planet_feeds
 
 let _ =
   write_uconfig "people" [];
