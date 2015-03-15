@@ -174,19 +174,6 @@ module Projects = struct
    ]
   end
 
-  module T2 = struct
-    let rec project =
-      { project_id="t2";
-        project_name="Trilogy 2";
-        project_owner=People.avsm;
-        project_elevator="Building a resilient liquid OS, with multipath and adaptive scheduling.";
-        team=People.([ vsevolod; gparisis; amir; crowcroft; tg ]);
-        tasks;
-      }
-    and tasks = [
-   ]
-  end
-
   module Compiler = struct
 
     let rec project = {
@@ -400,21 +387,6 @@ module Projects = struct
          Reference.blog ~name:"Jane Street blog" "https://ocaml.janestreet.com/?q=node/110";
        ]  ();
     ]
-  end
-
-  module Illuminate = struct
-    let project_owner = People.avsm
-    let team = People.([ amir; pwang; sheets; iml; crowcroft ])
-
-    let rec project = {
-      project_id="illuminate";
-      project_name="Illuminate";
-      project_elevator="Connecting cyber-physical devices with rigorous programming, coordination and persistence.";
-      team; project_owner; tasks;
-    } and tasks = [
-
-    ]
-
   end
 
   module Mirage = struct
