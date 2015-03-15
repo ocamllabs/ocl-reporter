@@ -95,7 +95,7 @@ module Projects = struct
         ~related:[("OCamlot", "platform", "OCamlot")] ();
 
       mk_task ~name:"Platform Preview"
-        ~start:"2013-02-01" ~finish:"2013-07-01"
+        ~start:"2013-01-01" ~finish:"2013-07-01"
         ~owner:People.amir
         ~status:`Complete
         ~descr:"platform-prev"
@@ -116,7 +116,7 @@ module Projects = struct
         ();
       mk_task ~name:"Ctypes Stubgen"
         ~start:"2013-09-01"
-        ~finish:"2014-05-01"
+        ~finish:"2015-03-15"
         ~owner:People.yallop
         ~status:`Complete
         ~descr:"ctypes-stubs"
@@ -173,39 +173,6 @@ module Projects = struct
    ]
   end
 
-  module T2 = struct
-    let rec project =
-      { project_id="t2";
-        project_name="Trilogy 2";
-        project_owner=People.avsm;
-        project_elevator="Building a resilient liquid OS, with multipath and adaptive scheduling.";
-        team=People.([ vsevolod; gparisis; amir; crowcroft; tg ]);
-        tasks;
-      }
-    and tasks = [
-       mk_task ~name:"Polyversal TCP prototype"
-        ~start:"2012-10-01"
-        ~finish:"2014-02-01"
-        ~owner:People.vsevolod
-        ~status:`Doing
-        ~descr:"pvtcp"
-        ~refs: [
-           Reference.github "ocamllabs" "pvtcp";
-           Reference.paper ~name:"Position paper" conext_pvtcp;
-         ] ();
-       mk_task ~name:"Irminsule prototype"
-        ~start:"2013-03-01"
-        ~finish:"2014-02-01"
-        ~owner:People.tg
-        ~status:`Doing
-        ~descr:"irminsule"
-        ~refs:[
-           Reference.github "samoht" "cagit";
-           Reference.github "samoht" "irminsule"
-        ] () ;
-    ]
-  end
-
   module Compiler = struct
 
     let rec project = {
@@ -218,67 +185,107 @@ module Projects = struct
     }
     and tasks = [
       mk_task ~name:"Open types"
-        ~start:"2012-10-01" ~finish:"2013-01-09"
+        ~start:"2012-10-01" ~finish:"2014-05-05"
         ~owner:People.lpw25
         ~status:`Complete
         ~descr:"open-types"
         ~refs:[ Reference.github "lpw25" "ocaml-open";
-                Reference.webpage ~name:"Website" "http://sites.google.com/site/ocamlopen/" ] ();
+                Reference.webpage ~name:"Website" "http://sites.google.com/site/ocamlopen/";
+                Reference.mantis 5584] ();
+
       mk_task ~name:"Record disambiguation"
-        ~start:"2012-09-03" ~finish:"2012-12-02"
+        ~start:"2012-09-03" ~finish:"2013-02-01"
         ~owner:People.lpw25
         ~status:`Complete
         ~descr:"record-disambiguation"
         ~refs:[
-          Reference.webpage ~name:"Mantis" "http://caml.inria.fr/mantis/view.php?id=5759" ;
-          Reference.mantis 5584;
+          Reference.mantis 5759;
         ] () ;
+
       mk_task ~name:"Syntax extensions"
         ~start:"2012-12-01" ~finish:"2013-06-01"
         ~owner:People.lpw25
         ~status:`Complete
         ~descr:"syntax-extensions"
         ~refs:[ Reference.webpage ~name:"Working group" "http://lists.ocaml.org/listinfo/wg-camlp4";
-                Reference.webpage ~name:"Blog" "http://www.lpw25.net/2013/01/23/camlp4-alternative-part-1.html"] () ;
+                Reference.webpage ~name:"Blog (part 1)" "http://www.lpw25.net/2013/01/23/camlp4-alternative-part-1.html";
+                Reference.webpage ~name:"Blog (part 2)" "http://www.lpw25.net/2013/02/05/camlp4-alternative-part-2.html"
+        ] () ;
 
-      mk_task ~name:"Namespaces plan"
-        ~start:"2013-02-01"
-        ~finish:"2013-04-01"
+      mk_task ~name:"Namespaces and module aliases"
+        ~start:"2013-02-01" ~finish:"2014-09-15"
         ~owner:People.lpw25
         ~status:`Complete
         ~descr:"namespaces"
         ~refs:[
           Reference.webpage ~name:"Blog" "http://www.lpw25.net/2013/03/10/ocaml-namespaces.html" ;
-          Reference.webpage ~name:"Epic Mail Thread" "http://lists.ocaml.org/pipermail/platform/2013-February/000050.html"
+          Reference.webpage ~name:"Epic Mail Thread" "http://lists.ocaml.org/pipermail/platform/2013-February/000050.html";
+          Reference.paper Data_papers.module_aliases_2014;
+          Reference.video "https://www.youtube.com/watch?v=9wYssJyvijA"
        ] () ;
 
       mk_task ~name:"Multicore"
         ~start:"2013-03-01"
-        ~owner:People.stedolan
+        ~finish:"2015-04-01"
+        ~owner:People.kchandras
         ~descr:"multicore"
-        ~status:`Planning
-        ~refs: [ Reference.github "stedolan" "ocaml" ] ();
-
-      mk_task ~name:"Compile-time meta programming"
-        ~start:"2013-04-01"
-        ~owner:People.yallop
-        ~status:`Planning
-        ~descr:"meta-programming" ();
+        ~status:`Doing
+        ~refs: [
+           Reference.github "stedolan" "ocaml" ;
+           Reference.paper Data_papers.multicore_ocaml_2014;
+           Reference.video "https://www.youtube.com/watch?v=FzmQTC_X5R4";
+        ] ();
 
       mk_task ~name:"Emission of DWARF debugging information"
-        ~start:"2013-01-01" ~finish:"2014-01-01"
+        ~start:"2013-01-01"
+        ~finish:"2015-04-01"
         ~owner:People.shinwell
         ~status:`Doing
         ~descr:"dwarf"
-        ~refs: [ Reference.github ~name:"4.00.1-allocation-profiling" "mshinwell" "ocaml" ] ();
+        ~refs: [
+           Reference.github ~name:"4.00.1-allocation-profiling" "mshinwell" "ocaml";
+           Reference.video "https://www.youtube.com/watch?v=NF2WpWnB-nk";
+        ] ();
 
-      mk_task ~name:"OCaml Java 2.0 preview"
+      mk_task ~name:"OCaml Java"
         ~start:"2013-04-01" ~finish:"2013-08-01"
         ~owner:People.xclerc
         ~status:`Complete
         ~descr:"ocamljava2"
         ~refs: [ Reference.webpage "http://ocamljava.x9c.fr/preview/" ] ();
-    ]
+
+      mk_task ~name:"Modular Implicits prototype"
+        ~start:"2014-01-01" ~finish:"2015-02-01"
+        ~owner:People.lpw25
+        ~status:`Complete
+        ~descr:"modular-implicits"
+        ~refs: [
+          Reference.github "ocamllabs" "ocaml-modular-implicits";
+          Reference.webpage ~name:"Demo" "http://andrewray.github.io/iocamljs/modimp_show.html";
+          Reference.paper Data_papers.modular_implicits_2014;
+          Reference.video "https://www.youtube.com/watch?v=3wVUXTd4WNc"
+        ] ();
+ 
+      mk_task ~name:"Higher kinded polymorphism"
+        ~start:"2013-06-01" ~finish:"2014-08-01"
+        ~owner:People.yallop
+        ~status:`Complete
+        ~descr:"higher"
+        ~refs: [
+          Reference.paper Data_papers.flops_2014;
+          Reference.github "ocamllabs" "higher";
+        ] ();
+
+      mk_task ~name:"Exception matches"
+        ~start:"2013-11-01" ~finish:"2014-06-01"
+        ~owner:People.yallop
+        ~status:`Complete
+        ~descr:"exception-match"
+        ~refs: [
+          Reference.blog "http://ocamllabs.github.io/compiler-hacking/2014/02/04/handler-case.html";
+          Reference.mantis 6318;
+        ] ()
+    ]   
   end
 
   module Outreach = struct
@@ -288,7 +295,7 @@ module Projects = struct
       project_name="Community Outreach" ;
       project_owner = People.amir;
       project_elevator="Building an effective online presence for the worldwide OCaml community";
-      team = People.([ avsm ]);
+      team = People.([ avsm; amir ]);
       tasks;
     }
     and tasks = [
@@ -300,13 +307,13 @@ module Projects = struct
         ~refs:[ Reference.webpage ~name:"Homepage" "http://realworldocaml.org";
                 Reference.webpage ~name: "Twitter" "http://twitter.com/RealWorldOCaml"] ();
       mk_task ~name:"Book review site"
-        ~start:"2011-06-01" ~finish:"2013-01-01"
+        ~start:"2011-06-01" ~finish:"2013-03-01"
         ~owner:People.avsm
         ~status:`Complete
         ~descr:"rwo-review-site"
         ~related:[("Real World OCaml", "outreach", "Real World OCaml")]
         ~refs:[ Reference.webpage ~name:"Homepage" "http://realworldocaml.org" ] ();
-      mk_task ~name:"Meta preprocessor"
+      mk_task ~name:"MPP"
         ~start:"2013-04-01" ~finish:"2013-08-01"
         ~owner:People.pwang
         ~status:`Complete
@@ -314,13 +321,11 @@ module Projects = struct
         ~related:[("Real World OCaml", "outreach", "Book review site")]
         ~refs:[ Reference.github ~name:"mpp code" "pw374" "MPP-language-blender" ] ();
       mk_task ~name:"Markdown processor"
-        ~start:"2013-06-01" ~finish:"2013-11-01"
+        ~start:"2013-06-01" ~finish:"2014-12-01"
         ~owner:People.pwang
         ~status:`Complete
         ~descr:"omd"
-        ~refs:[ Reference.github ~name:"OMD" "pw374" "omd" ] ();
-
-
+        ~refs:[ Reference.github ~name:"OMD" "ocaml" "omd" ] ();
       mk_task ~name:"OCaml.org infrastructure"
         ~start:"2011-08-01" ~finish:"2013-02-01"
         ~owner:People.avsm
@@ -338,7 +343,7 @@ module Projects = struct
                 Reference.webpage ~name:"Blog" "http://amirchaudhry.com/wireframe-demos-for-ocamlorg"
          ] () ;
       mk_task ~name:"FPDays tutorial"
-        ~start:"2013-08-01" ~finish:"2013-10-22"
+        ~start:"2013-06-01" ~finish:"2013-12-01"
         ~owner:People.yallop
         ~status:`Complete
         ~descr:"fpdays2013"
@@ -346,40 +351,31 @@ module Projects = struct
                 Reference.blog ~name:"Post-mortem" "http://amirchaudhry.com/fpdays-review/";
                 Reference.github "ocamllabs" "fpdays-skeleton"
          ] () ;
-    ]
-  end
-
-  module Illuminate = struct
-    let project_owner = People.avsm
-    let team = People.([ amir; pwang; sheets; iml; crowcroft ])
-
-    let rec project = {
-      project_id="illuminate";
-      project_name="Illuminate";
-      project_elevator="Connecting cyber-physical devices with rigorous programming, coordination and persistence.";
-      team; project_owner; tasks;
-    } and tasks = [
-
-      mk_task ~name:"Signpost prototype"
-        ~start:"2012-08-01" ~finish:"2013-06-01"
-        ~owner:People.heidi
+      mk_task ~name:"2048 in js_of_ocaml"
+        ~start:"2014-06-01" ~finish:"2015-01-21"
+        ~owner:People.yallop
         ~status:`Complete
-        ~descr:"signpostv1"
-        ~refs:[
-          Reference.paper ~name:"USENIX FOCI 2013" usenix_foci_2013;
-         ] ();
-
-      mk_task ~name:"Declarative graphing library"
-       ~start:"2013-04-14" ~finish:"2013-07-14"
-       ~owner:People.dbunzli
+        ~descr:"2048-tutorial"
+        ~refs: [ Reference.github "ocamllabs" "2048-tutorial";
+                 Reference.webpage ~name:"ICFP tutorial" "http://cufp.org/2014/t7-leo-white-introduction-to-ocaml.html";
+                 Reference.webpage ~name:"Functional Conf Bangalore" "http://functionalconf.com/2014/schedule.html";
+                 Reference.webpage ~name:"Online Demo" "http://gazagnaire.org/fuconf14/";
+        ] ();
+      mk_task ~name:"L28: Advanced FP"
+        ~start:"2014-06-01" ~finish:"2015-05-01"
+        ~owner:People.yallop
+        ~status:`Complete
+        ~descr:"l28"
+        ~refs: [ Reference.webpage ~name:"Course Page" "http://www.cl.cam.ac.uk/teaching/1415/L28/";
+                 Reference.webpage ~name:"F-omega interpreter" "http://ocamllabs.github.io/fomega/";
+        ] ();
+      mk_task ~name:"Compiler Hacking Evenings"
+       ~start:"2013-08-01"
+       ~owner:People.yallop
        ~status:`Complete
-       ~descr:"vg"
-       ~related:[("Real-time templating", "illuminate", "Real-time templating")]
-       ~refs: [
-         Reference.webpage ~name:"Gg library" "http://erratique.ch/software/gg";
-         Reference.webpage ~name:"Vg library" "http://erratique.ch/software/vg";
-       ] ();
-
+       ~descr:"compiler-hacking"
+       ~refs: [ Reference.blog "http://ocamllabs.github.io/compiler-hacking/";
+                Reference.webpage ~name:"Mailing List" "http://lists.ocaml.org/listinfo/cam-compiler-hacking" ] ();
       mk_task ~name:"Raspberry OCaml"
        ~start:"2012-11-01" ~finish:"2013-02-01"
        ~owner:People.avsm
@@ -390,7 +386,6 @@ module Projects = struct
          Reference.blog ~name:"Jane Street blog" "https://ocaml.janestreet.com/?q=node/110";
        ]  ();
     ]
-
   end
 
   module Mirage = struct
@@ -427,8 +422,8 @@ module Projects = struct
         ~refs:[
            Reference.github "mirage" "mirari";
            Reference.blog ~name:"Blog" "http://openmirage.org/blog/introducing-vchan" ] () ;
-      mk_task ~name:"Mirage Developer Preview"
-        ~start:"2013-02-26" ~finish:"2013-07-26"
+      mk_task ~name:"Mirage 0.9"
+        ~start:"2013-01-26" ~finish:"2013-07-26"
         ~owner:People.djs
         ~status:`Complete
         ~descr:"dev-preview"
@@ -437,7 +432,7 @@ module Projects = struct
            Reference.webpage ~name:"Meeting Minutes" "http://openmirage.org/wiki/weekly-2013-04-16";
         ] () ;
       mk_task ~name:"Mirage 1.0"
-        ~start:"2013-08-01" ~finish:"2013-11-09"
+        ~start:"2013-06-01" ~finish:"2013-11-09"
         ~owner:People.avsm
         ~status:`Complete
         ~descr:"mirage-1.0"
@@ -446,29 +441,130 @@ module Projects = struct
            Reference.blog ~name:"Announcement" "http://openmirage.org/blog/announcing-mirage10";
            Reference.webpage ~name:"Homepage" "http://openmirage.org";
         ] () ;
-
+      mk_task ~name:"Mirage 2.0"
+       ~start:"2013-11-01" ~finish:"2014-08-01"
+       ~owner:People.avsm
+       ~status:`Complete
+       ~descr:"mirage-2.0"
+       ~refs: [
+          Reference.github "mirage" "mirage";
+          Reference.blog ~name:"Announcement" "http://openmirage.org/blog/announcing-mirage-20-release";
+          Reference.paper Data_papers.mirageos_ocaml_2014;
+       ] ();
       mk_task ~name:"TCP/IP Stack"
-        ~start:"2013-04-01" ~finish:"2013-10-01"
+        ~start:"2013-04-01" ~finish:"2014-03-01"
         ~owner:People.balrajsingh
-        ~status:`Planning
-        ~descr:"packet-proc" ();
+        ~status:`Complete
+        ~descr:"tcpip" ();
 
       mk_task ~name:"kFreeBSD"
-        ~start:"2013-06-01" ~finish:"2013-09-01"
+        ~start:"2013-06-01" ~finish:"2013-12-01"
         ~owner:People.gabor
-        ~status:`Doing
-        ~descr:"kfreebsd" ();
+        ~status:`Complete
+        ~descr:"kfreebsd"
+        ~refs:[
+          Reference.github "pgj" "mirage-kfreebsd";
+          Reference.mantis 6167;
+        ] ();
+
       mk_task ~name:"Nigori"
         ~start:"2012-10-01" ~finish:"2013-06-01"
         ~owner:People.bogdan
         ~status:`Complete ~descr:"nigori"
+        ~refs: [ Reference.pdf ~name:"Original Nigori paper" "http://www.links.org/files/nigori-overview.pdf"; ] ();
+      mk_task ~name:"OCaml TLS"
+       ~start:"2014-01-01" ~finish:"2015-03-01"
+       ~owner:People.hannes
+       ~status:`Complete ~descr:"ocaml-tls"
+       ~refs: [
+          Reference.paper Data_papers.tls_ocaml_2014;
+          Reference.github "mirleft" "ocaml-tls";
+          Reference.webpage ~name:"BitCoin Pinata" "http://ownme.ipredator.se/";
+          Reference.video "https://media.ccc.de/browse/congress/2014/31c3_-_6443_-_en_-_saal_2_-_201412271245_-_trustworthy_secure_modular_operating_system_engineering_-_hannes_-_david_kaloper.html#video"
+       ] ();
+      mk_task ~name:"Jitsu toolstack"
+       ~start:"2014-05-01" ~finish:"2015-05-01"
+       ~owner:People.magnus
+       ~status:`Complete ~descr:"jitsu"
+       ~refs: [
+          Reference.paper Data_papers.jitsu_2015;
+          Reference.github "magnuss" "jitsu";
+       ] ();
+       mk_task ~name:"Irmin 1.0"
+        ~start:"2013-03-01"
+        ~owner:People.tg
+        ~status:`Doing
+        ~descr:"irmin"
+        ~refs:[
+           Reference.paper ~name:"JFLA 2015 paper" Data_papers.irmin_jfla_2015;
+           Reference.paper ~name:"OCaml 2014 poster" Data_papers.irmin_ocaml_2014;
+           Reference.github "mirage" "ocaml-git";
+           Reference.github "mirage" "irmin";
+           Reference.blog ~name:"Blog (part 1)" "http://openmirage.org/blog/introducing-irmin";
+           Reference.blog ~name:"Blog (part 2)" "http://openmirage.org/blog/introducing-irmin";
+        ] () ;
+       mk_task ~name:"Xen/ARMv7 port"
+         ~start:"2014-02-01" ~finish:"2014-09-01"
+         ~owner:People.tleonard
+         ~status:`Complete
+         ~descr:"xen-arm"
+         ~refs: [
+           Reference.github "mirage" "mirage-xen-minios";
+           Reference.blog "http://openmirage.org/blog/introducing-xen-minios-arm";
+           Reference.paper Data_papers.jitsu_2015;
+         ] ();
+       mk_task ~name:"Home Router"
+         ~start:"2015-01-01"
+         ~owner:People.mpreston
+         ~status:`Doing
+         ~descr:"home-router"
+         ~refs: [ Reference.github "yomimono" "mirage-nat" ] ();
+
+       mk_task ~name:"Signpost prototype"
+        ~start:"2012-08-01" ~finish:"2013-06-01"
+        ~owner:People.heidi
+        ~status:`Complete
+        ~descr:"signpostv1"
+        ~refs:[ Reference.paper ~name:"USENIX FOCI 2013" usenix_foci_2013; ] ();
+
+      mk_task ~name:"Graphing"
+       ~start:"2013-04-14" ~finish:"2013-08-14"
+       ~owner:People.dbunzli
+       ~status:`Complete
+       ~descr:"vg"
+       ~related:[("Real-time templating", "illuminate", "Real-time templating")]
+       ~refs: [
+         Reference.webpage ~name:"Gg library" "http://erratique.ch/software/gg";
+         Reference.webpage ~name:"Vg library" "http://erratique.ch/software/vg";
+       ] ();
+
+       mk_task ~name:"Moana ML"
+        ~start:"2014-08-01" ~finish:"2015-04-01"
+        ~owner:People.yans
+        ~status:`Doing
+        ~descr:"moanaml"
+        ~refs:[ Reference.github "yansh" "MoanaML";
+                Reference.blog ~name:"Mozilla Ignite Blog" "https://mozillaignite.org/apps/411/";
+                Reference.blog ~name:"Summary Blog" "http://yansnotes.blogspot.co.uk/2015/01/work-summary-ocaml-labs.html";
+                Reference.paper Data_papers.mw4ng_2014;  ] ();
+
+       mk_task ~name:"Polyversal TCP prototype"
+        ~start:"2012-10-01"
+        ~finish:"2015-02-01"
+        ~owner:People.vsevolod
+        ~status:`Doing
+        ~descr:"pvtcp"
         ~refs: [
-          Reference.pdf ~name:"Original Nigori paper" "http://www.links.org/files/nigori-overview.pdf";
-        ] ();
+           Reference.github "ocamllabs" "pvtcp";
+           Reference.paper ~name:"Position paper" conext_pvtcp;
+         ] ();
     ]
   end
 
-  let all = [ Platform.project; Mirage.project; Illuminate.project;
-              Compiler.project; T2.project; Outreach.project ]
+  let all = [ Platform.project;
+              Compiler.project;
+              Mirage.project;
+              Outreach.project 
+            ]
 end
 

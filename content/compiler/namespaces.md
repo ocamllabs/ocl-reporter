@@ -20,3 +20,8 @@ library:
 
 These problems are caused by the runtime semantics of modules. Namespaces have
 no runtime sematics and could provide a solution to these problems.
+
+While the namespaces feature continues to be refined, support for type-level
+*module aliases* was added to the OCaml 4.02 compiler.  This is a trivial
+extension of the ML module system that helps to avoid unnecessary code
+dependencies, and provides an alternative to strengthening for type equalities.

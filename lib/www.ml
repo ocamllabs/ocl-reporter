@@ -46,12 +46,17 @@ let refs_to_html rs =
 let human_readable_date d =
   sprintf "%s %d" (Month.to_string (Date.month d)) (Date.year d)
 
+let person_href p content =
+  match p.Types.Person.homepage with 
+  | Some h -> <:html<<a href=$str:h$>$content$</a>&>>
+  | None -> content
+
 let mugshot p = sprintf "../mugshots/%s" (Option.value ~default:"unknown.jpg" p.Types.Person.mugshot)
 let mugshot_img ?(float=true) ?(size=60) p =
   let size = sprintf "%dpx" size in
   let style = if float then "float:left; padding-right: 30px" else "" in
-  let phref = sprintf "../people/%s.html" p.Types.Person.id in
-  <:html<<a href=$str:phref$><img class="inline" style=$str:style$ height=$str:size$ src=$str:mugshot p$ /></a>&>>
+  let c = <:html<<img class="inline" style=$str:style$ height=$str:size$ src=$str:mugshot p$ />&>> in
+  person_href p c
 
 (* CSS style we include for each page.
  * Note that this style is specialised to the CUCL web page style *)
@@ -87,14 +92,13 @@ let one_page ?(extra_head=[]) ~title ~body () =
 (* Generate the overall people web pages *)
 let people =
   let open Types.Person in
-  (* Output a short list of projects this person works on. *)
   let person_to_html p =
     let m = mugshot_img ~size:80 p in
-    let phref = sprintf "%s.html" p.id in
-    <:html<
+   let phref = person_href p <:html<$str:p.name$&>> in
+   <:html<
       <table style="float:left">
         <tr><td>$m$</td></tr>
-        <tr><td width="130px"><a href=$str:phref$>$str:p.name$</a><br /><span style="font-size:90%">$str:p.role$</span></td></tr>
+        <tr><td width="130px">$phref$<br /><span style="font-size:90%">$str:p.role$</span></td></tr>
       </table>
     >>
   in
@@ -130,33 +134,6 @@ let people =
 
   <p><img class="left" src="../images/janest.jpg" /><img width="150px" src="../images/citrix.gif"/></p>
 >> ()
-
-(* Generate a profile page per-person *)
-let one_person p =
-  let open Types.Person in
-  let homepage = match p.homepage with
-   |None -> <:html< >>
-   |Some h -> link h h in
-  let first_name =
-    match String.split_on_chars ~on:[' '] p.name with
-    |hd::_ -> hd
-    |_ -> p.name
-  in
-  let body = <:html<
-    <h1>$str:p.name$</h1>
-    <p>
-      $mugshot_img p$
-      <b>$str:to_string p.affiliation$</b><br />
-      $str:p.role$<br />
-      $homepage$
-    </p>
-    <h2>Projects</h2>
-    <div style="width:75%">
-    <p>These are the projects that $str:first_name$ is working on. The project list includes other people's tasks on the same project too, as it's helpful to see interdependencies this way. Click on the project headings to see more information about it.</p>
-    </div>
-    $list:Gantt.to_short_html p$
-  >> in
-  one_page ~title:p.name ~body ()
 
 let projects =
   let sproj =
@@ -221,7 +198,7 @@ let one_project proj =
          $descr$
          $related$<br /></div>
       >>
-  ) proj.tasks in
+  ) (List.sort ~cmp:Gantt.sort_by_finish_date proj.tasks) in
   let team = List.map ~f:(mugshot_img ~float:false ~size:50) (people_in_project proj) in
   let teamlist = <:html<<p>$list:team$</p>&>> in
   let body = <:html<
@@ -336,10 +313,8 @@ let write_blogs file =
   Blogs.write_posts ?num_posts:(Some 50) ~out_file:out_file in_file
 
 let _ =
-  write_uconfig "people" (List.map Data.People.all ~f:(fun p -> p.Types.Person.id));
+  write_uconfig "people" [];
   write_html "people/index" people;
-  List.iter Data.People.all ~f:(fun p ->
-    write_html ("people/"^p.Types.Person.id) (one_person p));
   write_uconfig "tasks" (List.map Data.Projects.all ~f:(fun p -> p.Types.Project.project_id));
   write_html "tasks/index" projects;
   List.iter Data.Projects.all ~f:(fun p ->

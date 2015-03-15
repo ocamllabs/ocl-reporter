@@ -77,12 +77,7 @@ let draw_task ?(hrefbase="") task =
              >> in
   let content = padding ~cl:(status_to_string task.status) task_start task_end body in
   let right = padding ~cl:"blank" task_end last_date <:html<&>> in
-  let infinity =
-    let cl = status_to_string task.status in
-    match task.finish with
-    |None -> <:html<<td class=$str:cl$><i>plan?</i></td>&>>
-    |Some task_end -> <:html<<td></td>&>>
-  in
+  let infinity = <:html<<td></td>&>> in
   <:html< <tr> $left$ $content$ $right$ $infinity$ </tr> >>
 
 let tasks ?(hrefbase="") proj = List.map ~f:(draw_task ~hrefbase) proj
@@ -106,6 +101,15 @@ let css = <:html<
             </style>
           >>
 
+let sort_by_finish_date a b =
+  let open Types.Project in
+  let finish_date t =
+    match t.finish with
+    | Some d -> d
+    | None -> Date.of_string "3000-01-01"
+  in
+  Date.compare (finish_date b) (finish_date a)
+
 (* Output the main projects page HTML *)
 let to_project_html ?(moreinfo=true) projects = 
   let open Types.Project in
@@ -124,7 +128,7 @@ let to_project_html ?(moreinfo=true) projects =
   List.map projects
     ~f:(fun proj ->
       let proj_descr = Markdown.from_file_to_html (proj.project_id^"/descr") in
-      let ts = tasks ~hrefbase:(proj.project_id^".html") proj.tasks in
+      let ts = tasks ~hrefbase:(proj.project_id^".html") (List.sort ~cmp:sort_by_finish_date proj.tasks) in
       <:html<
         $css$
         <div style="width:75%">
@@ -141,7 +145,7 @@ let to_project_html ?(moreinfo=true) projects =
 let to_one_project_html teamlist proj =
   let open Types.Project in
   let proj_descr = Markdown.from_file_to_html (proj.project_id^"/descr") in
-  let ts = tasks proj.tasks in
+  let ts = tasks (List.sort ~cmp:sort_by_finish_date proj.tasks) in
   <:html<
     $css$
     <h1 id=$str:proj.project_id$>$str:proj.project_name$</h1>
@@ -163,7 +167,7 @@ let to_short_html person =
   let projects = List.filter Data.Projects.all 
       ~f:(fun proj -> List.mem (people_in_project proj) person) in
   List.map projects ~f:(fun proj ->
-    let task_list = proj.tasks in
+    let task_list = List.sort ~cmp:sort_by_finish_date proj.tasks in
     let phref = sprintf "../tasks/%s.html" proj.project_id in
     <:html<
       $css$

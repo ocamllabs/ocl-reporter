@@ -134,6 +134,9 @@ module Reference = struct
 
   let paper ?(name="Paper") paper =
     { name=name; link=(`Paper paper) }
+
+  let video ?(name="Video") url =
+    { name; link=(`Video url) }
 end
 
 module Output = struct
