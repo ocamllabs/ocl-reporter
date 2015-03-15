@@ -481,7 +481,7 @@ module Projects = struct
         ~refs:[
            Reference.github "mirage" "mirari";
            Reference.blog ~name:"Blog" "http://openmirage.org/blog/introducing-vchan" ] () ;
-      mk_task ~name:"Mirage Developer Preview"
+      mk_task ~name:"Mirage Dev Preview"
         ~start:"2013-02-26" ~finish:"2013-07-26"
         ~owner:People.djs
         ~status:`Complete
@@ -514,7 +514,7 @@ module Projects = struct
         ~start:"2013-04-01" ~finish:"2014-03-01"
         ~owner:People.balrajsingh
         ~status:`Complete
-        ~descr:"packet-proc" ();
+        ~descr:"tcpip" ();
 
       mk_task ~name:"kFreeBSD"
         ~start:"2013-06-01" ~finish:"2013-12-01"
@@ -530,9 +530,7 @@ module Projects = struct
         ~start:"2012-10-01" ~finish:"2013-06-01"
         ~owner:People.bogdan
         ~status:`Complete ~descr:"nigori"
-        ~refs: [
-          Reference.pdf ~name:"Original Nigori paper" "http://www.links.org/files/nigori-overview.pdf";
-        ] ();
+        ~refs: [ Reference.pdf ~name:"Original Nigori paper" "http://www.links.org/files/nigori-overview.pdf"; ] ();
       mk_task ~name:"OCaml TLS"
        ~start:"2014-01-01" ~finish:"2015-03-01"
        ~owner:People.hannes
@@ -574,6 +572,12 @@ module Projects = struct
            Reference.blog "http://openmirage.org/blog/introducing-xen-minios-arm";
            Reference.paper Data_papers.jitsu_2015;
          ] ();
+       mk_task ~name:"Home Router"
+         ~start:"2015-01-01"
+         ~owner:People.mpreston
+         ~status:`Doing
+         ~descr:"home-router"
+         ~refs: [ Reference.github "yomimono" "mirage-nat" ] ();
     ]
   end
 

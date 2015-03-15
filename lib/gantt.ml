@@ -77,12 +77,7 @@ let draw_task ?(hrefbase="") task =
              >> in
   let content = padding ~cl:(status_to_string task.status) task_start task_end body in
   let right = padding ~cl:"blank" task_end last_date <:html<&>> in
-  let infinity =
-    let cl = status_to_string task.status in
-    match task.finish with
-    |None -> <:html<<td class=$str:cl$><i>plan?</i></td>&>>
-    |Some task_end -> <:html<<td></td>&>>
-  in
+  let infinity = <:html<<td></td>&>> in
   <:html< <tr> $left$ $content$ $right$ $infinity$ </tr> >>
 
 let tasks ?(hrefbase="") proj = List.map ~f:(draw_task ~hrefbase) proj
