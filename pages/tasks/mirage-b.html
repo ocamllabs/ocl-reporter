@@ -77,6 +77,9 @@ Windsor</a>.</p>
              </td>  <td></td> </tr>  <tr> <td class="blank" colspan="29"></td> <td class="doing" colspan="10">
                <a href="http://somerandomidiot.com"><img class="mugshot" alt="Mindy Preston" src="../mugshots/unknown.jpg" height="30px"/></a>
                <a href="#Home Router">Home Router</a><br/>
+             </td>  <td></td> </tr>  <tr> <td class="blank" colspan="26"></td> <td class="doing" colspan="13">
+               <a href="http://dave.recoil.org"><img class="mugshot" alt="Dave Scott" src="../mugshots/djs.jpg" height="30px"/></a>
+               <a href="#LVM-compatible block device">LVM-compatible block device</a><br/>
              </td>  <td></td> </tr>  <tr> <td class="blank" colspan="21"></td> <td class="complete" colspan="12">
                <a href="http://www.skjegstad.com"><img class="mugshot" alt="Magnus Skjegstad" src="../mugshots/magnus.jpg" height="30px"/></a>
                <a href="#Jitsu toolstack">Jitsu toolstack</a><br/>
@@ -155,6 +158,20 @@ replication, and to optimise scheduling across many hosts.</p>
 machine toolstack, we are building the missing libraries needed to turn a
 Cubieboard2 into a home router.  This includes NAT, uPnP and HTTP proxies built
 as unikernels.</p>
+
+         <br/></div>
+      
+         <div style="width:75%">
+         <h3 style="border-bottom: thin solid #999999;" id="LVM-compatible block device">LVM-compatible block device</h3>
+         <p><a href="http://dave.recoil.org"><img class="inline" style="float:left; padding-right: 30px" height="40px" src="../mugshots/djs.jpg"/></a>  <span class="doing">In Progress</span> by <a href="../people/djs.html">Dave Scott</a> (Oct 2014 -) <br/><a class="icon-github" href="https://github.com/mirage/mirage-block-volume">Github</a>   </p>
+         <p>A logical volume manager allows you to group together multiple physical disks
+(volumes) and treat them as a pool of disk blocks, from which you can allocate
+multiple logical disks (volumes).</p>
+<p>This pure OCaml implementation uses the same on-disk format as Linux LVM with
+the following features:</p>
+<ul><li>constant-time volume manipulation</li><li>linear-mapped logical volumes</li></ul>
+
+<p>It provides an <code>mlvm</code> command-line interface to use the library under Unix.</p>
 
          <br/></div>
       

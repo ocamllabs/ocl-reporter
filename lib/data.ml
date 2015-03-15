@@ -560,6 +560,14 @@ module Projects = struct
            Reference.paper ~name:"Position paper" conext_pvtcp;
          ] ();
 
+       mk_task ~name:"LVM-compatible block device"
+        ~start:"2014-10-01"
+        ~owner:People.djs
+        ~status:`Doing
+        ~descr:"lvm"
+        ~refs: [
+           Reference.github "mirage" "mirage-block-volume";
+        ] ();
     ]
   end
 
