@@ -84,16 +84,16 @@ they are across different operating systems.</p>
              </td> <td class="blank" colspan="6"></td> <td></td> </tr>  <tr> <td class="blank" colspan="22"></td> <td class="doing" colspan="10">
                <a href="http://anil.recoil.org"><img class="mugshot" alt="Anil Madhavapeddy" src="../mugshots/avsm.jpg" height="30px"/></a>
                <a href="#Docker Builds">Docker Builds</a><br/>
-             </td> <td class="blank" colspan="7"></td> <td></td> </tr>  <tr> <td class="blank" colspan="20"></td> <td class="complete" colspan="10">
+             </td> <td class="blank" colspan="7"></td> <td></td> </tr>  <tr> <td class="blank" colspan="13"></td> <td class="complete" colspan="18">
+               <img class="mugshot" alt="Jeremy Yallop" src="../mugshots/yallop.jpeg" height="30px"/>
+               <a href="#Ctypes Stubgen">Ctypes Stubgen</a><br/>
+             </td> <td class="blank" colspan="8"></td> <td></td> </tr>  <tr> <td class="blank" colspan="20"></td> <td class="complete" colspan="10">
                <a href="https://github.com/dsheets"><img class="mugshot" alt="David Sheets" src="../mugshots/sheets.png" height="30px"/></a>
                <a href="#Codoc 0.2.0">Codoc 0.2.0</a><br/>
              </td> <td class="blank" colspan="9"></td> <td></td> </tr>  <tr> <td class="blank" colspan="15"></td> <td class="complete" colspan="11">
                <a href="http://thomas.gazagnaire.org"><img class="mugshot" alt="Thomas Gazagnaire" src="../mugshots/tg.png" height="30px"/></a>
                <a href="#OPAM 1.2">OPAM 1.2</a><br/>
-             </td> <td class="blank" colspan="13"></td> <td></td> </tr>  <tr> <td class="blank" colspan="13"></td> <td class="complete" colspan="8">
-               <img class="mugshot" alt="Jeremy Yallop" src="../mugshots/yallop.jpeg" height="30px"/>
-               <a href="#Ctypes Stubgen">Ctypes Stubgen</a><br/>
-             </td> <td class="blank" colspan="18"></td> <td></td> </tr>  <tr> <td class="blank" colspan="5"></td> <td class="complete" colspan="10">
+             </td> <td class="blank" colspan="13"></td> <td></td> </tr>  <tr> <td class="blank" colspan="5"></td> <td class="complete" colspan="10">
                <a href="https://github.com/vincent-botbol"><img class="mugshot" alt="Vincent Botbol" src="../mugshots/botbol.png" height="30px"/></a>
                <a href="#OPAMDoc prototype">OPAMDoc prototype</a><br/>
              </td> <td class="blank" colspan="24"></td> <td></td> </tr>  <tr> <td class="blank" colspan="6"></td> <td class="complete" colspan="8">
@@ -175,6 +175,24 @@ easier as the upstream Docker support for non-Linux platforms matures.</p>
           <ul><li><a href="platform.html#OPAM 1.2">OPAM 1.2</a></li></ul><br/></div>
       
          <div style="width:75%">
+         <h3 style="border-bottom: thin solid #999999;" id="Ctypes Stubgen">Ctypes Stubgen</h3>
+         <p><a href="../people/yallop.html"><img class="inline" style="float:left; padding-right: 30px" height="40px" src="../mugshots/yallop.jpeg"/></a>  <span class="complete">Complete</span> by <a href="../people/yallop.html">Jeremy Yallop</a> (Sep 2013 - Mar 2015) <br/><a class="icon-github" href="https://github.com/ocamllabs/ctypes">Github</a>   <a class="icon-cloud" href="https://github.com/ocamllabs/ocaml-ctypes/wiki">Documentation</a>   <a class="icon-pdf" href="http://ocaml.org/meetings/ocaml/2013/proposals/ctypes.pdf">OCaml 2013 demo</a>   </p>
+         <p>The first Ctypes release used <code>dlopen</code> to dynamically access C libraries, but this
+approach has <a href="https://github.com/realworldocaml/book/issues/1701">some limitations</a>
+that will be addressed by also generating C stub files that can be compiled
+using the system C compiler.</p>
+<p>From the <a href="https://github.com/ocamllabs/ocaml-ctypes/releases/tag/0.4.0">Ctypes 0.4</a>
+release onwards, there is comprehensive support for C stub generation that is 
+completely independent of the dynamic <code>libffi</code>-based mode (one mode can be used
+without the other).</p>
+<p>As of early 2015, there are a growing set of OCaml C bindings that use
+Ctypes as their <a href="https://github.com/search?utf8=%E2%9C%93&amp;q=ocaml+ctypes&amp;type=Repositories&amp;ref=searchresults">binding generator</a>
+of choice.  These include uses from industrial users such as Citrix, Jane Street and Cryptosense.</p>
+
+         <h4><em>Related work</em></h4>
+          <ul><li><a href="platform.html#Ctypes">Ctypes</a></li></ul><br/></div>
+      
+         <div style="width:75%">
          <h3 style="border-bottom: thin solid #999999;" id="Codoc 0.2.0">Codoc 0.2.0</h3>
          <p><a href="../people/sheets.html"><img class="inline" style="float:left; padding-right: 30px" height="40px" src="../mugshots/sheets.png"/></a>  <span class="complete">Complete</span> by <a href="../people/sheets.html">David Sheets</a> (Apr 2014 - Feb 2015) <br/><a class="icon-cloud" href="http://opam.ocaml.org/blog/codoc-0-2-0-released/">Blog post</a>   <a class="icon-wrench" href="https://github.com/dsheets/codoc/issues">Issues</a>   <a class="icon-github" href="https://github.com/dsheets/codoc">Codoc</a>   <a class="icon-github" href="https://github.com/lpw25/doc-ock-lib">Doc-Ock-Lib</a>   <a class="icon-github" href="https://github.com/dsheets/doc-ock-xml">Doc-Ock-XML</a>   <a class="icon-pdf" href="../papers/index.html#ocl-platform-2014">Paper</a>   <a class="icon-pdf" href="http://ocaml.org/meetings/ocaml/2014/ocl-platform-2014-slides.pdf">Slides</a>   </p>
          <p>Codoc aims to provide a widely useful set of tools for generating OCaml
@@ -194,17 +212,6 @@ experience, as well as numerous performance and reliability improvements.</p>
 
          <h4><em>Related work</em></h4>
           <ul><li><a href="platform.html#Platform Preview">Platform Preview</a></li></ul><br/></div>
-      
-         <div style="width:75%">
-         <h3 style="border-bottom: thin solid #999999;" id="Ctypes Stubgen">Ctypes Stubgen</h3>
-         <p><a href="../people/yallop.html"><img class="inline" style="float:left; padding-right: 30px" height="40px" src="../mugshots/yallop.jpeg"/></a>  <span class="complete">Complete</span> by <a href="../people/yallop.html">Jeremy Yallop</a> (Sep 2013 - May 2014) <br/><a class="icon-github" href="https://github.com/ocamllabs/ctypes">Github</a>   <a class="icon-cloud" href="https://github.com/ocamllabs/ocaml-ctypes/wiki">Documentation</a>   <a class="icon-pdf" href="http://ocaml.org/meetings/ocaml/2013/proposals/ctypes.pdf">OCaml 2013 demo</a>   </p>
-         <p>The first Ctypes release used <code>dlopen</code> to dynamically access C libraries, but this
-approach has <a href="https://github.com/realworldocaml/book/issues/1701">some limitations</a>
-that will be addressed by also generating C stub files that can be compiled
-using the system C compiler.</p>
-
-         <h4><em>Related work</em></h4>
-          <ul><li><a href="platform.html#Ctypes">Ctypes</a></li></ul><br/></div>
       
          <div style="width:75%">
          <h3 style="border-bottom: thin solid #999999;" id="OPAMDoc prototype">OPAMDoc prototype</h3>
