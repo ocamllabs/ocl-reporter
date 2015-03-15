@@ -44,9 +44,19 @@ let tleonard =
           ~face:(Some "../mugshots/tleonard.jpg")
           ~face_height:70 ()
 
-let all_faces = [ srg_syslog; anil; amir; comp; monthly_news; heidi;
-                  mirage_os; tleonard ]
+let mpreston =
+  mk_face ~name:"Mindy Preston" ()
 
+let lpw25 =
+  mk_face ~name:"Leo White"
+          ~face:(Some "../mugshots/lpw25.jpg") ()
+
+let magnuss =
+  mk_face ~name:"Magnus Skjegstad"
+          ~face:(Some "../mugshots/magnus.jpg") ()
+
+let all_faces = [ srg_syslog; anil; amir; comp; monthly_news; heidi;
+                  mirage_os; tleonard; mpreston; lpw25; magnuss ]
 
 let face_map = List.fold_right (fun {name; face; face_height} m ->
                  M.add name (face, face_height) m) all_faces M.empty

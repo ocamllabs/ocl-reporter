@@ -47,7 +47,7 @@ let human_readable_date d =
   sprintf "%s %d" (Month.to_string (Date.month d)) (Date.year d)
 
 let person_href p content =
-  match p.Types.Person.homepage with 
+  match p.Types.Person.homepage with
   | Some h -> <:html<<a href=$str:h$>$content$</a>&>>
   | None -> content
 
@@ -310,7 +310,7 @@ let write_blogs file =
   let in_file = "lib/data_blog.txt" in
   let out_file = sprintf "pages/%s-b.html" file in
   eprintf "writing : %s\n" out_file;
-  Blogs.write_posts ?num_posts:(Some 50) ~out_file:out_file in_file
+  Blogs.write_posts ?num_posts:(Some 100) ~out_file:out_file in_file
 
 let _ =
   write_uconfig "people" [];

@@ -338,7 +338,7 @@ module People = struct
     role="Research Associate";
     bio=None;
     homepage=Some "http://kcsrk.info";
-    mugshot=None;
+    mugshot=Some "kc.jpg";
   }
   let mort = {
     id="mort";

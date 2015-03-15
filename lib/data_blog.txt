@@ -6,3 +6,6 @@ Heidi Howard|http://hh360.user.srcf.net/blog/category/pl/ocaml/feed/
 Thomas Leonard|http://roscidus.com/blog/atom.xml
 Mirage OS|http://openmirage.org/blog/atom.xml
 SRG Syslog|http://www.syslog.cl.cam.ac.uk/tag/ocamllabs/feed/atom
+Mindy Preston|http://www.somerandomidiot.com/blog/categories/ocaml/atom.xml
+Leo White|http://www.lpw25.net/atom.xml
+Magnus Skjegstad|http://www.skjegstad.com/feeds/all.atom.xml
