@@ -117,7 +117,7 @@ module Projects = struct
         ();
       mk_task ~name:"Ctypes Stubgen"
         ~start:"2013-09-01"
-        ~finish:"2014-05-01"
+        ~finish:"2015-03-15"
         ~owner:People.yallop
         ~status:`Complete
         ~descr:"ctypes-stubs"
