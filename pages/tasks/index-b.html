@@ -24,7 +24,7 @@
   </head><body>
     <div style="width:75%">
     <p>The OCaml Labs are organised around focussed projects summarised below.  Click on the heading for more information, and <a href="../contact.html">get in touch</a> with the project owner if you'd like to know more.  The projects are:</p>
-    <ul><li><a href="#platform"><b>OCaml Platform</b></a>: A rigorously designed, tested and documented base of OCaml libraries and tools.</li> <li><a href="#compiler"><b>The OCaml Compiler</b></a>: Maintaining, extending and documenting the core OCaml compiler toolchain</li> <li><a href="#mirage"><b>Mirage OS</b></a>: A high-performance, type-safe library OS written in OCaml.</li> <li><a href="#t2"><b>Trilogy 2</b></a>: Building a resilient liquid OS, with multipath and adaptive scheduling.</li> <li><a href="#outreach"><b>Community Outreach</b></a>: Building an effective online presence for the worldwide OCaml community</li> </ul>
+    <ul><li><a href="#platform"><b>OCaml Platform</b></a>: A rigorously designed, tested and documented base of OCaml libraries and tools.</li> <li><a href="#compiler"><b>The OCaml Compiler</b></a>: Maintaining, extending and documenting the core OCaml compiler toolchain</li> <li><a href="#mirage"><b>Mirage OS</b></a>: A high-performance, type-safe library OS written in OCaml.</li> <li><a href="#outreach"><b>Community Outreach</b></a>: Building an effective online presence for the worldwide OCaml community</li> </ul>
     </div>
     
         
@@ -255,7 +255,10 @@ Windsor</a>.</p>
              </td> <td class="blank" colspan="7"></td> <td></td> </tr>  <tr> <td class="blank" colspan="17"></td> <td class="complete" colspan="14">
                <a href="https://github.com/hannesm"><img class="mugshot" alt="Hannes Mehnert" src="../mugshots/hannes.jpg" height="30px"/></a>
                <a href="mirage.html#OCaml TLS">OCaml TLS</a><br/>
-             </td> <td class="blank" colspan="8"></td> <td></td> </tr>  <tr> <td class="blank" colspan="18"></td> <td class="complete" colspan="7">
+             </td> <td class="blank" colspan="8"></td> <td></td> </tr>  <tr> <td class="blank" colspan="2"></td> <td class="doing" colspan="28">
+               <a href="https://github.com/vstakhov"><img class="mugshot" alt="Vsevolod Stakhov" src="../mugshots/vsevelod.jpg" height="30px"/></a>
+               <a href="mirage.html#Polyversal TCP prototype">Polyversal TCP prototype</a><br/>
+             </td> <td class="blank" colspan="9"></td> <td></td> </tr>  <tr> <td class="blank" colspan="18"></td> <td class="complete" colspan="7">
                <a href="http://roscidus.com/blog"><img class="mugshot" alt="Thomas Leonard" src="../mugshots/tleonard.jpg" height="30px"/></a>
                <a href="mirage.html#Xen/ARMv7 port">Xen/ARMv7 port</a><br/>
              </td> <td class="blank" colspan="14"></td> <td></td> </tr>  <tr> <td class="blank" colspan="15"></td> <td class="complete" colspan="9">
@@ -292,54 +295,6 @@ Windsor</a>.</p>
                <a href="http://anil.recoil.org"><img class="mugshot" alt="Anil Madhavapeddy" src="../mugshots/avsm.jpg" height="30px"/></a>
                <a href="mirage.html#Unikernel Mirage prototype">Unikernel Mirage prototype</a><br/>
              </td> <td class="blank" colspan="32"></td> <td></td> </tr> 
-        <tr><td colspan="40"> </td></tr>
-        </table>
-      
-        
-            <style type="text/css">
-            table { 
-            table-layout: fixed;
-            border-spacing: 0px 2px;
-            }
-            .blank { background-color: #fefefe; }
-            .planning { font-size: 80%; background-color: #bbccee; }
-            .doing { font-size: 80%; background-color: #eeeebb; }
-            .complete { font-size: 80%; background-color: #bbddbb; }
-            img.mugshot { float:left; padding-right: 5px; }
-            tr.dates {
-            font-size: 0.75em;
-            background-color: #dfdfdf;
-            color: #111111;
-            }
-            </style>
-          
-        <div style="width:75%">
-        
-       <h2 style="border-bottom: 1px solid #cccccc; font-weight: bold" id="t2">
-         <a href="t2.html">Trilogy 2 »</a>
-       </h2> 
-        <p><a href="http://trilogy2.org"><img src="../images/t2.png" class="left"/></a><a href="http://trilogy2.eu">Trilogy2</a> aims to develop a new Internet architecture based on the concept of
-the <em>liquid network</em>. A liquid system should ideally allow resources including
-bandwidth, storage and processing to be used by any application, whether they
-are contributed by network operators, data centre operators or end systems.
-Resources form a shared pool and applications can scale up and down in multiple
-dimensions (storage, processing, bandwidth and energy usage) as needed, in a
-continuous effort to enhance the users’ experience as measured in terms of key
-metrics such as delay and battery life.</p>
-<p>The Cambridge participation is primarily centered around three efforts:</p>
-<ul><li>The <a href="http://openmirage.org">Mirage</a> library operating system that provides the policy-free mechanism to implement the liquid OS.</li><li>A highly adaptive PVTCP transport protocol that takes advantage of heterogenous network connections.</li><li>The Irminsule storage substrate that cleanly separates block storage form </li></ul>
-
-<p>Trilogy 2 is a 3-year EU <a href="http://en.wikipedia.org/wiki/Framework_Programmes_for_Research_and_Technological_Development">STREP</a> project that 
-addresses the &quot;<a href="http://cordis.europa.eu/fp7/ict/programme/challenge1_en.html">Pervasive and Trusted Network and Service Infrastructures: Future Networks</a>&quot; challenge. 
-The tasks below and include our collaborators at <a href="http://onapp.com">OnApp</a>.</p>
-
-        </div>
-        <table class="projects" width="85%">
-        <tr class="dates"><td> </td><td> </td><td> </td><td> </td><td>2013</td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td>2014</td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td>2015</td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td>∞</td></tr>
-         <tr> <td class="blank" colspan="2"></td> <td class="doing" colspan="16">
-               <a href="https://github.com/vstakhov"><img class="mugshot" alt="Vsevolod Stakhov" src="../mugshots/vsevelod.jpg" height="30px"/></a>
-               <a href="t2.html#Polyversal TCP prototype">Polyversal TCP prototype</a><br/>
-             </td> <td class="blank" colspan="21"></td> <td></td> </tr> 
         <tr><td colspan="40"> </td></tr>
         </table>
       

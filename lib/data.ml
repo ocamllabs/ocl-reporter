@@ -184,17 +184,7 @@ module Projects = struct
         tasks;
       }
     and tasks = [
-       mk_task ~name:"Polyversal TCP prototype"
-        ~start:"2012-10-01"
-        ~finish:"2014-02-01"
-        ~owner:People.vsevolod
-        ~status:`Doing
-        ~descr:"pvtcp"
-        ~refs: [
-           Reference.github "ocamllabs" "pvtcp";
-           Reference.paper ~name:"Position paper" conext_pvtcp;
-         ] ();
-    ]
+   ]
   end
 
   module Compiler = struct
@@ -586,13 +576,23 @@ module Projects = struct
                 Reference.blog ~name:"Mozilla Ignite Blog" "https://mozillaignite.org/apps/411/";
                 Reference.blog ~name:"Summary Blog" "http://yansnotes.blogspot.co.uk/2015/01/work-summary-ocaml-labs.html";
                 Reference.paper Data_papers.mw4ng_2014;  ] ();
+
+       mk_task ~name:"Polyversal TCP prototype"
+        ~start:"2012-10-01"
+        ~finish:"2015-02-01"
+        ~owner:People.vsevolod
+        ~status:`Doing
+        ~descr:"pvtcp"
+        ~refs: [
+           Reference.github "ocamllabs" "pvtcp";
+           Reference.paper ~name:"Position paper" conext_pvtcp;
+         ] ();
     ]
   end
 
   let all = [ Platform.project;
               Compiler.project;
               Mirage.project;
-              T2.project;
               Outreach.project 
             ]
 end

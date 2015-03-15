@@ -313,7 +313,7 @@ let write_blogs file =
   Posts.write_posts ?num_posts:(Some 50) ~file:out_file planet_feeds
 
 let _ =
-  write_uconfig "people" (List.map Data.People.all ~f:(fun p -> p.Types.Person.id));
+  write_uconfig "people" [];
   write_html "people/index" people;
   write_uconfig "tasks" (List.map Data.Projects.all ~f:(fun p -> p.Types.Project.project_id));
   write_html "tasks/index" projects;
