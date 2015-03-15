@@ -38,6 +38,15 @@ let irmin_jfla_2015 =
      ~conf:"Les vingt-sixième Journées Francophones des Langages Applicatifs"
      ~conf_url:"http://jfla.inria.fr/2015/"
 
+let mw4ng_2014 =
+  mk ~id:"mw4ng-2014"
+     ~title:"Moana: a case for redefining the internet service abstraction"
+     ~url:"http://dl.acm.org/citation.cfm?id=2676735"
+     ~authors:"Yan Shvartzshnaider and Maximilian Ott"
+     ~date:"2014-12-08"
+     ~conf:"Middleware for Next Generation Internet Computing"
+     ~conf_url:"http://www.dedisys.org/mw4ng14/"
+
 let kadupul_2014 =
   mk ~id:"kadupul-2014"
      ~title:"Kadupul: Livin' on the Edge with Virtual Currencies and Time-Locked Puzzles"
@@ -243,6 +252,7 @@ let all = [
   raft_2015;
   regional_clouds_2014;
   irmin_jfla_2015;
+  mw4ng_2014;
   flops_2014;
   coeffects_2014;
   tls_ocaml_2014;

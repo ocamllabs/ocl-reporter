@@ -400,6 +400,15 @@ module Projects = struct
        ~descr:"compiler-hacking"
        ~refs: [ Reference.blog "http://ocamllabs.github.io/compiler-hacking/";
                 Reference.webpage ~name:"Mailing List" "http://lists.ocaml.org/listinfo/cam-compiler-hacking" ] ();
+      mk_task ~name:"Raspberry OCaml"
+       ~start:"2012-11-01" ~finish:"2013-02-01"
+       ~owner:People.avsm
+       ~status:`Complete
+       ~descr:"raspberryocaml"
+       ~refs: [
+         Reference.mantis 5798;
+         Reference.blog ~name:"Jane Street blog" "https://ocaml.janestreet.com/?q=node/110";
+       ]  ();
     ]
   end
 
@@ -414,26 +423,6 @@ module Projects = struct
       team; project_owner; tasks;
     } and tasks = [
 
-      mk_task ~name:"Declarative graphing library"
-       ~start:"2013-04-14" ~finish:"2013-07-14"
-       ~owner:People.dbunzli
-       ~status:`Complete
-       ~descr:"vg"
-       ~related:[("Real-time templating", "illuminate", "Real-time templating")]
-       ~refs: [
-         Reference.webpage ~name:"Gg library" "http://erratique.ch/software/gg";
-         Reference.webpage ~name:"Vg library" "http://erratique.ch/software/vg";
-       ] ();
-
-      mk_task ~name:"Raspberry OCaml"
-       ~start:"2012-11-01" ~finish:"2013-02-01"
-       ~owner:People.avsm
-       ~status:`Complete
-       ~descr:"raspberryocaml"
-       ~refs: [
-         Reference.mantis 5798;
-         Reference.blog ~name:"Jane Street blog" "https://ocaml.janestreet.com/?q=node/110";
-       ]  ();
     ]
 
   end
@@ -472,8 +461,8 @@ module Projects = struct
         ~refs:[
            Reference.github "mirage" "mirari";
            Reference.blog ~name:"Blog" "http://openmirage.org/blog/introducing-vchan" ] () ;
-      mk_task ~name:"Mirage Dev Preview"
-        ~start:"2013-02-26" ~finish:"2013-07-26"
+      mk_task ~name:"Mirage 0.9"
+        ~start:"2013-01-26" ~finish:"2013-07-26"
         ~owner:People.djs
         ~status:`Complete
         ~descr:"dev-preview"
@@ -569,23 +558,40 @@ module Projects = struct
          ~status:`Doing
          ~descr:"home-router"
          ~refs: [ Reference.github "yomimono" "mirage-nat" ] ();
+
        mk_task ~name:"Signpost prototype"
         ~start:"2012-08-01" ~finish:"2013-06-01"
         ~owner:People.heidi
         ~status:`Complete
         ~descr:"signpostv1"
-        ~refs:[
-          Reference.paper ~name:"USENIX FOCI 2013" usenix_foci_2013;
-         ] ();
+        ~refs:[ Reference.paper ~name:"USENIX FOCI 2013" usenix_foci_2013; ] ();
 
+      mk_task ~name:"Graphing"
+       ~start:"2013-04-14" ~finish:"2013-08-14"
+       ~owner:People.dbunzli
+       ~status:`Complete
+       ~descr:"vg"
+       ~related:[("Real-time templating", "illuminate", "Real-time templating")]
+       ~refs: [
+         Reference.webpage ~name:"Gg library" "http://erratique.ch/software/gg";
+         Reference.webpage ~name:"Vg library" "http://erratique.ch/software/vg";
+       ] ();
 
+       mk_task ~name:"Moana ML"
+        ~start:"2014-08-01" ~finish:"2015-04-01"
+        ~owner:People.yans
+        ~status:`Doing
+        ~descr:"moanaml"
+        ~refs:[ Reference.github "yansh" "MoanaML";
+                Reference.blog ~name:"Mozilla Ignite Blog" "https://mozillaignite.org/apps/411/";
+                Reference.blog ~name:"Summary Blog" "http://yansnotes.blogspot.co.uk/2015/01/work-summary-ocaml-labs.html";
+                Reference.paper Data_papers.mw4ng_2014;  ] ();
     ]
   end
 
   let all = [ Platform.project;
               Compiler.project;
               Mirage.project;
-              Illuminate.project;
               T2.project;
               Outreach.project 
             ]
