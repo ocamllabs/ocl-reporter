@@ -331,6 +331,24 @@ module People = struct
     homepage=Some "http://mounirnasrallah.com";
     mugshot=None;
   }
+  let kchandras = {
+    id="kchandras";
+    name="KC Sivaramakrishnan";
+    affiliation=`CL;
+    role="Research Associate";
+    bio=None;
+    homepage=Some "http://kcsrk.info";
+    mugshot=None;
+  }
+  let mort = {
+    id="mort";
+    name="Richard Mortier";
+    affiliation=`CL;
+    role="Lecturer";
+    bio=None;
+    homepage=Some "http://mort.io";
+    mugshot=Some "mort.png";
+  }
 (*  let gpotron = {
     id="gpotron";
     name="Guillain Potron";
@@ -473,15 +491,6 @@ module People = struct
     homepage=Some "http://www.cs.nott.ac.uk/~drm";
     mugshot=Some "mac.jpg";
   }
-  let mort = {
-    id="mort";
-    name="Richard Mortier";
-    affiliation=`Horizon;
-    role="Lecturer";
-    bio=None;
-    homepage=Some "http://www.cs.nott.ac.uk/~rmm";
-    mugshot=Some "mort.png";
-  }
   (* 
     Other people
   *)
@@ -589,8 +598,8 @@ module People = struct
     xleroy; mac; mort; ashish; christophe; gabor;
     (* prashanth; *) jhickey; xclerc; dbunzli; vbotbol; kaloper;
     hannes; greg; benjamin; matthieu; frederic; magnus; nicolas;
-    sebastian; stekell; tleonard; mpreston; aray; yans; cmolina; mnasr
-    (* gpotron; *)(* qli; *) ]
+    sebastian; stekell; tleonard; mpreston; aray; yans; cmolina; mnasr;
+    (* gpotron; *)(* qli; *) kchandras ]
 
   (* Split out the CUCL from the org list *)
   let of_cucl, of_cuclx, of_other =
