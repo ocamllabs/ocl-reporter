@@ -251,7 +251,7 @@ module Projects = struct
       mk_task ~name:"Multicore"
         ~start:"2013-03-01"
         ~finish:"2015-04-01"
-        ~owner:People.stedolan
+        ~owner:People.kchandras
         ~descr:"multicore"
         ~status:`Doing
         ~refs: [
@@ -414,15 +414,6 @@ module Projects = struct
       team; project_owner; tasks;
     } and tasks = [
 
-      mk_task ~name:"Signpost prototype"
-        ~start:"2012-08-01" ~finish:"2013-06-01"
-        ~owner:People.heidi
-        ~status:`Complete
-        ~descr:"signpostv1"
-        ~refs:[
-          Reference.paper ~name:"USENIX FOCI 2013" usenix_foci_2013;
-         ] ();
-
       mk_task ~name:"Declarative graphing library"
        ~start:"2013-04-14" ~finish:"2013-07-14"
        ~owner:People.dbunzli
@@ -578,6 +569,16 @@ module Projects = struct
          ~status:`Doing
          ~descr:"home-router"
          ~refs: [ Reference.github "yomimono" "mirage-nat" ] ();
+       mk_task ~name:"Signpost prototype"
+        ~start:"2012-08-01" ~finish:"2013-06-01"
+        ~owner:People.heidi
+        ~status:`Complete
+        ~descr:"signpostv1"
+        ~refs:[
+          Reference.paper ~name:"USENIX FOCI 2013" usenix_foci_2013;
+         ] ();
+
+
     ]
   end
 
