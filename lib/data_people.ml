@@ -286,6 +286,15 @@ module People = struct
     homepage=Some "http://roscidus.com/blog";
     mugshot=Some "tleonard.jpg";
   }
+  let mpreston = {
+    id="mpreston";
+    name="Mindy Preston";
+    affiliation=`CLx;
+    role="Visitor";
+    bio=None;
+    homepage=Some "http://somerandomidiot.com";
+    mugshot=None;
+  }
 
   (* 
     Citrix people
@@ -526,7 +535,7 @@ module People = struct
     xleroy; mac; mort; ashish; christophe; gabor;
     (* prashanth; *) jhickey; xclerc; dbunzli; vbotbol; kaloper;
     hannes; greg; benjamin; matthieu; frederic; magnus; nicolas;
-    sebastian; stekell; tleonard ]
+    sebastian; stekell; tleonard; mpreston ]
 
   (* Split out the CUCL from the org list *)
   let of_cucl, of_cuclx, of_other =
