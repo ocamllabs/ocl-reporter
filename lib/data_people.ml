@@ -340,6 +340,15 @@ module People = struct
     homepage=Some "http://kcsrk.info";
     mugshot=None;
   }
+  let mort = {
+    id="mort";
+    name="Richard Mortier";
+    affiliation=`CL;
+    role="Lecturer";
+    bio=None;
+    homepage=Some "http://mort.io";
+    mugshot=Some "mort.png";
+  }
 (*  let gpotron = {
     id="gpotron";
     name="Guillain Potron";
@@ -481,15 +490,6 @@ module People = struct
     bio=None;
     homepage=Some "http://www.cs.nott.ac.uk/~drm";
     mugshot=Some "mac.jpg";
-  }
-  let mort = {
-    id="mort";
-    name="Richard Mortier";
-    affiliation=`Horizon;
-    role="Lecturer";
-    bio=None;
-    homepage=Some "http://www.cs.nott.ac.uk/~rmm";
-    mugshot=Some "mort.png";
   }
   (* 
     Other people
