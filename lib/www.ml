@@ -221,7 +221,7 @@ let one_project proj =
          $descr$
          $related$<br /></div>
       >>
-  ) proj.tasks in
+  ) (List.sort ~cmp:Gantt.sort_by_finish_date proj.tasks) in
   let team = List.map ~f:(mugshot_img ~float:false ~size:50) (people_in_project proj) in
   let teamlist = <:html<<p>$list:team$</p>&>> in
   let body = <:html<
