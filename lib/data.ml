@@ -235,44 +235,49 @@ module Projects = struct
         ~refs:[
           Reference.mantis 5759;
         ] () ;
+
       mk_task ~name:"Syntax extensions"
         ~start:"2012-12-01" ~finish:"2013-06-01"
         ~owner:People.lpw25
         ~status:`Complete
         ~descr:"syntax-extensions"
         ~refs:[ Reference.webpage ~name:"Working group" "http://lists.ocaml.org/listinfo/wg-camlp4";
-                Reference.webpage ~name:"Blog" "http://www.lpw25.net/2013/01/23/camlp4-alternative-part-1.html"] () ;
+                Reference.webpage ~name:"Blog (part 1)" "http://www.lpw25.net/2013/01/23/camlp4-alternative-part-1.html";
+                Reference.webpage ~name:"Blog (part 2)" "http://www.lpw25.net/2013/02/05/camlp4-alternative-part-2.html"
+        ] () ;
 
-      mk_task ~name:"Namespaces plan"
+      mk_task ~name:"Namespaces and module aliases"
         ~start:"2013-02-01"
-        ~finish:"2013-04-01"
+        ~finish:"2014-09-15"
         ~owner:People.lpw25
         ~status:`Complete
         ~descr:"namespaces"
         ~refs:[
           Reference.webpage ~name:"Blog" "http://www.lpw25.net/2013/03/10/ocaml-namespaces.html" ;
-          Reference.webpage ~name:"Epic Mail Thread" "http://lists.ocaml.org/pipermail/platform/2013-February/000050.html"
+          Reference.webpage ~name:"Epic Mail Thread" "http://lists.ocaml.org/pipermail/platform/2013-February/000050.html";
+          Reference.paper Data_papers.module_aliases_2014;
        ] () ;
 
       mk_task ~name:"Multicore"
         ~start:"2013-03-01"
+        ~finish:"2015-04-01"
         ~owner:People.stedolan
         ~descr:"multicore"
-        ~status:`Planning
-        ~refs: [ Reference.github "stedolan" "ocaml" ] ();
-
-      mk_task ~name:"Compile-time meta programming"
-        ~start:"2013-04-01"
-        ~owner:People.yallop
-        ~status:`Planning
-        ~descr:"meta-programming" ();
+        ~status:`Doing
+        ~refs: [
+           Reference.github "stedolan" "ocaml" ;
+           Reference.paper Data_papers.multicore_ocaml_2014;
+        ] ();
 
       mk_task ~name:"Emission of DWARF debugging information"
-        ~start:"2013-01-01" ~finish:"2014-01-01"
+        ~start:"2013-01-01"
+        ~finish:"2015-04-01"
         ~owner:People.shinwell
         ~status:`Doing
         ~descr:"dwarf"
-        ~refs: [ Reference.github ~name:"4.00.1-allocation-profiling" "mshinwell" "ocaml" ] ();
+        ~refs: [
+           Reference.github ~name:"4.00.1-allocation-profiling" "mshinwell" "ocaml" 
+        ] ();
 
       mk_task ~name:"OCaml Java 2.0 preview"
         ~start:"2013-04-01" ~finish:"2013-08-01"
