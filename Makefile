@@ -19,9 +19,3 @@ check:
 cron:
 	@git pull -u >/dev/null
 	@cd pages && rsync --delete -aqz . /anfs/www/html/projects/ocamllabs/
-
-PLANET?=~/inst/planet-2.0/planet.py
-planet-pages:
-	cd planet && rm -rf cache && $(PLANET) ocamllabs-planet.ini
-	mkdir -p pages/blogs/images
-	cp planet/templates/images/* pages/blogs/images/
