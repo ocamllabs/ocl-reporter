@@ -219,20 +219,21 @@ module Projects = struct
     }
     and tasks = [
       mk_task ~name:"Open types"
-        ~start:"2012-10-01" ~finish:"2013-01-09"
+        ~start:"2012-10-01" ~finish:"2014-05-05"
         ~owner:People.lpw25
         ~status:`Complete
         ~descr:"open-types"
         ~refs:[ Reference.github "lpw25" "ocaml-open";
-                Reference.webpage ~name:"Website" "http://sites.google.com/site/ocamlopen/" ] ();
+                Reference.webpage ~name:"Website" "http://sites.google.com/site/ocamlopen/";
+                Reference.mantis 5584] ();
+
       mk_task ~name:"Record disambiguation"
-        ~start:"2012-09-03" ~finish:"2012-12-02"
+        ~start:"2012-09-03" ~finish:"2013-02-01"
         ~owner:People.lpw25
         ~status:`Complete
         ~descr:"record-disambiguation"
         ~refs:[
-          Reference.webpage ~name:"Mantis" "http://caml.inria.fr/mantis/view.php?id=5759" ;
-          Reference.mantis 5584;
+          Reference.mantis 5759;
         ] () ;
       mk_task ~name:"Syntax extensions"
         ~start:"2012-12-01" ~finish:"2013-06-01"
@@ -469,7 +470,12 @@ module Projects = struct
     ]
   end
 
-  let all = [ Platform.project; Mirage.project; Illuminate.project;
-              Compiler.project; T2.project; Outreach.project ]
+  let all = [ Platform.project;
+              Compiler.project;
+              Mirage.project;
+              Illuminate.project;
+              T2.project;
+              Outreach.project 
+            ]
 end
 

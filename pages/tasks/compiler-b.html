@@ -56,13 +56,13 @@ well-formulated and maintainable.</p>
     <h2 id="Tasks">Tasks</h2>
     <table class="projects" width="95%">
     <tr class="dates"><td> </td><td> </td><td> </td><td> </td><td>2013</td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td>2014</td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td>2015</td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td>∞</td></tr>
-     <tr> <td class="blank" colspan="2"></td> <td class="complete" colspan="3">
+     <tr> <td class="blank" colspan="2"></td> <td class="complete" colspan="19">
                <a href="http://lpw25.net"><img class="mugshot" alt="Leo White" src="../mugshots/lpw25.jpg" height="30px"/></a>
                <a href="#Open types">Open types</a><br/>
-             </td> <td class="blank" colspan="34"></td> <td></td> </tr>  <tr> <td class="blank" colspan="1"></td> <td class="complete" colspan="3">
+             </td> <td class="blank" colspan="18"></td> <td></td> </tr>  <tr> <td class="blank" colspan="1"></td> <td class="complete" colspan="5">
                <a href="http://lpw25.net"><img class="mugshot" alt="Leo White" src="../mugshots/lpw25.jpg" height="30px"/></a>
                <a href="#Record disambiguation">Record disambiguation</a><br/>
-             </td> <td class="blank" colspan="35"></td> <td></td> </tr>  <tr> <td class="blank" colspan="4"></td> <td class="complete" colspan="6">
+             </td> <td class="blank" colspan="33"></td> <td></td> </tr>  <tr> <td class="blank" colspan="4"></td> <td class="complete" colspan="6">
                <a href="http://lpw25.net"><img class="mugshot" alt="Leo White" src="../mugshots/lpw25.jpg" height="30px"/></a>
                <a href="#Syntax extensions">Syntax extensions</a><br/>
              </td> <td class="blank" colspan="29"></td> <td></td> </tr>  <tr> <td class="blank" colspan="6"></td> <td class="complete" colspan="2">
@@ -87,9 +87,9 @@ well-formulated and maintainable.</p>
     
          <div style="width:75%">
          <h3 style="border-bottom: thin solid #999999;" id="Open types">Open types</h3>
-         <p><a href="../people/lpw25.html"><img class="inline" style="float:left; padding-right: 30px" height="40px" src="../mugshots/lpw25.jpg"/></a>  <span class="complete">Complete</span> by <a href="../people/lpw25.html">Leo White</a> (Oct 2012 - Jan 2013) <br/><a class="icon-github" href="https://github.com/lpw25/ocaml-open">Github</a>   <a class="icon-cloud" href="http://sites.google.com/site/ocamlopen/">Website</a>   </p>
+         <p><a href="../people/lpw25.html"><img class="inline" style="float:left; padding-right: 30px" height="40px" src="../mugshots/lpw25.jpg"/></a>  <span class="complete">Complete</span> by <a href="../people/lpw25.html">Leo White</a> (Oct 2012 - May 2014) <br/><a class="icon-github" href="https://github.com/lpw25/ocaml-open">Github</a>   <a class="icon-cloud" href="http://sites.google.com/site/ocamlopen/">Website</a>   <a href="http://caml.inria.fr/mantis/view.php?id=5584">Bug report</a>   </p>
          <p>Add open extensible types to OCaml. One open type already exists
-within OCaml: the exn type used for exceptions. This project extends
+within OCaml: the <code>exn</code> type used for exceptions. This project extends
 this mechanism to allow the programmer to create their own open types.
 This has previously been proposed for functional languages a number of
 times, for instance as part of a solution to the expression problem
@@ -108,11 +108,15 @@ let is_a x =
     A -&gt; true
   | _ -&gt; false</code></pre>
 
+<p>This feature was merged upstream into OCaml 4.02 and is now available
+as standard.  To try it with OPAM if you have an older system compiler,
+just do <code>opam switch 4.02.1</code>.</p>
+
          <br/></div>
       
          <div style="width:75%">
          <h3 style="border-bottom: thin solid #999999;" id="Record disambiguation">Record disambiguation</h3>
-         <p><a href="../people/lpw25.html"><img class="inline" style="float:left; padding-right: 30px" height="40px" src="../mugshots/lpw25.jpg"/></a>  <span class="complete">Complete</span> by <a href="../people/lpw25.html">Leo White</a> (Sep 2012 - Dec 2012) <br/><a class="icon-cloud" href="http://caml.inria.fr/mantis/view.php?id=5759">Mantis</a>   <a href="http://caml.inria.fr/mantis/view.php?id=5584">Bug report</a>   </p>
+         <p><a href="../people/lpw25.html"><img class="inline" style="float:left; padding-right: 30px" height="40px" src="../mugshots/lpw25.jpg"/></a>  <span class="complete">Complete</span> by <a href="../people/lpw25.html">Leo White</a> (Sep 2012 - Feb 2013) <br/><a href="http://caml.inria.fr/mantis/view.php?id=5759">Bug report</a>   </p>
          <p>Type-based record disambiguation: <a href="http://www.lpw25.net">Leo</a> helped with the
 record-disambiguation branch of OCaml by Jacques Garrigue. This branch uses
 type-information to disambiguate between record labels and variant constructors
