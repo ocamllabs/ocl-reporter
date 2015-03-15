@@ -341,13 +341,13 @@ module Projects = struct
         ~refs:[ Reference.webpage ~name:"Homepage" "http://realworldocaml.org";
                 Reference.webpage ~name: "Twitter" "http://twitter.com/RealWorldOCaml"] ();
       mk_task ~name:"Book review site"
-        ~start:"2011-06-01" ~finish:"2013-01-01"
+        ~start:"2011-06-01" ~finish:"2013-03-01"
         ~owner:People.avsm
         ~status:`Complete
         ~descr:"rwo-review-site"
         ~related:[("Real World OCaml", "outreach", "Real World OCaml")]
         ~refs:[ Reference.webpage ~name:"Homepage" "http://realworldocaml.org" ] ();
-      mk_task ~name:"Meta preprocessor"
+      mk_task ~name:"MPP"
         ~start:"2013-04-01" ~finish:"2013-08-01"
         ~owner:People.pwang
         ~status:`Complete
@@ -355,13 +355,11 @@ module Projects = struct
         ~related:[("Real World OCaml", "outreach", "Book review site")]
         ~refs:[ Reference.github ~name:"mpp code" "pw374" "MPP-language-blender" ] ();
       mk_task ~name:"Markdown processor"
-        ~start:"2013-06-01" ~finish:"2013-11-01"
+        ~start:"2013-06-01" ~finish:"2014-12-01"
         ~owner:People.pwang
         ~status:`Complete
         ~descr:"omd"
-        ~refs:[ Reference.github ~name:"OMD" "pw374" "omd" ] ();
-
-
+        ~refs:[ Reference.github ~name:"OMD" "ocaml" "omd" ] ();
       mk_task ~name:"OCaml.org infrastructure"
         ~start:"2011-08-01" ~finish:"2013-02-01"
         ~owner:People.avsm
@@ -379,7 +377,7 @@ module Projects = struct
                 Reference.webpage ~name:"Blog" "http://amirchaudhry.com/wireframe-demos-for-ocamlorg"
          ] () ;
       mk_task ~name:"FPDays tutorial"
-        ~start:"2013-08-01" ~finish:"2013-10-22"
+        ~start:"2013-06-01" ~finish:"2013-12-01"
         ~owner:People.yallop
         ~status:`Complete
         ~descr:"fpdays2013"
@@ -387,6 +385,31 @@ module Projects = struct
                 Reference.blog ~name:"Post-mortem" "http://amirchaudhry.com/fpdays-review/";
                 Reference.github "ocamllabs" "fpdays-skeleton"
          ] () ;
+      mk_task ~name:"2048 in js_of_ocaml"
+        ~start:"2014-06-01" ~finish:"2015-01-21"
+        ~owner:People.yallop
+        ~status:`Complete
+        ~descr:"2048-tutorial"
+        ~refs: [ Reference.github "ocamllabs" "2048-tutorial";
+                 Reference.webpage ~name:"ICFP tutorial" "http://cufp.org/2014/t7-leo-white-introduction-to-ocaml.html";
+                 Reference.webpage ~name:"Functional Conf Bangalore" "http://functionalconf.com/2014/schedule.html";
+                 Reference.webpage ~name:"Online Demo" "http://gazagnaire.org/fuconf14/";
+        ] ();
+      mk_task ~name:"L28: Advanced FP"
+        ~start:"2014-06-01" ~finish:"2015-05-01"
+        ~owner:People.yallop
+        ~status:`Complete
+        ~descr:"l28"
+        ~refs: [ Reference.webpage ~name:"Course Page" "http://www.cl.cam.ac.uk/teaching/1415/L28/";
+                 Reference.webpage ~name:"F-omega interpreter" "http://ocamllabs.github.io/fomega/";
+        ] ();
+      mk_task ~name:"Compiler Hacking Evenings"
+       ~start:"2013-08-01"
+       ~owner:People.yallop
+       ~status:`Complete
+       ~descr:"compiler-hacking"
+       ~refs: [ Reference.blog "http://ocamllabs.github.io/compiler-hacking/";
+                Reference.webpage ~name:"Mailing List" "http://lists.ocaml.org/listinfo/cam-compiler-hacking" ] ();
     ]
   end
 
