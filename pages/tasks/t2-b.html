@@ -66,9 +66,6 @@ The tasks below and include our collaborators at <a href="http://onapp.com">OnAp
      <tr> <td class="blank" colspan="2"></td> <td class="doing" colspan="16">
                <a href="https://github.com/vstakhov"><img class="mugshot" alt="Vsevolod Stakhov" src="../mugshots/vsevelod.jpg" height="30px"/></a>
                <a href="#Polyversal TCP prototype">Polyversal TCP prototype</a><br/>
-             </td> <td class="blank" colspan="21"></td> <td></td> </tr>  <tr> <td class="blank" colspan="7"></td> <td class="doing" colspan="11">
-               <a href="http://thomas.gazagnaire.org"><img class="mugshot" alt="Thomas Gazagnaire" src="../mugshots/tg.png" height="30px"/></a>
-               <a href="#Irminsule prototype">Irminsule prototype</a><br/>
              </td> <td class="blank" colspan="21"></td> <td></td> </tr> 
     <tr><td colspan="40"> </td></tr>
     </table>
@@ -89,25 +86,6 @@ to work as an extensible one-size-fits-all transport that can take advantage
 of heterogenous interconnects such as shared memory or virtual machine channels.
 This will in turn greatly simplify the construction of complex distributed systems
 being built elsewhere in OCaml Labs.</p>
-
-         <br/></div>
-      
-         <div style="width:75%">
-         <h3 style="border-bottom: thin solid #999999;" id="Irminsule prototype">Irminsule prototype</h3>
-         <p><a href="../people/tg.html"><img class="inline" style="float:left; padding-right: 30px" height="40px" src="../mugshots/tg.png"/></a>  <span class="doing">In Progress</span> by <a href="../people/tg.html">Thomas Gazagnaire</a> (Mar 2013 - Feb 2014) <br/><a class="icon-github" href="https://github.com/samoht/cagit">Github</a>   <a class="icon-github" href="https://github.com/samoht/irminsule">Github</a>   </p>
-         <p>Irminsule is a distributed filesystem and block store that follows the same
-design principles as <a href="http://git-scm.com">Git</a>.  The design consists of three
-main components:</p>
-<ul><li>a low-level immutable and consistent key/value data-store</li><li>a DAG persisted in that datastore; and</li><li>a tag store which associate names to keys of the low-level data-store.</li></ul>
-
-<p>Irminsule is written in pure OCaml, and can thus be compiled to a variety of
-backends (including Javascript, and <a href="http://openmirage.org">Mirage</a>
-microkernels). Unlike the git frontend, applications can directly iterate over
-the object graph.</p>
-<p>The immutability of the low-level block store makes it significantly easier to
-apply replication and network coding techniques to improve resilience via
-replication, and to optimise scheduling across many hosts using MPTCP-style
-congestion control.</p>
 
          <br/></div>
       
