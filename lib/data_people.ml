@@ -322,6 +322,15 @@ module People = struct
     homepage=None;
     mugshot=None;
   }
+  let mnasr = {
+    id="mnasr";
+    name="Mounir Nasr Allah";
+    affiliation=`CLx;
+    role="Summer visitor";
+    bio=None;
+    homepage=Some "http://mounirnasrallah.com";
+    mugshot=None;
+  }
 
   (* 
     Citrix people
@@ -562,7 +571,7 @@ module People = struct
     xleroy; mac; mort; ashish; christophe; gabor;
     (* prashanth; *) jhickey; xclerc; dbunzli; vbotbol; kaloper;
     hannes; greg; benjamin; matthieu; frederic; magnus; nicolas;
-    sebastian; stekell; tleonard; mpreston; aray; yans; cmolina ]
+    sebastian; stekell; tleonard; mpreston; aray; yans; cmolina; mnasr ]
 
   (* Split out the CUCL from the org list *)
   let of_cucl, of_cuclx, of_other =
