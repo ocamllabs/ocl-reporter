@@ -1,3 +1,6 @@
+*The Mirari prototype has been superseded by the Mirage 2.0 release.
+ This is here for historical reasons.*
+
 Mirari takes a single configuration file and splits the lifecycle of a
 Mirage application into three distinct segments:
 

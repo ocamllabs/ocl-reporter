@@ -194,16 +194,6 @@ module Projects = struct
            Reference.github "ocamllabs" "pvtcp";
            Reference.paper ~name:"Position paper" conext_pvtcp;
          ] ();
-       mk_task ~name:"Irminsule prototype"
-        ~start:"2013-03-01"
-        ~finish:"2014-02-01"
-        ~owner:People.tg
-        ~status:`Doing
-        ~descr:"irminsule"
-        ~refs:[
-           Reference.github "samoht" "cagit";
-           Reference.github "samoht" "irminsule"
-        ] () ;
     ]
   end
 
@@ -329,7 +319,7 @@ module Projects = struct
       project_name="Community Outreach" ;
       project_owner = People.amir;
       project_elevator="Building an effective online presence for the worldwide OCaml community";
-      team = People.([ avsm ]);
+      team = People.([ avsm; amir ]);
       tasks;
     }
     and tasks = [
@@ -501,7 +491,7 @@ module Projects = struct
            Reference.webpage ~name:"Meeting Minutes" "http://openmirage.org/wiki/weekly-2013-04-16";
         ] () ;
       mk_task ~name:"Mirage 1.0"
-        ~start:"2013-08-01" ~finish:"2013-11-09"
+        ~start:"2013-06-01" ~finish:"2013-11-09"
         ~owner:People.avsm
         ~status:`Complete
         ~descr:"mirage-1.0"
@@ -510,18 +500,32 @@ module Projects = struct
            Reference.blog ~name:"Announcement" "http://openmirage.org/blog/announcing-mirage10";
            Reference.webpage ~name:"Homepage" "http://openmirage.org";
         ] () ;
-
+      mk_task ~name:"Mirage 2.0"
+       ~start:"2013-11-01" ~finish:"2014-08-01"
+       ~owner:People.avsm
+       ~status:`Complete
+       ~descr:"mirage-2.0"
+       ~refs: [
+          Reference.github "mirage" "mirage";
+          Reference.blog ~name:"Announcement" "http://openmirage.org/blog/announcing-mirage-20-release";
+          Reference.paper Data_papers.mirageos_ocaml_2014;
+       ] ();
       mk_task ~name:"TCP/IP Stack"
-        ~start:"2013-04-01" ~finish:"2013-10-01"
+        ~start:"2013-04-01" ~finish:"2014-03-01"
         ~owner:People.balrajsingh
-        ~status:`Planning
+        ~status:`Complete
         ~descr:"packet-proc" ();
 
       mk_task ~name:"kFreeBSD"
-        ~start:"2013-06-01" ~finish:"2013-09-01"
+        ~start:"2013-06-01" ~finish:"2013-12-01"
         ~owner:People.gabor
-        ~status:`Doing
-        ~descr:"kfreebsd" ();
+        ~status:`Complete
+        ~descr:"kfreebsd"
+        ~refs:[
+          Reference.github "pgj" "mirage-kfreebsd";
+          Reference.mantis 6167;
+        ] ();
+
       mk_task ~name:"Nigori"
         ~start:"2012-10-01" ~finish:"2013-06-01"
         ~owner:People.bogdan
@@ -529,6 +533,47 @@ module Projects = struct
         ~refs: [
           Reference.pdf ~name:"Original Nigori paper" "http://www.links.org/files/nigori-overview.pdf";
         ] ();
+      mk_task ~name:"OCaml TLS"
+       ~start:"2014-01-01" ~finish:"2015-03-01"
+       ~owner:People.hannes
+       ~status:`Complete ~descr:"ocaml-tls"
+       ~refs: [
+          Reference.paper Data_papers.tls_ocaml_2014;
+          Reference.github "mirleft" "ocaml-tls";
+          Reference.webpage ~name:"BitCoin Pinata" "http://ownme.ipredator.se/";
+          Reference.video "https://media.ccc.de/browse/congress/2014/31c3_-_6443_-_en_-_saal_2_-_201412271245_-_trustworthy_secure_modular_operating_system_engineering_-_hannes_-_david_kaloper.html#video"
+       ] ();
+      mk_task ~name:"Jitsu toolstack"
+       ~start:"2014-05-01" ~finish:"2015-05-01"
+       ~owner:People.magnus
+       ~status:`Complete ~descr:"jitsu"
+       ~refs: [
+          Reference.paper Data_papers.jitsu_2015;
+          Reference.github "magnuss" "jitsu";
+       ] ();
+       mk_task ~name:"Irmin 1.0"
+        ~start:"2013-03-01"
+        ~owner:People.tg
+        ~status:`Doing
+        ~descr:"irmin"
+        ~refs:[
+           Reference.paper ~name:"JFLA 2015 paper" Data_papers.irmin_jfla_2015;
+           Reference.paper ~name:"OCaml 2014 poster" Data_papers.irmin_ocaml_2014;
+           Reference.github "mirage" "ocaml-git";
+           Reference.github "mirage" "irmin";
+           Reference.blog ~name:"Blog (part 1)" "http://openmirage.org/blog/introducing-irmin";
+           Reference.blog ~name:"Blog (part 2)" "http://openmirage.org/blog/introducing-irmin";
+        ] () ;
+       mk_task ~name:"Xen/ARMv7 port"
+         ~start:"2014-02-01" ~finish:"2014-09-01"
+         ~owner:People.tleonard
+         ~status:`Complete
+         ~descr:"xen-arm"
+         ~refs: [
+           Reference.github "mirage" "mirage-xen-minios";
+           Reference.blog "http://openmirage.org/blog/introducing-xen-minios-arm";
+           Reference.paper Data_papers.jitsu_2015;
+         ] ();
     ]
   end
 
