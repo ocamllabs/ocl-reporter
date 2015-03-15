@@ -86,4 +86,3 @@ let write_posts ?num_posts ?ofs ~out_file in_file =
   let f = open_out out_file in
   let () = output_string f body in
   close_out f
-
