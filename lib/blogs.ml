@@ -5,6 +5,8 @@ open Printf
 open Data_face
 open Bootstrap
 
+module Atom = Syndic.Atom
+
 type html = Nethtml.document list
 
 let encode_document html = Nethtml.encode ~enc:`Enc_utf8 html
@@ -41,8 +43,22 @@ let toggle ?(anchor="") html1 html2 =
    Element("div", ["id", id2; "style", "display: none"],
            html2 @ [button id2 id1 "Hide"])]
 
+let write_atom posts out_atom =
+  let open Syndic.Atom in
+  let entries = mk_entries posts in
+  let feed =
+    let authors = [ author "OCaml Labs" ] in
+    let id = "http://ocaml.io/blogs/atom.xml" in
+    let links = [ link ~rel:Self @@ Uri.of_string id ] in
+    let title : text_construct = Text "OCaml Labs Blogs" in
+    let subtitle : text_construct = Text "Real World Functional Programming" in
+    let updated = CalendarLib.Calendar.now () in
+    feed ~authors ~links ~id ~title ~subtitle ~updated entries in
+  let out_channel = open_out out_atom in
+  output feed (`Channel out_channel);
+  close_out out_channel
 
-let write_posts ?num_posts ?ofs ~out_file in_file =
+let write_posts ?num_posts ?ofs ~out_file ~out_atom in_file =
   let posts = get_posts ?n:num_posts ?ofs in_file in
   let recentList = List.map (fun p ->
                      let date = date_of_post p in
@@ -85,4 +101,6 @@ let write_posts ?num_posts ?ofs ~out_file in_file =
   (* write to file *)
   let f = open_out out_file in
   let () = output_string f body in
-  close_out f
+  close_out f;
+  (* Write atom feed *)
+  write_atom posts out_atom

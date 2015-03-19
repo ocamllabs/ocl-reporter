@@ -310,7 +310,9 @@ let write_blogs file =
   let in_file = "lib/data_blog.txt" in
   let out_file = sprintf "pages/%s-b.html" file in
   eprintf "writing : %s\n" out_file;
-  Blogs.write_posts ?num_posts:(Some 100) ~out_file:out_file in_file
+  eprintf "writing : pages/blogs/atom.xml\n";
+  Blogs.write_posts ~num_posts:100 ~out_file:out_file
+    ~out_atom:"pages/blogs/atom.xml" in_file
 
 let _ =
   write_uconfig "people" [];

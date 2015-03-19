@@ -68,7 +68,7 @@ let mk_post_with_face ~url ~title ~blog_url ~blog_title ~blog_name ~author
 
 let mk_body ~recentList ~postList : string =
 "<head> <title>Blogs</title>
-  <link rel=\"alternate\" href=\"http://www.cl.cam.ac.uk/projects/ocamllabs/blogs/rss10.xml\" title=\"\" type=\"application/rss+xml\" />
+  <link rel=\"alternate\" href=\"http://www.cl.cam.ac.uk/projects/ocamllabs/blogs/atom.xml\" title=\"\" type=\"application/atom+xml\" />
   <style>
       a.icon-github {
     background: url(../github.png) no-repeat 0 0;
