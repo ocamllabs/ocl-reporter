@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><subtitle type="text">Real World Functional Programming</subtitle><link href="http://ocaml.io/blogs/atom.xml" rel="self"/><author><name>OCaml Labs</name></author><id>http://ocaml.io/blogs/atom.xml</id><title type="text">OCaml Labs Blogs</title><updated>2015-03-19T18:55:52+00:00</updated><entry><link href="http://hh360.user.srcf.net/blog/?p=956" rel="alternate"/><contributor><uri>http://hh360.user.srcf.net/blog/category/pl/ocaml/feed/</uri><name>Heidi Howard</name></contributor><content type="html">&lt;p&gt;This article&amp;nbsp;is the third in the &amp;ldquo;Running your own DNS Resolver with MirageOS&amp;rdquo; series. In the&amp;nbsp;&lt;a href=&quot;http://hh360.user.srcf.net/blog/2015/02/part-1-running-your-own-dns-resolver-with-mirageos/&quot; title=&quot;Part 1: Running your own DNS Resolver with MirageOS&quot;&gt;first part&lt;/a&gt;, we used the&amp;nbsp;&lt;a href=&quot;https://github.com/mirage/ocaml-dns&quot;&gt;ocaml-dns&lt;/a&gt;&amp;nbsp;library to lookup the hostname corresponding with an IP address using its&amp;nbsp;&lt;a href=&quot;https://github.com/mirage/ocaml-dns/blob/master/mirage/dns_resolver_mirage.mli&quot;&gt;Dns_resolver_mirage&lt;/a&gt;&amp;nbsp;module. In the&amp;nbsp;&lt;a href=&quot;http://hh360.user.srcf.net/blog/2015/03/part-2-running-your-own-dns-resolver-with-mirageos/&quot; title=&quot;Part 2: Running your own DNS Resolver with MirageOS&quot;&gt;second part&lt;/a&gt;, we wrote a simple DNS server, which serves RRs from a zone file using the &lt;a href=&quot;https://github.com/mirage/ocaml-dns/blob/master/mirage/dns_server_mirage.mli&quot;&gt;Dns_server_mirage&lt;/a&gt; module.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><subtitle type="text">Real World Functional Programming</subtitle><link href="http://ocaml.io/blogs/atom.xml" rel="self"/><author><name>OCaml Labs</name></author><id>http://ocaml.io/blogs/atom.xml</id><title type="text">OCaml Labs Blogs</title><updated>2015-03-20T10:11:25+00:00</updated><entry><link href="http://hh360.user.srcf.net/blog/?p=956" rel="alternate"/><contributor><uri>http://hh360.user.srcf.net/blog/category/pl/ocaml/feed/</uri><name>Heidi Howard</name></contributor><content type="html">&lt;p&gt;This article&amp;nbsp;is the third in the &amp;ldquo;Running your own DNS Resolver with MirageOS&amp;rdquo; series. In the&amp;nbsp;&lt;a href=&quot;http://hh360.user.srcf.net/blog/2015/02/part-1-running-your-own-dns-resolver-with-mirageos/&quot; title=&quot;Part 1: Running your own DNS Resolver with MirageOS&quot;&gt;first part&lt;/a&gt;, we used the&amp;nbsp;&lt;a href=&quot;https://github.com/mirage/ocaml-dns&quot;&gt;ocaml-dns&lt;/a&gt;&amp;nbsp;library to lookup the hostname corresponding with an IP address using its&amp;nbsp;&lt;a href=&quot;https://github.com/mirage/ocaml-dns/blob/master/mirage/dns_resolver_mirage.mli&quot;&gt;Dns_resolver_mirage&lt;/a&gt;&amp;nbsp;module. In the&amp;nbsp;&lt;a href=&quot;http://hh360.user.srcf.net/blog/2015/03/part-2-running-your-own-dns-resolver-with-mirageos/&quot; title=&quot;Part 2: Running your own DNS Resolver with MirageOS&quot;&gt;second part&lt;/a&gt;, we wrote a simple DNS server, which serves RRs from a zone file using the &lt;a href=&quot;https://github.com/mirage/ocaml-dns/blob/master/mirage/dns_server_mirage.mli&quot;&gt;Dns_server_mirage&lt;/a&gt; module.&lt;/p&gt;
 &lt;p&gt;Today in the third part, we will combine the above to write a simple DNS resolver, which relays queries to another DNS resolver. Then we will compose this with our simple DNS server from last week, to build a resolver which first looks up queries in the host file and if unsuccessful will relay the query to another DNS resolver.&lt;/p&gt;
 &lt;p&gt;As always, the complete code for these examples is in &lt;a href=&quot;https://github.com/heidi-ann/ocaml-dns-examples&quot;&gt;ocaml-dns-examples&lt;/a&gt;.&lt;/p&gt;
 &lt;h5&gt;3.1 DNS FoRwarder&lt;/h5&gt;
@@ -1336,7 +1336,7 @@ git clone http://github.com/mirage/mirage-skeleton.git
 &lt;p&gt;Mirage applications can also be compiled in &lt;a href=&quot;http://openmirage.org/wiki/hello-world&quot;&gt;Unix mode&lt;/a&gt;, which produces an executable that can be executed directly in a Unix-like operating system. Currently OS X seems to be particularly well supported. This mode may often be the easiest way to debug and develop a Mirage application, but not all of Mirage's features are available in this mode and some applications may require low level access to the system - for example to block storage or network interfaces - which may not be available in this mode. &lt;/p&gt;
 &lt;p&gt;Another approach is to use a &lt;a href=&quot;http://cubieboard.org&quot;&gt;Cubieboard2&lt;/a&gt; with a prebuilt &lt;a href=&quot;http://github.com/mirage/xen-arm-builder&quot;&gt;Mirage/Xen image&lt;/a&gt; to set up a low cost, portable Xen server for development. If you want to have long running Mirage services in your local network or host your own web page this may be a good alternative. Note that compilation times can be slow on this platform compared to an x86 based VM.&lt;/p&gt;
 &lt;p&gt;An automated VM setup is being developed based on Debian, Vagrant and Packer &lt;a href=&quot;http://github.com/mirage/mirage-vagrant-vms&quot;&gt;here&lt;/a&gt;. This can be useful if you don't want to manually perform the setup steps outlined in this post. Currently this setup uses an older version of Debian which comes with Xen 4.1, but it should be possible to upgrade to Debian Jessie or later.&lt;/p&gt;
-</content><id>http://www.skjegstad.com/blog/2015/01/19/mirageos-xen-virtualbox/</id><title type="text">Local MirageOS development with Xen and Virtualbox</title><updated>2015-01-19T00:00:00+00:00</updated><author><email></email><name>Magnus Skjegstad</name></author></entry><entry><link href="http://amirchaudhry.com/towards-governance-framework-for-ocamlorg" rel="alternate"/><contributor><uri>http://amirchaudhry.com/tags/ocaml-labs-atom.xml</uri><name>Amir Chaudhry</name></contributor><content type="html">
+</content><id>http://www.skjegstad.com/blog/2015/01/19/mirageos-xen-virtualbox/</id><title type="text">Local MirageOS development with Xen and Virtualbox</title><updated>2015-01-19T00:00:00+00:00</updated><author><email></email><name>Magnus Skjegstad</name></author></entry><entry><link href="http://amirchaudhry.com/towards-governance-framework-for-ocamlorg" rel="alternate"/><contributor><uri>http://amirchaudhry.com/tags/ocamllabs-atom.xml</uri><name>Amir Chaudhry</name></contributor><content type="html">
 &lt;p&gt;The projects around the OCaml.org domain name are becoming more established
 and it&amp;rsquo;s time to think about how they&amp;rsquo;re organised. 2014 saw a &lt;em&gt;lot&lt;/em&gt; of
 activity, which built on the &lt;a href=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/news/index.html#OnlineatOCamlorg&quot;&gt;successes from 2013&lt;/a&gt;.
@@ -8183,7 +8183,7 @@ That will have to be the subject for another blog post though&amp;hellip;&lt;/p&
 
 &lt;p&gt;Of course, work continues apace by the rest of the team as usual, with a &lt;a href=&quot;http://www.openmirage.org/releases&quot;&gt;steady stream of releases&lt;/a&gt; that are building up to some exciting new features.  We'll be blogging about ARM support, PVHVM, Irmin storage and SSL integration just as soon as they're pushed into the stable branches.  As always, &lt;a href=&quot;http://www.openmirage.org/community/&quot;&gt;get in touch&lt;/a&gt; via the IRC channel (&lt;code&gt;#mirage&lt;/code&gt; on Freenode) or the mailing lists with questions.&lt;/p&gt;
 
-   </content><id>http://openmirage.org/blog/welcome-to-our-summer-hackers</id><title type="text">Welcome to the summer Mirage hackers</title><updated>2014-05-08T18:00:00+00:00</updated><author><email></email><name>Anil Madhavapeddy</name></author></entry><entry><link href="http://amirchaudhry.com/writing-planet-in-pure-ocaml" rel="alternate"/><contributor><uri>http://amirchaudhry.com/tags/ocaml-labs-atom.xml</uri><name>Amir Chaudhry</name></contributor><content type="html">
+   </content><id>http://openmirage.org/blog/welcome-to-our-summer-hackers</id><title type="text">Welcome to the summer Mirage hackers</title><updated>2014-05-08T18:00:00+00:00</updated><author><email></email><name>Anil Madhavapeddy</name></author></entry><entry><link href="http://amirchaudhry.com/writing-planet-in-pure-ocaml" rel="alternate"/><contributor><uri>http://amirchaudhry.com/tags/ocamllabs-atom.xml</uri><name>Amir Chaudhry</name></contributor><content type="html">
 &lt;p&gt;I&amp;rsquo;ve been learning OCaml for some time now but not really had a problem that
 I wanted to solve. As such, my progress has been rather slow and sporadic
 and I only make time for exercises when I&amp;rsquo;m travelling. In order to focus my
@@ -8344,7 +8344,431 @@ and providing feedback on my approach.&lt;/p&gt;
 &lt;p&gt;We're defining &amp;quot;compiler&amp;quot; pretty broadly, to include anything that's part of the standard distribution, which means at least the &lt;a href=&quot;http://caml.inria.fr/pub/docs/manual-ocaml-4.01/libref/index.html&quot;&gt;standard library&lt;/a&gt;, &lt;a href=&quot;http://caml.inria.fr/pub/docs/manual-ocaml-4.00/manual024.html&quot;&gt;runtime&lt;/a&gt;, tools (&lt;a href=&quot;http://caml.inria.fr/pub/docs/manual-ocaml-4.01/depend.html&quot;&gt;ocamldep&lt;/a&gt;, &lt;a href=&quot;http://caml.inria.fr/pub/docs/manual-ocaml-4.00/manual026.html#toc105&quot;&gt;ocamllex&lt;/a&gt;, &lt;a href=&quot;http://caml.inria.fr/pub/docs/manual-ocaml-4.00/manual026.html#toc107&quot;&gt;ocamlyacc&lt;/a&gt;, etc.), &lt;a href=&quot;http://caml.inria.fr/pub/docs/manual-ocaml-4.00/manual032.html&quot;&gt;ocamlbuild&lt;/a&gt;, the &lt;a href=&quot;http://caml.inria.fr/resources/doc/index.en.html&quot;&gt;documentation&lt;/a&gt;, and the compiler itself. We'll have suggestions for &lt;a href=&quot;https://github.com/ocamllabs/compiler-hacking/wiki/Things-to-work-on&quot;&gt;mini-projects&lt;/a&gt; for various levels of experience (see also some &lt;a href=&quot;https://github.com/ocamllabs/compiler-hacking/wiki/Things-previously-worked-on&quot;&gt;things we've worked on in previous sessions&lt;/a&gt;), but feel free to come along and work on whatever you fancy.&lt;/p&gt;
 
 &lt;p&gt;We'll also be ordering pizza, so if you want to be counted for food you should aim to arrive by 6.30pm.&lt;/p&gt;
-</content><id>http://ocamllabs.github.com/compiler-hacking/2014/04/24/fifth-compiler-hacking-session</id><title type="text">Fifth OCaml compiler hacking session</title><updated>2014-04-24T02:16:01+00:00</updated><author><email>cl-ocamllabs@lists.cam.ac.uk (OCaml Labs)</email><name>Compiler Hacking</name></author></entry><entry><link href="http://openmirage.org/blog/applying-for-gsoc2014" rel="alternate"/><contributor><uri>http://openmirage.org/blog/atom.xml</uri><name>Mirage OS</name></contributor><content type="html">
+</content><id>http://ocamllabs.github.com/compiler-hacking/2014/04/24/fifth-compiler-hacking-session</id><title type="text">Fifth OCaml compiler hacking session</title><updated>2014-04-24T02:16:01+00:00</updated><author><email>cl-ocamllabs@lists.cam.ac.uk (OCaml Labs)</email><name>Compiler Hacking</name></author></entry><entry><link href="http://amirchaudhry.com/from-jekyll-to-unikernel-in-fifty-lines" rel="alternate"/><contributor><uri>http://amirchaudhry.com/tags/ocamllabs-atom.xml</uri><name>Amir Chaudhry</name></contributor><content type="html">
+&lt;p&gt;&lt;a href=&quot;http://openmirage.org&quot;&gt;Mirage&lt;/a&gt; has reached a point where it&amp;rsquo;s possible to easily set up
+end-to-end toolchains to build &lt;a href=&quot;http://queue.acm.org/detail.cfm?id=2566628&quot;&gt;unikernels&lt;/a&gt;! 
+My first use-case is to be able to generate a unikernel which can serve my
+personal static site but to do it with as much automation as possible. It
+turns out this is possible with less than 50 lines of code.&lt;/p&gt;
+
+&lt;p&gt;I use Jekyll and GitHub Pages at the moment so I wanted a workflow that&amp;rsquo;s as
+easy to use, though I&amp;rsquo;m happy to spend some time up front to set up and
+configure things.
+The tools for achieving what I want are in good shape so
+this post takes the example of a Jekyll site (i.e this one) and goes through
+the steps to produce a unikernel on
+&lt;a href=&quot;https://travis-ci.org&quot;&gt;Travis CI&lt;/a&gt; (a continuous integration service) which can later be
+deployed.  Many of these instructions already exist in various forms but
+they&amp;rsquo;re collated here to aid this use-case.  &lt;/p&gt;
+
+&lt;p&gt;I will take you, dear reader, through the process and when we&amp;rsquo;re finished,
+the workflow will be as follows:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;You&amp;rsquo;ll write your posts on your local machine as normal&lt;/li&gt;
+  &lt;li&gt;A push to GitHub will trigger a unikernel build for each commit&lt;/li&gt;
+  &lt;li&gt;The Xen unikernel will be pushed to a repo for deployment&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;To achieve this, we&amp;rsquo;ll first check that we can build a unikernel VM locally,
+then we&amp;rsquo;ll set up a continuous integration service to automatically build
+them for us and finally we&amp;rsquo;ll adapt the CI service to also deploy the built
+VM.  Although the amount of code required is small, each of these steps is
+covered below in some detail.
+For simplicity, I&amp;rsquo;ll assume you already have OCaml and Opam
+installed &amp;ndash; if not, you can find out how via the
+&lt;a href=&quot;http://realworldocaml.org/install&quot;&gt;Real Word OCaml install instructions&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2&gt;Building locally&lt;/h2&gt;
+
+&lt;p&gt;To ensure that the build actually works, you should run things locally at
+least once before pushing to Travis.  It&amp;rsquo;s worth noting that the
+&lt;a href=&quot;https://github.com/mirage/mirage-skeleton&quot;&gt;mirage-skeleton&lt;/a&gt; repo contains a lot of useful, public domain examples
+and helpfully, the specific code we need is in
+&lt;a href=&quot;https://github.com/mirage/mirage-skeleton/tree/master/static_website&quot;&gt;mirage-skeleton/static_website&lt;/a&gt;.  Copy both the &lt;code&gt;config.ml&lt;/code&gt;
+and &lt;code&gt;dispatch.ml&lt;/code&gt; files from that folder into a new &lt;code&gt;_mirage&lt;/code&gt; folder in your
+jekyll repository.&lt;/p&gt;
+
+&lt;p&gt;Edit &lt;code&gt;config.ml&lt;/code&gt; so that the two mentions of &lt;code&gt;./htdocs&lt;/code&gt; are replaced with
+&lt;code&gt;../_site&lt;/code&gt;.  This is the only change you&amp;rsquo;ll need to make and you should now
+be able to build the unikernel with the unix backend.  Make sure you have
+the mirage package installed by running &lt;code&gt;$ opam install mirage&lt;/code&gt; and then run:&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;(edit: If you already have &lt;code&gt;mirage&lt;/code&gt;, remember to &lt;code&gt;opam update&lt;/code&gt; to make sure you&amp;rsquo;ve got the latest packages.)&lt;/em&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;_mirage
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;mirage configure --unix
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;make depend         &lt;span class=&quot;c&quot;&gt;# needed as of mirage 1.2 onward&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;mirage build
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ..&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;That&amp;rsquo;s all it takes!  In a few minutes there will be a unikernel built on
+your system (symlinked as &lt;code&gt;_mirage/mir-www&lt;/code&gt;).  If there are any errors, make
+sure that Opam is up to date and that you have the latest version of the
+static_website files from &lt;a href=&quot;https://github.com/mirage/mirage-skeleton&quot;&gt;mirage-skeleton&lt;/a&gt;. &lt;/p&gt;
+
+&lt;h3&gt;Serving the site locally&lt;/h3&gt;
+
+&lt;p&gt;If you&amp;rsquo;d like to see this site locally, you can do so from within the
+&lt;code&gt;_mirage&lt;/code&gt; folder by running unikernel you just built.  There&amp;rsquo;s more
+information about the details of this on the &lt;a href=&quot;http://openmirage.org/wiki/mirage-www&quot;&gt;Mirage docs site&lt;/a&gt;
+but the quick instructions are:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;_mirage
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;sudo mirage run
+
+&lt;span class=&quot;c&quot;&gt;# in another terminal window&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;sudo ifconfig tap0 10.0.0.1 255.255.255.0&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;You can now point your browser at http://10.0.0.2/ and see your site!
+Once you&amp;rsquo;re finished browsing, &lt;code&gt;$ mirage clean&lt;/code&gt; will clear up all the
+generated files. &lt;/p&gt;
+
+&lt;p&gt;Since the build is working locally, we can set up a continuous integration
+system to perform the builds for us.&lt;/p&gt;
+
+&lt;h2&gt;Setting up Travis CI&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;http://amirchaudhry.com/images/jekyll-unikernel/travis.png&quot; style=&quot;float: right; margin-left: 10px&quot;/&gt;&amp;lt;/img&amp;gt;&lt;/p&gt;
+
+&lt;p&gt;We&amp;rsquo;ll be using the &lt;a href=&quot;https://travis-ci.org&quot;&gt;Travis CI&lt;/a&gt; service, which is free for open-source
+projects (so this assumes you&amp;rsquo;re using a public repo).  The benefit of using
+Travis is that you can build a unikernel &lt;em&gt;without&lt;/em&gt; needing a local OCaml
+environment, but it&amp;rsquo;s always quicker to debug things locally.&lt;/p&gt;
+
+&lt;p&gt;Log in to Travis using your GitHub ID which will then trigger a scan of your
+repositories.  When this is complete, go to your Travis accounts page and
+find the repo you&amp;rsquo;ll be building the unikernel from.  Switch it &amp;lsquo;on&amp;rsquo; and
+Travis will automatically set your GitHub post-commit hook and token for you.
+That&amp;rsquo;s all you need to do on the website.&lt;/p&gt;
+
+&lt;p&gt;When you next make a push to your repository, GitHub will inform Travis,
+which will then look for a YAML file in the root of the repo called
+&lt;code&gt;.travis.yml&lt;/code&gt;.  That file describes what Travis should do and what the build
+matrix is.  Since OCaml is not one of the supported languages, we&amp;rsquo;ll be
+writing our build script manually (this is actually easier than it sounds).
+First, let&amp;rsquo;s set up the YAML file and then we&amp;rsquo;ll examine the build script.&lt;/p&gt;
+
+&lt;h3&gt;The Travis YAML file - .travis.yml&lt;/h3&gt;
+
+&lt;p&gt;The &lt;a href=&quot;http://docs.travis-ci.com/user/ci-environment/#CI-environment-OS&quot;&gt;Travis CI environment&lt;/a&gt; is based on Ubuntu 12.04, with a
+number of things pre-installed (e.g Git, networking tools etc).  Travis
+doesn&amp;rsquo;t support OCaml (yet) so we&amp;rsquo;ll use the &lt;code&gt;c&lt;/code&gt; environment to get the
+packages we need, specifically, the OCaml compiler, Opam and Mirage. Once
+those are set up, our build should run pretty much the same as it did locally.&lt;/p&gt;
+
+&lt;p&gt;For now, let&amp;rsquo;s keep things simple and only focus on the latest releases
+(OCaml 4.01.0 and Opam 1.1.1), which means our build matrix is very simple.
+The build instructions will be in the file &lt;code&gt;_mirage/travis.sh&lt;/code&gt;, which we
+will move to and trigger from the &lt;code&gt;.travis.yml&lt;/code&gt; file.  This means our YAML
+file should look like:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-yaml&quot; data-lang=&quot;yaml&quot;&gt;&lt;span class=&quot;l-Scalar-Plain&quot;&gt;language&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;c&lt;/span&gt;
+&lt;span class=&quot;l-Scalar-Plain&quot;&gt;before_script&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;cd _mirage&lt;/span&gt;
+&lt;span class=&quot;l-Scalar-Plain&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;bash -ex travis.sh&lt;/span&gt;
+&lt;span class=&quot;l-Scalar-Plain&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;l-Scalar-Plain&quot;&gt;matrix&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;MIRAGE_BACKEND=xen DEPLOY=0&lt;/span&gt;
+  &lt;span class=&quot;p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;MIRAGE_BACKEND=unix&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The matrix enables us to have parallel builds for different environments and
+this one is very simple as it&amp;rsquo;s only building two unikernels. One worker
+will build for the Xen backend and another worker will build for the Unix
+backend. The &lt;code&gt;_mirage/travis.sh&lt;/code&gt; script will clarify what each of these
+environments translates to.  We&amp;rsquo;ll come back to the &lt;code&gt;DEPLOY&lt;/code&gt; flag later on
+(it&amp;rsquo;s not necessary yet).  Now that this file is set up, we can work on the
+build script itself.&lt;/p&gt;
+
+&lt;h3&gt;The build script - travis.sh&lt;/h3&gt;
+
+&lt;p&gt;To save time, we&amp;rsquo;ll be using an Ubuntu PPA to quickly get
+&lt;a href=&quot;https://launchpad.net/~avsm&quot;&gt;pre-packaged versions of the OCaml compiler and Opam&lt;/a&gt;, so the
+first thing to do is define which PPAs each line of the build matrix
+corresponds to.  Since we&amp;rsquo;re keeping things simple, we only need one PPA
+that has the most recent releases of OCaml and Opam.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;#!/usr/bin/env bash&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;ppa&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;avsm/ocaml41+opam11
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;yes&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; sudo add-apt-repository ppa:&lt;span class=&quot;nv&quot;&gt;$ppa&lt;/span&gt;
+sudo apt-get update -qq
+sudo apt-get install -qq ocaml ocaml-native-compilers camlp4-extra opam&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;[NB: There are many &lt;a href=&quot;https://launchpad.net/~avsm&quot;&gt;other PPAs&lt;/a&gt; for different combinations of
+OCaml/Opam which are useful for testing].  Once the appropriate PPAs have
+been set up it&amp;rsquo;s time to initialise Opam and install Mirage. &lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;OPAMYES&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1
+opam init
+opam install mirage
+&lt;span class=&quot;nb&quot;&gt;eval&lt;/span&gt; &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;opam config env&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;We set &lt;code&gt;OPAMYES=1&lt;/code&gt; to get non-interactive use of Opam (it defaults to &amp;lsquo;yes&amp;rsquo;
+for any user input) and if we want full build logs, we could also set
+&lt;code&gt;OPAMVERBOSE=1&lt;/code&gt; (I haven&amp;rsquo;t in this example).
+The rest should be straight-forward and you&amp;rsquo;ll end up with an
+Ubuntu machine with OCaml, Opam and the Mirage package installed.  It&amp;rsquo;s now
+trivial to do the next step of actually building the unikernel!&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;mirage configure --&lt;span class=&quot;nv&quot;&gt;$MIRAGE_BACKEND&lt;/span&gt;
+mirage build&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;You can see how we&amp;rsquo;ve used the environment variable from the Travis file and
+this is where our two parallel builds begin to diverge.  When you&amp;rsquo;ve saved
+this file, you&amp;rsquo;ll need to change permissions to make it executable by doing
+&lt;code&gt;$ chmod +x _mirage/travis.sh&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;That&amp;rsquo;s all you need to build the unikernel on Travis!  You should now commit
+both the YAML file and the build script to the repo and push the changes to
+GitHub.  Travis should automatically start your first build and you can
+watch the console output online to check that both the Xen and Unix backends
+complete properly.  If you notice any errors, you should go back over your
+build script and fix it before the next step.&lt;/p&gt;
+
+&lt;h2&gt;Deploying your unikernel&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;http://amirchaudhry.com/images/jekyll-unikernel/octocat.png&quot; style=&quot;float: right; margin-left: 10px&quot;/&gt;&amp;lt;/img&amp;gt;&lt;/p&gt;
+
+&lt;p&gt;When Travis has finished its builds it will simply destroy the worker and
+all its contents, including the unikernels we just built.  This is perfectly
+fine for testing but if we want to also &lt;em&gt;deploy&lt;/em&gt; a unikernel, we need to get
+it out of the Travis worker after it&amp;rsquo;s built. In this case, we want to
+extract the Xen-based unikernel so that we can later start it on a Xen-based
+machine (e.g Amazon, Rackspace or - in our case - a machine on &lt;a href=&quot;http://www.bytemark.co.uk&quot;&gt;Bytemark&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;Since the unikernel VMs are small (only tens of MB), our method for
+exporting will be to commit the Xen unikernel into a repository on GitHub.
+It can be retrieved and started later on and keeping the VMs in version
+control gives us very effective snapshots (we can roll back the site without
+having to rebuild).  This is something that would be much more challenging
+if we were using the &amp;lsquo;standard&amp;rsquo; web toolstack.&lt;/p&gt;
+
+&lt;p&gt;The deployment step is a little more complex as we have to send the
+Travis worker a private SSH key, which will give it push access to a GitHub
+repository.  Of course, we don&amp;rsquo;t want to expose that key by simply adding it
+to the Travis file so we have to encrypt it somehow. &lt;/p&gt;
+
+&lt;h3&gt;Sending Travis a private SSH key&lt;/h3&gt;
+
+&lt;p&gt;Travis supports &lt;a href=&quot;http://docs.travis-ci.com/user/encryption-keys/&quot;&gt;encrypted environment variables&lt;/a&gt;. Each
+repository has its own public key and the &lt;a href=&quot;http://rubygems.org/gems/travis&quot;&gt;Travis gem&lt;/a&gt; uses
+this public key to encrypt data, which you then add to your &lt;code&gt;.travis.yml&lt;/code&gt;
+file for decryption by the worker.  This is meant for sending things like
+private API tokens and other small amounts of data. Trying to encrypt an SSH
+key isn&amp;rsquo;t going to work as it&amp;rsquo;s too large.  Instead we&amp;rsquo;ll use
+&lt;a href=&quot;https://github.com/avsm/travis-senv&quot;&gt;travis-senv&lt;/a&gt;, which encodes, encrypts and chunks up the key into smaller
+pieces and then reassembles those pieces on the Travis worker.  We still use
+the Travis gem to encrypt the pieces to add them to the &lt;code&gt;.travis.yml&lt;/code&gt; file.&lt;/p&gt;
+
+&lt;p&gt;While you could give Travis a key that accesses your whole GitHub account, my
+preference is to create a &lt;em&gt;new&lt;/em&gt; deploy key, which will only be used for
+&lt;a href=&quot;https://help.github.com/articles/managing-deploy-keys#deploy-keys&quot;&gt;deployment to one repository&lt;/a&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;# make a key pair on your local machine&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ~/.ssh/
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;ssh-keygen -t dsa -C &lt;span class=&quot;s2&quot;&gt;&amp;quot;travis.deploy&amp;quot;&lt;/span&gt; -f travis-deploy_dsa
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; -&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Note that this is a 1024 bit key so if you decide to use a 2048 bit key,
+then be aware that Travis &lt;a href=&quot;https://github.com/avsm/travis-senv/issues/1&quot;&gt;sometimes has issues&lt;/a&gt;. Now that we have
+a key, we can encrypt it and add it to the Travis file. &lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;# on your local machine&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# install the necessary components&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;gem install travis
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;opam install travis-senv
+
+&lt;span class=&quot;c&quot;&gt;# chunk the key, add to yml file and rm the intermediate&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;travis-senv encrypt ~/.ssh/travis-deploy_dsa _travis_env
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;cat _travis_env &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; travis encrypt -ps --add
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;rm _travis_env&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code&gt;travis-senv&lt;/code&gt; encrypts and chunks the key locally on your machine, placing
+its output in a file you decide (&lt;code&gt;_travis_env&lt;/code&gt;).  We then take that output
+file and pipe it to the &lt;code&gt;travis&lt;/code&gt; ruby gem, asking it to encrypt the input,
+treating each line as separate and to be appended (&lt;code&gt;-ps&lt;/code&gt;) and then actually
+adding that to the Travis file (&lt;code&gt;--add&lt;/code&gt;).  You can run &lt;code&gt;$ travis encrypt -h&lt;/code&gt;
+to understand these options.  Once you&amp;rsquo;ve run the above commands,
+&lt;code&gt;.travis.yml&lt;/code&gt; will look as follows.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-yaml&quot; data-lang=&quot;yaml&quot;&gt;&lt;span class=&quot;l-Scalar-Plain&quot;&gt;language&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;c&lt;/span&gt;
+&lt;span class=&quot;l-Scalar-Plain&quot;&gt;before_script&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;cd _mirage&lt;/span&gt;
+&lt;span class=&quot;l-Scalar-Plain&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;bash -ex travis.sh&lt;/span&gt;
+&lt;span class=&quot;l-Scalar-Plain&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;l-Scalar-Plain&quot;&gt;matrix&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;MIRAGE_BACKEND=xen DEPLOY=0&lt;/span&gt;
+  &lt;span class=&quot;p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;MIRAGE_BACKEND=unix&lt;/span&gt;
+  &lt;span class=&quot;l-Scalar-Plain&quot;&gt;global&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;secure&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;....&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;encrypted&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;....&amp;quot;&lt;/span&gt;
+  &lt;span class=&quot;p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;secure&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;....&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;encrypted&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;....&amp;quot;&lt;/span&gt;
+  &lt;span class=&quot;p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;secure&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;....&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;encrypted&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;....&amp;quot;&lt;/span&gt;
+  &lt;span class=&quot;l-Scalar-Plain&quot;&gt;...&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The number of secure variables added depends on the type and size of the key
+you had to chunk, so it could vary from 8 up to 29. We&amp;rsquo;ll commit
+these additions later on, alongside additions to the build script.&lt;/p&gt;
+
+&lt;p&gt;At this point, we also need to make a repository on GitHub
+and add the public deploy key so
+that Travis can push to it.  Once you&amp;rsquo;ve created your repo and added a
+README, follow GitHub&amp;rsquo;s instructions on &lt;a href=&quot;https://help.github.com/articles/managing-deploy-keys#deploy-keys&quot;&gt;adding deploy keys&lt;/a&gt;
+and paste in the public key (i.e. the content of &lt;code&gt;travis-deploy_dsa.pub&lt;/code&gt;).  &lt;/p&gt;
+
+&lt;p&gt;Now that we can securely pass a private SSH key to the worker
+and have a repo that the worker can push to, we need to
+make additions to the build script.&lt;/p&gt;
+
+&lt;h3&gt;Committing the unikernel to a repository&lt;/h3&gt;
+
+&lt;p&gt;Since we can set &lt;code&gt;DEPLOY=1&lt;/code&gt; in the YAML file we only need to make
+additions to the build script.  Specifically, we want to assure that: only
+the Xen backend is deployed; only &lt;em&gt;pushes&lt;/em&gt; to the repo result in
+deployments, not pull requests (we do still want &lt;em&gt;builds&lt;/em&gt; for pull requests).&lt;/p&gt;
+
+&lt;p&gt;In the build script (&lt;code&gt;_mirage/travis.sh&lt;/code&gt;), which is being run by the worker,
+we&amp;rsquo;ll have to reconstruct the SSH key and configure Git.  In addition,
+Travis gives us a set of useful &lt;a href=&quot;http://docs.travis-ci.com/user/ci-environment/#Environment-variables&quot;&gt;environment variables&lt;/a&gt; so we&amp;rsquo;ll
+use the latest commit hash (&lt;code&gt;$TRAVIS_COMMIT&lt;/code&gt;) to name the the VM (which also
+helps us trace which commit it was built from).&lt;/p&gt;
+
+&lt;p&gt;It&amp;rsquo;s easier to consider this section of code at once so I&amp;rsquo;ve explained the
+details in the comments. This section is what you need to add at the end of
+your existing build script (i.e straight after &lt;code&gt;mirage build&lt;/code&gt;).&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;# Only deploy if the following conditions are met.&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;$MIRAGE_BACKEND&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;xen&amp;quot;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+            -a &lt;span class=&quot;s2&quot;&gt;&amp;quot;$DEPLOY&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;1&amp;quot;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+            -a &lt;span class=&quot;s2&quot;&gt;&amp;quot;$TRAVIS_PULL_REQUEST&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;false&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then&lt;/span&gt;
+
+    &lt;span class=&quot;c&quot;&gt;# The Travis worker will already have access to the chunks&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;# passed in via the yaml file. Now we need to reconstruct &lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;# the GitHub SSH key from those and set up the config file.&lt;/span&gt;
+    opam install travis-senv
+    mkdir -p ~/.ssh
+    travis-senv decrypt &amp;gt; ~/.ssh/id_dsa &lt;span class=&quot;c&quot;&gt;# This doesn't expose it&lt;/span&gt;
+    chmod &lt;span class=&quot;m&quot;&gt;600&lt;/span&gt; ~/.ssh/id_dsa             &lt;span class=&quot;c&quot;&gt;# Owner can read and write&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Host some_user github.com&amp;quot;&lt;/span&gt;   &amp;gt;&amp;gt; ~/.ssh/config
+    &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;  Hostname github.com&amp;quot;&lt;/span&gt;          &amp;gt;&amp;gt; ~/.ssh/config
+    &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;  StrictHostKeyChecking no&amp;quot;&lt;/span&gt;     &amp;gt;&amp;gt; ~/.ssh/config
+    &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;  CheckHostIP no&amp;quot;&lt;/span&gt;               &amp;gt;&amp;gt; ~/.ssh/config
+    &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;  UserKnownHostsFile=/dev/null&amp;quot;&lt;/span&gt; &amp;gt;&amp;gt; ~/.ssh/config
+
+    &lt;span class=&quot;c&quot;&gt;# Configure the worker's git details&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;# otherwise git actions will fail.&lt;/span&gt;
+    git config --global user.email &lt;span class=&quot;s2&quot;&gt;&amp;quot;user@example.com&amp;quot;&lt;/span&gt;
+    git config --global user.name &lt;span class=&quot;s2&quot;&gt;&amp;quot;Travis Build Bot&amp;quot;&lt;/span&gt;
+
+    &lt;span class=&quot;c&quot;&gt;# Do the actual work for deployment.&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;# Clone the deployment repo. Notice the user,&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;# which is the same as in the ~/.ssh/config file.&lt;/span&gt;
+    git clone git@some_user:amirmc/www-test-deploy
+    &lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;www-test-deploy
+
+    &lt;span class=&quot;c&quot;&gt;# Make a folder named for the commit. &lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;# If we're rebuiling a VM from a previous&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;# commit, then we need to clear the old one.&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;# Then copy in both the config file and VM.&lt;/span&gt;
+    rm -rf &lt;span class=&quot;nv&quot;&gt;$TRAVIS_COMMIT&lt;/span&gt;
+    mkdir -p &lt;span class=&quot;nv&quot;&gt;$TRAVIS_COMMIT&lt;/span&gt;
+    cp ../mir-www.xen ../config.ml &lt;span class=&quot;nv&quot;&gt;$TRAVIS_COMMIT&lt;/span&gt;
+
+    &lt;span class=&quot;c&quot;&gt;# Compress the VM and add a text file to note&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;# the commit of the most recently built VM.&lt;/span&gt;
+    bzip2 -9 &lt;span class=&quot;nv&quot;&gt;$TRAVIS_COMMIT&lt;/span&gt;/mir-www.xen
+    git pull --rebase
+    &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$TRAVIS_COMMIT&lt;/span&gt; &amp;gt; latest    &lt;span class=&quot;c&quot;&gt;# update ref to most recent&lt;/span&gt;
+
+    &lt;span class=&quot;c&quot;&gt;# Add, commit and push the changes!&lt;/span&gt;
+    git add &lt;span class=&quot;nv&quot;&gt;$TRAVIS_COMMIT&lt;/span&gt; latest
+    git commit -m &lt;span class=&quot;s2&quot;&gt;&amp;quot;adding $TRAVIS_COMMIT built for $MIRAGE_BACKEND&amp;quot;&lt;/span&gt;
+    git push origin master
+    &lt;span class=&quot;c&quot;&gt;# Go out and enjoy the Sun!&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;At this point you should commit the changes to &lt;code&gt;./travis.yml&lt;/code&gt; (don&amp;rsquo;t forget
+the deploy flag) and &lt;code&gt;_mirage/travis.sh&lt;/code&gt; and push the changes to GitHub.
+Everything else will take place automatically and in a few minutes you will
+have a unikernel ready to deploy on top of Xen! &lt;/p&gt;
+
+&lt;p&gt;You can see both the complete YAML file and build script in use on my
+&lt;a href=&quot;https://github.com/amirmc/www-test&quot;&gt;test repo&lt;/a&gt;, as well as the &lt;a href=&quot;https://travis-ci.org/amirmc/www-test&quot;&gt;build logs&lt;/a&gt; for that repo
+and the &lt;a href=&quot;https://github.com/amirmc/www-test-deploy&quot;&gt;deploy repo&lt;/a&gt; with a VM.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;[Pro-tip: If you add *&lt;code&gt;[skip ci]&lt;/code&gt;&lt;/em&gt; anywhere in your
+commit message, Travis will skip the build for that commit.
+This is very useful if you&amp;rsquo;re making minor changes, like updating a
+README.]*&lt;/p&gt;
+
+&lt;h2&gt;Finishing up&lt;/h2&gt;
+
+&lt;p&gt;Since I&amp;rsquo;m still using Jekyll for my website, I made a short script in my
+jekyll repository (&lt;code&gt;_deploy-unikernel.sh&lt;/code&gt;) that builds the site, commits the
+contents of &lt;code&gt;_site&lt;/code&gt; and pushes to GitHub. I simply run this after I&amp;rsquo;ve
+committed a new blog post and the rest takes care of itself.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;#!/usr/bin/env bash&lt;/span&gt;
+jekyll build
+git add _site
+git commit -m &lt;span class=&quot;s1&quot;&gt;'update _site'&lt;/span&gt;
+git push origin master&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Congratulations! You now have an end-to-end workflow that will produce a
+unikernel VM from your Jekyll-based site and push it to a repo.  If you
+strip out all the comments, you&amp;rsquo;ll see that we&amp;rsquo;ve written less than 50 lines
+of code! Admittedly, I&amp;rsquo;m not counting the 80 or so lines that came for free
+in the &lt;code&gt;*.ml&lt;/code&gt; files but that&amp;rsquo;s still pretty impressive.&lt;/p&gt;
+
+&lt;p&gt;Of course, we still need a machine to take that VM and run it but that&amp;rsquo;s a
+topic for another post.  For the time-being, I&amp;rsquo;m still using GitHub Pages
+but once the VM is hosted somewhere, I will:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Turn off GitHub Pages and serve from the VM &amp;ndash; but still using Jekyll in
+the workflow.&lt;/li&gt;
+  &lt;li&gt;Replace Jekyll with OCaml-based static-site generation.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Although all the tools already exist to switch now, I&amp;rsquo;m taking my time so
+that I can easily maintain the code I end up using.&lt;/p&gt;
+
+&lt;h2&gt;Expanding the script for testing&lt;/h2&gt;
+
+&lt;p&gt;You may have noticed that the examples here are not very flexible or
+extensible but that was a deliberate choice to keep them readable.  It&amp;rsquo;s
+possible to do much more with the build matrix and script, as you can see
+from the Travis files on my &lt;a href=&quot;https://github.com/amirmc/amirmc.github.com/tree/master/_mirage&quot;&gt;website repo&lt;/a&gt;, which were based on
+those of the &lt;a href=&quot;https://github.com/mirage/mirage-www&quot;&gt;Mirage site&lt;/a&gt; and &lt;a href=&quot;https://github.com/mor1/mort-www&quot;&gt;Mort&amp;rsquo;s site&lt;/a&gt;.
+Specifically, you can note the use of more environment variables and case
+statements to decide which PPAs to grab.  Once you&amp;rsquo;ve got your builds
+working, it&amp;rsquo;s worth improving your scripts to make them more maintainable
+and cover the test cases you feel are important.&lt;/p&gt;
+
+&lt;h3&gt;Not just for static sites (surprise!)&lt;/h3&gt;
+
+&lt;p&gt;You might have noticed that in very few places in the toolchain above have I
+mentioned anything specific to static sites per se.  The workflow is simply
+(1) do some stuff locally, (2) push to a continuous integration service
+which then (3) builds and deploys a Xen-based unikernel.  Apart from the
+convenient folder structure, the specific work to treat this as a static
+site lives in the &lt;code&gt;*.ml&lt;/code&gt; files, which I&amp;rsquo;ve skipped over for this post.  &lt;/p&gt;
+
+&lt;p&gt;As such, the GitHub+Travis workflow we&amp;rsquo;ve developed here is quite general
+and will apply to almost &lt;em&gt;any&lt;/em&gt; unikernels that we may want to construct.
+I encourage you to explore the examples in the &lt;a href=&quot;https://github.com/mirage/mirage-skeleton&quot;&gt;mirage-skeleton&lt;/a&gt; repo and
+keep your build script maintainable.  We&amp;rsquo;ll be using it again the next time
+we build unikernel devices.&lt;/p&gt;
+
+&lt;hr/&gt;
+
+&lt;p&gt;&lt;em&gt;Acknowledgements:&lt;/em&gt; There were lots of things I read over while writing this
+post but there were a few particularly useful things that you should look up.
+Anil&amp;rsquo;s posts on &lt;a href=&quot;http://anil.recoil.org/2013/09/30/travis-and-ocaml.html&quot;&gt;Testing with Travis&lt;/a&gt; and
+&lt;a href=&quot;http://anil.recoil.org/2013/10/06/travis-secure-ssh-integration.html&quot;&gt;Travis for secure deployments&lt;/a&gt; are quite succinct (and
+were themselves prompted by &lt;a href=&quot;http://blog.mlin.net/2013/02/testing-ocaml-projects-on-travis-ci.html&quot;&gt;Mike Lin&amp;rsquo;s Travis post&lt;/a&gt; several
+months earlier). Looking over Mort&amp;rsquo;s &lt;a href=&quot;https://github.com/mor1/mort-www/blob/master/.travis-build.sh&quot;&gt;build script&lt;/a&gt; and that of
+&lt;a href=&quot;https://github.com/mirage/mirage-www/blob/master/.travis-ci.sh&quot;&gt;mirage-www&lt;/a&gt; helped me figure out the deployment steps as well as improve
+my own script. Special thanks also to &lt;a href=&quot;http://erratique.ch&quot;&gt;Daniel&lt;/a&gt;, &lt;a href=&quot;http://www.lpw25.net&quot;&gt;Leo&lt;/a&gt; and &lt;a href=&quot;http://anil.recoil.org&quot;&gt;Anil&lt;/a&gt; for
+commenting on an earlier draft of this post.&lt;/p&gt;
+
+</content><id>http://amirchaudhry.com/from-jekyll-to-unikernel-in-fifty-lines</id><title type="text">From Jekyll site to Unikernel in fifty lines of code.</title><updated>2014-03-10T18:30:00+00:00</updated><author><email></email><name>Amir Chaudhry</name></author></entry><entry><link href="http://openmirage.org/blog/applying-for-gsoc2014" rel="alternate"/><contributor><uri>http://openmirage.org/blog/atom.xml</uri><name>Mirage OS</name></contributor><content type="html">
       &lt;p&gt;MirageOS will part of the &lt;a href=&quot;https://www.google-melange.com/gsoc/homepage/google/gsoc2014&quot;&gt;Google Summer of Code&lt;/a&gt; 2014
 program, thanks to the Xen Project's participation!  It's been a few years
 since I've mentored for GSoc, but I still have fond memories of some great
@@ -11846,7 +12270,7 @@ Using OCaml variants for network errors rather than exceptions is useful; this e
 &lt;p&gt;The old 0install Python code used a custom system built on top of Python&amp;rsquo;s generators, but Python&amp;rsquo;s new asyncio module provides a standardised replacement (asyncio will be added to the standard library in Python 3.4). Lwt has been around for a while and is already available from Linux distribution repositories.&lt;/p&gt;
 
 &lt;p&gt;Lwt also integrates with several other libraries, including GTK, OBus (D-BUS bindings) and React. Lwt seems very reliable. The only bug I found in Lwt so far was &lt;a href=&quot;https://github.com/ocsigen/lwt/issues/20&quot;&gt;a pipe read failure on Windows&lt;/a&gt;, which they quickly fixed.&lt;/p&gt;
-</content><id>http://roscidus.com/blog/blog/2013/11/28/asynchronous-python-vs-ocaml/</id><title type="text">Asynchronous Python vs OCaml</title><updated>2013-11-28T13:06:00+00:00</updated><author><email></email><name>Thomas Leonard</name></author></entry><entry><link href="http://amirchaudhry.com/switching-from-bootstrap-to-zurb-foundation" rel="alternate"/><contributor><uri>http://amirchaudhry.com/tags/ocaml-labs-atom.xml</uri><name>Amir Chaudhry</name></contributor><content type="html">
+</content><id>http://roscidus.com/blog/blog/2013/11/28/asynchronous-python-vs-ocaml/</id><title type="text">Asynchronous Python vs OCaml</title><updated>2013-11-28T13:06:00+00:00</updated><author><email></email><name>Thomas Leonard</name></author></entry><entry><link href="http://amirchaudhry.com/switching-from-bootstrap-to-zurb-foundation" rel="alternate"/><contributor><uri>http://amirchaudhry.com/tags/ocamllabs-atom.xml</uri><name>Amir Chaudhry</name></contributor><content type="html">
 &lt;p&gt;I&amp;rsquo;ve just updated my site&amp;rsquo;s HTML/CSS and moved from Twitter Bootstrap to 
 &lt;a href=&quot;http://foundation.zurb.com/learn/features.html&quot;&gt;Zurb Foundation&lt;/a&gt;.  This post captures my subjective notes on the 
 migration.&lt;/p&gt;
@@ -11998,7 +12422,7 @@ customised sites &amp;ndash; it&amp;rsquo;s more flexible but needs more upfront
 
 &lt;p&gt;That&amp;rsquo;s pretty much how I&amp;rsquo;d recommend them to people now.&lt;/p&gt;
 
-</content><id>http://amirchaudhry.com/switching-from-bootstrap-to-zurb-foundation</id><title type="text">Switching from Bootstrap to Zurb Foundation</title><updated>2013-11-26T21:05:00+00:00</updated><author><email></email><name>Amir Chaudhry</name></author></entry><entry><link href="http://amirchaudhry.com/announcing-new-ocamlorg" rel="alternate"/><contributor><uri>http://amirchaudhry.com/tags/ocaml-labs-atom.xml</uri><name>Amir Chaudhry</name></contributor><content type="html">
+</content><id>http://amirchaudhry.com/switching-from-bootstrap-to-zurb-foundation</id><title type="text">Switching from Bootstrap to Zurb Foundation</title><updated>2013-11-26T21:05:00+00:00</updated><author><email></email><name>Amir Chaudhry</name></author></entry><entry><link href="http://amirchaudhry.com/announcing-new-ocamlorg" rel="alternate"/><contributor><uri>http://amirchaudhry.com/tags/ocamllabs-atom.xml</uri><name>Amir Chaudhry</name></contributor><content type="html">
 &lt;p&gt;As some of you may have noticed, the new OCaml.org site is now live!  &lt;/p&gt;
 
 &lt;p&gt;The DNS may still be propagating so if &lt;a href=&quot;http://ocaml.org&quot;&gt;http://ocaml.org&lt;/a&gt; hasn&amp;rsquo;t updated for you then try http://166.78.252.20.  This post is in two parts: the first is the announcement and the second is a call for content.&lt;/p&gt;
@@ -12029,7 +12453,7 @@ customised sites &amp;ndash; it&amp;rsquo;s more flexible but needs more upfront
 
 &lt;p&gt;It&amp;rsquo;s fantastic how far we&amp;rsquo;ve come and I look forward to the next phase!&lt;/p&gt;
 
-</content><id>http://amirchaudhry.com/announcing-new-ocamlorg</id><title type="text">Announcing the new OCaml.org</title><updated>2013-11-20T23:00:00+00:00</updated><author><email></email><name>Amir Chaudhry</name></author></entry><entry><link href="http://amirchaudhry.com/migration-plan-ocaml-org" rel="alternate"/><contributor><uri>http://amirchaudhry.com/tags/ocaml-labs-atom.xml</uri><name>Amir Chaudhry</name></contributor><content type="html">
+</content><id>http://amirchaudhry.com/announcing-new-ocamlorg</id><title type="text">Announcing the new OCaml.org</title><updated>2013-11-20T23:00:00+00:00</updated><author><email></email><name>Amir Chaudhry</name></author></entry><entry><link href="http://amirchaudhry.com/migration-plan-ocaml-org" rel="alternate"/><contributor><uri>http://amirchaudhry.com/tags/ocamllabs-atom.xml</uri><name>Amir Chaudhry</name></contributor><content type="html">
 &lt;p&gt;We&amp;rsquo;re close to releasing the new design of ocaml.org but need help from the 
 OCaml community to identify and fix bugs before we switch next week.&lt;/p&gt;
 
@@ -12101,7 +12525,7 @@ the OCaml community and merged.&lt;/p&gt;
 &lt;p&gt;We're defining &amp;quot;compiler&amp;quot; pretty broadly, to include anything that's part of the standard distribution, which means at least the &lt;a href=&quot;http://caml.inria.fr/pub/docs/manual-ocaml-4.01/libref/index.html&quot;&gt;standard library&lt;/a&gt;, &lt;a href=&quot;http://caml.inria.fr/pub/docs/manual-ocaml-4.00/manual024.html&quot;&gt;runtime&lt;/a&gt;, tools (&lt;a href=&quot;http://caml.inria.fr/pub/docs/manual-ocaml-4.01/depend.html&quot;&gt;ocamldep&lt;/a&gt;, &lt;a href=&quot;http://caml.inria.fr/pub/docs/manual-ocaml-4.00/manual026.html#toc105&quot;&gt;ocamllex&lt;/a&gt;, &lt;a href=&quot;http://caml.inria.fr/pub/docs/manual-ocaml-4.00/manual026.html#toc107&quot;&gt;ocamlyacc&lt;/a&gt;, etc.), &lt;a href=&quot;http://caml.inria.fr/pub/docs/manual-camlp4/manual002.html&quot;&gt;camlp4&lt;/a&gt;, &lt;a href=&quot;http://caml.inria.fr/pub/docs/manual-ocaml-4.00/manual032.html&quot;&gt;ocamlbuild&lt;/a&gt;, the &lt;a href=&quot;http://caml.inria.fr/resources/doc/index.en.html&quot;&gt;documentation&lt;/a&gt;, and the compiler itself. We'll have suggestions for &lt;a href=&quot;https://github.com/ocamllabs/compiler-hacking/wiki/Things-to-work-on&quot;&gt;mini-projects&lt;/a&gt; for various levels of experience, but feel free to come along and work on whatever you fancy.&lt;/p&gt;
 
 &lt;p&gt;We'll also be ordering pizza, so if you want to be counted for food you should aim to arrive by 6.30pm.&lt;/p&gt;
-</content><id>http://ocamllabs.github.com/compiler-hacking/2013/10/30/third-compiler-hacking-session</id><title type="text">Third OCaml compiler hacking session</title><updated>2013-10-30T11:49:04+00:00</updated><author><email>cl-ocamllabs@lists.cam.ac.uk (OCaml Labs)</email><name>Compiler Hacking</name></author></entry><entry><link href="http://amirchaudhry.com/fpdays-review" rel="alternate"/><contributor><uri>http://amirchaudhry.com/tags/ocaml-labs-atom.xml</uri><name>Amir Chaudhry</name></contributor><content type="html">
+</content><id>http://ocamllabs.github.com/compiler-hacking/2013/10/30/third-compiler-hacking-session</id><title type="text">Third OCaml compiler hacking session</title><updated>2013-10-30T11:49:04+00:00</updated><author><email>cl-ocamllabs@lists.cam.ac.uk (OCaml Labs)</email><name>Compiler Hacking</name></author></entry><entry><link href="http://amirchaudhry.com/fpdays-review" rel="alternate"/><contributor><uri>http://amirchaudhry.com/tags/ocamllabs-atom.xml</uri><name>Amir Chaudhry</name></contributor><content type="html">
 &lt;p&gt;&lt;a href=&quot;http://fpdays.net/2013/sessions/index.php?session=24&quot;&gt;&lt;img src=&quot;http://amirchaudhry.com/images/web/fpdays-logo.png&quot; style=&quot;float: right; margin-top: 10px; margin-left: 10px&quot;/&gt;&lt;/a&gt;
 Last Thursday a bunch of us from the OCaml Labs team gave an OCaml tutorial 
 at the &lt;a href=&quot;http://fpdays.net/2013/sessions/index.php?session=24&quot;&gt;FPDays&lt;/a&gt; conference (an event for people interested in Functional 
@@ -12269,7 +12693,7 @@ the FPDays crew for a great conference!&lt;/p&gt;
 
 &lt;p&gt;(Thanks to Jeremy, Leo, David and Philippe for contributions to this post)&lt;/p&gt;
 
-</content><id>http://amirchaudhry.com/fpdays-review</id><title type="text">Review of the OCaml FPDays tutorial</title><updated>2013-10-28T12:30:00+00:00</updated><author><email></email><name>Amir Chaudhry</name></author></entry><entry><link href="http://amirchaudhry.com/fpdays-ocaml-session" rel="alternate"/><contributor><uri>http://amirchaudhry.com/tags/ocaml-labs-atom.xml</uri><name>Amir Chaudhry</name></contributor><content type="html">
+</content><id>http://amirchaudhry.com/fpdays-review</id><title type="text">Review of the OCaml FPDays tutorial</title><updated>2013-10-28T12:30:00+00:00</updated><author><email></email><name>Amir Chaudhry</name></author></entry><entry><link href="http://amirchaudhry.com/fpdays-ocaml-session" rel="alternate"/><contributor><uri>http://amirchaudhry.com/tags/ocamllabs-atom.xml</uri><name>Amir Chaudhry</name></contributor><content type="html">
 &lt;p&gt;On Thursday, along with &lt;a href=&quot;https://github.com/yallop&quot;&gt;Jeremy&lt;/a&gt; and 
 &lt;a href=&quot;http://www.lpw25.net&quot;&gt;Leo&lt;/a&gt;, I&amp;rsquo;ll be running an OCaml Hands-on Session at 
 the &lt;a href=&quot;http://fpdays.net/2013/&quot;&gt;FPDays conference&lt;/a&gt;. Below are some prep 
@@ -13442,7 +13866,7 @@ the variable 'a is unbound
     &lt;p&gt;When declaring argument types, whether to use &lt;code&gt;(system:system)&lt;/code&gt; (I need a &lt;code&gt;system&lt;/code&gt; object) or &lt;code&gt;(system:#system)&lt;/code&gt; (the type of objects from subclasses of &lt;code&gt;system&lt;/code&gt;). In general, I don&amp;rsquo;t understand why we need separate types for these concepts.&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
-</content><id>http://roscidus.com/blog/blog/2013/09/28/ocaml-objects/</id><title type="text">Experiences with OCaml objects</title><updated>2013-09-28T12:52:00+00:00</updated><author><email></email><name>Thomas Leonard</name></author></entry><entry><link href="http://amirchaudhry.com/ocamlorg-request-for-feedback" rel="alternate"/><contributor><uri>http://amirchaudhry.com/tags/ocaml-labs-atom.xml</uri><name>Amir Chaudhry</name></contributor><content type="html">
+</content><id>http://roscidus.com/blog/blog/2013/09/28/ocaml-objects/</id><title type="text">Experiences with OCaml objects</title><updated>2013-09-28T12:52:00+00:00</updated><author><email></email><name>Thomas Leonard</name></author></entry><entry><link href="http://amirchaudhry.com/ocamlorg-request-for-feedback" rel="alternate"/><contributor><uri>http://amirchaudhry.com/tags/ocamllabs-atom.xml</uri><name>Amir Chaudhry</name></contributor><content type="html">
 &lt;p&gt;There is a work-in-progress site at 
 &lt;a href=&quot;http://ocaml-redesign.github.io&quot;&gt;ocaml-redesign.github.io&lt;/a&gt;, where we&amp;rsquo;ve 
 been developing both the tools and design for the new ocaml.org pages.  This 
@@ -19932,7 +20356,7 @@ had productive discussions about how we could try Mezzo out when it's released.&
 &lt;p&gt;&lt;i&gt;Link roundup:&lt;/i&gt;&lt;/p&gt;
 &lt;ul&gt;&lt;li&gt;&lt;a href=&quot;http://www.linuxfoundation.org/news-media/announcements/2013/04/xen-become-linux-foundation-collaborative-project&quot; class=&quot;icon-rss&quot;&gt;Xen and MirageOS to join Linux Foundation&lt;/a&gt; &lt;em&gt;(Apr 14th)&lt;/em&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;http://www.meetup.com/Cambridge-NonDysFunctional-Programmers/events/114286762/&quot; class=&quot;icon-community&quot;&gt;OCaml Hacking/Meetup Session&lt;/a&gt; &lt;em&gt;(Apr 18th)&lt;/em&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;http://www.oscon.com/oscon2013/public/schedule/detail/28956&quot; class=&quot;icon-quick-links&quot;&gt;OSCon Mirage talk selected.&lt;/a&gt; &lt;em&gt;(Apr 21st)&lt;/em&gt;&lt;/li&gt;&lt;/ul&gt;
 
-   </content><id>http://www.cl.cam.ac.uk/projects/ocamllabs/news/index.html#Apr%202013</id><title type="text">Apr 2013 news update</title><updated>2013-04-01T12:00:00+00:00</updated><author><email></email><name>Anil Madhavapeddy</name></author></entry><entry><link href="http://amirchaudhry.com/wireframe-demos-for-ocamlorg" rel="alternate"/><contributor><uri>http://amirchaudhry.com/tags/ocaml-labs-atom.xml</uri><name>Amir Chaudhry</name></contributor><content type="html">
+   </content><id>http://www.cl.cam.ac.uk/projects/ocamllabs/news/index.html#Apr%202013</id><title type="text">Apr 2013 news update</title><updated>2013-04-01T12:00:00+00:00</updated><author><email></email><name>Anil Madhavapeddy</name></author></entry><entry><link href="http://amirchaudhry.com/wireframe-demos-for-ocamlorg" rel="alternate"/><contributor><uri>http://amirchaudhry.com/tags/ocamllabs-atom.xml</uri><name>Amir Chaudhry</name></contributor><content type="html">
 &lt;h3&gt;Making mockups&lt;/h3&gt;
 
 &lt;p&gt;Over the last few months, I&amp;rsquo;ve been working on various aspects of the &lt;a href=&quot;http://ocaml.org&quot;&gt;OCaml.org&lt;/a&gt; design project.  This covers things like the design, information architecture and how to incorporate new functionality.  One of the methods for thinking through these was to put together a bunch of wireframes using &lt;a href=&quot;http://www.balsamiq.com&quot;&gt;Balsamiq&lt;/a&gt; and use these to express (and generate) ideas as well as get feedback quickly.&lt;/p&gt;
@@ -21239,29 +21663,4 @@ public domain for use by anyone.&lt;/p&gt;
 website live, to much electronic &lt;a href=&quot;https://twitter.com/jakedonham/status/281170330700095488&quot;&gt;applause&lt;/a&gt;.
 A great way to end 2012!&lt;/p&gt;
 
-   </content><id>http://www.cl.cam.ac.uk/projects/ocamllabs/news/index.html#Dec%202012</id><title type="text">Dec 2012 news update</title><updated>2012-12-01T12:00:00+00:00</updated><author><email></email><name>Anil Madhavapeddy</name></author></entry><entry><link href="http://www.cl.cam.ac.uk/projects/ocamllabs/news/index.html#Nov%202012" rel="alternate"/><contributor><uri>http://www.cl.cam.ac.uk/projects/ocamllabs/news/atom.xml</uri><name>OCL Monthly News</name></contributor><content type="html">
-      &lt;p&gt;OCaml Labs finally opened its doors with announcements from
-&lt;a href=&quot;https://ocaml.janestreet.com/?q=node/109&quot;&gt;Yaron&lt;/a&gt; and
-&lt;a href=&quot;http://anil.recoil.org/2012/10/19/announcing-ocaml-labs.html&quot;&gt;Anil&lt;/a&gt;!  Although
-much of the remainder of November was spent on administration and wiring up
-machines for the forthcoming &lt;a href=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/tasks/platform.html#Machine%20Pool&quot;&gt;test cluster&lt;/a&gt;, we
-also celebrated the acceptance of a paper on &lt;a href=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/tasks/mirage.html&quot;&gt;Mirage&lt;/a&gt;
-to &lt;a href=&quot;http://anil.recoil.org/papers/2013-asplos-mirage.pdf&quot;&gt;ASPLOS 2013&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/images/caml-consortium-20121101.jpg&quot;&gt;&lt;img src=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/images/caml-consortium-20121101-thumb.jpg&quot; width=&quot;130px&quot; class=&quot;right&quot;/&gt;&lt;/a&gt;
-We also had a very productive visit from &lt;a href=&quot;http://www.ocamlpro.com&quot;&gt;OCamlPro&lt;/a&gt;.
-Fabrice, Thomas and Pierre came over to discuss the new
-&lt;a href=&quot;http://opam.ocamlpro.com&quot;&gt;OPAM&lt;/a&gt; package manager and the plans for building an
-OCaml Platform in 2013. This was in preparation for the subsequent Consortium
-meeting of the industrial board of OCaml, where Anil was able to present (and
-get approved) an overview of what &lt;a href=&quot;http://ocaml.org&quot;&gt;ocaml.org&lt;/a&gt; would become.
-You can see the &lt;a href=&quot;http://anil.recoil.org/slides/OCaml-Consortium-2012-OCamlLabs.pdf&quot;&gt;slides of his talk online&lt;/a&gt;.  An
-interesting thing to note is just how broad the set of OCaml language users
-are: right the way from formal methods, to systems projects, and even web
-developers.&lt;/p&gt;
-&lt;p&gt;Since the Consortium meeting, the infrastructure behind ocaml.org is being
-built out and there's already been helpful input via the
-&lt;a href=&quot;http://lists.ocaml.org/listinfo/infrastructure&quot;&gt;infrastructure mailing list&lt;/a&gt;.  A continuous build system has been put together for internal testing, with
-support from Citrix, and &lt;a href=&quot;http://www.cl.cam.ac.uk/projects/ocamllabs/news/atom.xml#opam&quot;&gt;OPAM&lt;/a&gt; itself continues to mature and grow in
-popularity.&lt;/p&gt;
-
-   </content><id>http://www.cl.cam.ac.uk/projects/ocamllabs/news/index.html#Nov%202012</id><title type="text">Nov 2012 news update</title><updated>2012-11-01T12:00:00+00:00</updated><author><email></email><name>Anil Madhavapeddy</name></author></entry></feed>
+   </content><id>http://www.cl.cam.ac.uk/projects/ocamllabs/news/index.html#Dec%202012</id><title type="text">Dec 2012 news update</title><updated>2012-12-01T12:00:00+00:00</updated><author><email></email><name>Anil Madhavapeddy</name></author></entry></feed>
