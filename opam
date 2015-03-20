@@ -1,0 +1,26 @@
+opam-version: "1.2"
+maintainer:   "anil@recoil.org"
+authors:      [
+  "Anil Madhavapeddy" "Amir Chaudhry" "Philippe Wang"
+  "Jeremy Yallop" "David Sheets"
+]
+homepage:     "https://ocaml.io/"
+dev-repo:     "https://github.com/ocamllabs/ocl-reporter.git"
+bug-reports:  "https://github.com/ocamllabs/ocl-reporter/issues/"
+tags:         "org:ocamllabs"
+
+build:   [make]
+
+depends: [
+  "ocamlfind"
+  "omd"
+  "cohttp"
+  "lwt"
+  "core"
+  "cow"
+  "ocamlnet"
+  "ocaml-planet"
+  "sexplib"
+  "syndic"
+  "uri"
+]
