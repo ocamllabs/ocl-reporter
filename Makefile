@@ -1,5 +1,5 @@
 build:
-	ocamlbuild -j 4 -use-ocamlfind -package omd,cohttp.lwt,core,cow,cow.syntax,lwt,netstring,ocaml_planet,sexplib.syntax,syndic,uri -tag thread,annot -syntax camlp4o lib/www.native
+	ocamlbuild -j 4 -use-ocamlfind -package omd,cohttp.lwt,core,cow,cow.syntax,lwt,netstring,river,sexplib.syntax,syndic,uri -tag thread,annot -syntax camlp4o lib/www.native
 
 clean:
 	rm -rf _build
