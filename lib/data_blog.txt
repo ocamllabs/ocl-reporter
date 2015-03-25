@@ -9,3 +9,4 @@ Mindy Preston|http://www.somerandomidiot.com/blog/categories/ocaml/atom.xml
 Leo White|http://www.lpw25.net/atom.xml
 Magnus Skjegstad|http://www.skjegstad.com/feeds/all.atom.xml
 Amir Chaudhry|http://amirchaudhry.com/tags/ocamllabs-atom.xml
+KC Sivaramakrishnan|http://kcsrk.info/atom.xml
