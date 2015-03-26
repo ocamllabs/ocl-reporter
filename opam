@@ -2,7 +2,7 @@ opam-version: "1.2"
 maintainer:   "anil@recoil.org"
 authors:      [
   "Anil Madhavapeddy" "Amir Chaudhry" "Philippe Wang"
-  "Jeremy Yallop" "David Sheets"
+  "Jeremy Yallop" "David Sheets" "KC Sivaramakrishnan"
 ]
 homepage:     "https://ocaml.io/"
 dev-repo:     "https://github.com/ocamllabs/ocl-reporter.git"
@@ -19,7 +19,7 @@ depends: [
   "core"
   "cow"
   "ocamlnet"
-  "ocaml-planet"
+  "river"
   "sexplib"
   "syndic"
   "uri"

@@ -2,6 +2,15 @@
 open Core.Std
 open Types.Paper
 
+let quelea_2015 =
+  mk ~id:"quelea-pldi-2015"
+     ~title:"Declarative Programming over Eventually Consistent Data Stores"
+     ~url:"http://kcsrk.info/papers/quelea_pldi15.pdf"
+     ~authors:"KC Sivaramakrishnan, Gowtham Kaki and Suresh Jagannathan"
+     ~date:"2015-06-13"
+     ~conf:"36th annual ACM SIGPLAN conference on Programming Language Design and Implementation"
+     ~conf_url:"http://conf.researchr.org/home/pldi2015"
+
 let jitsu_2015 =
   mk ~id:"jitsu-nsdi-2015"
      ~title:"Jitsu: Just-In-Time Summoning of Unikernels"
@@ -28,7 +37,7 @@ let raft_2015 =
      ~date:"2015-01-10"
      ~conf:"ACM SIGOPS Operating System Review special issue on Repeatability and Sharing of Experimental Artifacts"
      ~conf_url:"http://dl.acm.org/citation.cfm?doid=2723872.2723876"
- 
+
 let irmin_jfla_2015 =
   mk ~id:"irmin-jfla-2015"
      ~title:"Mergeable Persistent Data Structures"
@@ -92,7 +101,7 @@ let mirageos_ocaml_2014 =
      ~conf:"ACM SIGPLAN ML Family Workshop"
      ~conf_url:"http://okmij.org/ftp/ML/ML14.html"
 
-let ocaml_platform_2014 = 
+let ocaml_platform_2014 =
   mk ~id:"ocl-platform-2014"
      ~title:"The OCaml Platform v1.0"
      ~url:"http://ocaml.org/meetings/ocaml/2014/ocaml2014_7.pdf"
@@ -224,7 +233,7 @@ let hotcloud_2010 =
      ~url:"http://anil.recoil.org/papers/2010-hotcloud-lamp.pdf"
      ~authors:"Anil Madhavapeddy, Richard Mortier, Ripduman Sohan, Thomas Gazagnaire, Steven Hand, Tim Deegan, Derek McAuley and Jon Crowcroft"
      ~date:"2010-06-22"
-     ~conf:"HotCloud 2010" 
+     ~conf:"HotCloud 2010"
      ~conf_url:"http://static.usenix.org/events/hotcloud10/index.html"
 
 let conext_pvtcp =
@@ -246,6 +255,7 @@ let sas_2013 =
      ~conf_url:"http://research.microsoft.com/en-us/events/sas2013/"
 
 let all = [
+  quelea_2015;
   databox_2015;
   kadupul_2014;
   jitsu_2015;
