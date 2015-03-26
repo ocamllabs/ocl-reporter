@@ -4,7 +4,7 @@ let mk_recent ~date ~url ~author ~title : string =
   sprintf
 "<tr>
     <td><i> %s </i></td>
-    <td><a href=\"#%s\">%s</a></td>
+    <td><a href=\"#%s-link\">%s</a></td>
     <td>%s</td>
  </tr>
 " date url title author
@@ -13,8 +13,8 @@ let mk_post ~url ~title ~blog_url ~blog_title ~blog_name ~author
             ~date ~content : string =
   sprintf
 "<div class=\"channelgroup\">
-  <div class=\"entrygroup\" id=\"%s\">
-    <a name=\"#%s\"> </a>
+  <div class=\"entrygroup\" id=\"%s-link\">
+    <a name=\"#%s-link\"> </a>
     <h1 class=\"posttitle\">
       <a href=\"%s\">%s</a>
       (<a href=\"%s\" title=\"%s\">%s</a>)
@@ -40,8 +40,8 @@ let mk_post_with_face ~url ~title ~blog_url ~blog_title ~blog_name ~author
                       ~date ~content ~face ~face_height : string =
   sprintf
 "<div class=\"channelgroup\">
-  <div class=\"entrygroup\" id=\"%s\">
-    <a name=\"#%s\"> </a>
+  <div class=\"entrygroup\" id=\"%s-link\">
+    <a name=\"#%s-link\"> </a>
     <div>
     <img style=\"float:right; padding-left: 20px;\" class=\"face\" src=\"%s\" width=\"\" height=\"%d\" alt=\"\" />
     <h1 class=\"posttitle\">

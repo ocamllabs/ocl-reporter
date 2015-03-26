@@ -34,7 +34,7 @@ let toggle ?(anchor="") html1 html2 =
   let button id1 id2 text =
     Element("a", ["onclick", sprintf "switchContent('%s','%s')" id1 id2;
                   "class", "btn planet-toggle";
-                  "href", "#" ^ anchor],
+                  "href", "#" ^ anchor ^ "-link"],
             [Data text])
   in
   let id1 = new_id() and id2 = new_id() in
