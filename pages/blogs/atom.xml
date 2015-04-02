@@ -1,5 +1,317 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><subtitle type="text">Real World Functional Programming</subtitle><link href="http://ocaml.io/blogs/atom.xml" rel="self"/><author><name>OCaml Labs</name></author><id>http://ocaml.io/blogs/atom.xml</id><title type="text">OCaml Labs Blogs</title><updated>2015-03-26T09:33:17+00:00</updated><entry><link href="http://kcsrk.info/multicore/opam/ocaml/2015/03/25/opam-switch-to-multicore/" rel="alternate"/><contributor><uri>http://kcsrk.info/atom-ocaml.xml</uri><name>KC Sivaramakrishnan</name></contributor><content type="html">&lt;p&gt;OPAM has a great &lt;a href=&quot;https://opam.ocaml.org/doc/Usage.html#opamswitch&quot;&gt;compiler
+<feed xmlns="http://www.w3.org/2005/Atom"><subtitle type="text">Real World Functional Programming</subtitle><link href="http://ocaml.io/blogs/atom.xml" rel="self"/><author><name>OCaml Labs</name></author><id>http://ocaml.io/blogs/atom.xml</id><title type="text">OCaml Labs Blogs</title><updated>2015-04-02T08:14:29+00:00</updated><entry><link href="http://amirchaudhry.com/heroku-for-unikernels-pt1" rel="alternate"/><contributor><uri>http://amirchaudhry.com/tags/ocamllabs-atom.xml</uri><name>Amir Chaudhry</name></contributor><content type="html">
+&lt;p&gt;In my &lt;a href=&quot;http://amirchaudhry.com/from-jekyll-to-unikernel-in-fifty-lines/&quot;&gt;Jekyll to Unikernel post&lt;/a&gt;, I described an automated
+workflow that would take your static website, turn it into a MirageOS
+unikernel, and then store that unikernel in a git repo for later deployment. 
+Although it was written from the perspective of a static website, the process
+was applicable to any MirageOS project.
+This post covers how things have progressed since then and the kind of
+automated, end-to-end deployments that we can achieve with unikernels.  &lt;/p&gt;
+
+&lt;p&gt;If you&amp;rsquo;re already familiar with the above-linked post then it should be clear
+that this will involve writing a few more scripts and ensuring
+they&amp;rsquo;re in the right place.  The rest of this post will go through a real
+world example of such an automated system, which we&amp;rsquo;ve set up for building and
+deploying the unikernel that serves our slide decks &amp;mdash; &lt;a href=&quot;https://github.com/mirage/mirage-decks&quot;&gt;mirage-decks&lt;/a&gt;.  Once
+you&amp;rsquo;ve gone though this post, you should be able to recreate such a workflow
+for your own needs. In Part 2 of this series I&amp;rsquo;ll build on this post and
+consider what the possibilities could be if we extended the system using
+some of our &lt;a href=&quot;http://amirchaudhry.com/brewing-miso-to-serve-nymote/&quot;&gt;other tools&lt;/a&gt; &amp;mdash; thus arriving at something very much
+like our own Heroku for Unikernels.&lt;/p&gt;
+
+&lt;h3&gt;Standardised build scripts&lt;/h3&gt;
+
+&lt;p&gt;Almost all of our OCaml projects now use Travis CI for build and testing (and
+deployment). In fact, there are so many libraries now that we recently put
+together an &lt;a href=&quot;https://github.com/ocaml/ocaml-travisci-skeleton&quot;&gt;OCaml Travis Skeleton&lt;/a&gt;, which means we don&amp;rsquo;t
+have to manually keep the scripts in sync across all our repos &amp;mdash; and fewer
+copy/paste/edits means fewer mistakes. &lt;/p&gt;
+
+&lt;p&gt;If you&amp;rsquo;re familiar with the build scripts from &lt;a href=&quot;http://amirchaudhry.com/from-jekyll-to-unikernel-in-fifty-lines#setting-up-travis-ci&quot;&gt;last time&lt;/a&gt;, then
+you can browse the new scripts and you&amp;rsquo;ll see that they&amp;rsquo;re broadly similar. 
+In many cases you may well be able to depend on one or other of the scripts
+directly and for a handful of scenarios, you can fork and patch them to
+suit you (i.e. for MirageOS unikernels).  We can do this because we&amp;rsquo;ve made it
+quick to set up an OCaml environment using an &lt;a href=&quot;https://launchpad.net/~avsm&quot;&gt;Ubuntu PPA&lt;/a&gt;. The rest
+of the work is done by the &lt;code&gt;mirage&lt;/code&gt; tool itself so once that&amp;rsquo;s installed, the
+build process becomes fairly straightforward. The complexity around secure
+keys was also &lt;a href=&quot;http://amirchaudhry.com/from-jekyll-to-unikernel-in-fifty-lines/#sending-travis-a-private-ssh-key&quot;&gt;covered last time&lt;/a&gt;, which allowed us to commit the
+final unikernel to a deployment repo.  That means the remaining step is
+to automate the deployment itself.&lt;/p&gt;
+
+&lt;h3&gt;Automated deployment of unikernels&lt;/h3&gt;
+
+&lt;p&gt;Committing the unikernel to a deployment repo is where the previous post ended
+and a &lt;a href=&quot;http://amirchaudhry.com/unikernels-for-everyone/&quot;&gt;number of people&lt;/a&gt; forged ahead and wrote about their
+experiences deploying onto AWS and Linode.  Many of these deployments
+(understandably) involve a number of quite manual steps. It would be
+particularly useful to construct a set of scripts that can be fully automated,
+such that a &lt;code&gt;git push&lt;/code&gt; to a repo will automatically run through the cycle of
+building, testing, storing and &lt;em&gt;activating&lt;/em&gt; a new unikernel.  We&amp;rsquo;ve done
+exactly this with some of our repos and this post will talk through those
+scripts.  &lt;/p&gt;
+
+&lt;h4&gt;The deployment options &amp;mdash; Xen or *nix&lt;/h4&gt;
+
+&lt;p&gt;MirageOS unikernels can currently be built for Xen and Unix backends.  This is
+a straightforward step and typically the build matrix is already set up to
+test that both of them build as expected. For this post, I&amp;rsquo;ve only considered
+the Xen backend as that&amp;rsquo;s our chosen deployment method but it would be equally
+feasible to deploy the unix-based unikernels onto a *nix machine in much the
+same way. 
+In this sense, you get to choose whether you want to deploy the unikernels
+onto a &lt;a href=&quot;http://en.wikipedia.org/wiki/Hypervisor#Classification&quot;&gt;Hypervisor&lt;/a&gt; (for isolation and security) or whether running
+them as unix-processes better suits your needs. 
+
+The unikernel approach means that &lt;em&gt;both&lt;/em&gt; options are open to
+you, with little more than a command-line flag between them.&lt;/p&gt;
+
+&lt;p&gt;In terms of the deployment machines there are several options to consider. The
+most obvious is to set up a dedicated host, where you have full access to the
+machine and can &lt;a href=&quot;http://wiki.xenproject.org/wiki/Xen_Project_Beginners_Guide&quot;&gt;install Xen&lt;/a&gt;.  Another is to have a machine
+running on EC2 and &lt;a href=&quot;http://somerandomidiot.com/blog/2014/08/19/i-am-unikernel/&quot;&gt;create scripts&lt;/a&gt; to deal with unikernels. You
+could also build and deploy onto &lt;a href=&quot;http://openmirage.org/wiki/xen-on-cubieboard2&quot;&gt;Xen on the Cubieboard2&lt;/a&gt;. If you&amp;rsquo;d
+rather test out the complete system first, you could set up an appropriate
+&lt;a href=&quot;http://www.skjegstad.com/blog/2015/01/19/mirageos-xen-virtualbox/&quot;&gt;machine in Virtualbox&lt;/a&gt; to work with.&lt;/p&gt;
+
+&lt;p&gt;For our workflow, we use Xen unikernels which we deploy to a dedicated host. 
+For the sake of brevity, I won&amp;rsquo;t go into the details of how to set up
+the machine but you can follow the instructions linked above.&lt;/p&gt;
+
+&lt;h4&gt;The scripts for decks.openmirage.org&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/mirage/mirage-decks&quot;&gt;Decks&lt;/a&gt; is the source repo that holds many of our slides, which
+we&amp;rsquo;ve presented at conferences and events over the years (I admit that I have
+yet to &lt;a href=&quot;https://github.com/mirage/mirage-decks/issues/49&quot;&gt;add mine&lt;/a&gt;).  The repo compiles to a unikernel that can
+then serve those slides, as you see at &lt;a href=&quot;http://decks.openmirage.org&quot;&gt;decks.openmirage.org&lt;/a&gt;. For
+maximum fun-factor, we usually run that unikernel from a Cubieboard2 when
+giving talks.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://amirchaudhry.com/images/singles/mirage-cubieboard.jpg&quot; alt=&quot;mirage-decks-on-cubieboard&quot;/&gt;&lt;/p&gt;
+
+&lt;p&gt;The toolchain for this unikernel includes build, store and deploy.  We&amp;rsquo;ll
+recap the first two steps before going through the final one.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Build&lt;/strong&gt; &amp;mdash; In the root of the decks source repo, you&amp;rsquo;ll notice the
+&lt;code&gt;.travis.yml&lt;/code&gt; file, which fetches the standard build script mentioned earlier.
+Building the unikernel proceeds according to the options in the build matrix. &lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-yaml&quot; data-lang=&quot;yaml&quot;&gt;&lt;span class=&quot;l-Scalar-Plain&quot;&gt;language&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;c&lt;/span&gt;
+&lt;span class=&quot;l-Scalar-Plain&quot;&gt;install&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;wget https://raw.githubusercontent.com/ocaml/ocaml-travisci-skeleton/master/.travis-mirage.sh&lt;/span&gt;
+&lt;span class=&quot;l-Scalar-Plain&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;bash -ex .travis-mirage.sh&lt;/span&gt;
+&lt;span class=&quot;l-Scalar-Plain&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;l-Scalar-Plain&quot;&gt;matrix&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;OCAML_VERSION=4.02 MIRAGE_BACKEND=unix MIRAGE_NET=socket&lt;/span&gt;
+  &lt;span class=&quot;p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;OCAML_VERSION=4.02 MIRAGE_BACKEND=unix MIRAGE_NET=direct&lt;/span&gt;
+  &lt;span class=&quot;p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;OCAML_VERSION=4.02 MIRAGE_BACKEND=xen&lt;/span&gt;
+    &lt;span class=&quot;l-Scalar-Plain&quot;&gt;MIRAGE_ADDR=&amp;quot;46.43.42.134&amp;quot; MIRAGE_MASK=&amp;quot;255.255.255.128&amp;quot; MIRAGE_GWS=&amp;quot;46.43.42.129&amp;quot;&lt;/span&gt;
+    &lt;span class=&quot;l-Scalar-Plain&quot;&gt;DEPLOY=1&lt;/span&gt;
+  &lt;span class=&quot;l-Scalar-Plain&quot;&gt;global&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;secure&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;....&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;encrypted&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;....&amp;quot;&lt;/span&gt;
+  &lt;span class=&quot;p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;secure&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;....&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;encrypted&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;....&amp;quot;&lt;/span&gt;
+  &lt;span class=&quot;p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;secure&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;....&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;encrypted&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;....&amp;quot;&lt;/span&gt;
+  &lt;span class=&quot;l-Scalar-Plain&quot;&gt;...&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;In this case, two builds occur for Unix and one for Xen with different
+parameters being used for each.  If you look at the
+&lt;a href=&quot;https://github.com/mirage/mirage-decks/blob/master/.travis.yml&quot;&gt;actual travis file&lt;/a&gt;, you&amp;rsquo;ll notice there are 26 lines of
+encrypted data.  This is how we pass the deployment key to Travis CI, so that
+it has push access to the &lt;em&gt;separate&lt;/em&gt; &lt;a href=&quot;https://github.com/mirage/mirage-decks-deployment&quot;&gt;mirage-decks-deployment&lt;/a&gt;
+repo.  You can read the section in the previous post to see how we
+&lt;a href=&quot;https://github.com/mirage/mirage-decks-deployment&quot;&gt;send Travis a private key&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Store&lt;/strong&gt; &amp;mdash; One of the combinations in the build matrix (configured for Xen),
+is intended for deployment.  When that unikernel is completed, an additional
+part of the script is triggered that pushes it into the deployment repo. &lt;/p&gt;
+
+&lt;h4&gt;Deployment scripts&lt;/h4&gt;
+
+&lt;p&gt;After the &amp;lsquo;build&amp;rsquo; and &amp;lsquo;store&amp;rsquo; steps above, we have a
+&lt;a href=&quot;https://github.com/mirage/mirage-decks-deployment&quot;&gt;deployment repository&lt;/a&gt; with a collection of Xen unikernels. For
+this stage, we have a new set of scripts that live in this repo alongside those
+unikernels. Specifically, you&amp;rsquo;ll notice a folder called &lt;code&gt;scripts&lt;/code&gt; that
+contains four files.  &lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;.
+&amp;#9500;&amp;#9472;&amp;#9472; Makefile
+&amp;#9500;&amp;#9472;&amp;#9472; README.md
+&amp;#9500;&amp;#9472;&amp;#9472; scripts
+&amp;#9474;&amp;nbsp;&amp;nbsp; &amp;#9500;&amp;#9472;&amp;#9472; crontab
+&amp;#9474;&amp;nbsp;&amp;nbsp; &amp;#9500;&amp;#9472;&amp;#9472; deploy.sh
+&amp;#9474;&amp;nbsp;&amp;nbsp; &amp;#9500;&amp;#9472;&amp;#9472; install-hooks.sh
+&amp;#9474;&amp;nbsp;&amp;nbsp; &amp;#9492;&amp;#9472;&amp;#9472; post-merge.hook
+...&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;A quick summary of the setup is that we clone the repo onto our deployment
+machine and install some hooks there.  Then a simple cronjob will perform
+&lt;code&gt;git pull&lt;/code&gt; at regular intervals.  If a merge event occurs, then it means the
+repo has been updated and another script is triggered. That script removes the
+currently running unikernel and boots the latest version from the repo.  It&amp;rsquo;s
+fairly straightforward and I&amp;rsquo;ll explain what each of the files does below.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Makefile&lt;/strong&gt; - After cloning the repo, run &lt;code&gt;make install&lt;/code&gt;.  This will trigger
+&lt;code&gt;install-hooks.sh&lt;/code&gt; to set things up appropriately. It&amp;rsquo;s worth remembering that
+from this point on, the git repo on the deployment machine will not be
+identical to the deployment repo on GitHub.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;install-hooks.sh&lt;/strong&gt; &amp;mdash;  The first two lines ensure that the commands
+will be run from the root of the git repo.  The third line symlinks the
+&lt;code&gt;post-merge.hook&lt;/code&gt; file into the appropriate place within the &lt;code&gt;.git&lt;/code&gt; directory.
+This is the folder where customized &lt;a href=&quot;http://www.git-scm.com/book/en/v2/Customizing-Git-Git-Hooks&quot;&gt;git hooks&lt;/a&gt; need to be placed in
+order to work.  The final line adds the file &lt;code&gt;scripts/crontab&lt;/code&gt; to the
+deployment machine&amp;rsquo;s list of cron jobs.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;ROOT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;git rev-parse --show-toplevel&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;# obtain path to root of repo&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$ROOT&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# symlink the post-merge.sh file into the .git/hooks folder&lt;/span&gt;
+ln -sf &lt;span class=&quot;nv&quot;&gt;$ROOT&lt;/span&gt;/scripts/post-merge.hook &lt;span class=&quot;nv&quot;&gt;$ROOT&lt;/span&gt;/.git/hooks/post-merge
+crontab scripts/crontab                &lt;span class=&quot;c&quot;&gt;# add to list of cron jobs&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;crontab&lt;/strong&gt; &amp;mdash; This file is a cronjob that sets up the deployment machine to
+perform a &lt;code&gt;git pull&lt;/code&gt; on the deployment repo at regular intervals. Changing the
+file in the repo will ultimately cause it to be updated on the deployment
+machine (cf. &lt;code&gt;deploy.sh&lt;/code&gt;). At the moment, it&amp;rsquo;s set to run every 11 minutes.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;*/11 * * * * &lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$HOME&lt;/span&gt;/mirage-decks-deployment &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; git pull&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;post-merge.hook&lt;/strong&gt; &amp;mdash; Since we&amp;rsquo;ve already run the Makefile, this file is
+symlinked from the appropriate place on the deployment machine&amp;rsquo;s copy of the
+repo.  When a &lt;code&gt;git pull&lt;/code&gt; results in new commits being downloaded and merged,
+then this script is triggered immediately afterwards.  In this case, it just
+executes the &lt;code&gt;deploy.sh&lt;/code&gt; script.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;ROOT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;git rev-parse --show-toplevel&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;# obtain path to root of repo&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;exec&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$ROOT&lt;/span&gt;/scripts/deploy.sh           &lt;span class=&quot;c&quot;&gt;# execute the deploy script&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;deploy.sh&lt;/strong&gt; &amp;mdash; This is where the work actually happens and you&amp;rsquo;ll notice that
+there really isn&amp;rsquo;t much to do!  I&amp;rsquo;ve commented in the code below to explain
+what&amp;rsquo;s going on.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;VM&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;mir-decks
+&lt;span class=&quot;nv&quot;&gt;XM&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;xm
+
+&lt;span class=&quot;nv&quot;&gt;ROOT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;git rev-parse --show-toplevel&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$ROOT&lt;/span&gt;
+
+crontab scripts/crontab     &lt;span class=&quot;c&quot;&gt;# Update cron scripts&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Identify the latest build in the repo and then use&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# the generic Xen config script to construct a&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# specific file for this unikernel. Essentially,&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# 'sed' just does a find/replace on two elements and&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# the result is written to a new file.&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;KERNEL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ROOT&lt;/span&gt;/xen/&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;cat xen/latest&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
+sed -e &lt;span class=&quot;s2&quot;&gt;&amp;quot;s,@VM@,$VM,g; s,@KERNEL@,$KERNEL/$VM.xen,g&amp;quot;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+    &amp;lt; &lt;span class=&quot;nv&quot;&gt;$XM&lt;/span&gt;.conf.in &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+    &amp;gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$KERNEL&lt;/span&gt;/&lt;span class=&quot;nv&quot;&gt;$XM&lt;/span&gt;.conf
+
+&lt;span class=&quot;c&quot;&gt;# Move into the folder with the latest unikernel.&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Remove any uncompressed Xen images found there&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# (since we may be starting a rebuilt unikernel).&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Unzip the compressed unikernel.&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$KERNEL&lt;/span&gt;
+rm -f &lt;span class=&quot;nv&quot;&gt;$VM&lt;/span&gt;.xen
+bunzip2 -k &lt;span class=&quot;nv&quot;&gt;$VM&lt;/span&gt;.xen.bz2
+
+&lt;span class=&quot;c&quot;&gt;# Instruct Xen to remove the currently running&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# unikernel and then start up the new one we&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# just unzipped.&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#&lt;/span&gt;
+sudo &lt;span class=&quot;nv&quot;&gt;$XM&lt;/span&gt; destroy &lt;span class=&quot;nv&quot;&gt;$VM&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;
+sudo &lt;span class=&quot;nv&quot;&gt;$XM&lt;/span&gt; create &lt;span class=&quot;nv&quot;&gt;$XM&lt;/span&gt;.conf&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;At this point, we now have a complete system!
+Of course, this arrangement isn&amp;rsquo;t perfect and
+there are number of things we could improve.  For example, it depends on a
+cron job, which means it may take a while before a new unikernel is live.
+Replacing this with something triggered on a webhook could be an improvement,
+but it does mean exposing an end-point to the internet.  The scripts will also
+redeploy the &lt;em&gt;current&lt;/em&gt; unikernel, even if the only change is to the crontab
+schedule.  Some extra work in the deploy script, using some git tools, might
+work around this. &lt;/p&gt;
+
+&lt;p&gt;Despite these minor issues, we do have a completely end-to-end workflow that
+takes us all the way from pushing some new changes to deploying a new
+unikernel!  An additional feature is that &lt;em&gt;everything&lt;/em&gt; is checked into version
+control. Right from the scripts to completed artefacts (including a method of
+transmitting secure keys/data, over public systems). &lt;/p&gt;
+
+&lt;p&gt;There is minimal work done outside the code you&amp;rsquo;ve already seen, though there
+is obviously some effort involved in setting up the deployment machine. 
+However, as mentioned earlier, you could either use the unix-based unikernels
+or experiment with &lt;a href=&quot;http://www.skjegstad.com/blog/2015/01/19/mirageos-xen-virtualbox/&quot;&gt;Virtualbox VM with Xen&lt;/a&gt; just to test out this
+entire toolchain. &lt;/p&gt;
+
+&lt;p&gt;Overall, we&amp;rsquo;ve only added around 20 lines of code to the initial 50 or so that
+we use for the Travis CI build.  So for &lt;em&gt;less than 100 lines of code&lt;/em&gt;, we have
+a &lt;em&gt;complete&lt;/em&gt; end-to-end system that can take a MirageOS project from a
+&lt;code&gt;git push&lt;/code&gt;, all the way through to a live deployment.  &lt;/p&gt;
+
+&lt;h3&gt;Fleshing out the backbone&lt;/h3&gt;
+
+&lt;p&gt;In our current system, if the unikernel &lt;em&gt;builds&lt;/em&gt; appropriately then we just
+assume it&amp;rsquo;s ok to deploy to production. Fire and forget! What could
+possibly go wrong!  Of course, this is a somewhat naive approach and for any
+critical system it would be better to hook in some additional things.&lt;/p&gt;
+
+&lt;h4&gt;Testing frameworks&lt;/h4&gt;
+
+&lt;p&gt;One obvious improvement would be to introduce a more thorough testing regimen,
+which would include running unit tests as part of the build. Indeed, various
+libraries in the MirageOS project are already moving towards this model
+(e.g see the &lt;a href=&quot;http://openmirage.org/wiki/weekly-2015-03-11#Qualityandtest&quot;&gt;notes&lt;/a&gt; for links).  &lt;/p&gt;
+
+&lt;p&gt;It&amp;rsquo;s even possible to go beyond unit tests and introduce more
+functional/systems/stress testing on the complete unikernel before permitting
+deployment.  This would help to surface any wider issues as services interact
+and we could even simulate network conditions &amp;mdash; achieving something like
+&amp;lsquo;staging on steroids&amp;rsquo;.  &lt;/p&gt;
+
+&lt;h4&gt;Logging and notifications&lt;/h4&gt;
+
+&lt;p&gt;The scenario we have above also assumes that things work smoothly and nobody
+needs to know anything.  It would be useful to hook in some form of logging
+and reporting, such that when a new unikernel is deployed a notification can
+be sent/stored somewhere. In the short term, there are likely existing tools
+and ways of doing this so it would be a matter of putting them together.&lt;/p&gt;
+
+&lt;h4&gt;Looking ahead&lt;/h4&gt;
+
+&lt;p&gt;Overall, with the above model, we can easily set up a system where we go from
+writing code, to testing it via CI, to deploying it to a staging server for
+functional tests, and finally pushing it out into live deployment.  All of
+this can be done with a few additional scripts and minimal interaction from
+the developer.  We can achieve this because we don&amp;rsquo;t have to concern ourselves
+with large blobs of code, multiple different systems and keeping environments
+in sync. Once we&amp;rsquo;ve built the unikernel, the rest almost becomes trivial. &lt;/p&gt;
+
+&lt;p&gt;This is close enough for me to declare it as a &amp;lsquo;Heroku for unikernels&amp;rsquo; but
+obviously, there&amp;rsquo;s much more we can (and should) do with such a system. If we
+extrapolate &lt;em&gt;just a little&lt;/em&gt; from where we are now, there are a range of
+exciting possibilities to consider in terms of automation, scalability and
+distributed systems.  Especially if we incorporate other aspects of the
+&lt;a href=&quot;http://amirchaudhry.com/brewing-miso-to-serve-nymote/&quot;&gt;toolstack we&amp;rsquo;re working towards&lt;/a&gt;.  &lt;/p&gt;
+
+&lt;p&gt;Part 2 of this series is where I&amp;rsquo;ll consider these possibilities, which will
+be more speculative and less constrained.  It will cover the kinds of systems
+we can create once the tools are more mature and will touch on ideas around
+hyper-elastic clouds, embedded systems and what this means for the concept of
+immutable infrastructure.&lt;/p&gt;
+
+&lt;p&gt;Since we already have the &amp;lsquo;backbone&amp;rsquo; of the toolchain in place, it&amp;rsquo;s easier to
+see where it can be extended and how.&lt;/p&gt;
+
+&lt;hr/&gt;
+
+&lt;p class=&quot;footnote&quot;&gt;
+Thanks to Anil Madhavapeddy and Thomas Leonard for comments on an earlier
+draft and Richard Mortier for his work on the deployment toolchain.
+&lt;/p&gt;
+
+</content><id>http://amirchaudhry.com/heroku-for-unikernels-pt1</id><title type="text">Towards Heroku for Unikernels: Part 1 - Automated deployment</title><updated>2015-03-31T14:30:00+00:00</updated><author><email></email><name>Amir Chaudhry</name></author></entry><entry><link href="http://kcsrk.info/multicore/opam/ocaml/2015/03/25/opam-switch-to-multicore/" rel="alternate"/><contributor><uri>http://kcsrk.info/atom-ocaml.xml</uri><name>KC Sivaramakrishnan</name></contributor><content type="html">&lt;p&gt;OPAM has a great &lt;a href=&quot;https://opam.ocaml.org/doc/Usage.html#opamswitch&quot;&gt;compiler
 switch&lt;/a&gt; feature that lets you
 simultaneously host several OCaml installations, each with its own compiler
 version and a set of installed packages. I wanted to use the power of &lt;code&gt;opam
@@ -15926,7 +16238,7 @@ If you need tremedous speed or more security, this might fit your
 needs.&lt;/p&gt;
 
    </content><id>http://openmirage.org/blog/introducing-vchan</id><title type="text">Introducing vchan</title><updated>2013-08-23T17:43:00+00:00</updated><author><email></email><name>Vincent Bernardoff</name></author></entry><entry><link href="http://hh360.user.srcf.net/blog/?p=86" rel="alternate"/><contributor><uri>http://hh360.user.srcf.net/blog/category/pl/ocaml/feed/</uri><name>Heidi Howard</name></contributor><content type="html">&lt;p&gt;Beta3 of RWO is now available:&amp;nbsp;&lt;a href=&quot;https://realworldocaml.org/&quot;&gt;https://realworldocaml.org/&lt;/a&gt;&amp;nbsp;and anil (one of the co-authors) comments on the release&amp;nbsp;&lt;a href=&quot;http://anil.recoil.org/2013/08/06/real-world-ocaml-beta2.html&quot;&gt;http://anil.recoil.org/2013/08/06/real-world-ocaml-beta2.html&lt;/a&gt;&lt;/p&gt;
-&lt;figure style=&quot;width: 180px;&quot; class=&quot;wp-caption aligncenter&quot;&gt;&lt;img src=&quot;https://realworldocaml.org/media/img/oreilly-cover.gif&quot; alt=&quot;&quot; width=&quot;180&quot; height=&quot;236&quot;/&gt;&lt;figcaption class=&quot;wp-caption-text&quot;&gt;Cover of RWO&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;div style=&quot;width: 190px&quot; class=&quot;wp-caption aligncenter&quot;&gt;&lt;img src=&quot;https://realworldocaml.org/media/img/oreilly-cover.gif&quot; alt=&quot;&quot; width=&quot;180&quot; height=&quot;236&quot;/&gt;&lt;p class=&quot;wp-caption-text&quot;&gt;Cover of RWO&lt;/p&gt;&lt;/div&gt;
 </content><id>http://hh360.user.srcf.net/blog/?p=86</id><title type="text">Real World OCaml beta3 release</title><updated>2013-08-19T10:39:34+00:00</updated><author><email></email><name>Heidi Howard</name></author></entry><entry><link href="http://openmirage.org/blog/oscon13-trip-report" rel="alternate"/><contributor><uri>http://openmirage.org/blog/atom.xml</uri><name>Mirage OS</name></contributor><content type="html">
       &lt;p&gt;Now that Mirage OS is rapidly converging on a
 &lt;a href=&quot;http://github.com/avsm/mirage/issues/102&quot;&gt;Developer Preview Release 1&lt;/a&gt;, we
@@ -21671,152 +21983,4 @@ experience the clickable demo via &lt;a href=&quot;http://amirchaudhry.com/wiref
 &lt;p&gt;&lt;i&gt;Link roundup:&lt;/i&gt;&lt;/p&gt;
 &lt;ul&gt;&lt;li&gt;&lt;a href=&quot;http://www.lpw25.net/2013/02/05/camlp4-alternative-part-2.html&quot; class=&quot;icon-rss&quot;&gt;An alternative to camlp4 - Part 2&lt;/a&gt; &lt;em&gt;(Feb 5th)&lt;/em&gt;&lt;/li&gt;&lt;/ul&gt;
 
-   </content><id>http://www.cl.cam.ac.uk/projects/ocamllabs/news/index.html#Feb%202013</id><title type="text">Feb 2013 news update</title><updated>2013-02-01T12:00:00+00:00</updated><author><email></email><name>Anil Madhavapeddy</name></author></entry><entry><link href="http://lpw25.net/2013/01/23/camlp4-alternative-part-1.html" rel="alternate"/><contributor><uri>http://www.lpw25.net/atom.xml</uri><name>Leo White</name></contributor><content type="html">&lt;p&gt;Since its creation camlp4 has proven to be a very useful tool. People have used
-it to experiment with new features for OCaml and to provide interesting
-meta-programming facilities. However, there is general agreement that camlp4 is
-too powerful and complex for the applications that it is most commonly used for,
-and there is a growing movement to provide a simpler alternative.&lt;/p&gt;
-
-&lt;p&gt;The &lt;a href=&quot;http://lists.ocaml.org/listinfo/wg-camlp4&quot;&gt;wg-camlp4@lists.ocaml.org&lt;/a&gt;
-mailing list has been created to discuss implementing this simpler
-alternative. This blog post is a way of kick-starting the discussion on this
-list, by explaining my thoughts on what needs to be done.&lt;/p&gt;
-
-&lt;p&gt;Personally, I think that providing a real alternative to camlp4 involves two
-phases. The first phase is to provide support for implementing the most popular
-camlp4 extensions without camlp4. Since the people who have implemented these
-extensions already require good knowledge of the OCaml grammar it is not
-unreasonable to expect a similar level of expertise to use the alternative. This
-phase can easily be implemented before the next OCaml release, and I will
-discuss what I think that will involve in the remainder of this post.&lt;/p&gt;
-
-&lt;p&gt;The second phase involves extending this support to allow general OCaml
-programmers to write extensions, and to include such extensions within the
-language itself rather than as part of a pre-processor. I will discuss my
-thoughts on this phase in a later blog post.&lt;/p&gt;
-
-&lt;h4&gt;Camlp4 in the wild&lt;/h4&gt;
-
-&lt;p&gt;Camlp4 works by producing pre-processors that parse an OCaml file and then output
-a syntax tree directly into the compiler. Extensions are written by extending
-the default OCaml parser and converting any new syntax tree nodes into existing
-OCaml nodes. Most of the complexity in camlp4 comes from its extensible
-grammars, which gives camlp4 the ability to extend the OCaml syntax
-arbitrarily. However, most applications do not need this ability. &lt;/p&gt;
-
-&lt;p&gt;From an ad-hoc survey of camlp4 extensions in the OPAM repository, most of the
-popular camlp4 extensions seem to fall into one of three categories: &lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-Type-conv style extensions such as 
-&lt;a href=&quot;https://bitbucket.org/yminsky/ocaml-core/wiki/Home&quot;&gt;sexplib&lt;/a&gt;, 
-&lt;a href=&quot;https://github.com/mirage/orm&quot;&gt;ORM&lt;/a&gt; and 
-&lt;a href=&quot;https://github.com/mirage/dyntype&quot;&gt;dyntype&lt;/a&gt;. 
-These extend the syntax to allow code such as:
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ocaml&quot; data-lang=&quot;ocaml&quot;&gt;&lt;span class=&quot;k&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;42&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sexp_drop_default&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;z&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sexp_drop_if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;z_test&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; 
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sexp&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;/li&gt;
-&lt;li&gt;
-Extensions using camlp4's quotations syntax such as 
-&lt;a href=&quot;https://github.com/mirage/ocaml-cow&quot;&gt;COW&lt;/a&gt;. These look like:
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ocaml&quot; data-lang=&quot;ocaml&quot;&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;html&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hello&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;world&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;/li&gt;
-&lt;li&gt;
-Other syntax extensions that could be expressed using existing syntax or the
-camlp4 quotation syntax. For example, 
-&lt;a href=&quot;http://ocsigen.org/js_of_ocaml/&quot;&gt;js_of_ocaml&lt;/a&gt; provides a
-&lt;code&gt;##&lt;/code&gt; operator for accessing javascript objects. This could easily be replaced by
-a valid operator such as &lt;code&gt;%%&lt;/code&gt;.
-&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;By providing support for these specific kinds of extension, we can provide an
-alternative to camlp4 for the majority of its applications.&lt;/p&gt;
-
-&lt;h4&gt;AST transformers, attributes and quotations&lt;/h4&gt;
-
-&lt;p&gt;A much simpler alternative to allowing arbitrary syntax extensions is to use
-&lt;em&gt;AST transformers&lt;/em&gt;, &lt;em&gt;attributes&lt;/em&gt; and &lt;em&gt;quotations&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;AST transformers are simply functions that perform transformations on the OCaml
-syntax tree. These can already be implemented using the new
-&amp;ldquo;&lt;a href=&quot;http://www.lexifi.com/blog/syntax-extensions-without-camlp4-lets-do-it&quot;&gt;-ppx&lt;/a&gt;&amp;rdquo;
-command line option that has been included on the OCaml development trunk by
-Alain Frisch. This option accepts a program as an argument, and pipes the syntax
-tree through that program after parsing and before type checking.&lt;/p&gt;
-
-&lt;p&gt;Attributes are places in the grammar where generic data can be attached to the
-syntax tree. This data is simply ignored by the main OCaml compiler, but it can
-used be AST transformers to control transformations. &lt;/p&gt;
-
-&lt;p&gt;Quotations are any construct that is not lexed or parsed by the compiler. These
-can be attributes, expressions, patterns etc. The contents of a quotation can be
-lexed and parsed by an AST transformer and converted into a regular AST node.&lt;/p&gt;
-
-&lt;p&gt;Before support for attributes and quotations can be added to the compiler
-decisions need to be made about what kinds of attributes and quotations to
-support. Personally I prefer quotation attributes to attributes that are parsed
-by the compiler because they are more flexible. However there is no reason that
-both kinds cannot be supported by the compiler using different syntax.&lt;/p&gt;
-
-&lt;p&gt;I think that it is important to support at least the following kinds of attribute:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-Simple named quotations for expressions, patterns and type expressions:
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ocaml&quot; data-lang=&quot;ocaml&quot;&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;:&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;Foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;foo&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;some&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;random&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;/li&gt;
-&lt;li&gt;
-Type constructor quotation attributes:
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ocaml&quot; data-lang=&quot;ocaml&quot;&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bar&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;some&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;random&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;/li&gt;
-&lt;li&gt;
-Type-conv style definition attributes:
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ocaml&quot; data-lang=&quot;ocaml&quot;&gt;&lt;span class=&quot;k&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 
-&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bar&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;(* some valid expression *)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;/li&gt;
-&lt;li&gt;
-Annotating types with syntactically valid expressions:
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ocaml&quot; data-lang=&quot;ocaml&quot;&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;@@&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;(* some valid expression *)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;()&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Once support for these attributes and quotations is added to OCaml I think that
-the majority of camlp4 applications could be easily converted into AST
-transformers.&lt;/p&gt;
-
-&lt;p&gt;In order to make this transition easy, work must also be done to provide tools
-for manipulating OCaml&amp;rsquo;s AST and parsing quotations. It would also be worthwhile
-trying to normalise some of the stranger corners of the OCaml syntax tree. This
-will make writing AST transformers simpler and more robust&lt;/p&gt;
-
-&lt;p&gt;Finally, the &amp;ldquo;-ppx&amp;rdquo; option must be integrated into the many OCaml build
-systems.&lt;/p&gt;
-
-&lt;h4&gt;Join the discussion&lt;/h4&gt;
-
-&lt;p&gt;The above suggestions are just the attributes and quotations that I think will
-be necessary to provide a viable alternative to camlp4. However, I suspect that
-they are not sufficient. It would be very useful to hear from anyone who has
-written camlp4 extensions about what kind of extensions they have written, and
-what they think would be necessary to support their extensions without
-camlp4. So please join the
-&lt;a href=&quot;http://lists.ocaml.org/listinfo/wg-camlp4&quot;&gt;wg-camlp4@lists.ocaml.org&lt;/a&gt; list and post
-your thoughts.&lt;/p&gt;
-</content><id>http://lpw25.net/2013/01/23/camlp4-alternative-part-1.html</id><title type="text">An alternative to camlp4 - Part 1</title><updated>2013-01-23T00:00:00+00:00</updated><author><email></email><name>Leo White</name></author></entry></feed>
+   </content><id>http://www.cl.cam.ac.uk/projects/ocamllabs/news/index.html#Feb%202013</id><title type="text">Feb 2013 news update</title><updated>2013-02-01T12:00:00+00:00</updated><author><email></email><name>Anil Madhavapeddy</name></author></entry></feed>
