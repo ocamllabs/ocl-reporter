@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><subtitle type="text">Real World Functional Programming</subtitle><link href="http://ocaml.io/blogs/atom.xml" rel="self"/><author><name>OCaml Labs</name></author><id>http://ocaml.io/blogs/atom.xml</id><title type="text">OCaml Labs Blogs</title><updated>2015-04-02T08:14:29+00:00</updated><entry><link href="http://amirchaudhry.com/heroku-for-unikernels-pt1" rel="alternate"/><contributor><uri>http://amirchaudhry.com/tags/ocamllabs-atom.xml</uri><name>Amir Chaudhry</name></contributor><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><subtitle type="text">Real World Functional Programming</subtitle><link href="http://ocaml.io/blogs/atom.xml" rel="self"/><author><name>OCaml Labs</name></author><id>http://ocaml.io/blogs/atom.xml</id><title type="text">OCaml Labs Blogs</title><updated>2015-04-02T18:24:35+00:00</updated><entry><link href="http://amirchaudhry.com/heroku-for-unikernels-pt1" rel="alternate"/><contributor><uri>http://amirchaudhry.com/tags/ocamllabs-atom.xml</uri><name>Amir Chaudhry</name></contributor><content type="html">
 &lt;p&gt;In my &lt;a href=&quot;http://amirchaudhry.com/from-jekyll-to-unikernel-in-fifty-lines/&quot;&gt;Jekyll to Unikernel post&lt;/a&gt;, I described an automated
 workflow that would take your static website, turn it into a MirageOS
 unikernel, and then store that unikernel in a git repo for later deployment. 
@@ -311,90 +311,7 @@ Thanks to Anil Madhavapeddy and Thomas Leonard for comments on an earlier
 draft and Richard Mortier for his work on the deployment toolchain.
 &lt;/p&gt;
 
-</content><id>http://amirchaudhry.com/heroku-for-unikernels-pt1</id><title type="text">Towards Heroku for Unikernels: Part 1 - Automated deployment</title><updated>2015-03-31T14:30:00+00:00</updated><author><email></email><name>Amir Chaudhry</name></author></entry><entry><link href="http://kcsrk.info/multicore/opam/ocaml/2015/03/25/opam-switch-to-multicore/" rel="alternate"/><contributor><uri>http://kcsrk.info/atom-ocaml.xml</uri><name>KC Sivaramakrishnan</name></contributor><content type="html">&lt;p&gt;OPAM has a great &lt;a href=&quot;https://opam.ocaml.org/doc/Usage.html#opamswitch&quot;&gt;compiler
-switch&lt;/a&gt; feature that lets you
-simultaneously host several OCaml installations, each with its own compiler
-version and a set of installed packages. I wanted to use the power of &lt;code&gt;opam
-switch&lt;/code&gt; for working with the experimental &lt;a href=&quot;https://github.com/kayceesrk/ocaml-multicore&quot;&gt;multicore
-OCaml&lt;/a&gt; compiler. The key
-advantage of doing this is that it lets you easily install packages from the
-&lt;a href=&quot;http://opam.ocaml.org/&quot;&gt;OPAM repository&lt;/a&gt;, while sandboxing it from other OCaml
-installations on your system. The post will show how to create OPAM compiler
-switch for multicore OCaml.&lt;/p&gt;
-
-&lt;h2&gt;Install opam-compiler-conf&lt;/h2&gt;
-
-&lt;p&gt;The first step is to install Gabriel Scherer's &lt;a href=&quot;https://github.com/gasche/opam-compiler-conf&quot;&gt;opam-compiler-conf
-script&lt;/a&gt; which lets you do opam
-switches on local installations:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git clone https://github.com/gasche/opam-compiler-conf
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;opam-compiler-conf
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;mkdir -p ~/.local/bin
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;make &lt;span class=&quot;nv&quot;&gt;BINDIR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;~/.local/bin install&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;This installs the &lt;code&gt;opam-compiler-conf&lt;/code&gt; script under &lt;code&gt;~/.local/bin&lt;/code&gt;. Make sure
-this directory is under your search path. Now, &lt;code&gt;$opam compiler-conf&lt;/code&gt; should
-give you the list of available commands.&lt;/p&gt;
-
-&lt;h2&gt;Build multicore OCaml locally&lt;/h2&gt;
-
-&lt;p&gt;Typing &lt;code&gt;opam switch&lt;/code&gt; should list the compilers currently installed in your
-system and those that are available. For instance, here is my setup:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;opam switch
-system  C system  System compiler &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;4.02.1&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-4.02.1  I 4.02.1  Official 4.02.1 release
-4.02.0  I 4.02.0  Official 4.02.0 release
-4.01.0  I 4.01.0  Official 4.01.0 release
---     -- 3.11.2  Official 3.11.2 release
---     -- 3.12.1  Official 3.12.1 release
---     -- 4.00.0  Official 4.00.0 release
---     -- 4.00.1  Official 4.00.1 release
-&lt;span class=&quot;c&quot;&gt;# 66 more patched or experimental compilers, use '--all' to show&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;You can easily switch between the installations using &lt;code&gt;opam switch
-&amp;lt;system-name&amp;gt;&lt;/code&gt;. Let us now install multicore OCaml as a new switch:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git clone https://github.com/kayceesrk/ocaml-multicore
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;ocaml-multicore
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;opam compiler-conf configure
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;make world
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;opam compiler-conf install
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;eval&lt;/span&gt; &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;opam config env&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;The multicore compiler is now installed and has been made the current compiler:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;opam switch
-system                      I system                      System compiler &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;4.02.1&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-4.02.1+local-git-multicore  C 4.02.1+local-git-multicore  Local checkout of 4.02.1 at /Users/kc/ocaml-multicore
-4.02.1                      I 4.02.1                      Official 4.02.1 release
-4.02.0                      I 4.02.0                      Official 4.02.0 release
-4.01.0                      I 4.01.0                      Official 4.01.0 release
---                         -- 3.11.2                      Official 3.11.2 release
---                         -- 3.12.1                      Official 3.12.1 release
---                         -- 4.00.0                      Official 4.00.0 release
---                         -- 4.00.1                      Official 4.00.1 release
-&lt;span class=&quot;c&quot;&gt;# 66 more patched or experimental compilers, use '--all' to show&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;This can be confirmed by:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;ocamlc -version
-4.02.1+multicore-dev0&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;which shows the current OCaml bytecode compiler version.&lt;/p&gt;
-
-&lt;h2&gt;Working with the local switch&lt;/h2&gt;
-
-&lt;p&gt;Every time you change the compiler source, you need to rebuild the compiler and
-reinstall the switch:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;# Changed compiler source...&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;make world
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;opam compiler-conf reinstall&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;The local installation can be removed by &lt;code&gt;opam compiler-conf uninstall&lt;/code&gt;.&lt;/p&gt;
-</content><id>http://kcsrk.info/multicore/opam/ocaml/2015/03/25/opam-switch-to-multicore/</id><title type="text">Opam Switch to Multicore OCaml</title><updated>2015-03-25T18:15:00+00:00</updated><author><email></email><name>KC Sivaramakrishnan</name></author></entry><entry><link href="http://www.skjegstad.com/blog/2015/03/25/mirageos-vm-per-url-experiment/" rel="alternate"/><contributor><uri>http://www.skjegstad.com/feeds/all.atom.xml</uri><name>Magnus Skjegstad</name></contributor><content type="html">&lt;p&gt;I recently wrote a DNS server that can boot unikernels on demand called &lt;a href=&quot;https://github.com/MagnusS/jitsu&quot;&gt;Jitsu&lt;/a&gt;. The following diagram shows a simplified version of how Jitsu works. The client sends a DNS query to a DNS server (Jitsu). The DNS server starts a unikernel and sends a DNS response back to the client while the unikernel is booting. When the client receives the DNS response it opens a TCP connection to the unikernel, which now has completed booting and is ready to respond to the TCP connection.&lt;/p&gt;
+</content><id>http://amirchaudhry.com/heroku-for-unikernels-pt1</id><title type="text">Towards Heroku for Unikernels: Part 1 - Automated deployment</title><updated>2015-03-31T14:30:00+00:00</updated><author><email></email><name>Amir Chaudhry</name></author></entry><entry><link href="http://www.skjegstad.com/blog/2015/03/25/mirageos-vm-per-url-experiment/" rel="alternate"/><contributor><uri>http://www.skjegstad.com/feeds/all.atom.xml</uri><name>Magnus Skjegstad</name></contributor><content type="html">&lt;p&gt;I recently wrote a DNS server that can boot unikernels on demand called &lt;a href=&quot;https://github.com/MagnusS/jitsu&quot;&gt;Jitsu&lt;/a&gt;. The following diagram shows a simplified version of how Jitsu works. The client sends a DNS query to a DNS server (Jitsu). The DNS server starts a unikernel and sends a DNS response back to the client while the unikernel is booting. When the client receives the DNS response it opens a TCP connection to the unikernel, which now has completed booting and is ready to respond to the TCP connection.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://www.skjegstad.com/images/blog/jitsu/jitsu.jpg&quot; class=&quot;center&quot;/&gt;&lt;/p&gt;
 &lt;p&gt;The unikernels are built using &lt;a href=&quot;http://www.openmirage.org&quot;&gt;MirageOS&lt;/a&gt;, a library operating system that allows applications to be compiled directly to small Xen VMs. These unikernels only include the operating system components the application needs - nothing else is added. This results in very small VMs with low resource requirements that boot quickly. &lt;/p&gt;
 &lt;p&gt;Now, what if I wanted to use Jitsu to boot my unikernel website when someone accesses it? My website is fairly low traffic, so this could potentially save me some resource use and hosting costs. Unfortunately, there are always a few requests per hour to some of the more popular sections, which likely would make my unikernel run most of the time. But what if I could split my unikernel into even smaller unikernels? What if I went to an extreme and had one unikernel per URL? Then I could only boot unikernels for the URLs that are being used and they would only need to know how to serve a single page. This could also have a number of benefits, such as the ability to spin up multiple unikernels for an extremely popular web page and use DNS to direct clients to the unikernel that is closest to them &amp;mdash; while keeping the rest of the site inactive (let's ignore web crawlers for now). If I had dynamic sections of my website there could also be security benefits: Every dynamic page would run as a separate VM. An attack on a single page would not have to bring down the rest of the site nor reveal any data stored in other unikernels.&lt;/p&gt;
@@ -21983,4 +21900,152 @@ experience the clickable demo via &lt;a href=&quot;http://amirchaudhry.com/wiref
 &lt;p&gt;&lt;i&gt;Link roundup:&lt;/i&gt;&lt;/p&gt;
 &lt;ul&gt;&lt;li&gt;&lt;a href=&quot;http://www.lpw25.net/2013/02/05/camlp4-alternative-part-2.html&quot; class=&quot;icon-rss&quot;&gt;An alternative to camlp4 - Part 2&lt;/a&gt; &lt;em&gt;(Feb 5th)&lt;/em&gt;&lt;/li&gt;&lt;/ul&gt;
 
-   </content><id>http://www.cl.cam.ac.uk/projects/ocamllabs/news/index.html#Feb%202013</id><title type="text">Feb 2013 news update</title><updated>2013-02-01T12:00:00+00:00</updated><author><email></email><name>Anil Madhavapeddy</name></author></entry></feed>
+   </content><id>http://www.cl.cam.ac.uk/projects/ocamllabs/news/index.html#Feb%202013</id><title type="text">Feb 2013 news update</title><updated>2013-02-01T12:00:00+00:00</updated><author><email></email><name>Anil Madhavapeddy</name></author></entry><entry><link href="http://lpw25.net/2013/01/23/camlp4-alternative-part-1.html" rel="alternate"/><contributor><uri>http://www.lpw25.net/atom.xml</uri><name>Leo White</name></contributor><content type="html">&lt;p&gt;Since its creation camlp4 has proven to be a very useful tool. People have used
+it to experiment with new features for OCaml and to provide interesting
+meta-programming facilities. However, there is general agreement that camlp4 is
+too powerful and complex for the applications that it is most commonly used for,
+and there is a growing movement to provide a simpler alternative.&lt;/p&gt;
+
+&lt;p&gt;The &lt;a href=&quot;http://lists.ocaml.org/listinfo/wg-camlp4&quot;&gt;wg-camlp4@lists.ocaml.org&lt;/a&gt;
+mailing list has been created to discuss implementing this simpler
+alternative. This blog post is a way of kick-starting the discussion on this
+list, by explaining my thoughts on what needs to be done.&lt;/p&gt;
+
+&lt;p&gt;Personally, I think that providing a real alternative to camlp4 involves two
+phases. The first phase is to provide support for implementing the most popular
+camlp4 extensions without camlp4. Since the people who have implemented these
+extensions already require good knowledge of the OCaml grammar it is not
+unreasonable to expect a similar level of expertise to use the alternative. This
+phase can easily be implemented before the next OCaml release, and I will
+discuss what I think that will involve in the remainder of this post.&lt;/p&gt;
+
+&lt;p&gt;The second phase involves extending this support to allow general OCaml
+programmers to write extensions, and to include such extensions within the
+language itself rather than as part of a pre-processor. I will discuss my
+thoughts on this phase in a later blog post.&lt;/p&gt;
+
+&lt;h4&gt;Camlp4 in the wild&lt;/h4&gt;
+
+&lt;p&gt;Camlp4 works by producing pre-processors that parse an OCaml file and then output
+a syntax tree directly into the compiler. Extensions are written by extending
+the default OCaml parser and converting any new syntax tree nodes into existing
+OCaml nodes. Most of the complexity in camlp4 comes from its extensible
+grammars, which gives camlp4 the ability to extend the OCaml syntax
+arbitrarily. However, most applications do not need this ability. &lt;/p&gt;
+
+&lt;p&gt;From an ad-hoc survey of camlp4 extensions in the OPAM repository, most of the
+popular camlp4 extensions seem to fall into one of three categories: &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+Type-conv style extensions such as 
+&lt;a href=&quot;https://bitbucket.org/yminsky/ocaml-core/wiki/Home&quot;&gt;sexplib&lt;/a&gt;, 
+&lt;a href=&quot;https://github.com/mirage/orm&quot;&gt;ORM&lt;/a&gt; and 
+&lt;a href=&quot;https://github.com/mirage/dyntype&quot;&gt;dyntype&lt;/a&gt;. 
+These extend the syntax to allow code such as:
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ocaml&quot; data-lang=&quot;ocaml&quot;&gt;&lt;span class=&quot;k&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;42&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sexp_drop_default&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;z&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sexp_drop_if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;z_test&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; 
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sexp&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/li&gt;
+&lt;li&gt;
+Extensions using camlp4's quotations syntax such as 
+&lt;a href=&quot;https://github.com/mirage/ocaml-cow&quot;&gt;COW&lt;/a&gt;. These look like:
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ocaml&quot; data-lang=&quot;ocaml&quot;&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;html&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hello&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;world&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/li&gt;
+&lt;li&gt;
+Other syntax extensions that could be expressed using existing syntax or the
+camlp4 quotation syntax. For example, 
+&lt;a href=&quot;http://ocsigen.org/js_of_ocaml/&quot;&gt;js_of_ocaml&lt;/a&gt; provides a
+&lt;code&gt;##&lt;/code&gt; operator for accessing javascript objects. This could easily be replaced by
+a valid operator such as &lt;code&gt;%%&lt;/code&gt;.
+&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;By providing support for these specific kinds of extension, we can provide an
+alternative to camlp4 for the majority of its applications.&lt;/p&gt;
+
+&lt;h4&gt;AST transformers, attributes and quotations&lt;/h4&gt;
+
+&lt;p&gt;A much simpler alternative to allowing arbitrary syntax extensions is to use
+&lt;em&gt;AST transformers&lt;/em&gt;, &lt;em&gt;attributes&lt;/em&gt; and &lt;em&gt;quotations&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;AST transformers are simply functions that perform transformations on the OCaml
+syntax tree. These can already be implemented using the new
+&amp;ldquo;&lt;a href=&quot;http://www.lexifi.com/blog/syntax-extensions-without-camlp4-lets-do-it&quot;&gt;-ppx&lt;/a&gt;&amp;rdquo;
+command line option that has been included on the OCaml development trunk by
+Alain Frisch. This option accepts a program as an argument, and pipes the syntax
+tree through that program after parsing and before type checking.&lt;/p&gt;
+
+&lt;p&gt;Attributes are places in the grammar where generic data can be attached to the
+syntax tree. This data is simply ignored by the main OCaml compiler, but it can
+used be AST transformers to control transformations. &lt;/p&gt;
+
+&lt;p&gt;Quotations are any construct that is not lexed or parsed by the compiler. These
+can be attributes, expressions, patterns etc. The contents of a quotation can be
+lexed and parsed by an AST transformer and converted into a regular AST node.&lt;/p&gt;
+
+&lt;p&gt;Before support for attributes and quotations can be added to the compiler
+decisions need to be made about what kinds of attributes and quotations to
+support. Personally I prefer quotation attributes to attributes that are parsed
+by the compiler because they are more flexible. However there is no reason that
+both kinds cannot be supported by the compiler using different syntax.&lt;/p&gt;
+
+&lt;p&gt;I think that it is important to support at least the following kinds of attribute:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+Simple named quotations for expressions, patterns and type expressions:
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ocaml&quot; data-lang=&quot;ocaml&quot;&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;:&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;Foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;foo&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;some&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;random&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/li&gt;
+&lt;li&gt;
+Type constructor quotation attributes:
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ocaml&quot; data-lang=&quot;ocaml&quot;&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bar&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;some&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;random&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/li&gt;
+&lt;li&gt;
+Type-conv style definition attributes:
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ocaml&quot; data-lang=&quot;ocaml&quot;&gt;&lt;span class=&quot;k&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 
+&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bar&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;(* some valid expression *)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/li&gt;
+&lt;li&gt;
+Annotating types with syntactically valid expressions:
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ocaml&quot; data-lang=&quot;ocaml&quot;&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;@@&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;(* some valid expression *)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;()&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Once support for these attributes and quotations is added to OCaml I think that
+the majority of camlp4 applications could be easily converted into AST
+transformers.&lt;/p&gt;
+
+&lt;p&gt;In order to make this transition easy, work must also be done to provide tools
+for manipulating OCaml&amp;rsquo;s AST and parsing quotations. It would also be worthwhile
+trying to normalise some of the stranger corners of the OCaml syntax tree. This
+will make writing AST transformers simpler and more robust&lt;/p&gt;
+
+&lt;p&gt;Finally, the &amp;ldquo;-ppx&amp;rdquo; option must be integrated into the many OCaml build
+systems.&lt;/p&gt;
+
+&lt;h4&gt;Join the discussion&lt;/h4&gt;
+
+&lt;p&gt;The above suggestions are just the attributes and quotations that I think will
+be necessary to provide a viable alternative to camlp4. However, I suspect that
+they are not sufficient. It would be very useful to hear from anyone who has
+written camlp4 extensions about what kind of extensions they have written, and
+what they think would be necessary to support their extensions without
+camlp4. So please join the
+&lt;a href=&quot;http://lists.ocaml.org/listinfo/wg-camlp4&quot;&gt;wg-camlp4@lists.ocaml.org&lt;/a&gt; list and post
+your thoughts.&lt;/p&gt;
+</content><id>http://lpw25.net/2013/01/23/camlp4-alternative-part-1.html</id><title type="text">An alternative to camlp4 - Part 1</title><updated>2013-01-23T00:00:00+00:00</updated><author><email></email><name>Leo White</name></author></entry></feed>
