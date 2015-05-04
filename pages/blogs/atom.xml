@@ -1,5 +1,507 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><subtitle type="text">Real World Functional Programming</subtitle><link href="http://ocaml.io/blogs/atom.xml" rel="self"/><author><name>OCaml Labs</name></author><id>http://ocaml.io/blogs/atom.xml</id><title type="text">OCaml Labs Blogs</title><updated>2015-04-17T14:53:30+00:00</updated><entry><link href="http://www.somerandomidiot.com/blog/2015/04/06/lets-play-network-address-translation/" rel="alternate"/><contributor><uri>http://www.somerandomidiot.com/blog/categories/ocaml/atom.xml</uri><name>Mindy Preston</name></contributor><content type="html">&lt;p&gt;&lt;a href=&quot;http://www.somerandomidiot.com/blog/2015/04/05/things-routers-do-network-address-translation/&quot;&gt;When last we spoke&lt;/a&gt;, I left you with a teaser about writing your own NAT implementation. &lt;code&gt;iptables&lt;/code&gt; (and friends &lt;code&gt;nftables&lt;/code&gt; and &lt;code&gt;pf&lt;/code&gt;, to be a little less partisan and outdated) provide the interfaces to the kernel modules that implement NAT in many widely-used routers. If we wanted to implement our own in a traditional OS, we&amp;rsquo;d have to either &lt;a href=&quot;http://kernelnewbies.org/FAQ&quot;&gt;take a big dive into kernel programming&lt;/a&gt; or &lt;a href=&quot;https://github.com/pkelsey/libuinet&quot;&gt;find a way to manipulate packets at the Ethernet layer in userspace&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;But if all we need to do is NAT traffic, why not just build something that only knows how to NAT traffic? I&amp;rsquo;ve looked at building networked applications on top of (and with) the full network stack provided by the &lt;a href=&quot;http://openmirage.org&quot;&gt;MirageOS&lt;/a&gt; library OS a lot, but we can also build lower-level applications with fundamentally the same programming tactics and tools we use to write, for example, &lt;a href=&quot;http://hh360.user.srcf.net/blog/2015/03/part-3-running-your-own-dns-resolver-with-mirageos/&quot;&gt;DNS resolvers&lt;/a&gt;.&lt;/p&gt;&lt;h2&gt;Building A Typical Stack From Scratch&lt;/h2&gt;&lt;p&gt;Let&amp;rsquo;s have a look at the &lt;code&gt;ethif-v4&lt;/code&gt; example in the &lt;a href=&quot;http://github.com/mirage/mirage-skeleton&quot;&gt;mirage-skeleton example repository&lt;/a&gt;. This example unikernel shows how to build a network stack &amp;ldquo;by hand&amp;rdquo; from a bunch of different functors, starting from a physical device (provided by &lt;code&gt;config.ml&lt;/code&gt; at build time, representing either a Xen backend if you configure with &lt;code&gt;mirage configure --xen&lt;/code&gt; or a Unix tuntap backend if you build with &lt;code&gt;mirage configure --unix&lt;/code&gt;). I&amp;rsquo;ve reproduced the network setup bits from &lt;a href=&quot;https://github.com/mirage/mirage-skeleton/blob/694162bfa37b055786a1f4a0bb4c9ca7f08c9ef0/ethifv4/unikernel.ml&quot;&gt;the most recent version as of now&lt;/a&gt; and annotated them a bit:&lt;/p&gt;&lt;p&gt;```ocaml module Main (C: CONSOLE) (N: NETWORK) (Clock : V1.CLOCK) = struct&lt;/p&gt;&lt;p&gt; (* N, a module of type NETWORK (defined in module V1_LWT&lt;/p&gt;&lt;pre&gt;&lt;code&gt; from mirage-types), is the building point for the
+<feed xmlns="http://www.w3.org/2005/Atom"><subtitle type="text">Real World Functional Programming</subtitle><link href="http://ocaml.io/blogs/atom.xml" rel="self"/><author><name>OCaml Labs</name></author><id>http://ocaml.io/blogs/atom.xml</id><title type="text">OCaml Labs Blogs</title><updated>2015-05-04T06:08:00+00:00</updated><entry><link href="http://roscidus.com/blog/blog/2015/04/28/cuekeeper-gitting-things-done-in-the-browser/" rel="alternate"/><contributor><uri>http://roscidus.com/blog/atom.xml</uri><name>Thomas Leonard</name></contributor><content type="html">&lt;p&gt;Git repositories store data with history, supporting replication, merging and revocation.
+The Irmin library lets applications use Git-style storage for their data.
+To try it out, I&amp;rsquo;ve written a GTD-based action tracker that runs entirely client-side in the browser.&lt;/p&gt;
+
+&lt;p&gt;CueKeeper uses Irmin to handle history and merges, with state saved in the browser using the new IndexedDB standard (requires a recent browser; Firefox 37, Chromium 41 and IE 11.0.9600 all work, but Safari apparently has problems if you open the page in multiple tabs).&lt;/p&gt;
+
+&lt;div style=&quot;text-align: center; margin-bottom: 1em;&quot;&gt;&lt;strong&gt;&lt;a href=&quot;http://roscidus.com/blog/cuekeeper/&quot;&gt;Open interactive version full screen&lt;/a&gt;&lt;/strong&gt;&lt;/div&gt;
+
+
+
+&lt;p&gt;&lt;a href=&quot;http://roscidus.com/blog/cuekeeper/&quot;&gt;&lt;img src=&quot;http://roscidus.com/blog/images/cuekeeper/cuekeeper-0.1.png&quot; class=&quot;center&quot;/&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;In the future, I plan to have the browser sync to a master Git repository and use the browser storage only for off-line use, but for now note that:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;All data is stored only in your browser.&lt;/li&gt;
+  &lt;li&gt;There is no server communication.&lt;/li&gt;
+  &lt;li&gt;Any changes you make will persist for you, but will not affect other users.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Basic_Concepts_Behind_IndexedDB&quot;&gt;Mozilla&amp;rsquo;s IndexedDB docs&lt;/a&gt; say that &amp;ldquo;the general philosophy of the browser vendors is to make the best effort to keep the data when possible&amp;rdquo;, but vaguely notes that your data may be deleted if you run out of space! If someone can clarify things, that would be great. I&amp;rsquo;ve been using it for 5 weeks on Firefox, and haven&amp;rsquo;t lost anything, but it would be nice to know the exact conditions for safety.&lt;/li&gt;
+  &lt;li&gt;Take backups! On my Linux/Firefox system, the data is stored here: &lt;code&gt;$HOME/.mozilla/firefox/SALT.default/storage/default/http+++roscidus.com/idb&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;This is version 0.1 alpha ;-)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This post contains a brief introduction to using GTD and CueKeeper, followed by a look at some nice features that result from using Irmin.
+The code is available at &lt;a href=&quot;https://github.com/talex5/cuekeeper&quot;&gt;https://github.com/talex5/cuekeeper&lt;/a&gt;.
+Alpha testers welcome!&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Table of Contents&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://roscidus.com/blog/atom.xml#background&quot;&gt;Background&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;http://roscidus.com/blog/atom.xml#getting-things-done-gtd&quot;&gt;Getting Things Done (GTD)&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;http://roscidus.com/blog/atom.xml#irmin&quot;&gt;Irmin&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;http://roscidus.com/blog/atom.xml#mgsd&quot;&gt;mGSD&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;http://roscidus.com/blog/atom.xml#nymote-mirageos-and-ucn&quot;&gt;Nymote, MirageOS and UCN&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://roscidus.com/blog/atom.xml#using-cuekeeper&quot;&gt;Using CueKeeper&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;http://roscidus.com/blog/atom.xml#core-concepts&quot;&gt;Core concepts&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;http://roscidus.com/blog/atom.xml#editing-items&quot;&gt;Editing items&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;http://roscidus.com/blog/atom.xml#processing&quot;&gt;Processing&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;http://roscidus.com/blog/atom.xml#work&quot;&gt;Work&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;http://roscidus.com/blog/atom.xml#contact&quot;&gt;Contact&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;http://roscidus.com/blog/atom.xml#schedule&quot;&gt;Schedule&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;http://roscidus.com/blog/atom.xml#the-weekly-review&quot;&gt;The weekly review&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;http://roscidus.com/blog/atom.xml#the-top-right-controls&quot;&gt;The top-right controls&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://roscidus.com/blog/atom.xml#interesting-irmin-features&quot;&gt;Interesting Irmin features&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;http://roscidus.com/blog/atom.xml#sync&quot;&gt;Sync&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;http://roscidus.com/blog/atom.xml#history&quot;&gt;History&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;http://roscidus.com/blog/atom.xml#revert&quot;&gt;Revert&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;http://roscidus.com/blog/atom.xml#check-before-merge&quot;&gt;Check-before-merge&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;http://roscidus.com/blog/atom.xml#out-of-date-ui-actions&quot;&gt;Out-of-date UI actions&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://roscidus.com/blog/atom.xml#next-steps&quot;&gt;Next steps&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://roscidus.com/blog/atom.xml#acknowledgements&quot;&gt;Acknowledgements&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;( this post also appeared on &lt;a href=&quot;https://news.ycombinator.com/item?id=9451595&quot;&gt;Hacker News&lt;/a&gt; and
+  &lt;a href=&quot;http://www.reddit.com/r/programming/comments/3457y4/cuekeeper_gitting_things_done_in_the_browser/&quot;&gt;Reddit&lt;/a&gt; )&lt;/p&gt;
+
+&lt;h2&gt;Background&lt;/h2&gt;
+
+&lt;h3&gt;Getting Things Done (GTD)&lt;/h3&gt;
+
+&lt;p&gt;The core idea behind David Allen&amp;rsquo;s &lt;a href=&quot;http://en.wikipedia.org/wiki/Getting_Things_Done&quot;&gt;GTD&lt;/a&gt; is: the human brain is terrible at remembering things at the right time:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;You go into work in the morning thinking about a phone call you need to make this evening.&lt;/li&gt;
+  &lt;li&gt;As you read through your emails, you keep reminding yourself to remember the call.&lt;/li&gt;
+  &lt;li&gt;You&amp;rsquo;re in a meeting and someone is speaking. You&amp;rsquo;re thinking you shouldn&amp;rsquo;t forget the call.&lt;/li&gt;
+  &lt;li&gt;etc&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Maybe you end up remembering and maybe you don&amp;rsquo;t, but either way you&amp;rsquo;ve distracted yourself all day from the other things you wanted to work on.&lt;/p&gt;
+
+&lt;p&gt;The goal of using GTD is to have a system where:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;the system reminds you of things &lt;em&gt;when you need to be reminded about them&lt;/em&gt;, and &lt;/li&gt;
+  &lt;li&gt;you trust it enough that your brain can &lt;em&gt;stop thinking about them&lt;/em&gt; until then.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;&lt;p&gt;There is no reason ever to have the same thought twice, unless you like having that thought.&lt;/p&gt;&lt;footer&gt;&lt;strong&gt;David Allen&lt;/strong&gt; &lt;cite&gt;Getting Things Done&lt;/cite&gt;&lt;/footer&gt;&lt;/blockquote&gt;
+
+&lt;h3&gt;Irmin&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/mirage/irmin/&quot;&gt;Irmin&lt;/a&gt; is &amp;ldquo;a library for persistent stores with built-in snapshot, branching and reverting mechanisms&amp;rdquo;. It has multiple backends (including one that uses a regular Git repository, allowing you to view and modify your application&amp;rsquo;s data using the real &lt;code&gt;git&lt;/code&gt; commands).&lt;/p&gt;
+
+&lt;p&gt;Git&amp;rsquo;s storage model is useful for many applications because it gives you race-free updates (each worker writes to its own branch and then merges), disconnected operation, history, remote sync and incremental backups.&lt;/p&gt;
+
+&lt;p&gt;Using &lt;a href=&quot;http://ocsigen.org/js_of_ocaml/&quot;&gt;js_of_ocaml&lt;/a&gt; I was able to compile Irmin to JavaScript and run it in the browser, adding a &lt;a href=&quot;https://github.com/talex5/cuekeeper/blob/6e3c2bf3f5e9a117a997fa452cc22f8a4c10fe1d/js/irmin_IDB.ml&quot;&gt;new IndexedDB backend&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3&gt;mGSD&lt;/h3&gt;
+
+&lt;p&gt;Simon Baird&amp;rsquo;s &lt;a href=&quot;http://mgsd.tiddlyspot.com/&quot;&gt;mGSD&lt;/a&gt; is an excellent GTD system, which I&amp;rsquo;ve been using for the last few years.
+It&amp;rsquo;s a set of extensions built on the &lt;a href=&quot;http://tiddlywiki.com/&quot;&gt;TiddlyWiki&lt;/a&gt; &amp;ldquo;personal wiki&amp;rdquo; system.
+Like CueKeeper, mGSD runs entirely in your browser and doesn&amp;rsquo;t require a server.
+It&amp;rsquo;s implemented as a piece of self-modifying HTML that writes itself back to your local disk when you save.
+That&amp;rsquo;s pretty scary, but I&amp;rsquo;ve found it surprisingly robust.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://mgsd.tiddlyspot.com/demo3.html&quot;&gt;&lt;img src=&quot;http://roscidus.com/blog/images/cuekeeper/mGSD.png&quot; class=&quot;center&quot;/&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;However, it&amp;rsquo;s largely unmaintained and there were various areas I wanted to improve:&lt;/p&gt;
+
+&lt;dl&gt;
+  &lt;dt&gt;Browser security&lt;/dt&gt;
+  &lt;dd&gt;Over the years, browsers have become more locked down, and no longer allow web-pages to write to the disk,
+requiring a browser plugin to override the check.
+CueKeeper uses the IndexedDB support that modern browsers provide to store data (mGSD pre-dates IndexedDB).&lt;/dd&gt;
+  &lt;dt&gt;History&lt;/dt&gt;
+  &lt;dd&gt;Sometimes you click on a button by mistake and have no idea what changed.
+Thanks to Irmin, CueKeeper logs all changes and provides the ability to view earlier states.
+Also, CueKeeper uses brief animations to make it easier to see what changed.&lt;/dd&gt;
+  &lt;dt&gt;Navigation&lt;/dt&gt;
+  &lt;dd&gt;Navigation in mGSD can be awkward because overview panels and details are all mixed in together as wiki pages.
+With CueKeeper, I&amp;rsquo;m experimenting with a two-column layout to separate overview pages from the details.&lt;/dd&gt;
+  &lt;dt&gt;Safe multi-tab use&lt;/dt&gt;
+  &lt;dd&gt;If you accidentally open mGSD in two tabs, changes in one tab will overwrite changes made in the other. CueKeeper uses Irmin to keep multiple tabs in sync, merging changes between them automatically.&lt;/dd&gt;
+  &lt;dt&gt;Sync between devices&lt;/dt&gt;
+  &lt;dd&gt;There&amp;rsquo;s no easy way to &lt;a href=&quot;http://stackoverflow.com/questions/85994/how-do-you-keep-a-personal-wiki-tiddlywiki-current-and-in-sync-in-multiple-loc&quot;&gt;Sync multiple mGSD instances&lt;/a&gt;. CueKeeper doesn&amp;rsquo;t implement sync yet either, but it should be easy to add (it can sync between tabs already, so the core logic is there).&lt;/dd&gt;
+  &lt;dt&gt;Escaping bugs&lt;/dt&gt;
+  &lt;dd&gt;mGSD has various bugs related to escaping (e.g. things will go wrong if you use square brackets in a title). CueKeeper uses type-safe &lt;a href=&quot;http://ocsigen.org/tyxml/&quot;&gt;TyXML&lt;/a&gt; to avoid such problems.&lt;/dd&gt;
+  &lt;dt&gt;Stale-display bugs&lt;/dt&gt;
+  &lt;dd&gt;mGSD mostly does a good job of keeping all elements of the display up-to-date, but there are some flaws.
+For example, if you add a new contact in one panel, then open the contacts menu from another, the new contact doesn&amp;rsquo;t show up.
+CueKeeper uses &lt;a href=&quot;http://en.wikipedia.org/wiki/Functional_reactive_programming&quot;&gt;Functional reactive programming&lt;/a&gt; with the &lt;a href=&quot;http://erratique.ch/software/react&quot;&gt;React&lt;/a&gt; library to make sure everything is current.&lt;/dd&gt;
+  &lt;dt&gt;Clean separation of code and data&lt;/dt&gt;
+  &lt;dd&gt;As a self-modifying &lt;code&gt;.html&lt;/code&gt; file, updating mGSD is terrifying! CueKeeper can be recompiled and reloaded like any other program.&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;h3&gt;Nymote, MirageOS and UCN&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://nymote.org/&quot;&gt;The Nymote project&lt;/a&gt; describes itself as &amp;ldquo;Lifelong control of your networked personal data&amp;rdquo;:&lt;/p&gt;
+
+&lt;blockquote&gt;&lt;p&gt;By adopting large centralised services we&amp;rsquo;ve answered the call of the siren servers and made an implicit trade. That we will share our habits and data with them in exchange for something useful. In doing so we&amp;rsquo;ve empowered internet behemoths while simultaneously reducing our ability to influence them. We risk becoming slaves to the current system unless we can create alternatives that compete. It&amp;rsquo;s time to work on those alternatives.&lt;/p&gt;&lt;/blockquote&gt;
+
+&lt;p&gt;The idea here is to provide services that people can run in their own homes (e.g. on a PC, a low-powered ARM board, or the house router).
+The three key pieces of infrastructure it needs are Mirage, Irmin and Signpost.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ve talked about &lt;a href=&quot;http://openmirage.org/&quot;&gt;MirageOS&lt;/a&gt; before (see &lt;a href=&quot;http://roscidus.com/blog/blog/2014/07/28/my-first-unikernel/&quot;&gt;My first unikernel&lt;/a&gt;): it allows you to run extremely small, highly secure services as Xen guests (a few MB in size, written in type-safe OCaml, rather than 100s of MB you would have with a Linux guest).
+I haven&amp;rsquo;t looked at Signpost yet.
+Irmin is the subject of this blog post.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://usercentricnetworking.eu/&quot;&gt;UCN&lt;/a&gt; (User Centric Networking) is an EC-funded project that is building a &amp;ldquo;Personal Information Hub&amp;rdquo; (PIH), responsible for storing users&amp;rsquo; personal data in their home, and then using that data for content recommendation.
+If you use Google to manage your ToDo-list then when you add &amp;ldquo;Book holiday&amp;rdquo; to it, Google can show you relevant ads.
+But what if you want good recommendations without sharing personal data with third parties?
+Tools such as CueKeeper could be configured to sync with a local PIH to provide input for its recommendations without the data leaving your home.&lt;/p&gt;
+
+&lt;h2&gt;Using CueKeeper&lt;/h2&gt;
+
+&lt;p&gt;You can either use the &lt;a href=&quot;http://roscidus.com/blog/cuekeeper/&quot;&gt;example on roscidus.com&lt;/a&gt;, or download the standalone release &lt;a href=&quot;https://github.com/talex5/cuekeeper/releases/download/v0.1/cuekeeper-bin-0.1.zip&quot;&gt;cuekeeper-bin-0.1.zip&lt;/a&gt;.
+To use the release, unzip the directory and open &lt;code&gt;index.html&lt;/code&gt; in a browser (no need for a web-server).
+If you do this, note that the database is tied to the path of the file, so if you move or rename the directory, it will show a different database (which might make it look like your items have disappeared).&lt;/p&gt;
+
+&lt;h3&gt;Core concepts&lt;/h3&gt;
+
+&lt;p&gt;There are five kinds of &amp;ldquo;thing&amp;rdquo; in CueKeeper:&lt;/p&gt;
+
+&lt;dl&gt;
+  &lt;dt&gt;Action&lt;/dt&gt;
+  &lt;dd&gt;Something you will do (e.g. &amp;ldquo;Follow Mirage tutorial&amp;rdquo;).
+
+    &lt;p&gt;&lt;img src=&quot;http://roscidus.com/blog/images/cuekeeper/action.png&quot; class=&quot;center small&quot;/&gt;
+Beside each action you will see some toggles showing its state:
+The tick means done,
+&amp;ldquo;n&amp;rdquo; is a next action (something you could start now),
+&amp;ldquo;w&amp;rdquo; means waiting-for (something you can&amp;rsquo;t start now),
+&amp;ldquo;f&amp;rdquo; means future (something you don&amp;rsquo;t want to think about yet).
+The star is for whatever you want.
+Repeating actions can&amp;rsquo;t be completed, so for those the tick box will be blank.&lt;/p&gt;
+  &lt;/dd&gt;
+  &lt;dt&gt;Project&lt;/dt&gt;
+  &lt;dd&gt;Something you want to achieve (e.g. &amp;ldquo;Make a Mirage unikernel&amp;rdquo;).
+
+    &lt;p&gt;&lt;img src=&quot;http://roscidus.com/blog/images/cuekeeper/project.png&quot; class=&quot;center small&quot;/&gt;
+A project may require several actions to be taken.
+The possible states are done (the tick),
+&amp;ldquo;a&amp;rdquo; for active projects,
+and &amp;ldquo;sm&amp;rdquo; for &amp;ldquo;Someday/Maybe&amp;rdquo; (a project you don&amp;rsquo;t plan to work on yet).&lt;/p&gt;
+  &lt;/dd&gt;
+  &lt;dt&gt;Area&lt;/dt&gt;
+  &lt;dd&gt;An &amp;ldquo;Area of responsibility&amp;rdquo; is a way of grouping things (e.g. &amp;ldquo;Personal/Hobbies&amp;rdquo; or &amp;ldquo;Job/Accounts&amp;rdquo;).
+
+    &lt;p&gt;&lt;img src=&quot;http://roscidus.com/blog/images/cuekeeper/area.png&quot; class=&quot;center small&quot;/&gt;
+Unlike projects, areas generally cannot be completed.
+One thing that confused me when I started with GTD was that what my organisation called &amp;ldquo;projects&amp;rdquo; were actually areas.
+If your boss says &amp;ldquo;You&amp;rsquo;re working on project X until further notice&amp;rdquo; then &amp;ldquo;X&amp;rdquo; is probably an &amp;ldquo;area&amp;rdquo; in GTD terms.&lt;/p&gt;
+  &lt;/dd&gt;
+  &lt;dt&gt;Contact&lt;/dt&gt;
+  &lt;dd&gt;Someone you work with.
+
+    &lt;p&gt;&lt;img src=&quot;http://roscidus.com/blog/images/cuekeeper/contact.png&quot; class=&quot;center small&quot;/&gt;
+You can associate any area, project or action with a contact, which provides a quick way to find all the things you need to discuss with someone when you meet them.
+If an action is being performed by someone else, you can also mark it as waiting for them.
+It will then appear on the &lt;code&gt;Review/Waiting&lt;/code&gt; list.&lt;/p&gt;
+  &lt;/dd&gt;
+  &lt;dt&gt;Context&lt;/dt&gt;
+  &lt;dd&gt;Another way of grouping actions, by what kind of activity it is, or where it will occur.
+
+    &lt;p&gt;&lt;img src=&quot;http://roscidus.com/blog/images/cuekeeper/context.png&quot; class=&quot;center small&quot;/&gt;
+Assigning a context to an action is an important check that the action isn&amp;rsquo;t too vague.
+Your eye will tend to glide over vague actions like &amp;ldquo;Sort out car&amp;rdquo;; choosing a context &amp;ldquo;Phone&amp;rdquo; (garage) or &amp;ldquo;Shopping&amp;rdquo; (buy tools) forces you to clarify things.&lt;/p&gt;
+  &lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;p&gt;Notes:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;GTD also has the concept of a &amp;ldquo;tickler&amp;rdquo;. In CueKeeper this is just an action waiting until some time.&lt;/li&gt;
+  &lt;li&gt;GTD also has &amp;ldquo;reference material&amp;rdquo;, but I never used this in mGSD, so I didn&amp;rsquo;t implement it.
+Regular files on your computer seem to work fine for this.&lt;/li&gt;
+  &lt;li&gt;mGSD has the concept of &amp;ldquo;realms&amp;rdquo; to group areas. CueKeeper uses sub-areas for this instead (e.g. CueKeeper&amp;rsquo;s &amp;ldquo;Personal/Health&amp;rdquo; sub-area corresponds to an mGSD &amp;ldquo;Health&amp;rdquo; area within a &amp;ldquo;Personal&amp;rdquo; realm).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Editing items&lt;/h3&gt;
+
+&lt;p&gt;Clicking on an item or creating a new one opens a panel showing its details in the right column.
+There are various things you can edit here:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The toggles here work just as elsewhere (see above).&lt;/li&gt;
+  &lt;li&gt;Click the title to rename.&lt;/li&gt;
+  &lt;li&gt;Click &lt;code&gt;(edit)&lt;/code&gt; to edit the notes.
+These can be whatever you like.
+They&amp;rsquo;re in &lt;a href=&quot;http://daringfireball.net/projects/markdown/syntax&quot;&gt;Markdown&lt;/a&gt; format, so you can add structure, links, etc.&lt;/li&gt;
+  &lt;li&gt;Click &lt;code&gt;(add log entry)&lt;/code&gt; to start editing with today&amp;rsquo;s date added at the end.
+This is convenient to add date-stamped notes quickly.&lt;/li&gt;
+  &lt;li&gt;The &lt;code&gt;(delete)&lt;/code&gt; button at the bottom will remove it (without confirmation; use &lt;code&gt;Show history&lt;/code&gt; to revert accidental deletions, as explained later).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For areas, projects and actions:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;You can convert between these types by clicking on the type (e.g. &amp;ldquo;An &lt;strong&gt;action&lt;/strong&gt; in &amp;hellip;&amp;rdquo;).
+This is useful if e.g. you realise that an action is really a project with multiple steps.&lt;/li&gt;
+  &lt;li&gt;Click on the parent to move it to a different parent.&lt;/li&gt;
+  &lt;li&gt;You can set the contact field for any of these types too.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For actions, you can also set the context, which is useful for grouping actions on the Work page, and helps to make sure the action is well-defined.&lt;/p&gt;
+
+&lt;p&gt;You can also make an action repeat.
+Setting the repeat for an action will move it to the waiting state until the given date.
+There are only two differences between repeating actions and regular (one-shot) scheduled actions:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;You can&amp;rsquo;t mark a repeating action as done (clear the repeat first if you want to).&lt;/li&gt;
+  &lt;li&gt;When you click on the &amp;ldquo;w&amp;rdquo; on a repeating action, the next repeat date after it was last scheduled is highlighted by default. If that date has already arrived, it keeps moving it forward by the specified interval until it&amp;rsquo;s in the future.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Processing&lt;/h3&gt;
+
+&lt;p&gt;There are several stages to applying GTD, corresponding to the tabs along the top.
+The first is processing, which is about going through your various inboxes (email, paper, voicemail, etc) and determining what actions each item requires.
+After processing, your inbox should be empty and everything you need to do either done (for quick items) or recorded in CueKeeper.
+Also, see if you can think of any projects or actions that are only in your head and add those too.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Click the &lt;code&gt;+&lt;/code&gt; next to an area and enter a name for the new project.&lt;br/&gt;
+(the Work tab will go red at this point, indicating an alert: &amp;ldquo;Active project with no next action&amp;rdquo;)&lt;/li&gt;
+  &lt;li&gt;Click &lt;code&gt;(edit)&lt;/code&gt; in the new project panel to add some details, if desired.&lt;/li&gt;
+  &lt;li&gt;Click &lt;code&gt;+action&lt;/code&gt; to add the next action to perform towards this project.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Note that it is not necessary to add all the actions needed to complete the project.
+Just add the next thing that you can do now.
+When you later mark the action as done, CueKeeper will then prompt you to think about a new next action.&lt;/p&gt;
+
+&lt;p&gt;If a project will only require a single action (e.g. &amp;ldquo;Buy milk&amp;rdquo;), then instead of adding a project and an action, you can just convert the new project to an action and not bother about having a project at all.&lt;/p&gt;
+
+&lt;p&gt;If you don&amp;rsquo;t plan to work on the project soon, click &amp;ldquo;sm&amp;rdquo; to convert it to a &amp;ldquo;Someday/Maybe&amp;rdquo; project.&lt;/p&gt;
+
+&lt;h3&gt;Work&lt;/h3&gt;
+
+&lt;p&gt;This is the default view, showing all the things you could be working on now.&lt;/p&gt;
+
+&lt;p&gt;The filters just below the tab allow you to hide top-level areas (e.g. if you don&amp;rsquo;t want to see any personal actions while you&amp;rsquo;re at work).&lt;/p&gt;
+
+&lt;p&gt;When an item is done, click on the tick mark.&lt;/p&gt;
+
+&lt;p&gt;If it&amp;rsquo;s not possible to start it now, click on the &amp;ldquo;w&amp;rdquo; to mark it as waiting:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;If an action is waiting for someone else, first add them as the contact, then click the &lt;code&gt;w&lt;/code&gt; and select &amp;ldquo;Waiting for &lt;em&gt;name&lt;/em&gt;&amp;rdquo; from the menu.&lt;/li&gt;
+  &lt;li&gt;If an action can&amp;rsquo;t be started until some date, click the &amp;ldquo;w&amp;rdquo; and choose the date from the popup calendar.&lt;/li&gt;
+  &lt;li&gt;Otherwise, you can mark it as &amp;ldquo;Waiting (reason unspecified)&amp;rdquo;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If you&amp;rsquo;re not going to do it this week, click on the &amp;ldquo;f&amp;rdquo; (future) to defer it until the next review.&lt;/p&gt;
+
+&lt;h3&gt;Contact&lt;/h3&gt;
+
+&lt;p&gt;This view lists your contacts and any actions you&amp;rsquo;re waiting for them to do.
+It&amp;rsquo;s useful if someone phones and you want to see everything you need to discuss with them, for example.
+The list only shows actions you&amp;rsquo;re actually waiting for, but if you open up a particular contact then you&amp;rsquo;ll also see things they&amp;rsquo;re merely associated with.&lt;/p&gt;
+
+&lt;h3&gt;Schedule&lt;/h3&gt;
+
+&lt;p&gt;Lists actions than can&amp;rsquo;t be done until some date.&lt;/p&gt;
+
+&lt;p&gt;When due, scheduled actions will appear highlighted on the &lt;code&gt;Work&lt;/code&gt; tab (even if their area is filtered out).
+If you pin the browser tab showing the CueKeeper page, the tab icon will also go red to indicate attention is needed.
+If you want to test the effect, schedule an action for a date in the past.
+Click &lt;code&gt;n&lt;/code&gt; to acknowledge a due action and convert it to a next action.&lt;/p&gt;
+
+&lt;h3&gt;The weekly review&lt;/h3&gt;
+
+&lt;p&gt;GTD only works if you trust yourself to look at the system regularly.
+There are various reports available under the &lt;em&gt;Review&lt;/em&gt; tab to help with this.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://roscidus.com/blog/images/cuekeeper/review.png&quot; class=&quot;center&quot;/&gt;&lt;/p&gt;
+
+&lt;p&gt;The available reports are:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Done&lt;/strong&gt; shows completed actions and projects and provides a button to delete them all.
+If you&amp;rsquo;re the sort of person who likes to write weekly summaries, this might be useful input to that.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Waiting&lt;/strong&gt; shows actions that are waiting for someone or something (but not scheduled actions).
+You might want to check up on the status of these, or do something to unblock them.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Future&lt;/strong&gt; shows all actions you marked as &amp;ldquo;Future&amp;rdquo; and all projects you marked as &amp;ldquo;Someday/Maybe&amp;rdquo;.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Areas&lt;/strong&gt; lists all your areas of responsibility.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Everything&lt;/strong&gt; shows every item in the system in one place (you don&amp;rsquo;t need to review this; it&amp;rsquo;s just handy sometimes to see everything).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;mGSD has more reports, but these are the ones I use.
+The default configuration has a repeating action scheduled for next Sunday to review things.
+This is what I do:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Process&lt;/strong&gt; tab&lt;br/&gt;
+ Empty inboxes, adding any actions to CueKeeper:
+    &lt;ul&gt;
+      &lt;li&gt;email inbox&lt;/li&gt;
+      &lt;li&gt;paper inbox&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Review/Done&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Admire done list, then delete all.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Review/Waiting&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Any reminders needed?&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Review/Future&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Make any of these current?&lt;/li&gt;
+      &lt;li&gt;Delete any that will never get done.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Review/Areas&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Any areas that need new projects?&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Work&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Make sure each action is obvious (not vague).&lt;/li&gt;
+      &lt;li&gt;Could it be started now? Set to &lt;strong&gt;Waiting&lt;/strong&gt; if not.&lt;/li&gt;
+      &lt;li&gt;List too long? Mark some actions as &lt;strong&gt;Future&lt;/strong&gt;, or their projects as &lt;strong&gt;Someday/Maybe&lt;/strong&gt;.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;It&amp;rsquo;s important to look at all these items during the review.
+Knowing you&amp;rsquo;re going to look at each waiting or future item soon is what allows you to forget about them during the rest of the week!&lt;/p&gt;
+
+&lt;h3&gt;The top-right controls&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://roscidus.com/blog/images/cuekeeper/top-actions.png&quot; class=&quot;border center small&quot;/&gt;&lt;/p&gt;
+
+&lt;p&gt;To search, enter some text (or a regular expression) into the box and select from the drop-down menu that appears.
+Pressing Return opens the first result.&lt;/p&gt;
+
+&lt;p&gt;To create a new items, enter a label for it and select one of the &amp;ldquo;Add&amp;rdquo; items from the menu.
+Pressing Return when there are no search results will create a new action.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;Export&lt;/code&gt; allows you to save the current state (without history) as a tar file.
+There&amp;rsquo;s no import feature currently, though.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;Show history&lt;/code&gt; shows some recent entries from the Irmin log (see below).&lt;/p&gt;
+
+&lt;h2&gt;Interesting Irmin features&lt;/h2&gt;
+
+&lt;p&gt;So, what benefits do we get from using Irmin?&lt;/p&gt;
+
+&lt;h3&gt;Sync&lt;/h3&gt;
+
+&lt;p&gt;The first benefit, of course, is that we can synchronise between multiple instances.
+You may have already tried opening CueKeeper in two windows (of the same browser) and observed that changes made in one propagate to the other.
+Here&amp;rsquo;s an easier way to experiment with sync (click the screenshot for the interactive version):&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://roscidus.com/blog/cuekeeper/sync.html&quot;&gt;&lt;img src=&quot;http://roscidus.com/blog/images/cuekeeper/sync.png&quot; class=&quot;center&quot;/&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;This page has two instances of CueKeeper running, representing two separate devices such as a laptop and mobile phone.
+You can edit them separately and then click the buttons in the middle to see how the changes are merged.&lt;/p&gt;
+
+&lt;p&gt;Clicking &lt;code&gt;Upper to lower&lt;/code&gt; pushes all changes from the upper pane to the lower (the lower instance will merge them with its current state). Clicking &lt;code&gt;Lower to upper&lt;/code&gt; does the reverse. A full sync would do these two in sequence, but of course it could be interrupted part way through.&lt;/p&gt;
+
+&lt;p&gt;The &amp;ldquo;Criss-cross&amp;rdquo; button can be used to test the unusual-but-interesting case of merging in both directions simultaneously (i.e. each instance merges with the &lt;em&gt;previous&lt;/em&gt; state of the other instance, generating two new merges). CueKeeper tries to merge deterministically, so that both instances should end up in the same state, avoiding unnecessary conflicts on future merges.&lt;/p&gt;
+
+&lt;p&gt;Where you make conflicting edits, CueKeeper will pick a suitable resolution and add a conflict note to say what it did.
+For example, if you edit the title of the &amp;ldquo;Try OCaml tutorials&amp;rdquo; action to different strings in each instance and then sync, you&amp;rsquo;ll see something like:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://roscidus.com/blog/images/cuekeeper/conflict.png&quot; class=&quot;center&quot;/&gt;&lt;/p&gt;
+
+&lt;p&gt;CueKeeper uses a &lt;a href=&quot;http://en.wikipedia.org/wiki/Merge_(revision_control)#Three-way_merge&quot;&gt;three-way merge&lt;/a&gt; - the merge algorithm takes the states of the two branches to be merged and their most recent common ancestor, and generates a new commit from these.
+The common ancestor is used to determine which branch changed which things (anything that is the same as in the common ancestor wasn&amp;rsquo;t changed on that branch).
+If there are multiple possible ancestors (which can happen after a criss-cross merge) we just pick one of them.&lt;/p&gt;
+
+&lt;p&gt;CueKeeper has a unit test for merging that repeatedly generates three commits at random and ensures the merge code produces a valid (loadable) result.
+This should ensure that we can merge any pair of states, but it can&amp;rsquo;t check that the result will necessarily seem sensible to a human, so let me know if you spot anything odd!&lt;/p&gt;
+
+&lt;h3&gt;History&lt;/h3&gt;
+
+&lt;p&gt;We have the full history, which you can view with the &lt;strong&gt;Show history&lt;/strong&gt; button:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://roscidus.com/blog/images/cuekeeper/history.png&quot; class=&quot;center&quot;/&gt;&lt;/p&gt;
+
+&lt;p&gt;The history view is useful if you clicked on something by accident and you&amp;rsquo;re not sure what you did.
+Click on an entry to see the state of the system just after that change.
+A box appears at the top of the page to indicate that you&amp;rsquo;re in &amp;ldquo;time travel&amp;rdquo; mode - close the box to return to the present.&lt;/p&gt;
+
+&lt;p&gt;If you edit anything while viewing a historical version, CueKeeper will commit against that version and then merge the changes to master and return to the present.&lt;/p&gt;
+
+&lt;p&gt;You might like to open each instance&amp;rsquo;s history panel while trying the sync demo above.&lt;/p&gt;
+
+&lt;h3&gt;Revert&lt;/h3&gt;
+
+&lt;p&gt;When in time-travel mode, you can click on the &lt;strong&gt;Revert this change&lt;/strong&gt; button there to undo the change.&lt;/p&gt;
+
+&lt;p&gt;Reverting was easy to add, as it reuses the existing three-way merge code.
+The only difference is that the &amp;ldquo;common ancestor&amp;rdquo; is the commit being reverted and the parent of that commit is used as the &amp;ldquo;branch&amp;rdquo; to be merged.&lt;/p&gt;
+
+&lt;p&gt;Because CueKeeper can merge any three commits, it can also revert any commit (with a single parent), although you&amp;rsquo;ll get the most sensible results if you revert the most recent changes first.&lt;/p&gt;
+
+&lt;p&gt;For example, if you create an action and then modify it, and then revert the creation then CueKeeper will see that as:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;One branch that modified the action (the main branch).&lt;/li&gt;
+  &lt;li&gt;One branch that deleted the action (the revert of the creation).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;When something is modified and deleted, CueKeeper will opt to keep it, so the effect of the &amp;ldquo;revert&amp;rdquo; will simply be to add a note that it decided to keep it.
+Of course, the sensible way to delete something is to use the regular &lt;code&gt;(delete)&lt;/code&gt; button.&lt;/p&gt;
+
+&lt;h3&gt;Check-before-merge&lt;/h3&gt;
+
+&lt;p&gt;It&amp;rsquo;s important to make sure that the system doesn&amp;rsquo;t get into an inconsistent state, and Irmin can help here.
+Whenever CueKeeper updates the database, it first generates the new commit, then it loads the new commit to check it works, then it updates the master branch to point at the new commit.&lt;/p&gt;
+
+&lt;p&gt;This means that CueKeeper will never put the master branch into a state that it can&amp;rsquo;t itself load.&lt;/p&gt;
+
+&lt;h3&gt;Out-of-date UI actions&lt;/h3&gt;
+
+&lt;p&gt;Perhaps the most interesting effect of using Irmin is that it eliminates various edge cases related to out-of-date UI elements.
+Consider this example:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;You open a menu in one tab to set the contact for an action.&lt;/li&gt;
+  &lt;li&gt;You delete one of the contacts in another tab.&lt;/li&gt;
+  &lt;li&gt;You choose the deleted contact from the menu in the first tab.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;With a regular database, this would probably result in some kind of error that you&amp;rsquo;d need to handle.
+These edge cases don&amp;rsquo;t occur often and are hard to test.&lt;/p&gt;
+
+&lt;p&gt;With CueKeeper though, we record which revision each UI element came from and commit against that revision.
+We then merge the new commit with the master branch, using the existing merge logic to deal with any problems (normally, there is nothing to merge and we do a trivial &amp;ldquo;fast-forward&amp;rdquo; merge here).
+This means we never have to worry about concurrent updates.&lt;/p&gt;
+
+&lt;p&gt;A similar system is used with editable fields.
+When you click on a panel&amp;rsquo;s title to edit it, make some changes and press Return, we commit against the version you started editing, not the current one.
+This means that CueKeeper won&amp;rsquo;t silently overwrite changes, even if you edit something in two tabs at the same time (you&amp;rsquo;ll get a merge conflict note containing the version it discarded instead).&lt;/p&gt;
+
+&lt;h2&gt;Next steps&lt;/h2&gt;
+
+&lt;p&gt;If you&amp;rsquo;d like to help out, there&amp;rsquo;s still plenty more to do, both coding and testing.
+For example:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Editing doesn&amp;rsquo;t work well on mobile phones. Menus and input boxes should fill the screen in this case.&lt;/li&gt;
+  &lt;li&gt;I&amp;rsquo;ve had reports that merging between tabs is unreliable on Safari for some reason (&lt;code&gt;AbortError&lt;/code&gt; from IndexedDB).&lt;/li&gt;
+  &lt;li&gt;It would be good to use pack files for compression. Needs a JavaScript compression library.&lt;/li&gt;
+  &lt;li&gt;It should be possible for an action to be marked as waiting for some other action or project to be completed.&lt;/li&gt;
+  &lt;li&gt;Remote sync needs to be implemented.&lt;/li&gt;
+  &lt;li&gt;The UI needs some work. In particular, could someone find a tasteful way to style the fields in the panels so they look like drop-downs? I keep clicking on the item&amp;rsquo;s name instead of the &lt;code&gt;(show)&lt;/code&gt; button by mistake (although this might be because I used to have it the other way around, with a &lt;code&gt;(change)&lt;/code&gt; button, but that was worse).&lt;/li&gt;
+  &lt;li&gt;CueKeeper&amp;rsquo;s IndexedDB Irmin backend should be split off so other people can use it easily.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If you&amp;rsquo;d like to help out, the code is available at &lt;a href=&quot;https://github.com/talex5/cuekeeper&quot;&gt;https://github.com/talex5/cuekeeper&lt;/a&gt; and discussion happens on the &lt;a href=&quot;http://lists.xenproject.org/cgi-bin/mailman/listinfo/mirageos-devel&quot;&gt;MirageOS-devel&lt;/a&gt; mailing list.
+If there&amp;rsquo;s interest, I may write a follow-up post documenting my experiences implementing CueKeeper (using &lt;a href=&quot;https://github.com/mirage/irmin/&quot;&gt;Irmin&lt;/a&gt;, &lt;a href=&quot;http://erratique.ch/software/react&quot;&gt;React&lt;/a&gt;, &lt;a href=&quot;http://ocsigen.org/js_of_ocaml/&quot;&gt;js_of_ocaml&lt;/a&gt; and &lt;a href=&quot;http://www.w3.org/TR/IndexedDB/&quot;&gt;IndexedDB&lt;/a&gt;).&lt;/p&gt;
+
+&lt;h2&gt;Acknowledgements&lt;/h2&gt;
+
+&lt;p&gt;Some of the research leading to these results has received funding from the European Union&amp;rsquo;s Seventh Framework Programme FP7/2007-2013 under the UCN project, grant agreement no 611001.&lt;/p&gt;
+
+</content><id>http://roscidus.com/blog/blog/2015/04/28/cuekeeper-gitting-things-done-in-the-browser/</id><title type="text">CueKeeper: Gitting Things Done in the browser</title><updated>2015-04-28T12:18:23+00:00</updated><author><email></email><name>Thomas Leonard</name></author></entry><entry><link href="http://www.somerandomidiot.com/blog/2015/04/06/lets-play-network-address-translation/" rel="alternate"/><contributor><uri>http://www.somerandomidiot.com/blog/categories/ocaml/atom.xml</uri><name>Mindy Preston</name></contributor><content type="html">&lt;p&gt;&lt;a href=&quot;http://www.somerandomidiot.com/blog/2015/04/05/things-routers-do-network-address-translation/&quot;&gt;When last we spoke&lt;/a&gt;, I left you with a teaser about writing your own NAT implementation. &lt;code&gt;iptables&lt;/code&gt; (and friends &lt;code&gt;nftables&lt;/code&gt; and &lt;code&gt;pf&lt;/code&gt;, to be a little less partisan and outdated) provide the interfaces to the kernel modules that implement NAT in many widely-used routers. If we wanted to implement our own in a traditional OS, we&amp;rsquo;d have to either &lt;a href=&quot;http://kernelnewbies.org/FAQ&quot;&gt;take a big dive into kernel programming&lt;/a&gt; or &lt;a href=&quot;https://github.com/pkelsey/libuinet&quot;&gt;find a way to manipulate packets at the Ethernet layer in userspace&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;But if all we need to do is NAT traffic, why not just build something that only knows how to NAT traffic? I&amp;rsquo;ve looked at building networked applications on top of (and with) the full network stack provided by the &lt;a href=&quot;http://openmirage.org&quot;&gt;MirageOS&lt;/a&gt; library OS a lot, but we can also build lower-level applications with fundamentally the same programming tactics and tools we use to write, for example, &lt;a href=&quot;http://hh360.user.srcf.net/blog/2015/03/part-3-running-your-own-dns-resolver-with-mirageos/&quot;&gt;DNS resolvers&lt;/a&gt;.&lt;/p&gt;&lt;h2&gt;Building A Typical Stack From Scratch&lt;/h2&gt;&lt;p&gt;Let&amp;rsquo;s have a look at the &lt;code&gt;ethif-v4&lt;/code&gt; example in the &lt;a href=&quot;http://github.com/mirage/mirage-skeleton&quot;&gt;mirage-skeleton example repository&lt;/a&gt;. This example unikernel shows how to build a network stack &amp;ldquo;by hand&amp;rdquo; from a bunch of different functors, starting from a physical device (provided by &lt;code&gt;config.ml&lt;/code&gt; at build time, representing either a Xen backend if you configure with &lt;code&gt;mirage configure --xen&lt;/code&gt; or a Unix tuntap backend if you build with &lt;code&gt;mirage configure --unix&lt;/code&gt;). I&amp;rsquo;ve reproduced the network setup bits from &lt;a href=&quot;https://github.com/mirage/mirage-skeleton/blob/694162bfa37b055786a1f4a0bb4c9ca7f08c9ef0/ethifv4/unikernel.ml&quot;&gt;the most recent version as of now&lt;/a&gt; and annotated them a bit:&lt;/p&gt;&lt;p&gt;```ocaml module Main (C: CONSOLE) (N: NETWORK) (Clock : V1.CLOCK) = struct&lt;/p&gt;&lt;p&gt; (* N, a module of type NETWORK (defined in module V1_LWT&lt;/p&gt;&lt;pre&gt;&lt;code&gt; from mirage-types), is the building point for the
  rest of our stack.  Modules E, I, U, and T provide
  functions like [write], which take a record of the type
  matching the module (e.g., E.write needs an E.t argument)
@@ -22957,152 +23459,4 @@ experience the clickable demo via &lt;a href=&quot;http://amirchaudhry.com/wiref
 &lt;p&gt;&lt;i&gt;Link roundup:&lt;/i&gt;&lt;/p&gt;
 &lt;ul&gt;&lt;li&gt;&lt;a href=&quot;http://www.lpw25.net/2013/02/05/camlp4-alternative-part-2.html&quot; class=&quot;icon-rss&quot;&gt;An alternative to camlp4 - Part 2&lt;/a&gt; &lt;em&gt;(Feb 5th)&lt;/em&gt;&lt;/li&gt;&lt;/ul&gt;
 
-   </content><id>http://www.cl.cam.ac.uk/projects/ocamllabs/news/index.html#Feb%202013</id><title type="text">Feb 2013 news update</title><updated>2013-02-01T12:00:00+00:00</updated><author><email></email><name>Anil Madhavapeddy</name></author></entry><entry><link href="http://lpw25.net/2013/01/23/camlp4-alternative-part-1.html" rel="alternate"/><contributor><uri>http://www.lpw25.net/atom.xml</uri><name>Leo White</name></contributor><content type="html">&lt;p&gt;Since its creation camlp4 has proven to be a very useful tool. People have used
-it to experiment with new features for OCaml and to provide interesting
-meta-programming facilities. However, there is general agreement that camlp4 is
-too powerful and complex for the applications that it is most commonly used for,
-and there is a growing movement to provide a simpler alternative.&lt;/p&gt;
-
-&lt;p&gt;The &lt;a href=&quot;http://lists.ocaml.org/listinfo/wg-camlp4&quot;&gt;wg-camlp4@lists.ocaml.org&lt;/a&gt;
-mailing list has been created to discuss implementing this simpler
-alternative. This blog post is a way of kick-starting the discussion on this
-list, by explaining my thoughts on what needs to be done.&lt;/p&gt;
-
-&lt;p&gt;Personally, I think that providing a real alternative to camlp4 involves two
-phases. The first phase is to provide support for implementing the most popular
-camlp4 extensions without camlp4. Since the people who have implemented these
-extensions already require good knowledge of the OCaml grammar it is not
-unreasonable to expect a similar level of expertise to use the alternative. This
-phase can easily be implemented before the next OCaml release, and I will
-discuss what I think that will involve in the remainder of this post.&lt;/p&gt;
-
-&lt;p&gt;The second phase involves extending this support to allow general OCaml
-programmers to write extensions, and to include such extensions within the
-language itself rather than as part of a pre-processor. I will discuss my
-thoughts on this phase in a later blog post.&lt;/p&gt;
-
-&lt;h4&gt;Camlp4 in the wild&lt;/h4&gt;
-
-&lt;p&gt;Camlp4 works by producing pre-processors that parse an OCaml file and then output
-a syntax tree directly into the compiler. Extensions are written by extending
-the default OCaml parser and converting any new syntax tree nodes into existing
-OCaml nodes. Most of the complexity in camlp4 comes from its extensible
-grammars, which gives camlp4 the ability to extend the OCaml syntax
-arbitrarily. However, most applications do not need this ability. &lt;/p&gt;
-
-&lt;p&gt;From an ad-hoc survey of camlp4 extensions in the OPAM repository, most of the
-popular camlp4 extensions seem to fall into one of three categories: &lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-Type-conv style extensions such as 
-&lt;a href=&quot;https://bitbucket.org/yminsky/ocaml-core/wiki/Home&quot;&gt;sexplib&lt;/a&gt;, 
-&lt;a href=&quot;https://github.com/mirage/orm&quot;&gt;ORM&lt;/a&gt; and 
-&lt;a href=&quot;https://github.com/mirage/dyntype&quot;&gt;dyntype&lt;/a&gt;. 
-These extend the syntax to allow code such as:
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ocaml&quot; data-lang=&quot;ocaml&quot;&gt;&lt;span class=&quot;k&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;42&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sexp_drop_default&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;z&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sexp_drop_if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;z_test&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; 
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sexp&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;/li&gt;
-&lt;li&gt;
-Extensions using camlp4's quotations syntax such as 
-&lt;a href=&quot;https://github.com/mirage/ocaml-cow&quot;&gt;COW&lt;/a&gt;. These look like:
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ocaml&quot; data-lang=&quot;ocaml&quot;&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;html&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hello&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;world&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;/li&gt;
-&lt;li&gt;
-Other syntax extensions that could be expressed using existing syntax or the
-camlp4 quotation syntax. For example, 
-&lt;a href=&quot;http://ocsigen.org/js_of_ocaml/&quot;&gt;js_of_ocaml&lt;/a&gt; provides a
-&lt;code&gt;##&lt;/code&gt; operator for accessing javascript objects. This could easily be replaced by
-a valid operator such as &lt;code&gt;%%&lt;/code&gt;.
-&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;By providing support for these specific kinds of extension, we can provide an
-alternative to camlp4 for the majority of its applications.&lt;/p&gt;
-
-&lt;h4&gt;AST transformers, attributes and quotations&lt;/h4&gt;
-
-&lt;p&gt;A much simpler alternative to allowing arbitrary syntax extensions is to use
-&lt;em&gt;AST transformers&lt;/em&gt;, &lt;em&gt;attributes&lt;/em&gt; and &lt;em&gt;quotations&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;AST transformers are simply functions that perform transformations on the OCaml
-syntax tree. These can already be implemented using the new
-&amp;ldquo;&lt;a href=&quot;http://www.lexifi.com/blog/syntax-extensions-without-camlp4-lets-do-it&quot;&gt;-ppx&lt;/a&gt;&amp;rdquo;
-command line option that has been included on the OCaml development trunk by
-Alain Frisch. This option accepts a program as an argument, and pipes the syntax
-tree through that program after parsing and before type checking.&lt;/p&gt;
-
-&lt;p&gt;Attributes are places in the grammar where generic data can be attached to the
-syntax tree. This data is simply ignored by the main OCaml compiler, but it can
-used be AST transformers to control transformations. &lt;/p&gt;
-
-&lt;p&gt;Quotations are any construct that is not lexed or parsed by the compiler. These
-can be attributes, expressions, patterns etc. The contents of a quotation can be
-lexed and parsed by an AST transformer and converted into a regular AST node.&lt;/p&gt;
-
-&lt;p&gt;Before support for attributes and quotations can be added to the compiler
-decisions need to be made about what kinds of attributes and quotations to
-support. Personally I prefer quotation attributes to attributes that are parsed
-by the compiler because they are more flexible. However there is no reason that
-both kinds cannot be supported by the compiler using different syntax.&lt;/p&gt;
-
-&lt;p&gt;I think that it is important to support at least the following kinds of attribute:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-Simple named quotations for expressions, patterns and type expressions:
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ocaml&quot; data-lang=&quot;ocaml&quot;&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;:&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;Foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;foo&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;some&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;random&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;/li&gt;
-&lt;li&gt;
-Type constructor quotation attributes:
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ocaml&quot; data-lang=&quot;ocaml&quot;&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bar&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;some&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;random&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;/li&gt;
-&lt;li&gt;
-Type-conv style definition attributes:
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ocaml&quot; data-lang=&quot;ocaml&quot;&gt;&lt;span class=&quot;k&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 
-&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bar&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;(* some valid expression *)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;/li&gt;
-&lt;li&gt;
-Annotating types with syntactically valid expressions:
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ocaml&quot; data-lang=&quot;ocaml&quot;&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;@@&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;(* some valid expression *)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;()&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Once support for these attributes and quotations is added to OCaml I think that
-the majority of camlp4 applications could be easily converted into AST
-transformers.&lt;/p&gt;
-
-&lt;p&gt;In order to make this transition easy, work must also be done to provide tools
-for manipulating OCaml&amp;rsquo;s AST and parsing quotations. It would also be worthwhile
-trying to normalise some of the stranger corners of the OCaml syntax tree. This
-will make writing AST transformers simpler and more robust&lt;/p&gt;
-
-&lt;p&gt;Finally, the &amp;ldquo;-ppx&amp;rdquo; option must be integrated into the many OCaml build
-systems.&lt;/p&gt;
-
-&lt;h4&gt;Join the discussion&lt;/h4&gt;
-
-&lt;p&gt;The above suggestions are just the attributes and quotations that I think will
-be necessary to provide a viable alternative to camlp4. However, I suspect that
-they are not sufficient. It would be very useful to hear from anyone who has
-written camlp4 extensions about what kind of extensions they have written, and
-what they think would be necessary to support their extensions without
-camlp4. So please join the
-&lt;a href=&quot;http://lists.ocaml.org/listinfo/wg-camlp4&quot;&gt;wg-camlp4@lists.ocaml.org&lt;/a&gt; list and post
-your thoughts.&lt;/p&gt;
-</content><id>http://lpw25.net/2013/01/23/camlp4-alternative-part-1.html</id><title type="text">An alternative to camlp4 - Part 1</title><updated>2013-01-23T00:00:00+00:00</updated><author><email></email><name>Leo White</name></author></entry></feed>
+   </content><id>http://www.cl.cam.ac.uk/projects/ocamllabs/news/index.html#Feb%202013</id><title type="text">Feb 2013 news update</title><updated>2013-02-01T12:00:00+00:00</updated><author><email></email><name>Anil Madhavapeddy</name></author></entry></feed>
