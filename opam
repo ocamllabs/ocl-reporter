@@ -17,10 +17,12 @@ depends: [
   "cohttp"
   "lwt"
   "core"
-  "cow"
+  "cow" {<="2.0.0"}
   "ocamlnet"
   "river"
   "sexplib"
   "syndic"
   "uri"
+  "tls"
+  "ssl"
 ]
