@@ -15,3 +15,10 @@ more general purpose reporting tool for other projects too.
 * A cron job runs every hour on `cron-serv0.cl.cam.ac.uk` to sync the
   contents of `pages/` with the live directory.  That server doesnt
   run any code, so it just runs the `make cron` target to rsync files.
+
+## Docker build
+
+```
+docker build -t ocl-reporter .
+docker run -v `pwd`:/home/opam/src
+```
