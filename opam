@@ -20,7 +20,7 @@ depends: [
   "cow" {<="2.0.0"}
   "ocamlnet"
   "river"
-  "sexplib"
+  "pa_sexp_conv"
   "syndic"
   "uri"
   "tls"
