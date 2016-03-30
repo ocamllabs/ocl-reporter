@@ -17,7 +17,7 @@ depends: [
   "cohttp"
   "lwt"
   "core"
-  "cow" {<="2.0.0"}
+  "cow" {<"2.0.0"}
   "ocamlnet"
   "river"
   "pa_sexp_conv"
