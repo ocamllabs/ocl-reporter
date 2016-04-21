@@ -32,7 +32,7 @@ let months_between d1 d2 =
   |> List.filter ~f:(fun d -> d <> (round d1))
 
 let render_link link =
-  let open Types.Reference in
+  let open Ocltypes.Reference in
   match link.link with
   |`Github (user,repo)->
     let href=sprintf "http://github.com/%s/%s" user repo in
@@ -49,7 +49,7 @@ let wrap_url targ content =
   |Some u -> <:html<<a href=$str:u$>$content$</a>&>>
 
 let draw_task ?(hrefbase="") task =
-  let open Types.Project in
+  let open Ocltypes.Project in
   (* Clamp task start to first date *)
   let task_start = Date.max task.start start_date in
   let task_end =
@@ -64,7 +64,7 @@ let draw_task ?(hrefbase="") task =
   in
   let left = padding ~cl:"blank" start_date task_start <:html<&>> in
   let mugshot =
-    let open Types.Person in
+    let open Ocltypes.Person in
     let url = sprintf "../mugshots/%s" (Option.value ~default:"unknown.jpg" task.owner.mugshot) in
     let alt = task.owner.name in
     wrap_url task.owner.homepage
@@ -102,7 +102,7 @@ let css = <:html<
           >>
 
 let sort_by_finish_date a b =
-  let open Types.Project in
+  let open Ocltypes.Project in
   let finish_date t =
     match t.finish with
     | Some d -> d
@@ -112,7 +112,7 @@ let sort_by_finish_date a b =
 
 (* Output the main projects page HTML *)
 let to_project_html ?(moreinfo=true) projects = 
-  let open Types.Project in
+  let open Ocltypes.Project in
   let more proj =
     let proj_href = proj.project_id^".html" in
     let style = "border-bottom: 1px solid #cccccc; font-weight: bold" in
@@ -143,7 +143,7 @@ let to_project_html ?(moreinfo=true) projects =
       >>)
 
 let to_one_project_html teamlist proj =
-  let open Types.Project in
+  let open Ocltypes.Project in
   let proj_descr = Markdown.from_file_to_html (proj.project_id^"/descr") in
   let ts = tasks (List.sort ~cmp:sort_by_finish_date proj.tasks) in
   <:html<
@@ -162,7 +162,7 @@ let to_one_project_html teamlist proj =
 
 (* Output the shortened version without descriptions, for the person page *)
 let to_short_html person =
-  let open Types.Project in
+  let open Ocltypes.Project in
   (* Find projects for this person *)
   let projects = List.filter Data.Projects.all 
       ~f:(fun proj -> List.mem (people_in_project proj) person) in

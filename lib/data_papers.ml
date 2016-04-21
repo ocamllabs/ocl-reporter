@@ -1,6 +1,6 @@
 (* When you add a paper, don't forget to append it to the `all` variable at the bottom! *)
 open Core.Std
-open Types.Paper
+open Ocltypes.Paper
 
 let quelea_2015 =
   mk ~id:"quelea-pldi-2015"

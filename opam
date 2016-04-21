@@ -20,9 +20,9 @@ depends: [
   "cow" {<"2.0.0"}
   "ocamlnet"
   "river"
-  "pa_sexp_conv"
   "syndic"
   "uri"
   "tls"
   "ssl"
+  "conf-vim"
 ]

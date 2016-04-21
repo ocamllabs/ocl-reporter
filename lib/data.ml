@@ -1,5 +1,5 @@
 open Core.Std
-open Types
+open Ocltypes
 include Data_people
 include Data_papers
 include Data_news

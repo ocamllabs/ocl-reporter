@@ -1,5 +1,5 @@
 open Core.Std
-open Types
+open Ocltypes
 
 module People = struct
   open Person

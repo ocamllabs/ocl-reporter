@@ -24,7 +24,7 @@ let link ?cl href text =
   |Some cl -> <:html<<a class="$str:cl$" href="$str:href$">$str:text$</a>&>>
 
 let ref_to_html rf =
-  let open Types.Reference in
+  let open Ocltypes.Reference in
   let l = <:html<$str:rf.name$>> in
   match rf.link with
   |`Pdf r -> <:html<<a class="icon-pdf" href=$str:r$>$l$</a>&>>
@@ -35,7 +35,7 @@ let ref_to_html rf =
   |`Github_issues (u,p) -> let r = sprintf "https://github.com/%s/%s/issues" u p in <:html<<a class="icon-wrench" href=$str:r$>$l$</a>&>>
   |`Github_tag (u,p,t) -> let r = sprintf "https://github.com/%s/%s/archives/%s.tar.gz" u p t in <:html<<a class="icon-github" href=$str:r$>$l$</a>&>>
   |`Mantis id -> let r = sprintf "http://caml.inria.fr/mantis/view.php?id=%d" id in <:html<<a href=$str:r$>$l$</a>&>>
-  |`Paper {Types.Paper.id} -> let r = sprintf "../papers/index.html#%s" id in <:html<<a class="icon-pdf" href=$str:r$>$l$</a>&>>
+  |`Paper {Ocltypes.Paper.id} -> let r = sprintf "../papers/index.html#%s" id in <:html<<a class="icon-pdf" href=$str:r$>$l$</a>&>>
 
 let refs_to_html rs =
   let x = List.map ~f:(fun x -> <:html<$ref_to_html x$ &nbsp; >>) rs in
@@ -47,11 +47,11 @@ let human_readable_date d =
   sprintf "%s %d" (Month.to_string (Date.month d)) (Date.year d)
 
 let person_href p content =
-  match p.Types.Person.homepage with
+  match p.Ocltypes.Person.homepage with
   | Some h -> <:html<<a href=$str:h$>$content$</a>&>>
   | None -> content
 
-let mugshot p = sprintf "../mugshots/%s" (Option.value ~default:"unknown.jpg" p.Types.Person.mugshot)
+let mugshot p = sprintf "../mugshots/%s" (Option.value ~default:"unknown.jpg" p.Ocltypes.Person.mugshot)
 let mugshot_img ?(float=true) ?(size=60) p =
   let size = sprintf "%dpx" size in
   let style = if float then "float:left; padding-right: 30px" else "" in
@@ -91,7 +91,7 @@ let one_page ?(extra_head=[]) ~title ~body () =
 
 (* Generate the overall people web pages *)
 let people =
-  let open Types.Person in
+  let open Ocltypes.Person in
   let person_to_html p =
     let m = mugshot_img ~size:80 p in
    let phref = person_href p <:html<$str:p.name$&>> in
@@ -138,7 +138,7 @@ let people =
 let projects =
   let sproj =
     let open Data.Projects in
-    let open Types.Project in
+    let open Ocltypes.Project in
     List.map all ~f:(fun p -> <:html<<li><a href=$str:"#"^p.project_id$><b>$str:p.project_name$</b></a>: $str:p.project_elevator$</li> >>)
   in
   let body = <:html<
@@ -150,7 +150,7 @@ let projects =
   one_page ~title:"Projects" ~body ()
 
 let one_project proj =
-  let open Types in
+  let open Ocltypes in
   let open Project in
   let tasks =
     List.map ~f:(fun t ->
@@ -209,7 +209,7 @@ let one_project proj =
   one_page ~title:proj.project_name ~body ()
 
 let outputs =
-  let open Types.Paper in
+  let open Ocltypes.Paper in
   let pubs = List.map Data_papers.all_by_date
     ~f:(fun p ->
       let hrdate = sprintf "%s %d" (Month.to_string (Date.month p.date)) (Date.year p.date) in
@@ -317,10 +317,10 @@ let write_blogs file =
 let _ =
   write_uconfig "people" [];
   write_html "people/index" people;
-  write_uconfig "tasks" (List.map Data.Projects.all ~f:(fun p -> p.Types.Project.project_id));
+  write_uconfig "tasks" (List.map Data.Projects.all ~f:(fun p -> p.Ocltypes.Project.project_id));
   write_html "tasks/index" projects;
   List.iter Data.Projects.all ~f:(fun p ->
-    write_html ("tasks/"^p.Types.Project.project_id) (one_project p));
+    write_html ("tasks/"^p.Ocltypes.Project.project_id) (one_project p));
   write_uconfig "papers" [];
   write_html "papers/index" outputs;
   write_uconfig "news" [];
